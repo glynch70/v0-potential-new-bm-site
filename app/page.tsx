@@ -277,38 +277,82 @@ export default function HomePage() {
       
 
       {/* WORK */}
-      <section id="work" className="px-6 py-24">
-        <div className="mx-auto max-w-6xl">
-          <h2 className="text-4xl font-semibold">Work</h2>
-          <p className="mt-3 text-black/70">Recent examples.</p>
+      {/* WORK */}
+<section id="work" className="px-6 py-24">
+  <div className="mx-auto max-w-6xl">
+    {/* Header */}
+    <div className="mb-12">
+      <div className="text-sm font-semibold text-black/40">02</div>
+      <h2 className="mt-2 text-4xl font-semibold tracking-tight">
+        Work
+      </h2>
+      <p className="mt-3 max-w-2xl text-lg text-black/70">
+        Recent examples across social content and websites.
+      </p>
+    </div>
 
-          <div className="mt-12 grid gap-6 md:grid-cols-2">
-            <Image
-              src="/pharmacy-storefront-modern.jpg"
-              alt="Social content"
-              width={600}
-              height={450}
-              className="rounded-3xl object-cover"
-            />
-            <Image
-              src="/modern-tradesman-website-laptop.jpg"
-              alt="Website work"
-              width={600}
-              height={450}
-              className="rounded-3xl object-cover"
-            />
-          </div>
-
-          <a
-            href="https://portfolio.bear-media.com"
-            target="_blank"
-            className="mt-10 inline-block rounded-full bg-black px-6 py-3 text-sm font-semibold text-white"
-          >
-            View full portfolio
-          </a>
+    {/* Work grid */}
+    <div className="grid gap-6 md:grid-cols-2">
+      {/* Social content */}
+      <div className="overflow-hidden rounded-3xl border border-black/10 bg-white shadow-sm">
+        <div className="aspect-[4/3] bg-black/5">
+          <img
+            src="/pharmacy-storefront-modern.jpg"
+            alt="Social media content for local business"
+            className="h-full w-full object-cover"
+          />
         </div>
-      </section>
+        <div className="p-6">
+          <div className="text-xs font-semibold text-black/40">
+            Social media content
+          </div>
+          <div className="mt-1 text-lg font-semibold">
+            Short-form content for local businesses
+          </div>
+        </div>
+      </div>
 
+      {/* Website work */}
+      <div className="overflow-hidden rounded-3xl border border-black/10 bg-white shadow-sm">
+        <div className="aspect-[4/3] bg-black/5">
+          <img
+            src="/modern-tradesman-website-laptop.jpg"
+            alt="Website design for small business"
+            className="h-full w-full object-cover"
+          />
+        </div>
+        <div className="p-6">
+          <div className="text-xs font-semibold text-black/40">
+            Websites
+          </div>
+          <div className="mt-1 text-lg font-semibold">
+            Clean, conversion-focused website
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {/* Portfolio CTA */}
+    <div className="mt-12 flex items-center justify-between rounded-3xl border border-black/10 bg-white/70 p-6">
+      <div>
+        <div className="text-lg font-semibold">
+          Want to see more?
+        </div>
+        <div className="mt-1 text-sm text-black/70">
+          Full portfolio lives separately.
+        </div>
+      </div>
+      <a
+        href="https://portfolio.bear-media.com/"
+        target="_blank"
+        rel="noreferrer"
+        className="rounded-full bg-black px-6 py-3 text-sm font-semibold text-white transition hover:opacity-90"
+      >
+        View full portfolio
+      </a>
+    </div>
+  </div>
+</section>
       {/* ABOUT */}
       <section id="about" className="px-6 py-24">
         <div className="mx-auto max-w-6xl">
