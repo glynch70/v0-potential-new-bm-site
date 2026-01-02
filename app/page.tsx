@@ -1,4 +1,16 @@
-"use client"
+<div style={{
+  position: "fixed",
+  top: 0,
+  left: 0,
+  zIndex: 9999,
+  background: "red",
+  color: "white",
+  padding: "12px",
+  fontSize: "18px"
+}}>
+  TEST – PAGE.TSX IS RENDERING
+</div>
+  "use client"
 
 import type React from "react"
 
