@@ -4,23 +4,17 @@ import Image from "next/image";
 
 export default function HomePage() {
   return (
-    <main
-      style={{
-        minHeight: "100vh",
-        display: "flex",
-        flexDirection: "column",
-        background: "#0b0b0b",
-        color: "#ffffff",
-      }}
-    >
+    <>
       {/* HERO */}
-      <section
+      <main
         style={{
           minHeight: "100vh",
           display: "grid",
           gridTemplateColumns: "1fr 1fr",
           alignItems: "center",
-          padding: "48px",
+          padding: "64px",
+          background: "linear-gradient(180deg, #000 0%, #0b0b0b 100%)",
+          color: "#ffffff",
           gap: "48px",
         }}
       >
@@ -39,8 +33,8 @@ export default function HomePage() {
         <div>
           <h1
             style={{
-              fontSize: "52px",
-              lineHeight: "1.05",
+              fontSize: "56px",
+              lineHeight: 1.1,
               marginBottom: "16px",
             }}
           >
@@ -59,84 +53,115 @@ export default function HomePage() {
               maxWidth: "520px",
             }}
           >
-            Websites and content for small businesses. Built properly.
+            Websites, video, and content for local businesses that want to look
+            established and get enquiries.
           </p>
 
           <div style={{ display: "flex", gap: "16px" }}>
-            <button
+            <a
+              href="mailto:hello@bearmedia.co.uk"
               style={{
                 padding: "14px 22px",
                 background: "#f5c542",
                 color: "#000",
-                border: "none",
                 borderRadius: "8px",
                 fontWeight: 600,
-                cursor: "pointer",
+                textDecoration: "none",
               }}
             >
-              View work
-            </button>
+              Get in touch
+            </a>
 
-            <button
+            <a
+              href="#services"
               style={{
                 padding: "14px 22px",
                 background: "transparent",
                 color: "#fff",
                 border: "1px solid #444",
                 borderRadius: "8px",
-                cursor: "pointer",
+                fontWeight: 500,
+                textDecoration: "none",
               }}
             >
-              Get in touch
-            </button>
+              View work
+            </a>
           </div>
         </div>
-      </section>
+      </main>
 
       {/* SERVICES */}
       <section
+        id="services"
         style={{
-          padding: "96px 48px",
-          background: "#111",
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
+          gap: "32px",
+          padding: "64px",
+          background: "#0f0f0f",
+          color: "#fff",
         }}
       >
-        <div
-          style={{
-            maxWidth: "1200px",
-            margin: "0 auto",
-            display: "grid",
-            gridTemplateColumns: "repeat(3, 1fr)",
-            gap: "32px",
-          }}
-        >
-          <div>
-            <h3 style={{ fontSize: "22px", marginBottom: "12px" }}>
-              Social Content
-            </h3>
-            <p style={{ opacity: 0.8 }}>
-              Short-form video, reels, and content that actually gets seen.
-            </p>
-          </div>
+        <div>
+          <h3>Social Content</h3>
+          <p style={{ opacity: 0.8 }}>
+            Short-form video and reels designed to get attention and drive
+            action.
+          </p>
+        </div>
 
-          <div>
-            <h3 style={{ fontSize: "22px", marginBottom: "12px" }}>
-              Websites
-            </h3>
-            <p style={{ opacity: 0.8 }}>
-              Fast, clean websites built to convert and rank.
-            </p>
-          </div>
+        <div>
+          <h3>Websites</h3>
+          <p style={{ opacity: 0.8 }}>
+            Fast, clean websites built to convert visitors into enquiries.
+          </p>
+        </div>
 
-          <div>
-            <h3 style={{ fontSize: "22px", marginBottom: "12px" }}>
-              Photography
-            </h3>
-            <p style={{ opacity: 0.8 }}>
-              High-quality visuals for brands, people, and properties.
-            </p>
-          </div>
+        <div>
+          <h3>Photography</h3>
+          <p style={{ opacity: 0.8 }}>
+            High-quality visuals for brands, people, and property.
+          </p>
         </div>
       </section>
-    </main>
+
+      {/* CTA */}
+      <section
+        style={{
+          padding: "96px 64px",
+          textAlign: "center",
+          background: "#000",
+          color: "#fff",
+        }}
+      >
+        <h2 style={{ fontSize: "40px", marginBottom: "16px" }}>
+          Want to work together?
+        </h2>
+
+        <p
+          style={{
+            fontSize: "18px",
+            opacity: 0.85,
+            marginBottom: "32px",
+          }}
+        >
+          Drop me a message and I’ll come back to you personally.
+        </p>
+
+        <a
+          href="mailto:hello@bearmedia.co.uk"
+          style={{
+            padding: "16px 28px",
+            background: "#f5c542",
+            color: "#000",
+            borderRadius: "10px",
+            fontWeight: 600,
+            textDecoration: "none",
+          }}
+        >
+          Start a conversation
+        </a>
+      </section>
+    </>
   );
 }
