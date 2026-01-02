@@ -29,13 +29,14 @@ export default function HomePage() {
 
       {/* RIGHT */}
       <div>
-        {/* RIGHT */}
-<div>
-  <h1 style={{ fontSize: "48px", marginBottom: "16px" }}>
-    One creator. Real skills. Real results.
-  </h1>
+        <h1 style={{ fontSize: "48px", marginBottom: "16px" }}>
+          One creator. Real skills. Real results.
+        </h1>
 
-  <p style={{ fontSize: "20px", opacity: 0.8 }}>
-    Websites and content for small businesses.
-  </p>
-</div>
+        <p style={{ fontSize: "20px", opacity: 0.8 }}>
+          Websites and content for small businesses. Built properly.
+        </p>
+      </div>
+    </main>
+  )
+}
