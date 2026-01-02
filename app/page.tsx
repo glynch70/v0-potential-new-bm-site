@@ -1,6 +1,6 @@
-"use client"
+"use client";
 
-import Image from "next/image"
+import Image from "next/image";
 
 export default function HomePage() {
   return (
@@ -41,15 +41,15 @@ export default function HomePage() {
           <button
             style={{
               padding: "14px 22px",
-              background: "#d4af37",
+              background: "#f5c542",
               color: "#000",
-              borderRadius: "999px",
-              fontWeight: 600,
               border: "none",
+              borderRadius: "8px",
+              fontWeight: 600,
               cursor: "pointer",
             }}
           >
-            Book a call
+            View work
           </button>
 
           <button
@@ -57,15 +57,15 @@ export default function HomePage() {
               padding: "14px 22px",
               background: "transparent",
               color: "#fff",
-              borderRadius: "999px",
               border: "1px solid #444",
+              borderRadius: "8px",
               cursor: "pointer",
             }}
           >
-            View work
+            Get in touch
           </button>
         </div>
       </div>
     </main>
-  )
+  );
 }
