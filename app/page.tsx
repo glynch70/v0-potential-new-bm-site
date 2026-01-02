@@ -29,14 +29,23 @@ export default function HomePage() {
 
       {/* RIGHT */}
       <div>
-        <h1 style={{ fontSize: "48px", marginBottom: "16px" }}>
-          One creator. Real skills. Real results.
-        </h1>
+        <h1 style={{
+  fontSize: "52px",
+  lineHeight: "1.1",
+  maxWidth: "520px",
+  marginBottom: "16px"
+}}>
+  One creator.<br />Real skills.<br />Real results.
+</h1>
 
-        <p style={{ fontSize: "20px", opacity: 0.85, marginBottom: "32px" }}>
-          Websites and content for small businesses. Built properly.
-        </p>
-
+<p style={{
+  fontSize: "20px",
+  opacity: 0.75,
+  maxWidth: "480px",
+  marginBottom: "32px"
+}}>
+  Websites and content for small businesses. Built properly.
+</p>
         <div style={{ display: "flex", gap: "16px" }}>
           <button
             style={{
@@ -69,3 +78,19 @@ export default function HomePage() {
     </main>
   );
 }
+<section style={{
+  padding: "120px 64px",
+  background: "#0b0b0b",
+}}>
+  <div style={{
+    display: "grid",
+    gridTemplateColumns: "repeat(3, 1fr)",
+    gap: "32px",
+    maxWidth: "1200px",
+    margin: "0 auto"
+  }}>
+    <div>Social Content</div>
+    <div>Websites</div>
+    <div>Photography</div>
+  </div>
+</section>
