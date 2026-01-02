@@ -1,5 +1,5 @@
-import './globals.css'
 import Header from '@/components/Header'
+import './globals.css'
 
 export const metadata = {
   title: 'Bear Media',
@@ -15,7 +15,9 @@ export default function RootLayout({
     <html lang="en">
       <body className="font-sans antialiased">
         <Header />
-        <main className="pt-24">{children}</main>
+        <main className="pt-24">
+          {children}
+        </main>
       </body>
     </html>
   )
