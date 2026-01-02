@@ -204,6 +204,48 @@ export default function HomePage() {
         <MicroTag>Local businesses</MicroTag>
       </div>
     </div>
+     {/* SEO / TRUST */}
+<section className="px-6 py-20">
+  <div className="mx-auto max-w-4xl">
+    <div className="rounded-3xl border border-black/10 bg-white/70 p-8 shadow-sm">
+      <h2 className="text-2xl font-semibold">
+        Social media content and websites for local businesses
+      </h2>
+
+      <div className="mt-4 space-y-4 text-black/70 leading-relaxed">
+        <p>
+          Bear Media helps local businesses get seen and generate enquiries through
+          short-form social media content and clean, conversion-focused websites.
+        </p>
+
+        <p>
+          I work directly with business owners across Edinburgh, West Lothian and Fife,
+          creating content that fits real businesses — not generic agency templates.
+        </p>
+
+        <p>
+          If you need social media content, reels, short-form video or a modern website
+          that actually converts, you deal with the person doing the work from start to finish.
+        </p>
+      </div>
+
+      <div className="mt-6 flex flex-wrap gap-2">
+        <span className="rounded-full border border-black/10 bg-white px-3 py-1 text-sm">
+          Social media content
+        </span>
+        <span className="rounded-full border border-black/10 bg-white px-3 py-1 text-sm">
+          Short-form video
+        </span>
+        <span className="rounded-full border border-black/10 bg-white px-3 py-1 text-sm">
+          Websites
+        </span>
+        <span className="rounded-full border border-black/10 bg-white px-3 py-1 text-sm">
+          Local businesses
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
 
     {/* RIGHT */}
     <div className="relative rounded-3xl overflow-hidden border border-black/10 bg-black/5">
