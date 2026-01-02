@@ -152,3 +152,6 @@
 .animate-scroll-logos {
   animation: scrollLogos 30s linear infinite;
 }
+html {
+  scroll-behavior: smooth;
+}
