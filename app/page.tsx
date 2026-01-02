@@ -29,13 +29,4 @@ export default function HomePage() {
 
       {/* RIGHT */}
       <div>
-        <h1 style={{ fontSize: "48px", marginBottom: "16px" }}>
-          TEST: PAGE.TSX IS ACTIVE
-        </h1>
-        <p style={{ fontSize: "20px", opacity: 0.8 }}>
-          If you can see this, routing is correct.
-        </p>
-      </div>
-    </main>
-  )
-}
+        
