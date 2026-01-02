@@ -215,18 +215,7 @@ export default function HomePage() {
         </div>
       </div>
 
-      {/* RIGHT: FLOATING VISUALS */}
-      <div className="relative h-[420px]">
-        
-        {/* Website card */}
-        <div className="absolute left-0 top-10 w-[260px] rounded-3xl border border-black/10 bg-white p-4 shadow-lg">
-          <div className="text-xs font-semibold text-black/40">Website</div>
-          <div className="mt-1 text-sm font-semibold">
-            Clean, conversion-focused site
-          </div>
-          <div className="mt-2 h-28 rounded-xl bg-black/5" />
-        </div>
-
+      
         {/* Social content card */}
         <div className="absolute right-0 top-0 w-[240px] rounded-3xl border border-black/10 bg-white p-4 shadow-lg">
           <div className="text-xs font-semibold text-black/40">Social content</div>
@@ -305,7 +294,6 @@ export default function HomePage() {
         priority
       />
     </div>
-  </div>
 </section>
 {/* SERVICES */}
 <section id="services" className="px-6 py-24">
