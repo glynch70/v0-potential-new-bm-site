@@ -147,63 +147,110 @@ function MicroTag({ children }: { children: React.ReactNode }) {
 export default function HomePage() {
   return (
     <div className="bg-[#f5f1ea] text-black">
-      {/* HOME */}
+      {/* HERO */}
 <section
   id="home"
-  className="px-6 pt-24 pb-24 min-h-[85vh]"
+  className="relative overflow-hidden px-6 pt-28 pb-32"
 >
-  <div className="mx-auto max-w-6xl grid gap-12 lg:grid-cols-2 items-center">
-    {/* LEFT */}
-    <div>
-      <div className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white/70 px-3 py-2 text-sm text-black/70">
-        <span className="h-2 w-2 rounded-full bg-orange-500" />
-        Based in Broxburn · Serving Edinburgh, West Lothian & Fife
+  <div className="mx-auto max-w-6xl">
+    <div className="grid gap-16 lg:grid-cols-2 lg:items-center">
+      
+      {/* LEFT: COPY */}
+      <div>
+        <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-black/10 bg-white px-4 py-2 text-sm font-medium text-black/70">
+          <span className="h-2 w-2 rounded-full bg-orange-500" />
+          Based in Broxburn · Serving Edinburgh, West Lothian & Fife
+        </div>
+
+        <h1 className="text-balance text-4xl font-semibold leading-tight tracking-tight sm:text-5xl">
+          Social media content & websites
+          <br />
+          built to grow local businesses
+        </h1>
+
+        <p className="mt-5 max-w-xl text-lg leading-relaxed text-black/70">
+          I help local businesses get seen and generate enquiries through
+          short-form social content and clean, conversion-focused websites.
+          No outsourcing. No agency layers. Just solid work done properly.
+        </p>
+
+        <div className="mt-8 flex flex-wrap gap-3">
+          <a
+            href="#contact"
+            className="inline-flex items-center justify-center rounded-full bg-orange-500 px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:brightness-95"
+          >
+            Book a call
+          </a>
+
+          <a
+            href="https://wa.me/"
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center justify-center rounded-full border border-black/10 bg-white px-6 py-3 text-sm font-semibold text-black transition hover:bg-black/5"
+          >
+            WhatsApp me
+          </a>
+
+          <a
+            href="#work"
+            className="inline-flex items-center justify-center rounded-full border border-black/10 px-6 py-3 text-sm font-semibold text-black/80 transition hover:bg-black/5"
+          >
+            View work
+          </a>
+        </div>
+
+        <div className="mt-8 flex flex-wrap gap-2">
+          <span className="rounded-full border border-black/10 bg-white px-3 py-1 text-xs font-medium text-black/70">
+            Social media content
+          </span>
+          <span className="rounded-full border border-black/10 bg-white px-3 py-1 text-xs font-medium text-black/70">
+            Short-form video
+          </span>
+          <span className="rounded-full border border-black/10 bg-white px-3 py-1 text-xs font-medium text-black/70">
+            Websites
+          </span>
+          <span className="rounded-full border border-black/10 bg-white px-3 py-1 text-xs font-medium text-black/70">
+            Local businesses
+          </span>
+        </div>
       </div>
 
-      <h1 className="mt-6 text-4xl sm:text-5xl font-semibold leading-tight tracking-tight">
-        Social media content & websites
-        <br />
-        built to grow local businesses
-      </h1>
+      {/* RIGHT: FLOATING VISUALS */}
+      <div className="relative h-[420px]">
+        
+        {/* Website card */}
+        <div className="absolute left-0 top-10 w-[260px] rounded-3xl border border-black/10 bg-white p-4 shadow-lg">
+          <div className="text-xs font-semibold text-black/40">Website</div>
+          <div className="mt-1 text-sm font-semibold">
+            Clean, conversion-focused site
+          </div>
+          <div className="mt-2 h-28 rounded-xl bg-black/5" />
+        </div>
 
-      <p className="mt-5 max-w-xl text-lg leading-relaxed text-black/70">
-        I help local businesses get seen and get enquiries through
-        short-form social content and clean, conversion-focused websites.
-        No outsourcing. No agency layers. Just solid work done properly.
-      </p>
+        {/* Social content card */}
+        <div className="absolute right-0 top-0 w-[240px] rounded-3xl border border-black/10 bg-white p-4 shadow-lg">
+          <div className="text-xs font-semibold text-black/40">Social content</div>
+          <div className="mt-1 text-sm font-semibold">
+            Reels & short-form video
+          </div>
+          <div className="mt-2 h-24 rounded-xl bg-black/5" />
+        </div>
 
-      <div className="mt-8 flex flex-wrap items-center gap-3">
-        <button
-          onClick={() => scrollToId("contact")}
-          className="inline-flex items-center justify-center rounded-full bg-orange-500 px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:brightness-95"
-        >
-          Book a call
-        </button>
+        {/* Engagement card */}
+        <div className="absolute bottom-0 left-16 w-[220px] rounded-3xl border border-black/10 bg-white p-4 shadow-lg">
+          <div className="text-xs font-semibold text-black/40">Outcome</div>
+          <div className="mt-1 text-sm font-semibold">
+            More visibility & enquiries
+          </div>
+          <div className="mt-2 h-20 rounded-xl bg-black/5" />
+        </div>
 
-        <a
-          href="https://wa.me/"
-          target="_blank"
-          rel="noreferrer"
-          className="inline-flex items-center justify-center rounded-full border border-black/10 bg-white px-6 py-3 text-sm font-semibold text-black shadow-sm transition hover:bg-black/5"
-        >
-          WhatsApp me
-        </a>
-
-        <button
-          onClick={() => scrollToId("work")}
-          className="inline-flex items-center justify-center rounded-full border border-black/10 px-6 py-3 text-sm font-semibold text-black/80 transition hover:bg-black/5"
-        >
-          View work
-        </button>
-      </div>
-
-      <div className="mt-6 flex flex-wrap gap-2">
-        <MicroTag>Social media content</MicroTag>
-        <MicroTag>Short-form video</MicroTag>
-        <MicroTag>Websites</MicroTag>
-        <MicroTag>Local businesses</MicroTag>
+        {/* Glow accent */}
+        <div className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-orange-500/20 blur-3xl" />
       </div>
     </div>
+  </div>
+</section>
      {/* SEO / TRUST */}
 <section className="px-6 py-24">
   <div className="mx-auto max-w-4xl">
