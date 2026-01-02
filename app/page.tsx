@@ -205,7 +205,7 @@ export default function HomePage() {
       </div>
     </div>
      {/* SEO / TRUST */}
-<section className="px-6 py-20">
+<section className="px-6 py-24">
   <div className="mx-auto max-w-4xl">
     <div className="rounded-3xl border border-black/10 bg-white/70 p-8 shadow-sm">
       <h2 className="text-2xl font-semibold">
