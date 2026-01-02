@@ -312,121 +312,130 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* SERVICES */}
-      <section id="services" className="px-6 py-24">
-        <div className="mx-auto max-w-6xl">
-          <div className="mb-10 flex items-end justify-between gap-6">
-            <div>
-              <div className="text-sm font-semibold text-black/40">01</div>
-              <h2 className="mt-2 text-4xl font-semibold tracking-tight">Services</h2>
-              <p className="mt-3 max-w-2xl text-lg text-black/70">
-                Three offers. Simple. Clear. Built around what small businesses actually need.
-              </p>
-            </div>
-            <div className="hidden gap-2 sm:flex">
-              <MicroTag>Premium feel</MicroTag>
-              <MicroTag>Smooth scroll</MicroTag>
-              <MicroTag>Conversion focused</MicroTag>
-            </div>
+    {/* SERVICES */}
+<section id="services" className="px-6 py-24">
+  <div className="mx-auto max-w-6xl">
+    <div className="mb-12">
+      <div className="text-sm font-semibold text-black/40">01</div>
+      <h2 className="mt-2 text-4xl font-semibold tracking-tight">Services</h2>
+      <p className="mt-3 max-w-2xl text-lg text-black/70">
+        Two clear ways I help local businesses grow. No fluff. No agency layers.
+      </p>
+    </div>
+
+    <div className="grid gap-6 lg:grid-cols-2">
+      {/* Social Media Content */}
+      <div className="rounded-3xl border border-black/10 bg-orange-500 p-8 text-white shadow-sm">
+        <div className="mb-4 text-xs font-semibold opacity-80">01</div>
+        <h3 className="text-2xl font-semibold">Social Media Content</h3>
+        <p className="mt-3 max-w-md text-white/85">
+          Reels, short-form video and visual content designed to get your business
+          seen and remembered.
+        </p>
+
+        <div className="mt-6 space-y-2">
+          <div className="flex justify-between rounded-2xl bg-white/10 px-4 py-3 text-sm">
+            <span>Starter shoot</span>
+            <span className="font-semibold">from £200</span>
           </div>
-
-          <div className="grid gap-6 lg:grid-cols-3">
-            <div className="lg:col-span-2">
-              <ServiceCard
-                number="01"
-                title="Social Content and Short Form"
-                desc="Reels, shorts, TikTok and promo clips for reach and engagement."
-                tags={["Reels", "Shorts", "TikTok"]}
-                featured
-              />
-            </div>
-
-            <div className="grid gap-6">
-              <ServiceCard
-                number="02"
-                title="Websites and Landing Pages"
-                desc="Fast, clean sites for small businesses, built to convert."
-                tags={["Next.js", "Mobile first", "SEO basics"]}
-              />
-              <ServiceCard
-                number="03"
-                title="Photography and Filming"
-                desc="Local content capture for businesses, products, venues and socials."
-                tags={["Photo", "Video", "Drone"]}
-              />
-            </div>
+          <div className="flex justify-between rounded-2xl bg-white/10 px-4 py-3 text-sm">
+            <span>Monthly content</span>
+            <span className="font-semibold">from £450</span>
           </div>
         </div>
-      </section>
+      </div>
 
-      {/* WORK */}
-      <section id="work" className="px-6 py-24">
-        <div className="mx-auto max-w-6xl">
-          <div className="mb-10">
-            <div className="text-sm font-semibold text-black/40">02</div>
-            <h2 className="mt-2 text-4xl font-semibold tracking-tight">Work</h2>
-            <p className="mt-3 max-w-2xl text-lg text-black/70">
-              A small selection. Full portfolio lives separately.
-            </p>
+      {/* Websites */}
+      <div className="rounded-3xl border border-black/10 bg-white p-8 shadow-sm">
+        <div className="mb-4 text-xs font-semibold text-black/40">02</div>
+        <h3 className="text-2xl font-semibold">Websites</h3>
+        <p className="mt-3 max-w-md text-black/70">
+          Clean, modern websites for small businesses. Fast, mobile-friendly and
+          built to convert.
+        </p>
+
+        <div className="mt-6 space-y-2">
+          <div className="flex justify-between rounded-2xl border border-black/10 bg-black/5 px-4 py-3 text-sm">
+            <span>One-page site</span>
+            <span className="font-semibold">from £350</span>
           </div>
-
-          <div className="grid gap-6 md:grid-cols-3">
-            <div className="relative overflow-hidden rounded-3xl border border-black/10 bg-white shadow-sm">
-              <div className="relative aspect-[4/3] w-full">
-                <Image
-                  src="/pharmacy-storefront-modern.jpg"
-                  alt="Local business content example"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <div className="p-5">
-                <div className="text-xs font-semibold text-black/40">Social content</div>
-                <div className="mt-1 text-lg font-semibold">Local business campaign</div>
-              </div>
-            </div>
-
-            <div className="relative overflow-hidden rounded-3xl border border-black/10 bg-white shadow-sm">
-              <div className="relative aspect-[4/3] w-full">
-                <Image
-                  src="/modern-tradesman-website-laptop.jpg"
-                  alt="Website and landing page example"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <div className="p-5">
-                <div className="text-xs font-semibold text-black/40">Websites</div>
-                <div className="mt-1 text-lg font-semibold">Clean landing pages</div>
-              </div>
-            </div>
-
-            <div className="relative overflow-hidden rounded-3xl border border-black/10 bg-white shadow-sm">
-              <div className="relative aspect-[4/3] w-full">
-                <Image
-                  src="/artisan-bakery-pastries-photo.jpg"
-                  alt="Photography and filming example"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <div className="p-5">
-                <div className="text-xs font-semibold text-black/40">Photography</div>
-                <div className="mt-1 text-lg font-semibold">Products and venues</div>
-              </div>
-            </div>
+          <div className="flex justify-between rounded-2xl border border-black/10 bg-black/5 px-4 py-3 text-sm">
+            <span>Full site</span>
+            <span className="font-semibold">from £750</span>
           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-          <div className="mt-10 flex flex-wrap items-center justify-between gap-4 rounded-3xl border border-black/10 bg-white/70 p-6">
-            <div>
-              <div className="text-lg font-semibold">Want the full portfolio?</div>
-              <div className="mt-1 text-sm text-black/70">Open the dedicated gallery site.</div>
-            </div>
-            <a
-              href="https://portfolio.bear-media.com/"
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center justify-center rounded-full bg-black px-6 py-3 text-sm font-semibold text-white transition hover:opacity-90"
+     {/* WORK */}
+<section id="work" className="px-6 py-24">
+  <div className="mx-auto max-w-6xl">
+    <div className="mb-12">
+      <div className="text-sm font-semibold text-black/40">02</div>
+      <h2 className="mt-2 text-4xl font-semibold tracking-tight">Work</h2>
+      <p className="mt-3 max-w-2xl text-lg text-black/70">
+        A snapshot of recent work. Full portfolio lives separately.
+      </p>
+    </div>
+
+    <div className="grid gap-6 md:grid-cols-2">
+      {/* Social Content Work */}
+      <div className="overflow-hidden rounded-3xl border border-black/10 bg-white shadow-sm">
+        <div className="aspect-[4/3] w-full bg-black/5">
+          {/* replace src with your image */}
+          <img
+            src="/pharmacy-storefront-modern.jpg"
+            alt="Social media content for local business"
+            className="h-full w-full object-cover"
+          />
+        </div>
+        <div className="p-6">
+          <div className="text-xs font-semibold text-black/40">Social media content</div>
+          <div className="mt-1 text-lg font-semibold">
+            Local business short-form content
+          </div>
+        </div>
+      </div>
+
+      {/* Website Work */}
+      <div className="overflow-hidden rounded-3xl border border-black/10 bg-white shadow-sm">
+        <div className="aspect-[4/3] w-full bg-black/5">
+          {/* replace src with your image */}
+          <img
+            src="/modern-tradesman-website-laptop.jpg"
+            alt="Website design for small business"
+            className="h-full w-full object-cover"
+          />
+        </div>
+        <div className="p-6">
+          <div className="text-xs font-semibold text-black/40">Websites</div>
+          <div className="mt-1 text-lg font-semibold">
+            Clean, conversion-focused website
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div className="mt-10 flex items-center justify-between rounded-3xl border border-black/10 bg-white/70 p-6">
+      <div>
+        <div className="text-lg font-semibold">Want to see more?</div>
+        <div className="mt-1 text-sm text-black/70">
+          Full portfolio hosted separately.
+        </div>
+      </div>
+      <a
+        href="https://portfolio.bear-media.com/"
+        target="_blank"
+        rel="noreferrer"
+        className="rounded-full bg-black px-6 py-3 text-sm font-semibold text-white transition hover:opacity-90"
+      >
+        View portfolio
+      </a>
+    </div>
+  </div>
+</section>
             >
               View portfolio
             </a>
