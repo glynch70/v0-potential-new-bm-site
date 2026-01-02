@@ -148,112 +148,133 @@ export default function HomePage() {
   return (
     <div className="bg-[#f5f1ea] text-black">
       {/* HOME */}
-      <section id="home" className="px-6 pt-24 pb-24 min-h-[85vh]">
-        <div className="mx-auto max-w-6xl grid gap-12 lg:grid-cols-2 items-center">
-          <div>
-            <div className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white/70 px-3 py-2 text-sm">
-              <span className="h-2 w-2 rounded-full bg-orange-500" />
-              Broxburn · Edinburgh · West Lothian · Fife
-            </div>
+<section
+  id="home"
+  className="px-6 pt-24 pb-24 min-h-[85vh]"
+>
+  <div className="mx-auto max-w-6xl grid gap-12 lg:grid-cols-2 items-center">
+    {/* LEFT */}
+    <div>
+      <div className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white/70 px-3 py-2 text-sm text-black/70">
+        <span className="h-2 w-2 rounded-full bg-orange-500" />
+        Based in Broxburn · Serving Edinburgh, West Lothian & Fife
+      </div>
 
-            <h1 className="mt-6 text-4xl sm:text-5xl font-semibold leading-tight">
-              One creator. Real skills. Real results.
-            </h1>
+      <h1 className="mt-6 text-4xl sm:text-5xl font-semibold leading-tight tracking-tight">
+        Social media content & websites
+        <br />
+        built to grow local businesses
+      </h1>
 
-            <p className="mt-5 max-w-xl text-lg text-black/70">
-              Social media content and modern websites for local businesses.
-              No outsourcing. No agency layers.
-            </p>
+      <p className="mt-5 max-w-xl text-lg leading-relaxed text-black/70">
+        I help local businesses get seen and get enquiries through
+        short-form social content and clean, conversion-focused websites.
+        No outsourcing. No agency layers. Just solid work done properly.
+      </p>
 
-            <div className="mt-8 flex flex-wrap gap-3">
-              <button
-                onClick={() => scrollToId("contact")}
-                className="rounded-full bg-orange-500 px-6 py-3 text-sm font-semibold text-white"
-              >
-                Book a call
-              </button>
+      <div className="mt-8 flex flex-wrap items-center gap-3">
+        <button
+          onClick={() => scrollToId("contact")}
+          className="inline-flex items-center justify-center rounded-full bg-orange-500 px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:brightness-95"
+        >
+          Book a call
+        </button>
 
-              <a
-                href="https://wa.me/"
-                target="_blank"
-                className="rounded-full border border-black/10 bg-white px-6 py-3 text-sm font-semibold"
-              >
-                WhatsApp
-              </a>
+        <a
+          href="https://wa.me/"
+          target="_blank"
+          rel="noreferrer"
+          className="inline-flex items-center justify-center rounded-full border border-black/10 bg-white px-6 py-3 text-sm font-semibold text-black shadow-sm transition hover:bg-black/5"
+        >
+          WhatsApp me
+        </a>
 
-              <button
-                onClick={() => scrollToId("work")}
-                className="rounded-full border border-black/10 px-6 py-3 text-sm"
-              >
-                View work
-              </button>
-            </div>
+        <button
+          onClick={() => scrollToId("work")}
+          className="inline-flex items-center justify-center rounded-full border border-black/10 px-6 py-3 text-sm font-semibold text-black/80 transition hover:bg-black/5"
+        >
+          View work
+        </button>
+      </div>
 
-            <div className="mt-6 flex flex-wrap gap-2">
-              <MicroTag>Social content</MicroTag>
-              <MicroTag>Short-form video</MicroTag>
-              <MicroTag>Websites</MicroTag>
-            </div>
+      <div className="mt-6 flex flex-wrap gap-2">
+        <MicroTag>Social media content</MicroTag>
+        <MicroTag>Short-form video</MicroTag>
+        <MicroTag>Websites</MicroTag>
+        <MicroTag>Local businesses</MicroTag>
+      </div>
+    </div>
+
+    {/* RIGHT */}
+    <div className="relative rounded-3xl overflow-hidden border border-black/10 bg-black/5">
+      <Image
+        src="/aerial-drone-view-scottish-venue.jpg"
+        alt="Social media content and website visuals created for a Scottish business"
+        width={800}
+        height={600}
+        className="object-cover"
+        priority
+      />
+    </div>
+  </div>
+</section>
+{/* SERVICES */}
+<section id="services" className="px-6 py-24">
+  <div className="mx-auto max-w-6xl">
+    <div className="mb-12">
+      <div className="text-sm font-semibold text-black/40">01</div>
+      <h2 className="mt-2 text-4xl font-semibold tracking-tight">Services</h2>
+      <p className="mt-3 max-w-2xl text-lg text-black/70">
+        Two clear ways I help local businesses grow. No fluff. No agency layers.
+      </p>
+    </div>
+
+    <div className="grid gap-6 lg:grid-cols-2">
+      {/* Social Media Content */}
+      <div className="rounded-3xl border border-black/10 bg-orange-500 p-8 text-white shadow-sm">
+        <div className="mb-4 text-xs font-semibold opacity-80">01</div>
+        <h3 className="text-2xl font-semibold">Social Media Content</h3>
+        <p className="mt-3 max-w-md text-white/85">
+          Reels, short-form video and visual content designed to get your business
+          seen and remembered.
+        </p>
+
+        <div className="mt-6 space-y-2">
+          <div className="flex justify-between rounded-2xl bg-white/10 px-4 py-3 text-sm">
+            <span>Starter shoot</span>
+            <span className="font-semibold">from £200</span>
           </div>
-
-          <div className="rounded-3xl overflow-hidden border border-black/10">
-            <Image
-              src="/aerial-drone-view-scottish-venue.jpg"
-              alt="Content creation in Scotland"
-              width={800}
-              height={600}
-              className="object-cover"
-              priority
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* SERVICES */}
-      <section id="services" className="px-6 py-24">
-        <div className="mx-auto max-w-6xl">
-          <h2 className="text-4xl font-semibold">Services</h2>
-          <p className="mt-3 max-w-xl text-black/70">
-            Two services. Clear outcomes.
-          </p>
-
-          <div className="mt-12 grid gap-6 lg:grid-cols-2">
-            <div className="rounded-3xl bg-orange-500 p-8 text-white">
-              <h3 className="text-2xl font-semibold">Social Media Content</h3>
-              <p className="mt-3 text-white/85">
-                Reels, short-form video and visuals to get your business seen.
-              </p>
-              <div className="mt-6 space-y-2">
-                <div className="flex justify-between rounded-xl bg-white/10 px-4 py-3">
-                  <span>Starter</span>
-                  <span className="font-semibold">from £200</span>
-                </div>
-                <div className="flex justify-between rounded-xl bg-white/10 px-4 py-3">
-                  <span>Monthly</span>
-                  <span className="font-semibold">from £450</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="rounded-3xl bg-white p-8 border border-black/10">
-              <h3 className="text-2xl font-semibold">Websites</h3>
-              <p className="mt-3 text-black/70">
-                Clean, mobile-first websites built to convert.
-              </p>
-              <div className="mt-6 space-y-2">
-                <div className="flex justify-between rounded-xl bg-black/5 px-4 py-3">
-                  <span>One-page</span>
-                  <span className="font-semibold">from £350</span>
-                </div>
-                <div className="flex justify-between rounded-xl bg-black/5 px-4 py-3">
-                  <span>Full site</span>
-                  <span className="font-semibold">from £750</span>
-                </div>
-              </div>
-            </div>
+          <div className="flex justify-between rounded-2xl bg-white/10 px-4 py-3 text-sm">
+            <span>Monthly content</span>
+            <span className="font-semibold">from £450</span>
           </div>
         </div>
-      </section>
+      </div>
+
+      {/* Websites */}
+      <div className="rounded-3xl border border-black/10 bg-white p-8 shadow-sm">
+        <div className="mb-4 text-xs font-semibold text-black/40">02</div>
+        <h3 className="text-2xl font-semibold">Websites</h3>
+        <p className="mt-3 max-w-md text-black/70">
+          Clean, modern websites for small businesses. Fast, mobile-friendly and
+          built to convert.
+        </p>
+
+        <div className="mt-6 space-y-2">
+          <div className="flex justify-between rounded-2xl border border-black/10 bg-black/5 px-4 py-3 text-sm">
+            <span>One-page site</span>
+            <span className="font-semibold">from £350</span>
+          </div>
+          <div className="flex justify-between rounded-2xl border border-black/10 bg-black/5 px-4 py-3 text-sm">
+            <span>Full site</span>
+            <span className="font-semibold">from £750</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+      
 
       {/* WORK */}
       <section id="work" className="px-6 py-24">
