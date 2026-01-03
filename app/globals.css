@@ -127,6 +127,15 @@
   }
 }
 
+/* Hide scrollbar for horizontal scroll containers */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
 /* Add fadeIn keyframe animation for hero video */
 @keyframes fadeIn {
   from {
@@ -152,6 +161,20 @@
 .animate-scroll-logos {
   animation: scrollLogos 30s linear infinite;
 }
-html {
-  scroll-behavior: smooth;
+
+/* Added subtle logo pulse animation */
+@keyframes logoPulse {
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.05);
+  }
+}
+
+.animate-logo-pulse {
+  animation: logoPulse 10s ease-in-out infinite;
 }
