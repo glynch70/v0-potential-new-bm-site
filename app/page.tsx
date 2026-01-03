@@ -4,86 +4,78 @@ import Image from "next/image";
 
 export default function HomePage() {
   return (
-    <main className="bg-[#f5f1ea] text-black">
-      {/* ================= HERO ================= */}
-      <section
-        id="home"
-        className="px-6 pt-28 pb-32"
-      >
-        <div className="mx-auto max-w-6xl grid gap-16 lg:grid-cols-2 lg:items-center">
-          {/* Left */}
-          <div>
-            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-black/10 bg-white px-4 py-2 text-sm font-medium text-black/70">
-              <span className="h-2 w-2 rounded-full bg-orange-500" />
-              Based in Broxburn · Serving Edinburgh, West Lothian & Fife
-            </div>
-
-            <h1 className="text-4xl font-semibold leading-tight tracking-tight sm:text-5xl">
-              Social media content & websites
-              <br />
-              built to grow local businesses
-            </h1>
-
-            <p className="mt-5 max-w-xl text-lg text-black/70">
-              I help local businesses get seen and generate enquiries through
-              short-form social content and clean, conversion-focused websites.
-              No outsourcing. No agency layers. Just solid work done properly.
-            </p>
-
-            <div className="mt-8 flex flex-wrap gap-3">
-              <a
-                href="#contact"
-                className="rounded-full bg-orange-500 px-6 py-3 text-sm font-semibold text-white"
-              >
-                Book a call
-              </a>
-
-              <a
-                href="https://wa.me/"
-                target="_blank"
-                className="rounded-full border border-black/10 bg-white px-6 py-3 text-sm font-semibold"
-              >
-                WhatsApp me
-              </a>
-
-              <a
-                href="#work"
-                className="rounded-full border border-black/10 px-6 py-3 text-sm font-semibold"
-              >
-                View work
-              </a>
-            </div>
-
-            <div className="mt-8 flex flex-wrap gap-2">
-              {[
-                "Social media content",
-                "Short-form video",
-                "Websites",
-                "Local businesses",
-              ].map((tag) => (
-                <span
-                  key={tag}
-                  className="rounded-full border border-black/10 bg-white px-3 py-1 text-xs font-medium text-black/70"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
-          </div>
-
-          {/* Right */}
-          <div className="relative overflow-hidden rounded-3xl border border-black/10 bg-black/5">
-            <Image
-              src="/aerial-drone-view-scottish-venue.jpg"
-              alt="Scottish business visuals"
-              width={800}
-              height={600}
-              className="object-cover"
-              priority
-            />
-          </div>
+    <main className="bg-ui-cream text-brand-black">
+  {/* HERO */}
+  <section
+    id="home"
+    className="px-6 pt-28 pb-32"
+  >
+    <div className="mx-auto max-w-6xl grid gap-16 lg:grid-cols-2 lg:items-center">
+      
+      {/* LEFT */}
+      <div>
+        <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-brand-black/10 bg-white px-4 py-2 text-sm font-medium text-brand-black/70">
+          <span className="h-2 w-2 rounded-full bg-brand-yellow"></span>
+          Based in Broxburn · Serving Edinburgh, West Lothian & Fife
         </div>
-      </section>
+
+        <h1 className="text-4xl font-semibold leading-tight tracking-tight sm:text-5xl">
+          Social media content & websites
+          <br />
+          <span className="text-brand-black/80">
+            built to grow local businesses
+          </span>
+        </h1>
+
+        <p className="mt-5 max-w-xl text-lg text-brand-black/70">
+          Short-form social content and clean, conversion-focused websites.
+          No outsourcing. No agency layers.
+          <br />
+          Just solid work done properly.
+        </p>
+
+        <div className="mt-8 flex flex-wrap gap-3">
+          <a
+            href="#contact"
+            className="inline-flex items-center justify-center rounded-full bg-brand-yellow px-6 py-3 text-sm font-semibold text-brand-black transition hover:bg-brand-yellow-dark"
+          >
+            Book a call
+          </a>
+
+          <a
+            href="https://wa.me/"
+            target="_blank"
+            className="inline-flex items-center justify-center rounded-full border border-brand-black/20 bg-white px-6 py-3 text-sm font-semibold text-brand-black transition hover:bg-brand-black hover:text-white"
+          >
+            WhatsApp me
+          </a>
+        </div>
+      </div>
+
+      {/* RIGHT – Feature cards */}
+      <div className="grid gap-6 sm:grid-cols-2">
+        {[
+          { title: "Websites", desc: "Conversion-focused builds" },
+          { title: "Social", desc: "Reels & short-form video" },
+          { title: "Outcome", desc: "Visibility & enquiries" },
+        ].map((item) => (
+          <div
+            key={item.title}
+            className="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-brand-black/5"
+          >
+            <p className="text-sm font-semibold text-brand-black">
+              {item.title}
+            </p>
+            <p className="mt-1 text-sm text-brand-black/60">
+              {item.desc}
+            </p>
+          </div>
+        ))}
+      </div>
+
+    </div>
+  </section>
+</main>
 
       {/* ================= SERVICES ================= */}
       <section id="services" className="px-6 py-24">
