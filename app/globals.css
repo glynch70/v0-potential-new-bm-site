@@ -148,20 +148,7 @@
   }
 }
 
-/* Add scrolling logo carousel animation */
-@keyframes scrollLogos {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
-}
-
-/* Increased logo carousel speed from 30s to 20s */
-.animate-scroll-logos {
-  animation: scrollLogos 20s linear infinite;
-}
+/* Removed unused scrollLogos animation and animate-scroll-logos class since we switched to horizontal scroll carousel */
 
 /* Added subtle logo pulse animation */
 @keyframes logoPulse {
