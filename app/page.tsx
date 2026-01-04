@@ -25,6 +25,7 @@ function ServiceCardAnimated({
     image: string | null
     stopY: number
     scrollRange: [number, number]
+    isStatic?: boolean
   }
   index: number
   scrollYProgress: any
@@ -34,29 +35,26 @@ function ServiceCardAnimated({
 
   const y = useTransform(
     scrollYProgress,
-    [service.scrollRange[0], service.scrollRange[1]],
-    [100, service.stopY], // Start 100px below, settle at stopY
+    service.isStatic
+      ? [0, 1]
+      : [service.scrollRange[0], service.scrollRange[0] + 0.01, service.scrollRange[1] - 0.03, service.scrollRange[1]],
+    service.isStatic
+      ? [service.stopY, service.stopY]
+      : [
+          window?.innerHeight || 800, // Start below viewport
+          window?.innerHeight || 800, // Hold position until scroll range begins
+          service.stopY + 15, // Ease toward final position
+          service.stopY, // Final resting position
+        ],
   )
-
-  const opacity = useTransform(
-    scrollYProgress,
-    [service.scrollRange[0], service.scrollRange[0] + 0.08, service.scrollRange[1]],
-    [0, 1, 1], // Fade in early, stay visible
-  )
-
-  const blur = useTransform(scrollYProgress, [service.scrollRange[0], service.scrollRange[1]], [8, 0])
-
-  const filterBlur = useTransform(blur, (v) => `blur(${v}px)`)
 
   return (
     <motion.div
       className="absolute top-0 left-1/2 w-full max-w-4xl"
       style={{
         x: "-50%",
-        y,
+        y: service.isStatic ? service.stopY : y,
         zIndex: 10 + index,
-        filter: filterBlur,
-        opacity,
       }}
     >
       <div
@@ -227,7 +225,7 @@ function PinnedServicesSection() {
     offset: ["start start", "end end"],
   })
 
-  const CARD_STOP_OFFSET = 88
+  const CARD_STOP_OFFSET = 80
 
   const services = [
     {
@@ -242,7 +240,8 @@ function PinnedServicesSection() {
       bulletDot: "bg-black",
       image: "/services-social-media.jpg",
       stopY: 0,
-      scrollRange: [0.0, 0.33] as [number, number], // Stage 1
+      scrollRange: [0, 0] as [number, number],
+      isStatic: true,
     },
     {
       id: 2,
@@ -262,7 +261,8 @@ function PinnedServicesSection() {
       bulletDot: "bg-[#C9A227]",
       image: "/services-websites.jpg",
       stopY: CARD_STOP_OFFSET,
-      scrollRange: [0.33, 0.66] as [number, number], // Stage 2
+      scrollRange: [0.3, 0.55] as [number, number],
+      isStatic: false,
     },
     {
       id: 3,
@@ -285,7 +285,8 @@ function PinnedServicesSection() {
       bulletDot: "bg-[#C9A227]",
       image: "/services-extras.jpg",
       stopY: CARD_STOP_OFFSET * 2,
-      scrollRange: [0.66, 1.0] as [number, number], // Stage 3
+      scrollRange: [0.6, 0.85] as [number, number],
+      isStatic: false,
     },
   ]
 
