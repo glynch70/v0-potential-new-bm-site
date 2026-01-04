@@ -373,7 +373,7 @@ export default function BearMediaWebsite() {
   }, [])
 
   useEffect(() => {
-    const sections = ["home", "services", "work", "about", "contact"]
+    const sections = ["home", "services", "work", "about"]
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -474,9 +474,25 @@ export default function BearMediaWebsite() {
   ]
 
   const reviews = [
-    { quote: "Professional, reliable, and genuinely easy to work with.", name: "Sarah M.", business: "Local Venue" },
-    { quote: "The content we got back was exactly what we needed.", name: "James T.", business: "Trades Company" },
-    { quote: "Finally, someone who just gets it done without the fuss.", name: "Emma R.", business: "Retail Shop" },
+    {
+      quote:
+        "It's been a great experience working with Garry and Bear Media. Slick process, reliable, good communication and happy with the end results on my project. Overall a top quality service.",
+      name: "Gary Young",
+    },
+    {
+      quote:
+        "Garry of Bear Media has been a great asset to my business. He knows his business and has been a great help in improving our marketing.",
+      name: "Lesley Cade",
+    },
+    {
+      quote: "Great experience and will use again.",
+      name: "David Logan",
+    },
+    {
+      quote:
+        "Garry helped massively with offering advice and showing me how to improve social media posts. Would highly recommend.",
+      name: "Rebecca Young",
+    },
   ]
 
   return (
@@ -503,12 +519,12 @@ export default function BearMediaWebsite() {
                   : "text-white/60 drop-shadow-[0_1px_2px_rgba(0,0,0,0.3)]"
               }`}
             >
-              Websites & Social Content
+              Websites & Social Media Content
             </span>
           </a>
 
           <nav className="hidden md:flex items-center gap-10">
-            {["Services", "Work", "About", "Contact"].map((item) => (
+            {["Services", "Work", "About"].map((item) => (
               <a
                 key={item}
                 href={`#${item.toLowerCase()}`}
@@ -524,6 +540,19 @@ export default function BearMediaWebsite() {
                 {item}
               </a>
             ))}
+            <a
+              href="#contact"
+              onClick={(e) => handleNavClick(e, "contact")}
+              className={`text-sm font-medium transition-colors duration-300 ${
+                isScrolled
+                  ? isDarkMode
+                    ? "text-white/70 hover:text-white"
+                    : "text-black/60 hover:text-black"
+                  : "text-white hover:text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.5)]"
+              }`}
+            >
+              Contact
+            </a>
             <button
               onClick={toggleTheme}
               className={`p-2 rounded-full transition-all duration-300 ${
@@ -588,7 +617,7 @@ export default function BearMediaWebsite() {
               </button>
             </div>
             <nav className="flex-1 flex flex-col justify-center px-8 gap-8">
-              {["Home", "Services", "Work", "About", "Contact"].map((item) => (
+              {["Home", "Services", "Work", "About"].map((item) => (
                 <a
                   key={item}
                   href={`#${item.toLowerCase()}`}
@@ -600,6 +629,15 @@ export default function BearMediaWebsite() {
                   {item}
                 </a>
               ))}
+              <a
+                href="#contact"
+                onClick={(e) => handleNavClick(e, "contact")}
+                className={`text-4xl font-light transition-colors ${
+                  isDarkMode ? "text-white/80 hover:text-white" : "text-black/80 hover:text-black"
+                }`}
+              >
+                Contact
+              </a>
             </nav>
           </div>
         </div>
@@ -688,7 +726,7 @@ export default function BearMediaWebsite() {
                 className="bg-[#C9A227] hover:bg-[#B8921F] text-black rounded-full px-10 py-6 text-base font-medium shadow-[0_4px_20px_rgba(201,162,39,0.3)] transition-all duration-300 hover:shadow-[0_8px_30px_rgba(201,162,39,0.4)]"
                 onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
               >
-                Start a project
+                Book a call
               </Button>
             </motion.div>
             <motion.div
@@ -725,30 +763,38 @@ export default function BearMediaWebsite() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {[
               {
                 title: "Short-Form Content",
-                description: "Scroll-stopping short-form video designed for social feeds.",
+                description: "Scroll-stopping short-form video designed for modern social feeds.",
                 tag: "Video",
-                image: "/work-short-form.jpg",
+                image: "/work/short-form-content.jpg",
+                link: "https://www.youtube.com/@BearMediaScotland",
               },
               {
-                title: "Local Business Website",
-                description: "Modern, conversion-focused website for local services",
+                title: "Local Business Websites",
+                description: "Modern, conversion-focused websites built for local businesses.",
                 tag: "Website",
-                image: "/placeholder.svg?height=500&width=400",
+                image: "/work/local-business-websites.jpg",
+                link: "https://www.bearmedia.co.uk",
               },
               {
                 title: "Brand & Visual Assets",
-                description: "Complete visual identity and marketing materials",
+                description: "Logos, campaigns, and visual systems that keep brands consistent and recognisable.",
                 tag: "Content",
-                image: "/placeholder.svg?height=500&width=400",
+                image: "/work/brand-visual-assets.jpg",
+                link: "https://www.instagram.com/bearmediascotland",
               },
             ].map((project, index) => (
-              <div
+              <motion.a
                 key={index}
-                className="group bg-white dark:bg-[#252525] rounded-2xl overflow-hidden shadow-[0_2px_20px_rgba(0,0,0,0.04)] hover:shadow-[0_12px_40px_rgba(0,0,0,0.08)] transition-all duration-300 ease-out hover:-translate-y-1.5 cursor-pointer"
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                whileTap={{ scale: 0.97 }}
+                transition={{ duration: 0.15, ease: "easeOut" }}
+                className="group bg-white dark:bg-[#252525] rounded-2xl overflow-hidden shadow-[0_2px_20px_rgba(0,0,0,0.04)] hover:shadow-[0_12px_40px_rgba(0,0,0,0.08)] transition-all duration-300 ease-out hover:-translate-y-1.5 cursor-pointer block"
               >
                 <div className="relative aspect-[4/5] overflow-hidden">
                   <img
@@ -768,72 +814,219 @@ export default function BearMediaWebsite() {
                   </div>
                   <p className="text-sm text-muted-foreground leading-relaxed">{project.description}</p>
                 </div>
-              </div>
+              </motion.a>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="py-16 md:py-20 overflow-hidden bg-white">
-        <div className="max-w-5xl mx-auto px-6 text-center mb-10">
-          <p className="text-sm text-black/40 uppercase tracking-widest">Trusted by local businesses</p>
-        </div>
+      {/* Trusted by Local Businesses - Logo Carousel */}
+      <section className="py-12 md:py-14 overflow-hidden bg-white">
+        <div className="max-w-[1100px] mx-auto px-12 md:px-12">
+          <p className="text-sm text-black/40 uppercase tracking-widest text-center mb-8">
+            Trusted by local businesses
+          </p>
 
-        <div className="relative">
-          <div className="flex items-center gap-16 animate-scroll-logos">
-            {[...Array(8)].map((_, i) => (
-              <div key={i} className="flex-shrink-0 w-32 h-12 bg-black/5 rounded-lg" />
-            ))}
-            {[...Array(8)].map((_, i) => (
-              <div key={`dup-${i}`} className="flex-shrink-0 w-32 h-12 bg-black/5 rounded-lg" />
-            ))}
+          <div className="relative overflow-hidden">
+            {/* Fade edges on desktop for premium look */}
+            <div className="hidden md:block absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
+            <div className="hidden md:block absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
+
+            <div className="flex items-center gap-12 md:gap-16 animate-scroll-logos">
+              {/* First set of logos */}
+              {[
+                { src: "/logos/managing-what-matters.png", alt: "Managing What Matters" },
+                { src: "/logos/master-chefs.png", alt: "Master Chefs of Great Britain" },
+                { src: "/logos/mm-compliance.png", alt: "M&M Compliance Training" },
+                { src: "/logos/almond-vet-care.png", alt: "Almond Vet Care" },
+                { src: "/logos/dragonfly.png", alt: "Dragonfly Business Support" },
+                { src: "/logos/robertsons-transport.png", alt: "Robertson's Transport" },
+              ].map((logo, i) => (
+                <div key={i} className="flex-shrink-0 w-[300px] h-[120px] flex items-center justify-center px-8">
+                  <Image
+                    src={logo.src || "/placeholder.svg"}
+                    alt={logo.alt}
+                    width={200}
+                    height={80}
+                    className="max-w-full max-h-full object-contain grayscale opacity-60"
+                  />
+                </div>
+              ))}
+              {/* Duplicate set for seamless loop */}
+              {[
+                { src: "/logos/managing-what-matters.png", alt: "Managing What Matters" },
+                { src: "/logos/master-chefs.png", alt: "Master Chefs of Great Britain" },
+                { src: "/logos/mm-compliance.png", alt: "M&M Compliance Training" },
+                { src: "/logos/almond-vet-care.png", alt: "Almond Vet Care" },
+                { src: "/logos/dragonfly.png", alt: "Dragonfly Business Support" },
+                { src: "/logos/robertsons-transport.png", alt: "Robertson's Transport" },
+              ].map((logo, i) => (
+                <div
+                  key={`dup-${i}`}
+                  className="flex-shrink-0 w-[300px] h-[120px] flex items-center justify-center px-8"
+                >
+                  <Image
+                    src={logo.src || "/placeholder.svg"}
+                    alt={logo.alt}
+                    width={200}
+                    height={80}
+                    className="max-w-full max-h-full object-contain grayscale opacity-60"
+                  />
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="py-20 md:py-28 px-6 bg-[#FAF9F6]">
-        <div className="max-w-5xl mx-auto">
+      <section className="py-20 md:py-28 bg-[#FAF9F7]">
+        <div className="max-w-5xl mx-auto px-6">
+          {/* Trust signal */}
+          <div className="text-center mb-4">
+            <span className="text-sm text-black/50 tracking-wide">
+              5.0 <span className="text-[#C9A227]">★★★★★</span> from 18 Google reviews
+            </span>
+          </div>
+
           <h2 className="text-2xl md:text-3xl font-semibold text-black mb-12 text-center">What clients say</h2>
 
-          <div className="grid md:grid-cols-3 gap-6">
+          {/* Responsive grid: 1 col mobile, 2 col tablet, 4 col desktop */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {reviews.map((review, index) => (
-              <div key={index} className="bg-white rounded-2xl p-8 shadow-[0_2px_20px_rgba(201,162,39,0.03)]">
-                <blockquote className="text-black/80 text-lg leading-relaxed mb-6">"{review.quote}"</blockquote>
-                <div>
-                  <p className="font-medium text-black">{review.name}</p>
-                  <p className="text-sm text-black/40">{review.business}</p>
-                </div>
-              </div>
+              <motion.div
+                key={index}
+                className="bg-white rounded-2xl p-6 shadow-[0_2px_20px_rgba(0,0,0,0.04)]"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.5, delay: index * 0.1, ease: "easeOut" }}
+              >
+                {/* Star rating */}
+                <div className="text-[#C9A227]/70 text-sm mb-4 tracking-wide">★★★★★</div>
+
+                <blockquote className="text-black/75 text-base leading-relaxed mb-5">"{review.quote}"</blockquote>
+                <footer>
+                  <p className="font-semibold text-black text-sm">{review.name}</p>
+                </footer>
+              </motion.div>
             ))}
+          </div>
+
+          <div className="mt-10 text-center">
+            <a
+              href="https://www.google.com/search?q=Bear+Media+Google+reviews"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm text-black/40 hover:text-black/60 hover:underline transition-all duration-200"
+            >
+              Read more reviews on Google
+            </a>
           </div>
         </div>
       </section>
 
       <section id="about" className="py-20 md:py-28 px-6 bg-white">
-        <div className="max-w-2xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-semibold text-black mb-8">About</h2>
-          <p className="text-xl md:text-2xl text-black/80 leading-relaxed mb-6">
-            I'm not an agency. I'm a one-person creative partner who shows up, works properly, and delivers what
-            businesses actually need.
-          </p>
-          <p className="text-black/50 text-lg">
-            Based in Broxburn. Working with businesses across Edinburgh, West Lothian and Fife.
-          </p>
+        <div className="max-w-5xl mx-auto">
+          <div className="flex flex-col md:flex-row md:items-start md:gap-16">
+            {/* Image - appears first on mobile, second on desktop */}
+            <div className="md:order-2 mb-10 md:mb-0 md:w-1/2 md:mt-14 flex justify-center">
+              <div className="relative w-full max-w-[280px] md:max-w-none overflow-hidden">
+                <img
+                  src="/garry-lynch-portrait.png"
+                  alt="Portrait of Garry Lynch, founder of Bear Media"
+                  className="w-full h-auto object-cover object-top rounded-2xl aspect-[4/5] md:aspect-auto"
+                />
+                <div className="absolute inset-y-0 right-0 w-12 md:w-20 bg-gradient-to-l from-white via-white/60 to-transparent rounded-r-2xl opacity-60 md:opacity-100" />
+              </div>
+            </div>
+
+            {/* Text content */}
+            <div className="md:order-1 md:w-1/2 text-center md:text-left">
+              <h2 className="text-3xl md:text-4xl font-semibold text-black mb-8">About</h2>
+              <p className="text-xl md:text-2xl text-black/80 leading-relaxed mb-6">
+                I'm not an agency. I'm a one-person creative partner who shows up, works properly, and delivers what
+                businesses actually need.
+              </p>
+              <p className="text-black/50 text-lg">
+                Based in Broxburn. Working with businesses across Edinburgh, West Lothian and Fife.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
-      <section id="contact" className="py-24 md:py-32 px-6 bg-white mb-24">
-        <div className="max-w-2xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-semibold text-black mb-4">Ready to start?</h2>
-          <p className="text-black/50 text-lg mb-10">
-            No pressure, no hard sell. Just a conversation about what you need.
-          </p>
-          <Button
-            size="lg"
-            className="bg-[#C9A227] hover:bg-[#B8921F] text-black rounded-full px-10 py-6 text-base font-medium shadow-[0_4px_20px_rgba(201,162,39,0.3)] transition-all duration-300 hover:shadow-[0_8px_30px_rgba(201,162,39,0.4)]"
-          >
-            Get in touch
-          </Button>
+      <section id="contact" className="py-24 md:py-32 px-6 bg-white dark:bg-[#1a1a1a] mb-24">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-semibold text-foreground mb-4">Ready to start?</h2>
+            <p className="text-muted-foreground text-lg max-w-xl mx-auto">
+              No pressure, no hard sell. Just a conversation about what you need.
+            </p>
+          </div>
+
+          <div className="max-w-lg mx-auto">
+            <form
+              className="space-y-6"
+              onSubmit={(e) => {
+                e.preventDefault()
+                const form = e.target as HTMLFormElement
+                const formData = new FormData(form)
+                console.log("Form submitted:", Object.fromEntries(formData))
+                form.reset()
+                alert("Thanks for your message! I'll be in touch soon.")
+              }}
+            >
+              <div>
+                <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
+                  Name
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  required
+                  className="w-full px-4 py-3 rounded-xl border border-black/10 dark:border-white/10 bg-white dark:bg-[#252525] text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-[#C9A227]/50 focus:border-[#C9A227] transition-all duration-200"
+                  placeholder="Your name"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
+                  Email
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  required
+                  className="w-full px-4 py-3 rounded-xl border border-black/10 dark:border-white/10 bg-white dark:bg-[#252525] text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-[#C9A227]/50 focus:border-[#C9A227] transition-all duration-200"
+                  placeholder="your@email.com"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
+                  Message
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  required
+                  rows={5}
+                  className="w-full px-4 py-3 rounded-xl border border-black/10 dark:border-white/10 bg-white dark:bg-[#252525] text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-[#C9A227]/50 focus:border-[#C9A227] transition-all duration-200 resize-none"
+                  placeholder="Tell me about your project..."
+                />
+              </div>
+
+              <Button
+                type="submit"
+                size="lg"
+                className="w-full bg-[#C9A227] hover:bg-[#B8921F] text-black rounded-xl px-8 py-4 text-base font-medium shadow-[0_4px_20px_rgba(201,162,39,0.3)] transition-all duration-300 hover:shadow-[0_8px_30px_rgba(201,162,39,0.4)]"
+              >
+                Send message
+              </Button>
+            </form>
+          </div>
         </div>
       </section>
 
@@ -848,7 +1041,7 @@ export default function BearMediaWebsite() {
               </div>
             </div>
             <div className="flex flex-wrap gap-8 text-sm text-white/50">
-              {["Services", "Work", "About", "Contact"].map((item) => (
+              {["Services", "Work", "About"].map((item) => (
                 <a
                   key={item}
                   href={`#${item.toLowerCase()}`}
@@ -858,6 +1051,13 @@ export default function BearMediaWebsite() {
                   {item}
                 </a>
               ))}
+              <a
+                href="#contact"
+                onClick={(e) => handleNavClick(e, "contact")}
+                className={`hover:text-[#C9A227] transition-colors duration-300`}
+              >
+                Contact
+              </a>
             </div>
           </div>
           <div className="border-t border-white/10 mt-10 pt-10 text-center text-sm text-white/30">
@@ -869,15 +1069,15 @@ export default function BearMediaWebsite() {
       <nav className="fixed bottom-5 left-1/2 -translate-x-1/2 z-50 px-4">
         <div className="flex gap-1.5 items-center bg-white/90 backdrop-blur-md rounded-full p-1.5 shadow-[0_4px_30px_rgba(0,0,0,0.08)]">
           {[
-            { id: "home", label: "Home" },
-            { id: "services", label: "Services" },
-            { id: "work", label: "Work" },
-            { id: "about", label: "About" },
-            { id: "contact", label: "Contact" },
+            { id: "home", label: "Home", href: "#home" },
+            { id: "services", label: "Services", href: "#services" },
+            { id: "work", label: "Work", href: "#work" },
+            { id: "about", label: "About", href: "#about" },
+            { id: "contact", label: "Contact", href: "#contact" },
           ].map((item) => (
             <a
               key={item.id}
-              href={`#${item.id}`}
+              href={item.href}
               onClick={(e) => handleNavClick(e, item.id)}
               className={`
                 px-4 py-2.5 rounded-full text-sm font-medium
