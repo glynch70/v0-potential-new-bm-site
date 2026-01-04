@@ -22,7 +22,7 @@ function ServiceCardAnimated({
     subtextColor: string
     bulletColor: string
     bulletDot: string
-    image: string
+    image: string | null
     stopY: number
     scrollRange: [number, number]
   }
@@ -34,17 +34,21 @@ function ServiceCardAnimated({
 
   const y = useTransform(
     scrollYProgress,
-    [0, service.scrollRange[0], service.scrollRange[0] + 0.1, service.scrollRange[1], 1],
-    ["100%", "100%", `${service.stopY}px`, `${service.stopY}px`, `${service.stopY}px`],
+    [0, service.scrollRange[0], service.scrollRange[1], 1],
+    ["100%", "100%", `${service.stopY}px`, `${service.stopY}px`],
   )
 
   const blur = useTransform(
     scrollYProgress,
-    [service.scrollRange[0], service.scrollRange[0] + 0.05, service.scrollRange[0] + 0.15],
+    [service.scrollRange[0], service.scrollRange[0] + 0.1, service.scrollRange[1]],
     [8, 4, 0],
   )
 
-  const opacity = useTransform(scrollYProgress, [service.scrollRange[0], service.scrollRange[0] + 0.08], [0.6, 1])
+  const opacity = useTransform(
+    scrollYProgress,
+    [service.scrollRange[0], service.scrollRange[0] + 0.1, service.scrollRange[1]],
+    [0.5, 0.8, 1],
+  )
 
   const filterBlur = useTransform(blur, (v) => `blur(${v}px)`)
 
@@ -66,7 +70,7 @@ function ServiceCardAnimated({
           minHeight: "480px",
         }}
       >
-        <div className="grid md:grid-cols-2 gap-6 md:gap-10 h-full">
+        <div className={`${service.image ? "grid md:grid-cols-2 gap-6 md:gap-10" : ""} h-full`}>
           <div className="flex flex-col justify-between">
             {/* Heading container - fixed height for consistent stacking */}
             <div className="h-[72px] flex items-start">
@@ -94,11 +98,13 @@ function ServiceCardAnimated({
             </div>
           </div>
 
-          <div className="flex items-center justify-center">
-            <div className="relative w-full max-w-[280px] aspect-[280/360] rounded-2xl overflow-hidden shadow-lg">
-              <Image src={service.image || "/placeholder.svg"} alt={service.title} fill className="object-cover" />
+          {service.image && (
+            <div className="flex items-center justify-center">
+              <div className="relative w-full max-w-[280px] aspect-[280/360] rounded-2xl overflow-hidden shadow-xl">
+                <Image src={service.image || "/placeholder.svg"} alt={service.title} fill className="object-cover" />
+              </div>
             </div>
-          </div>
+          )}
         </div>
       </div>
     </motion.div>
@@ -120,41 +126,35 @@ function PinnedServicesSection() {
     {
       id: 1,
       title: "Social Media Content",
-      subtext: "Consistent, scroll-stopping content for Instagram, Facebook, LinkedIn and TikTok.",
-      bullets: [
-        "Monthly content packages",
-        "Reels, carousels, and stories",
-        "Captions and hashtags included",
-        "Designed to match your brand",
-        "Scheduled posting available",
-      ],
+      subtext: "Consistent, on-brand content that builds trust and keeps your business visible.",
+      bullets: ["Reels, TikToks, Shorts", "Promo clips and stories", "Monthly content packages", "Platform management"],
       bg: "#C9A227",
       textColor: "text-black",
       subtextColor: "text-black/70",
       bulletColor: "text-black/80",
       bulletDot: "bg-black",
-      image: "/social-media-card.jpg",
-      stopY: 0, // Card 1 stops at top
+      image: "/services-social-media.jpg", // Updated to real image
+      stopY: 0,
       scrollRange: [0, 0.33] as [number, number],
     },
     {
       id: 2,
       title: "Websites",
-      subtext: "Fast, clean websites built to convert. No monthly fees. You own the site outright.",
+      subtext: "Fast, clean websites and landing pages that convert visitors into customers.",
       bullets: [
-        "Clean, modern design",
-        "Built for speed and clarity",
-        "Conversion-focused layouts",
-        "Editor supplied for easy updates",
-        "No lock-in or ongoing costs",
+        "Landing pages",
+        "Business websites",
+        "Portfolio sites",
+        "E-commerce setups",
+        "Hosting and maintenance",
       ],
       bg: "#1C1C1C",
       textColor: "text-white",
       subtextColor: "text-white/70",
       bulletColor: "text-white/80",
       bulletDot: "bg-[#C9A227]",
-      image: "/placeholder.svg?height=360&width=280",
-      stopY: CARD_STOP_OFFSET, // Card 2 stops below Card 1 heading
+      image: "/services-websites.jpg", // Updated to real image
+      stopY: CARD_STOP_OFFSET,
       scrollRange: [0.33, 0.66] as [number, number],
     },
     {
@@ -176,8 +176,8 @@ function PinnedServicesSection() {
       subtextColor: "text-white/80",
       bulletColor: "text-white/80",
       bulletDot: "bg-[#C9A227]",
-      image: "/placeholder.svg?height=360&width=280",
-      stopY: CARD_STOP_OFFSET * 2, // Card 3 stops below Card 2 heading
+      image: "/services-extras.jpg", // Now has image instead of null
+      stopY: CARD_STOP_OFFSET * 2,
       scrollRange: [0.66, 1.0] as [number, number],
     },
   ]
@@ -570,53 +570,59 @@ export default function BearMediaWebsite() {
 
       <PinnedServicesSection />
 
-      <section className="py-24 md:py-32 px-6 bg-[#FAF9F6] dark:bg-[#1a1a1a]">
-        <div className="max-w-5xl mx-auto">
+      <section id="work" className="py-24 md:py-32 px-6 bg-[#FAF9F6] dark:bg-[#1a1a1a]">
+        <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-semibold text-black dark:text-white mb-4">How I Help</h2>
-            <p className="text-black/50 dark:text-white/50 text-lg max-w-xl mx-auto">
-              Everything you need to build trust and grow your business online
+            <h2 className="text-3xl md:text-4xl font-semibold text-foreground mb-4">Work</h2>
+            <p className="text-muted-foreground text-lg max-w-xl mx-auto">
+              A selection of recent websites, content, and visual projects.
             </p>
           </div>
 
-          <div className="relative h-[500px] md:h-[450px] flex items-center justify-center">
-            {bentoServices.map((service, index) => (
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+            {[
+              {
+                title: "Short-Form Content",
+                description: "Scroll-stopping short-form video designed for social feeds.",
+                tag: "Video",
+                image: "/work-short-form.jpg",
+              },
+              {
+                title: "Local Business Website",
+                description: "Modern, conversion-focused website for local services",
+                tag: "Website",
+                image: "/placeholder.svg?height=500&width=400",
+              },
+              {
+                title: "Brand & Visual Assets",
+                description: "Complete visual identity and marketing materials",
+                tag: "Content",
+                image: "/placeholder.svg?height=500&width=400",
+              },
+            ].map((project, index) => (
               <div
-                key={service.title}
-                className={`bg-white dark:bg-[#252525] rounded-2xl p-6 md:p-8 shadow-[0_2px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_40px_rgba(0,0,0,0.06)] transition-all duration-500 cursor-pointer group ${
-                  service.size === "large"
-                    ? "col-span-2 row-span-2"
-                    : service.size === "medium"
-                      ? "col-span-2"
-                      : "col-span-1"
-                }`}
+                key={index}
+                className="group bg-white dark:bg-[#252525] rounded-2xl overflow-hidden shadow-[0_2px_20px_rgba(0,0,0,0.04)] hover:shadow-[0_12px_40px_rgba(0,0,0,0.08)] transition-all duration-300 ease-out hover:-translate-y-1.5 cursor-pointer"
               >
-                <h3
-                  className={`font-semibold text-black mb-2 group-hover:text-[#C9A227] transition-colors duration-300 ${service.size === "large" ? "text-2xl md:text-3xl" : "text-lg"}`}
-                >
-                  {service.title}
-                </h3>
-                <p className={`text-black/50 ${service.size === "large" ? "text-lg" : "text-sm"}`}>
-                  {service.description}
-                </p>
+                <div className="relative aspect-[4/5] overflow-hidden">
+                  <img
+                    src={project.image || "/placeholder.svg"}
+                    alt={project.title}
+                    className="w-full h-full object-cover transition-transform duration-400 ease-out group-hover:scale-[1.03]"
+                  />
+                </div>
+                <div className="p-6">
+                  <div className="flex items-center justify-between mb-2">
+                    <h3 className="text-lg font-semibold text-foreground group-hover:text-[#C9A227] transition-colors duration-300">
+                      {project.title}
+                    </h3>
+                    <span className="text-xs font-medium text-[#C9A227] bg-[#C9A227]/10 px-2.5 py-1 rounded-full">
+                      {project.tag}
+                    </span>
+                  </div>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{project.description}</p>
+                </div>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="py-16 md:py-20 overflow-hidden bg-white">
-        <div className="max-w-5xl mx-auto px-6 text-center mb-10">
-          <p className="text-sm text-black/40 uppercase tracking-widest">Trusted by local businesses</p>
-        </div>
-
-        <div className="relative">
-          <div className="flex items-center gap-16 animate-scroll-logos">
-            {[...Array(8)].map((_, i) => (
-              <div key={i} className="flex-shrink-0 w-32 h-12 bg-black/5 rounded-lg" />
-            ))}
-            {[...Array(8)].map((_, i) => (
-              <div key={`dup-${i}`} className="flex-shrink-0 w-32 h-12 bg-black/5 rounded-lg" />
             ))}
           </div>
         </div>
@@ -657,41 +663,7 @@ export default function BearMediaWebsite() {
         </div>
       </section>
 
-      <section id="work" className="py-20 md:py-28 px-6 bg-white">
-        <div className="max-w-5xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-semibold text-black mb-4">Selected work</h2>
-          <p className="text-black/50 mb-12">A few recent projects</p>
-
-          <div className="grid md:grid-cols-3 gap-6">
-            {portfolioItems.map((item, index) => (
-              <div key={index} className="group cursor-pointer">
-                <div className="aspect-[3/2] rounded-2xl overflow-hidden mb-4 bg-black/5">
-                  <img
-                    src={item.image || "/placeholder.svg"}
-                    alt={item.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                  />
-                </div>
-                <h3 className="font-medium text-black mb-1 group-hover:text-[#C9A227] transition-colors duration-300">
-                  {item.title}
-                </h3>
-                <p className="text-sm text-black/50">{item.outcome}</p>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-12 text-center">
-            <Button
-              variant="outline"
-              className="rounded-full px-8 py-5 border-black/10 hover:border-black/20 hover:bg-black/[0.02] transition-all duration-300 bg-transparent"
-            >
-              View full portfolio
-            </Button>
-          </div>
-        </div>
-      </section>
-
-      <section id="about" className="py-20 md:py-28 px-6 bg-[#FAF9F6]">
+      <section id="about" className="py-20 md:py-28 px-6 bg-white">
         <div className="max-w-2xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-semibold text-black mb-8">About</h2>
           <p className="text-xl md:text-2xl text-black/80 leading-relaxed mb-6">
