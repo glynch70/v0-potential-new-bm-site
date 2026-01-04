@@ -33,6 +33,8 @@ function ServiceCardAnimated({
   const icons = [Video, Monitor, Plus]
   const Icon = icons[index]
 
+  const startY = 800 // Fixed starting position below viewport
+
   const y = useTransform(
     scrollYProgress,
     service.isStatic
@@ -41,8 +43,8 @@ function ServiceCardAnimated({
     service.isStatic
       ? [service.stopY, service.stopY]
       : [
-          window?.innerHeight || 800, // Start below viewport
-          window?.innerHeight || 800, // Hold position until scroll range begins
+          startY, // Start below viewport
+          startY, // Hold position until scroll range begins
           service.stopY + 15, // Ease toward final position
           service.stopY, // Final resting position
         ],
