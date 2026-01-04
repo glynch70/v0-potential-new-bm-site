@@ -158,8 +158,9 @@
   }
 }
 
+/* Increased logo carousel speed from 30s to 20s */
 .animate-scroll-logos {
-  animation: scrollLogos 30s linear infinite;
+  animation: scrollLogos 20s linear infinite;
 }
 
 /* Added subtle logo pulse animation */
