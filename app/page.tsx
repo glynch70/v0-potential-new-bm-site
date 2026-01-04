@@ -342,8 +342,30 @@ export default function BearMediaWebsite() {
 
   useEffect(() => {
     const video = heroVideoRef.current
-    if (video) {
+    if (!video) return
+
+    // Start playback
+    video.play().catch(() => {})
+
+    // Seamless loop: reset currentTime slightly before end to avoid decode hitch
+    const handleTimeUpdate = () => {
+      if (video.duration && video.currentTime >= video.duration - 0.1) {
+        video.currentTime = 0
+      }
+    }
+
+    // Fallback: ensure video never pauses at end
+    const handleEnded = () => {
+      video.currentTime = 0
       video.play().catch(() => {})
+    }
+
+    video.addEventListener("timeupdate", handleTimeUpdate)
+    video.addEventListener("ended", handleEnded)
+
+    return () => {
+      video.removeEventListener("timeupdate", handleTimeUpdate)
+      video.removeEventListener("ended", handleEnded)
     }
   }, [])
 
@@ -469,6 +491,17 @@ export default function BearMediaWebsite() {
           <a href="#home" onClick={(e) => handleNavClick(e, "home")} className="flex items-center relative">
             <div className="absolute inset-0 -m-4 rounded-full bg-gradient-radial from-white/20 via-white/5 to-transparent blur-xl animate-logo-pulse" />
             <img src="/bear-media-logo.png" alt="Bear Media" className="h-14 md:h-20 w-auto relative z-10" />
+            <span
+              className={`hidden md:block ml-4 text-sm font-normal tracking-wide transition-colors duration-300 ${
+                isScrolled
+                  ? isDarkMode
+                    ? "text-white/50"
+                    : "text-black/40"
+                  : "text-white/60 drop-shadow-[0_1px_2px_rgba(0,0,0,0.3)]"
+              }`}
+            >
+              Websites & Social Content
+            </span>
           </a>
 
           <nav className="hidden md:flex items-center gap-10">
@@ -575,7 +608,6 @@ export default function BearMediaWebsite() {
             ref={heroVideoRef}
             autoPlay
             muted
-            loop
             playsInline
             preload="auto"
             className="w-full h-full object-cover"
