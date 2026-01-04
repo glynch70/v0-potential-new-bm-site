@@ -3,21 +3,223 @@
 import type React from "react"
 import { useEffect, useRef, useState } from "react"
 import { Button } from "@/components/ui/button"
-import { Menu, X, Sun, Moon } from "lucide-react"
-import { useScroll } from "framer-motion"
-import { ScrollStackingCard } from "@/components/scroll-stacking-card"
+import { Sun, Moon, Menu, X, Video, Monitor, Plus } from "lucide-react"
+import Image from "next/image"
+import { motion, useScroll, useTransform } from "framer-motion"
 
-export default function BearMediaHomepage() {
-  const heroVideoRef = useRef<HTMLVideoElement>(null)
-  const stackingContainerRef = useRef<HTMLDivElement>(null)
+function ServiceCardAnimated({
+  service,
+  index,
+  scrollYProgress,
+}: {
+  service: {
+    id: number
+    title: string
+    subtext: string
+    bullets: string[]
+    bg: string
+    textColor: string
+    subtextColor: string
+    bulletColor: string
+    bulletDot: string
+    image: string
+    stopY: number
+    scrollRange: [number, number]
+  }
+  index: number
+  scrollYProgress: any
+}) {
+  const icons = [Video, Monitor, Plus]
+  const Icon = icons[index]
+
+  const y = useTransform(
+    scrollYProgress,
+    [0, service.scrollRange[0], service.scrollRange[0] + 0.1, service.scrollRange[1], 1],
+    ["100%", "100%", `${service.stopY}px`, `${service.stopY}px`, `${service.stopY}px`],
+  )
+
+  const blur = useTransform(
+    scrollYProgress,
+    [service.scrollRange[0], service.scrollRange[0] + 0.05, service.scrollRange[0] + 0.15],
+    [8, 4, 0],
+  )
+
+  const opacity = useTransform(scrollYProgress, [service.scrollRange[0], service.scrollRange[0] + 0.08], [0.6, 1])
+
+  const filterBlur = useTransform(blur, (v) => `blur(${v}px)`)
+
+  return (
+    <motion.div
+      className="absolute top-0 left-1/2 w-full max-w-4xl"
+      style={{
+        x: "-50%",
+        y,
+        zIndex: 10 + index,
+        filter: filterBlur,
+        opacity,
+      }}
+    >
+      <div
+        className="rounded-[24px] md:rounded-[32px] p-6 md:p-10 shadow-2xl"
+        style={{
+          backgroundColor: service.bg,
+          minHeight: "480px",
+        }}
+      >
+        <div className="grid md:grid-cols-2 gap-6 md:gap-10 h-full">
+          <div className="flex flex-col justify-between">
+            {/* Heading container - fixed height for consistent stacking */}
+            <div className="h-[72px] flex items-start">
+              <div className="flex items-center gap-3">
+                <div
+                  className={`w-10 h-10 rounded-full flex items-center justify-center ${service.id === 1 ? "bg-black/10" : "bg-white/10"}`}
+                >
+                  <Icon className={`w-5 h-5 ${service.textColor}`} />
+                </div>
+                <h3 className={`text-2xl md:text-3xl font-semibold ${service.textColor}`}>{service.title}</h3>
+              </div>
+            </div>
+
+            <div className="flex-1 flex flex-col justify-center">
+              <p className={`${service.subtextColor} text-base md:text-lg mb-6 leading-relaxed`}>{service.subtext}</p>
+
+              <ul className="space-y-2">
+                {service.bullets.map((bullet, i) => (
+                  <li key={i} className="flex items-start gap-3">
+                    <span className={`w-1.5 h-1.5 rounded-full ${service.bulletDot} mt-2 flex-shrink-0`} />
+                    <span className={`${service.bulletColor} text-sm md:text-base`}>{bullet}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          <div className="flex items-center justify-center">
+            <div className="relative w-full max-w-[280px] aspect-[280/360] rounded-2xl overflow-hidden shadow-lg">
+              <Image src={service.image || "/placeholder.svg"} alt={service.title} fill className="object-cover" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </motion.div>
+  )
+}
+
+function PinnedServicesSection() {
+  const containerRef = useRef<HTMLDivElement>(null)
+
+  // Track scroll progress through the 300vh container
   const { scrollYProgress } = useScroll({
-    target: stackingContainerRef,
-    offset: ["start end", "end start"],
+    target: containerRef,
+    offset: ["start start", "end end"],
   })
+
+  const CARD_STOP_OFFSET = 88 // Spacing between card stops (heading height + padding)
+
+  const services = [
+    {
+      id: 1,
+      title: "Social Media Content",
+      subtext: "Consistent, scroll-stopping content for Instagram, Facebook, LinkedIn and TikTok.",
+      bullets: [
+        "Monthly content packages",
+        "Reels, carousels, and stories",
+        "Captions and hashtags included",
+        "Designed to match your brand",
+        "Scheduled posting available",
+      ],
+      bg: "#C9A227",
+      textColor: "text-black",
+      subtextColor: "text-black/70",
+      bulletColor: "text-black/80",
+      bulletDot: "bg-black",
+      image: "/social-media-card.jpg",
+      stopY: 0, // Card 1 stops at top
+      scrollRange: [0, 0.33] as [number, number],
+    },
+    {
+      id: 2,
+      title: "Websites",
+      subtext: "Fast, clean websites built to convert. No monthly fees. You own the site outright.",
+      bullets: [
+        "Clean, modern design",
+        "Built for speed and clarity",
+        "Conversion-focused layouts",
+        "Editor supplied for easy updates",
+        "No lock-in or ongoing costs",
+      ],
+      bg: "#1C1C1C",
+      textColor: "text-white",
+      subtextColor: "text-white/70",
+      bulletColor: "text-white/80",
+      bulletDot: "bg-[#C9A227]",
+      image: "/placeholder.svg?height=360&width=280",
+      stopY: CARD_STOP_OFFSET, // Card 2 stops below Card 1 heading
+      scrollRange: [0.33, 0.66] as [number, number],
+    },
+    {
+      id: 3,
+      title: "Extras & Add-ons",
+      subtext: "Additional services available to support your brand and visibility.",
+      bullets: [
+        "Drone footage",
+        "Photography and video",
+        "Logo and brand assets",
+        "Merchandise design",
+        "SEO and website enhancements",
+        "Google Business Profile management",
+        "SEO ranking improvement",
+        "AI-powered content tools",
+      ],
+      bg: "#2D4A3E",
+      textColor: "text-white",
+      subtextColor: "text-white/80",
+      bulletColor: "text-white/80",
+      bulletDot: "bg-[#C9A227]",
+      image: "/placeholder.svg?height=360&width=280",
+      stopY: CARD_STOP_OFFSET * 2, // Card 3 stops below Card 2 heading
+      scrollRange: [0.66, 1.0] as [number, number],
+    },
+  ]
+
+  return (
+    <section
+      id="services"
+      ref={containerRef}
+      className="relative bg-[#F5F4F0] dark:bg-[#1a1a1a]"
+      style={{ height: "300vh" }} // Creates scroll distance for card animations
+    >
+      {/* Sticky viewport container */}
+      <div className="sticky top-0 h-screen overflow-hidden">
+        {/* Section header */}
+        <div className="pt-12 pb-8 text-center px-6">
+          <h2 className="text-4xl md:text-5xl font-semibold text-black dark:text-white mb-4">Services</h2>
+          <p className="text-black/60 dark:text-white/60 text-lg max-w-xl mx-auto">
+            Clear, practical services that help businesses get seen and contacted.
+          </p>
+        </div>
+
+        {/* Cards container - relative for absolute children */}
+        <div className="relative px-4 md:px-6 h-[calc(100vh-160px)]">
+          <div className="relative max-w-4xl mx-auto h-full">
+            {services.map((service, index) => (
+              <ServiceCardAnimated key={service.id} service={service} index={index} scrollYProgress={scrollYProgress} />
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+export default function BearMediaWebsite() {
+  const heroVideoRef = useRef<HTMLVideoElement>(null)
   const [activeSection, setActiveSection] = useState("home")
   const [isScrolled, setIsScrolled] = useState(false)
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [isDark, setIsDark] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false)
+  const [visibleCards, setVisibleCards] = useState<number[]>([])
+  const [isDarkMode, setIsDarkMode] = useState(false)
+  const stackingSectionRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -56,16 +258,34 @@ export default function BearMediaHomepage() {
   }, [])
 
   useEffect(() => {
+    const cards = document.querySelectorAll(".stack-card")
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const index = Number(entry.target.getAttribute("data-index"))
+          if (entry.isIntersecting) {
+            setVisibleCards((prev) => (prev.includes(index) ? prev : [...prev, index]))
+          }
+        })
+      },
+      { threshold: 0.5 },
+    )
+
+    cards.forEach((card) => observer.observe(card))
+    return () => observer.disconnect()
+  }, [])
+
+  useEffect(() => {
     const savedTheme = localStorage.getItem("bear-media-theme")
     if (savedTheme === "dark") {
-      setIsDark(true)
+      setIsDarkMode(true)
       document.documentElement.classList.add("dark")
     }
   }, [])
 
   const toggleTheme = () => {
-    setIsDark(!isDark)
-    if (!isDark) {
+    setIsDarkMode(!isDarkMode)
+    if (!isDarkMode) {
       document.documentElement.classList.add("dark")
       localStorage.setItem("bear-media-theme", "dark")
     } else {
@@ -80,7 +300,7 @@ export default function BearMediaHomepage() {
     if (element) {
       element.scrollIntoView({ behavior: "smooth", block: "start" })
     }
-    setIsMenuOpen(false)
+    setMenuOpen(false)
   }
 
   const shortFormVideos = [
@@ -123,52 +343,12 @@ export default function BearMediaHomepage() {
     { quote: "Finally, someone who just gets it done without the fuss.", name: "Emma R.", business: "Retail Shop" },
   ]
 
-  const stackingServices = [
-    {
-      id: 1,
-      title: "Social Media Content",
-      subtext: "Social media packages designed to help businesses show up consistently and professionally.",
-      bullets: [
-        "Short-form videos and image content",
-        "Reels, Shorts, and vertical video",
-        "YouTube channel setup and content",
-        "Organic or campaign-led posting",
-        "HubSpot and GoHighLevel workflows",
-      ],
-    },
-    {
-      id: 2,
-      title: "Websites",
-      subtext: "Fast, clean websites built to convert. No monthly fees. You own the site outright.",
-      bullets: [
-        "Clean, modern design",
-        "Built for speed and clarity",
-        "Conversion-focused layouts",
-        "Editor supplied for easy updates",
-        "No lock-in or ongoing costs",
-      ],
-    },
-    {
-      id: 3,
-      title: "Extras & Add-ons",
-      subtext: "Additional services available to support your brand and content.",
-      bullets: [
-        "Drone footage",
-        "Photography and video",
-        "Logo and brand assets",
-        "Merchandise design",
-        "SEO and website enhancements",
-        "AI-powered content tools",
-      ],
-    },
-  ]
-
   return (
-    <div className={`min-h-screen transition-colors duration-500 ${isDark ? "bg-[#1a1a1a]" : "bg-[#FAF9F6]"}`}>
+    <div className={`min-h-screen transition-colors duration-500 ${isDarkMode ? "dark bg-[#1a1a1a]" : "bg-[#FAF9F6]"}`}>
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           isScrolled
-            ? isDark
+            ? isDarkMode
               ? "bg-[#1a1a1a]/95 backdrop-blur-md shadow-[0_1px_20px_rgba(0,0,0,0.2)]"
               : "bg-[#FAF9F6]/95 backdrop-blur-md shadow-[0_1px_20px_rgba(0,0,0,0.04)]"
             : "bg-transparent"
@@ -188,7 +368,7 @@ export default function BearMediaHomepage() {
                 onClick={(e) => handleNavClick(e, item.toLowerCase())}
                 className={`text-sm font-medium transition-colors duration-300 ${
                   isScrolled
-                    ? isDark
+                    ? isDarkMode
                       ? "text-white/70 hover:text-white"
                       : "text-black/60 hover:text-black"
                     : "text-white hover:text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.5)]"
@@ -201,14 +381,14 @@ export default function BearMediaHomepage() {
               onClick={toggleTheme}
               className={`p-2 rounded-full transition-all duration-300 ${
                 isScrolled
-                  ? isDark
+                  ? isDarkMode
                     ? "text-white/60 hover:text-white hover:bg-white/10"
                     : "text-black/60 hover:text-black hover:bg-black/5"
                   : "text-white hover:text-white hover:bg-white/10 drop-shadow-[0_1px_2px_rgba(0,0,0,0.5)]"
               }`}
-              aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
+              aria-label={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
             >
-              {isDark ? <Sun size={20} /> : <Moon size={20} />}
+              {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
             </button>
           </nav>
 
@@ -217,20 +397,20 @@ export default function BearMediaHomepage() {
               onClick={toggleTheme}
               className={`p-2 rounded-full transition-colors ${
                 isScrolled
-                  ? isDark
+                  ? isDarkMode
                     ? "text-white/70 hover:text-white"
                     : "text-black/70 hover:text-black"
                   : "text-white/90 hover:text-white"
               }`}
-              aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
+              aria-label={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
             >
-              {isDark ? <Sun size={20} /> : <Moon size={20} />}
+              {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
             </button>
             <button
-              onClick={() => setIsMenuOpen(true)}
+              onClick={() => setMenuOpen(true)}
               className={`p-2 transition-colors ${
                 isScrolled
-                  ? isDark
+                  ? isDarkMode
                     ? "text-white/70 hover:text-white"
                     : "text-black/70 hover:text-black"
                   : "text-white/90 hover:text-white"
@@ -245,16 +425,16 @@ export default function BearMediaHomepage() {
 
       <div
         className={`fixed inset-0 z-[100] transition-opacity duration-300 ${
-          isMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+          menuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
       >
-        <div className={`absolute inset-0 ${isDark ? "bg-[#1a1a1a]" : "bg-[#FAF9F6]"}`}>
+        <div className={`absolute inset-0 ${isDarkMode ? "bg-[#1a1a1a]" : "bg-[#FAF9F6]"}`}>
           <div className="flex flex-col h-full">
             <div className="flex items-center justify-between px-6 py-5">
-              <img src="/bear-media-logo.png" alt="Bear Media" className="h-10 w-auto" />
+              <img src="/bear-media-logo.png" alt="Bear Media" className="h-10 md:h-14 w-auto" />
               <button
-                onClick={() => setIsMenuOpen(false)}
-                className={`p-2 ${isDark ? "text-white/70 hover:text-white" : "text-black/70 hover:text-black"}`}
+                onClick={() => setMenuOpen(false)}
+                className={`p-2 ${isDarkMode ? "text-white/70 hover:text-white" : "text-black/70 hover:text-black"}`}
                 aria-label="Close menu"
               >
                 <X size={24} />
@@ -267,7 +447,7 @@ export default function BearMediaHomepage() {
                   href={`#${item.toLowerCase()}`}
                   onClick={(e) => handleNavClick(e, item.toLowerCase())}
                   className={`text-4xl font-light transition-colors ${
-                    isDark ? "text-white/80 hover:text-white" : "text-black/80 hover:text-black"
+                    isDarkMode ? "text-white/80 hover:text-white" : "text-black/80 hover:text-black"
                   }`}
                 >
                   {item}
@@ -288,61 +468,155 @@ export default function BearMediaHomepage() {
             playsInline
             preload="auto"
             className="w-full h-full object-cover"
-            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/NUHERO%284%29-RiYbKLmrj229mpzK31Ag5IQIpM9LKb.mp4"
+            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/NUHERO%284%29-2MDVgIK7cLO5QXnYNLyVp4lUGGTy7t.mp4"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/60" />
+          <div className="absolute inset-0 bg-black/30" />
+        </div>
+
+        <div className="absolute inset-0 z-5 pointer-events-none overflow-hidden">
+          <motion.div
+            className="absolute inset-0 opacity-[0.07]"
+            style={{
+              background: "linear-gradient(90deg, transparent 0%, rgba(201,162,39,0.8) 50%, transparent 100%)",
+              backgroundSize: "200% 100%",
+            }}
+            animate={{
+              backgroundPosition: ["200% 0%", "-200% 0%"],
+            }}
+            transition={{
+              duration: 10,
+              ease: "linear",
+              repeat: Number.POSITIVE_INFINITY,
+            }}
+          />
+        </div>
+
+        <div className="relative z-20 flex flex-col items-center justify-center text-center px-6 max-w-5xl mx-auto">
+          <motion.h1
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold text-white leading-tight tracking-tight"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.1 }}
+          >
+            <motion.span
+              className="block"
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.2 }}
+            >
+              Websites and
+            </motion.span>
+            <motion.span
+              className="block"
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.4 }}
+            >
+              Social Media Content
+            </motion.span>
+          </motion.h1>
+
+          <motion.p
+            className="mt-6 text-lg sm:text-xl text-white/85 max-w-2xl leading-relaxed"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, ease: "easeOut", delay: 0.8 }}
+          >
+            I help businesses and individuals get seen, trusted, and contacted through clean websites and consistent
+            social media content.
+          </motion.p>
+
+          <motion.div
+            className="mt-10 flex flex-col sm:flex-row gap-4"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: "easeOut", delay: 1.0 }}
+          >
+            <motion.div
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              transition={{ duration: 0.15, ease: "easeOut" }}
+            >
+              <Button
+                size="lg"
+                className="bg-[#C9A227] hover:bg-[#B8921F] text-black rounded-full px-10 py-6 text-base font-medium shadow-[0_4px_20px_rgba(201,162,39,0.3)] transition-all duration-300 hover:shadow-[0_8px_30px_rgba(201,162,39,0.4)]"
+                onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
+              >
+                Start a project
+              </Button>
+            </motion.div>
+            <motion.div
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              transition={{ duration: 0.15, ease: "easeOut" }}
+            >
+              <Button
+                variant="outline"
+                size="lg"
+                className="rounded-full px-10 py-6 text-base font-medium border-white/30 text-white hover:bg-white/10 hover:border-white/50 transition-all duration-300 backdrop-blur-sm bg-transparent"
+                onClick={() => document.getElementById("services")?.scrollIntoView({ behavior: "smooth" })}
+              >
+                View services
+              </Button>
+            </motion.div>
+          </motion.div>
         </div>
 
         <div className="absolute bottom-0 left-0 right-0 h-48 z-10 pointer-events-none">
-          <div className="absolute inset-0 bg-gradient-to-t from-[#FAF9F6] via-[#FAF9F6]/80 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#FAF9F6] via-[#FAF9F6]/80 to-transparent dark:from-[#1a1a1a] dark:via-[#1a1a1a]/80" />
           <div className="absolute inset-0 backdrop-blur-[2px] [mask-image:linear-gradient(to_top,black_30%,transparent_100%)]" />
-        </div>
-
-        <div className="relative z-10 max-w-3xl mx-auto px-6 text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-white leading-[1.1] mb-6 tracking-tight drop-shadow-[0_2px_4px_rgba(0,0,0,0.3)]">
-            Websites and Social Media Content
-          </h1>
-          <p className="text-lg md:text-xl text-white/90 mb-10 leading-relaxed drop-shadow-[0_1px_2px_rgba(0,0,0,0.3)]">
-            I help businesses and individuals get seen, trusted, and contacted through clean websites and consistent
-            social media content.
-          </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Button
-              size="lg"
-              className="bg-[#C9A227] hover:bg-[#B8921F] text-black rounded-full px-10 py-6 text-base font-medium shadow-[0_4px_20px_rgba(201,162,39,0.3)] transition-all duration-300 hover:shadow-[0_8px_30px_rgba(201,162,39,0.4)]"
-            >
-              Start a project
-            </Button>
-            <a
-              href="#work"
-              onClick={(e) => handleNavClick(e, "work")}
-              className="text-white/90 hover:text-white text-base font-medium transition-colors duration-300 drop-shadow-[0_1px_2px_rgba(0,0,0,0.3)]"
-            >
-              View work
-            </a>
-          </div>
         </div>
       </section>
 
-      <section ref={stackingContainerRef} className="py-24 md:py-32 px-6 bg-[#FAF9F6] dark:bg-[#1a1a1a]">
+      <PinnedServicesSection />
+
+      <section className="py-24 md:py-32 px-6 bg-[#FAF9F6] dark:bg-[#1a1a1a]">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-semibold text-black dark:text-white mb-4">How I Help</h2>
             <p className="text-black/50 dark:text-white/50 text-lg max-w-xl mx-auto">
-              Clear, practical services that help businesses get seen and contacted.
+              Everything you need to build trust and grow your business online
             </p>
           </div>
 
-          <div className="space-y-8">
-            {stackingServices.map((service, index) => (
-              <ScrollStackingCard
-                key={service.id}
-                index={index}
-                title={service.title}
-                subtext={service.subtext}
-                bullets={service.bullets}
-                totalCards={stackingServices.length}
-              />
+          <div className="relative h-[500px] md:h-[450px] flex items-center justify-center">
+            {bentoServices.map((service, index) => (
+              <div
+                key={service.title}
+                className={`bg-white dark:bg-[#252525] rounded-2xl p-6 md:p-8 shadow-[0_2px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_40px_rgba(0,0,0,0.06)] transition-all duration-500 cursor-pointer group ${
+                  service.size === "large"
+                    ? "col-span-2 row-span-2"
+                    : service.size === "medium"
+                      ? "col-span-2"
+                      : "col-span-1"
+                }`}
+              >
+                <h3
+                  className={`font-semibold text-black mb-2 group-hover:text-[#C9A227] transition-colors duration-300 ${service.size === "large" ? "text-2xl md:text-3xl" : "text-lg"}`}
+                >
+                  {service.title}
+                </h3>
+                <p className={`text-black/50 ${service.size === "large" ? "text-lg" : "text-sm"}`}>
+                  {service.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 md:py-20 overflow-hidden bg-white">
+        <div className="max-w-5xl mx-auto px-6 text-center mb-10">
+          <p className="text-sm text-black/40 uppercase tracking-widest">Trusted by local businesses</p>
+        </div>
+
+        <div className="relative">
+          <div className="flex items-center gap-16 animate-scroll-logos">
+            {[...Array(8)].map((_, i) => (
+              <div key={i} className="flex-shrink-0 w-32 h-12 bg-black/5 rounded-lg" />
+            ))}
+            {[...Array(8)].map((_, i) => (
+              <div key={`dup-${i}`} className="flex-shrink-0 w-32 h-12 bg-black/5 rounded-lg" />
             ))}
           </div>
         </div>
@@ -371,7 +645,7 @@ export default function BearMediaHomepage() {
 
           <div className="grid md:grid-cols-3 gap-6">
             {reviews.map((review, index) => (
-              <div key={index} className="bg-white rounded-2xl p-8 shadow-[0_2px_20px_rgba(0,0,0,0.03)]">
+              <div key={index} className="bg-white rounded-2xl p-8 shadow-[0_2px_20px_rgba(201,162,39,0.03)]">
                 <blockquote className="text-black/80 text-lg leading-relaxed mb-6">"{review.quote}"</blockquote>
                 <div>
                   <p className="font-medium text-black">{review.name}</p>
