@@ -34,21 +34,17 @@ function ServiceCardAnimated({
 
   const y = useTransform(
     scrollYProgress,
-    [0, service.scrollRange[0], service.scrollRange[1], 1],
-    ["100%", "100%", `${service.stopY}px`, `${service.stopY}px`],
-  )
-
-  const blur = useTransform(
-    scrollYProgress,
-    [service.scrollRange[0], service.scrollRange[0] + 0.1, service.scrollRange[1]],
-    [8, 4, 0],
+    [service.scrollRange[0], service.scrollRange[1]],
+    [100, service.stopY], // Start 100px below, settle at stopY
   )
 
   const opacity = useTransform(
     scrollYProgress,
-    [service.scrollRange[0], service.scrollRange[0] + 0.1, service.scrollRange[1]],
-    [0.5, 0.8, 1],
+    [service.scrollRange[0], service.scrollRange[0] + 0.08, service.scrollRange[1]],
+    [0, 1, 1], // Fade in early, stay visible
   )
+
+  const blur = useTransform(scrollYProgress, [service.scrollRange[0], service.scrollRange[1]], [8, 0])
 
   const filterBlur = useTransform(blur, (v) => `blur(${v}px)`)
 
@@ -111,16 +107,8 @@ function ServiceCardAnimated({
   )
 }
 
-function PinnedServicesSection() {
-  const containerRef = useRef<HTMLDivElement>(null)
-
-  // Track scroll progress through the 300vh container
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end end"],
-  })
-
-  const CARD_STOP_OFFSET = 88 // Spacing between card stops (heading height + padding)
+function MobileServicesSection() {
+  const icons = [Video, Monitor, Plus]
 
   const services = [
     {
@@ -133,9 +121,7 @@ function PinnedServicesSection() {
       subtextColor: "text-black/70",
       bulletColor: "text-black/80",
       bulletDot: "bg-black",
-      image: "/services-social-media.jpg", // Updated to real image
-      stopY: 0,
-      scrollRange: [0, 0.33] as [number, number],
+      image: "/services-social-media.jpg",
     },
     {
       id: 2,
@@ -153,9 +139,7 @@ function PinnedServicesSection() {
       subtextColor: "text-white/70",
       bulletColor: "text-white/80",
       bulletDot: "bg-[#C9A227]",
-      image: "/services-websites.jpg", // Updated to real image
-      stopY: CARD_STOP_OFFSET,
-      scrollRange: [0.33, 0.66] as [number, number],
+      image: "/services-websites.jpg",
     },
     {
       id: 3,
@@ -176,18 +160,145 @@ function PinnedServicesSection() {
       subtextColor: "text-white/80",
       bulletColor: "text-white/80",
       bulletDot: "bg-[#C9A227]",
-      image: "/services-extras.jpg", // Now has image instead of null
-      stopY: CARD_STOP_OFFSET * 2,
-      scrollRange: [0.66, 1.0] as [number, number],
+      image: "/services-extras.jpg",
     },
   ]
+
+  return (
+    <section id="services" className="bg-[#F5F4F0] dark:bg-[#1a1a1a] py-16 px-4">
+      <div className="text-center mb-10">
+        <h2 className="text-3xl font-semibold text-black dark:text-white mb-3">Services</h2>
+        <p className="text-black/60 dark:text-white/60 text-base max-w-md mx-auto">
+          Clear, practical services that help businesses get seen and contacted.
+        </p>
+      </div>
+
+      <div className="space-y-6 max-w-lg mx-auto">
+        {services.map((service, index) => {
+          const Icon = icons[index]
+          return (
+            <div key={service.id} className="rounded-[20px] p-5 shadow-lg" style={{ backgroundColor: service.bg }}>
+              <div className="flex items-center gap-3 mb-4">
+                <div
+                  className={`w-9 h-9 rounded-full flex items-center justify-center ${service.id === 1 ? "bg-black/10" : "bg-white/10"}`}
+                >
+                  <Icon className={`w-4 h-4 ${service.textColor}`} />
+                </div>
+                <h3 className={`text-xl font-semibold ${service.textColor}`}>{service.title}</h3>
+              </div>
+
+              <p className={`${service.subtextColor} text-sm mb-4 leading-relaxed`}>{service.subtext}</p>
+
+              {service.image && (
+                <div className="relative w-full aspect-[4/3] rounded-xl overflow-hidden shadow-md mb-4">
+                  <Image src={service.image || "/placeholder.svg"} alt={service.title} fill className="object-cover" />
+                </div>
+              )}
+
+              <ul className="space-y-1.5">
+                {service.bullets.map((bullet, i) => (
+                  <li key={i} className="flex items-start gap-2">
+                    <span className={`w-1.5 h-1.5 rounded-full ${service.bulletDot} mt-1.5 flex-shrink-0`} />
+                    <span className={`${service.bulletColor} text-sm`}>{bullet}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )
+        })}
+      </div>
+    </section>
+  )
+}
+
+function PinnedServicesSection() {
+  const containerRef = useRef<HTMLDivElement>(null)
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768)
+    checkMobile()
+    window.addEventListener("resize", checkMobile)
+    return () => window.removeEventListener("resize", checkMobile)
+  }, [])
+
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end end"],
+  })
+
+  const CARD_STOP_OFFSET = 88
+
+  const services = [
+    {
+      id: 1,
+      title: "Social Media Content",
+      subtext: "Consistent, on-brand content that builds trust and keeps your business visible.",
+      bullets: ["Reels, TikToks, Shorts", "Promo clips and stories", "Monthly content packages", "Platform management"],
+      bg: "#C9A227",
+      textColor: "text-black",
+      subtextColor: "text-black/70",
+      bulletColor: "text-black/80",
+      bulletDot: "bg-black",
+      image: "/services-social-media.jpg",
+      stopY: 0,
+      scrollRange: [0.0, 0.33] as [number, number], // Stage 1
+    },
+    {
+      id: 2,
+      title: "Websites",
+      subtext: "Fast, clean websites and landing pages that convert visitors into customers.",
+      bullets: [
+        "Landing pages",
+        "Business websites",
+        "Portfolio sites",
+        "E-commerce setups",
+        "Hosting and maintenance",
+      ],
+      bg: "#1C1C1C",
+      textColor: "text-white",
+      subtextColor: "text-white/70",
+      bulletColor: "text-white/80",
+      bulletDot: "bg-[#C9A227]",
+      image: "/services-websites.jpg",
+      stopY: CARD_STOP_OFFSET,
+      scrollRange: [0.33, 0.66] as [number, number], // Stage 2
+    },
+    {
+      id: 3,
+      title: "Extras & Add-ons",
+      subtext: "Additional services available to support your brand and visibility.",
+      bullets: [
+        "Drone footage",
+        "Photography and video",
+        "Logo and brand assets",
+        "Merchandise design",
+        "SEO and website enhancements",
+        "Google Business Profile management",
+        "SEO ranking improvement",
+        "AI-powered content tools",
+      ],
+      bg: "#2D4A3E",
+      textColor: "text-white",
+      subtextColor: "text-white/80",
+      bulletColor: "text-white/80",
+      bulletDot: "bg-[#C9A227]",
+      image: "/services-extras.jpg",
+      stopY: CARD_STOP_OFFSET * 2,
+      scrollRange: [0.66, 1.0] as [number, number], // Stage 3
+    },
+  ]
+
+  if (isMobile) {
+    return <MobileServicesSection />
+  }
 
   return (
     <section
       id="services"
       ref={containerRef}
       className="relative bg-[#F5F4F0] dark:bg-[#1a1a1a]"
-      style={{ height: "300vh" }} // Creates scroll distance for card animations
+      style={{ height: "300vh" }}
     >
       {/* Sticky viewport container */}
       <div className="sticky top-0 h-screen overflow-hidden">
@@ -199,7 +310,7 @@ function PinnedServicesSection() {
           </p>
         </div>
 
-        {/* Cards container - relative for absolute children */}
+        {/* Cards container */}
         <div className="relative px-4 md:px-6 h-[calc(100vh-160px)]">
           <div className="relative max-w-4xl mx-auto h-full">
             {services.map((service, index) => (
