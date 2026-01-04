@@ -955,77 +955,103 @@ export default function BearMediaWebsite() {
         </div>
       </section>
 
-      <section id="contact" className="py-24 md:py-32 px-6 bg-white dark:bg-[#1a1a1a] mb-24">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-semibold text-foreground mb-4">Ready to start?</h2>
-            <p className="text-muted-foreground text-lg max-w-xl mx-auto">
-              No pressure, no hard sell. Just a conversation about what you need.
-            </p>
-          </div>
+      <section id="contact" className="relative min-h-screen flex items-center justify-center overflow-hidden mb-24">
+        {/* Video Background */}
+        <div className="absolute inset-0 z-0">
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            className="w-full h-full object-cover"
+            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/NUHERO%284%29-2MDVgIK7cLO5QXnYNLyVp4lUGGTy7t.mp4"
+          />
+          {/* Dark gradient overlay for readability */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/70 to-black/60" />
+        </div>
 
-          <div className="max-w-lg mx-auto">
-            <form
-              className="space-y-6"
-              onSubmit={(e) => {
-                e.preventDefault()
-                const form = e.target as HTMLFormElement
-                const formData = new FormData(form)
-                console.log("Form submitted:", Object.fromEntries(formData))
-                form.reset()
-                alert("Thanks for your message! I'll be in touch soon.")
-              }}
-            >
-              <div>
-                <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
-                  Name
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  required
-                  className="w-full px-4 py-3 rounded-xl border border-black/10 dark:border-white/10 bg-white dark:bg-[#252525] text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-[#C9A227]/50 focus:border-[#C9A227] transition-all duration-200"
-                  placeholder="Your name"
-                />
+        {/* Content */}
+        <div className="relative z-10 w-full px-6 py-24 md:py-32">
+          <div className="max-w-xl mx-auto">
+            {/* Centered card with form */}
+            <div className="bg-white/95 dark:bg-[#1a1a1a]/95 backdrop-blur-md rounded-3xl shadow-[0_20px_60px_rgba(0,0,0,0.3)] p-8 md:p-12">
+              <div className="text-center mb-10">
+                <h2 className="text-3xl md:text-4xl font-semibold text-foreground mb-4">Ready to start?</h2>
+                <p className="text-muted-foreground text-lg">
+                  No pressure, no hard sell. Just a conversation about what you need.
+                </p>
               </div>
 
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
-                  Email
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  required
-                  className="w-full px-4 py-3 rounded-xl border border-black/10 dark:border-white/10 bg-white dark:bg-[#252525] text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-[#C9A227]/50 focus:border-[#C9A227] transition-all duration-200"
-                  placeholder="your@email.com"
-                />
-              </div>
-
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
-                  Message
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  required
-                  rows={5}
-                  className="w-full px-4 py-3 rounded-xl border border-black/10 dark:border-white/10 bg-white dark:bg-[#252525] text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-[#C9A227]/50 focus:border-[#C9A227] transition-all duration-200 resize-none"
-                  placeholder="Tell me about your project..."
-                />
-              </div>
-
-              <Button
-                type="submit"
-                size="lg"
-                className="w-full bg-[#C9A227] hover:bg-[#B8921F] text-black rounded-xl px-8 py-4 text-base font-medium shadow-[0_4px_20px_rgba(201,162,39,0.3)] transition-all duration-300 hover:shadow-[0_8px_30px_rgba(201,162,39,0.4)]"
+              <form
+                className="space-y-6"
+                onSubmit={(e) => {
+                  e.preventDefault()
+                  const form = e.target as HTMLFormElement
+                  const formData = new FormData(form)
+                  console.log("Form submitted:", Object.fromEntries(formData))
+                  form.reset()
+                  alert("Thanks for your message! I'll be in touch soon.")
+                }}
               >
-                Send message
-              </Button>
-            </form>
+                <div>
+                  <label htmlFor="contact-name" className="block text-sm font-medium text-foreground mb-2">
+                    Name
+                  </label>
+                  <input
+                    type="text"
+                    id="contact-name"
+                    name="name"
+                    required
+                    className="w-full px-4 py-3 rounded-xl border border-black/10 dark:border-white/10 bg-white dark:bg-[#252525] text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-[#C9A227]/50 focus:border-[#C9A227] transition-all duration-200"
+                    placeholder="Your name"
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="contact-email" className="block text-sm font-medium text-foreground mb-2">
+                    Email
+                  </label>
+                  <input
+                    type="email"
+                    id="contact-email"
+                    name="email"
+                    required
+                    className="w-full px-4 py-3 rounded-xl border border-black/10 dark:border-white/10 bg-white dark:bg-[#252525] text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-[#C9A227]/50 focus:border-[#C9A227] transition-all duration-200"
+                    placeholder="your@email.com"
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="contact-message" className="block text-sm font-medium text-foreground mb-2">
+                    Message
+                  </label>
+                  <textarea
+                    id="contact-message"
+                    name="message"
+                    rows={4}
+                    required
+                    className="w-full px-4 py-3 rounded-xl border border-black/10 dark:border-white/10 bg-white dark:bg-[#252525] text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-[#C9A227]/50 focus:border-[#C9A227] transition-all duration-200 resize-none"
+                    placeholder="Tell me about your project..."
+                  />
+                </div>
+
+                <Button
+                  type="submit"
+                  size="lg"
+                  className="w-full bg-[#C9A227] hover:bg-[#B8921F] text-black rounded-full py-6 text-base font-medium shadow-[0_4px_20px_rgba(201,162,39,0.3)] transition-all duration-300 hover:shadow-[0_8px_30px_rgba(201,162,39,0.4)]"
+                >
+                  Send message
+                </Button>
+              </form>
+
+              <p className="text-center text-sm text-muted-foreground mt-8">
+                Or email directly:{" "}
+                <a href="mailto:hello@bearmedia.co.uk" className="text-[#C9A227] hover:underline transition-colors">
+                  hello@bearmedia.co.uk
+                </a>
+              </p>
+            </div>
           </div>
         </div>
       </section>
