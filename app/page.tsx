@@ -121,40 +121,36 @@ function MobileServicesSection() {
     offset: ["start start", "end end"],
   })
 
-  const y0 = useTransform(scrollYProgress, [0, 0.25], [600, 0])
-  const scale0 = useTransform(scrollYProgress, [0, 0.25], [0.9, 1])
+  const cardHeight = 560
+  const spacing = 100
+  const totalStackHeight = cardHeight + spacing * 2 + 200 // Extra space for smooth final scroll
 
-  const y1 = useTransform(scrollYProgress, [0.25, 0.5], [600, 90])
-  const scale1 = useTransform(scrollYProgress, [0.25, 0.5], [0.9, 1])
+  const y0 = useTransform(scrollYProgress, [0, 0.3], [600, 0])
+  const y1 = useTransform(scrollYProgress, [0.3, 0.6], [600, spacing])
+  const y2 = useTransform(scrollYProgress, [0.6, 0.9], [600, spacing * 2])
 
-  const y2 = useTransform(scrollYProgress, [0.5, 0.75], [600, 180])
-  const scale2 = useTransform(scrollYProgress, [0.5, 0.75], [0.9, 1])
-
-  const transforms = [
-    { y: y0, scale: scale0 },
-    { y: y1, scale: scale1 },
-    { y: y2, scale: scale2 },
-  ]
+  const transforms = [{ y: y0 }, { y: y1 }, { y: y2 }]
 
   return (
-    <section ref={containerRef} className="relative bg-muted" style={{ height: "300vh" }}>
-      <div className="sticky top-0 h-screen overflow-hidden pt-24 pb-8">
+    <section ref={containerRef} className="relative bg-muted md:hidden" style={{ height: "400vh" }}>
+      <div className="sticky top-0 h-screen overflow-x-hidden overflow-y-visible pt-24 pb-8">
         <div className="text-center mb-8 px-4">
           <h2 className="text-3xl font-semibold">Services</h2>
           <p className="text-muted-foreground mt-2 text-sm">Clear, practical services that get results.</p>
         </div>
 
-        <div className="relative h-[calc(100vh-200px)] px-4">
+        <div className="relative px-4" style={{ height: `${totalStackHeight}px` }}>
           {services.map((s, i) => (
             <motion.div
               key={i}
               className="absolute inset-x-0 mx-auto max-w-md"
               style={{
                 y: transforms[i].y,
-                scale: transforms[i].scale,
                 zIndex: 10 + i,
+                opacity: 1,
+                transform: "translateZ(0)",
               }}
-              transition={{ type: "ease-out", duration: 1.2 }}
+              transition={{ type: "tween", ease: [0.25, 0.1, 0.25, 1], duration: 1.2 }}
             >
               <div className="rounded-2xl overflow-hidden shadow-2xl min-h-[560px]" style={{ backgroundColor: s.bg }}>
                 <div className="aspect-[16/10] relative bg-white/5 p-4 overflow-hidden">
@@ -243,7 +239,12 @@ function PinnedServicesSection() {
   ]
 
   return (
-    <section ref={containerRef} id="services-desktop" className="relative bg-muted" style={{ height: "400vh" }}>
+    <section
+      ref={containerRef}
+      id="services-desktop"
+      className="relative bg-muted hidden md:block"
+      style={{ height: "400vh" }}
+    >
       <div className="sticky top-0 h-screen overflow-hidden">
         <div className="pt-10 pb-8 text-center">
           <h2 className="text-4xl md:text-5xl font-semibold">Services</h2>
@@ -681,6 +682,9 @@ export default function BearMediaWebsite() {
         </motion.div>
       </section>
 
+      {/* EXPANDABLE FOOTER SECTION */}
+      <ExpandableFooterSection />
+
       {/* FOOTER */}
       <footer className="py-12 md:py-16 pb-24 md:pb-16 bg-background">
         <div className="max-w-6xl mx-auto px-6">
@@ -717,5 +721,114 @@ function AnimatedSection({
     >
       {children}
     </motion.section>
+  )
+}
+
+function ExpandableFooterSection() {
+  const [isExpanded, setIsExpanded] = useState(false)
+
+  return (
+    <div className="border-t border-border bg-background">
+      <div className="max-w-6xl mx-auto px-6">
+        <button
+          onClick={() => setIsExpanded(!isExpanded)}
+          className="w-full py-6 flex items-center justify-between text-foreground hover:text-[#C9A227] transition-colors"
+          aria-expanded={isExpanded}
+        >
+          <span className="text-sm font-medium">Quick Links & Info</span>
+          <motion.svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            animate={{ rotate: isExpanded ? 180 : 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </motion.svg>
+        </button>
+
+        <motion.div
+          initial={false}
+          animate={{ height: isExpanded ? "auto" : 0 }}
+          transition={{ duration: 0.3, ease: "easeOut" }}
+          className="overflow-hidden"
+        >
+          <div className="pb-8 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div>
+              <h3 className="text-sm font-semibold mb-4 text-foreground">Sitemap</h3>
+              <ul className="space-y-2">
+                <li>
+                  <a href="#home" className="text-sm text-muted-foreground hover:text-[#C9A227] transition-colors">
+                    Home
+                  </a>
+                </li>
+                <li>
+                  <a href="#services" className="text-sm text-muted-foreground hover:text-[#C9A227] transition-colors">
+                    Services
+                  </a>
+                </li>
+                <li>
+                  <a href="#work" className="text-sm text-muted-foreground hover:text-[#C9A227] transition-colors">
+                    Work
+                  </a>
+                </li>
+                <li>
+                  <a href="#about" className="text-sm text-muted-foreground hover:text-[#C9A227] transition-colors">
+                    About
+                  </a>
+                </li>
+                <li>
+                  <a href="#contact" className="text-sm text-muted-foreground hover:text-[#C9A227] transition-colors">
+                    Contact
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <h3 className="text-sm font-semibold mb-4 text-foreground">Services</h3>
+              <ul className="space-y-2">
+                <li className="text-sm text-muted-foreground">Social Media Content</li>
+                <li className="text-sm text-muted-foreground">Websites</li>
+                <li className="text-sm text-muted-foreground">Extras & Add-ons</li>
+              </ul>
+            </div>
+
+            <div>
+              <h3 className="text-sm font-semibold mb-4 text-foreground">Contact</h3>
+              <ul className="space-y-2">
+                <li className="text-sm text-muted-foreground">Edinburgh, Scotland</li>
+                <li>
+                  <a
+                    href="mailto:hello@bearmedia.co.uk"
+                    className="text-sm text-muted-foreground hover:text-[#C9A227] transition-colors"
+                  >
+                    hello@bearmedia.co.uk
+                  </a>
+                </li>
+              </ul>
+              <div className="mt-4 w-full h-48 bg-muted rounded-lg overflow-hidden">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2234.5678!2d-3.188!3d55.953!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTXCsDU3JzEwLjgiTiAzwrAxMScxNi44Ilc!5e0!3m2!1sen!2suk!4v1234567890"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Bear Media Location"
+                />
+              </div>
+            </div>
+          </div>
+        </motion.div>
+      </div>
+    </div>
   )
 }
