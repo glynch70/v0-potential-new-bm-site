@@ -516,12 +516,22 @@ export default function BearMediaWebsite() {
               transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
               className="rounded-2xl overflow-hidden shadow-lg bg-card flex flex-col min-h-[580px]"
             >
-              <div
-                onClick={() => setSocialModalOpen(true)}
-                className="w-full h-[406px] bg-muted flex items-center justify-center cursor-pointer hover:opacity-90 transition-opacity"
+              <a
+                href="https://www.youtube.com/@bearmedia70"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="relative w-full h-[406px] bg-muted flex items-center justify-center group cursor-pointer"
               >
                 <img src="/mobilephone.png" alt="Social Media Content" className="h-full w-auto object-cover" />
-              </div>
+                {/* Play button overlay */}
+                <div className="absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-black/40 transition-colors">
+                  <div className="w-20 h-20 rounded-full bg-[#C9A227] flex items-center justify-center group-hover:scale-110 transition-transform shadow-2xl">
+                    <svg className="w-8 h-8 text-black ml-1" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M8 5v14l11-7z" />
+                    </svg>
+                  </div>
+                </div>
+              </a>
               <div className="p-5 flex-grow flex flex-col justify-between">
                 <div>
                   <h3 className="font-semibold mb-1 text-foreground">Social Media Content</h3>
