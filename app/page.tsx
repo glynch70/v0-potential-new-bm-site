@@ -1,6 +1,7 @@
 "use client"
 import FloatingSectionNav from "@/components/FloatingSectionNav"
 import type React from "react"
+import ExpandableFooter from "@/components/ExpandableFooter"
 
 import { useEffect, useRef, useState } from "react"
 import Image from "next/image"
@@ -696,7 +697,7 @@ export default function BearMediaWebsite() {
       </AnimatedSection>
 
       {/* CONTACT */}
-      <section id="contact" className="relative py-12 md:py-20 overflow-hidden">
+      <section id="contact" className="relative py-12 md:py-20 overflow-hidden mb-8 md:mb-12">
         <video
           autoPlay
           muted
@@ -714,7 +715,7 @@ export default function BearMediaWebsite() {
           transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
           className="relative z-10 max-w-2xl mx-auto px-6"
         >
-          <div className="bg-card/95 backdrop-blur-md rounded-3xl shadow-2xl p-8 md:p-12">
+          <div className="bg-card/95 backdrop-blur-md rounded-3xl shadow-2xl p-8 md:p-12 tracking-tighter leading-5 mx-[3px] my-[18px] px-[35px] py-[25px]">
             <h2 className="text-3xl md:text-4xl font-semibold mb-3 text-center text-foreground">Get in touch</h2>
             <p className="text-muted-foreground text-center mb-8">
               Send a message and I'll get back to you within 24 hours.
@@ -767,31 +768,15 @@ export default function BearMediaWebsite() {
           </div>
         </motion.div>
       </section>
-<>
-  {<section id="home">...</section>
-<section id="services">...</section>
-<section id="work">...</section>
-<section id="about">...</section>
-<section id="contact">...</section>}
-
-  <FloatingSectionNav />
-</>
-      {/* EXPANDABLE FOOTER SECTION */}
-      <ExpandableFooterSection />
 
       {/* FOOTER */}
-      <footer className="py-12 md:py-16 pb-24 md:pb-16 bg-background">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="text-center">
-            <div className="mb-4">
-              <span className="text-2xl font-bold text-foreground">Bear</span>
-              <span className="text-2xl font-bold text-[#C9A227]">Media</span>
-            </div>
-            <p className="text-sm text-muted-foreground mb-4">Websites & Social Media Content</p>
-            <p className="text-sm text-muted-foreground">© 2025 Bear Media. All rights reserved.</p>
-          </div>
-        </div>
+      <footer className="relative pb-[env(safe-area-inset-bottom)]">
+        <div className="h-6 md:h-8" />
+        <ExpandableFooter />
       </footer>
+
+      {/* Floating Section Nav */}
+      <FloatingSectionNav />
     </div>
   )
 }
@@ -815,114 +800,5 @@ function AnimatedSection({
     >
       {children}
     </motion.section>
-  )
-}
-
-function ExpandableFooterSection() {
-  const [isExpanded, setIsExpanded] = useState(false)
-
-  return (
-    <div className="border-t border-border bg-background">
-      <div className="max-w-6xl mx-auto px-6">
-        <button
-          onClick={() => setIsExpanded(!isExpanded)}
-          className="w-full py-6 flex items-center justify-between text-foreground hover:text-[#C9A227] transition-colors"
-          aria-expanded={isExpanded}
-        >
-          <span className="text-sm font-medium">Quick Links & Info</span>
-          <motion.svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            animate={{ rotate: isExpanded ? 180 : 0 }}
-            transition={{ duration: 0.3 }}
-          >
-            <polyline points="6 9 12 15 18 9"></polyline>
-          </motion.svg>
-        </button>
-
-        <motion.div
-          initial={false}
-          animate={{ height: isExpanded ? "auto" : 0 }}
-          transition={{ duration: 0.3, ease: "easeOut" }}
-          className="overflow-hidden"
-        >
-          <div className="pb-8 grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div>
-              <h3 className="text-sm font-semibold mb-4 text-foreground">Sitemap</h3>
-              <ul className="space-y-2">
-                <li>
-                  <a href="#home" className="text-sm text-muted-foreground hover:text-[#C9A227] transition-colors">
-                    Home
-                  </a>
-                </li>
-                <li>
-                  <a href="#services" className="text-sm text-muted-foreground hover:text-[#C9A227] transition-colors">
-                    Services
-                  </a>
-                </li>
-                <li>
-                  <a href="#work" className="text-sm text-muted-foreground hover:text-[#C9A227] transition-colors">
-                    Work
-                  </a>
-                </li>
-                <li>
-                  <a href="#about" className="text-sm text-muted-foreground hover:text-[#C9A227] transition-colors">
-                    About
-                  </a>
-                </li>
-                <li>
-                  <a href="#contact" className="text-sm text-muted-foreground hover:text-[#C9A227] transition-colors">
-                    Contact
-                  </a>
-                </li>
-              </ul>
-            </div>
-
-            <div>
-              <h3 className="text-sm font-semibold mb-4 text-foreground">Services</h3>
-              <ul className="space-y-2">
-                <li className="text-sm text-muted-foreground">Social Media Content</li>
-                <li className="text-sm text-muted-foreground">Websites</li>
-                <li className="text-sm text-muted-foreground">Extras & Add-ons</li>
-              </ul>
-            </div>
-
-            <div>
-              <h3 className="text-sm font-semibold mb-4 text-foreground">Contact</h3>
-              <ul className="space-y-2">
-                <li className="text-sm text-muted-foreground">Edinburgh, Scotland</li>
-                <li>
-                  <a
-                    href="mailto:hello@bearmedia.co.uk"
-                    className="text-sm text-muted-foreground hover:text-[#C9A227] transition-colors"
-                  >
-                    hello@bearmedia.co.uk
-                  </a>
-                </li>
-              </ul>
-              <div className="mt-4 w-full h-48 bg-muted rounded-lg overflow-hidden">
-                <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2234.5678!2d-3.188!3d55.953!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTXCsDU3JzEwLjgiTiAzwrAxMScxNi44Ilc!5e0!3m2!1sen!2suk!4v1234567890"
-                  width="100%"
-                  height="100%"
-                  style={{ border: 0 }}
-                  allowFullScreen
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  title="Bear Media Location"
-                />
-              </div>
-            </div>
-          </div>
-        </motion.div>
-      </div>
-    </div>
   )
 }
