@@ -1,5 +1,5 @@
 "use client"
-
+import FloatingSectionNav from "@/components/FloatingSectionNav"
 import type React from "react"
 
 import { useEffect, useRef, useState } from "react"
@@ -767,7 +767,15 @@ export default function BearMediaWebsite() {
           </div>
         </motion.div>
       </section>
+<>
+  {<section id="home">...</section>
+<section id="services">...</section>
+<section id="work">...</section>
+<section id="about">...</section>
+<section id="contact">...</section>}
 
+  <FloatingSectionNav />
+</>
       {/* EXPANDABLE FOOTER SECTION */}
       <ExpandableFooterSection />
 
