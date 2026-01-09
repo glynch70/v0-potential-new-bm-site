@@ -515,7 +515,7 @@ export default function BearMediaWebsite() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
-              className="rounded-2xl overflow-hidden shadow-lg bg-card flex flex-col min-h-[580px]"
+              className="rounded-2xl overflow-hidden shadow-lg bg-card flex flex-col min-h-[580px] md:hover:-translate-y-2 md:hover:shadow-2xl transition-all duration-300"
             >
               <a
                 href="https://www.youtube.com/@bearmedia70"
@@ -547,7 +547,7 @@ export default function BearMediaWebsite() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.6, delay: 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
-              className="rounded-2xl overflow-hidden shadow-lg bg-card flex flex-col min-h-[580px]"
+              className="rounded-2xl overflow-hidden shadow-lg bg-card flex flex-col min-h-[580px] md:hover:-translate-y-2 md:hover:shadow-2xl transition-all duration-300"
             >
               <div className="relative w-full h-[406px] bg-muted overflow-hidden">
                 <img
@@ -598,7 +598,7 @@ export default function BearMediaWebsite() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.6, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
-              className="rounded-2xl overflow-hidden shadow-lg bg-card flex flex-col min-h-[580px]"
+              className="rounded-2xl overflow-hidden shadow-lg bg-card flex flex-col min-h-[580px] md:hover:-translate-y-2 md:hover:shadow-2xl transition-all duration-300"
             >
               <div className="w-full h-[406px] bg-muted overflow-hidden flex items-center justify-center">
                 <img src="/branding.png" alt="Brand Assets" className="w-full h-full object-cover" />
@@ -626,7 +626,7 @@ export default function BearMediaWebsite() {
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
             className="hidden md:block max-w-3xl mx-auto"
           >
-            <div className="bg-card p-8 md:p-10 rounded-2xl shadow-md">
+            <div className="bg-card p-8 md:p-10 rounded-2xl shadow-md md:hover:-translate-y-1 md:hover:shadow-xl transition-all duration-300">
               <p className="text-sm text-[#C9A227] font-medium mb-6">★★★★★ 5.0 from 18 Google reviews</p>
               <blockquote className="text-lg md:text-xl text-foreground mb-6 leading-relaxed">
                 "Garry created a simple, powerful website that sells our Manager Training Programme and clearly sets us
