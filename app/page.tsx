@@ -122,12 +122,12 @@ function MobileServicesSection() {
   })
 
   const cardHeight = 560
-  const spacing = 100
-  const totalStackHeight = cardHeight + spacing * 2 + 200 // Extra space for smooth final scroll
+  const spacing = 90
+  const totalStackHeight = cardHeight + 100
 
-  const y0 = useTransform(scrollYProgress, [0, 0.3], [600, 0])
-  const y1 = useTransform(scrollYProgress, [0.3, 0.6], [600, spacing])
-  const y2 = useTransform(scrollYProgress, [0.6, 0.9], [600, spacing * 2])
+  const y0 = useTransform(scrollYProgress, [0, 0], [0, 0])
+  const y1 = useTransform(scrollYProgress, [0.25, 0.65], [800, 0])
+  const y2 = useTransform(scrollYProgress, [0.55, 0.95], [800, 0])
 
   const transforms = [{ y: y0 }, { y: y1 }, { y: y2 }]
 
@@ -140,30 +140,32 @@ function MobileServicesSection() {
         </div>
 
         <div className="relative px-4" style={{ height: `${totalStackHeight}px` }}>
-          {services.map((s, i) => (
-            <motion.div
-              key={i}
-              className="absolute inset-x-0 mx-auto max-w-md"
-              style={{
-                y: transforms[i].y,
-                zIndex: 10 + i,
-                opacity: 1,
-                transform: "translateZ(0)",
-              }}
-              transition={{ type: "tween", ease: [0.25, 0.1, 0.25, 1], duration: 1.2 }}
-            >
-              <div className="rounded-2xl overflow-hidden shadow-2xl min-h-[560px]" style={{ backgroundColor: s.bg }}>
-                <div className="aspect-[16/10] relative bg-white/5 p-4 overflow-hidden">
-                  <img
-                    src={s.image || "/placeholder.svg"}
-                    alt={s.title}
-                    className="w-full h-full object-contain rounded-xl"
-                  />
-                </div>
-                <div className="p-6">
-                  <h3 className={`text-xl font-semibold mb-3 ${s.textColor}`}>{s.title}</h3>
-                  <p className={`text-sm mb-4 ${s.subtextColor}`}>{s.subtext}</p>
-                  <ul className="space-y-2">
+          {services.map((s, i) => {
+            const icons = [Video, Monitor, Plus]
+            const Icon = icons[i]
+
+            return (
+              <motion.div
+                key={i}
+                className="absolute inset-x-0 mx-auto max-w-md"
+                style={{
+                  y: transforms[i].y,
+                  zIndex: 10 + i,
+                  opacity: 1,
+                }}
+                transition={{ type: "tween", ease: [0.25, 0.1, 0.25, 1], duration: 1.2 }}
+              >
+                <div className="rounded-[28px] p-6 shadow-2xl min-h-[560px]" style={{ backgroundColor: s.bg }}>
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center">
+                      <Icon className={`w-5 h-5 ${s.textColor}`} />
+                    </div>
+                    <h3 className={`text-xl font-semibold ${s.textColor}`}>{s.title}</h3>
+                  </div>
+
+                  <p className={`${s.subtextColor} mb-4 text-sm`}>{s.subtext}</p>
+
+                  <ul className="space-y-2 mb-6">
                     {s.bullets.map((b: string, idx: number) => (
                       <li key={idx} className="flex gap-3">
                         <span className={`w-2 h-2 mt-1.5 rounded-full flex-shrink-0 ${s.bulletDot}`} />
@@ -171,10 +173,20 @@ function MobileServicesSection() {
                       </li>
                     ))}
                   </ul>
+
+                  <div className="flex justify-center">
+                    <div className="relative w-full max-w-[240px] aspect-[3/4] rounded-2xl overflow-hidden bg-white/5">
+                      <img
+                        src={s.image || "/placeholder.svg"}
+                        alt={s.title}
+                        className="w-full h-full object-contain p-2"
+                      />
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </motion.div>
-          ))}
+              </motion.div>
+            )
+          })}
         </div>
       </div>
     </section>
@@ -273,6 +285,8 @@ export default function BearMediaWebsite() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [dark, setDark] = useState(false)
   const [currentSection, setCurrentSection] = useState("Services")
+  const [websiteIndex, setWebsiteIndex] = useState(0)
+  const [socialModalOpen, setSocialModalOpen] = useState(false)
 
   useEffect(() => {
     window.addEventListener("scroll", () => setIsScrolled(window.scrollY > 50))
@@ -306,7 +320,7 @@ export default function BearMediaWebsite() {
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id)
     if (element) {
-      const offset = 80 // Account for fixed header height
+      const offset = 80
       const elementPosition = element.getBoundingClientRect().top + window.pageYOffset
       window.scrollTo({
         top: id === "home" ? 0 : elementPosition - offset,
@@ -324,7 +338,6 @@ export default function BearMediaWebsite() {
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          {/* Logo + Title */}
           <div className="flex items-center gap-3">
             <div className="text-2xl font-bold">
               <span className={isScrolled ? "text-foreground" : "text-white"}>Bear</span>
@@ -338,7 +351,6 @@ export default function BearMediaWebsite() {
             </div>
           </div>
 
-          {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-6">
             <button
               onClick={() => scrollToSection("home")}
@@ -371,7 +383,6 @@ export default function BearMediaWebsite() {
               Contact
             </button>
 
-            {/* Theme Toggle */}
             <button
               onClick={toggleTheme}
               className={`p-2 rounded-full transition-colors ${isScrolled ? "hover:bg-muted" : "hover:bg-white/10"} ${isScrolled ? "" : "text-white"}`}
@@ -381,7 +392,6 @@ export default function BearMediaWebsite() {
             </button>
           </nav>
 
-          {/* Mobile Menu Button + Theme Toggle */}
           <div className="flex md:hidden items-center gap-2">
             <button
               onClick={toggleTheme}
@@ -400,7 +410,6 @@ export default function BearMediaWebsite() {
           </div>
         </div>
 
-        {/* Mobile Menu */}
         {menuOpen && (
           <div className="md:hidden bg-background/95 backdrop-blur-md border-t border-border">
             <nav className="flex flex-col py-4">
@@ -491,102 +500,222 @@ export default function BearMediaWebsite() {
       </section>
 
       {/* WORK */}
-      <AnimatedSection id="work" className="py-10 md:py-16 bg-background">
-        <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-3xl md:text-4xl font-semibold mb-10 text-center">Work</h2>
+      <AnimatedSection id="work" className="py-8 md:py-16 bg-background">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="mb-10 md:mb-12">
+            <h2 className="text-3xl md:text-4xl font-semibold mb-6">Work</h2>
+            <p className="text-muted-foreground mb-4">Portfolio examples across social, web, and design</p>
+          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[
-              {
-                img: "/work/social-media-mobile.jpg",
-                title: "Social Media Content",
-                desc: "Scroll-stopping video and graphics for social feeds.",
-              },
-              {
-                img: "/work/websites-desktop.jpg",
-                title: "Business Websites",
-                desc: "Clean, fast websites built to convert.",
-              },
-              {
-                img: "/work/brand-collage.jpg",
-                title: "Brand Assets",
-                desc: "Logos, graphics and visual identity systems.",
-              },
-            ].map((item, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.6, delay: i * 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
-                className="rounded-2xl overflow-hidden shadow-lg bg-card"
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Card 1: Social Media Content - Mobile Phone with Modal */}
+            <motion.div
+              initial={{ opacity: 1, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
+              className="rounded-2xl overflow-hidden shadow-lg bg-card flex flex-col min-h-[580px]"
+            >
+              <div
+                onClick={() => setSocialModalOpen(true)}
+                className="w-full h-[406px] bg-muted flex items-center justify-center cursor-pointer hover:opacity-90 transition-opacity"
               >
-                <div className="w-full aspect-[4/5] md:aspect-[4/3] overflow-hidden bg-muted">
-                  <img
-                    src={item.img || "/placeholder.svg"}
-                    alt={item.title}
-                    className="w-full h-full object-cover md:object-contain md:p-4"
-                  />
+                <img src="/mobilephone.png" alt="Social Media Content" className="h-full w-auto object-cover" />
+              </div>
+              <div className="p-5 flex-grow flex flex-col justify-between">
+                <div>
+                  <h3 className="font-semibold mb-1 text-foreground">Social Media Content</h3>
+                  <p className="text-sm text-muted-foreground">Scroll-stopping video and graphics for social feeds.</p>
                 </div>
-                <div className="p-5">
-                  <h3 className="font-semibold mb-1 text-foreground">{item.title}</h3>
-                  <p className="text-sm text-muted-foreground">{item.desc}</p>
+              </div>
+            </motion.div>
+
+            {/* Card 2: Business Websites - Carousel (now works on mobile too) */}
+            <motion.div
+              initial={{ opacity: 1, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6, delay: 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
+              className="rounded-2xl overflow-hidden shadow-lg bg-card flex flex-col min-h-[580px]"
+            >
+              <div className="relative w-full h-[406px] bg-muted overflow-hidden">
+                <img
+                  src={["/website-1.png", "/website-2.png", "/website-3.png"][websiteIndex] || "/placeholder.svg"}
+                  alt="Business Website"
+                  className="w-full h-full object-cover"
+                />
+                {/* Navigation arrows */}
+                <button
+                  onClick={() => setWebsiteIndex((websiteIndex - 1 + 3) % 3)}
+                  className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white rounded-full w-8 h-8 flex items-center justify-center transition-colors z-10"
+                  aria-label="Previous website"
+                >
+                  ←
+                </button>
+                <button
+                  onClick={() => setWebsiteIndex((websiteIndex + 1) % 3)}
+                  className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white rounded-full w-8 h-8 flex items-center justify-center transition-colors z-10"
+                  aria-label="Next website"
+                >
+                  →
+                </button>
+                {/* Navigation dots */}
+                <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+                  {[0, 1, 2].map((i) => (
+                    <button
+                      key={i}
+                      onClick={() => setWebsiteIndex(i)}
+                      className={`h-2 rounded-full transition-all ${
+                        i === websiteIndex ? "bg-[#C9A227] w-6" : "bg-white/50 w-2"
+                      }`}
+                      aria-label={`View website ${i + 1}`}
+                    />
+                  ))}
                 </div>
-              </motion.div>
-            ))}
+              </div>
+              <div className="p-5 flex-grow flex flex-col justify-between">
+                <div>
+                  <h3 className="font-semibold mb-1 text-foreground">Business Websites</h3>
+                  <p className="text-sm text-muted-foreground">Clean, fast websites built to convert.</p>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Card 3: Brand Assets - Static Poster */}
+            <motion.div
+              initial={{ opacity: 1, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
+              className="rounded-2xl overflow-hidden shadow-lg bg-card flex flex-col min-h-[580px]"
+            >
+              <div className="w-full h-[406px] bg-muted overflow-hidden flex items-center justify-center">
+                <img src="/branding.png" alt="Brand Assets" className="w-full h-full object-cover" />
+              </div>
+              <div className="p-5 flex-grow flex flex-col justify-between">
+                <div>
+                  <h3 className="font-semibold mb-1 text-foreground">Brand Assets</h3>
+                  <p className="text-sm text-muted-foreground">Logos, graphics and visual identity systems.</p>
+                </div>
+              </div>
+            </motion.div>
           </div>
         </div>
       </AnimatedSection>
 
-      {/* REVIEWS */}
-      <AnimatedSection id="reviews" className="py-10 md:py-16 bg-muted">
-        <div className="max-w-5xl mx-auto px-6 text-center">
-          <p className="text-sm text-[#C9A227] font-medium mb-2">★★★★★ 5.0 from 18 Google reviews</p>
-          <h2 className="text-3xl md:text-4xl font-semibold mb-10">What clients say</h2>
+      {/* Trusted by Local Businesses logo carousel */}
+      <section className="py-8 md:py-12 bg-muted">
+        <div className="max-w-7xl mx-auto px-6">
+          <h2 className="text-2xl md:text-3xl font-semibold mb-8 text-center">Trusted by local businesses</h2>
 
-          <div className="grid md:grid-cols-3 gap-6 mb-8">
-            {[
-              {
-                quote: "Top quality service from start to finish. Garry delivered exactly what we needed.",
-                name: "Michael R.",
-              },
-              {
-                quote: "Great communication and brilliant results. Would highly recommend to anyone.",
-                name: "Sarah T.",
-              },
-              {
-                quote: "Professional, reliable, and easy to work with. Exceeded our expectations.",
-                name: "James M.",
-              },
-            ].map((review, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.6, delay: i * 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
-                className="bg-card p-6 rounded-2xl text-left shadow-md"
-              >
-                <div className="text-[#C9A227] mb-3 text-sm">★★★★★</div>
-                <p className="text-sm mb-4 text-foreground">&ldquo;{review.quote}&rdquo;</p>
-                <p className="text-xs font-medium text-muted-foreground">{review.name}</p>
-              </motion.div>
-            ))}
+          {/* Desktop - horizontal scroll */}
+          <div className="hidden md:block relative">
+            <div className="overflow-x-scroll scrollbar-hide">
+              <div className="flex items-center justify-center gap-12 pb-4 min-w-max px-8">
+                {[
+                  "/logos/voice2lead.png",
+                  "/logos/webuyanyhome.png",
+                  "/logos/almond-vet.png",
+                  "/logos/seamus-corn.png",
+                  "/logos/lewis-joinery.png",
+                  "/logos/gimme-gimme.png",
+                ].map((logo, i) => (
+                  <div
+                    key={i}
+                    className="flex-shrink-0 grayscale hover:grayscale-0 transition-all opacity-60 hover:opacity-100"
+                  >
+                    <img
+                      src={logo || "/placeholder.svg"}
+                      alt="Client logo"
+                      className="h-12 md:h-14 w-auto object-contain"
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
 
-          <a
-            href="https://www.google.com/search?q=Bear+Media+Google+reviews"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors hover:underline"
+          <div className="md:hidden relative">
+            <div className="overflow-x-scroll scrollbar-hide snap-x snap-mandatory -mx-6 px-6">
+              <div className="flex items-center gap-8 pb-4 min-w-max">
+                {[
+                  "/logos/voice2lead.png",
+                  "/logos/webuyanyhome.png",
+                  "/logos/almond-vet.png",
+                  "/logos/seamus-corn.png",
+                  "/logos/lewis-joinery.png",
+                  "/logos/gimme-gimme.png",
+                ].map((logo, i) => (
+                  <div key={i} className="snap-center flex-shrink-0 grayscale opacity-70">
+                    <img src={logo || "/placeholder.svg"} alt="Client logo" className="h-10 w-auto object-contain" />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* REVIEWS */}
+      <AnimatedSection id="reviews" className="py-8 md:py-16 bg-muted">
+        <div className="max-w-4xl mx-auto px-6">
+          <h2 className="text-3xl md:text-4xl font-semibold mb-6 text-center">What clients say</h2>
+
+          <motion.div
+            initial={{ opacity: 0, x: -40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            className="hidden md:block max-w-3xl mx-auto"
           >
-            Read more reviews on Google →
-          </a>
+            <div className="bg-card p-8 md:p-10 rounded-2xl shadow-md">
+              <p className="text-sm text-[#C9A227] font-medium mb-6">★★★★★ 5.0 from 18 Google reviews</p>
+              <blockquote className="text-lg md:text-xl text-foreground mb-6 leading-relaxed">
+                "Garry created a simple, powerful website that sells our Manager Training Programme and clearly sets us
+                apart. Delivered within days, with zero fuss. Exactly what we needed."
+              </blockquote>
+              <div className="text-sm font-medium text-muted-foreground">
+                <p>Managing What Matters</p>
+                <p className="text-xs mt-1">Leadership & Management Training</p>
+              </div>
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            className="md:hidden max-w-3xl mx-auto"
+          >
+            <div className="bg-card p-6 rounded-2xl shadow-md">
+              <p className="text-sm text-[#C9A227] font-medium mb-4">★★★★★ 5.0 from 18 Google reviews</p>
+              <blockquote className="text-base text-foreground mb-4 leading-relaxed">
+                "Garry created a simple, powerful website that sells our Manager Training Programme and clearly sets us
+                apart. Delivered within days, with zero fuss. Exactly what we needed."
+              </blockquote>
+              <div className="text-sm font-medium text-muted-foreground">
+                <p>Managing What Matters</p>
+                <p className="text-xs mt-1">Leadership & Management Training</p>
+              </div>
+            </div>
+          </motion.div>
+
+          <div className="text-center mt-8">
+            <a
+              href="https://www.google.com/search?q=Bear+Media+reviews"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors hover:underline"
+            >
+              Read all reviews on Google →
+            </a>
+          </div>
         </div>
       </AnimatedSection>
 
       {/* ABOUT */}
-      <AnimatedSection id="about" className="py-10 md:py-16 bg-background">
+      <AnimatedSection id="about" className="py-8 md:py-16 bg-background">
         <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
           <div>
             <h2 className="text-3xl md:text-4xl font-semibold mb-6">About</h2>
@@ -716,7 +845,7 @@ function AnimatedSection({
       id={id}
       initial={{ opacity: 0, y: 24 }}
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
-      transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
+      transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
       className={className}
     >
       {children}
