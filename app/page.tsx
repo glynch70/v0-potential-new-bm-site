@@ -613,59 +613,6 @@ export default function BearMediaWebsite() {
         </div>
       </AnimatedSection>
 
-      {/* Trusted by Local Businesses logo carousel */}
-      <section className="py-8 md:py-12 bg-muted">
-        <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-2xl md:text-3xl font-semibold mb-8 text-center">Trusted by local businesses</h2>
-
-          {/* Desktop - horizontal scroll */}
-          <div className="hidden md:block relative">
-            <div className="overflow-x-scroll scrollbar-hide">
-              <div className="flex items-center justify-center gap-12 pb-4 min-w-max px-8">
-                {[
-                  "/logos/voice2lead.png",
-                  "/logos/webuyanyhome.png",
-                  "/logos/almond-vet.png",
-                  "/logos/seamus-corn.png",
-                  "/logos/lewis-joinery.png",
-                  "/logos/gimme-gimme.png",
-                ].map((logo, i) => (
-                  <div
-                    key={i}
-                    className="flex-shrink-0 grayscale hover:grayscale-0 transition-all opacity-60 hover:opacity-100"
-                  >
-                    <img
-                      src={logo || "/placeholder.svg"}
-                      alt="Client logo"
-                      className="h-12 md:h-14 w-auto object-contain"
-                    />
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          <div className="md:hidden relative">
-            <div className="overflow-x-scroll scrollbar-hide snap-x snap-mandatory -mx-6 px-6">
-              <div className="flex items-center gap-8 pb-4 min-w-max">
-                {[
-                  "/logos/voice2lead.png",
-                  "/logos/webuyanyhome.png",
-                  "/logos/almond-vet.png",
-                  "/logos/seamus-corn.png",
-                  "/logos/lewis-joinery.png",
-                  "/logos/gimme-gimme.png",
-                ].map((logo, i) => (
-                  <div key={i} className="snap-center flex-shrink-0 grayscale opacity-70">
-                    <img src={logo || "/placeholder.svg"} alt="Client logo" className="h-10 w-auto object-contain" />
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* REVIEWS */}
       <AnimatedSection id="reviews" className="py-8 md:py-16 bg-muted">
         <div className="max-w-4xl mx-auto px-6">
