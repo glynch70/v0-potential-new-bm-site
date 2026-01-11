@@ -1,7 +1,6 @@
 "use client"
 
 import type React from "react"
-
 import { useState } from "react"
 import Link from "next/link"
 import { ArrowLeft } from "lucide-react"
@@ -15,15 +14,44 @@ export default function ContactPage() {
     message: "",
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const [isSubmitted, setIsSubmitted] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle")
+  const [errorMessage, setErrorMessage] = useState("")
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1000))
-    setIsSubmitting(false)
-    setIsSubmitted(true)
+    setSubmitStatus("idle")
+    setErrorMessage("")
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      })
+
+      const data = await response.json()
+
+      if (response.ok) {
+        setSubmitStatus("success")
+        setFormData({
+          name: "",
+          email: "",
+          projectType: "",
+          message: "",
+        })
+      } else {
+        setSubmitStatus("error")
+        setErrorMessage(data.message || "Something went wrong. Please try again.")
+      }
+    } catch (error) {
+      setSubmitStatus("error")
+      setErrorMessage("Something went wrong. Please email info@bear-media.com directly.")
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -101,7 +129,7 @@ export default function ContactPage() {
 
             {/* Right column - contact form */}
             <div className="order-1 md:order-2">
-              {isSubmitted ? (
+              {submitStatus === "success" ? (
                 <div className="bg-[#FAF9F6] rounded-2xl p-10 text-center shadow-[0_4px_20px_rgba(0,0,0,0.08)]">
                   <div className="w-16 h-16 bg-[#C9A227]/10 rounded-full flex items-center justify-center mx-auto mb-6">
                     <svg className="w-8 h-8 text-[#C9A227]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -109,100 +137,99 @@ export default function ContactPage() {
                     </svg>
                   </div>
                   <h3 className="text-2xl font-bold text-black mb-3">Message sent</h3>
-                  <p className="text-black/50 text-lg leading-[1.7]">
-                    Thanks for getting in touch. I'll reply within 24 hours.
-                  </p>
+                  <p className="text-black/50 text-lg leading-[1.7]">Thanks! I'll get back to you within 24 hours.</p>
                 </div>
               ) : (
-                <form
-                  onSubmit={handleSubmit}
-                  action="https://formspree.io/f/your-form-id"
-                  method="POST"
-                  className="space-y-6"
-                >
-                  <div>
-                    <label htmlFor="name" className="block text-base font-medium text-black/70 mb-2">
-                      Name
-                    </label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      required
-                      value={formData.name}
-                      onChange={handleChange}
-                      className="w-full px-4 py-4 bg-[#FAF9F6] border-0 rounded-xl text-black placeholder:text-black/30 focus:outline-none focus:ring-2 focus:ring-[#C9A227]/30 transition-all text-base min-h-[44px]"
-                      placeholder="Your name"
-                    />
-                  </div>
+                <>
+                  {submitStatus === "error" && (
+                    <div className="mb-6 bg-red-50 border border-red-200 rounded-xl p-4">
+                      <p className="text-red-800 text-base">{errorMessage}</p>
+                    </div>
+                  )}
 
-                  <div>
-                    <label htmlFor="email" className="block text-base font-medium text-black/70 mb-2">
-                      Email
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      required
-                      value={formData.email}
-                      onChange={handleChange}
-                      className="w-full px-4 py-4 bg-[#FAF9F6] border-0 rounded-xl text-black placeholder:text-black/30 focus:outline-none focus:ring-2 focus:ring-[#C9A227]/30 transition-all text-base min-h-[44px]"
-                      placeholder="you@example.com"
-                    />
-                  </div>
+                  <form onSubmit={handleSubmit} className="space-y-6">
+                    <div>
+                      <label htmlFor="name" className="block text-base font-medium text-black/70 mb-2">
+                        Name
+                      </label>
+                      <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        required
+                        value={formData.name}
+                        onChange={handleChange}
+                        className="w-full px-4 py-4 bg-[#FAF9F6] border-0 rounded-xl text-black placeholder:text-black/30 focus:outline-none focus:ring-2 focus:ring-[#C9A227]/30 transition-all text-base min-h-[44px]"
+                        placeholder="Your name"
+                      />
+                    </div>
 
-                  <div>
-                    <label htmlFor="projectType" className="block text-base font-medium text-black/70 mb-2">
-                      Project type <span className="text-black/30">(optional)</span>
-                    </label>
-                    <select
-                      id="projectType"
-                      name="projectType"
-                      value={formData.projectType}
-                      onChange={handleChange}
-                      className="w-full px-4 py-4 bg-[#FAF9F6] border-0 rounded-xl text-black focus:outline-none focus:ring-2 focus:ring-[#C9A227]/30 transition-all appearance-none cursor-pointer text-base min-h-[44px]"
-                      style={{
-                        backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23999'%3E%3Cpath strokeLinecap='round' strokeLinejoin='round' strokeWidth='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E")`,
-                        backgroundRepeat: "no-repeat",
-                        backgroundPosition: "right 1rem center",
-                        backgroundSize: "1.25rem",
-                      }}
+                    <div>
+                      <label htmlFor="email" className="block text-base font-medium text-black/70 mb-2">
+                        Email
+                      </label>
+                      <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        required
+                        value={formData.email}
+                        onChange={handleChange}
+                        className="w-full px-4 py-4 bg-[#FAF9F6] border-0 rounded-xl text-black placeholder:text-black/30 focus:outline-none focus:ring-2 focus:ring-[#C9A227]/30 transition-all text-base min-h-[44px]"
+                        placeholder="you@example.com"
+                      />
+                    </div>
+
+                    <div>
+                      <label htmlFor="projectType" className="block text-base font-medium text-black/70 mb-2">
+                        Project type <span className="text-black/30">(optional)</span>
+                      </label>
+                      <select
+                        id="projectType"
+                        name="projectType"
+                        value={formData.projectType}
+                        onChange={handleChange}
+                        className="w-full px-4 py-4 bg-[#FAF9F6] border-0 rounded-xl text-black focus:outline-none focus:ring-2 focus:ring-[#C9A227]/30 transition-all appearance-none cursor-pointer text-base min-h-[44px]"
+                        style={{
+                          backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23999'%3E%3Cpath strokeLinecap='round' strokeLinejoin='round' strokeWidth='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E")`,
+                          backgroundRepeat: "no-repeat",
+                          backgroundPosition: "right 1rem center",
+                          backgroundSize: "1.25rem",
+                        }}
+                      >
+                        <option value="">Select a type...</option>
+                        <option value="website">Website</option>
+                        <option value="social-content">Social media content</option>
+                        <option value="branding">Branding & visual assets</option>
+                        <option value="other">Something else</option>
+                      </select>
+                    </div>
+
+                    <div>
+                      <label htmlFor="message" className="block text-base font-medium text-black/70 mb-2">
+                        Message
+                      </label>
+                      <textarea
+                        id="message"
+                        name="message"
+                        required
+                        rows={5}
+                        value={formData.message}
+                        onChange={handleChange}
+                        className="w-full px-4 py-4 bg-[#FAF9F6] border-0 rounded-xl text-black placeholder:text-black/30 focus:outline-none focus:ring-2 focus:ring-[#C9A227]/30 transition-all resize-none text-base"
+                        placeholder="Tell me a bit about your project..."
+                      />
+                    </div>
+
+                    <Button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="w-full bg-[#C9A227] hover:bg-[#B8921F] text-black rounded-xl px-8 py-7 text-lg font-bold shadow-[0_4px_20px_rgba(201,162,39,0.25)] transition-all duration-300 hover:shadow-[0_8px_30px_rgba(201,162,39,0.35)] disabled:opacity-60 min-h-[44px]"
                     >
-                      <option value="">Select a type...</option>
-                      <option value="website">Website</option>
-                      <option value="social-content">Social media content</option>
-                      <option value="branding">Branding & visual assets</option>
-                      <option value="other">Something else</option>
-                    </select>
-                  </div>
-
-                  <div>
-                    <label htmlFor="message" className="block text-base font-medium text-black/70 mb-2">
-                      Message
-                    </label>
-                    <textarea
-                      id="message"
-                      name="message"
-                      required
-                      rows={5}
-                      value={formData.message}
-                      onChange={handleChange}
-                      className="w-full px-4 py-4 bg-[#FAF9F6] border-0 rounded-xl text-black placeholder:text-black/30 focus:outline-none focus:ring-2 focus:ring-[#C9A227]/30 transition-all resize-none text-base"
-                      placeholder="Tell me a bit about your project..."
-                    />
-                  </div>
-
-                  <Button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className="w-full bg-[#C9A227] hover:bg-[#B8921F] text-black rounded-xl px-8 py-7 text-lg font-bold shadow-[0_4px_20px_rgba(201,162,39,0.25)] transition-all duration-300 hover:shadow-[0_8px_30px_rgba(201,162,39,0.35)] disabled:opacity-60 min-h-[44px]"
-                  >
-                    {isSubmitting ? "Sending..." : "Send message"}
-                  </Button>
-                  <input type="hidden" name="_replyto" value="info@bear-media.com" />
-                  <input type="hidden" name="_subject" value="New contact form submission from Bear Media website" />
-                </form>
+                      {isSubmitting ? "Sending..." : "Send message"}
+                    </Button>
+                  </form>
+                </>
               )}
             </div>
           </div>
