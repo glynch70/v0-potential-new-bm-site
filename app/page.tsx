@@ -637,7 +637,7 @@ export default function BearMediaWebsite() {
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
             className="md:hidden max-w-3xl mx-auto"
           >
-            <div className="bg-card p-6 rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.15)]">
+            <div className="bg-card p-6 rounded-2xl shadow-xl">
               <p className="text-base text-[#C9A227] font-medium mb-4">★★★★★ 5.0 from 18 Google reviews</p>
               <blockquote className="text-base text-foreground mb-4 leading-[1.7]">
                 "Garry created a simple, powerful website that sells our Manager Training Programme and clearly sets us
@@ -668,9 +668,12 @@ export default function BearMediaWebsite() {
         <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
           <div>
             <h2 className="text-4xl md:text-5xl font-bold mb-6">About</h2>
-            <p className="text-muted-foreground mb-4 text-lg leading-[1.7]">Hi, I'm Garry founder of Bear Media. I help businesses get seen, build trust, and get contacted through clean websites and consistent social media content.</p>
+            <p className="text-muted-foreground mb-4 text-lg leading-[1.7]">
+              Hi, I'm Garry founder of Bear Media. I help businesses get seen, build trust, and get contacted through
+              clean websites and consistent social media content.
+            </p>
             <p className="text-muted-foreground text-lg leading-[1.7]">
-              <br>
+              <br />
             </p>
           </div>
 
