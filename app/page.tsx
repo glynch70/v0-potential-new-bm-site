@@ -76,13 +76,13 @@ function ServiceCardAnimated({ service, index, scrollYProgress }: any) {
 }
 
 /* --------------------------------
-   MOBILE SERVICES (ENHANCED STACKING MOTION)
+   MOBILE SERVICES — simple flow
 -------------------------------- */
 
 function MobileServicesSection() {
-  const containerRef = useRef<HTMLDivElement>(null)
   const services = [
     {
+      id: 1,
       title: "Social Media Content",
       subtext: "Consistent, on-brand content that builds trust and visibility.",
       bullets: ["Reels & Shorts", "Promo clips", "Monthly packages", "Management"],
@@ -94,6 +94,7 @@ function MobileServicesSection() {
       bulletDot: "bg-black",
     },
     {
+      id: 2,
       title: "Websites",
       subtext: "Fast, clean websites built to convert visitors.",
       bullets: ["Landing pages", "Business sites", "Hosting"],
@@ -105,6 +106,7 @@ function MobileServicesSection() {
       bulletDot: "bg-[#C9A227]",
     },
     {
+      id: 3,
       title: "Extras & Add-ons",
       subtext: "Everything else to support your brand.",
       bullets: ["Drone", "Photography", "SEO", "Google Business"],
@@ -117,78 +119,48 @@ function MobileServicesSection() {
     },
   ]
 
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end end"],
-  })
-
-  const cardHeight = 560
-  const spacing = 90
-  const totalStackHeight = cardHeight + 100
-
-  const y0 = useTransform(scrollYProgress, [0, 0], [0, 0])
-  const y1 = useTransform(scrollYProgress, [0.25, 0.65], [800, 0])
-  const y2 = useTransform(scrollYProgress, [0.55, 0.95], [800, 0])
-
-  const transforms = [{ y: y0 }, { y: y1 }, { y: y2 }]
+  const icons = [Video, Monitor, Plus]
 
   return (
-    <section ref={containerRef} className="relative bg-muted md:hidden" style={{ height: "400vh" }}>
-      <div className="sticky top-0 h-screen overflow-x-hidden overflow-y-visible pt-24 pb-8">
-        <div className="text-center mb-8 px-4">
-          <h2 className="text-3xl font-semibold">Services</h2>
-          <p className="text-muted-foreground mt-2 text-sm">Clear, practical services that get results.</p>
-        </div>
+    <section id="services" className="relative bg-muted md:hidden py-12 px-4">
+      <div className="text-center mb-8">
+        <h2 className="text-3xl font-semibold">Services</h2>
+        <p className="text-muted-foreground mt-2 text-sm">Clear, practical services that get results.</p>
+      </div>
 
-        <div className="relative px-4" style={{ height: `${totalStackHeight}px` }}>
-          {services.map((s, i) => {
-            const icons = [Video, Monitor, Plus]
-            const Icon = icons[i]
-
-            return (
-              <motion.div
-                key={i}
-                className="absolute inset-x-0 mx-auto max-w-md"
-                style={{
-                  y: transforms[i].y,
-                  zIndex: 10 + i,
-                  opacity: 1,
-                }}
-                transition={{ type: "tween", ease: [0.25, 0.1, 0.25, 1], duration: 1.2 }}
-              >
-                <div className="rounded-[28px] p-6 shadow-2xl min-h-[560px]" style={{ backgroundColor: s.bg }}>
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center">
-                      <Icon className={`w-5 h-5 ${s.textColor}`} />
-                    </div>
-                    <h3 className={`text-xl font-semibold ${s.textColor}`}>{s.title}</h3>
+      <div className="flex flex-col gap-5 max-w-md mx-auto">
+        {services.map((s, i) => {
+          const Icon = icons[i]
+          return (
+            <div key={s.id}>
+              <div className="rounded-[28px] p-5 shadow-xl" style={{ backgroundColor: s.bg }}>
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center">
+                    <Icon className={`w-5 h-5 ${s.textColor}`} />
                   </div>
+                  <h3 className={`text-xl font-semibold ${s.textColor}`}>{s.title}</h3>
+                </div>
 
-                  <p className={`${s.subtextColor} mb-4 text-sm`}>{s.subtext}</p>
+                <p className={`${s.subtextColor} mb-3 text-sm`}>{s.subtext}</p>
 
-                  <ul className="space-y-2 mb-6">
-                    {s.bullets.map((b: string, idx: number) => (
-                      <li key={idx} className="flex gap-3">
-                        <span className={`w-2 h-2 mt-1.5 rounded-full flex-shrink-0 ${s.bulletDot}`} />
-                        <span className={`text-sm ${s.bulletColor}`}>{b}</span>
-                      </li>
-                    ))}
-                  </ul>
+                <ul className="space-y-1.5 mb-4">
+                  {s.bullets.map((b: string, idx: number) => (
+                    <li key={idx} className="flex gap-2">
+                      <span className={`w-1.5 h-1.5 mt-1.5 rounded-full flex-shrink-0 ${s.bulletDot}`} />
+                      <span className={`text-sm ${s.bulletColor}`}>{b}</span>
+                    </li>
+                  ))}
+                </ul>
 
-                  <div className="flex justify-center">
-                    <div className="relative w-full max-w-[240px] aspect-[3/4] rounded-2xl overflow-hidden bg-white/5">
-                      <img
-                        src={s.image || "/placeholder.svg"}
-                        alt={s.title}
-                        className="w-full h-full object-contain p-2"
-                      />
-                    </div>
+                <div className="flex justify-center">
+                  <div className="relative w-full max-w-[200px] aspect-[3/4] rounded-xl overflow-hidden bg-white/5">
+                    <Image src={s.image || "/placeholder.svg"} alt={s.title} fill className="object-cover" />
                   </div>
                 </div>
-              </motion.div>
-            )
-          })}
-        </div>
+              </div>
+            </div>
+          )
+        })}
       </div>
     </section>
   )

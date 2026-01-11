@@ -14,28 +14,54 @@ const SECTIONS: { id: SectionId; label: string }[] = [
 
 export default function FloatingSectionNav() {
   const [active, setActive] = useState<SectionId>("home")
-  const observerRef = useRef<IntersectionObserver | null>(null)
+  const sectionPositions = useRef<Map<SectionId, number>>(new Map())
 
   useEffect(() => {
-    const sections = SECTIONS.map(s => document.getElementById(s.id)).filter(Boolean)
+    const updateActiveSection = () => {
+      const scrollY = window.scrollY + window.innerHeight * 0.4 // 40% down the viewport
 
-    observerRef.current = new IntersectionObserver(
-      entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            setActive(entry.target.id as SectionId)
-          }
-        })
-      },
-      {
-        rootMargin: "-40% 0px -50% 0px",
-        threshold: 0.15,
+      // Get all sections and their positions
+      SECTIONS.forEach(({ id }) => {
+        const el = document.getElementById(id)
+        if (el) {
+          sectionPositions.current.set(id, el.offsetTop)
+        }
+      })
+
+      // Find the current section based on scroll position
+      let currentSection: SectionId = "home"
+      for (const { id } of SECTIONS) {
+        const pos = sectionPositions.current.get(id)
+        if (pos !== undefined && scrollY >= pos) {
+          currentSection = id
+        }
       }
-    )
 
-    sections.forEach(section => observerRef.current?.observe(section!))
+      setActive(currentSection)
+    }
 
-    return () => observerRef.current?.disconnect()
+    // Initial check
+    updateActiveSection()
+
+    // Throttled scroll listener for performance
+    let ticking = false
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          updateActiveSection()
+          ticking = false
+        })
+        ticking = true
+      }
+    }
+
+    window.addEventListener("scroll", handleScroll, { passive: true })
+    window.addEventListener("resize", updateActiveSection)
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll)
+      window.removeEventListener("resize", updateActiveSection)
+    }
   }, [])
 
   const scrollTo = (id: SectionId) => {
@@ -46,20 +72,22 @@ export default function FloatingSectionNav() {
   }
 
   return (
-    <div className="fixed bottom-4 left-1/2 z-50 -translate-x-1/2">
-      <div className="flex items-center border-black/10 bg-white/90 backdrop-blur shadow-lg dark:bg-black/80 px-2.5 mx-[-8px] my-[50px] py-[7px] gap-0 justify-start border rounded-full tracking-tighter leading-5">
-        {SECTIONS.map(section => {
+    <div className="fixed bottom-4 left-1/2 z-50 -translate-x-1/2 pb-safe">
+      <div className="flex items-center border-black/10 bg-white/95 backdrop-blur-md shadow-xl dark:bg-black/90 px-1.5 py-1.5 gap-0.5 border rounded-full">
+        {SECTIONS.map((section) => {
           const isActive = active === section.id
           return (
             <button
               key={section.id}
               onClick={() => scrollTo(section.id)}
-              className={`rounded-full px-4 py-2 text-sm font-medium transition-all
+              className={`relative rounded-full px-3 md:px-4 py-2 text-xs md:text-sm font-medium 
+                transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]
                 ${
                   isActive
-                    ? "bg-black text-white dark:bg-white dark:text-black"
-                    : "text-black/60 hover:text-black dark:text-white/60 dark:hover:text-white"
-                }`}
+                    ? "bg-[#C9A227] text-black shadow-md scale-105"
+                    : "text-black/50 hover:text-black hover:bg-black/5 dark:text-white/50 dark:hover:text-white dark:hover:bg-white/10"
+                }
+                active:scale-95`}
             >
               {section.label}
             </button>
