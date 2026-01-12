@@ -55,12 +55,12 @@ Submitted: ${new Date().toLocaleString("en-GB", { timeZone: "Europe/London" })}
         Authorization: `Bearer ${resendApiKey}`,
       },
       body: JSON.stringify({
-      from: "Bear Media <onboarding@resend.dev>",
-        to: ["info@bear-media.com"],
-        reply_to: email,
-        subject: `New Contact Form Submission from ${name}`,
-        text: emailContent,
-      }),
+  from: "Bear Media <info@bear-media.com>",
+  to: ["info@bear-media.com"],
+  reply_to: email,
+  subject: `New Contact Form Submission from ${name}`,
+  text: emailContent,
+}),
     })
 
     if (!emailResponse.ok) {
