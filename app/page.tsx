@@ -714,7 +714,29 @@ export default function BearMediaWebsite() {
               Send a message and I'll get back to you within 24 hours.
             </p>
 
-            <form action="https://formspree.io/f/your-form-id" method="POST" className="space-y-6">
+            <form
+  onSubmit={async (e) => {
+    e.preventDefault()
+
+    const form = e.currentTarget
+    const formData = new FormData(form)
+
+    const res = await fetch("/api/contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        name: formData.get("name"),
+        email: formData.get("email"),
+        projectType: formData.get("projectType"),
+        message: formData.get("message"),
+      }),
+    })
+
+    const data = await res.json()
+    alert(data.message)
+    form.reset()
+  }}
+>
               <div>
                 <label htmlFor="name" className="block text-base font-medium mb-2 text-foreground">
                   Name
@@ -763,8 +785,7 @@ export default function BearMediaWebsite() {
               >
                 Send Message
               </Button>
-              <input type="hidden" name="_replyto" value="info@bear-media.com" />
-              <input type="hidden" name="_subject" value="New contact form submission from Bear Media website" />
+          
             </form>
           </div>
         </motion.div>
