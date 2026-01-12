@@ -1,39 +1,39 @@
-import type React from "react"
+import Script from "next/script"
 import type { Metadata } from "next"
-import { Analytics } from "@vercel/analytics/next"
+import { Analytics } from "@vercel/analytics/react"
 import "./globals.css"
 
 export const metadata: Metadata = {
-  title: "v0 App",
-  description: "Created with v0",
-  generator: "v0.app",
-  icons: {
-    icon: [
-      {
-        url: "/icon-light-32x32.png",
-        media: "(prefers-color-scheme: light)",
-      },
-      {
-        url: "/icon-dark-32x32.png",
-        media: "(prefers-color-scheme: dark)",
-      },
-      {
-        url: "/icon.svg",
-        type: "image/svg+xml",
-      },
-    ],
-    apple: "/apple-icon.png",
-  },
+  title: "Bear Media",
+  description: "Websites & Social Media Content",
+    generator: 'v0.app'
 }
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode
-}>) {
+}) {
   return (
     <html lang="en">
-      <body className={`font-sans antialiased`}>
+      {/* THIS is effectively <head> */}
+      <Script
+        src="https://www.googletagmanager.com/gtag/js?id=G-RG6BZ5QZXY"
+        strategy="afterInteractive"
+      />
+
+      <Script id="ga4" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-RG6BZ5QZXY', {
+            anonymize_ip: true
+          });
+        `}
+      </Script>
+
+      <body className="font-sans antialiased">
         {children}
         <Analytics />
       </body>
