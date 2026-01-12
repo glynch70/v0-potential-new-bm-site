@@ -55,7 +55,7 @@ Submitted: ${new Date().toLocaleString("en-GB", { timeZone: "Europe/London" })}
         Authorization: `Bearer ${resendApiKey}`,
       },
       body: JSON.stringify({
-        from: "onboarding@resend.dev",
+      from: "Bear Media <onboarding@resend.dev>",
         to: ["info@bear-media.com"],
         reply_to: email,
         subject: `New Contact Form Submission from ${name}`,
@@ -64,14 +64,13 @@ Submitted: ${new Date().toLocaleString("en-GB", { timeZone: "Europe/London" })}
     })
 
     if (!emailResponse.ok) {
-      const errorData = await emailResponse.json()
-      console.error("Resend API error:", errorData)
-      return NextResponse.json(
-        { message: "Failed to send email. Please email info@bear-media.com directly." },
-        { status: 500 },
-      )
-    }
-
+  const text = await emailResponse.text()
+  console.error("Resend API error:", emailResponse.status, text)
+  return NextResponse.json(
+    { message: `Email failed: ${text}` },
+    { status: 500 }
+  )
+}
     return NextResponse.json({ message: "Message sent successfully!" }, { status: 200 })
   } catch (error) {
     console.error("Contact form error:", error)
