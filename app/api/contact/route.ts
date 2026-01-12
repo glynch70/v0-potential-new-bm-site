@@ -22,8 +22,8 @@ export async function POST(request: Request) {
     }
 
     // Prepare email content
-    const emailContent = `
-New Contact Form Submission from Bear Media Website
+   const emailContent = `
+New Contact Form Submission – Bear Media
 
 Name: ${name}
 Email: ${email}
@@ -33,9 +33,10 @@ Message:
 ${message}
 
 ---
-Submitted: ${new Date().toLocaleString("en-GB", { timeZone: "Europe/London" })}
-    `.trim()
-
+Submitted: ${new Date().toLocaleString("en-GB", {
+  timeZone: "Europe/London",
+})}
+`
     // Send email using Resend API
     // Note: You'll need to add RESEND_API_KEY to your environment variables
     const resendApiKey = process.env.RESEND_API_KEY
