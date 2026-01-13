@@ -1,7 +1,6 @@
 'use client'
-
 import Image from 'next/image'
-import clsx from 'clsx'
+import { useEffect, useRef } from 'react'
 
 const services = [
   {
@@ -23,25 +22,20 @@ const services = [
 
 export default function ServicesStack() {
   return (
-    <section className="relative">
-      {/* MOBILE STACK */}
+    <section className="relative overflow-visible">
+      {/* MOBILE STACK - FIXED VERSION */}
       <div className="block md:hidden">
-        <div className="relative h-[260vh]">
+        <div className="relative" style={{ height: 'calc(100vh + 600px)' }}>
           {services.map((service, index) => (
             <div
               key={service.title}
-              className="sticky"
+              className="sticky will-change-transform"
               style={{
-                top: `${80 + index * 56}px`,
+                top: `${100 + index * 80}px`,
                 zIndex: services.length - index,
               }}
             >
-              <div
-                className={clsx(
-                  'mx-4 mb-6 rounded-2xl bg-card border border-border shadow-lg',
-                  'transition-all duration-500'
-                )}
-              >
+              <div className="mx-4 mb-6 rounded-2xl bg-white border shadow-lg transform-gpu">
                 <div className="relative aspect-[16/10] w-full overflow-hidden rounded-t-2xl">
                   <Image
                     src={service.image}
@@ -50,14 +44,9 @@ export default function ServicesStack() {
                     className="object-contain p-4"
                   />
                 </div>
-
                 <div className="p-5">
-                  <h3 className="text-lg font-semibold text-foreground">
-                    {service.title}
-                  </h3>
-                  <p className="mt-2 text-sm text-muted-foreground">
-                    {service.description}
-                  </p>
+                  <h3 className="text-lg font-semibold">{service.title}</h3>
+                  <p className="mt-2 text-sm text-gray-600">{service.description}</p>
                 </div>
               </div>
             </div>
@@ -70,7 +59,7 @@ export default function ServicesStack() {
         {services.map((service) => (
           <div
             key={service.title}
-            className="rounded-2xl bg-card border border-border shadow-md"
+            className="rounded-2xl bg-white border shadow-md hover:scale-105 transition-transform duration-300"
           >
             <div className="relative aspect-[16/10] w-full overflow-hidden rounded-t-2xl">
               <Image
@@ -80,14 +69,9 @@ export default function ServicesStack() {
                 className="object-contain p-6"
               />
             </div>
-
             <div className="p-6">
-              <h3 className="text-lg font-semibold text-foreground">
-                {service.title}
-              </h3>
-              <p className="mt-2 text-sm text-muted-foreground">
-                {service.description}
-              </p>
+              <h3 className="text-lg font-semibold">{service.title}</h3>
+              <p className="mt-2 text-sm text-gray-600">{service.description}</p>
             </div>
           </div>
         ))}
