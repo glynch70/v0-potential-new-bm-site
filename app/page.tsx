@@ -75,14 +75,7 @@ function ServiceCardAnimated({ service, index, scrollYProgress }: any) {
         </div>
       </div>
     </motion.div>
-  )
-}
-
-/* --------------------------------
-   MOBILE SERVICES — simple flow
--------------------------------- */
-
-function MobileServicesSection() {
+  function MobileServicesSection() {
   const services = [
     {
       id: 1,
@@ -125,13 +118,62 @@ function MobileServicesSection() {
   const icons = [Video, Monitor, Plus]
 
   return (
-    <section id="services" className="relative bg-muted md:hidden py-20 px-4">
+    <section id="services" className="relative bg-muted md:hidden py-20 px-4 overflow-visible">
       <div className="text-center mb-8">
         <h2 className="text-4xl font-bold">Services</h2>
         <p className="text-muted-foreground mt-2 text-base leading-[1.7]">
           Clear, practical services that get results.
         </p>
       </div>
+
+      {/* STICKY STACKING CONTAINER */}
+      <div className="relative" style={{ height: '280vh' }}>
+        {services.map((s, i) => {
+          const Icon = icons[i]
+          return (
+            <div
+              key={s.id}
+              className="sticky will-change-transform"
+              style={{
+                top: `${100 + i * 70}px`,
+                zIndex: services.length - i,
+              }}
+            >
+              <div
+                className="mx-4 mb-6 rounded-[28px] p-10 shadow-[0_4px_20px_rgba(0,0,0,0.15)] transform-gpu"
+                style={{ backgroundColor: s.bg }}
+              >
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center">
+                    <Icon className={`w-5 h-5 ${s.textColor}`} />
+                  </div>
+                  <h3 className={`text-xl font-bold ${s.textColor}`}>{s.title}</h3>
+                </div>
+
+                <p className={`${s.subtextColor} mb-3 text-base leading-[1.7]`}>{s.subtext}</p>
+
+                <ul className="space-y-1.5 mb-4">
+                  {s.bullets.map((b: string, idx: number) => (
+                    <li key={idx} className="flex gap-2">
+                      <span className={`w-1.5 h-1.5 mt-1.5 rounded-full flex-shrink-0 ${s.bulletDot}`} />
+                      <span className={`text-base ${s.bulletColor} leading-[1.7]`}>{b}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="flex justify-center p-5">
+                  <div className="relative w-full max-w-[200px] aspect-[3/4] rounded-xl overflow-hidden bg-white/5">
+                    <Image src={s.image || "/placeholder.svg"} alt={s.title} fill className="object-cover" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          )
+        })}
+      </div>
+    </section>
+  )
+}
 
       <div className="flex flex-col gap-5 max-w-md mx-auto">
         {services.map((s, i) => {
