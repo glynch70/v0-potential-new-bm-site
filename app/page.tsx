@@ -78,11 +78,13 @@ function ServiceCardAnimated({ service, index, scrollYProgress }: any) {
   )
 }
 
-/* --------------------------------
-   MOBILE SERVICES — simple flow
--------------------------------- */
-
 function MobileServicesSection() {
+  const containerRef = useRef<HTMLDivElement>(null)
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end end"],
+  })
+
   const services = [
     {
       id: 1,
@@ -95,6 +97,9 @@ function MobileServicesSection() {
       subtextColor: "text-black/70",
       bulletColor: "text-black/80",
       bulletDot: "bg-black",
+      stopY: 80,
+      scrollRange: [0, 0],
+      isStatic: true,
     },
     {
       id: 2,
@@ -107,6 +112,8 @@ function MobileServicesSection() {
       subtextColor: "text-white/70",
       bulletColor: "text-white/80",
       bulletDot: "bg-[#C9A227]",
+      stopY: 160,
+      scrollRange: [0.2, 0.5],
     },
     {
       id: 3,
@@ -119,60 +126,86 @@ function MobileServicesSection() {
       subtextColor: "text-white/70",
       bulletColor: "text-white/80",
       bulletDot: "bg-[#C9A227]",
+      stopY: 240,
+      scrollRange: [0.45, 0.8],
     },
   ]
 
   const icons = [Video, Monitor, Plus]
 
   return (
-    <section id="services" className="relative bg-muted md:hidden py-20 px-4">
-      <div className="text-center mb-8">
-        <h2 className="text-4xl font-bold">Services</h2>
-        <p className="text-muted-foreground mt-2 text-base leading-[1.7]">
-          Clear, practical services that get results.
-        </p>
-      </div>
+    <section
+      ref={containerRef}
+      id="services-mobile"
+      className="relative bg-muted md:hidden"
+      style={{ height: "350vh" }}
+    >
+      <div className="sticky top-0 h-screen overflow-hidden">
+        <div className="pt-10 pb-8 text-center">
+          <h2 className="text-4xl font-bold">Services</h2>
+          <p className="text-muted-foreground mt-2 text-base leading-[1.7]">
+            Clear, practical services that get results.
+          </p>
+        </div>
 
-      <div className="flex flex-col gap-5 max-w-md mx-auto">
-        {services.map((s, i) => {
-          const Icon = icons[i]
-          return (
-            <div key={s.id}>
-              <div
-                className="rounded-[28px] p-10 shadow-[0_4px_20px_rgba(0,0,0,0.15)]"
-                style={{ backgroundColor: s.bg }}
+        <div className="relative h-[calc(100vh-200px)]">
+          {services.map((s, i) => {
+            const Icon = icons[i]
+            const startY = 600
+
+            const y = useTransform(
+              scrollYProgress,
+              s.isStatic ? [0, 1] : s.scrollRange,
+              s.isStatic ? [s.stopY, s.stopY] : [startY, s.stopY]
+            )
+
+            return (
+              <motion.div
+                key={s.id}
+                className="absolute left-1/2 w-[calc(100%-2rem)]"
+                style={{
+                  x: "-50%",
+                  y,
+                  zIndex: 10 + i,
+                }}
               >
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center">
-                    <Icon className={`w-5 h-5 ${s.textColor}`} />
+                <div
+                  className="rounded-[24px] p-8 shadow-[0_4px_20px_rgba(0,0,0,0.15)]"
+                  style={{ backgroundColor: s.bg }}
+                >
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center">
+                      <Icon className={`w-5 h-5 ${s.textColor}`} />
+                    </div>
+                    <h3 className={`text-xl font-bold ${s.textColor}`}>{s.title}</h3>
                   </div>
-                  <h3 className={`text-xl font-bold ${s.textColor}`}>{s.title}</h3>
-                </div>
 
-                <p className={`${s.subtextColor} mb-3 text-base leading-[1.7]`}>{s.subtext}</p>
+                  <p className={`${s.subtextColor} mb-3 text-base leading-[1.7]`}>{s.subtext}</p>
 
-                <ul className="space-y-1.5 mb-4">
-                  {s.bullets.map((b: string, idx: number) => (
-                    <li key={idx} className="flex gap-2">
-                      <span className={`w-1.5 h-1.5 mt-1.5 rounded-full flex-shrink-0 ${s.bulletDot}`} />
-                      <span className={`text-base ${s.bulletColor} leading-[1.7]`}>{b}</span>
-                    </li>
-                  ))}
-                </ul>
+                  <ul className="space-y-1.5 mb-4">
+                    {s.bullets.map((b: string, idx: number) => (
+                      <li key={idx} className="flex gap-2">
+                        <span className={`w-1.5 h-1.5 mt-1.5 rounded-full flex-shrink-0 ${s.bulletDot}`} />
+                        <span className={`text-base ${s.bulletColor} leading-[1.7]`}>{b}</span>
+                      </li>
+                    ))}
+                  </ul>
 
-                <div className="flex justify-center p-5">
-                  <div className="relative w-full max-w-[200px] aspect-[3/4] rounded-xl overflow-hidden bg-white/5">
-                    <Image src={s.image || "/placeholder.svg"} alt={s.title} fill className="object-cover" />
+                  <div className="flex justify-center p-4">
+                    <div className="relative w-full max-w-[180px] aspect-[3/4] rounded-xl overflow-hidden">
+                      <Image src={s.image || "/placeholder.svg"} alt={s.title} fill className="object-cover" />
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div>
-          )
-        })}
+              </motion.div>
+            )
+          })}
+        </div>
       </div>
     </section>
   )
 }
+  
 
 /* --------------------------------
    PINNED SERVICES WRAPPER
