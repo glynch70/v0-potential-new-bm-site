@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
+import { Video, Monitor, Plus } from 'lucide-react'
 
 export default function InteractiveServiceCards() {
   const cardsRef = useRef<(HTMLDivElement | null)[]>([])
@@ -34,10 +35,10 @@ export default function InteractiveServiceCards() {
       const centerX = rect.width / 2
       const centerY = rect.height / 2
       
-      const rotateX = ((y - centerY) / centerY) * -10
-      const rotateY = ((x - centerX) / centerX) * 10
+      const rotateX = ((y - centerY) / centerY) * -5
+      const rotateY = ((x - centerX) / centerX) * 5
       
-      card.style.transform = `translateY(-12px) scale(1.02) perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`
+      card.style.transform = `translateY(-8px) perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`
     }
 
     const resetTilt = (card: HTMLElement) => {
@@ -78,7 +79,7 @@ export default function InteractiveServiceCards() {
   const services = [
     {
       number: '01',
-      icon: '📱',
+      icon: Video,
       title: 'Social Media Content',
       description: 'Consistent, on-brand content that builds trust and visibility.',
       features: ['Reels & Shorts', 'Promo clips', 'Monthly packages', 'Management'],
@@ -86,7 +87,7 @@ export default function InteractiveServiceCards() {
     },
     {
       number: '02',
-      icon: '💻',
+      icon: Monitor,
       title: 'Websites',
       description: 'Fast, clean websites built to convert visitors.',
       features: ['Landing pages', 'Business sites', 'Hosting'],
@@ -94,7 +95,7 @@ export default function InteractiveServiceCards() {
     },
     {
       number: '03',
-      icon: '✨',
+      icon: Plus,
       title: 'Extras & Add-ons',
       description: 'Everything else to support your brand.',
       features: ['Drone', 'Photography', 'SEO', 'Google Business'],
@@ -112,7 +113,7 @@ export default function InteractiveServiceCards() {
         }
 
         .services-container {
-          max-width: 1400px;
+          max-width: 1200px;
           margin: 0 auto;
         }
 
@@ -133,9 +134,9 @@ export default function InteractiveServiceCards() {
           color: #999;
         }
 
-        .services-grid {
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
+        .services-stack {
+          display: flex;
+          flex-direction: column;
           gap: 40px;
         }
 
@@ -430,16 +431,19 @@ export default function InteractiveServiceCards() {
         .card-1 .icon-circle {
           background: rgba(255, 184, 77, 0.15);
           border-color: #FFB84D;
+          color: #FFB84D;
         }
 
         .card-2 .icon-circle {
           background: rgba(78, 205, 196, 0.15);
           border-color: #4ECDC4;
+          color: #4ECDC4;
         }
 
         .card-3 .icon-circle {
           background: rgba(95, 208, 104, 0.15);
           border-color: #5FD068;
+          color: #5FD068;
         }
 
         .service-card.visible:hover .icon-circle,
@@ -546,17 +550,6 @@ export default function InteractiveServiceCards() {
           border-color: rgba(95, 208, 104, 0.5);
         }
 
-        @media (max-width: 1200px) {
-          .services-grid {
-            grid-template-columns: 1fr;
-            gap: 40px;
-          }
-
-          .services-header h1 {
-            font-size: 2.5rem;
-          }
-        }
-
         @media (max-width: 768px) {
           .services-section {
             padding: 40px 20px;
@@ -617,26 +610,31 @@ export default function InteractiveServiceCards() {
             <p>Clear, practical services that get results.</p>
           </div>
 
-          <div className="services-grid">
-            {services.map((service, index) => (
-              <div
-                key={index}
-                ref={(el) => { cardsRef.current[index] = el }}
-                className={`service-card ${service.colorClass}`}
-              >
-                <div className="number-badge">{service.number}</div>
-                <div className="card-content">
-                  <div className="icon-circle">{service.icon}</div>
-                  <h2 className="card-title">{service.title}</h2>
-                  <p className="card-description">{service.description}</p>
-                  <ul className="features-pills">
-                    {service.features.map((feature, i) => (
-                      <li key={i}>{feature}</li>
-                    ))}
-                  </ul>
+          <div className="services-stack">
+            {services.map((service, index) => {
+              const IconComponent = service.icon
+              return (
+                <div
+                  key={index}
+                  ref={(el) => { cardsRef.current[index] = el }}
+                  className={`service-card ${service.colorClass}`}
+                >
+                  <div className="number-badge">{service.number}</div>
+                  <div className="card-content">
+                    <div className="icon-circle">
+                      <IconComponent size={40} strokeWidth={2} />
+                    </div>
+                    <h2 className="card-title">{service.title}</h2>
+                    <p className="card-description">{service.description}</p>
+                    <ul className="features-pills">
+                      {service.features.map((feature, i) => (
+                        <li key={i}>{feature}</li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
-              </div>
-            ))}
+              )
+            })}
           </div>
         </div>
       </section>

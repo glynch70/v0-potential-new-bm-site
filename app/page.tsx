@@ -2,292 +2,12 @@
 import FloatingSectionNav from "@/components/FloatingSectionNav"
 import type React from "react"
 import ExpandableFooter from "@/components/ExpandableFooter"
+import InteractiveServiceCards from "@/components/InteractiveServiceCards"
 
 import { useEffect, useRef, useState } from "react"
-import Image from "next/image"
-import { motion, useScroll, useTransform, useInView } from "framer-motion"
-import { Sun, Moon, Menu, X, Video, Monitor, Plus } from "lucide-react"
+import { motion, useInView } from "framer-motion"
+import { Sun, Moon, Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
-
-/* --------------------------------
-   SERVICE CARD (DESKTOP STACK)
--------------------------------- */
-
-function ServiceCardAnimated({ service, index, scrollYProgress }: any) {
-  const icons = [Video, Monitor, Plus]
-  const Icon = icons[index]
-
-  const startY = 800
-
-  const y = useTransform(
-    scrollYProgress,
-    service.isStatic ? [0, 1] : [service.scrollRange[0], service.scrollRange[1]],
-    service.isStatic ? [service.stopY, service.stopY] : [startY, service.stopY],
-  )
-
-  const scale = useTransform(
-    scrollYProgress,
-    service.isStatic ? [0, 1] : [service.scrollRange[0], service.scrollRange[1]],
-    service.isStatic ? [1, 1] : [1, 1],
-  )
-
-  return (
-    <motion.div
-      className="absolute left-1/2 w-full max-w-4xl"
-      style={{
-        x: "-50%",
-        y,
-        scale,
-        zIndex: 10 + index,
-      }}
-      transition={{ type: "ease-out", duration: 1.2 }}
-    >
-      <div
-        className="rounded-[28px] p-10 shadow-[0_4px_20px_rgba(0,0,0,0.15)] min-h-[560px]"
-        style={{ backgroundColor: service.bg }}
-      >
-        <div className="grid md:grid-cols-2 gap-8">
-          <div>
-            <div className="flex items-center gap-4 mb-6">
-              <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center">
-                <Icon className={`w-5 h-5 ${service.textColor}`} />
-              </div>
-              <h3 className={`text-2xl md:text-3xl font-bold ${service.textColor}`}>{service.title}</h3>
-            </div>
-
-            <p className={`${service.subtextColor} mb-6 leading-relaxed`}>{service.subtext}</p>
-
-            <ul className="space-y-2">
-              {service.bullets.map((b: string, i: number) => (
-                <li key={i} className="flex gap-3">
-                  <span className={`w-2 h-2 mt-2 rounded-full ${service.bulletDot}`} />
-                  <span className={`${service.bulletColor} leading-relaxed`}>{b}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="flex justify-center p-5">
-            <div className="relative w-[260px] aspect-[3/4] rounded-2xl overflow-hidden">
-              <Image src={service.image || "/placeholder.svg"} alt={service.title} fill className="object-contain" />
-            </div>
-          </div>
-        </div>
-      </div>
-    </motion.div>
-  )
-}
-
-function MobileServicesSection() {
-  const containerRef = useRef<HTMLDivElement>(null)
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end end"],
-  })
-
-  const services = [
-    {
-      id: 1,
-      title: "Social Media Content",
-      subtext: "Consistent, on-brand content that builds trust and visibility.",
-      bullets: ["Reels & Shorts", "Promo clips", "Monthly packages", "Management"],
-      image: "/services-social-media.jpg",
-      bg: "#C9A227",
-      textColor: "text-black",
-      subtextColor: "text-black/70",
-      bulletColor: "text-black/80",
-      bulletDot: "bg-black",
-      stopY: 80,
-      scrollRange: [0, 0],
-      isStatic: true,
-    },
-    {
-      id: 2,
-      title: "Websites",
-      subtext: "Fast, clean websites built to convert visitors.",
-      bullets: ["Landing pages", "Business sites", "Hosting"],
-      image: "/services-websites.jpg",
-      bg: "#1C1C1C",
-      textColor: "text-white",
-      subtextColor: "text-white/70",
-      bulletColor: "text-white/80",
-      bulletDot: "bg-[#C9A227]",
-      stopY: 160,
-      scrollRange: [0.2, 0.5],
-    },
-    {
-      id: 3,
-      title: "Extras & Add-ons",
-      subtext: "Everything else to support your brand.",
-      bullets: ["Drone", "Photography", "SEO", "Google Business"],
-      image: "/services-extras.jpg",
-      bg: "#2D4A3E",
-      textColor: "text-white",
-      subtextColor: "text-white/70",
-      bulletColor: "text-white/80",
-      bulletDot: "bg-[#C9A227]",
-      stopY: 240,
-      scrollRange: [0.45, 0.8],
-    },
-  ]
-
-  const icons = [Video, Monitor, Plus]
-
-  return (
-    <section
-      ref={containerRef}
-      id="services-mobile"
-      className="relative bg-muted md:hidden"
-      style={{ height: "350vh" }}
-    >
-      <div className="sticky top-0 h-screen overflow-hidden">
-        <div className="pt-10 pb-8 text-center">
-          <h2 className="text-4xl font-bold">Services</h2>
-          <p className="text-muted-foreground mt-2 text-base leading-[1.7]">
-            Clear, practical services that get results.
-          </p>
-        </div>
-
-        <div className="relative h-[calc(100vh-200px)]">
-          {services.map((s, i) => {
-            const Icon = icons[i]
-            const startY = 600
-
-            const y = useTransform(
-              scrollYProgress,
-              s.isStatic ? [0, 1] : s.scrollRange,
-              s.isStatic ? [s.stopY, s.stopY] : [startY, s.stopY]
-            )
-
-            return (
-              <motion.div
-                key={s.id}
-                className="absolute left-1/2 w-[calc(100%-2rem)]"
-                style={{
-                  x: "-50%",
-                  y,
-                  zIndex: 10 + i,
-                }}
-              >
-                <div
-                  className="rounded-[24px] p-8 shadow-[0_4px_20px_rgba(0,0,0,0.15)]"
-                  style={{ backgroundColor: s.bg }}
-                >
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center">
-                      <Icon className={`w-5 h-5 ${s.textColor}`} />
-                    </div>
-                    <h3 className={`text-xl font-bold ${s.textColor}`}>{s.title}</h3>
-                  </div>
-
-                  <p className={`${s.subtextColor} mb-3 text-base leading-[1.7]`}>{s.subtext}</p>
-
-                  <ul className="space-y-1.5 mb-4">
-                    {s.bullets.map((b: string, idx: number) => (
-                      <li key={idx} className="flex gap-2">
-                        <span className={`w-1.5 h-1.5 mt-1.5 rounded-full flex-shrink-0 ${s.bulletDot}`} />
-                        <span className={`text-base ${s.bulletColor} leading-[1.7]`}>{b}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  <div className="flex justify-center p-4">
-                    <div className="relative w-full max-w-[180px] aspect-[3/4] rounded-xl overflow-hidden">
-                      <Image src={s.image || "/placeholder.svg"} alt={s.title} fill className="object-cover" />
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-            )
-          })}
-        </div>
-      </div>
-    </section>
-  )
-}
-  
-
-/* --------------------------------
-   PINNED SERVICES WRAPPER
--------------------------------- */
-
-function PinnedServicesSection() {
-  const containerRef = useRef<HTMLDivElement>(null)
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end end"],
-  })
-
-  const services = [
-    {
-      id: 1,
-      title: "Social Media Content",
-      subtext: "Consistent, on-brand content that builds trust and visibility.",
-      bullets: ["Reels & Shorts", "Promo clips", "Monthly packages", "Management"],
-      bg: "#C9A227",
-      textColor: "text-black",
-      subtextColor: "text-black/70",
-      bulletColor: "text-black/80",
-      bulletDot: "bg-black",
-      image: "/services-social-media.jpg",
-      stopY: 0,
-      scrollRange: [0, 0],
-      isStatic: true,
-    },
-    {
-      id: 2,
-      title: "Websites",
-      subtext: "Fast, clean websites built to convert visitors.",
-      bullets: ["Landing pages", "Business sites", "Hosting"],
-      bg: "#1C1C1C",
-      textColor: "text-white",
-      subtextColor: "text-white/70",
-      bulletColor: "text-white/80",
-      bulletDot: "bg-[#C9A227]",
-      image: "/services-websites.jpg",
-      stopY: 90,
-      scrollRange: [0.25, 0.65],
-    },
-    {
-      id: 3,
-      title: "Extras & Add-ons",
-      subtext: "Everything else to support your brand.",
-      bullets: ["Drone", "Photography", "SEO", "Google Business"],
-      bg: "#2D4A3E",
-      textColor: "text-white",
-      subtextColor: "text-white/70",
-      bulletColor: "text-white/80",
-      bulletDot: "bg-[#C9A227]",
-      image: "/services-extras.jpg",
-      stopY: 180,
-      scrollRange: [0.55, 0.95],
-    },
-  ]
-
-  return (
-    <section
-      ref={containerRef}
-      id="services-desktop"
-      className="relative bg-muted hidden md:block"
-      style={{ height: "400vh" }}
-    >
-      <div className="sticky top-0 h-screen overflow-hidden">
-        <div className="pt-10 pb-8 text-center">
-          <h2 className="text-5xl md:text-6xl font-bold">Services</h2>
-          <p className="text-muted-foreground mt-3 leading-[1.7]">Clear, practical services that get results.</p>
-        </div>
-
-        <div className="relative h-[calc(100vh-160px)]">
-          <div className="relative max-w-4xl mx-auto h-full">
-            {services.map((s, i) => (
-              <ServiceCardAnimated key={s.id} service={s} index={i} scrollYProgress={scrollYProgress} />
-            ))}
-          </div>
-        </div>
-      </div>
-    </section>
-  )
-}
 
 /* --------------------------------
    MAIN PAGE
@@ -384,6 +104,14 @@ export default function BearMediaWebsite() {
             >
               Work
             </button>
+            <a
+              href="https://portfolio.bear-media.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`text-sm transition-colors ${isScrolled ? "text-muted-foreground hover:text-foreground" : "text-white hover:text-white/80"}`}
+            >
+              Portfolio
+            </a>
             <button
               onClick={() => scrollToSection("about")}
               className={`text-sm transition-colors ${isScrolled ? "text-muted-foreground hover:text-foreground" : "text-white hover:text-white/80"}`}
@@ -445,6 +173,14 @@ export default function BearMediaWebsite() {
               >
                 Work
               </button>
+              <a
+                href="https://portfolio.bear-media.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-6 py-3 text-left text-sm hover:bg-muted transition-colors"
+              >
+                Portfolio
+              </a>
               <button
                 onClick={() => scrollToSection("about")}
                 className="px-6 py-3 text-left text-sm hover:bg-muted transition-colors"
@@ -501,8 +237,13 @@ export default function BearMediaWebsite() {
             <Button className="bg-[#C9A227] hover:bg-[#B89120] text-black rounded-full px-8 py-6 font-semibold shadow-[0_4px_20px_rgba(201,162,39,0.3)]">
               Book a call
             </Button>
-            <Button className="rounded-full px-8 py-6 bg-white text-black hover:bg-white/90 font-semibold shadow-[0_4px_20px_rgba(255,255,255,0.2)]">
-              Portfolio
+            <Button
+              asChild
+              className="rounded-full px-8 py-6 bg-white text-black hover:bg-white/90 font-semibold shadow-[0_4px_20px_rgba(255,255,255,0.2)]"
+            >
+              <a href="https://portfolio.bear-media.com" target="_blank" rel="noopener noreferrer">
+                Portfolio
+              </a>
             </Button>
           </div>
         </motion.div>
@@ -510,8 +251,7 @@ export default function BearMediaWebsite() {
 
       {/* SERVICES */}
       <section id="services">
-        <PinnedServicesSection />
-        <MobileServicesSection />
+        <InteractiveServiceCards />
       </section>
 
       {/* WORK */}
@@ -748,28 +488,28 @@ export default function BearMediaWebsite() {
             </p>
 
             <form
-  onSubmit={async (e) => {
-    e.preventDefault()
+              onSubmit={async (e) => {
+                e.preventDefault()
 
-    const form = e.currentTarget
-    const formData = new FormData(form)
+                const form = e.currentTarget
+                const formData = new FormData(form)
 
-    const res = await fetch("/api/contact", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        name: formData.get("name"),
-        email: formData.get("email"),
-        projectType: formData.get("projectType"),
-        message: formData.get("message"),
-      }),
-    })
+                const res = await fetch("/api/contact", {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify({
+                    name: formData.get("name"),
+                    email: formData.get("email"),
+                    projectType: formData.get("projectType"),
+                    message: formData.get("message"),
+                  }),
+                })
 
-    const data = await res.json()
-    alert(data.message)
-    form.reset()
-  }}
->
+                const data = await res.json()
+                alert(data.message)
+                form.reset()
+              }}
+            >
               <div>
                 <label htmlFor="name" className="block text-base font-medium mb-2 text-foreground">
                   Name
@@ -818,7 +558,6 @@ export default function BearMediaWebsite() {
               >
                 Send Message
               </Button>
-          
             </form>
           </div>
         </motion.div>
