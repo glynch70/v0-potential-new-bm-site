@@ -77,12 +77,6 @@ export default function BearMediaWebsite() {
               <span className={isScrolled ? "text-foreground" : "text-white"}>Bear</span>
               <span className="text-[#C9A227]">Media</span>
             </div>
-            <div
-              className={`text-[10px] md:text-xs leading-tight ${isScrolled ? "text-muted-foreground" : "text-white/70"}`}
-            >
-              <span className="block md:inline">Websites &</span>
-              <span className="block md:inline md:before:content-['_']">Social Media Content</span>
-            </div>
           </div>
 
           <nav className="hidden md:flex items-center gap-6">

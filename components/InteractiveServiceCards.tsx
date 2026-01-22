@@ -7,17 +7,20 @@ export default function InteractiveServiceCards() {
   const cardsRef = useRef<(HTMLDivElement | null)[]>([])
 
   useEffect(() => {
-    // Scroll-triggered animations
+    // Scroll-triggered animations - higher threshold and track which cards are animated
+    const animatedCards = new Set<HTMLElement>()
     const observerOptions = {
       root: null,
       rootMargin: '0px',
-      threshold: 0.2
+      threshold: 0.3
     }
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) {
+        // Only trigger animation once per card
+        if (entry.isIntersecting && !animatedCards.has(entry.target as HTMLElement)) {
           entry.target.classList.add('visible')
+          animatedCards.add(entry.target as HTMLElement)
         }
       })
     }, observerOptions)
@@ -26,8 +29,13 @@ export default function InteractiveServiceCards() {
       if (card) observer.observe(card)
     })
 
-    // 3D Tilt effect
+    // 3D Tilt effect - disabled on mobile, subtle on desktop
+    const isTouchDevice = window.matchMedia('(hover: none) and (pointer: coarse)').matches
+    
     const handleTilt = (e: MouseEvent, card: HTMLElement) => {
+      // Tilt disabled on touch devices for stability
+      if (isTouchDevice) return
+      
       const rect = card.getBoundingClientRect()
       const x = e.clientX - rect.left
       const y = e.clientY - rect.top
@@ -35,10 +43,11 @@ export default function InteractiveServiceCards() {
       const centerX = rect.width / 2
       const centerY = rect.height / 2
       
-      const rotateX = ((y - centerY) / centerY) * -5
-      const rotateY = ((x - centerX) / centerX) * 5
+      // Reduced tilt sensitivity from 5 to 2.5 degrees max
+      const rotateX = ((y - centerY) / centerY) * -2.5
+      const rotateY = ((x - centerX) / centerX) * 2.5
       
-      card.style.transform = `translateY(-8px) perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`
+      card.style.transform = `translateY(-4px) perspective(1200px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`
     }
 
     const resetTilt = (card: HTMLElement) => {
@@ -65,6 +74,7 @@ export default function InteractiveServiceCards() {
       
       createParticles(card)
       
+      // Only attach hover tilt on desktop with fine pointer
       if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
         card.addEventListener('mousemove', (e) => handleTilt(e as MouseEvent, card))
         card.addEventListener('mouseleave', () => resetTilt(card))
@@ -125,8 +135,15 @@ export default function InteractiveServiceCards() {
         .services-header h1 {
           font-size: 3.5rem;
           font-weight: 800;
-          margin-bottom: 16px;
+          margin-bottom: 8px;
           color: white;
+        }
+
+        .services-header .subtitle {
+          font-size: 1.4rem;
+          color: #C9A227;
+          font-weight: 600;
+          margin-bottom: 16px;
         }
 
         .services-header p {
@@ -137,21 +154,39 @@ export default function InteractiveServiceCards() {
         .services-stack {
           display: flex;
           flex-direction: column;
-          gap: 40px;
+          gap: 24px;
+          width: 100%;
+        }
+
+        @media (min-width: 1024px) {
+          .services-stack {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+          }
         }
 
         .service-card {
+          width: 100%;
           background: #1a1a1a;
           border-radius: 24px;
-          padding: 50px 40px;
+          padding: 40px 28px;
           position: relative;
           overflow: visible;
           cursor: pointer;
-          transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+          transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
           transform-style: preserve-3d;
-          perspective: 1000px;
+          perspective: 1200px;
           opacity: 0;
-          transform: translateY(60px);
+          transform: translateY(40px);
+          box-sizing: border-box;
+        }
+
+        @media (min-width: 1024px) {
+          .service-card {
+            padding: 50px 40px;
+            transform: translateY(60px);
+          }
         }
 
         .service-card.visible {
@@ -160,15 +195,15 @@ export default function InteractiveServiceCards() {
         }
 
         .service-card:nth-child(1) {
-          transition-delay: 0.1s;
+          transition-delay: 0s;
         }
 
         .service-card:nth-child(2) {
-          transition-delay: 0.2s;
+          transition-delay: 0.08s;
         }
 
         .service-card:nth-child(3) {
-          transition-delay: 0.3s;
+          transition-delay: 0.16s;
         }
 
         /* Backlight */
@@ -201,21 +236,21 @@ export default function InteractiveServiceCards() {
         }
 
         .service-card.visible::before {
-          animation: scrollGlow 2s ease-out forwards;
+          animation: scrollGlow 2.5s ease-out forwards;
         }
 
         @keyframes scrollGlow {
           0% {
             opacity: 0;
-            transform: translate(-50%, -50%) scale(0.3);
+            transform: translate(-50%, -50%) scale(0.5);
             filter: blur(60px);
           }
-          30% {
-            opacity: 1;
+          50% {
+            opacity: 0.8;
             filter: blur(45px);
           }
           100% {
-            opacity: 0.6;
+            opacity: 0.4;
             transform: translate(-50%, -50%) scale(1);
             filter: blur(45px);
           }
@@ -304,7 +339,7 @@ export default function InteractiveServiceCards() {
           height: 4px;
           border-radius: 50%;
           opacity: 0;
-          animation: sparkle 3s ease-in-out infinite;
+          animation: sparkle 4s ease-in-out infinite;
         }
 
         .card-1 .particle {
@@ -376,7 +411,7 @@ export default function InteractiveServiceCards() {
         }
 
         .service-card.visible .number-badge {
-          animation: numberBadgeIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.4s forwards;
+          animation: numberBadgeIn 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s forwards;
         }
 
         @keyframes numberBadgeIn {
@@ -418,7 +453,7 @@ export default function InteractiveServiceCards() {
         }
 
         .service-card.visible .icon-circle {
-          animation: iconRotateIn 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s forwards;
+          animation: iconRotateIn 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s forwards;
         }
 
         @keyframes iconRotateIn {
@@ -550,39 +585,62 @@ export default function InteractiveServiceCards() {
           border-color: rgba(95, 208, 104, 0.5);
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 1023px) {
           .services-section {
-            padding: 40px 20px;
+            padding: 40px 16px;
           }
 
           .services-header {
-            margin-bottom: 60px;
+            margin-bottom: 40px;
           }
 
           .services-header h1 {
             font-size: 2rem;
           }
 
+          .services-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+          }
+
           .service-card {
-            padding: 40px 30px;
+            width: 100%;
+            padding: 32px 24px;
+            border-radius: 20px;
           }
 
           .card-title {
-            font-size: 1.6rem;
+            font-size: 1.5rem;
+          }
+
+          .card-description {
+            font-size: 0.95rem;
+            margin-bottom: 24px;
           }
 
           .number-badge {
-            top: 20px;
-            right: 20px;
-            width: 40px;
-            height: 40px;
-            font-size: 1.1rem;
+            top: 16px;
+            right: 16px;
+            width: 36px;
+            height: 36px;
+            font-size: 1rem;
           }
 
           .icon-circle {
-            width: 70px;
-            height: 70px;
-            font-size: 2rem;
+            width: 64px;
+            height: 64px;
+            font-size: 1.75rem;
+            margin-bottom: 24px;
+          }
+
+          .features-pills {
+            gap: 8px;
+          }
+
+          .features-pills li {
+            padding: 8px 14px;
+            font-size: 0.8rem;
           }
         }
 
@@ -607,6 +665,7 @@ export default function InteractiveServiceCards() {
         <div className="services-container">
           <div className="services-header">
             <h1>Services</h1>
+            <p className="subtitle">Websites & Social Media Content</p>
             <p>Clear, practical services that get results.</p>
           </div>
 
