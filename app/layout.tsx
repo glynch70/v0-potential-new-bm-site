@@ -18,7 +18,7 @@ export default function RootLayout({
     <html lang="en">
       {/* THIS is effectively <head> */}
       <Script
-        src="https://www.googletagmanager.com/gtag/js?id=G-RG6BZ5QZXY"
+        src="https://www.googletagmanager.com/gtag/js?id=G-G-RG6BZ50XZY"
         strategy="afterInteractive"
       />
 
@@ -27,7 +27,7 @@ export default function RootLayout({
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
-          gtag('config', 'G-RG6BZ5QZXY', {
+          gtag('config', 'G-G-RG6BZ50XZY', {
             anonymize_ip: true
           });
         `}
