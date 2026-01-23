@@ -258,35 +258,35 @@ export default function BearMediaWebsite() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8">
             {/* Card 1: Social Media Content - Mobile Phone with Modal */}
             <motion.div
               initial={{ opacity: 1, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
-              className="rounded-2xl overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.15)] bg-card flex flex-col min-h-[580px] md:hover:-translate-y-2 md:hover:shadow-2xl transition-all duration-300"
+              className="rounded-2xl overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.15)] bg-card flex flex-col min-h-[320px] md:min-h-[580px] md:hover:-translate-y-2 md:hover:shadow-2xl transition-all duration-300"
             >
               <a
                 href="https://www.youtube.com/@bearmedia70"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="relative w-full h-[406px] bg-muted flex items-center justify-center group cursor-pointer min-h-[44px]"
+                className="relative w-full h-[200px] md:h-[406px] bg-muted flex items-center justify-center group cursor-pointer min-h-[44px]"
               >
                 <img src="/mobilephone.png" alt="Social Media Content" className="h-full w-auto object-cover" />
                 {/* Play button overlay */}
                 <div className="absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-black/40 transition-colors">
-                  <div className="w-24 h-24 md:w-20 md:h-20 rounded-full bg-[#C9A227] flex items-center justify-center group-hover:scale-110 transition-transform shadow-2xl">
-                    <svg className="w-10 h-10 md:w-8 md:h-8 text-black ml-1" fill="currentColor" viewBox="0 0 24 24">
+                  <div className="w-16 h-16 md:w-24 md:h-24 rounded-full bg-[#C9A227] flex items-center justify-center group-hover:scale-110 transition-transform shadow-2xl">
+                    <svg className="w-8 h-8 md:w-10 md:h-10 text-black ml-1" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M8 5v14l11-7z" />
                     </svg>
                   </div>
                 </div>
               </a>
-              <div className="p-5 flex-grow flex flex-col justify-between">
+              <div className="p-4 md:p-5 flex-grow flex flex-col justify-between">
                 <div>
-                  <h3 className="font-bold mb-1 text-foreground text-lg">Social Media Content</h3>
-                  <p className="text-base text-muted-foreground leading-[1.7]">
+                  <h3 className="font-bold mb-1 text-foreground text-base md:text-lg">Social Media Content</h3>
+                  <p className="text-sm md:text-base text-muted-foreground leading-[1.7]">
                     Scroll-stopping video and graphics for social feeds.
                   </p>
                 </div>
@@ -299,9 +299,9 @@ export default function BearMediaWebsite() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.6, delay: 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
-              className="rounded-2xl overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.15)] bg-card flex flex-col min-h-[580px] md:hover:-translate-y-2 md:hover:shadow-2xl transition-all duration-300"
+              className="rounded-2xl overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.15)] bg-card flex flex-col min-h-[320px] md:min-h-[580px] md:hover:-translate-y-2 md:hover:shadow-2xl transition-all duration-300"
             >
-              <div className="relative w-full h-[406px] bg-muted overflow-hidden">
+              <div className="relative w-full h-[200px] md:h-[406px] bg-muted overflow-hidden">
                 <img
                   src={["/website-1.png", "/website-2.png", "/website-3.png"][websiteIndex] || "/placeholder.svg"}
                   alt="Business Website"
@@ -309,19 +309,19 @@ export default function BearMediaWebsite() {
                 />
                 <button
                   onClick={() => setWebsiteIndex((websiteIndex - 1 + 3) % 3)}
-                  className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white rounded-full w-12 h-12 flex items-center justify-center transition-colors z-10 shadow-lg"
+                  className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white rounded-full w-10 h-10 md:w-12 md:h-12 flex items-center justify-center transition-colors z-10 shadow-lg"
                   aria-label="Previous website"
                 >
-                  <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                   </svg>
                 </button>
                 <button
                   onClick={() => setWebsiteIndex((websiteIndex + 1) % 3)}
-                  className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white rounded-full w-12 h-12 flex items-center justify-center transition-colors z-10 shadow-lg"
+                  className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white rounded-full w-10 h-10 md:w-12 md:h-12 flex items-center justify-center transition-colors z-10 shadow-lg"
                   aria-label="Next website"
                 >
-                  <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
                 </button>
@@ -330,7 +330,7 @@ export default function BearMediaWebsite() {
                     <button
                       key={i}
                       onClick={() => setWebsiteIndex(i)}
-                      className={`h-3 w-3 rounded-full transition-all shadow-md ${
+                      className={`h-2.5 w-2.5 md:h-3 md:w-3 rounded-full transition-all shadow-md ${
                         i === websiteIndex ? "bg-[#C9A227] scale-125" : "bg-white/50"
                       }`}
                       aria-label={`View website ${i + 1}`}
@@ -338,10 +338,10 @@ export default function BearMediaWebsite() {
                   ))}
                 </div>
               </div>
-              <div className="p-5 flex-grow flex flex-col justify-between">
+              <div className="p-4 md:p-5 flex-grow flex flex-col justify-between">
                 <div>
-                  <h3 className="font-bold mb-1 text-foreground text-lg">Business Websites</h3>
-                  <p className="text-base text-muted-foreground leading-[1.7]">
+                  <h3 className="font-bold mb-1 text-foreground text-base md:text-lg">Business Websites</h3>
+                  <p className="text-sm md:text-base text-muted-foreground leading-[1.7]">
                     Clean, fast websites built to convert.
                   </p>
                 </div>
@@ -354,15 +354,15 @@ export default function BearMediaWebsite() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.6, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
-              className="rounded-2xl overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.15)] bg-card flex flex-col min-h-[580px] md:hover:-translate-y-2 md:hover:shadow-2xl transition-all duration-300"
+              className="rounded-2xl overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.15)] bg-card flex flex-col min-h-[320px] md:min-h-[580px] md:hover:-translate-y-2 md:hover:shadow-2xl transition-all duration-300"
             >
-              <div className="w-full h-[406px] bg-muted overflow-hidden flex items-center justify-center">
+              <div className="w-full h-[200px] md:h-[406px] bg-muted overflow-hidden flex items-center justify-center">
                 <img src="/branding.png" alt="Brand Assets" className="w-full h-full object-cover" />
               </div>
-              <div className="p-5 flex-grow flex flex-col justify-between">
+              <div className="p-4 md:p-5 flex-grow flex flex-col justify-between">
                 <div>
-                  <h3 className="font-bold mb-1 text-foreground text-lg">Brand Assets</h3>
-                  <p className="text-base text-muted-foreground leading-[1.7]">
+                  <h3 className="font-bold mb-1 text-foreground text-base md:text-lg">Brand Assets</h3>
+                  <p className="text-sm md:text-base text-muted-foreground leading-[1.7]">
                     Logos, graphics and visual identity systems.
                   </p>
                 </div>
