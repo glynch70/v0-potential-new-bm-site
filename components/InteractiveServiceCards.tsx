@@ -601,50 +601,46 @@ export default function InteractiveServiceCards() {
           .services-stack {
             display: flex;
             flex-direction: column;
-            gap: 16px;
-            max-width: 100%;
+            gap: 20px;
           }
 
           .service-card {
             width: 100%;
-            padding: 24px 20px;
+            padding: 32px 24px;
             border-radius: 20px;
-            max-width: 100%;
           }
 
           .card-title {
-            font-size: 1.25rem;
-            margin-bottom: 8px;
+            font-size: 1.5rem;
           }
 
           .card-description {
-            font-size: 0.9rem;
-            margin-bottom: 20px;
-            line-height: 1.6;
+            font-size: 0.95rem;
+            margin-bottom: 24px;
           }
 
           .number-badge {
             top: 16px;
             right: 16px;
-            width: 32px;
-            height: 32px;
-            font-size: 0.9rem;
+            width: 36px;
+            height: 36px;
+            font-size: 1rem;
           }
 
           .icon-circle {
-            width: 56px;
-            height: 56px;
-            font-size: 1.5rem;
-            margin-bottom: 20px;
+            width: 64px;
+            height: 64px;
+            font-size: 1.75rem;
+            margin-bottom: 24px;
           }
 
           .features-pills {
-            gap: 6px;
+            gap: 8px;
           }
 
           .features-pills li {
-            padding: 6px 12px;
-            font-size: 0.75rem;
+            padding: 8px 14px;
+            font-size: 0.8rem;
           }
         }
 
