@@ -19,16 +19,22 @@ export default function BearMediaWebsite() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const [dark, setDark] = useState(false)
-  const [currentSection, setCurrentSection] = useState("Services")
+  const [currentSection, setCurrentSection] = useState("Home")
   const [socialModalOpen, setSocialModalOpen] = useState(false)
 
   useEffect(() => {
     window.addEventListener("scroll", () => setIsScrolled(window.scrollY > 50))
 
     const handleScroll = () => {
-      const sections = ["services", "work", "reviews", "contact"]
       const scrollPosition = window.scrollY + 200
+      
+      // Check if we're at the top (home section)
+      if (scrollPosition < 300) {
+        setCurrentSection("Home")
+        return
+      }
 
+      const sections = ["services", "work", "reviews", "contact"]
       for (const section of sections) {
         const element = document.getElementById(section)
         if (element) {
@@ -36,7 +42,7 @@ export default function BearMediaWebsite() {
           const bottom = top + element.offsetHeight
           if (scrollPosition >= top && scrollPosition < bottom) {
             setCurrentSection(section.charAt(0).toUpperCase() + section.slice(1))
-            break
+            return
           }
         }
       }
