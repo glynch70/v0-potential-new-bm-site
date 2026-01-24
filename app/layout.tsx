@@ -1,6 +1,7 @@
 import Script from "next/script"
 import type { Metadata } from "next"
 import { Analytics } from "@vercel/analytics/react"
+import { LenisScrollProvider } from "@/components/LenisScrollProvider"
 import "./globals.css"
 
 export const metadata: Metadata = {
@@ -31,8 +32,10 @@ export default function RootLayout({
         `}
       </Script>
       <body className="font-sans antialiased">
-        {children}
-        <Analytics />
+        <LenisScrollProvider>
+          {children}
+          <Analytics />
+        </LenisScrollProvider>
       </body>
     </html>
   )
