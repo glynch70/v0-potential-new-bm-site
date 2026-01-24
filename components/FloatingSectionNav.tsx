@@ -79,8 +79,8 @@ export default function FloatingSectionNav() {
   }
 
   return (
-    <div className="fixed bottom-4 left-1/2 z-50 -translate-x-1/2 pb-safe">
-      <div className="flex items-center border-black/10 bg-white/95 backdrop-blur-md shadow-xl dark:bg-black/90 gap-0.5 border rounded-full px-3.5 py-[15px] my-[51px]">
+    <div className="fixed bottom-4 left-1/2 z-50 -translate-x-1/2 pb-safe mb-safe">
+      <div className="flex items-center border-black/10 bg-white/95 backdrop-blur-md shadow-xl dark:bg-black/90 gap-0.5 border rounded-full px-3.5 py-[15px]">
         {SECTIONS.map((section) => {
           const isActive = active === section.id
           return (

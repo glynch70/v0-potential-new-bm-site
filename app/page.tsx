@@ -443,7 +443,7 @@ export default function BearMediaWebsite() {
       </section>
 
       {/* FOOTER */}
-      <footer className="relative pb-[env(safe-area-inset-bottom)] pt-[60px]">
+      <footer className="relative pb-[120px] md:pb-[140px] pt-[60px]">
         <div className="h-6 md:h-8" />
         <ExpandableFooter />
       </footer>

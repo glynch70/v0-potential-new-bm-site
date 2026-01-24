@@ -157,19 +157,47 @@ export default function ExpandableFooter() {
                   <h3 className="font-semibold mb-4 text-white">Memberships & Affiliations</h3>
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                     {[
-                      { name: "Edinburgh City of Commerce", url: "#" },
-                      { name: "West Lothian Chamber of Commerce", url: "#" },
-                      { name: "BNI", url: "#" },
-                      { name: "Andy's Man's Club", url: "#" },
+                      { 
+                        name: "Edinburgh City of Commerce", 
+                        url: "#", 
+                        logo: "/logos/edinburgh-chamber.png" 
+                      },
+                      { 
+                        name: "West Lothian Chamber of Commerce", 
+                        url: "#", 
+                        logo: "/logos/west-lothian-chamber.png" 
+                      },
+                      { 
+                        name: "BNI", 
+                        url: "#", 
+                        logo: null 
+                      },
+                      { 
+                        name: "Andy's Man's Club", 
+                        url: "#", 
+                        logo: "/logos/andys-mans-club.png" 
+                      },
                     ].map((org) => (
                       <a
                         key={org.name}
                         href={org.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="bg-white/5 rounded-xl p-4 hover:bg-white/10 hover:-translate-y-1 hover:shadow-lg transition-all duration-250 ease-[cubic-bezier(0.16,1,0.3,1)] flex items-center justify-center h-20"
+                        className="bg-white/5 rounded-xl p-4 hover:bg-white/10 hover:-translate-y-1 hover:shadow-lg transition-all duration-250 ease-[cubic-bezier(0.16,1,0.3,1)] flex items-center justify-center h-24 md:h-28 min-h-[80px]"
                       >
-                        <span className="text-xs text-center text-white/60">{org.name}</span>
+                        {org.logo ? (
+                          <div className="relative w-full h-full flex items-center justify-center">
+                            <Image
+                              src={org.logo}
+                              alt={org.name}
+                              fill
+                              className="object-contain p-2"
+                              sizes="(max-width: 768px) 50vw, 25vw"
+                            />
+                          </div>
+                        ) : (
+                          <span className="text-xs text-center text-white/60">{org.name}</span>
+                        )}
                       </a>
                     ))}
                   </div>
