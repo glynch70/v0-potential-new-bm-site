@@ -18,7 +18,7 @@ export default function FloatingSectionNav() {
 
   useEffect(() => {
     const updateActiveSection = () => {
-      const scrollY = window.scrollY + window.innerHeight * 0.4 // 40% down the viewport
+      const scrollY = window.scrollY + window.innerHeight * 0.25 // 25% down the viewport
 
       // Get all sections and their positions
       SECTIONS.forEach(({ id }) => {
