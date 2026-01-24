@@ -18,7 +18,7 @@ export default function FloatingSectionNav() {
 
   useEffect(() => {
     const updateActiveSection = () => {
-      const scrollY = window.scrollY + window.innerHeight * 0.25 // 25% down the viewport
+      const scrollY = window.scrollY
 
       // Get all sections and their positions
       SECTIONS.forEach(({ id }) => {
@@ -29,11 +29,18 @@ export default function FloatingSectionNav() {
       })
 
       // Find the current section based on scroll position
+      // Home stays active until we scroll significantly into Services
       let currentSection: SectionId = "home"
-      for (const { id } of SECTIONS) {
-        const pos = sectionPositions.current.get(id)
-        if (pos !== undefined && scrollY >= pos) {
-          currentSection = id
+      const homePos = sectionPositions.current.get("home") ?? 0
+      const servicesPos = sectionPositions.current.get("services") ?? Infinity
+      
+      // Only switch to Services if scrolled past 50% of the Services section top
+      if (scrollY > servicesPos - window.innerHeight * 0.5) {
+        for (const { id } of SECTIONS.slice(1)) { // Skip home
+          const pos = sectionPositions.current.get(id)
+          if (pos !== undefined && scrollY >= pos) {
+            currentSection = id
+          }
         }
       }
 
