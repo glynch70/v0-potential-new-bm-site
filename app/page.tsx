@@ -7,7 +7,6 @@ import WorkSectionCards from "@/components/WorkSectionCards"
 
 import { useEffect, useRef, useState } from "react"
 import { motion, useInView } from "framer-motion"
-import { Sun, Moon, Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 /* --------------------------------
@@ -16,15 +15,9 @@ import { Button } from "@/components/ui/button"
 
 export default function BearMediaWebsite() {
   const heroVideoRef = useRef<HTMLVideoElement>(null)
-  const [isScrolled, setIsScrolled] = useState(false)
-  const [menuOpen, setMenuOpen] = useState(false)
-  const [dark, setDark] = useState(false)
   const [currentSection, setCurrentSection] = useState("Home")
-  const [socialModalOpen, setSocialModalOpen] = useState(false)
 
   useEffect(() => {
-    window.addEventListener("scroll", () => setIsScrolled(window.scrollY > 50))
-
     const handleScroll = () => {
       const scrollPosition = window.scrollY + 200
       
@@ -52,11 +45,6 @@ export default function BearMediaWebsite() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
-  const toggleTheme = () => {
-    setDark(!dark)
-    document.documentElement.classList.toggle("dark")
-  }
-
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id)
     if (element) {
@@ -67,23 +55,10 @@ export default function BearMediaWebsite() {
         behavior: "smooth",
       })
     }
-    setMenuOpen(false)
   }
 
   return (
-    <div className={dark ? "dark" : ""}>
-      <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled ? "bg-background/95 backdrop-blur-md shadow-md" : "bg-transparent"
-        }`}
-      >
-        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="text-2xl font-bold">
-              <span className={isScrolled ? "text-foreground" : "text-white"}>Bear</span>
-              <span className="text-[#C9A227]">Media</span>
-            </div>
-          </div>
+    <div>
       <button
         onClick={() => scrollToSection(currentSection.toLowerCase())}
         className="fixed top-24 right-6 z-40 bg-card/95 backdrop-blur-md px-4 py-2 rounded-full shadow-lg border border-border hover:scale-105 active:scale-95 transition-transform cursor-pointer"
