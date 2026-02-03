@@ -1,3 +1,5 @@
+import { TubelightNavbar } from "@/components/ui/tubelight-navbar"
+
 import Script from "next/script"
 import type { Metadata } from "next"
 import { Analytics } from "@vercel/analytics/react"
