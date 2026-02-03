@@ -398,14 +398,36 @@ void main(){gl_Position=position;}`
 
 export const BearMediaHero = () => {
   const canvasRef = useShaderBackground()
+  const [isMobile, setIsMobile] = React.useState(false)
+
+  React.useEffect(() => {
+    // Check if mobile on mount
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768)
+    }
+    
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
 
   return (
-    <div className="relative w-full h-screen overflow-hidden bg-black" id="home">
-      <canvas
-        ref={canvasRef}
-        className="absolute inset-0 w-full h-full object-contain touch-none"
-        style={{ background: 'black' }}
-      />
+    <div 
+      className="relative w-full h-screen overflow-hidden bg-black" 
+      id="home"
+      style={isMobile ? {
+        background: 'linear-gradient(135deg, #2a1810 0%, #3d2817 25%, #4a3520 50%, #3d2817 75%, #2a1810 100%)'
+      } : undefined}
+    >
+      {/* WebGL Canvas - Hidden on Mobile */}
+      {!isMobile && (
+        <canvas
+          ref={canvasRef}
+          className="absolute inset-0 w-full h-full object-contain touch-none"
+          style={{ background: 'black' }}
+        />
+      )}
 
       {/* Content Overlay */}
       <div className="absolute inset-0 z-10 flex flex-col items-center justify-center text-white">
