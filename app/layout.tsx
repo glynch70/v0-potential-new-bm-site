@@ -32,27 +32,53 @@ export default function RootLayout({
         `}
       </Script>
       <body className="font-sans antialiased">
-        <nav className="fixed bottom-6 sm:top-6 left-1/2 -translate-x-1/2 z-50">
+        {/* Desktop Navbar */}
+        <nav className="hidden sm:flex fixed top-6 left-1/2 -translate-x-1/2 z-50">
+          <div className="flex items-center gap-8 bg-white/10 border border-white/20 backdrop-blur-xl py-3 px-8 rounded-full shadow-2xl">
+            {/* Logo */}
+            <div className="flex items-center gap-1">
+              <span className="text-white font-bold text-lg">Bear</span>
+              <span className="text-[#C9A227] font-bold text-lg">Media</span>
+            </div>
+
+            {/* Navigation Links */}
+            <div className="flex items-center gap-6">
+              <a href="#home" className="text-sm font-medium text-white/70 hover:text-white transition-colors">
+                Home
+              </a>
+              <a href="#services" className="text-sm font-medium text-white/70 hover:text-white transition-colors">
+                Services
+              </a>
+              <a href="#work" className="text-sm font-medium text-white/70 hover:text-white transition-colors">
+                Work
+              </a>
+              <a href="#about" className="text-sm font-medium text-white/70 hover:text-white transition-colors">
+                About
+              </a>
+              <a href="#contact" className="text-sm font-medium text-white/70 hover:text-white transition-colors">
+                Contact
+              </a>
+            </div>
+          </div>
+        </nav>
+
+        {/* Mobile Navbar */}
+        <nav className="sm:hidden fixed bottom-6 left-1/2 -translate-x-1/2 z-50">
           <div className="flex items-center gap-2 bg-white/10 border border-white/20 backdrop-blur-xl py-2 px-2 rounded-full shadow-2xl">
             <a href="#home" className="relative cursor-pointer text-sm font-medium px-4 py-2 rounded-full transition-all duration-300 flex items-center justify-center gap-2 text-white/70 hover:text-white">
-              <span className="md:hidden">🏠</span>
-              <span className="hidden md:inline">Home</span>
+              <span>🏠</span>
             </a>
             <a href="#services" className="relative cursor-pointer text-sm font-medium px-4 py-2 rounded-full transition-all duration-300 flex items-center justify-center gap-2 text-white/70 hover:text-white">
-              <span className="md:hidden">⚡</span>
-              <span className="hidden md:inline">Services</span>
+              <span>⚡</span>
             </a>
             <a href="#work" className="relative cursor-pointer text-sm font-medium px-4 py-2 rounded-full transition-all duration-300 flex items-center justify-center gap-2 text-white/70 hover:text-white">
-              <span className="md:hidden">💼</span>
-              <span className="hidden md:inline">Work</span>
+              <span>💼</span>
             </a>
             <a href="#about" className="relative cursor-pointer text-sm font-medium px-4 py-2 rounded-full transition-all duration-300 flex items-center justify-center gap-2 text-white/70 hover:text-white">
-              <span className="md:hidden">👥</span>
-              <span className="hidden md:inline">About</span>
+              <span>👥</span>
             </a>
             <a href="#contact" className="relative cursor-pointer text-sm font-medium px-4 py-2 rounded-full transition-all duration-300 flex items-center justify-center gap-2 text-white/70 hover:text-white">
-              <span className="md:hidden">✉️</span>
-              <span className="hidden md:inline">Contact</span>
+              <span>✉️</span>
             </a>
           </div>
         </nav>
