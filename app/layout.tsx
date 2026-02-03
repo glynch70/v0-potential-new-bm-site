@@ -1,3 +1,5 @@
+import { TubelightNavbar } from "@/components/ui/tubelight-navbar"
+
 import Script from "next/script"
 import type { Metadata } from "next"
 import { Analytics } from "@vercel/analytics/react"
@@ -32,8 +34,11 @@ export default function RootLayout({
         `}
       </Script>
       <body className="font-sans antialiased">
-        <LenisScrollProvider>
-          {children}
+  <TubelightNavbar />
+  <LenisScrollProvider>
+    {children}
+    <TubelightNavbar />
+    
           <Analytics />
         </LenisScrollProvider>
       </body>
