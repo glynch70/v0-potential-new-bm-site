@@ -37,7 +37,7 @@ export default function RootLayout({
   <TubelightNavbar />
   <LenisScrollProvider>
     {children}
-    <TubelightNavbar />
+  
     
           <Analytics />
         </LenisScrollProvider>
