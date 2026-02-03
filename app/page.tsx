@@ -1,3 +1,4 @@
+import { BearMediaHero } from "@/components/BearMediaHero"
 "use client"
 import FloatingSectionNav from "@/components/FloatingSectionNav"
 import type React from "react"
