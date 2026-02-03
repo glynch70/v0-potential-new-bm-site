@@ -1,7 +1,9 @@
 'use client';
 
+import NextImage from 'next/image';
 import { useRef, useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
+
 import { useDepthMap } from '@/lib/hooks/useDepthMap';
 
 interface Hero3DCanvasProps {
@@ -21,9 +23,10 @@ export function Hero3DCanvas({
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    const img = new Image();
-    img.onload = () => setIsLoaded(true);
-    img.src = imageSrc;
+    if (typeof window === 'undefined') return;
+    const preload = new window.Image();
+    preload.onload = () => setIsLoaded(true);
+    preload.src = imageSrc;
   }, [imageSrc]);
 
   return (
@@ -35,7 +38,7 @@ export function Hero3DCanvas({
       }}
     >
       <motion.div
-        className="w-full h-full relative"
+        className="relative h-full w-full"
         style={{
           transform,
           transformStyle: 'preserve-3d',
@@ -50,15 +53,16 @@ export function Hero3DCanvas({
           damping: 30,
         }}
       >
-        {/* Main image */}
-        <img
+        <NextImage
           src={imageSrc}
           alt="Hero"
-          className="w-full h-full object-cover"
-          onLoad={() => setIsLoaded(true)}
+          fill
+          sizes="100vw"
+          className="object-cover"
+          priority
+          onLoadingComplete={() => setIsLoaded(true)}
         />
 
-        {/* Depth map overlay - creates parallax effect */}
         {depthMapSrc && (
           <motion.div
             className="absolute inset-0 mix-blend-screen opacity-40"
@@ -71,9 +75,8 @@ export function Hero3DCanvas({
           />
         )}
 
-        {/* Subtle lighting overlay that responds to rotation */}
         <motion.div
-          className="absolute inset-0 pointer-events-none"
+          className="pointer-events-none absolute inset-0"
           style={{
             background: `radial-gradient(
               circle at ${50 + rotationY * 100}% ${50 + rotationX * 100}%,
@@ -84,10 +87,9 @@ export function Hero3DCanvas({
         />
       </motion.div>
 
-      {/* Loading indicator */}
       {!isLoaded && (
-        <div className="absolute inset-0 bg-gradient-to-br from-gray-700 to-gray-900 flex items-center justify-center">
-          <div className="w-8 h-8 border-2 border-amber-400 border-t-transparent rounded-full animate-spin" />
+        <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-gray-700 to-gray-900">
+          <div className="h-8 w-8 animate-spin rounded-full border-2 border-amber-400 border-t-transparent" />
         </div>
       )}
     </div>

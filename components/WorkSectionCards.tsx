@@ -1,7 +1,11 @@
 'use client'
 
+import Image from 'next/image'
 import { useState, useEffect, useRef } from 'react'
 import { Play, ExternalLink } from 'lucide-react'
+
+const BLUR_PLACEHOLDER =
+  'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSIjMTExMTExIi8+'
 
 export default function WorkSectionCards() {
   const [activeCard, setActiveCard] = useState(0)
@@ -498,7 +502,7 @@ export default function WorkSectionCards() {
         }
       `}</style>
 
-      <section id="work" className="work-section" ref={sectionRef}>
+      <section className="work-section" ref={sectionRef}>
         <div className="work-container">
           <div className="work-header">
             <h1>Work</h1>
@@ -570,10 +574,14 @@ export default function WorkSectionCards() {
                       {/* Image Section */}
                       <div className="card-image-section">
                         <div className="card-image-container">
-                          <img
+                          <Image
                             src={project.image}
                             alt={project.title}
-                            className="card-image"
+                            fill
+                            sizes="(max-width: 768px) 100vw, 350px"
+                            placeholder="blur"
+                            blurDataURL={BLUR_PLACEHOLDER}
+                            className="card-image object-cover"
                           />
                           {project.hasVideo && (
                             <div className="play-overlay" data-color={colorName}>

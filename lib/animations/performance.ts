@@ -64,7 +64,9 @@ export function measurePerformance(name: string) {
       );
 
       const measure = window.performance.getEntriesByName(name)[0] as PerformanceMeasure;
-      console.log(`${name}: ${measure.duration.toFixed(2)}ms`);
+      if (process.env.NODE_ENV === 'development') {
+        console.info(`${name}: ${measure.duration.toFixed(2)}ms`);
+      }
     };
   }
 }
