@@ -1,5 +1,5 @@
-import { BearMediaHero } from "@/components/BearMediaHero"
 "use client"
+import { BearMediaHero } from "@/components/BearMediaHero"
 import FloatingSectionNav from "@/components/FloatingSectionNav"
 import type React from "react"
 import ExpandableFooter from "@/components/ExpandableFooter"
@@ -15,7 +15,6 @@ import { Button } from "@/components/ui/button"
 -------------------------------- */
 
 export default function BearMediaWebsite() {
-  const heroVideoRef = useRef<HTMLVideoElement>(null)
   const [currentSection, setCurrentSection] = useState("Home")
 
   useEffect(() => {
@@ -60,56 +59,15 @@ export default function BearMediaWebsite() {
 
   return (
     <div>
+      {/* WebGL Shader Hero */}
+      <BearMediaHero />
+
       <button
         onClick={() => scrollToSection(currentSection.toLowerCase())}
         className="fixed top-24 right-6 z-40 bg-card/95 backdrop-blur-md px-4 py-2 rounded-full shadow-lg border border-border hover:scale-105 active:scale-95 transition-transform cursor-pointer"
       >
         <p className="text-xs font-medium text-foreground">{currentSection}</p>
       </button>
-
-      {/* HERO */}
-      <section id="home" className="relative min-h-screen flex items-center justify-center">
-        <video
-          ref={heroVideoRef}
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover"
-          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/NUHERO%284%29-2MDVgIK7cLO5QXnYNLyVp4lUGGTy7t.mp4"
-        />
-        <div className="absolute inset-0 bg-black/60" />
-
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="relative z-10 text-center px-6 py-[60px]"
-        >
-          <h1 className="text-5xl md:text-7xl font-bold text-white">
-            Websites and
-            <br />
-            Social Media Content
-          </h1>
-          <p className="mt-6 text-xl md:text-2xl text-white/90 max-w-xl mx-auto tracking-wide leading-relaxed">
-            Helping businesses get seen, trusted, and contacted.
-          </p>
-
-          <div className="mt-10 flex justify-center gap-4">
-            <Button className="bg-[#C9A227] hover:bg-[#B89120] text-black rounded-full px-8 py-6 font-semibold shadow-[0_4px_20px_rgba(201,162,39,0.3)]">
-              Book a call
-            </Button>
-            <Button
-              asChild
-              className="rounded-full px-8 py-6 bg-white text-black hover:bg-white/90 font-semibold shadow-[0_4px_20px_rgba(255,255,255,0.2)]"
-            >
-              <a href="https://portfolio.bear-media.com" target="_blank" rel="noopener noreferrer">
-                Portfolio
-              </a>
-            </Button>
-          </div>
-        </motion.div>
-      </section>
 
       {/* SERVICES */}
       <section id="services">
