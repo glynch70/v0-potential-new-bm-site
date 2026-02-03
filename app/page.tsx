@@ -58,7 +58,7 @@ export default function BearMediaWebsite() {
   }
 
   return (
-    <div className="pb-32 sm:pb-0">
+   <div>
       {/* WebGL Shader Hero */}
       <BearMediaHero />
 
