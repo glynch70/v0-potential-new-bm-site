@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useRef, useEffect } from 'react'
+import React, { useRef, useEffect, useState } from 'react'
 
 interface WebGLRendererInstance {
   updateShader: (source: string) => void
@@ -25,7 +25,6 @@ interface PointerHandlerInstance {
   first: number[]
 }
 
-// Bear Media customized shader
 const BEAR_MEDIA_SHADER = `#version 300 es
 precision highp float;
 out vec4 O;
@@ -78,11 +77,8 @@ void main(void) {
 	vec2 uv=(FC-.5*R)/MN,st=uv*vec2(2,1);
 	vec3 col=vec3(0);
 	
-	// Bear Media gold color influence
 	float bg=clouds(vec2(st.x+T*.3,-st.y+T*.1));
-	
-	// Add gold tint
-	vec3 goldColor = vec3(0.789, 0.635, 0.157); // #C9A227
+	vec3 goldColor = vec3(0.789, 0.635, 0.157);
 	
 	uv*=1.-.3*(sin(T*.2)*.5+.5);
 	for (float i=1.; i<12.; i++) {
@@ -90,7 +86,6 @@ void main(void) {
 		vec2 p=uv;
 		float d=length(p);
 		
-		// Blend with gold
 		vec3 iridescent = mix(
 			vec3(1.0, 0.8, 0.2),
 			goldColor,
@@ -398,10 +393,9 @@ void main(){gl_Position=position;}`
 
 export const BearMediaHero = () => {
   const canvasRef = useShaderBackground()
-  const [isMobile, setIsMobile] = React.useState(false)
+  const [isMobile, setIsMobile] = useState(false)
 
-  React.useEffect(() => {
-    // Check if mobile on mount
+  useEffect(() => {
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 768)
     }
@@ -414,13 +408,14 @@ export const BearMediaHero = () => {
 
   return (
     <div 
-      className="relative w-full h-screen overflow-hidden bg-black" 
+      className="relative w-full h-screen overflow-hidden" 
       id="home"
       style={isMobile ? {
-        background: 'linear-gradient(135deg, #2a1810 0%, #3d2817 25%, #4a3520 50%, #3d2817 75%, #2a1810 100%)'
+        background: 'linear-gradient(135deg, #1a1a1a 0%, #2a1f15 25%, #3d2817 50%, #2a1f15 75%, #1a1a1a 100%)',
+        backgroundAttachment: 'fixed'
       } : undefined}
     >
-      {/* WebGL Canvas - Hidden on Mobile */}
+      {/* WebGL Canvas - Desktop Only */}
       {!isMobile && (
         <canvas
           ref={canvasRef}
@@ -429,24 +424,30 @@ export const BearMediaHero = () => {
         />
       )}
 
+      {/* Decorative overlay for mobile depth */}
+      {isMobile && (
+        <div className="absolute inset-0 opacity-30" style={{
+          background: 'radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,0.5) 100%)'
+        }} />
+      )}
+
       {/* Content Overlay */}
       <div className="absolute inset-0 z-10 flex flex-col items-center justify-center text-white">
-        <div className="text-center space-y-6 max-w-5xl mx-auto px-4">
-          <h1 className="text-5xl md:text-7xl font-bold">
-            <span className="text-white">Websites and</span>
-            <br />
-            <span className="text-[#C9A227]">Social Media Content</span>
+        <div className="text-center space-y-4 sm:space-y-6 max-w-5xl mx-auto px-4">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">
+            <span className="text-white block mb-1 sm:mb-2">Websites and</span>
+            <span className="text-[#C9A227] block">Social Media Content</span>
           </h1>
 
-          <p className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-lg md:text-xl text-white/80 max-w-3xl mx-auto leading-relaxed">
             Helping businesses get seen, trusted, and contacted.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mt-10">
-            <button className="px-8 py-4 bg-[#C9A227] hover:bg-[#B89120] text-black rounded-full font-semibold text-lg transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-[#C9A227]/25">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mt-6 sm:mt-10">
+            <button className="px-6 sm:px-8 py-3 sm:py-4 bg-[#C9A227] hover:bg-[#B89120] text-black rounded-full font-semibold text-base sm:text-lg transition-all duration-300 hover:scale-105 active:scale-95 min-h-[44px]">
               Book a call
             </button>
-            <button className="px-8 py-4 bg-white/10 hover:bg-white/20 border border-white/30 text-white rounded-full font-semibold text-lg transition-all duration-300 hover:scale-105 backdrop-blur-sm">
+            <button className="px-6 sm:px-8 py-3 sm:py-4 bg-white/10 hover:bg-white/20 border border-white/30 text-white rounded-full font-semibold text-base sm:text-lg transition-all duration-300 hover:scale-105 active:scale-95 backdrop-blur-sm min-h-[44px]">
               Portfolio
             </button>
           </div>
