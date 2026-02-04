@@ -1,4 +1,4 @@
-"use client";
+"from-black/75use client";
 
 import { Suspense, lazy, useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
@@ -75,9 +75,7 @@ export function BearMediaHero() {
         </div>
       ) : (
         <VideoBackdrop />
-      )}
-
-      <div className="absolute inset-0 bg-gradient-to-br from-black/75 via-black/60 to-black/40" />
+      <div className="absolute inset-0 bg-gradient-to-br from-black/15 via-transparent to-transparent" />>
 
       <motion.div
         initial={{ opacity: 0, y: 30 }}
