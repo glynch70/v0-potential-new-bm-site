@@ -24,11 +24,17 @@ export function Hero3DCanvas({
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
+
     const preload = new window.Image();
-        const timeout = setTimeout(() => setIsLoaded(true), 2000);
-        return () => clearTimeout(timeout);
-    preload.onload = () => setIsLoaded(true);
+    const timeout = setTimeout(() => setIsLoaded(true), 2000);
+
+    preload.onload = () => {
+      clearTimeout(timeout);
+      setIsLoaded(true);
+    };
     preload.src = imageSrc;
+
+    return () => clearTimeout(timeout);
   }, [imageSrc]);
 
   return (
