@@ -1,4 +1,4 @@
-"from-black/75use client";
+"use client";
 
 import { Suspense, lazy, useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
@@ -75,7 +75,8 @@ export function BearMediaHero() {
         </div>
       ) : (
         <VideoBackdrop />
-      <div className="absolute inset-0 bg-gradient-to-br from-black/15 via-transparent to-transparent" />>
+      )}
+      <div className="absolute inset-0 bg-gradient-to-br from-black/15 via-transparent to-transparent" />
 
       <motion.div
         initial={{ opacity: 0, y: 30 }}
@@ -100,7 +101,7 @@ export function BearMediaHero() {
         </div>
 
         <h1 className="text-4xl font-bold text-white sm:text-5xl md:text-7xl">
-          Websites &
+          Websites &amp;
           <br />
           Social Media Content
         </h1>
@@ -116,7 +117,7 @@ export function BearMediaHero() {
             asChild
             className="rounded-full bg-white px-8 py-6 text-base font-semibold text-black shadow-[0_4px_20px_rgba(255,255,255,0.3)] transition hover:bg-white/90"
           >
-            <a
+            
               href="https://portfolio.bear-media.com"
               target="_blank"
               rel="noopener noreferrer"
