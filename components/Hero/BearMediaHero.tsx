@@ -35,11 +35,14 @@ export function BearMediaHero() {
     return () => query.removeEventListener("change", update);
   }, []);
 
+  // Render shader immediately when desktop
   useEffect(() => {
-  if (isDesktop) {
-    setShouldRenderShader(true);
-  }
-}, [isDesktop]);
+    if (isDesktop) {
+      setShouldRenderShader(true);
+    }
+  }, [isDesktop]);
+
+  return (
     <section
       id="home"
       ref={heroRef}
