@@ -36,24 +36,10 @@ export function BearMediaHero() {
   }, []);
 
   useEffect(() => {
-    if (!isDesktop || shouldRenderShader) return;
-    if (!heroRef.current) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0]?.isIntersecting) {
-          setShouldRenderShader(true);
-          observer.disconnect();
-        }
-      },
-      { rootMargin: "0px 0px -15% 0px" }
-    );
-
-    observer.observe(heroRef.current);
-    return () => observer.disconnect();
-  }, [isDesktop, shouldRenderShader]);
-
-  return (
+  if (isDesktop) {
+    setShouldRenderShader(true);
+  }
+}, [isDesktop]);
     <section
       id="home"
       ref={heroRef}
