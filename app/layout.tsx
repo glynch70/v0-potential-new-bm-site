@@ -68,7 +68,7 @@ export default function RootLayout({
           </Script>
         </>
       ) : null}
-      <body className="font-sans antialiased grain-overlay">
+      <body className="font-sans antialiased">
         <LenisScrollProvider>
           {children}
           <Analytics />

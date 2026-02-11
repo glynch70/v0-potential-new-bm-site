@@ -235,7 +235,7 @@ function HeroSection({ onNavigate }: { onNavigate: (id: string) => void }) {
       {/* Shader background */}
       <div className="absolute inset-0">
         <Hero3DCanvas className="h-full w-full" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-[#0A0A0A]/40 to-transparent" />
       </div>
 
       <motion.div style={{ opacity, y }} className="relative z-10 mx-auto w-full max-w-7xl px-6">
