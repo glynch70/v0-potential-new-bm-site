@@ -41,33 +41,39 @@ export function Hero3DCanvas({ className = '' }: GoldShaderBackgroundProps) {
       }
     `;
 
-    // Fragment shader - GOLD ANIMATION
+    // Fragment shader - DEEP ORANGE ANIMATION
     const fragmentShaderSource = `
       precision mediump float;
       uniform float time;
       uniform vec2 resolution;
 
-      // Bear Media gold color
-      const vec3 goldColor = vec3(0.788, 0.635, 0.153); // #C9A227
+      // Bear Media deep orange palette
+      const vec3 deepOrange = vec3(1.0, 0.42, 0.21);     // #FF6B35
+      const vec3 brightOrange = vec3(0.969, 0.576, 0.118); // #F7931E
+      const vec3 burntOrange = vec3(0.757, 0.267, 0.055);  // #C1440E
 
       void main() {
         vec2 uv = gl_FragCoord.xy / resolution;
-        
+
         // Create flowing gradient effect
         float wave1 = sin(uv.x * 3.0 + time * 0.5) * 0.5 + 0.5;
         float wave2 = cos(uv.y * 2.0 - time * 0.3) * 0.5 + 0.5;
         float wave3 = sin((uv.x + uv.y) * 4.0 + time * 0.7) * 0.5 + 0.5;
-        
+
         // Combine waves
         float pattern = (wave1 + wave2 + wave3) / 3.0;
-        
+
+        // Blend between orange tones based on position
+        vec3 orangeColor = mix(burntOrange, deepOrange, wave1);
+        orangeColor = mix(orangeColor, brightOrange, wave2 * 0.5);
+
         // Create shimmer effect
         float shimmer = sin(time * 2.0 + pattern * 10.0) * 0.1 + 0.9;
-        
+
         // Mix with dark background
         vec3 darkColor = vec3(0.08, 0.08, 0.08);
-        vec3 color = mix(darkColor, goldColor * shimmer, pattern * 0.3);
-        
+        vec3 color = mix(darkColor, orangeColor * shimmer, pattern * 0.3);
+
         gl_FragColor = vec4(color, 1.0);
       }
     `;
