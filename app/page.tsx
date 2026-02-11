@@ -85,6 +85,9 @@ export default function BearMediaSite() {
       {/* ── About ── */}
       <AboutSection />
 
+      {/* ── Client Logos ── */}
+      <ClientLogosSection />
+
       {/* ── Reviews ── */}
       <ReviewsSection />
 
@@ -101,11 +104,16 @@ export default function BearMediaSite() {
    NAVIGATION
    ══════════════════════════════════════════════ */
 const NAV_LINKS = [
-  { label: "Services", id: "services" },
   { label: "Work", id: "work" },
   { label: "About", id: "about" },
   { label: "Reviews", id: "reviews" },
   { label: "Contact", id: "contact" },
+];
+
+const SERVICES_DROPDOWN = [
+  { label: "Learn AI Tools", desc: "Workshops to boost your productivity with AI" },
+  { label: "DIY Websites", desc: "Build your own site with expert guidance" },
+  { label: "Training", desc: "Social media & content creation training" },
 ];
 
 function SiteNav({
@@ -119,6 +127,17 @@ function SiteNav({
   onToggleMobile: () => void;
   onNavigate: (id: string) => void;
 }) {
+  const [servicesOpen, setServicesOpen] = useState(false);
+  const dropdownTimeout = useRef<ReturnType<typeof setTimeout>>();
+
+  const openDropdown = () => {
+    clearTimeout(dropdownTimeout.current);
+    setServicesOpen(true);
+  };
+  const closeDropdown = () => {
+    dropdownTimeout.current = setTimeout(() => setServicesOpen(false), 150);
+  };
+
   return (
     <>
       <motion.header
@@ -135,6 +154,60 @@ function SiteNav({
                 <span className="text-lg font-bold text-[#FF6B35]">Media</span>
               </button>
               <nav className="hidden items-center gap-6 md:flex">
+                {/* Services dropdown */}
+                <div
+                  className="relative"
+                  onMouseEnter={openDropdown}
+                  onMouseLeave={closeDropdown}
+                >
+                  <button
+                    onClick={() => onNavigate("services")}
+                    className="flex items-center gap-1 text-[13px] font-medium uppercase tracking-[0.15em] text-white/60 transition-colors hover:text-white"
+                  >
+                    Services
+                    <ChevronDown className={`h-3 w-3 transition-transform duration-200 ${servicesOpen ? "rotate-180" : ""}`} />
+                  </button>
+                  <AnimatePresence>
+                    {servicesOpen && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 8, scale: 0.96 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: 8, scale: 0.96 }}
+                        transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
+                        className="absolute left-0 top-full mt-3 w-64 overflow-hidden rounded-2xl border border-white/[0.08] bg-[#111]/95 shadow-2xl backdrop-blur-xl"
+                      >
+                        <div className="p-2">
+                          {SERVICES_DROPDOWN.map((item) => (
+                            <button
+                              key={item.label}
+                              onClick={() => {
+                                onNavigate("services");
+                                setServicesOpen(false);
+                              }}
+                              className="w-full rounded-xl px-4 py-3 text-left transition-all hover:bg-white/[0.06]"
+                            >
+                              <p className="text-sm font-medium text-white">{item.label}</p>
+                              <p className="mt-0.5 text-xs text-white/40">{item.desc}</p>
+                            </button>
+                          ))}
+                        </div>
+                        <div className="border-t border-white/[0.06] p-2">
+                          <button
+                            onClick={() => {
+                              onNavigate("services");
+                              setServicesOpen(false);
+                            }}
+                            className="flex w-full items-center gap-2 rounded-xl px-4 py-2.5 text-left text-xs font-medium text-[#FF6B35] transition-all hover:bg-[#FF6B35]/10"
+                          >
+                            View all services
+                            <ArrowRight className="h-3 w-3" />
+                          </button>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+
                 {NAV_LINKS.map((link) => (
                   <button
                     key={link.id}
@@ -192,7 +265,7 @@ function SiteNav({
             className="fixed inset-0 z-40 flex items-center justify-center bg-black/95 backdrop-blur-xl"
           >
             <nav className="flex flex-col items-center gap-8">
-              {NAV_LINKS.map((link, i) => (
+              {[{ label: "Services", id: "services" }, ...NAV_LINKS].map((link, i) => (
                 <motion.button
                   key={link.id}
                   initial={{ opacity: 0, y: 20 }}
@@ -204,6 +277,21 @@ function SiteNav({
                   {link.label}
                 </motion.button>
               ))}
+              {/* Mobile services sub-items */}
+              <div className="flex flex-col items-center gap-3 border-t border-white/10 pt-4">
+                <span className="text-xs font-medium uppercase tracking-[0.2em] text-white/30">Also available</span>
+                {SERVICES_DROPDOWN.map((item) => (
+                  <motion.button
+                    key={item.label}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    onClick={() => onNavigate("services")}
+                    className="text-lg text-white/50 transition-colors hover:text-[#FF6B35]"
+                  >
+                    {item.label}
+                  </motion.button>
+                ))}
+              </div>
             </nav>
           </motion.div>
         )}
@@ -752,6 +840,70 @@ function AboutSection() {
             </div>
           </motion.div>
         </motion.div>
+      </div>
+    </section>
+  );
+}
+
+/* ══════════════════════════════════════════════
+   CLIENT LOGOS
+   ══════════════════════════════════════════════ */
+const CLIENTS = [
+  "Glens Pharmacies",
+  "GB Masterchef",
+  "GSM Electrical",
+  "K.Lewis Joinery",
+  "The Free Spirit",
+  "Herb & Soul",
+  "M&M CTS",
+  "C&G Development",
+  "RTL Transport",
+  "Voice2Lead",
+  "Almond Vet Care",
+  "The Potentially You Project",
+];
+
+function ClientLogosSection() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-50px" });
+  const doubled = [...CLIENTS, ...CLIENTS];
+
+  return (
+    <section ref={ref} className="relative overflow-hidden py-20 md:py-28">
+      <div className="section-divider" />
+      <div className="pt-16">
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+          className="mb-10 text-center text-xs font-semibold uppercase tracking-[0.3em] text-white/30"
+        >
+          Trusted by businesses across Scotland
+        </motion.p>
+
+        {/* Marquee row */}
+        <div className="relative">
+          {/* Fade edges */}
+          <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-[#0A0A0A] to-transparent" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-[#0A0A0A] to-transparent" />
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={isInView ? { opacity: 1 } : {}}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="animate-marquee flex gap-6 whitespace-nowrap"
+            style={{ animationDuration: "40s" }}
+          >
+            {doubled.map((client, i) => (
+              <div
+                key={i}
+                className="flex shrink-0 items-center rounded-full border border-white/[0.06] bg-white/[0.02] px-6 py-3"
+              >
+                <span className="text-sm font-medium text-white/40">{client}</span>
+              </div>
+            ))}
+          </motion.div>
+        </div>
       </div>
     </section>
   );
