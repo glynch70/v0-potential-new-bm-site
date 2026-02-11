@@ -234,7 +234,7 @@ function SiteNav({
 }
 
 /* ══════════════════════════════════════════════
-   1. HERO — Brutalist, stark, commanding
+   1. HERO — Centered logo-first layout
    ══════════════════════════════════════════════ */
 function HeroSection({ onNavigate }: { onNavigate: (id: string) => void }) {
   const ref = useRef<HTMLElement>(null);
@@ -249,7 +249,7 @@ function HeroSection({ onNavigate }: { onNavigate: (id: string) => void }) {
     <section
       id="home"
       ref={ref}
-      className="relative flex min-h-screen items-end overflow-hidden pb-20 md:pb-32"
+      className="relative flex min-h-screen items-center justify-center overflow-hidden"
     >
       {/* Shader background */}
       <div className="absolute inset-0">
@@ -257,48 +257,71 @@ function HeroSection({ onNavigate }: { onNavigate: (id: string) => void }) {
         <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-[#0A0A0A]/40 to-transparent" />
       </div>
 
-      <motion.div style={{ opacity, y }} className="relative z-10 mx-auto w-full max-w-7xl px-6">
-        {/* Eyebrow */}
+      <motion.div style={{ opacity, y }} className="relative z-10 mx-auto w-full max-w-5xl px-6 text-center">
+        {/* 1. Logo — fades in first */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="mb-6 flex items-center gap-3"
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          className="mb-8 flex justify-center"
         >
-          <div className="h-px w-12 bg-[#D4A830]" />
-          <span className="text-[11px] font-medium uppercase tracking-[0.3em] text-[#D4A830]">
-            Marketing agency &middot; Scotland
-          </span>
+          <Image
+            src="/bear-media-hero-logo.png"
+            alt="Bear Media"
+            width={140}
+            height={140}
+            priority
+            className="h-24 w-24 md:h-[140px] md:w-[140px] object-contain drop-shadow-[0_0_40px_rgba(212,168,48,0.3)]"
+          />
         </motion.div>
 
-        {/* Main headline — brutalist heavy type with word stagger */}
-        <div className="max-w-5xl">
+        {/* 2. Tagline — appears second */}
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="mb-8 flex items-center justify-center gap-3"
+        >
+          <div className="h-px w-8 bg-[#D4A830]" />
+          <span className="text-[11px] md:text-xs font-semibold uppercase tracking-[0.35em] text-[#D4A830]">
+            Marketing Agency &middot; Scotland
+          </span>
+          <div className="h-px w-8 bg-[#D4A830]" />
+        </motion.div>
+
+        {/* 3. Main headline — staggered word reveal */}
+        <div className="mb-6">
           <AnimatedHeroText
             text="Your business deserves to be"
-            className="text-[clamp(3rem,8vw,7.5rem)] font-bold uppercase leading-[0.9] tracking-[-0.03em] text-white"
-            delay={0.4}
+            className="text-[clamp(2.2rem,7vw,6rem)] font-bold uppercase leading-[0.95] tracking-[-0.03em] text-white"
+            delay={0.5}
           />
-          <span className="text-[clamp(3rem,8vw,7.5rem)] font-bold uppercase leading-[0.9] tracking-[-0.03em] text-[#D4A830]">
+          <motion.span
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 1.0 }}
+            className="inline-block text-[clamp(2.2rem,7vw,6rem)] font-bold uppercase leading-[0.95] tracking-[-0.03em] text-[#EAB308]"
+          >
             {" "}seen.
-          </span>
+          </motion.span>
         </div>
 
-        {/* Sub */}
+        {/* Sub copy */}
         <motion.p
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.7 }}
-          className="mt-8 max-w-xl text-lg leading-relaxed text-white/50 md:text-xl"
+          transition={{ duration: 0.6, delay: 1.2 }}
+          className="mx-auto mb-10 max-w-xl text-base leading-relaxed text-white/50 md:text-lg"
         >
           We build websites and create social media content that gets you noticed, builds trust, and fills your diary.
         </motion.p>
 
-        {/* CTAs — brutalist buttons */}
+        {/* CTAs — centered */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.9 }}
-          className="mt-10 flex flex-wrap gap-4"
+          transition={{ duration: 0.6, delay: 1.4 }}
+          className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center"
         >
           <motion.button
             onClick={() => onNavigate("contact")}
@@ -335,15 +358,15 @@ function HeroSection({ onNavigate }: { onNavigate: (id: string) => void }) {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 1.2 }}
-          className="mt-16 flex gap-6 md:gap-12 border-t border-white/[0.06] pt-8"
+          transition={{ delay: 1.8 }}
+          className="mx-auto mt-14 flex max-w-md justify-center gap-8 md:gap-12 border-t border-white/[0.06] pt-8"
         >
           {[
             { value: "50+", label: "Projects delivered" },
             { value: "5.0", label: "Google rating" },
             { value: "100%", label: "In-house" },
           ].map((stat, i) => (
-            <div key={i}>
+            <div key={i} className="text-center">
               <p className="brutal-number text-2xl font-bold text-[#D4A830] md:text-3xl">
                 {stat.value}
               </p>
@@ -355,8 +378,8 @@ function HeroSection({ onNavigate }: { onNavigate: (id: string) => void }) {
         </motion.div>
       </motion.div>
 
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 right-6 z-10 hidden md:block">
+      {/* Scroll indicator — bottom center */}
+      <div className="absolute bottom-8 left-1/2 z-10 -translate-x-1/2">
         <ScrollIndicator />
       </div>
     </section>
