@@ -4,6 +4,7 @@ import dynamic from "next/dynamic";
 import Image from "next/image";
 import { useEffect, useRef, useState, useCallback } from "react";
 import { motion, useScroll, useTransform, useInView, AnimatePresence } from "framer-motion";
+import { motion as m } from "motion/react";
 import {
   ArrowRight,
   ArrowUpRight,
@@ -294,9 +295,20 @@ function HeroSection({ onNavigate }: { onNavigate: (id: string) => void }) {
             href="https://portfolio.bear-media.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex items-center gap-3 border border-white/20 px-8 py-4 text-sm font-medium uppercase tracking-[0.1em] text-white transition-all hover:border-white/40 hover:bg-white/5"
+            className="relative group flex items-center gap-3 border border-white/20 px-8 py-4 text-sm font-medium uppercase tracking-[0.1em] text-white transition-all hover:border-white/40 hover:bg-white/5"
             whileTap={{ scale: 0.97 }}
           >
+            {/* Animated gold border trace */}
+            <div
+              className="-inset-px pointer-events-none absolute rounded-[inherit] border-2 border-transparent [mask-clip:padding-box,border-box] [mask-composite:intersect] [mask-image:linear-gradient(transparent,transparent),linear-gradient(#000,#000)]"
+            >
+              <m.div
+                className="absolute aspect-square bg-gradient-to-r from-transparent via-[#D4A830] to-[#D4A830]"
+                animate={{ offsetDistance: ["0%", "100%"] }}
+                style={{ width: 20, offsetPath: `rect(0 auto auto 0 round 0px)` }}
+                transition={{ repeat: Infinity, duration: 5, ease: "linear" }}
+              />
+            </div>
             View our work
             <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </motion.a>
