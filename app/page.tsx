@@ -321,10 +321,10 @@ function HeroSection({
 
   return (
     <section id="home" ref={ref} className="relative flex min-h-screen items-center justify-center overflow-hidden">
-      {/* Background */}
+      {/* Background – WebGL2 animated shader */}
       <motion.div className="absolute inset-0" style={{ scale }}>
         <Hero3DCanvas className="h-full w-full" />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/80" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/70" />
       </motion.div>
 
       {/* Content */}
