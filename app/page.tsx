@@ -132,7 +132,7 @@ function SiteNav({
             <div className="flex items-center gap-8">
               <button onClick={() => onNavigate("home")} className="flex items-center gap-2">
                 <span className="text-lg font-bold text-white">Bear</span>
-                <span className="text-lg font-bold text-[#C9A227]">Media</span>
+                <span className="text-lg font-bold text-[#FF6B35]">Media</span>
               </button>
               <nav className="hidden items-center gap-6 md:flex">
                 {NAV_LINKS.map((link) => (
@@ -151,7 +151,7 @@ function SiteNav({
           <div className="flex items-center gap-3">
             <motion.button
               onClick={() => onNavigate("contact")}
-              className="hidden rounded-full bg-[#C9A227] px-6 py-2.5 text-sm font-semibold text-black transition-all hover:bg-[#E8C547] hover:shadow-[0_0_30px_rgba(201,162,39,0.3)] md:block"
+              className="hidden rounded-full bg-[#FF6B35] px-6 py-2.5 text-sm font-semibold text-black transition-all hover:bg-[#F7931E] hover:shadow-[0_0_30px_rgba(255,107,53,0.3)] md:block"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
@@ -199,7 +199,7 @@ function SiteNav({
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: i * 0.08 }}
                   onClick={() => onNavigate(link.id)}
-                  className="text-3xl font-light text-white transition-colors hover:text-[#C9A227]"
+                  className="text-3xl font-light text-white transition-colors hover:text-[#FF6B35]"
                 >
                   {link.label}
                 </motion.button>
@@ -293,7 +293,7 @@ function HeroSection({
         >
           <motion.button
             onClick={() => onNavigate("contact")}
-            className="group flex items-center gap-3 rounded-full bg-[#C9A227] px-8 py-4 text-base font-semibold text-black shadow-[0_4px_30px_rgba(201,162,39,0.3)] transition-all hover:bg-[#E8C547] hover:shadow-[0_8px_40px_rgba(201,162,39,0.4)]"
+            className="group flex items-center gap-3 rounded-full bg-[#FF6B35] px-8 py-4 text-base font-semibold text-black shadow-[0_4px_30px_rgba(255,107,53,0.3)] transition-all hover:bg-[#F7931E] hover:shadow-[0_8px_40px_rgba(255,107,53,0.4)]"
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
           >
@@ -359,7 +359,7 @@ function MarqueeStrip() {
             key={i}
             className="flex items-center gap-4 text-sm font-medium uppercase tracking-[0.2em] text-white/25"
           >
-            <span className="h-1.5 w-1.5 rounded-full bg-[#C9A227]" />
+            <span className="h-1.5 w-1.5 rounded-full bg-[#FF6B35]" />
             {item}
           </span>
         ))}
@@ -412,7 +412,7 @@ function ServicesSection() {
           transition={{ duration: 0.8 }}
           className="mb-20 text-center"
         >
-          <span className="mb-4 inline-block text-xs font-semibold uppercase tracking-[0.3em] text-[#C9A227]">
+          <span className="mb-4 inline-block text-xs font-semibold uppercase tracking-[0.3em] text-[#FF6B35]">
             What we do
           </span>
           <h2 className="text-4xl font-bold text-white md:text-6xl">Services</h2>
@@ -543,7 +543,7 @@ function WorkSection() {
           transition={{ duration: 0.8 }}
           className="mb-20 text-center"
         >
-          <span className="mb-4 inline-block text-xs font-semibold uppercase tracking-[0.3em] text-[#C9A227]">
+          <span className="mb-4 inline-block text-xs font-semibold uppercase tracking-[0.3em] text-[#FF6B35]">
             Portfolio
           </span>
           <h2 className="text-4xl font-bold text-white md:text-6xl">Selected Work</h2>
@@ -570,7 +570,7 @@ function WorkSection() {
             href="https://portfolio.bear-media.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="group inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-8 py-4 text-sm font-medium text-white transition-all hover:border-[#C9A227]/30 hover:bg-[#C9A227]/10 hover:text-[#C9A227]"
+            className="group inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-8 py-4 text-sm font-medium text-white transition-all hover:border-[#FF6B35]/30 hover:bg-[#FF6B35]/10 hover:text-[#FF6B35]"
           >
             View full portfolio
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -679,7 +679,7 @@ function AboutSection() {
           animate={isInView ? { opacity: 1, x: 0 } : {}}
           transition={{ duration: 0.8 }}
         >
-          <span className="mb-4 inline-block text-xs font-semibold uppercase tracking-[0.3em] text-[#C9A227]">
+          <span className="mb-4 inline-block text-xs font-semibold uppercase tracking-[0.3em] text-[#FF6B35]">
             About
           </span>
           <h2 className="mb-6 text-4xl font-bold text-white md:text-5xl">
@@ -710,7 +710,7 @@ function AboutSection() {
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: 0.4 + i * 0.1 }}
               >
-                <p className="text-2xl font-bold text-[#C9A227] md:text-3xl">{stat.value}</p>
+                <p className="text-2xl font-bold text-[#FF6B35] md:text-3xl">{stat.value}</p>
                 <p className="mt-1 text-xs text-white/40">{stat.label}</p>
               </motion.div>
             ))}
@@ -745,7 +745,7 @@ function AboutSection() {
             <div className="flex items-center gap-3">
               <div className="flex">
                 {[1, 2, 3, 4, 5].map((s) => (
-                  <Star key={s} className="h-4 w-4 fill-[#C9A227] text-[#C9A227]" />
+                  <Star key={s} className="h-4 w-4 fill-[#FF6B35] text-[#FF6B35]" />
                 ))}
               </div>
               <span className="text-sm font-semibold text-white">5.0 on Google</span>
@@ -802,7 +802,7 @@ function ReviewsSection() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
         >
-          <span className="mb-4 inline-block text-xs font-semibold uppercase tracking-[0.3em] text-[#C9A227]">
+          <span className="mb-4 inline-block text-xs font-semibold uppercase tracking-[0.3em] text-[#FF6B35]">
             Testimonials
           </span>
           <h2 className="mb-4 text-4xl font-bold text-white md:text-6xl">
@@ -810,7 +810,7 @@ function ReviewsSection() {
           </h2>
           <div className="mx-auto mb-12 flex items-center justify-center gap-1">
             {[1, 2, 3, 4, 5].map((s) => (
-              <Star key={s} className="h-5 w-5 fill-[#C9A227] text-[#C9A227]" />
+              <Star key={s} className="h-5 w-5 fill-[#FF6B35] text-[#FF6B35]" />
             ))}
             <span className="ml-3 text-sm text-white/60">5.0 from 18 Google reviews</span>
           </div>
@@ -846,7 +846,7 @@ function ReviewsSection() {
               onClick={() => setActive(i)}
               className={`h-2 rounded-full transition-all duration-300 ${
                 active === i
-                  ? "w-8 bg-[#C9A227]"
+                  ? "w-8 bg-[#FF6B35]"
                   : "w-2 bg-white/20 hover:bg-white/40"
               }`}
             />
@@ -861,7 +861,7 @@ function ReviewsSection() {
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
           transition={{ delay: 0.5 }}
-          className="mt-8 inline-flex items-center gap-2 text-sm text-white/40 transition-colors hover:text-[#C9A227]"
+          className="mt-8 inline-flex items-center gap-2 text-sm text-white/40 transition-colors hover:text-[#FF6B35]"
         >
           Read all reviews on Google
           <ExternalLink className="h-3 w-3" />
@@ -918,7 +918,7 @@ function ContactSection() {
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8 }}
           >
-            <span className="mb-4 inline-block text-xs font-semibold uppercase tracking-[0.3em] text-[#C9A227]">
+            <span className="mb-4 inline-block text-xs font-semibold uppercase tracking-[0.3em] text-[#FF6B35]">
               Get in touch
             </span>
             <h2 className="mb-6 text-4xl font-bold text-white md:text-5xl">
@@ -933,7 +933,7 @@ function ContactSection() {
             <div className="space-y-6">
               <a
                 href="mailto:info@bear-media.com"
-                className="flex items-center gap-4 text-white/60 transition-colors hover:text-[#C9A227]"
+                className="flex items-center gap-4 text-white/60 transition-colors hover:text-[#FF6B35]"
               >
                 <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-white/10 bg-white/5">
                   <Mail className="h-5 w-5" />
@@ -945,7 +945,7 @@ function ContactSection() {
               </a>
               <a
                 href="tel:+447879011860"
-                className="flex items-center gap-4 text-white/60 transition-colors hover:text-[#C9A227]"
+                className="flex items-center gap-4 text-white/60 transition-colors hover:text-[#FF6B35]"
               >
                 <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-white/10 bg-white/5">
                   <Phone className="h-5 w-5" />
@@ -976,8 +976,8 @@ function ContactSection() {
             <div className="glass rounded-3xl p-8 md:p-10">
               {formState === "sent" ? (
                 <div className="flex flex-col items-center justify-center py-12 text-center">
-                  <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-[#C9A227]/10">
-                    <Mail className="h-7 w-7 text-[#C9A227]" />
+                  <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-[#FF6B35]/10">
+                    <Mail className="h-7 w-7 text-[#FF6B35]" />
                   </div>
                   <h3 className="mb-2 text-2xl font-bold text-white">Message sent</h3>
                   <p className="text-white/50">I&apos;ll reply within 24 hours.</p>
@@ -993,7 +993,7 @@ function ContactSection() {
                       name="name"
                       required
                       placeholder="Your name"
-                      className="w-full rounded-xl border border-white/[0.08] bg-white/[0.03] px-4 py-3.5 text-sm text-white placeholder:text-white/25 focus:border-[#C9A227]/50 focus:outline-none focus:ring-1 focus:ring-[#C9A227]/25"
+                      className="w-full rounded-xl border border-white/[0.08] bg-white/[0.03] px-4 py-3.5 text-sm text-white placeholder:text-white/25 focus:border-[#FF6B35]/50 focus:outline-none focus:ring-1 focus:ring-[#FF6B35]/25"
                     />
                   </div>
                   <div>
@@ -1005,7 +1005,7 @@ function ContactSection() {
                       name="email"
                       required
                       placeholder="your@email.com"
-                      className="w-full rounded-xl border border-white/[0.08] bg-white/[0.03] px-4 py-3.5 text-sm text-white placeholder:text-white/25 focus:border-[#C9A227]/50 focus:outline-none focus:ring-1 focus:ring-[#C9A227]/25"
+                      className="w-full rounded-xl border border-white/[0.08] bg-white/[0.03] px-4 py-3.5 text-sm text-white placeholder:text-white/25 focus:border-[#FF6B35]/50 focus:outline-none focus:ring-1 focus:ring-[#FF6B35]/25"
                     />
                   </div>
                   <div>
@@ -1015,7 +1015,7 @@ function ContactSection() {
                     <select
                       name="projectType"
                       defaultValue="Website"
-                      className="w-full rounded-xl border border-white/[0.08] bg-white/[0.03] px-4 py-3.5 text-sm text-white focus:border-[#C9A227]/50 focus:outline-none focus:ring-1 focus:ring-[#C9A227]/25"
+                      className="w-full rounded-xl border border-white/[0.08] bg-white/[0.03] px-4 py-3.5 text-sm text-white focus:border-[#FF6B35]/50 focus:outline-none focus:ring-1 focus:ring-[#FF6B35]/25"
                     >
                       <option value="Website">Website</option>
                       <option value="Social Media Content">Social Media Content</option>
@@ -1032,7 +1032,7 @@ function ContactSection() {
                       rows={4}
                       required
                       placeholder="Tell me about your project..."
-                      className="w-full resize-none rounded-xl border border-white/[0.08] bg-white/[0.03] px-4 py-3.5 text-sm text-white placeholder:text-white/25 focus:border-[#C9A227]/50 focus:outline-none focus:ring-1 focus:ring-[#C9A227]/25"
+                      className="w-full resize-none rounded-xl border border-white/[0.08] bg-white/[0.03] px-4 py-3.5 text-sm text-white placeholder:text-white/25 focus:border-[#FF6B35]/50 focus:outline-none focus:ring-1 focus:ring-[#FF6B35]/25"
                     />
                   </div>
 
@@ -1045,7 +1045,7 @@ function ContactSection() {
                   <motion.button
                     type="submit"
                     disabled={formState === "sending"}
-                    className="w-full rounded-xl bg-[#C9A227] py-4 text-sm font-bold text-black shadow-[0_4px_30px_rgba(201,162,39,0.25)] transition-all hover:bg-[#E8C547] hover:shadow-[0_8px_40px_rgba(201,162,39,0.35)] disabled:opacity-50"
+                    className="w-full rounded-xl bg-[#FF6B35] py-4 text-sm font-bold text-black shadow-[0_4px_30px_rgba(255,107,53,0.25)] transition-all hover:bg-[#F7931E] hover:shadow-[0_8px_40px_rgba(255,107,53,0.35)] disabled:opacity-50"
                     whileHover={{ scale: 1.01 }}
                     whileTap={{ scale: 0.99 }}
                   >
@@ -1080,7 +1080,7 @@ function Footer() {
               />
               <div>
                 <span className="text-lg font-bold text-white">Bear</span>
-                <span className="text-lg font-bold text-[#C9A227]">Media</span>
+                <span className="text-lg font-bold text-[#FF6B35]">Media</span>
               </div>
             </div>
             <p className="mb-6 text-sm leading-relaxed text-white/40">
@@ -1097,7 +1097,7 @@ function Footer() {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/[0.06] bg-white/[0.03] text-white/40 transition-all hover:border-[#C9A227]/30 hover:bg-[#C9A227]/10 hover:text-[#C9A227]"
+                  className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/[0.06] bg-white/[0.03] text-white/40 transition-all hover:border-[#FF6B35]/30 hover:bg-[#FF6B35]/10 hover:text-[#FF6B35]"
                   aria-label={social.label}
                 >
                   <social.icon className="h-4 w-4" />
@@ -1116,7 +1116,7 @@ function Footer() {
                 <li key={link}>
                   <a
                     href={`#${link.toLowerCase()}`}
-                    className="text-white/50 transition-colors hover:text-[#C9A227]"
+                    className="text-white/50 transition-colors hover:text-[#FF6B35]"
                   >
                     {link}
                   </a>
@@ -1127,7 +1127,7 @@ function Footer() {
                   href="https://portfolio.bear-media.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-white/50 transition-colors hover:text-[#C9A227]"
+                  className="text-white/50 transition-colors hover:text-[#FF6B35]"
                 >
                   Portfolio
                 </a>
@@ -1164,7 +1164,7 @@ function Footer() {
               <li>
                 <a
                   href="mailto:info@bear-media.com"
-                  className="text-white/50 transition-colors hover:text-[#C9A227]"
+                  className="text-white/50 transition-colors hover:text-[#FF6B35]"
                 >
                   info@bear-media.com
                 </a>
@@ -1172,7 +1172,7 @@ function Footer() {
               <li>
                 <a
                   href="tel:+447879011860"
-                  className="text-white/50 transition-colors hover:text-[#C9A227]"
+                  className="text-white/50 transition-colors hover:text-[#FF6B35]"
                 >
                   +44 7879 011860
                 </a>

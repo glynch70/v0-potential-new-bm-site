@@ -91,7 +91,7 @@ export default function FloatingSectionNav() {
                 transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]
                 ${
                   isActive
-                    ? "bg-[#C9A227] text-black shadow-md scale-105"
+                    ? "bg-[#FF6B35] text-black shadow-md scale-105"
                     : "text-black/50 hover:text-black hover:bg-black/5 dark:text-white/50 dark:hover:text-white dark:hover:bg-white/10"
                 }
                 active:scale-95`}
