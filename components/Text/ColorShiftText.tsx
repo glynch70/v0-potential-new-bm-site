@@ -27,7 +27,7 @@ export function ColorShiftText({
         animate={isInView ? { color: colors } : { color: colors[0] }}
         transition={{
           duration: 3,
-          repeat: Infinity,
+          repeat: 2,
           repeatType: 'mirror',
           ease: 'easeInOut',
         }}

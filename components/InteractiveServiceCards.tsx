@@ -339,6 +339,10 @@ export default function InteractiveServiceCards() {
           height: 4px;
           border-radius: 50%;
           opacity: 0;
+        }
+
+        .service-card:hover .particle,
+        .service-card:active .particle {
           animation: sparkle 4s ease-in-out infinite;
         }
 
@@ -381,9 +385,9 @@ export default function InteractiveServiceCards() {
         .particle:nth-child(7) { left: 60%; animation-delay: 1.8s; }
         .particle:nth-child(8) { left: 40%; animation-delay: 1.2s; }
 
-        .service-card:hover .particle,
-        .service-card:active .particle {
-          animation-duration: 2s;
+        /* Hide particles on mobile to reduce GPU load */
+        @media (hover: none) and (pointer: coarse) {
+          .particles { display: none; }
         }
 
         /* Content */

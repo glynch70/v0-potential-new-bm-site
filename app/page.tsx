@@ -336,7 +336,7 @@ function HeroSection({ onNavigate }: { onNavigate: (id: string) => void }) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.2 }}
-          className="mt-16 flex gap-12 border-t border-white/[0.06] pt-8"
+          className="mt-16 flex gap-6 md:gap-12 border-t border-white/[0.06] pt-8"
         >
           {[
             { value: "50+", label: "Projects delivered" },
@@ -663,8 +663,8 @@ function WorkSection() {
           ))}
         </div>
 
-        {/* Parallax gallery */}
-        <div className="mt-16 grid gap-4 md:grid-cols-4">
+        {/* Parallax gallery — hidden on mobile for performance */}
+        <div className="mt-16 hidden gap-4 md:grid md:grid-cols-4">
           <ParallaxImage src="/work/short-form-content.jpg" alt="Short form content" speed={0.3} direction="up" className="aspect-square" />
           <ParallaxImage src="/work/website-1-management.jpg" alt="Management website" speed={0.5} direction="down" className="aspect-square" />
           <ParallaxImage src="/work/posters-collage.jpg" alt="Poster designs" speed={0.2} direction="up" className="aspect-square" />
@@ -760,7 +760,7 @@ function TestimonialFlipCard({ review, index, isInView }: {
             {review.name}
           </p>
           <p className="text-xs text-white/30 mt-1">{review.role}</p>
-          <p className="text-[9px] uppercase tracking-[0.2em] text-white/20 mt-6">Click to read</p>
+          <p className="text-[9px] uppercase tracking-[0.2em] text-white/20 mt-6">Tap to read</p>
         </div>
 
         {/* Back: review text */}
@@ -775,7 +775,7 @@ function TestimonialFlipCard({ review, index, isInView }: {
             <div className="h-px w-6 bg-[#D4A830]" />
             <p className="text-xs font-bold uppercase text-white">{review.name}</p>
           </div>
-          <p className="text-[9px] uppercase tracking-[0.2em] text-white/20 mt-4">Click to flip back</p>
+          <p className="text-[9px] uppercase tracking-[0.2em] text-white/20 mt-4">Tap to flip back</p>
         </div>
       </motion.div>
     </motion.div>
@@ -1191,12 +1191,11 @@ function ContactSection() {
 function Footer({ onNavigate }: { onNavigate: (id: string) => void }) {
   return (
     <footer className="border-t border-white/[0.04] bg-[#0A0A0A]">
-      {/* Google Map — full width, grayscale for brutalist feel */}
-      <div className="h-64 w-full grayscale">
+      {/* Google Map — pointer-events-none prevents scroll hijacking on mobile */}
+      <div className="relative h-64 w-full grayscale overflow-hidden">
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d17892.82!2d-3.4711!3d55.9342!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4887c7a3c07f70c7%3A0x4c0e6d8f82e9e4c0!2sBroxburn%2C%20West%20Lothian%20EH52%206PH!5e0!3m2!1sen!2suk!4v1"
-          className="w-full h-full border-0"
-          allowFullScreen
+          className="w-full h-full border-0 pointer-events-none"
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
           title="Bear Media location - Broxburn, West Lothian"

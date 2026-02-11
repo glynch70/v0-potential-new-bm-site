@@ -37,10 +37,6 @@ export function MaskedText({
           duration: 0.8,
           ease: [0.22, 1, 0.36, 1],
         }}
-        style={{
-          maskImage: `linear-gradient(90deg, black 0%, black 100%)`,
-          WebkitMaskImage: `linear-gradient(90deg, black 0%, black 100%)`,
-        }}
       >
         {text}
       </motion.div>

@@ -13,55 +13,60 @@ export function CustomCursor() {
   const cursorRef = useRef<HTMLDivElement>(null);
   const [position, setPosition] = useState<CursorPosition>({ x: 0, y: 0 });
   const [isHovering, setIsHovering] = useState(false);
+  const [isTouch, setIsTouch] = useState(true);
   const mouseXRef = useRef(0);
   const mouseYRef = useRef(0);
   const [reduceMotion] = useState(() => prefersReducedMotion());
 
   useEffect(() => {
+    // Hide on touch/mobile — check for coarse pointer
+    const isTouchDevice =
+      'ontouchstart' in window ||
+      navigator.maxTouchPoints > 0 ||
+      window.matchMedia('(pointer: coarse)').matches;
+    setIsTouch(isTouchDevice);
+    if (isTouchDevice) return;
+
     const handleMouseMove = (e: MouseEvent) => {
       mouseXRef.current = e.clientX;
       mouseYRef.current = e.clientY;
     };
 
-    const handleMouseEnter = () => {
-      setIsHovering(true);
+    // Event delegation — one listener instead of N per element
+    const handlePointerOver = (e: Event) => {
+      const target = (e.target as HTMLElement).closest('button, a, [role="button"]');
+      if (target) setIsHovering(true);
+    };
+    const handlePointerOut = (e: Event) => {
+      const target = (e.target as HTMLElement).closest('button, a, [role="button"]');
+      if (target) setIsHovering(false);
     };
 
-    const handleMouseLeave = () => {
-      setIsHovering(false);
-    };
+    let rafId: number;
 
-    // Animate cursor position with smooth easing
     const animateCursor = () => {
       setPosition((prev) => ({
         x: prev.x + (mouseXRef.current - prev.x) * 0.15,
         y: prev.y + (mouseYRef.current - prev.y) * 0.15,
       }));
-      requestAnimationFrame(animateCursor);
+      rafId = requestAnimationFrame(animateCursor);
     };
 
-    const animationId = requestAnimationFrame(animateCursor);
+    rafId = requestAnimationFrame(animateCursor);
 
-    // Track interactive elements
-    const interactiveElements = document.querySelectorAll('button, a, [role="button"]');
-    interactiveElements.forEach((el) => {
-      el.addEventListener('mouseenter', handleMouseEnter);
-      el.addEventListener('mouseleave', handleMouseLeave);
-    });
-
+    document.addEventListener('mouseover', handlePointerOver);
+    document.addEventListener('mouseout', handlePointerOut);
     window.addEventListener('mousemove', handleMouseMove);
 
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
-      interactiveElements.forEach((el) => {
-        el.removeEventListener('mouseenter', handleMouseEnter);
-        el.removeEventListener('mouseleave', handleMouseLeave);
-      });
-      cancelAnimationFrame(animationId);
+      document.removeEventListener('mouseover', handlePointerOver);
+      document.removeEventListener('mouseout', handlePointerOut);
+      cancelAnimationFrame(rafId);
     };
   }, []);
 
-  if (reduceMotion) {
+  if (reduceMotion || isTouch) {
     return null;
   }
 
