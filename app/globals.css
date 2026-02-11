@@ -8,18 +8,18 @@
    ─────────────────────────────────────────────── */
 
 :root {
-  --accent: #FF6B35;
-  --accent-light: #FF8F5E;
-  --accent-dark: #C1440E;
-  --accent-glow: rgba(255, 107, 53, 0.35);
+  --accent: #D4A830;
+  --accent-light: #E4BF4A;
+  --accent-dark: #A88520;
+  --accent-glow: rgba(212, 168, 48, 0.35);
 
-  --background: #000000;
+  --background: #0A0A0A;
   --foreground: #F0F0F0;
   --card: #0A0A0A;
   --card-foreground: #F0F0F0;
   --popover: #0A0A0A;
   --popover-foreground: #F0F0F0;
-  --primary: #FF6B35;
+  --primary: #D4A830;
   --primary-foreground: #000000;
   --secondary: #111111;
   --secondary-foreground: #F0F0F0;
@@ -106,7 +106,7 @@
    Scrollbar — brutalist thin line
    ─────────────────────────────────────────────── */
 ::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: #000; }
+::-webkit-scrollbar-track { background: #0A0A0A; }
 ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 0; }
 ::-webkit-scrollbar-thumb:hover { background: var(--accent-light); }
 
@@ -157,8 +157,8 @@
 }
 
 @keyframes pulse-accent {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(255, 107, 53, 0.5); }
-  50% { box-shadow: 0 0 0 16px rgba(255, 107, 53, 0); }
+  0%, 100% { box-shadow: 0 0 0 0 rgba(212, 168, 48, 0.5); }
+  50% { box-shadow: 0 0 0 16px rgba(212, 168, 48, 0); }
 }
 
 @keyframes ticker {
@@ -214,7 +214,7 @@
 
 /* Accent gradient text */
 .text-accent-gradient {
-  background: linear-gradient(135deg, #FF6B35 0%, #FF8F5E 50%, #FF6B35 100%);
+  background: linear-gradient(135deg, #D4A830 0%, #E4BF4A 50%, #D4A830 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
