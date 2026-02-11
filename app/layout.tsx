@@ -3,6 +3,8 @@ import type { Metadata } from "next";
 import Script from "next/script";
 
 import { LenisScrollProvider } from "@/components/LenisScrollProvider";
+import { CustomCursor } from "@/components/ui/CustomCursor";
+import { ScrollProgress } from "@/components/ui/ScrollProgress";
 import "./globals.css";
 
 export { reportWebVitals } from "@/lib/metrics";
@@ -69,6 +71,8 @@ export default function RootLayout({
         </>
       ) : null}
       <body className="font-sans antialiased">
+        <CustomCursor />
+        <ScrollProgress />
         <LenisScrollProvider>
           {children}
           <Analytics />

@@ -117,7 +117,7 @@ export default function InteractiveServiceCards() {
     <>
       <style jsx global>{`
         .services-section {
-          background: #050505;
+          background: #0A0A0A;
           padding: 60px 20px;
           min-height: 100vh;
         }
@@ -141,7 +141,7 @@ export default function InteractiveServiceCards() {
 
         .services-header .subtitle {
           font-size: 1.4rem;
-          color: #C9A227;
+          color: #D4A830;
           font-weight: 600;
           margin-bottom: 16px;
         }
@@ -169,7 +169,7 @@ export default function InteractiveServiceCards() {
         .service-card {
           width: 100%;
           background: #1a1a1a;
-          border-radius: 24px;
+          border-radius: 0px;
           padding: 40px 28px;
           position: relative;
           overflow: visible;
@@ -215,7 +215,7 @@ export default function InteractiveServiceCards() {
           transform: translate(-50%, -50%);
           width: 120%;
           height: 120%;
-          border-radius: 24px;
+          border-radius: 0px;
           opacity: 0;
           transition: opacity 0.5s ease;
           pointer-events: none;
@@ -279,7 +279,7 @@ export default function InteractiveServiceCards() {
           content: '';
           position: absolute;
           inset: -3px;
-          border-radius: 24px;
+          border-radius: 0px;
           padding: 3px;
           -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
           -webkit-mask-composite: xor;
@@ -329,7 +329,7 @@ export default function InteractiveServiceCards() {
           inset: 0;
           pointer-events: none;
           z-index: 0;
-          border-radius: 24px;
+          border-radius: 0px;
           overflow: hidden;
         }
 
@@ -512,7 +512,7 @@ export default function InteractiveServiceCards() {
 
         .features-pills li {
           padding: 10px 20px;
-          border-radius: 100px;
+          border-radius: 0px;
           font-size: 0.9rem;
           font-weight: 600;
           border: 2px solid;
@@ -608,7 +608,7 @@ export default function InteractiveServiceCards() {
           .service-card {
             width: 100%;
             padding: 24px 20px;
-            border-radius: 20px;
+            border-radius: 0px;
             max-width: 100%;
           }
 
@@ -665,7 +665,7 @@ export default function InteractiveServiceCards() {
         }
       `}</style>
 
-      <section className="services-section">
+      <section id="services" className="services-section">
         <div className="services-container">
           <div className="services-header">
             <h1>Services</h1>

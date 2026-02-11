@@ -39,7 +39,7 @@ export function WorkCard3D({
       onClick={() => setIsFlipped(!isFlipped)}
     >
       <motion.div
-        className="relative w-full h-full rounded-2xl overflow-hidden bg-gradient-to-br from-gray-900 to-gray-800 shadow-xl"
+        className="relative w-full h-full overflow-hidden bg-gradient-to-br from-gray-900 to-gray-800 shadow-xl"
         animate={{ rotateY: isFlipped ? 180 : 0 }}
         transition={{ duration: 0.6, ease: 'easeInOut' }}
         style={{ transformStyle: 'preserve-3d' }}
@@ -70,7 +70,7 @@ export function WorkCard3D({
                 {tags.map((tag) => (
                   <span
                     key={tag}
-                    className="text-xs px-3 py-1 bg-amber-400/20 text-amber-300 rounded-full border border-amber-400/40"
+                    className="text-xs px-3 py-1 bg-[#D4A830]/20 text-[#D4A830] border border-[#D4A830]/40"
                   >
                     {tag}
                   </span>
@@ -93,14 +93,14 @@ export function WorkCard3D({
             className="absolute inset-0 opacity-0 pointer-events-none"
             whileHover={{ opacity: 0.3 }}
             style={{
-              background: 'radial-gradient(circle at center, rgba(201, 162, 39, 0.3), transparent)',
+              background: 'radial-gradient(circle at center, rgba(212, 168, 48, 0.3), transparent)',
             }}
           />
         </motion.div>
 
         {/* Back side */}
         <motion.div
-          className="absolute inset-0 p-6 flex flex-col justify-center items-center bg-gradient-to-br from-amber-950/50 to-black text-white"
+          className="absolute inset-0 p-6 flex flex-col justify-center items-center bg-gradient-to-br from-[#A88520]/30 to-black text-white"
           style={{
             backfaceVisibility: 'hidden',
             transform: 'rotateY(180deg)',
@@ -116,7 +116,7 @@ export function WorkCard3D({
             )}
 
             <motion.button
-              className="mt-6 px-6 py-2 bg-amber-400 text-black font-semibold rounded-lg"
+              className="mt-6 px-6 py-2 bg-[#D4A830] text-black font-semibold"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
