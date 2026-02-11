@@ -81,7 +81,7 @@ export function CustomCursor() {
     >
       {/* Outer ring */}
       <motion.div
-        className="absolute inset-0 border-2 border-amber-400 rounded-full"
+        className="absolute inset-0 border-2 border-[#D4A830] rounded-full"
         animate={{
           scale: isHovering ? 1.5 : 1,
         }}
@@ -90,7 +90,7 @@ export function CustomCursor() {
 
       {/* Inner dot */}
       <motion.div
-        className="absolute top-1/2 left-1/2 w-1 h-1 bg-amber-400 rounded-full -translate-x-1/2 -translate-y-1/2"
+        className="absolute top-1/2 left-1/2 w-1 h-1 bg-[#D4A830] rounded-full -translate-x-1/2 -translate-y-1/2"
         animate={{
           scale: isHovering ? 1.5 : 1,
         }}
@@ -99,7 +99,7 @@ export function CustomCursor() {
 
       {/* Glow effect */}
       <motion.div
-        className="absolute inset-0 bg-amber-400 rounded-full blur-md opacity-30"
+        className="absolute inset-0 bg-[#D4A830] rounded-full blur-md opacity-30"
         animate={{
           scale: isHovering ? 2 : 0.5,
           opacity: isHovering ? 0.5 : 0.2,

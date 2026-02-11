@@ -30,6 +30,22 @@ const Hero3DCanvas = dynamic(
   { ssr: false }
 );
 
+const InteractiveServiceCards = dynamic(
+  () => import("@/components/InteractiveServiceCards"),
+  { ssr: false }
+);
+
+/* ─── Existing animation components ─── */
+import { AnimatedHeroText } from "@/components/Hero/AnimatedHeroText";
+import { ScrollIndicator } from "@/components/Hero/ScrollIndicator";
+import { StaggeredText } from "@/components/Text/StaggeredText";
+import { AnimatedHeading } from "@/components/Text/AnimatedHeading";
+import { ColorShiftText } from "@/components/Text/ColorShiftText";
+import { MaskedText } from "@/components/Text/MaskedText";
+import { AnimatedUnderline } from "@/components/ui/AnimatedUnderline";
+import { WorkCard3D } from "@/components/Work/WorkCard3D";
+import { ParallaxImage } from "@/components/ui/ParallaxImage";
+
 /* ══════════════════════════════════════════════
    MAIN PAGE
    ══════════════════════════════════════════════ */
@@ -67,7 +83,7 @@ export default function BearMediaSite() {
       <HeroSection onNavigate={scrollTo} />
       <MarqueeStrip />
       <PainSection />
-      <SolutionSection />
+      <InteractiveServiceCards />
       <ProcessSection onNavigate={scrollTo} />
       <WorkSection />
       <TestimonialsSection />
@@ -130,7 +146,9 @@ function SiteNav({
                 onClick={() => onNavigate(link.id)}
                 className="text-[11px] font-medium uppercase tracking-[0.2em] text-white/50 transition-colors hover:text-white"
               >
-                {link.label}
+                <AnimatedUnderline color="#D4A830" thickness={1}>
+                  {link.label}
+                </AnimatedUnderline>
               </button>
             ))}
           </nav>
@@ -253,18 +271,17 @@ function HeroSection({ onNavigate }: { onNavigate: (id: string) => void }) {
           </span>
         </motion.div>
 
-        {/* Main headline — brutalist heavy type */}
-        <motion.h1
-          initial={{ opacity: 0, y: 60 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
-          className="max-w-5xl text-[clamp(3rem,8vw,7.5rem)] font-bold uppercase leading-[0.9] tracking-[-0.03em] text-white"
-        >
-          Your business
-          <br />
-          deserves to be{" "}
-          <span className="text-[#D4A830]">seen.</span>
-        </motion.h1>
+        {/* Main headline — brutalist heavy type with word stagger */}
+        <div className="max-w-5xl">
+          <AnimatedHeroText
+            text="Your business deserves to be"
+            className="text-[clamp(3rem,8vw,7.5rem)] font-bold uppercase leading-[0.9] tracking-[-0.03em] text-white"
+            delay={0.4}
+          />
+          <span className="text-[clamp(3rem,8vw,7.5rem)] font-bold uppercase leading-[0.9] tracking-[-0.03em] text-[#D4A830]">
+            {" "}seen.
+          </span>
+        </div>
 
         {/* Sub */}
         <motion.p
@@ -339,23 +356,9 @@ function HeroSection({ onNavigate }: { onNavigate: (id: string) => void }) {
       </motion.div>
 
       {/* Scroll indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5 }}
-        className="absolute bottom-8 right-6 z-10 hidden md:block"
-      >
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
-          className="flex flex-col items-center gap-2"
-        >
-          <span className="text-[9px] uppercase tracking-[0.3em] text-white/25 [writing-mode:vertical-rl]">
-            Scroll
-          </span>
-          <div className="h-12 w-px bg-gradient-to-b from-white/25 to-transparent" />
-        </motion.div>
-      </motion.div>
+      <div className="absolute bottom-8 right-6 z-10 hidden md:block">
+        <ScrollIndicator />
+      </div>
     </section>
   );
 }
@@ -440,10 +443,18 @@ function PainSection() {
               The problem
             </span>
           </div>
-          <h2 className="max-w-3xl text-4xl font-bold uppercase leading-[1.1] tracking-tight text-white md:text-6xl">
-            If your business isn&apos;t online properly,{" "}
-            <span className="text-white/30">it basically doesn&apos;t exist.</span>
-          </h2>
+          <StaggeredText
+            text="If your business isn't online properly,"
+            className="max-w-3xl text-4xl font-bold uppercase leading-[1.1] tracking-tight md:text-6xl"
+            as="h2"
+          />
+          <StaggeredText
+            text="it basically doesn't exist."
+            className="max-w-3xl text-4xl font-bold uppercase leading-[1.1] tracking-tight md:text-6xl"
+            as="span"
+            color="rgba(255,255,255,0.3)"
+            delay={0.4}
+          />
         </motion.div>
 
         {/* Pain grid */}
@@ -473,83 +484,7 @@ function PainSection() {
   );
 }
 
-/* ══════════════════════════════════════════════
-   3. SOLUTION / BENEFITS
-   ══════════════════════════════════════════════ */
-const SOLUTIONS = [
-  {
-    title: "Websites that convert",
-    desc: "Fast, clean, mobile-first sites designed to turn visitors into paying customers. No templates. Built for your business.",
-    metric: "3x",
-    metricLabel: "more enquiries",
-  },
-  {
-    title: "Content that connects",
-    desc: "Consistent, on-brand social media content that builds trust and keeps you visible. Reels, posts, stories — all handled.",
-    metric: "10x",
-    metricLabel: "more visibility",
-  },
-  {
-    title: "Strategy that works",
-    desc: "SEO, Google Business, drone footage, photography. Everything you need to dominate your local market. One person. One point of contact.",
-    metric: "100%",
-    metricLabel: "in-house",
-  },
-];
-
-function SolutionSection() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-
-  return (
-    <section ref={ref} className="relative border-t border-white/[0.04] bg-[#0A0A0A] py-32 md:py-40">
-      <div className="mx-auto max-w-7xl px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="mb-20"
-        >
-          <div className="mb-4 flex items-center gap-3">
-            <div className="h-px w-12 bg-[#D4A830]" />
-            <span className="text-[11px] font-medium uppercase tracking-[0.3em] text-[#D4A830]">
-              The solution
-            </span>
-          </div>
-          <h2 className="max-w-3xl text-4xl font-bold uppercase leading-[1.1] tracking-tight text-white md:text-6xl">
-            We handle everything.{" "}
-            <span className="text-white/30">You focus on your business.</span>
-          </h2>
-        </motion.div>
-
-        <div className="grid gap-8 md:grid-cols-3">
-          {SOLUTIONS.map((sol, i) => (
-            <motion.div
-              key={sol.title}
-              initial={{ opacity: 0, y: 50 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: i * 0.15 }}
-              className="group border border-white/[0.06] bg-[#0A0A0A] p-8 transition-all hover:border-[#D4A830]/20 md:p-10"
-            >
-              <div className="mb-8">
-                <span className="brutal-number text-5xl font-bold text-[#D4A830] md:text-6xl">
-                  {sol.metric}
-                </span>
-                <p className="mt-1 text-[10px] uppercase tracking-[0.2em] text-white/30">
-                  {sol.metricLabel}
-                </p>
-              </div>
-              <h3 className="mb-3 text-xl font-bold uppercase tracking-tight text-white">
-                {sol.title}
-              </h3>
-              <p className="leading-relaxed text-white/40">{sol.desc}</p>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
+/* SolutionSection replaced by InteractiveServiceCards component */
 
 /* ══════════════════════════════════════════════
    4. HOW IT WORKS / PROCESS
@@ -601,10 +536,11 @@ function ProcessSection({ onNavigate }: { onNavigate: (id: string) => void }) {
                 How it works
               </span>
             </div>
-            <h2 className="max-w-2xl text-4xl font-bold uppercase leading-[1.1] tracking-tight text-white md:text-6xl">
-              Simple process.{" "}
-              <span className="text-white/30">Serious results.</span>
-            </h2>
+            <MaskedText
+              text="Simple process. Serious results."
+              className="max-w-2xl text-4xl font-bold uppercase leading-[1.1] tracking-tight text-white md:text-6xl"
+              as="h2"
+            />
           </div>
           <motion.button
             onClick={() => onNavigate("contact")}
@@ -654,21 +590,24 @@ function ProcessSection({ onNavigate }: { onNavigate: (id: string) => void }) {
 const PROJECTS = [
   {
     title: "Social Media Content",
-    tag: "Content",
-    desc: "Scroll-stopping reels, posts, and stories that build audiences and drive engagement.",
-    image: "/services-social-media.jpg",
+    description: "Scroll-stopping reels, posts, and stories that build audiences and drive engagement.",
+    image: "/work/mobile-social-showcase.jpg",
+    details: "We create consistent, on-brand social media content including Reels, Stories, promotional clips, and monthly content packages. Every piece is designed to build trust, increase visibility, and drive real engagement for your business.",
+    tags: ["Reels", "Stories", "Content Strategy"],
   },
   {
     title: "Business Websites",
-    tag: "Web",
-    desc: "Fast, clean websites built to convert visitors into paying customers.",
+    description: "Fast, clean websites built to convert visitors into paying customers.",
     image: "/work/websites-desktop.jpg",
+    details: "Custom-built, mobile-first websites designed for speed and conversion. No templates. Each site is tailored to your business goals with SEO best practices, clear calls to action, and professional design that builds trust.",
+    tags: ["Web Design", "SEO", "Mobile-First"],
   },
   {
     title: "Brand & Design",
-    tag: "Design",
-    desc: "Logos, visual identity, photography, and drone footage for complete brand packages.",
-    image: "/services-extras.jpg",
+    description: "Logos, visual identity, photography, and drone footage for complete brand packages.",
+    image: "/work/brand-collage.jpg",
+    details: "Complete brand identity packages including logo design, visual guidelines, professional photography, and aerial drone footage. Everything you need to present a cohesive, professional brand across all touchpoints.",
+    tags: ["Branding", "Photography", "Drone"],
   },
 ];
 
@@ -692,10 +631,11 @@ function WorkSection() {
                 Selected work
               </span>
             </div>
-            <h2 className="text-4xl font-bold uppercase leading-[1.1] tracking-tight text-white md:text-6xl">
-              Real work.{" "}
-              <span className="text-white/30">Real results.</span>
-            </h2>
+            <StaggeredText
+              text="Real work. Real results."
+              className="text-4xl font-bold uppercase leading-[1.1] tracking-tight md:text-6xl"
+              as="h2"
+            />
           </div>
           <a
             href="https://portfolio.bear-media.com"
@@ -708,43 +648,27 @@ function WorkSection() {
           </a>
         </motion.div>
 
-        {/* Project cards — brutalist grid */}
-        <div className="grid gap-px bg-white/[0.04] md:grid-cols-3">
+        {/* Project cards — 3D flip cards */}
+        <div className="grid gap-8 md:grid-cols-3">
           {PROJECTS.map((project, i) => (
-            <motion.div
+            <WorkCard3D
               key={project.title}
-              initial={{ opacity: 0, y: 40 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: i * 0.12 }}
-              className="group bg-[#0A0A0A]"
-            >
-              <div className="relative aspect-[4/3] overflow-hidden">
-                <Image
-                  src={project.image}
-                  alt={project.title}
-                  fill
-                  sizes="(max-width: 768px) 100vw, 33vw"
-                  placeholder="blur"
-                  blurDataURL={BLUR}
-                  className="object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-[#0A0A0A]/30 transition-colors group-hover:bg-[#0A0A0A]/10" />
-                <div className="absolute top-4 left-4">
-                  <span className="border border-white/20 bg-[#0A0A0A]/60 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.2em] text-white backdrop-blur-sm">
-                    {project.tag}
-                  </span>
-                </div>
-              </div>
-              <div className="p-6 md:p-8">
-                <h3 className="mb-2 text-lg font-bold uppercase tracking-tight text-white">
-                  {project.title}
-                </h3>
-                <p className="text-sm leading-relaxed text-white/40">
-                  {project.desc}
-                </p>
-              </div>
-            </motion.div>
+              title={project.title}
+              description={project.description}
+              image={project.image}
+              details={project.details}
+              tags={project.tags}
+              index={i}
+            />
           ))}
+        </div>
+
+        {/* Parallax gallery */}
+        <div className="mt-16 grid gap-4 md:grid-cols-4">
+          <ParallaxImage src="/work/short-form-content.jpg" alt="Short form content" speed={0.3} direction="up" className="aspect-square" />
+          <ParallaxImage src="/work/website-1-management.jpg" alt="Management website" speed={0.5} direction="down" className="aspect-square" />
+          <ParallaxImage src="/work/posters-collage.jpg" alt="Poster designs" speed={0.2} direction="up" className="aspect-square" />
+          <ParallaxImage src="/work/brand-visual-assets.jpg" alt="Brand assets" speed={0.4} direction="down" className="aspect-square" />
         </div>
 
         {/* Client logos */}
@@ -778,116 +702,133 @@ const REVIEWS = [
       "Garry created a simple, powerful website that sells our Manager Training Programme and clearly sets us apart. Delivered within days, with zero fuss. Exactly what we needed.",
     name: "Managing What Matters",
     role: "Leadership & Management Training",
+    stars: 5,
   },
   {
     quote:
       "Bear Media transformed our online presence. The website is fast, clean, and professional. We've had a noticeable increase in enquiries since launch.",
     name: "Local Business Client",
     role: "Edinburgh",
+    stars: 5,
   },
   {
     quote:
       "The social media content Garry produces is exactly what we needed. Consistent, professional, and it actually gets engagement.",
     name: "Small Business Owner",
     role: "West Lothian",
+    stars: 5,
   },
 ];
+
+function TestimonialFlipCard({ review, index, isInView }: {
+  review: typeof REVIEWS[0];
+  index: number;
+  isInView: boolean;
+}) {
+  const [isFlipped, setIsFlipped] = useState(false);
+
+  return (
+    <motion.div
+      className="cursor-pointer"
+      style={{ perspective: "1000px" }}
+      initial={{ opacity: 0, y: 40 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.5, delay: index * 0.12 }}
+      onClick={() => setIsFlipped(!isFlipped)}
+      role="button"
+      tabIndex={0}
+      onKeyDown={(e) => e.key === "Enter" && setIsFlipped(!isFlipped)}
+    >
+      <motion.div
+        className="relative w-full min-h-[280px]"
+        animate={{ rotateY: isFlipped ? 180 : 0 }}
+        transition={{ duration: 0.6, ease: "easeInOut" }}
+        style={{ transformStyle: "preserve-3d" }}
+      >
+        {/* Front: name + stars */}
+        <div
+          className="absolute inset-0 border border-white/[0.06] bg-[#0A0A0A] p-8 flex flex-col justify-center items-center"
+          style={{ backfaceVisibility: "hidden" }}
+        >
+          <div className="flex gap-1 mb-4">
+            {Array.from({ length: review.stars }).map((_, s) => (
+              <Star key={s} className="h-4 w-4 fill-[#D4A830] text-[#D4A830]" />
+            ))}
+          </div>
+          <div className="h-px w-8 bg-[#D4A830] mb-4" />
+          <p className="text-lg font-bold uppercase tracking-tight text-white text-center">
+            {review.name}
+          </p>
+          <p className="text-xs text-white/30 mt-1">{review.role}</p>
+          <p className="text-[9px] uppercase tracking-[0.2em] text-white/20 mt-6">Click to read</p>
+        </div>
+
+        {/* Back: review text */}
+        <div
+          className="absolute inset-0 border border-[#D4A830]/20 bg-[#0A0A0A] p-8 flex flex-col justify-center"
+          style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
+        >
+          <blockquote className="text-sm leading-relaxed text-white/70">
+            &ldquo;{review.quote}&rdquo;
+          </blockquote>
+          <div className="flex items-center gap-3 mt-6">
+            <div className="h-px w-6 bg-[#D4A830]" />
+            <p className="text-xs font-bold uppercase text-white">{review.name}</p>
+          </div>
+          <p className="text-[9px] uppercase tracking-[0.2em] text-white/20 mt-4">Click to flip back</p>
+        </div>
+      </motion.div>
+    </motion.div>
+  );
+}
 
 function TestimonialsSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const [active, setActive] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setActive((prev) => (prev + 1) % REVIEWS.length);
-    }, 6000);
-    return () => clearInterval(interval);
-  }, []);
 
   return (
     <section ref={ref} className="relative border-t border-white/[0.04] bg-[#0A0A0A] py-32 md:py-40">
       <div className="mx-auto max-w-7xl px-6">
-        <div className="grid gap-16 md:grid-cols-[1fr_2fr]">
-          {/* Left — stats */}
-          <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6 }}
+        {/* Section header */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+          className="mb-20"
+        >
+          <div className="mb-4 flex items-center gap-3">
+            <div className="h-px w-12 bg-[#D4A830]" />
+            <span className="text-[11px] font-medium uppercase tracking-[0.3em] text-[#D4A830]">
+              Testimonials
+            </span>
+          </div>
+          <AnimatedHeading
+            text="What they say."
+            level="h2"
+            className="mb-6 text-4xl font-bold uppercase leading-[1.1] tracking-tight text-white md:text-5xl"
+          />
+          <div className="flex items-center gap-1 mb-2">
+            {[1, 2, 3, 4, 5].map((s) => (
+              <Star key={s} className="h-4 w-4 fill-[#D4A830] text-[#D4A830]" />
+            ))}
+          </div>
+          <p className="text-sm text-white/40">5.0 from 18+ Google reviews</p>
+          <a
+            href="https://www.google.com/gasearch?q=Bear%20Media&source=sh/x/gs/m2/5"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-4 inline-flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.15em] text-white/30 transition-colors hover:text-[#D4A830]"
           >
-            <div className="mb-4 flex items-center gap-3">
-              <div className="h-px w-12 bg-[#D4A830]" />
-              <span className="text-[11px] font-medium uppercase tracking-[0.3em] text-[#D4A830]">
-                Testimonials
-              </span>
-            </div>
-            <h2 className="mb-8 text-4xl font-bold uppercase leading-[1.1] tracking-tight text-white md:text-5xl">
-              What they say.
-            </h2>
+            Read all reviews
+            <ExternalLink className="h-3 w-3" />
+          </a>
+        </motion.div>
 
-            <div className="flex items-center gap-1 mb-3">
-              {[1, 2, 3, 4, 5].map((s) => (
-                <Star key={s} className="h-4 w-4 fill-[#D4A830] text-[#D4A830]" />
-              ))}
-            </div>
-            <p className="text-sm text-white/40">5.0 from 18+ Google reviews</p>
-
-            <a
-              href="https://www.google.com/gasearch?q=Bear%20Media&source=sh/x/gs/m2/5"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-6 inline-flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.15em] text-white/30 transition-colors hover:text-[#D4A830]"
-            >
-              Read all reviews
-              <ExternalLink className="h-3 w-3" />
-            </a>
-          </motion.div>
-
-          {/* Right — review carousel */}
-          <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            <div className="relative min-h-[280px]">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={active}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  transition={{ duration: 0.4 }}
-                  className="border border-white/[0.06] bg-[#0A0A0A] p-8 md:p-12"
-                >
-                  <blockquote className="mb-8 text-lg leading-relaxed text-white/70 md:text-xl">
-                    &ldquo;{REVIEWS[active].quote}&rdquo;
-                  </blockquote>
-                  <div className="flex items-center gap-4">
-                    <div className="h-px w-8 bg-[#D4A830]" />
-                    <div>
-                      <p className="text-sm font-bold uppercase tracking-tight text-white">
-                        {REVIEWS[active].name}
-                      </p>
-                      <p className="text-xs text-white/30">{REVIEWS[active].role}</p>
-                    </div>
-                  </div>
-                </motion.div>
-              </AnimatePresence>
-            </div>
-
-            {/* Indicators */}
-            <div className="mt-6 flex gap-2">
-              {REVIEWS.map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => setActive(i)}
-                  className={`h-1 transition-all duration-300 ${
-                    active === i ? "w-10 bg-[#D4A830]" : "w-4 bg-white/10 hover:bg-white/20"
-                  }`}
-                />
-              ))}
-            </div>
-          </motion.div>
+        {/* 3D Flip testimonial cards */}
+        <div className="grid gap-8 md:grid-cols-3">
+          {REVIEWS.map((review, i) => (
+            <TestimonialFlipCard key={i} review={review} index={i} isInView={isInView} />
+          ))}
         </div>
       </div>
     </section>
@@ -917,10 +858,11 @@ function AboutSection() {
                 About
               </span>
             </div>
-            <h2 className="mb-8 text-4xl font-bold uppercase leading-[1.1] tracking-tight text-white md:text-6xl">
-              One person.{" "}
-              <span className="text-white/30">On purpose.</span>
-            </h2>
+            <StaggeredText
+              text="One person. On purpose."
+              className="mb-8 text-4xl font-bold uppercase leading-[1.1] tracking-tight md:text-6xl"
+              as="h2"
+            />
             <div className="space-y-4 text-lg leading-relaxed text-white/50">
               <p>
                 I&apos;m Garry, founder of Bear Media. I help small businesses across Scotland
@@ -1013,11 +955,12 @@ function CTASection({ onNavigate }: { onNavigate: (id: string) => void }) {
           className="flex flex-col items-start gap-8 md:flex-row md:items-center md:justify-between"
         >
           <div>
-            <h2 className="text-4xl font-bold uppercase leading-[1.1] tracking-tight text-black md:text-6xl">
-              Ready to get
-              <br />
-              your business seen?
-            </h2>
+            <ColorShiftText
+              text="Ready to get your business seen?"
+              className="text-4xl font-bold uppercase leading-[1.1] tracking-tight md:text-6xl"
+              as="h2"
+              colors={["#000000", "#1E3A5F", "#000000"]}
+            />
             <p className="mt-4 max-w-lg text-lg text-black/60">
               Book a free 30-minute consultation. No pressure. No obligation. Just a genuine conversation about your goals.
             </p>
@@ -1092,11 +1035,11 @@ function ContactSection() {
                 Get in touch
               </span>
             </div>
-            <h2 className="mb-6 text-4xl font-bold uppercase leading-[1.1] tracking-tight text-white md:text-5xl">
-              Let&apos;s talk
-              <br />
-              <span className="text-white/30">about your project.</span>
-            </h2>
+            <MaskedText
+              text="Let's talk about your project."
+              className="mb-6 text-4xl font-bold uppercase leading-[1.1] tracking-tight text-white md:text-5xl"
+              as="h2"
+            />
             <p className="mb-10 text-lg leading-relaxed text-white/40">
               Every message comes directly to me. No bots. No sales team. Just a genuine conversation about what you need.
             </p>
@@ -1248,6 +1191,18 @@ function ContactSection() {
 function Footer({ onNavigate }: { onNavigate: (id: string) => void }) {
   return (
     <footer className="border-t border-white/[0.04] bg-[#0A0A0A]">
+      {/* Google Map — full width, grayscale for brutalist feel */}
+      <div className="h-64 w-full grayscale">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d17892.82!2d-3.4711!3d55.9342!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4887c7a3c07f70c7%3A0x4c0e6d8f82e9e4c0!2sBroxburn%2C%20West%20Lothian%20EH52%206PH!5e0!3m2!1sen!2suk!4v1"
+          className="w-full h-full border-0"
+          allowFullScreen
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+          title="Bear Media location - Broxburn, West Lothian"
+        />
+      </div>
+
       <div className="mx-auto max-w-7xl px-6 py-16">
         <div className="grid gap-12 md:grid-cols-4">
           {/* Brand */}
@@ -1361,12 +1316,23 @@ function Footer({ onNavigate }: { onNavigate: (id: string) => void }) {
           </div>
         </div>
 
-        {/* Bottom */}
+        {/* Legal links + bottom */}
         <div className="mt-16 border-t border-white/[0.04] pt-8">
           <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
             <p className="text-[10px] uppercase tracking-[0.2em] text-white/20">
               &copy; {new Date().getFullYear()} Bear Media. All rights reserved.
             </p>
+            <div className="flex gap-6">
+              <a href="/terms-conditions" className="text-[10px] uppercase tracking-[0.2em] text-white/20 transition-colors hover:text-white/40">
+                Terms &amp; Conditions
+              </a>
+              <a href="/privacy-policy" className="text-[10px] uppercase tracking-[0.2em] text-white/20 transition-colors hover:text-white/40">
+                Privacy Policy
+              </a>
+              <a href="/cookie-policy" className="text-[10px] uppercase tracking-[0.2em] text-white/20 transition-colors hover:text-white/40">
+                Cookie Policy
+              </a>
+            </div>
             <p className="text-[10px] uppercase tracking-[0.2em] text-white/10">
               Designed &amp; built by Bear Media
             </p>

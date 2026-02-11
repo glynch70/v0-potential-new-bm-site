@@ -20,10 +20,10 @@ export function ScrollProgress() {
 
   return (
     <motion.div
-      className="fixed top-0 left-0 h-1 bg-gradient-to-r from-amber-400 to-amber-300 z-50"
+      className="fixed top-0 left-0 h-1 bg-gradient-to-r from-[#D4A830] to-[#E4BF4A] z-50"
       style={{ width: `${scrollProgress}%` }}
       animate={{
-        boxShadow: scrollProgress > 0 ? '0 0 20px rgba(201, 162, 39, 0.8)' : 'none',
+        boxShadow: scrollProgress > 0 ? '0 0 20px rgba(212, 168, 48, 0.8)' : 'none',
       }}
     />
   );

@@ -13,6 +13,15 @@
   --accent-dark: #A88520;
   --accent-glow: rgba(212, 168, 48, 0.35);
 
+  /* Neon accent palette */
+  --accent-gold: #EAB308;
+  --accent-orange: #FF6B35;
+  --accent-navy: #1E3A5F;
+  --accent-green: #22C55E;
+  --glow-gold: rgba(234, 179, 8, 0.35);
+  --glow-orange: rgba(255, 107, 53, 0.35);
+  --glow-green: rgba(34, 197, 94, 0.35);
+
   --background: #0A0A0A;
   --foreground: #F0F0F0;
   --card: #0A0A0A;

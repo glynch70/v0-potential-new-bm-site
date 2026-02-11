@@ -14,7 +14,7 @@ interface AnimatedUnderlineProps {
 export function AnimatedUnderline({
   children,
   className = '',
-  color = '#C9A227',
+  color = '#D4A830',
   thickness = 2,
 }: AnimatedUnderlineProps) {
   return (
