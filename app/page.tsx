@@ -457,7 +457,7 @@ function MarqueeStrip() {
 }
 
 /* ══════════════════════════════════════════════
-   SERVICES
+   SERVICES (Stacking Cards)
    ══════════════════════════════════════════════ */
 const SERVICES = [
   {
@@ -465,8 +465,8 @@ const SERVICES = [
     title: "Social Media Content",
     desc: "Consistent, on-brand content that builds trust and visibility across every platform.",
     features: ["Reels & Shorts", "Promo clips", "Monthly packages", "Management"],
-    accent: "#FFB84D",
-    number: "01",
+    accent: "#FF6B35",
+    bg: "bg-[#FF6B35]",
   },
   {
     icon: Monitor,
@@ -474,7 +474,8 @@ const SERVICES = [
     desc: "Fast, clean websites built to convert visitors into customers.",
     features: ["Landing pages", "Business sites", "E-commerce", "Hosting"],
     accent: "#4ECDC4",
-    number: "02",
+    bg: "bg-[#111]",
+    dark: true,
   },
   {
     icon: Camera,
@@ -482,9 +483,58 @@ const SERVICES = [
     desc: "Everything else to support and elevate your brand.",
     features: ["Drone footage", "Photography", "SEO", "Google Business"],
     accent: "#A78BFA",
-    number: "03",
+    bg: "bg-[#1a1a2e]",
+    dark: true,
   },
 ];
+
+function StackingServiceCard({
+  service,
+  index,
+}: {
+  service: (typeof SERVICES)[number];
+  index: number;
+}) {
+  const cardRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: cardRef,
+    offset: ["start end", "start start"],
+  });
+  const scale = useTransform(scrollYProgress, [0, 1], [0.85, 1]);
+  const opacity = useTransform(scrollYProgress, [0, 0.5], [0, 1]);
+  const Icon = service.icon;
+  const isDark = service.dark;
+
+  return (
+    <motion.div
+      ref={cardRef}
+      style={{ scale, opacity }}
+      className={`sticky top-24 ${service.bg} rounded-3xl p-8 shadow-2xl border border-white/[0.06] md:p-12`}
+    >
+      <div className="mb-6 flex items-start gap-4">
+        <div className={`rounded-xl p-3 ${isDark ? "bg-white/10" : "bg-black/10"}`}>
+          <Icon className={`h-8 w-8 ${isDark ? "text-white" : "text-black"}`} />
+        </div>
+        <h3 className={`text-3xl font-bold md:text-4xl ${isDark ? "text-white" : "text-black"}`}>
+          {service.title}
+        </h3>
+      </div>
+
+      <p className={`mb-8 text-lg ${isDark ? "text-white/70" : "text-black/70"}`}>
+        {service.desc}
+      </p>
+
+      <ul className="mb-8 space-y-3">
+        {service.features.map((f, i) => (
+          <li key={i} className={`flex items-center gap-3 text-lg ${isDark ? "text-white" : "text-black"}`}>
+            <span className={`h-2 w-2 rounded-full ${isDark ? "bg-[#FF6B35]" : "bg-black"}`} />
+            {f}
+          </li>
+        ))}
+      </ul>
+    </motion.div>
+  );
+}
 
 function ServicesSection() {
   const ref = useRef(null);
@@ -492,7 +542,7 @@ function ServicesSection() {
 
   return (
     <section id="services" ref={ref} className="relative py-32 md:py-40">
-      <div className="mx-auto max-w-7xl px-6">
+      <div className="mx-auto max-w-4xl px-6">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -509,80 +559,14 @@ function ServicesSection() {
           </p>
         </motion.div>
 
-        {/* Cards */}
-        <div className="grid gap-6 md:grid-cols-3">
+        {/* Stacking Cards */}
+        <div className="space-y-8">
           {SERVICES.map((service, i) => (
-            <ServiceCard key={i} service={service} index={i} isInView={isInView} />
+            <StackingServiceCard key={i} service={service} index={i} />
           ))}
         </div>
       </div>
     </section>
-  );
-}
-
-function ServiceCard({
-  service,
-  index,
-  isInView,
-}: {
-  service: (typeof SERVICES)[number];
-  index: number;
-  isInView: boolean;
-}) {
-  const Icon = service.icon;
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 60 }}
-      animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.8, delay: index * 0.15 }}
-      className="group relative overflow-hidden rounded-3xl border border-white/[0.06] bg-[#111] p-8 transition-all duration-500 hover:border-white/[0.12] hover:shadow-[0_0_60px_rgba(0,0,0,0.5)] md:p-10"
-    >
-      {/* Glow on hover */}
-      <div
-        className="pointer-events-none absolute -top-24 -right-24 h-48 w-48 rounded-full opacity-0 blur-[80px] transition-opacity duration-700 group-hover:opacity-30"
-        style={{ background: service.accent }}
-      />
-
-      {/* Number */}
-      <span
-        className="mb-8 block text-sm font-bold"
-        style={{ color: service.accent }}
-      >
-        {service.number}
-      </span>
-
-      {/* Icon */}
-      <div
-        className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl border transition-all duration-500 group-hover:scale-110"
-        style={{
-          borderColor: `${service.accent}33`,
-          background: `${service.accent}0D`,
-        }}
-      >
-        <Icon className="h-6 w-6" style={{ color: service.accent }} />
-      </div>
-
-      {/* Title */}
-      <h3 className="mb-3 text-xl font-bold text-white">{service.title}</h3>
-      <p className="mb-8 text-sm leading-relaxed text-white/50">{service.desc}</p>
-
-      {/* Features */}
-      <div className="flex flex-wrap gap-2">
-        {service.features.map((f, i) => (
-          <span
-            key={i}
-            className="rounded-full border px-3 py-1.5 text-xs font-medium transition-all duration-300 group-hover:translate-y-[-1px]"
-            style={{
-              borderColor: `${service.accent}30`,
-              color: service.accent,
-              background: `${service.accent}0A`,
-            }}
-          >
-            {f}
-          </span>
-        ))}
-      </div>
-    </motion.div>
   );
 }
 
@@ -592,7 +576,7 @@ function ServiceCard({
 const PROJECTS = [
   {
     title: "Social Media Content",
-    category: "Video",
+    category: "social",
     desc: "Scroll-stopping video and graphics for social feeds.",
     image: "/services-social-media.jpg",
     accent: "#FFB84D",
@@ -600,7 +584,7 @@ const PROJECTS = [
   },
   {
     title: "Business Websites",
-    category: "Web",
+    category: "web",
     desc: "Clean, fast websites built to convert.",
     image: "/work/websites-desktop.jpg",
     accent: "#4ECDC4",
@@ -608,7 +592,7 @@ const PROJECTS = [
   },
   {
     title: "Brand Assets",
-    category: "Design",
+    category: "design",
     desc: "Logos, graphics and visual identity systems.",
     image: "/services-extras.jpg",
     accent: "#A78BFA",
@@ -616,9 +600,22 @@ const PROJECTS = [
   },
 ];
 
+const WORK_CATEGORIES = [
+  { id: "all", label: "All Work" },
+  { id: "social", label: "Social Media" },
+  { id: "web", label: "Websites" },
+  { id: "design", label: "Design" },
+];
+
 function WorkSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const [activeCategory, setActiveCategory] = useState("all");
+
+  const filtered =
+    activeCategory === "all"
+      ? PROJECTS
+      : PROJECTS.filter((p) => p.category === activeCategory);
 
   return (
     <section id="work" ref={ref} className="relative py-32 md:py-40">
@@ -629,7 +626,7 @@ function WorkSection() {
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="mb-20 text-center"
+          className="mb-12 text-center"
         >
           <span className="mb-4 inline-block text-xs font-semibold uppercase tracking-[0.3em] text-[#FF6B35]">
             Portfolio
@@ -640,11 +637,66 @@ function WorkSection() {
           </p>
         </motion.div>
 
-        {/* Project Cards */}
-        <div className="space-y-8">
-          {PROJECTS.map((project, i) => (
-            <WorkCard key={i} project={project} index={i} isInView={isInView} />
+        {/* Category Filter */}
+        <div className="mb-16 flex flex-wrap justify-center gap-3">
+          {WORK_CATEGORIES.map((cat) => (
+            <button
+              key={cat.id}
+              onClick={() => setActiveCategory(cat.id)}
+              className={`rounded-full px-6 py-2.5 text-sm font-semibold transition-all ${
+                activeCategory === cat.id
+                  ? "bg-[#FF6B35] text-black"
+                  : "border border-white/10 bg-white/5 text-white/60 hover:border-white/20 hover:text-white"
+              }`}
+            >
+              {cat.label}
+            </button>
           ))}
+        </div>
+
+        {/* Project Cards */}
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          <AnimatePresence mode="wait">
+            {filtered.map((project, i) => (
+              <motion.div
+                key={project.title}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+                className="group relative overflow-hidden rounded-3xl border border-white/[0.06] bg-[#111]"
+              >
+                {/* Image */}
+                <div className="relative aspect-[4/3]">
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    placeholder="blur"
+                    blurDataURL={BLUR}
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  {project.hasVideo && (
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div
+                        className="flex h-14 w-14 items-center justify-center rounded-full backdrop-blur-md transition-transform duration-300 group-hover:scale-110"
+                        style={{ background: `${project.accent}DD` }}
+                      >
+                        <Play className="h-5 w-5 text-black" fill="currentColor" />
+                      </div>
+                    </div>
+                  )}
+                  <div className="absolute inset-0 bg-black/0 transition-colors group-hover:bg-black/20" />
+                </div>
+                {/* Content */}
+                <div className="p-6">
+                  <h3 className="mb-2 text-xl font-bold text-white">{project.title}</h3>
+                  <p className="text-sm text-white/50">{project.desc}</p>
+                </div>
+              </motion.div>
+            ))}
+          </AnimatePresence>
         </div>
 
         {/* CTA */}
@@ -666,85 +718,6 @@ function WorkSection() {
         </motion.div>
       </div>
     </section>
-  );
-}
-
-function WorkCard({
-  project,
-  index,
-  isInView,
-}: {
-  project: (typeof PROJECTS)[number];
-  index: number;
-  isInView: boolean;
-}) {
-  const isReversed = index % 2 === 1;
-
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 60 }}
-      animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.8, delay: index * 0.2 }}
-      className={`group grid items-center gap-8 rounded-3xl border border-white/[0.06] bg-[#111] p-6 transition-all duration-500 hover:border-white/[0.12] md:grid-cols-2 md:gap-12 md:p-10 ${
-        isReversed ? "md:direction-rtl" : ""
-      }`}
-    >
-      {/* Text */}
-      <div className={isReversed ? "md:order-2 md:direction-ltr" : ""}>
-        <span
-          className="mb-4 inline-block text-xs font-bold uppercase tracking-[0.2em]"
-          style={{ color: project.accent }}
-        >
-          {project.category}
-        </span>
-        <h3 className="mb-3 text-2xl font-bold text-white md:text-3xl">
-          {project.title}
-        </h3>
-        <p className="mb-6 text-base leading-relaxed text-white/50">{project.desc}</p>
-        <div
-          className="flex items-center gap-6 rounded-2xl border p-4"
-          style={{
-            borderColor: `${project.accent}15`,
-            background: `${project.accent}08`,
-          }}
-        >
-          <div>
-            <p className="text-xs text-white/40">Type</p>
-            <p className="text-sm font-semibold text-white">{project.category}</p>
-          </div>
-          <div className="h-8 w-px bg-white/10" />
-          <div>
-            <p className="text-xs text-white/40">Status</p>
-            <p className="text-sm font-semibold text-white">Complete</p>
-          </div>
-        </div>
-      </div>
-
-      {/* Image */}
-      <div className={`relative overflow-hidden rounded-2xl ${isReversed ? "md:order-1 md:direction-ltr" : ""}`}>
-        <div className="relative aspect-[4/3]">
-          <Image
-            src={project.image}
-            alt={project.title}
-            fill
-            sizes="(max-width: 768px) 100vw, 50vw"
-            placeholder="blur"
-            blurDataURL={BLUR}
-            className="object-cover transition-transform duration-700 group-hover:scale-105"
-          />
-          {project.hasVideo && (
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div
-                className="flex h-16 w-16 items-center justify-center rounded-full backdrop-blur-md transition-transform duration-300 group-hover:scale-110"
-                style={{ background: `${project.accent}DD` }}
-              >
-                <Play className="h-6 w-6 text-black" fill="currentColor" />
-              </div>
-            </div>
-          )}
-        </div>
-      </div>
-    </motion.div>
   );
 }
 
@@ -1160,16 +1133,30 @@ function ContactSection() {
                   </div>
                   <div>
                     <label className="mb-2 block text-xs font-medium uppercase tracking-wider text-white/40">
-                      Project Type
+                      Phone
+                    </label>
+                    <input
+                      type="tel"
+                      name="phone"
+                      placeholder="+44 7XXX XXXXXX"
+                      className="w-full rounded-xl border border-white/[0.08] bg-white/[0.03] px-4 py-3.5 text-sm text-white placeholder:text-white/25 focus:border-[#FF6B35]/50 focus:outline-none focus:ring-1 focus:ring-[#FF6B35]/25"
+                    />
+                  </div>
+                  <div>
+                    <label className="mb-2 block text-xs font-medium uppercase tracking-wider text-white/40">
+                      Service Interested In
                     </label>
                     <select
                       name="projectType"
-                      defaultValue="Website"
+                      defaultValue=""
                       className="w-full rounded-xl border border-white/[0.08] bg-white/[0.03] px-4 py-3.5 text-sm text-white focus:border-[#FF6B35]/50 focus:outline-none focus:ring-1 focus:ring-[#FF6B35]/25"
                     >
-                      <option value="Website">Website</option>
+                      <option value="" disabled>Select a service</option>
+                      <option value="Website">Website Design</option>
                       <option value="Social Media Content">Social Media Content</option>
-                      <option value="Branding">Branding</option>
+                      <option value="SEO">SEO Services</option>
+                      <option value="Drone">Drone Photography</option>
+                      <option value="Complete Package">Complete Package</option>
                       <option value="Other">Other</option>
                     </select>
                   </div>
