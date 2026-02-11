@@ -40,7 +40,7 @@ BearMediaSite (main export)
 ├── WorkSection       — 3 project cards + client names list
 ├── TestimonialsSection — Split layout: stats + rotating review carousel
 ├── AboutSection      — 2:1 grid with portrait + credibility stats
-├── CTASection        — Full-width orange banner with inverted CTA
+├── CTASection        — Full-width gold banner with inverted CTA
 ├── ContactSection    — 2-col: info + form (posts to /api/contact)
 └── Footer            — 4-column minimal footer
 ```
@@ -67,14 +67,16 @@ lib/
 ## Design System — Brutalist Theme
 
 - **Font:** Space Grotesk (headings & body), Inter (fallback)
-- **Background:** Pure black `#000000`
-- **Accent:** Deep orange `#FF6B35` (used for CTAs, highlights, dividers)
-- **Accent light:** `#FF8F5E`
+- **Background:** Near-black `#0A0A0A` (unified across all sections)
+- **Accent:** Gold `#D4A830` (used for CTAs, highlights, dividers — matches Bear Media logo)
+- **Accent light:** `#E4BF4A`
+- **Accent dark:** `#A88520`
 - **Border radius:** 0px everywhere — hard, sharp edges
 - **Typography:** Uppercase headings, tight tracking (-0.03em), 0.9 line-height
-- **Section eyebrows:** Orange dash + uppercase label pattern: `── THE PROBLEM`
+- **Section eyebrows:** Gold dash + uppercase label pattern: `── THE PROBLEM`
 - **Dividers:** `gap-px bg-white/[0.04]` grid technique for subtle 1px lines
-- **Buttons:** `border-2 border-[#FF6B35] bg-[#FF6B35]` with invert-on-hover
+- **Buttons:** `border-2 border-[#D4A830] bg-[#D4A830]` with invert-on-hover
+- **Logo:** `/bear-media-logo.png` — gold circle with BEAR (black) MEDIA (white)
 - **Film grain:** SVG noise overlay at 4% opacity via `.grain-overlay::after`
 
 ## Deployment Workflow
@@ -117,10 +119,10 @@ The project uses a worktree-based branching workflow:
 
 | Token | Hex | Usage |
 |-------|-----|-------|
-| `--accent` / Primary | `#FF6B35` | CTAs, highlights, accent text, dividers |
-| `--accent-light` | `#FF8F5E` | Hover states |
-| `--accent-dark` | `#C1440E` | Pressed states |
-| Background | `#000000` | Page background |
+| `--accent` / Primary | `#D4A830` | CTAs, highlights, accent text, dividers |
+| `--accent-light` | `#E4BF4A` | Hover states |
+| `--accent-dark` | `#A88520` | Pressed states |
+| Background | `#0A0A0A` | Page background (unified) |
 | Card | `#0A0A0A` | Card/section backgrounds |
 | Text primary | `#F0F0F0` | Headlines |
 | Text muted | `white/40-50` | Body copy |

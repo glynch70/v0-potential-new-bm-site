@@ -244,7 +244,7 @@ void main(void) {
     col+=.00125/d*(cos(sin(i)*vec3(1,2,3))+1.);
     float b=noise(i+p+bg*1.731);
     col+=.002*b/length(max(p,vec2(b*p.x*.02,p.y)));
-    col=mix(col,vec3(bg*.25,bg*.137,bg*.05),d);
+    col=mix(col,vec3(bg*.28,bg*.22,bg*.06),d);
   }
   O=vec4(col,1);
 }`;
@@ -314,7 +314,7 @@ export function Hero3DCanvas({ className = '' }: ShaderBackgroundProps) {
     <canvas
       ref={canvasRef}
       className={`absolute inset-0 -z-10 touch-none ${className}`}
-      style={{ display: 'block', background: 'black' }}
+      style={{ display: 'block', background: '#0A0A0A' }}
     />
   );
 }

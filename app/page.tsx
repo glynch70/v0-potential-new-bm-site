@@ -105,12 +105,21 @@ function SiteNav({
         initial={{ y: -100 }}
         animate={{ y: visible ? 0 : -100 }}
         transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-        className="fixed inset-x-0 top-0 z-50 border-b border-white/[0.06] bg-black/90 backdrop-blur-md"
+        className="fixed inset-x-0 top-0 z-50 border-b border-white/[0.06] bg-[#0A0A0A]/90 backdrop-blur-md"
       >
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-          <button onClick={() => onNavigate("home")} className="flex items-center gap-1">
-            <span className="text-base font-bold tracking-tight text-white">BEAR</span>
-            <span className="text-base font-bold tracking-tight text-[#FF6B35]">MEDIA</span>
+          <button onClick={() => onNavigate("home")} className="flex items-center gap-2">
+            <Image
+              src="/bear-media-logo.png"
+              alt="Bear Media"
+              width={32}
+              height={32}
+              className="rounded-full"
+            />
+            <div className="flex items-center gap-1">
+              <span className="text-base font-bold tracking-tight text-white">BEAR</span>
+              <span className="text-base font-bold tracking-tight text-[#D4A830]">MEDIA</span>
+            </div>
           </button>
 
           <nav className="hidden items-center gap-8 md:flex">
@@ -128,7 +137,7 @@ function SiteNav({
           <div className="flex items-center gap-4">
             <motion.button
               onClick={() => onNavigate("contact")}
-              className="hidden border border-[#FF6B35] bg-[#FF6B35] px-5 py-2 text-[11px] font-bold uppercase tracking-[0.15em] text-black transition-all hover:bg-transparent hover:text-[#FF6B35] md:block"
+              className="hidden border border-[#D4A830] bg-[#D4A830] px-5 py-2 text-[11px] font-bold uppercase tracking-[0.15em] text-black transition-all hover:bg-transparent hover:text-[#D4A830] md:block"
               whileTap={{ scale: 0.97 }}
             >
               Book a call
@@ -165,7 +174,7 @@ function SiteNav({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-40 flex flex-col items-start justify-center bg-black px-8"
+            className="fixed inset-0 z-40 flex flex-col items-start justify-center bg-[#0A0A0A] px-8"
           >
             <button
               onClick={onToggleMobile}
@@ -182,7 +191,7 @@ function SiteNav({
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: i * 0.06 }}
                   onClick={() => onNavigate(link.id)}
-                  className="text-left text-5xl font-bold uppercase tracking-tight text-white transition-colors hover:text-[#FF6B35]"
+                  className="text-left text-5xl font-bold uppercase tracking-tight text-white transition-colors hover:text-[#D4A830]"
                 >
                   {link.label}
                 </motion.button>
@@ -237,8 +246,8 @@ function HeroSection({ onNavigate }: { onNavigate: (id: string) => void }) {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="mb-6 flex items-center gap-3"
         >
-          <div className="h-px w-12 bg-[#FF6B35]" />
-          <span className="text-[11px] font-medium uppercase tracking-[0.3em] text-[#FF6B35]">
+          <div className="h-px w-12 bg-[#D4A830]" />
+          <span className="text-[11px] font-medium uppercase tracking-[0.3em] text-[#D4A830]">
             Marketing agency &middot; Scotland
           </span>
         </motion.div>
@@ -253,7 +262,7 @@ function HeroSection({ onNavigate }: { onNavigate: (id: string) => void }) {
           Your business
           <br />
           deserves to be{" "}
-          <span className="text-[#FF6B35]">seen.</span>
+          <span className="text-[#D4A830]">seen.</span>
         </motion.h1>
 
         {/* Sub */}
@@ -275,7 +284,7 @@ function HeroSection({ onNavigate }: { onNavigate: (id: string) => void }) {
         >
           <motion.button
             onClick={() => onNavigate("contact")}
-            className="group flex items-center gap-3 border-2 border-[#FF6B35] bg-[#FF6B35] px-8 py-4 text-sm font-bold uppercase tracking-[0.1em] text-black transition-all hover:bg-transparent hover:text-[#FF6B35]"
+            className="group flex items-center gap-3 border-2 border-[#D4A830] bg-[#D4A830] px-8 py-4 text-sm font-bold uppercase tracking-[0.1em] text-black transition-all hover:bg-transparent hover:text-[#D4A830]"
             whileTap={{ scale: 0.97 }}
           >
             Book a free consultation
@@ -306,7 +315,7 @@ function HeroSection({ onNavigate }: { onNavigate: (id: string) => void }) {
             { value: "100%", label: "In-house" },
           ].map((stat, i) => (
             <div key={i}>
-              <p className="brutal-number text-2xl font-bold text-[#FF6B35] md:text-3xl">
+              <p className="brutal-number text-2xl font-bold text-[#D4A830] md:text-3xl">
                 {stat.value}
               </p>
               <p className="mt-1 text-[10px] uppercase tracking-[0.2em] text-white/30">
@@ -357,14 +366,14 @@ function MarqueeStrip() {
   const doubled = [...items, ...items];
 
   return (
-    <div className="overflow-hidden border-y border-white/[0.04] bg-black py-4">
+    <div className="overflow-hidden border-y border-white/[0.04] bg-[#0A0A0A] py-4">
       <div className="animate-ticker flex gap-12 whitespace-nowrap">
         {doubled.map((item, i) => (
           <span
             key={i}
             className="flex items-center gap-4 text-xs font-medium uppercase tracking-[0.25em] text-white/15"
           >
-            <span className="h-1 w-1 bg-[#FF6B35]" />
+            <span className="h-1 w-1 bg-[#D4A830]" />
             {item}
           </span>
         ))}
@@ -404,7 +413,7 @@ function PainSection() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section ref={ref} className="relative bg-black py-32 md:py-40">
+    <section ref={ref} className="relative bg-[#0A0A0A] py-32 md:py-40">
       <div className="mx-auto max-w-7xl px-6">
         {/* Section header */}
         <motion.div
@@ -414,8 +423,8 @@ function PainSection() {
           className="mb-20"
         >
           <div className="mb-4 flex items-center gap-3">
-            <div className="h-px w-12 bg-[#FF6B35]" />
-            <span className="text-[11px] font-medium uppercase tracking-[0.3em] text-[#FF6B35]">
+            <div className="h-px w-12 bg-[#D4A830]" />
+            <span className="text-[11px] font-medium uppercase tracking-[0.3em] text-[#D4A830]">
               The problem
             </span>
           </div>
@@ -433,7 +442,7 @@ function PainSection() {
               initial={{ opacity: 0, y: 40 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="bg-black p-8 md:p-12"
+              className="bg-[#0A0A0A] p-8 md:p-12"
             >
               <span className="brutal-number text-5xl font-bold text-white/[0.06] md:text-7xl">
                 {pain.number}
@@ -490,8 +499,8 @@ function SolutionSection() {
           className="mb-20"
         >
           <div className="mb-4 flex items-center gap-3">
-            <div className="h-px w-12 bg-[#FF6B35]" />
-            <span className="text-[11px] font-medium uppercase tracking-[0.3em] text-[#FF6B35]">
+            <div className="h-px w-12 bg-[#D4A830]" />
+            <span className="text-[11px] font-medium uppercase tracking-[0.3em] text-[#D4A830]">
               The solution
             </span>
           </div>
@@ -508,10 +517,10 @@ function SolutionSection() {
               initial={{ opacity: 0, y: 50 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: i * 0.15 }}
-              className="group border border-white/[0.06] bg-black p-8 transition-all hover:border-[#FF6B35]/20 md:p-10"
+              className="group border border-white/[0.06] bg-[#0A0A0A] p-8 transition-all hover:border-[#D4A830]/20 md:p-10"
             >
               <div className="mb-8">
-                <span className="brutal-number text-5xl font-bold text-[#FF6B35] md:text-6xl">
+                <span className="brutal-number text-5xl font-bold text-[#D4A830] md:text-6xl">
                   {sol.metric}
                 </span>
                 <p className="mt-1 text-[10px] uppercase tracking-[0.2em] text-white/30">
@@ -565,7 +574,7 @@ function ProcessSection({ onNavigate }: { onNavigate: (id: string) => void }) {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="process" ref={ref} className="relative border-t border-white/[0.04] bg-black py-32 md:py-40">
+    <section id="process" ref={ref} className="relative border-t border-white/[0.04] bg-[#0A0A0A] py-32 md:py-40">
       <div className="mx-auto max-w-7xl px-6">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -575,8 +584,8 @@ function ProcessSection({ onNavigate }: { onNavigate: (id: string) => void }) {
         >
           <div>
             <div className="mb-4 flex items-center gap-3">
-              <div className="h-px w-12 bg-[#FF6B35]" />
-              <span className="text-[11px] font-medium uppercase tracking-[0.3em] text-[#FF6B35]">
+              <div className="h-px w-12 bg-[#D4A830]" />
+              <span className="text-[11px] font-medium uppercase tracking-[0.3em] text-[#D4A830]">
                 How it works
               </span>
             </div>
@@ -587,7 +596,7 @@ function ProcessSection({ onNavigate }: { onNavigate: (id: string) => void }) {
           </div>
           <motion.button
             onClick={() => onNavigate("contact")}
-            className="group flex w-fit items-center gap-3 border border-[#FF6B35] px-6 py-3 text-[11px] font-bold uppercase tracking-[0.15em] text-[#FF6B35] transition-all hover:bg-[#FF6B35] hover:text-black"
+            className="group flex w-fit items-center gap-3 border border-[#D4A830] px-6 py-3 text-[11px] font-bold uppercase tracking-[0.15em] text-[#D4A830] transition-all hover:bg-[#D4A830] hover:text-black"
             whileTap={{ scale: 0.97 }}
           >
             Start the process
@@ -603,10 +612,10 @@ function ProcessSection({ onNavigate }: { onNavigate: (id: string) => void }) {
               initial={{ opacity: 0, y: 40 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: i * 0.12 }}
-              className="bg-black p-8 md:p-10"
+              className="bg-[#0A0A0A] p-8 md:p-10"
             >
               <div className="mb-6 flex items-center justify-between">
-                <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#FF6B35]">
+                <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#D4A830]">
                   Step {step.step}
                 </span>
                 <span className="text-[10px] uppercase tracking-[0.15em] text-white/20">
@@ -656,7 +665,7 @@ function WorkSection() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="work" ref={ref} className="relative border-t border-white/[0.04] bg-[#050505] py-32 md:py-40">
+    <section id="work" ref={ref} className="relative border-t border-white/[0.04] bg-[#0A0A0A] py-32 md:py-40">
       <div className="mx-auto max-w-7xl px-6">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -666,8 +675,8 @@ function WorkSection() {
         >
           <div>
             <div className="mb-4 flex items-center gap-3">
-              <div className="h-px w-12 bg-[#FF6B35]" />
-              <span className="text-[11px] font-medium uppercase tracking-[0.3em] text-[#FF6B35]">
+              <div className="h-px w-12 bg-[#D4A830]" />
+              <span className="text-[11px] font-medium uppercase tracking-[0.3em] text-[#D4A830]">
                 Selected work
               </span>
             </div>
@@ -680,7 +689,7 @@ function WorkSection() {
             href="https://portfolio.bear-media.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex w-fit items-center gap-3 text-[11px] font-medium uppercase tracking-[0.2em] text-white/40 transition-colors hover:text-[#FF6B35]"
+            className="group flex w-fit items-center gap-3 text-[11px] font-medium uppercase tracking-[0.2em] text-white/40 transition-colors hover:text-[#D4A830]"
           >
             Full portfolio
             <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -695,7 +704,7 @@ function WorkSection() {
               initial={{ opacity: 0, y: 40 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: i * 0.12 }}
-              className="group bg-black"
+              className="group bg-[#0A0A0A]"
             >
               <div className="relative aspect-[4/3] overflow-hidden">
                 <Image
@@ -707,9 +716,9 @@ function WorkSection() {
                   blurDataURL={BLUR}
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-black/30 transition-colors group-hover:bg-black/10" />
+                <div className="absolute inset-0 bg-[#0A0A0A]/30 transition-colors group-hover:bg-[#0A0A0A]/10" />
                 <div className="absolute top-4 left-4">
-                  <span className="border border-white/20 bg-black/60 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.2em] text-white backdrop-blur-sm">
+                  <span className="border border-white/20 bg-[#0A0A0A]/60 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.2em] text-white backdrop-blur-sm">
                     {project.tag}
                   </span>
                 </div>
@@ -785,7 +794,7 @@ function TestimonialsSection() {
   }, []);
 
   return (
-    <section ref={ref} className="relative border-t border-white/[0.04] bg-black py-32 md:py-40">
+    <section ref={ref} className="relative border-t border-white/[0.04] bg-[#0A0A0A] py-32 md:py-40">
       <div className="mx-auto max-w-7xl px-6">
         <div className="grid gap-16 md:grid-cols-[1fr_2fr]">
           {/* Left — stats */}
@@ -795,8 +804,8 @@ function TestimonialsSection() {
             transition={{ duration: 0.6 }}
           >
             <div className="mb-4 flex items-center gap-3">
-              <div className="h-px w-12 bg-[#FF6B35]" />
-              <span className="text-[11px] font-medium uppercase tracking-[0.3em] text-[#FF6B35]">
+              <div className="h-px w-12 bg-[#D4A830]" />
+              <span className="text-[11px] font-medium uppercase tracking-[0.3em] text-[#D4A830]">
                 Testimonials
               </span>
             </div>
@@ -806,7 +815,7 @@ function TestimonialsSection() {
 
             <div className="flex items-center gap-1 mb-3">
               {[1, 2, 3, 4, 5].map((s) => (
-                <Star key={s} className="h-4 w-4 fill-[#FF6B35] text-[#FF6B35]" />
+                <Star key={s} className="h-4 w-4 fill-[#D4A830] text-[#D4A830]" />
               ))}
             </div>
             <p className="text-sm text-white/40">5.0 from 18+ Google reviews</p>
@@ -815,7 +824,7 @@ function TestimonialsSection() {
               href="https://www.google.com/gasearch?q=Bear%20Media&source=sh/x/gs/m2/5"
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-6 inline-flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.15em] text-white/30 transition-colors hover:text-[#FF6B35]"
+              className="mt-6 inline-flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.15em] text-white/30 transition-colors hover:text-[#D4A830]"
             >
               Read all reviews
               <ExternalLink className="h-3 w-3" />
@@ -842,7 +851,7 @@ function TestimonialsSection() {
                     &ldquo;{REVIEWS[active].quote}&rdquo;
                   </blockquote>
                   <div className="flex items-center gap-4">
-                    <div className="h-px w-8 bg-[#FF6B35]" />
+                    <div className="h-px w-8 bg-[#D4A830]" />
                     <div>
                       <p className="text-sm font-bold uppercase tracking-tight text-white">
                         {REVIEWS[active].name}
@@ -861,7 +870,7 @@ function TestimonialsSection() {
                   key={i}
                   onClick={() => setActive(i)}
                   className={`h-1 transition-all duration-300 ${
-                    active === i ? "w-10 bg-[#FF6B35]" : "w-4 bg-white/10 hover:bg-white/20"
+                    active === i ? "w-10 bg-[#D4A830]" : "w-4 bg-white/10 hover:bg-white/20"
                   }`}
                 />
               ))}
@@ -881,7 +890,7 @@ function AboutSection() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="about" ref={ref} className="relative border-t border-white/[0.04] bg-[#050505] py-32 md:py-40">
+    <section id="about" ref={ref} className="relative border-t border-white/[0.04] bg-[#0A0A0A] py-32 md:py-40">
       <div className="mx-auto max-w-7xl px-6">
         <div className="grid items-center gap-16 md:grid-cols-[2fr_1fr]">
           {/* Text */}
@@ -891,8 +900,8 @@ function AboutSection() {
             transition={{ duration: 0.6 }}
           >
             <div className="mb-4 flex items-center gap-3">
-              <div className="h-px w-12 bg-[#FF6B35]" />
-              <span className="text-[11px] font-medium uppercase tracking-[0.3em] text-[#FF6B35]">
+              <div className="h-px w-12 bg-[#D4A830]" />
+              <span className="text-[11px] font-medium uppercase tracking-[0.3em] text-[#D4A830]">
                 About
               </span>
             </div>
@@ -929,7 +938,7 @@ function AboutSection() {
                   animate={isInView ? { opacity: 1, y: 0 } : {}}
                   transition={{ delay: 0.4 + i * 0.1 }}
                 >
-                  <p className="brutal-number text-3xl font-bold text-[#FF6B35] md:text-4xl">
+                  <p className="brutal-number text-3xl font-bold text-[#D4A830] md:text-4xl">
                     {stat.value}
                   </p>
                   <p className="mt-1 text-[10px] uppercase tracking-[0.2em] text-white/30">
@@ -960,7 +969,7 @@ function AboutSection() {
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
             </div>
             {/* Name tag */}
-            <div className="absolute bottom-0 left-0 border-t border-[#FF6B35] bg-black px-6 py-4">
+            <div className="absolute bottom-0 left-0 border-t border-[#D4A830] bg-[#0A0A0A] px-6 py-4">
               <p className="text-sm font-bold uppercase tracking-tight text-white">
                 Garry Lynch
               </p>
@@ -983,7 +992,7 @@ function CTASection({ onNavigate }: { onNavigate: (id: string) => void }) {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section ref={ref} className="relative border-t border-[#FF6B35]/20 bg-[#FF6B35] py-24 md:py-32">
+    <section ref={ref} className="relative border-t border-[#D4A830]/20 bg-[#D4A830] py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-6">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -1003,7 +1012,7 @@ function CTASection({ onNavigate }: { onNavigate: (id: string) => void }) {
           </div>
           <motion.button
             onClick={() => onNavigate("contact")}
-            className="group flex items-center gap-3 border-2 border-black bg-black px-8 py-5 text-sm font-bold uppercase tracking-[0.1em] text-[#FF6B35] transition-all hover:bg-transparent hover:text-black"
+            className="group flex items-center gap-3 border-2 border-black bg-[#0A0A0A] px-8 py-5 text-sm font-bold uppercase tracking-[0.1em] text-[#D4A830] transition-all hover:bg-transparent hover:text-black"
             whileTap={{ scale: 0.97 }}
           >
             Book a free consultation
@@ -1053,10 +1062,10 @@ function ContactSection() {
   };
 
   const inputClasses =
-    "w-full border border-white/[0.08] bg-transparent px-4 py-4 text-sm text-white placeholder:text-white/20 focus:border-[#FF6B35] focus:outline-none transition-colors";
+    "w-full border border-white/[0.08] bg-transparent px-4 py-4 text-sm text-white placeholder:text-white/20 focus:border-[#D4A830] focus:outline-none transition-colors";
 
   return (
-    <section id="contact" ref={ref} className="relative border-t border-white/[0.04] bg-black py-32 md:py-40">
+    <section id="contact" ref={ref} className="relative border-t border-white/[0.04] bg-[#0A0A0A] py-32 md:py-40">
       <div className="mx-auto max-w-7xl px-6">
         <div className="grid gap-16 md:grid-cols-2">
           {/* Left — Info */}
@@ -1066,8 +1075,8 @@ function ContactSection() {
             transition={{ duration: 0.6 }}
           >
             <div className="mb-4 flex items-center gap-3">
-              <div className="h-px w-12 bg-[#FF6B35]" />
-              <span className="text-[11px] font-medium uppercase tracking-[0.3em] text-[#FF6B35]">
+              <div className="h-px w-12 bg-[#D4A830]" />
+              <span className="text-[11px] font-medium uppercase tracking-[0.3em] text-[#D4A830]">
                 Get in touch
               </span>
             </div>
@@ -1116,8 +1125,8 @@ function ContactSection() {
             <div className="border border-white/[0.06] bg-[#0A0A0A] p-8 md:p-10">
               {formState === "sent" ? (
                 <div className="flex flex-col items-center justify-center py-16 text-center">
-                  <div className="mb-6 flex h-16 w-16 items-center justify-center border border-[#FF6B35]">
-                    <Mail className="h-6 w-6 text-[#FF6B35]" />
+                  <div className="mb-6 flex h-16 w-16 items-center justify-center border border-[#D4A830]">
+                    <Mail className="h-6 w-6 text-[#D4A830]" />
                   </div>
                   <h3 className="mb-2 text-xl font-bold uppercase tracking-tight text-white">
                     Message sent
@@ -1205,7 +1214,7 @@ function ContactSection() {
                   <motion.button
                     type="submit"
                     disabled={formState === "sending"}
-                    className="group flex w-full items-center justify-center gap-3 border-2 border-[#FF6B35] bg-[#FF6B35] py-4 text-sm font-bold uppercase tracking-[0.1em] text-black transition-all hover:bg-transparent hover:text-[#FF6B35] disabled:opacity-50"
+                    className="group flex w-full items-center justify-center gap-3 border-2 border-[#D4A830] bg-[#D4A830] py-4 text-sm font-bold uppercase tracking-[0.1em] text-black transition-all hover:bg-transparent hover:text-[#D4A830] disabled:opacity-50"
                     whileTap={{ scale: 0.98 }}
                   >
                     {formState === "sending" ? "Sending..." : "Send message"}
@@ -1226,14 +1235,23 @@ function ContactSection() {
    ══════════════════════════════════════════════ */
 function Footer({ onNavigate }: { onNavigate: (id: string) => void }) {
   return (
-    <footer className="border-t border-white/[0.04] bg-black">
+    <footer className="border-t border-white/[0.04] bg-[#0A0A0A]">
       <div className="mx-auto max-w-7xl px-6 py-16">
         <div className="grid gap-12 md:grid-cols-4">
           {/* Brand */}
           <div>
-            <button onClick={() => onNavigate("home")} className="mb-4 flex items-center gap-1">
-              <span className="text-base font-bold tracking-tight text-white">BEAR</span>
-              <span className="text-base font-bold tracking-tight text-[#FF6B35]">MEDIA</span>
+            <button onClick={() => onNavigate("home")} className="mb-4 flex items-center gap-2">
+              <Image
+                src="/bear-media-logo.png"
+                alt="Bear Media"
+                width={28}
+                height={28}
+                className="rounded-full"
+              />
+              <div className="flex items-center gap-1">
+                <span className="text-base font-bold tracking-tight text-white">BEAR</span>
+                <span className="text-base font-bold tracking-tight text-[#D4A830]">MEDIA</span>
+              </div>
             </button>
             <p className="mb-6 text-sm leading-relaxed text-white/30">
               Websites &amp; social media content for businesses that want to be seen.
@@ -1249,7 +1267,7 @@ function Footer({ onNavigate }: { onNavigate: (id: string) => void }) {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex h-9 w-9 items-center justify-center border border-white/[0.06] text-white/30 transition-all hover:border-[#FF6B35] hover:text-[#FF6B35]"
+                  className="flex h-9 w-9 items-center justify-center border border-white/[0.06] text-white/30 transition-all hover:border-[#D4A830] hover:text-[#D4A830]"
                   aria-label={social.label}
                 >
                   <social.icon className="h-3.5 w-3.5" />
