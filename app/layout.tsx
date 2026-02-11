@@ -8,9 +8,9 @@ import "./globals.css";
 export { reportWebVitals } from "@/lib/metrics";
 
 export const metadata: Metadata = {
-  title: "Bear Media | Websites & Social Media Content",
+  title: "Bear Media | Websites & Social Media That Actually Work",
   description:
-    "Professional websites and social media content for small businesses in Edinburgh, West Lothian, Fife & Central Scotland. Get seen, build trust, get contacted.",
+    "We build websites and create social media content that gets small businesses seen, trusted, and contacted. Based in Scotland.",
   keywords: [
     "web design",
     "social media content",
@@ -18,11 +18,12 @@ export const metadata: Metadata = {
     "West Lothian",
     "Scotland",
     "Bear Media",
+    "marketing agency",
   ],
   openGraph: {
-    title: "Bear Media | Websites & Social Media Content",
+    title: "Bear Media | Websites & Social Media That Actually Work",
     description:
-      "Helping small businesses get seen, trusted, and contacted.",
+      "We build websites and create social media content that gets small businesses seen, trusted, and contacted.",
     type: "website",
   },
 };
@@ -44,7 +45,7 @@ export default function RootLayout({
           crossOrigin="anonymous"
         />
         <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap"
           rel="stylesheet"
         />
       </head>

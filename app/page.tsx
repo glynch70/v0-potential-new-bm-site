@@ -2,16 +2,13 @@
 
 import dynamic from "next/dynamic";
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import { motion, useScroll, useTransform, useInView, AnimatePresence } from "framer-motion";
 import {
   ArrowRight,
-  Play,
+  ArrowUpRight,
   Star,
   ChevronDown,
-  Video,
-  Monitor,
-  Camera,
   Mail,
   Phone,
   MapPin,
@@ -19,12 +16,14 @@ import {
   Instagram,
   Youtube,
   Facebook,
+  X,
+  Minus,
 } from "lucide-react";
 
 const BLUR =
   "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSIjMTExMTExIi8+";
 
-/* ─────────────────────── lazy components ─────────────────────── */
+/* ─────────────────────── lazy shader background ─────────────────────── */
 const Hero3DCanvas = dynamic(
   () => import("@/components/Hero/Hero3DCanvas").then((m) => ({ default: m.Hero3DCanvas })),
   { ssr: false }
@@ -34,20 +33,16 @@ const Hero3DCanvas = dynamic(
    MAIN PAGE
    ══════════════════════════════════════════════ */
 export default function BearMediaSite() {
-  const [scrollY, setScrollY] = useState(0);
   const [navVisible, setNavVisible] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => {
-      setScrollY(window.scrollY);
-      setNavVisible(window.scrollY > 100);
-    };
+    const onScroll = () => setNavVisible(window.scrollY > 100);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const scrollTo = (id: string) => {
+  const scrollTo = useCallback((id: string) => {
     setMobileMenuOpen(false);
     if (id === "home") {
       window.scrollTo({ top: 0, behavior: "smooth" });
@@ -58,62 +53,39 @@ export default function BearMediaSite() {
       const top = el.getBoundingClientRect().top + window.pageYOffset - 80;
       window.scrollTo({ top, behavior: "smooth" });
     }
-  };
+  }, []);
 
   return (
     <>
-      {/* ── Navigation ── */}
       <SiteNav
         visible={navVisible}
         mobileOpen={mobileMenuOpen}
         onToggleMobile={() => setMobileMenuOpen((v) => !v)}
         onNavigate={scrollTo}
       />
-
-      {/* ── Hero ── */}
-      <HeroSection scrollY={scrollY} onNavigate={scrollTo} />
-
-      {/* ── Marquee Strip ── */}
+      <HeroSection onNavigate={scrollTo} />
       <MarqueeStrip />
-
-      {/* ── Services ── */}
-      <ServicesSection />
-
-      {/* ── Work ── */}
+      <PainSection />
+      <SolutionSection />
+      <ProcessSection onNavigate={scrollTo} />
       <WorkSection />
-
-      {/* ── About ── */}
+      <TestimonialsSection />
       <AboutSection />
-
-      {/* ── Client Logos ── */}
-      <ClientLogosSection />
-
-      {/* ── Reviews ── */}
-      <ReviewsSection />
-
-      {/* ── Contact ── */}
+      <CTASection onNavigate={scrollTo} />
       <ContactSection />
-
-      {/* ── Footer ── */}
-      <Footer />
+      <Footer onNavigate={scrollTo} />
     </>
   );
 }
 
 /* ══════════════════════════════════════════════
-   NAVIGATION
+   NAVIGATION — Brutalist minimal bar
    ══════════════════════════════════════════════ */
 const NAV_LINKS = [
   { label: "Work", id: "work" },
+  { label: "Process", id: "process" },
   { label: "About", id: "about" },
-  { label: "Reviews", id: "reviews" },
   { label: "Contact", id: "contact" },
-];
-
-const SERVICES_DROPDOWN = [
-  { label: "Learn AI Tools", desc: "Workshops to boost your productivity with AI" },
-  { label: "DIY Websites", desc: "Build your own site with expert guidance" },
-  { label: "Training", desc: "Social media & content creation training" },
 ];
 
 function SiteNav({
@@ -127,127 +99,58 @@ function SiteNav({
   onToggleMobile: () => void;
   onNavigate: (id: string) => void;
 }) {
-  const [servicesOpen, setServicesOpen] = useState(false);
-  const dropdownTimeout = useRef<ReturnType<typeof setTimeout>>();
-
-  const openDropdown = () => {
-    clearTimeout(dropdownTimeout.current);
-    setServicesOpen(true);
-  };
-  const closeDropdown = () => {
-    dropdownTimeout.current = setTimeout(() => setServicesOpen(false), 150);
-  };
-
   return (
     <>
       <motion.header
         initial={{ y: -100 }}
         animate={{ y: visible ? 0 : -100 }}
-        transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-        className="fixed inset-x-0 top-0 z-50"
+        transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+        className="fixed inset-x-0 top-0 z-50 border-b border-white/[0.06] bg-black/90 backdrop-blur-md"
       >
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-          <div className="glass rounded-full px-6 py-3 shadow-2xl">
-            <div className="flex items-center gap-8">
-              <button onClick={() => onNavigate("home")} className="flex items-center gap-2">
-                <span className="text-lg font-bold text-white">Bear</span>
-                <span className="text-lg font-bold text-[#FF6B35]">Media</span>
+          <button onClick={() => onNavigate("home")} className="flex items-center gap-1">
+            <span className="text-base font-bold tracking-tight text-white">BEAR</span>
+            <span className="text-base font-bold tracking-tight text-[#FF6B35]">MEDIA</span>
+          </button>
+
+          <nav className="hidden items-center gap-8 md:flex">
+            {NAV_LINKS.map((link) => (
+              <button
+                key={link.id}
+                onClick={() => onNavigate(link.id)}
+                className="text-[11px] font-medium uppercase tracking-[0.2em] text-white/50 transition-colors hover:text-white"
+              >
+                {link.label}
               </button>
-              <nav className="hidden items-center gap-6 md:flex">
-                {/* Services dropdown */}
-                <div
-                  className="relative"
-                  onMouseEnter={openDropdown}
-                  onMouseLeave={closeDropdown}
-                >
-                  <button
-                    onClick={() => onNavigate("services")}
-                    className="flex items-center gap-1 text-[13px] font-medium uppercase tracking-[0.15em] text-white/60 transition-colors hover:text-white"
-                  >
-                    Services
-                    <ChevronDown className={`h-3 w-3 transition-transform duration-200 ${servicesOpen ? "rotate-180" : ""}`} />
-                  </button>
-                  <AnimatePresence>
-                    {servicesOpen && (
-                      <motion.div
-                        initial={{ opacity: 0, y: 8, scale: 0.96 }}
-                        animate={{ opacity: 1, y: 0, scale: 1 }}
-                        exit={{ opacity: 0, y: 8, scale: 0.96 }}
-                        transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
-                        className="absolute left-0 top-full mt-3 w-64 overflow-hidden rounded-2xl border border-white/[0.08] bg-[#111]/95 shadow-2xl backdrop-blur-xl"
-                      >
-                        <div className="p-2">
-                          {SERVICES_DROPDOWN.map((item) => (
-                            <button
-                              key={item.label}
-                              onClick={() => {
-                                onNavigate("services");
-                                setServicesOpen(false);
-                              }}
-                              className="w-full rounded-xl px-4 py-3 text-left transition-all hover:bg-white/[0.06]"
-                            >
-                              <p className="text-sm font-medium text-white">{item.label}</p>
-                              <p className="mt-0.5 text-xs text-white/40">{item.desc}</p>
-                            </button>
-                          ))}
-                        </div>
-                        <div className="border-t border-white/[0.06] p-2">
-                          <button
-                            onClick={() => {
-                              onNavigate("services");
-                              setServicesOpen(false);
-                            }}
-                            className="flex w-full items-center gap-2 rounded-xl px-4 py-2.5 text-left text-xs font-medium text-[#FF6B35] transition-all hover:bg-[#FF6B35]/10"
-                          >
-                            View all services
-                            <ArrowRight className="h-3 w-3" />
-                          </button>
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
+            ))}
+          </nav>
 
-                {NAV_LINKS.map((link) => (
-                  <button
-                    key={link.id}
-                    onClick={() => onNavigate(link.id)}
-                    className="text-[13px] font-medium uppercase tracking-[0.15em] text-white/60 transition-colors hover:text-white"
-                  >
-                    {link.label}
-                  </button>
-                ))}
-              </nav>
-            </div>
-          </div>
-
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-4">
             <motion.button
               onClick={() => onNavigate("contact")}
-              className="hidden rounded-full bg-[#FF6B35] px-6 py-2.5 text-sm font-semibold text-black transition-all hover:bg-[#F7931E] hover:shadow-[0_0_30px_rgba(255,107,53,0.3)] md:block"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
+              className="hidden border border-[#FF6B35] bg-[#FF6B35] px-5 py-2 text-[11px] font-bold uppercase tracking-[0.15em] text-black transition-all hover:bg-transparent hover:text-[#FF6B35] md:block"
+              whileTap={{ scale: 0.97 }}
             >
-              Get in touch
+              Book a call
             </motion.button>
 
             <button
               onClick={onToggleMobile}
-              className="glass flex h-10 w-10 items-center justify-center rounded-full md:hidden"
+              className="flex h-10 w-10 items-center justify-center border border-white/10 md:hidden"
               aria-label="Toggle menu"
             >
               <div className="flex flex-col gap-1.5">
                 <motion.span
                   animate={mobileOpen ? { rotate: 45, y: 5 } : { rotate: 0, y: 0 }}
-                  className="block h-[1.5px] w-5 bg-white"
+                  className="block h-[1px] w-5 bg-white"
                 />
                 <motion.span
                   animate={mobileOpen ? { opacity: 0 } : { opacity: 1 }}
-                  className="block h-[1.5px] w-5 bg-white"
+                  className="block h-[1px] w-5 bg-white"
                 />
                 <motion.span
                   animate={mobileOpen ? { rotate: -45, y: -5 } : { rotate: 0, y: 0 }}
-                  className="block h-[1.5px] w-5 bg-white"
+                  className="block h-[1px] w-5 bg-white"
                 />
               </div>
             </button>
@@ -255,44 +158,46 @@ function SiteNav({
         </div>
       </motion.header>
 
-      {/* Mobile menu */}
+      {/* Mobile menu — full takeover */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-40 flex items-center justify-center bg-black/95 backdrop-blur-xl"
+            className="fixed inset-0 z-40 flex flex-col items-start justify-center bg-black px-8"
           >
-            <nav className="flex flex-col items-center gap-8">
-              {[{ label: "Services", id: "services" }, ...NAV_LINKS].map((link, i) => (
+            <button
+              onClick={onToggleMobile}
+              className="absolute top-5 right-6 p-2 text-white/50"
+              aria-label="Close menu"
+            >
+              <X className="h-6 w-6" />
+            </button>
+            <nav className="flex flex-col gap-6">
+              {[{ label: "Home", id: "home" }, ...NAV_LINKS].map((link, i) => (
                 <motion.button
                   key={link.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.08 }}
+                  initial={{ opacity: 0, x: -40 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: i * 0.06 }}
                   onClick={() => onNavigate(link.id)}
-                  className="text-3xl font-light text-white transition-colors hover:text-[#FF6B35]"
+                  className="text-left text-5xl font-bold uppercase tracking-tight text-white transition-colors hover:text-[#FF6B35]"
                 >
                   {link.label}
                 </motion.button>
               ))}
-              {/* Mobile services sub-items */}
-              <div className="flex flex-col items-center gap-3 border-t border-white/10 pt-4">
-                <span className="text-xs font-medium uppercase tracking-[0.2em] text-white/30">Also available</span>
-                {SERVICES_DROPDOWN.map((item) => (
-                  <motion.button
-                    key={item.label}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    onClick={() => onNavigate("services")}
-                    className="text-lg text-white/50 transition-colors hover:text-[#FF6B35]"
-                  >
-                    {item.label}
-                  </motion.button>
-                ))}
-              </div>
             </nav>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.4 }}
+              className="mt-12 border-t border-white/10 pt-6"
+            >
+              <a href="mailto:info@bear-media.com" className="text-sm text-white/40">
+                info@bear-media.com
+              </a>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
@@ -301,104 +206,114 @@ function SiteNav({
 }
 
 /* ══════════════════════════════════════════════
-   HERO
+   1. HERO — Brutalist, stark, commanding
    ══════════════════════════════════════════════ */
-function HeroSection({
-  scrollY,
-  onNavigate,
-}: {
-  scrollY: number;
-  onNavigate: (id: string) => void;
-}) {
+function HeroSection({ onNavigate }: { onNavigate: (id: string) => void }) {
   const ref = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end start"],
   });
-  const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
-  const scale = useTransform(scrollYProgress, [0, 0.8], [1, 1.1]);
-  const y = useTransform(scrollYProgress, [0, 1], [0, 150]);
+  const opacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
+  const y = useTransform(scrollYProgress, [0, 1], [0, 200]);
 
   return (
-    <section id="home" ref={ref} className="relative flex min-h-screen items-center justify-center overflow-hidden">
-      {/* Background – WebGL2 animated shader */}
-      <motion.div className="absolute inset-0" style={{ scale }}>
+    <section
+      id="home"
+      ref={ref}
+      className="relative flex min-h-screen items-end overflow-hidden pb-20 md:pb-32"
+    >
+      {/* Shader background */}
+      <div className="absolute inset-0">
         <Hero3DCanvas className="h-full w-full" />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/70" />
-      </motion.div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
+      </div>
 
-      {/* Content */}
-      <motion.div style={{ opacity, y }} className="relative z-10 mx-auto max-w-5xl px-6 text-center">
-        {/* Location badge */}
+      <motion.div style={{ opacity, y }} className="relative z-10 mx-auto w-full max-w-7xl px-6">
+        {/* Eyebrow */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="mb-8 inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-5 py-2.5 backdrop-blur-md"
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="mb-6 flex items-center gap-3"
         >
-          <Image
-            src="/bear-media-logo.png"
-            alt="Bear Media"
-            width={24}
-            height={24}
-            className="rounded-full"
-          />
-          <span className="text-xs font-medium uppercase tracking-[0.3em] text-white/70">
-            Broxburn &middot; Edinburgh &middot; Fife
+          <div className="h-px w-12 bg-[#FF6B35]" />
+          <span className="text-[11px] font-medium uppercase tracking-[0.3em] text-[#FF6B35]">
+            Marketing agency &middot; Scotland
           </span>
         </motion.div>
 
-        {/* Heading */}
+        {/* Main headline — brutalist heavy type */}
         <motion.h1
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 60 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
-          className="text-5xl font-bold leading-[1.05] tracking-tight text-white sm:text-6xl md:text-8xl"
+          transition={{ duration: 0.8, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+          className="max-w-5xl text-[clamp(3rem,8vw,7.5rem)] font-bold uppercase leading-[0.9] tracking-[-0.03em] text-white"
         >
-          Websites &amp;
+          Your business
           <br />
-          <span className="text-gold-gradient">Social Media</span>
-          <br />
-          Content
+          deserves to be{" "}
+          <span className="text-[#FF6B35]">seen.</span>
         </motion.h1>
 
         {/* Sub */}
         <motion.p
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.7 }}
-          className="mx-auto mt-8 max-w-lg text-lg text-white/60 md:text-xl"
+          transition={{ duration: 0.6, delay: 0.7 }}
+          className="mt-8 max-w-xl text-lg leading-relaxed text-white/50 md:text-xl"
         >
-          Helping small businesses get seen, trusted, and contacted.
+          We build websites and create social media content that gets you noticed, builds trust, and fills your diary.
         </motion.p>
 
-        {/* CTAs */}
+        {/* CTAs — brutalist buttons */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.9 }}
-          className="mt-12 flex flex-wrap justify-center gap-4"
+          transition={{ duration: 0.6, delay: 0.9 }}
+          className="mt-10 flex flex-wrap gap-4"
         >
           <motion.button
             onClick={() => onNavigate("contact")}
-            className="group flex items-center gap-3 rounded-full bg-[#FF6B35] px-8 py-4 text-base font-semibold text-black shadow-[0_4px_30px_rgba(255,107,53,0.3)] transition-all hover:bg-[#F7931E] hover:shadow-[0_8px_40px_rgba(255,107,53,0.4)]"
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
+            className="group flex items-center gap-3 border-2 border-[#FF6B35] bg-[#FF6B35] px-8 py-4 text-sm font-bold uppercase tracking-[0.1em] text-black transition-all hover:bg-transparent hover:text-[#FF6B35]"
+            whileTap={{ scale: 0.97 }}
           >
-            Start a project
+            Book a free consultation
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
           </motion.button>
           <motion.a
             href="https://portfolio.bear-media.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-3 rounded-full border border-white/15 bg-white/5 px-8 py-4 text-base font-medium text-white backdrop-blur-md transition-all hover:border-white/30 hover:bg-white/10"
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
+            className="group flex items-center gap-3 border border-white/20 px-8 py-4 text-sm font-medium uppercase tracking-[0.1em] text-white transition-all hover:border-white/40 hover:bg-white/5"
+            whileTap={{ scale: 0.97 }}
           >
-            View portfolio
-            <ExternalLink className="h-4 w-4" />
+            View our work
+            <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </motion.a>
+        </motion.div>
+
+        {/* Stats row */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.2 }}
+          className="mt-16 flex gap-12 border-t border-white/[0.06] pt-8"
+        >
+          {[
+            { value: "50+", label: "Projects delivered" },
+            { value: "5.0", label: "Google rating" },
+            { value: "100%", label: "In-house" },
+          ].map((stat, i) => (
+            <div key={i}>
+              <p className="brutal-number text-2xl font-bold text-[#FF6B35] md:text-3xl">
+                {stat.value}
+              </p>
+              <p className="mt-1 text-[10px] uppercase tracking-[0.2em] text-white/30">
+                {stat.label}
+              </p>
+            </div>
+          ))}
         </motion.div>
       </motion.div>
 
@@ -407,24 +322,25 @@ function HeroSection({
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5 }}
-        className="absolute bottom-10 left-1/2 z-10 -translate-x-1/2"
+        className="absolute bottom-8 right-6 z-10 hidden md:block"
       >
-        <motion.button
-          onClick={() => onNavigate("services")}
+        <motion.div
           animate={{ y: [0, 8, 0] }}
           transition={{ duration: 2, repeat: Infinity }}
-          className="flex flex-col items-center gap-2 text-white/40 transition-colors hover:text-white/70"
+          className="flex flex-col items-center gap-2"
         >
-          <span className="text-[10px] uppercase tracking-[0.3em]">Scroll</span>
-          <ChevronDown className="h-4 w-4" />
-        </motion.button>
+          <span className="text-[9px] uppercase tracking-[0.3em] text-white/25 [writing-mode:vertical-rl]">
+            Scroll
+          </span>
+          <div className="h-12 w-px bg-gradient-to-b from-white/25 to-transparent" />
+        </motion.div>
       </motion.div>
     </section>
   );
 }
 
 /* ══════════════════════════════════════════════
-   MARQUEE STRIP
+   MARQUEE STRIP — industrial ticker
    ══════════════════════════════════════════════ */
 function MarqueeStrip() {
   const items = [
@@ -436,18 +352,19 @@ function MarqueeStrip() {
     "Photography",
     "Drone Footage",
     "SEO",
+    "Google Business",
   ];
   const doubled = [...items, ...items];
 
   return (
-    <div className="relative overflow-hidden border-y border-white/5 bg-[#0E0E0E] py-5">
-      <div className="animate-marquee flex gap-12 whitespace-nowrap">
+    <div className="overflow-hidden border-y border-white/[0.04] bg-black py-4">
+      <div className="animate-ticker flex gap-12 whitespace-nowrap">
         {doubled.map((item, i) => (
           <span
             key={i}
-            className="flex items-center gap-4 text-sm font-medium uppercase tracking-[0.2em] text-white/25"
+            className="flex items-center gap-4 text-xs font-medium uppercase tracking-[0.25em] text-white/15"
           >
-            <span className="h-1.5 w-1.5 rounded-full bg-[#FF6B35]" />
+            <span className="h-1 w-1 bg-[#FF6B35]" />
             {item}
           </span>
         ))}
@@ -457,112 +374,77 @@ function MarqueeStrip() {
 }
 
 /* ══════════════════════════════════════════════
-   SERVICES (Stacking Cards)
+   2. PAIN / PROBLEM AGITATION
    ══════════════════════════════════════════════ */
-const SERVICES = [
+const PAIN_POINTS = [
   {
-    icon: Video,
-    title: "Social Media Content",
-    desc: "Consistent, on-brand content that builds trust and visibility across every platform.",
-    features: ["Reels & Shorts", "Promo clips", "Monthly packages", "Management"],
-    accent: "#FF6B35",
-    bg: "bg-[#FF6B35]",
+    number: "01",
+    title: "Invisible online",
+    desc: "Your competitors show up on Google. You don't. Potential customers can't find you, so they go elsewhere.",
   },
   {
-    icon: Monitor,
-    title: "Websites",
-    desc: "Fast, clean websites built to convert visitors into customers.",
-    features: ["Landing pages", "Business sites", "E-commerce", "Hosting"],
-    accent: "#4ECDC4",
-    bg: "bg-[#111]",
-    dark: true,
+    number: "02",
+    title: "Dead social media",
+    desc: "You post when you remember. No strategy, no consistency. Your feed looks abandoned and unprofessional.",
   },
   {
-    icon: Camera,
-    title: "Extras & Add-ons",
-    desc: "Everything else to support and elevate your brand.",
-    features: ["Drone footage", "Photography", "SEO", "Google Business"],
-    accent: "#A78BFA",
-    bg: "bg-[#1a1a2e]",
-    dark: true,
+    number: "03",
+    title: "Website that repels",
+    desc: "Slow, outdated, not mobile-friendly. Visitors leave in seconds. You're losing money every single day.",
+  },
+  {
+    number: "04",
+    title: "No time for it",
+    desc: "You're running a business. You don't have hours to learn design, SEO, content calendars, and algorithms.",
   },
 ];
 
-function StackingServiceCard({
-  service,
-  index,
-}: {
-  service: (typeof SERVICES)[number];
-  index: number;
-}) {
-  const cardRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: cardRef,
-    offset: ["start end", "start start"],
-  });
-  const scale = useTransform(scrollYProgress, [0, 1], [0.85, 1]);
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [0, 1]);
-  const Icon = service.icon;
-  const isDark = service.dark;
-
-  return (
-    <motion.div
-      ref={cardRef}
-      style={{ scale, opacity }}
-      className={`sticky top-24 ${service.bg} rounded-3xl p-8 shadow-2xl border border-white/[0.06] md:p-12`}
-    >
-      <div className="mb-6 flex items-start gap-4">
-        <div className={`rounded-xl p-3 ${isDark ? "bg-white/10" : "bg-black/10"}`}>
-          <Icon className={`h-8 w-8 ${isDark ? "text-white" : "text-black"}`} />
-        </div>
-        <h3 className={`text-3xl font-bold md:text-4xl ${isDark ? "text-white" : "text-black"}`}>
-          {service.title}
-        </h3>
-      </div>
-
-      <p className={`mb-8 text-lg ${isDark ? "text-white/70" : "text-black/70"}`}>
-        {service.desc}
-      </p>
-
-      <ul className="mb-8 space-y-3">
-        {service.features.map((f, i) => (
-          <li key={i} className={`flex items-center gap-3 text-lg ${isDark ? "text-white" : "text-black"}`}>
-            <span className={`h-2 w-2 rounded-full ${isDark ? "bg-[#FF6B35]" : "bg-black"}`} />
-            {f}
-          </li>
-        ))}
-      </ul>
-    </motion.div>
-  );
-}
-
-function ServicesSection() {
+function PainSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="services" ref={ref} className="relative py-32 md:py-40">
-      <div className="mx-auto max-w-4xl px-6">
-        {/* Header */}
+    <section ref={ref} className="relative bg-black py-32 md:py-40">
+      <div className="mx-auto max-w-7xl px-6">
+        {/* Section header */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-          className="mb-20 text-center"
+          transition={{ duration: 0.6 }}
+          className="mb-20"
         >
-          <span className="mb-4 inline-block text-xs font-semibold uppercase tracking-[0.3em] text-[#FF6B35]">
-            What we do
-          </span>
-          <h2 className="text-4xl font-bold text-white md:text-6xl">Services</h2>
-          <p className="mx-auto mt-4 max-w-md text-lg text-white/50">
-            Clear, practical services that get results.
-          </p>
+          <div className="mb-4 flex items-center gap-3">
+            <div className="h-px w-12 bg-[#FF6B35]" />
+            <span className="text-[11px] font-medium uppercase tracking-[0.3em] text-[#FF6B35]">
+              The problem
+            </span>
+          </div>
+          <h2 className="max-w-3xl text-4xl font-bold uppercase leading-[1.1] tracking-tight text-white md:text-6xl">
+            If your business isn&apos;t online properly,{" "}
+            <span className="text-white/30">it basically doesn&apos;t exist.</span>
+          </h2>
         </motion.div>
 
-        {/* Stacking Cards */}
-        <div className="space-y-8">
-          {SERVICES.map((service, i) => (
-            <StackingServiceCard key={i} service={service} index={i} />
+        {/* Pain grid */}
+        <div className="grid gap-px bg-white/[0.04] md:grid-cols-2">
+          {PAIN_POINTS.map((pain, i) => (
+            <motion.div
+              key={pain.number}
+              initial={{ opacity: 0, y: 40 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, delay: i * 0.1 }}
+              className="bg-black p-8 md:p-12"
+            >
+              <span className="brutal-number text-5xl font-bold text-white/[0.06] md:text-7xl">
+                {pain.number}
+              </span>
+              <h3 className="mt-4 text-xl font-bold uppercase tracking-tight text-white">
+                {pain.title}
+              </h3>
+              <p className="mt-3 leading-relaxed text-white/40">
+                {pain.desc}
+              </p>
+            </motion.div>
           ))}
         </div>
       </div>
@@ -571,309 +453,295 @@ function ServicesSection() {
 }
 
 /* ══════════════════════════════════════════════
-   WORK / PORTFOLIO
+   3. SOLUTION / BENEFITS
+   ══════════════════════════════════════════════ */
+const SOLUTIONS = [
+  {
+    title: "Websites that convert",
+    desc: "Fast, clean, mobile-first sites designed to turn visitors into paying customers. No templates. Built for your business.",
+    metric: "3x",
+    metricLabel: "more enquiries",
+  },
+  {
+    title: "Content that connects",
+    desc: "Consistent, on-brand social media content that builds trust and keeps you visible. Reels, posts, stories — all handled.",
+    metric: "10x",
+    metricLabel: "more visibility",
+  },
+  {
+    title: "Strategy that works",
+    desc: "SEO, Google Business, drone footage, photography. Everything you need to dominate your local market. One person. One point of contact.",
+    metric: "100%",
+    metricLabel: "in-house",
+  },
+];
+
+function SolutionSection() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+
+  return (
+    <section ref={ref} className="relative border-t border-white/[0.04] bg-[#0A0A0A] py-32 md:py-40">
+      <div className="mx-auto max-w-7xl px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+          className="mb-20"
+        >
+          <div className="mb-4 flex items-center gap-3">
+            <div className="h-px w-12 bg-[#FF6B35]" />
+            <span className="text-[11px] font-medium uppercase tracking-[0.3em] text-[#FF6B35]">
+              The solution
+            </span>
+          </div>
+          <h2 className="max-w-3xl text-4xl font-bold uppercase leading-[1.1] tracking-tight text-white md:text-6xl">
+            We handle everything.{" "}
+            <span className="text-white/30">You focus on your business.</span>
+          </h2>
+        </motion.div>
+
+        <div className="grid gap-8 md:grid-cols-3">
+          {SOLUTIONS.map((sol, i) => (
+            <motion.div
+              key={sol.title}
+              initial={{ opacity: 0, y: 50 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, delay: i * 0.15 }}
+              className="group border border-white/[0.06] bg-black p-8 transition-all hover:border-[#FF6B35]/20 md:p-10"
+            >
+              <div className="mb-8">
+                <span className="brutal-number text-5xl font-bold text-[#FF6B35] md:text-6xl">
+                  {sol.metric}
+                </span>
+                <p className="mt-1 text-[10px] uppercase tracking-[0.2em] text-white/30">
+                  {sol.metricLabel}
+                </p>
+              </div>
+              <h3 className="mb-3 text-xl font-bold uppercase tracking-tight text-white">
+                {sol.title}
+              </h3>
+              <p className="leading-relaxed text-white/40">{sol.desc}</p>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ══════════════════════════════════════════════
+   4. HOW IT WORKS / PROCESS
+   ══════════════════════════════════════════════ */
+const PROCESS_STEPS = [
+  {
+    step: "01",
+    title: "Discovery call",
+    desc: "We talk about your business, your goals, and what's not working. No jargon. No pressure. Just a conversation.",
+    duration: "30 min",
+  },
+  {
+    step: "02",
+    title: "Strategy & proposal",
+    desc: "You get a clear plan with pricing, timelines, and exactly what you'll receive. No hidden costs. No surprises.",
+    duration: "2-3 days",
+  },
+  {
+    step: "03",
+    title: "Build & create",
+    desc: "I get to work. Website, content, photography — whatever you need. You get updates throughout. Revisions included.",
+    duration: "1-3 weeks",
+  },
+  {
+    step: "04",
+    title: "Launch & grow",
+    desc: "Everything goes live. I train you on managing it, or I handle ongoing content. Your business starts getting noticed.",
+    duration: "Ongoing",
+  },
+];
+
+function ProcessSection({ onNavigate }: { onNavigate: (id: string) => void }) {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+
+  return (
+    <section id="process" ref={ref} className="relative border-t border-white/[0.04] bg-black py-32 md:py-40">
+      <div className="mx-auto max-w-7xl px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+          className="mb-20 flex flex-col justify-between gap-8 md:flex-row md:items-end"
+        >
+          <div>
+            <div className="mb-4 flex items-center gap-3">
+              <div className="h-px w-12 bg-[#FF6B35]" />
+              <span className="text-[11px] font-medium uppercase tracking-[0.3em] text-[#FF6B35]">
+                How it works
+              </span>
+            </div>
+            <h2 className="max-w-2xl text-4xl font-bold uppercase leading-[1.1] tracking-tight text-white md:text-6xl">
+              Simple process.{" "}
+              <span className="text-white/30">Serious results.</span>
+            </h2>
+          </div>
+          <motion.button
+            onClick={() => onNavigate("contact")}
+            className="group flex w-fit items-center gap-3 border border-[#FF6B35] px-6 py-3 text-[11px] font-bold uppercase tracking-[0.15em] text-[#FF6B35] transition-all hover:bg-[#FF6B35] hover:text-black"
+            whileTap={{ scale: 0.97 }}
+          >
+            Start the process
+            <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
+          </motion.button>
+        </motion.div>
+
+        {/* Steps — horizontal brutalist timeline */}
+        <div className="grid gap-px bg-white/[0.04] md:grid-cols-4">
+          {PROCESS_STEPS.map((step, i) => (
+            <motion.div
+              key={step.step}
+              initial={{ opacity: 0, y: 40 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, delay: i * 0.12 }}
+              className="bg-black p-8 md:p-10"
+            >
+              <div className="mb-6 flex items-center justify-between">
+                <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#FF6B35]">
+                  Step {step.step}
+                </span>
+                <span className="text-[10px] uppercase tracking-[0.15em] text-white/20">
+                  {step.duration}
+                </span>
+              </div>
+              <h3 className="mb-3 text-lg font-bold uppercase tracking-tight text-white">
+                {step.title}
+              </h3>
+              <p className="text-sm leading-relaxed text-white/40">
+                {step.desc}
+              </p>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ══════════════════════════════════════════════
+   5. WORK / PORTFOLIO
    ══════════════════════════════════════════════ */
 const PROJECTS = [
   {
     title: "Social Media Content",
-    category: "social",
-    desc: "Scroll-stopping video and graphics for social feeds.",
+    tag: "Content",
+    desc: "Scroll-stopping reels, posts, and stories that build audiences and drive engagement.",
     image: "/services-social-media.jpg",
-    accent: "#FFB84D",
-    hasVideo: true,
   },
   {
     title: "Business Websites",
-    category: "web",
-    desc: "Clean, fast websites built to convert.",
+    tag: "Web",
+    desc: "Fast, clean websites built to convert visitors into paying customers.",
     image: "/work/websites-desktop.jpg",
-    accent: "#4ECDC4",
-    hasVideo: false,
   },
   {
-    title: "Brand Assets",
-    category: "design",
-    desc: "Logos, graphics and visual identity systems.",
+    title: "Brand & Design",
+    tag: "Design",
+    desc: "Logos, visual identity, photography, and drone footage for complete brand packages.",
     image: "/services-extras.jpg",
-    accent: "#A78BFA",
-    hasVideo: false,
   },
-];
-
-const WORK_CATEGORIES = [
-  { id: "all", label: "All Work" },
-  { id: "social", label: "Social Media" },
-  { id: "web", label: "Websites" },
-  { id: "design", label: "Design" },
 ];
 
 function WorkSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const [activeCategory, setActiveCategory] = useState("all");
-
-  const filtered =
-    activeCategory === "all"
-      ? PROJECTS
-      : PROJECTS.filter((p) => p.category === activeCategory);
 
   return (
-    <section id="work" ref={ref} className="relative py-32 md:py-40">
-      <div className="section-divider" />
-      <div className="mx-auto max-w-7xl px-6 pt-20">
-        {/* Header */}
+    <section id="work" ref={ref} className="relative border-t border-white/[0.04] bg-[#050505] py-32 md:py-40">
+      <div className="mx-auto max-w-7xl px-6">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-          className="mb-12 text-center"
+          transition={{ duration: 0.6 }}
+          className="mb-20 flex flex-col justify-between gap-8 md:flex-row md:items-end"
         >
-          <span className="mb-4 inline-block text-xs font-semibold uppercase tracking-[0.3em] text-[#FF6B35]">
-            Portfolio
-          </span>
-          <h2 className="text-4xl font-bold text-white md:text-6xl">Selected Work</h2>
-          <p className="mx-auto mt-4 max-w-md text-lg text-white/50">
-            Real results for real businesses.
-          </p>
-        </motion.div>
-
-        {/* Category Filter */}
-        <div className="mb-16 flex flex-wrap justify-center gap-3">
-          {WORK_CATEGORIES.map((cat) => (
-            <button
-              key={cat.id}
-              onClick={() => setActiveCategory(cat.id)}
-              className={`rounded-full px-6 py-2.5 text-sm font-semibold transition-all ${
-                activeCategory === cat.id
-                  ? "bg-[#FF6B35] text-black"
-                  : "border border-white/10 bg-white/5 text-white/60 hover:border-white/20 hover:text-white"
-              }`}
-            >
-              {cat.label}
-            </button>
-          ))}
-        </div>
-
-        {/* Project Cards */}
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          <AnimatePresence mode="wait">
-            {filtered.map((project, i) => (
-              <motion.div
-                key={project.title}
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="group relative overflow-hidden rounded-3xl border border-white/[0.06] bg-[#111]"
-              >
-                {/* Image */}
-                <div className="relative aspect-[4/3]">
-                  <Image
-                    src={project.image}
-                    alt={project.title}
-                    fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    placeholder="blur"
-                    blurDataURL={BLUR}
-                    className="object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                  {project.hasVideo && (
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div
-                        className="flex h-14 w-14 items-center justify-center rounded-full backdrop-blur-md transition-transform duration-300 group-hover:scale-110"
-                        style={{ background: `${project.accent}DD` }}
-                      >
-                        <Play className="h-5 w-5 text-black" fill="currentColor" />
-                      </div>
-                    </div>
-                  )}
-                  <div className="absolute inset-0 bg-black/0 transition-colors group-hover:bg-black/20" />
-                </div>
-                {/* Content */}
-                <div className="p-6">
-                  <h3 className="mb-2 text-xl font-bold text-white">{project.title}</h3>
-                  <p className="text-sm text-white/50">{project.desc}</p>
-                </div>
-              </motion.div>
-            ))}
-          </AnimatePresence>
-        </div>
-
-        {/* CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          className="mt-16 text-center"
-        >
+          <div>
+            <div className="mb-4 flex items-center gap-3">
+              <div className="h-px w-12 bg-[#FF6B35]" />
+              <span className="text-[11px] font-medium uppercase tracking-[0.3em] text-[#FF6B35]">
+                Selected work
+              </span>
+            </div>
+            <h2 className="text-4xl font-bold uppercase leading-[1.1] tracking-tight text-white md:text-6xl">
+              Real work.{" "}
+              <span className="text-white/30">Real results.</span>
+            </h2>
+          </div>
           <a
             href="https://portfolio.bear-media.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="group inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-8 py-4 text-sm font-medium text-white transition-all hover:border-[#FF6B35]/30 hover:bg-[#FF6B35]/10 hover:text-[#FF6B35]"
+            className="group flex w-fit items-center gap-3 text-[11px] font-medium uppercase tracking-[0.2em] text-white/40 transition-colors hover:text-[#FF6B35]"
           >
-            View full portfolio
-            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+            Full portfolio
+            <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </a>
         </motion.div>
-      </div>
-    </section>
-  );
-}
 
-/* ══════════════════════════════════════════════
-   ABOUT
-   ══════════════════════════════════════════════ */
-function AboutSection() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+        {/* Project cards — brutalist grid */}
+        <div className="grid gap-px bg-white/[0.04] md:grid-cols-3">
+          {PROJECTS.map((project, i) => (
+            <motion.div
+              key={project.title}
+              initial={{ opacity: 0, y: 40 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, delay: i * 0.12 }}
+              className="group bg-black"
+            >
+              <div className="relative aspect-[4/3] overflow-hidden">
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  placeholder="blur"
+                  blurDataURL={BLUR}
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-black/30 transition-colors group-hover:bg-black/10" />
+                <div className="absolute top-4 left-4">
+                  <span className="border border-white/20 bg-black/60 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.2em] text-white backdrop-blur-sm">
+                    {project.tag}
+                  </span>
+                </div>
+              </div>
+              <div className="p-6 md:p-8">
+                <h3 className="mb-2 text-lg font-bold uppercase tracking-tight text-white">
+                  {project.title}
+                </h3>
+                <p className="text-sm leading-relaxed text-white/40">
+                  {project.desc}
+                </p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
 
-  return (
-    <section id="about" ref={ref} className="relative py-32 md:py-40">
-      <div className="section-divider" />
-      <div className="mx-auto grid max-w-6xl items-center gap-16 px-6 pt-20 md:grid-cols-2">
-        {/* Text */}
-        <motion.div
-          initial={{ opacity: 0, x: -40 }}
-          animate={isInView ? { opacity: 1, x: 0 } : {}}
-          transition={{ duration: 0.8 }}
-        >
-          <span className="mb-4 inline-block text-xs font-semibold uppercase tracking-[0.3em] text-[#FF6B35]">
-            About
-          </span>
-          <h2 className="mb-6 text-4xl font-bold text-white md:text-5xl">
-            Built by one person.
-            <br />
-            <span className="text-white/40">On purpose.</span>
-          </h2>
-          <p className="mb-4 text-lg leading-relaxed text-white/60">
-            Hi, I&apos;m Garry, founder of Bear Media. I help businesses get
-            seen, build trust, and get contacted through clean websites and
-            consistent social media content.
+        {/* Client logos */}
+        <div className="mt-20">
+          <p className="mb-8 text-[10px] font-medium uppercase tracking-[0.3em] text-white/20">
+            Trusted by businesses across Scotland
           </p>
-          <p className="mb-8 text-lg leading-relaxed text-white/60">
-            Everything is produced in-house &mdash; from content strategy to build and
-            analytics &mdash; so you always know who you&apos;re working with.
-          </p>
-
-          {/* Stats */}
-          <div className="grid grid-cols-3 gap-6">
+          <div className="flex flex-wrap gap-x-8 gap-y-3">
             {[
-              { value: "18+", label: "5-Star Reviews" },
-              { value: "50+", label: "Projects" },
-              { value: "100%", label: "In-house" },
-            ].map((stat, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ delay: 0.4 + i * 0.1 }}
-              >
-                <p className="text-2xl font-bold text-[#FF6B35] md:text-3xl">{stat.value}</p>
-                <p className="mt-1 text-xs text-white/40">{stat.label}</p>
-              </motion.div>
+              "Glens Pharmacies", "GB Masterchef", "GSM Electrical", "K.Lewis Joinery",
+              "The Free Spirit", "Herb & Soul", "M&M CTS", "RTL Transport",
+              "Almond Vet Care", "Voice2Lead",
+            ].map((client) => (
+              <span key={client} className="text-sm text-white/20 transition-colors hover:text-white/40">
+                {client}
+              </span>
             ))}
           </div>
-        </motion.div>
-
-        {/* Image */}
-        <motion.div
-          initial={{ opacity: 0, x: 40 }}
-          animate={isInView ? { opacity: 1, x: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="relative"
-        >
-          <div className="relative aspect-[4/5] overflow-hidden rounded-3xl">
-            <Image
-              src="/garry-lynch-portrait.png"
-              alt="Garry Lynch, founder of Bear Media"
-              fill
-              sizes="(max-width: 768px) 100vw, 50vw"
-              placeholder="blur"
-              blurDataURL={BLUR}
-              className="object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
-          </div>
-          {/* Floating badge */}
-          <motion.div
-            animate={{ y: [0, -8, 0] }}
-            transition={{ duration: 4, repeat: Infinity }}
-            className="absolute -bottom-4 -left-4 glass rounded-2xl px-6 py-4 shadow-2xl md:-left-8"
-          >
-            <div className="flex items-center gap-3">
-              <div className="flex">
-                {[1, 2, 3, 4, 5].map((s) => (
-                  <Star key={s} className="h-4 w-4 fill-[#FF6B35] text-[#FF6B35]" />
-                ))}
-              </div>
-              <span className="text-sm font-semibold text-white">5.0 on Google</span>
-            </div>
-          </motion.div>
-        </motion.div>
-      </div>
-    </section>
-  );
-}
-
-/* ══════════════════════════════════════════════
-   CLIENT LOGOS
-   ══════════════════════════════════════════════ */
-const CLIENTS = [
-  "Glens Pharmacies",
-  "GB Masterchef",
-  "GSM Electrical",
-  "K.Lewis Joinery",
-  "The Free Spirit",
-  "Herb & Soul",
-  "M&M CTS",
-  "C&G Development",
-  "RTL Transport",
-  "Voice2Lead",
-  "Almond Vet Care",
-  "The Potentially You Project",
-];
-
-function ClientLogosSection() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-50px" });
-  const doubled = [...CLIENTS, ...CLIENTS];
-
-  return (
-    <section ref={ref} className="relative overflow-hidden py-20 md:py-28">
-      <div className="section-divider" />
-      <div className="pt-16">
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="mb-10 text-center text-xs font-semibold uppercase tracking-[0.3em] text-white/30"
-        >
-          Trusted by businesses across Scotland
-        </motion.p>
-
-        {/* Marquee row */}
-        <div className="relative">
-          {/* Fade edges */}
-          <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-[#0A0A0A] to-transparent" />
-          <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-[#0A0A0A] to-transparent" />
-
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={isInView ? { opacity: 1 } : {}}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="animate-marquee flex gap-6 whitespace-nowrap"
-            style={{ animationDuration: "40s" }}
-          >
-            {doubled.map((client, i) => (
-              <div
-                key={i}
-                className="flex shrink-0 items-center rounded-full border border-white/[0.06] bg-white/[0.02] px-6 py-3"
-              >
-                <span className="text-sm font-medium text-white/40">{client}</span>
-              </div>
-            ))}
-          </motion.div>
         </div>
       </div>
     </section>
@@ -881,7 +749,7 @@ function ClientLogosSection() {
 }
 
 /* ══════════════════════════════════════════════
-   REVIEWS
+   6. TESTIMONIALS / SOCIAL PROOF
    ══════════════════════════════════════════════ */
 const REVIEWS = [
   {
@@ -904,7 +772,7 @@ const REVIEWS = [
   },
 ];
 
-function ReviewsSection() {
+function TestimonialsSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [active, setActive] = useState(0);
@@ -912,83 +780,236 @@ function ReviewsSection() {
   useEffect(() => {
     const interval = setInterval(() => {
       setActive((prev) => (prev + 1) % REVIEWS.length);
-    }, 5000);
+    }, 6000);
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <section id="reviews" ref={ref} className="relative py-32 md:py-40">
-      <div className="section-divider" />
-      <div className="mx-auto max-w-4xl px-6 pt-20 text-center">
+    <section ref={ref} className="relative border-t border-white/[0.04] bg-black py-32 md:py-40">
+      <div className="mx-auto max-w-7xl px-6">
+        <div className="grid gap-16 md:grid-cols-[1fr_2fr]">
+          {/* Left — stats */}
+          <motion.div
+            initial={{ opacity: 0, x: -40 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.6 }}
+          >
+            <div className="mb-4 flex items-center gap-3">
+              <div className="h-px w-12 bg-[#FF6B35]" />
+              <span className="text-[11px] font-medium uppercase tracking-[0.3em] text-[#FF6B35]">
+                Testimonials
+              </span>
+            </div>
+            <h2 className="mb-8 text-4xl font-bold uppercase leading-[1.1] tracking-tight text-white md:text-5xl">
+              What they say.
+            </h2>
+
+            <div className="flex items-center gap-1 mb-3">
+              {[1, 2, 3, 4, 5].map((s) => (
+                <Star key={s} className="h-4 w-4 fill-[#FF6B35] text-[#FF6B35]" />
+              ))}
+            </div>
+            <p className="text-sm text-white/40">5.0 from 18+ Google reviews</p>
+
+            <a
+              href="https://www.google.com/gasearch?q=Bear%20Media&source=sh/x/gs/m2/5"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-6 inline-flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.15em] text-white/30 transition-colors hover:text-[#FF6B35]"
+            >
+              Read all reviews
+              <ExternalLink className="h-3 w-3" />
+            </a>
+          </motion.div>
+
+          {/* Right — review carousel */}
+          <motion.div
+            initial={{ opacity: 0, x: 40 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            <div className="relative min-h-[280px]">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={active}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.4 }}
+                  className="border border-white/[0.06] bg-[#0A0A0A] p-8 md:p-12"
+                >
+                  <blockquote className="mb-8 text-lg leading-relaxed text-white/70 md:text-xl">
+                    &ldquo;{REVIEWS[active].quote}&rdquo;
+                  </blockquote>
+                  <div className="flex items-center gap-4">
+                    <div className="h-px w-8 bg-[#FF6B35]" />
+                    <div>
+                      <p className="text-sm font-bold uppercase tracking-tight text-white">
+                        {REVIEWS[active].name}
+                      </p>
+                      <p className="text-xs text-white/30">{REVIEWS[active].role}</p>
+                    </div>
+                  </div>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+
+            {/* Indicators */}
+            <div className="mt-6 flex gap-2">
+              {REVIEWS.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setActive(i)}
+                  className={`h-1 transition-all duration-300 ${
+                    active === i ? "w-10 bg-[#FF6B35]" : "w-4 bg-white/10 hover:bg-white/20"
+                  }`}
+                />
+              ))}
+            </div>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ══════════════════════════════════════════════
+   7. ABOUT / CREDIBILITY
+   ══════════════════════════════════════════════ */
+function AboutSection() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+
+  return (
+    <section id="about" ref={ref} className="relative border-t border-white/[0.04] bg-[#050505] py-32 md:py-40">
+      <div className="mx-auto max-w-7xl px-6">
+        <div className="grid items-center gap-16 md:grid-cols-[2fr_1fr]">
+          {/* Text */}
+          <motion.div
+            initial={{ opacity: 0, x: -40 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.6 }}
+          >
+            <div className="mb-4 flex items-center gap-3">
+              <div className="h-px w-12 bg-[#FF6B35]" />
+              <span className="text-[11px] font-medium uppercase tracking-[0.3em] text-[#FF6B35]">
+                About
+              </span>
+            </div>
+            <h2 className="mb-8 text-4xl font-bold uppercase leading-[1.1] tracking-tight text-white md:text-6xl">
+              One person.{" "}
+              <span className="text-white/30">On purpose.</span>
+            </h2>
+            <div className="space-y-4 text-lg leading-relaxed text-white/50">
+              <p>
+                I&apos;m Garry, founder of Bear Media. I help small businesses across Scotland
+                get seen, build trust, and get contacted.
+              </p>
+              <p>
+                No agency fluff. No account managers. No outsourcing. Everything is produced
+                in-house &mdash; from content strategy to website build to analytics. You always
+                know exactly who you&apos;re working with.
+              </p>
+              <p>
+                Based in Broxburn, West Lothian. Working with businesses across Edinburgh,
+                Fife, Glasgow, and Central Scotland.
+              </p>
+            </div>
+
+            {/* Credibility badges */}
+            <div className="mt-10 grid grid-cols-3 gap-8 border-t border-white/[0.06] pt-10">
+              {[
+                { value: "18+", label: "5-star reviews" },
+                { value: "50+", label: "Projects delivered" },
+                { value: "3+", label: "Years operating" },
+              ].map((stat, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ delay: 0.4 + i * 0.1 }}
+                >
+                  <p className="brutal-number text-3xl font-bold text-[#FF6B35] md:text-4xl">
+                    {stat.value}
+                  </p>
+                  <p className="mt-1 text-[10px] uppercase tracking-[0.2em] text-white/30">
+                    {stat.label}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Portrait */}
+          <motion.div
+            initial={{ opacity: 0, x: 40 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="relative"
+          >
+            <div className="relative aspect-[3/4] overflow-hidden">
+              <Image
+                src="/garry-lynch-portrait.png"
+                alt="Garry Lynch, founder of Bear Media"
+                fill
+                sizes="(max-width: 768px) 100vw, 33vw"
+                placeholder="blur"
+                blurDataURL={BLUR}
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+            </div>
+            {/* Name tag */}
+            <div className="absolute bottom-0 left-0 border-t border-[#FF6B35] bg-black px-6 py-4">
+              <p className="text-sm font-bold uppercase tracking-tight text-white">
+                Garry Lynch
+              </p>
+              <p className="text-[10px] uppercase tracking-[0.2em] text-white/40">
+                Founder
+              </p>
+            </div>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ══════════════════════════════════════════════
+   8. FINAL CTA — Brutalist full-width block
+   ══════════════════════════════════════════════ */
+function CTASection({ onNavigate }: { onNavigate: (id: string) => void }) {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+
+  return (
+    <section ref={ref} className="relative border-t border-[#FF6B35]/20 bg-[#FF6B35] py-24 md:py-32">
+      <div className="mx-auto max-w-7xl px-6">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.6 }}
+          className="flex flex-col items-start gap-8 md:flex-row md:items-center md:justify-between"
         >
-          <span className="mb-4 inline-block text-xs font-semibold uppercase tracking-[0.3em] text-[#FF6B35]">
-            Testimonials
-          </span>
-          <h2 className="mb-4 text-4xl font-bold text-white md:text-6xl">
-            What clients say
-          </h2>
-          <div className="mx-auto mb-12 flex items-center justify-center gap-1">
-            {[1, 2, 3, 4, 5].map((s) => (
-              <Star key={s} className="h-5 w-5 fill-[#FF6B35] text-[#FF6B35]" />
-            ))}
-            <span className="ml-3 text-sm text-white/60">5.0 from 18 Google reviews</span>
+          <div>
+            <h2 className="text-4xl font-bold uppercase leading-[1.1] tracking-tight text-black md:text-6xl">
+              Ready to get
+              <br />
+              your business seen?
+            </h2>
+            <p className="mt-4 max-w-lg text-lg text-black/60">
+              Book a free 30-minute consultation. No pressure. No obligation. Just a genuine conversation about your goals.
+            </p>
           </div>
+          <motion.button
+            onClick={() => onNavigate("contact")}
+            className="group flex items-center gap-3 border-2 border-black bg-black px-8 py-5 text-sm font-bold uppercase tracking-[0.1em] text-[#FF6B35] transition-all hover:bg-transparent hover:text-black"
+            whileTap={{ scale: 0.97 }}
+          >
+            Book a free consultation
+            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+          </motion.button>
         </motion.div>
-
-        {/* Testimonial */}
-        <div className="relative min-h-[240px]">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={active}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.5 }}
-              className="glass rounded-3xl p-8 md:p-12"
-            >
-              <blockquote className="mb-6 text-lg leading-relaxed text-white/80 md:text-xl">
-                &ldquo;{REVIEWS[active].quote}&rdquo;
-              </blockquote>
-              <div>
-                <p className="font-semibold text-white">{REVIEWS[active].name}</p>
-                <p className="text-sm text-white/40">{REVIEWS[active].role}</p>
-              </div>
-            </motion.div>
-          </AnimatePresence>
-        </div>
-
-        {/* Dots */}
-        <div className="mt-8 flex justify-center gap-3">
-          {REVIEWS.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => setActive(i)}
-              className={`h-2 rounded-full transition-all duration-300 ${
-                active === i
-                  ? "w-8 bg-[#FF6B35]"
-                  : "w-2 bg-white/20 hover:bg-white/40"
-              }`}
-            />
-          ))}
-        </div>
-
-        {/* Google link */}
-        <motion.a
-          href="https://www.google.com/gasearch?q=Bear%20Media&source=sh/x/gs/m2/5"
-          target="_blank"
-          rel="noopener noreferrer"
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : {}}
-          transition={{ delay: 0.5 }}
-          className="mt-8 inline-flex items-center gap-2 text-sm text-white/40 transition-colors hover:text-[#FF6B35]"
-        >
-          Read all reviews on Google
-          <ExternalLink className="h-3 w-3" />
-        </motion.a>
       </div>
     </section>
   );
@@ -1015,6 +1036,7 @@ function ContactSection() {
         body: JSON.stringify({
           name: data.get("name"),
           email: data.get("email"),
+          phone: data.get("phone"),
           projectType: data.get("projectType"),
           message: data.get("message"),
         }),
@@ -1030,146 +1052,147 @@ function ContactSection() {
     }
   };
 
+  const inputClasses =
+    "w-full border border-white/[0.08] bg-transparent px-4 py-4 text-sm text-white placeholder:text-white/20 focus:border-[#FF6B35] focus:outline-none transition-colors";
+
   return (
-    <section id="contact" ref={ref} className="relative py-32 md:py-40">
-      <div className="section-divider" />
-      <div className="mx-auto max-w-6xl px-6 pt-20">
+    <section id="contact" ref={ref} className="relative border-t border-white/[0.04] bg-black py-32 md:py-40">
+      <div className="mx-auto max-w-7xl px-6">
         <div className="grid gap-16 md:grid-cols-2">
-          {/* Left - Info */}
+          {/* Left — Info */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.6 }}
           >
-            <span className="mb-4 inline-block text-xs font-semibold uppercase tracking-[0.3em] text-[#FF6B35]">
-              Get in touch
-            </span>
-            <h2 className="mb-6 text-4xl font-bold text-white md:text-5xl">
-              Let&apos;s start
+            <div className="mb-4 flex items-center gap-3">
+              <div className="h-px w-12 bg-[#FF6B35]" />
+              <span className="text-[11px] font-medium uppercase tracking-[0.3em] text-[#FF6B35]">
+                Get in touch
+              </span>
+            </div>
+            <h2 className="mb-6 text-4xl font-bold uppercase leading-[1.1] tracking-tight text-white md:text-5xl">
+              Let&apos;s talk
               <br />
-              something.
+              <span className="text-white/30">about your project.</span>
             </h2>
-            <p className="mb-10 text-lg leading-relaxed text-white/50">
-              Every message comes directly to me. No bots. No sales scripts. Just a genuine conversation about your project.
+            <p className="mb-10 text-lg leading-relaxed text-white/40">
+              Every message comes directly to me. No bots. No sales team. Just a genuine conversation about what you need.
             </p>
 
             <div className="space-y-6">
-              <a
-                href="mailto:info@bear-media.com"
-                className="flex items-center gap-4 text-white/60 transition-colors hover:text-[#FF6B35]"
-              >
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-white/10 bg-white/5">
-                  <Mail className="h-5 w-5" />
-                </div>
-                <div>
-                  <p className="text-xs text-white/30">Email</p>
-                  <p className="text-sm font-medium">info@bear-media.com</p>
-                </div>
-              </a>
-              <a
-                href="tel:+447879011860"
-                className="flex items-center gap-4 text-white/60 transition-colors hover:text-[#FF6B35]"
-              >
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-white/10 bg-white/5">
-                  <Phone className="h-5 w-5" />
-                </div>
-                <div>
-                  <p className="text-xs text-white/30">Phone</p>
-                  <p className="text-sm font-medium">+44 7879 011860</p>
-                </div>
-              </a>
-              <div className="flex items-center gap-4 text-white/60">
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-white/10 bg-white/5">
-                  <MapPin className="h-5 w-5" />
-                </div>
-                <div>
-                  <p className="text-xs text-white/30">Location</p>
-                  <p className="text-sm font-medium">Broxburn, West Lothian, Scotland</p>
-                </div>
-              </div>
+              {[
+                { icon: Mail, label: "Email", value: "info@bear-media.com", href: "mailto:info@bear-media.com" },
+                { icon: Phone, label: "Phone", value: "+44 7879 011860", href: "tel:+447879011860" },
+                { icon: MapPin, label: "Location", value: "Broxburn, West Lothian, Scotland", href: undefined },
+              ].map((item) => {
+                const Icon = item.icon;
+                const Tag = item.href ? "a" : "div";
+                return (
+                  <Tag
+                    key={item.label}
+                    {...(item.href ? { href: item.href } : {})}
+                    className="flex items-center gap-4 text-white/50 transition-colors hover:text-white"
+                  >
+                    <div className="flex h-10 w-10 items-center justify-center border border-white/[0.08]">
+                      <Icon className="h-4 w-4" />
+                    </div>
+                    <div>
+                      <p className="text-[10px] uppercase tracking-[0.2em] text-white/25">{item.label}</p>
+                      <p className="text-sm">{item.value}</p>
+                    </div>
+                  </Tag>
+                );
+              })}
             </div>
           </motion.div>
 
-          {/* Right - Form */}
+          {/* Right — Form */}
           <motion.div
             initial={{ opacity: 0, x: 40 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <div className="glass rounded-3xl p-8 md:p-10">
+            <div className="border border-white/[0.06] bg-[#0A0A0A] p-8 md:p-10">
               {formState === "sent" ? (
-                <div className="flex flex-col items-center justify-center py-12 text-center">
-                  <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-[#FF6B35]/10">
-                    <Mail className="h-7 w-7 text-[#FF6B35]" />
+                <div className="flex flex-col items-center justify-center py-16 text-center">
+                  <div className="mb-6 flex h-16 w-16 items-center justify-center border border-[#FF6B35]">
+                    <Mail className="h-6 w-6 text-[#FF6B35]" />
                   </div>
-                  <h3 className="mb-2 text-2xl font-bold text-white">Message sent</h3>
-                  <p className="text-white/50">I&apos;ll reply within 24 hours.</p>
+                  <h3 className="mb-2 text-xl font-bold uppercase tracking-tight text-white">
+                    Message sent
+                  </h3>
+                  <p className="text-sm text-white/40">I&apos;ll get back to you within 24 hours.</p>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-5">
-                  <div>
-                    <label className="mb-2 block text-xs font-medium uppercase tracking-wider text-white/40">
-                      Name
-                    </label>
-                    <input
-                      type="text"
-                      name="name"
-                      required
-                      placeholder="Your name"
-                      className="w-full rounded-xl border border-white/[0.08] bg-white/[0.03] px-4 py-3.5 text-sm text-white placeholder:text-white/25 focus:border-[#FF6B35]/50 focus:outline-none focus:ring-1 focus:ring-[#FF6B35]/25"
-                    />
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  <div className="grid gap-4 md:grid-cols-2">
+                    <div>
+                      <label className="mb-2 block text-[10px] font-medium uppercase tracking-[0.2em] text-white/30">
+                        Name *
+                      </label>
+                      <input
+                        type="text"
+                        name="name"
+                        required
+                        placeholder="Your name"
+                        className={inputClasses}
+                      />
+                    </div>
+                    <div>
+                      <label className="mb-2 block text-[10px] font-medium uppercase tracking-[0.2em] text-white/30">
+                        Email *
+                      </label>
+                      <input
+                        type="email"
+                        name="email"
+                        required
+                        placeholder="you@company.com"
+                        className={inputClasses}
+                      />
+                    </div>
+                  </div>
+                  <div className="grid gap-4 md:grid-cols-2">
+                    <div>
+                      <label className="mb-2 block text-[10px] font-medium uppercase tracking-[0.2em] text-white/30">
+                        Phone
+                      </label>
+                      <input
+                        type="tel"
+                        name="phone"
+                        placeholder="+44 7XXX XXXXXX"
+                        className={inputClasses}
+                      />
+                    </div>
+                    <div>
+                      <label className="mb-2 block text-[10px] font-medium uppercase tracking-[0.2em] text-white/30">
+                        Service
+                      </label>
+                      <select
+                        name="projectType"
+                        defaultValue=""
+                        className={`${inputClasses} bg-[#0A0A0A]`}
+                      >
+                        <option value="" disabled>Select a service</option>
+                        <option value="Website">Website Design</option>
+                        <option value="Social Media Content">Social Media Content</option>
+                        <option value="SEO">SEO Services</option>
+                        <option value="Drone">Drone Photography</option>
+                        <option value="Complete Package">Complete Package</option>
+                        <option value="Other">Other / Not Sure</option>
+                      </select>
+                    </div>
                   </div>
                   <div>
-                    <label className="mb-2 block text-xs font-medium uppercase tracking-wider text-white/40">
-                      Email
-                    </label>
-                    <input
-                      type="email"
-                      name="email"
-                      required
-                      placeholder="your@email.com"
-                      className="w-full rounded-xl border border-white/[0.08] bg-white/[0.03] px-4 py-3.5 text-sm text-white placeholder:text-white/25 focus:border-[#FF6B35]/50 focus:outline-none focus:ring-1 focus:ring-[#FF6B35]/25"
-                    />
-                  </div>
-                  <div>
-                    <label className="mb-2 block text-xs font-medium uppercase tracking-wider text-white/40">
-                      Phone
-                    </label>
-                    <input
-                      type="tel"
-                      name="phone"
-                      placeholder="+44 7XXX XXXXXX"
-                      className="w-full rounded-xl border border-white/[0.08] bg-white/[0.03] px-4 py-3.5 text-sm text-white placeholder:text-white/25 focus:border-[#FF6B35]/50 focus:outline-none focus:ring-1 focus:ring-[#FF6B35]/25"
-                    />
-                  </div>
-                  <div>
-                    <label className="mb-2 block text-xs font-medium uppercase tracking-wider text-white/40">
-                      Service Interested In
-                    </label>
-                    <select
-                      name="projectType"
-                      defaultValue=""
-                      className="w-full rounded-xl border border-white/[0.08] bg-white/[0.03] px-4 py-3.5 text-sm text-white focus:border-[#FF6B35]/50 focus:outline-none focus:ring-1 focus:ring-[#FF6B35]/25"
-                    >
-                      <option value="" disabled>Select a service</option>
-                      <option value="Website">Website Design</option>
-                      <option value="Social Media Content">Social Media Content</option>
-                      <option value="SEO">SEO Services</option>
-                      <option value="Drone">Drone Photography</option>
-                      <option value="Complete Package">Complete Package</option>
-                      <option value="Other">Other</option>
-                    </select>
-                  </div>
-                  <div>
-                    <label className="mb-2 block text-xs font-medium uppercase tracking-wider text-white/40">
-                      Message
+                    <label className="mb-2 block text-[10px] font-medium uppercase tracking-[0.2em] text-white/30">
+                      Message *
                     </label>
                     <textarea
                       name="message"
-                      rows={4}
+                      rows={5}
                       required
-                      placeholder="Tell me about your project..."
-                      className="w-full resize-none rounded-xl border border-white/[0.08] bg-white/[0.03] px-4 py-3.5 text-sm text-white placeholder:text-white/25 focus:border-[#FF6B35]/50 focus:outline-none focus:ring-1 focus:ring-[#FF6B35]/25"
+                      placeholder="Tell me about your business and what you need..."
+                      className={`${inputClasses} resize-none`}
                     />
                   </div>
 
@@ -1182,11 +1205,11 @@ function ContactSection() {
                   <motion.button
                     type="submit"
                     disabled={formState === "sending"}
-                    className="w-full rounded-xl bg-[#FF6B35] py-4 text-sm font-bold text-black shadow-[0_4px_30px_rgba(255,107,53,0.25)] transition-all hover:bg-[#F7931E] hover:shadow-[0_8px_40px_rgba(255,107,53,0.35)] disabled:opacity-50"
-                    whileHover={{ scale: 1.01 }}
-                    whileTap={{ scale: 0.99 }}
+                    className="group flex w-full items-center justify-center gap-3 border-2 border-[#FF6B35] bg-[#FF6B35] py-4 text-sm font-bold uppercase tracking-[0.1em] text-black transition-all hover:bg-transparent hover:text-[#FF6B35] disabled:opacity-50"
+                    whileTap={{ scale: 0.98 }}
                   >
-                    {formState === "sending" ? "Sending..." : "Send Message"}
+                    {formState === "sending" ? "Sending..." : "Send message"}
+                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </motion.button>
                 </form>
               )}
@@ -1199,31 +1222,23 @@ function ContactSection() {
 }
 
 /* ══════════════════════════════════════════════
-   FOOTER
+   FOOTER — Brutalist minimal
    ══════════════════════════════════════════════ */
-function Footer() {
+function Footer({ onNavigate }: { onNavigate: (id: string) => void }) {
   return (
-    <footer className="border-t border-white/5 bg-[#0A0A0A]">
-      <div className="mx-auto max-w-7xl px-6 py-20">
+    <footer className="border-t border-white/[0.04] bg-black">
+      <div className="mx-auto max-w-7xl px-6 py-16">
         <div className="grid gap-12 md:grid-cols-4">
           {/* Brand */}
-          <div className="md:col-span-1">
-            <div className="mb-4 flex items-center gap-2">
-              <Image
-                src="/bear-media-logo.png"
-                alt="Bear Media"
-                width={32}
-                height={32}
-              />
-              <div>
-                <span className="text-lg font-bold text-white">Bear</span>
-                <span className="text-lg font-bold text-[#FF6B35]">Media</span>
-              </div>
-            </div>
-            <p className="mb-6 text-sm leading-relaxed text-white/40">
-              Websites &amp; Social Media Content for small businesses in Scotland.
+          <div>
+            <button onClick={() => onNavigate("home")} className="mb-4 flex items-center gap-1">
+              <span className="text-base font-bold tracking-tight text-white">BEAR</span>
+              <span className="text-base font-bold tracking-tight text-[#FF6B35]">MEDIA</span>
+            </button>
+            <p className="mb-6 text-sm leading-relaxed text-white/30">
+              Websites &amp; social media content for businesses that want to be seen.
             </p>
-            <div className="flex gap-3">
+            <div className="flex gap-2">
               {[
                 { href: "https://www.instagram.com/bearmedia70", icon: Instagram, label: "Instagram" },
                 { href: "https://www.youtube.com/@bearmedia70", icon: Youtube, label: "YouTube" },
@@ -1234,29 +1249,29 @@ function Footer() {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/[0.06] bg-white/[0.03] text-white/40 transition-all hover:border-[#FF6B35]/30 hover:bg-[#FF6B35]/10 hover:text-[#FF6B35]"
+                  className="flex h-9 w-9 items-center justify-center border border-white/[0.06] text-white/30 transition-all hover:border-[#FF6B35] hover:text-[#FF6B35]"
                   aria-label={social.label}
                 >
-                  <social.icon className="h-4 w-4" />
+                  <social.icon className="h-3.5 w-3.5" />
                 </a>
               ))}
             </div>
           </div>
 
-          {/* Quick Links */}
+          {/* Links */}
           <div>
-            <h4 className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-white/30">
-              Quick Links
+            <h4 className="mb-4 text-[10px] font-bold uppercase tracking-[0.25em] text-white/25">
+              Navigate
             </h4>
             <ul className="space-y-3 text-sm">
-              {["Services", "Work", "About", "Contact"].map((link) => (
+              {["Work", "Process", "About", "Contact"].map((link) => (
                 <li key={link}>
-                  <a
-                    href={`#${link.toLowerCase()}`}
-                    className="text-white/50 transition-colors hover:text-[#FF6B35]"
+                  <button
+                    onClick={() => onNavigate(link.toLowerCase())}
+                    className="text-white/40 transition-colors hover:text-white"
                   >
                     {link}
-                  </a>
+                  </button>
                 </li>
               ))}
               <li>
@@ -1264,7 +1279,7 @@ function Footer() {
                   href="https://portfolio.bear-media.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-white/50 transition-colors hover:text-[#FF6B35]"
+                  className="text-white/40 transition-colors hover:text-white"
                 >
                   Portfolio
                 </a>
@@ -1274,56 +1289,42 @@ function Footer() {
 
           {/* Services */}
           <div>
-            <h4 className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-white/30">
+            <h4 className="mb-4 text-[10px] font-bold uppercase tracking-[0.25em] text-white/25">
               Services
             </h4>
             <ul className="space-y-3 text-sm">
-              {[
-                "Websites",
-                "Social Media Content",
-                "Photography",
-                "Drone Footage",
-                "SEO",
-              ].map((item) => (
-                <li key={item} className="text-white/50">
-                  {item}
-                </li>
-              ))}
+              {["Websites", "Social Media Content", "Photography", "Drone Footage", "SEO", "Google Business"].map(
+                (item) => (
+                  <li key={item} className="text-white/40">{item}</li>
+                )
+              )}
             </ul>
           </div>
 
           {/* Contact */}
           <div>
-            <h4 className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-white/30">
+            <h4 className="mb-4 text-[10px] font-bold uppercase tracking-[0.25em] text-white/25">
               Contact
             </h4>
             <ul className="space-y-3 text-sm">
               <li>
-                <a
-                  href="mailto:info@bear-media.com"
-                  className="text-white/50 transition-colors hover:text-[#FF6B35]"
-                >
+                <a href="mailto:info@bear-media.com" className="text-white/40 transition-colors hover:text-white">
                   info@bear-media.com
                 </a>
               </li>
               <li>
-                <a
-                  href="tel:+447879011860"
-                  className="text-white/50 transition-colors hover:text-[#FF6B35]"
-                >
+                <a href="tel:+447879011860" className="text-white/40 transition-colors hover:text-white">
                   +44 7879 011860
                 </a>
               </li>
-              <li className="text-white/50">
-                Broxburn, West Lothian
-              </li>
-              <li className="text-white/50">EH52 6PH, Scotland</li>
+              <li className="text-white/40">Broxburn, West Lothian</li>
+              <li className="text-white/40">EH52 6PH, Scotland</li>
             </ul>
             <div className="mt-6">
-              <h4 className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-white/30">
+              <h4 className="mb-2 text-[10px] font-bold uppercase tracking-[0.25em] text-white/25">
                 Areas
               </h4>
-              <p className="text-sm text-white/40">
+              <p className="text-xs text-white/30">
                 Edinburgh, West Lothian, Fife, Glasgow, Falkirk &amp; Central Scotland
               </p>
             </div>
@@ -1331,14 +1332,15 @@ function Footer() {
         </div>
 
         {/* Bottom */}
-        <div className="section-divider mt-16 mb-8" />
-        <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
-          <p className="text-xs text-white/25">
-            &copy; {new Date().getFullYear()} Bear Media. All rights reserved.
-          </p>
-          <p className="text-xs text-white/15">
-            Designed &amp; built by Bear Media
-          </p>
+        <div className="mt-16 border-t border-white/[0.04] pt-8">
+          <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
+            <p className="text-[10px] uppercase tracking-[0.2em] text-white/20">
+              &copy; {new Date().getFullYear()} Bear Media. All rights reserved.
+            </p>
+            <p className="text-[10px] uppercase tracking-[0.2em] text-white/10">
+              Designed &amp; built by Bear Media
+            </p>
+          </div>
         </div>
       </div>
     </footer>
