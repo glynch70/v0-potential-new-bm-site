@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform, useInView, AnimatePresence } from "framer-motion";
 import {
   ArrowRight,
+  Play,
   Star,
   ChevronDown,
   Video,
@@ -588,20 +589,31 @@ function ServiceCard({
 /* ══════════════════════════════════════════════
    WORK / PORTFOLIO
    ══════════════════════════════════════════════ */
-const PORTFOLIO_ITEMS = [
-  { image: "/work/hugos-bar.jpg", client: "Hugos Bar", category: "Content" },
-  { image: "/work/solas-kitchen.jpg", client: "Solas Kitchen", category: "Content" },
-  { image: "/work/louie-browns.jpg", client: "Louie Browns", category: "Content" },
-  { image: "/work/the-compass.jpg", client: "The Compass", category: "Content" },
-  { image: "/work/ale-and-pate.jpg", client: "Ale & Pate", category: "Content" },
-  { image: "/work/peony-inn.jpg", client: "Peony Inn", category: "Content" },
-  { image: "/work/hillend-tavern.jpg", client: "Hillend Tavern", category: "Content" },
-  { image: "/work/essential-dalgety-bay.jpg", client: "Essential Dalgety Bay", category: "Content" },
-  { image: "/work/donbristle-stables.jpg", client: "Donbristle Stables", category: "Photography" },
-  { image: "/work/donibristle-chapel.jpg", client: "Donibristle Chapel", category: "Photography" },
-  { image: "/work/st-bridgets-kirk.jpg", client: "St Bridget's Kirk", category: "Photography" },
-  { image: "/work/downing-point.jpg", client: "Downing Point", category: "Photography" },
-  { image: "/work/fife-coastal-path.jpg", client: "Fife Coastal Path", category: "Photography" },
+const PROJECTS = [
+  {
+    title: "Social Media Content",
+    category: "Video",
+    desc: "Scroll-stopping video and graphics for social feeds.",
+    image: "/services-social-media.jpg",
+    accent: "#FFB84D",
+    hasVideo: true,
+  },
+  {
+    title: "Business Websites",
+    category: "Web",
+    desc: "Clean, fast websites built to convert.",
+    image: "/work/websites-desktop.jpg",
+    accent: "#4ECDC4",
+    hasVideo: false,
+  },
+  {
+    title: "Brand Assets",
+    category: "Design",
+    desc: "Logos, graphics and visual identity systems.",
+    image: "/services-extras.jpg",
+    accent: "#A78BFA",
+    hasVideo: false,
+  },
 ];
 
 function WorkSection() {
@@ -628,33 +640,10 @@ function WorkSection() {
           </p>
         </motion.div>
 
-        {/* Portfolio Grid */}
-        <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
-          {PORTFOLIO_ITEMS.map((item, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 40 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: i * 0.06 }}
-              className="group relative overflow-hidden rounded-2xl border border-white/[0.06] bg-[#111]"
-            >
-              <div className="relative aspect-square">
-                <Image
-                  src={item.image}
-                  alt={item.client}
-                  fill
-                  sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                  placeholder="blur"
-                  blurDataURL={BLUR}
-                  className="object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-                {/* Overlay on hover */}
-                <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-black/80 via-black/20 to-transparent p-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                  <p className="text-sm font-semibold text-white">{item.client}</p>
-                  <p className="text-xs text-white/50">{item.category}</p>
-                </div>
-              </div>
-            </motion.div>
+        {/* Project Cards */}
+        <div className="space-y-8">
+          {PROJECTS.map((project, i) => (
+            <WorkCard key={i} project={project} index={i} isInView={isInView} />
           ))}
         </div>
 
@@ -677,6 +666,85 @@ function WorkSection() {
         </motion.div>
       </div>
     </section>
+  );
+}
+
+function WorkCard({
+  project,
+  index,
+  isInView,
+}: {
+  project: (typeof PROJECTS)[number];
+  index: number;
+  isInView: boolean;
+}) {
+  const isReversed = index % 2 === 1;
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 60 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.8, delay: index * 0.2 }}
+      className={`group grid items-center gap-8 rounded-3xl border border-white/[0.06] bg-[#111] p-6 transition-all duration-500 hover:border-white/[0.12] md:grid-cols-2 md:gap-12 md:p-10 ${
+        isReversed ? "md:direction-rtl" : ""
+      }`}
+    >
+      {/* Text */}
+      <div className={isReversed ? "md:order-2 md:direction-ltr" : ""}>
+        <span
+          className="mb-4 inline-block text-xs font-bold uppercase tracking-[0.2em]"
+          style={{ color: project.accent }}
+        >
+          {project.category}
+        </span>
+        <h3 className="mb-3 text-2xl font-bold text-white md:text-3xl">
+          {project.title}
+        </h3>
+        <p className="mb-6 text-base leading-relaxed text-white/50">{project.desc}</p>
+        <div
+          className="flex items-center gap-6 rounded-2xl border p-4"
+          style={{
+            borderColor: `${project.accent}15`,
+            background: `${project.accent}08`,
+          }}
+        >
+          <div>
+            <p className="text-xs text-white/40">Type</p>
+            <p className="text-sm font-semibold text-white">{project.category}</p>
+          </div>
+          <div className="h-8 w-px bg-white/10" />
+          <div>
+            <p className="text-xs text-white/40">Status</p>
+            <p className="text-sm font-semibold text-white">Complete</p>
+          </div>
+        </div>
+      </div>
+
+      {/* Image */}
+      <div className={`relative overflow-hidden rounded-2xl ${isReversed ? "md:order-1 md:direction-ltr" : ""}`}>
+        <div className="relative aspect-[4/3]">
+          <Image
+            src={project.image}
+            alt={project.title}
+            fill
+            sizes="(max-width: 768px) 100vw, 50vw"
+            placeholder="blur"
+            blurDataURL={BLUR}
+            className="object-cover transition-transform duration-700 group-hover:scale-105"
+          />
+          {project.hasVideo && (
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div
+                className="flex h-16 w-16 items-center justify-center rounded-full backdrop-blur-md transition-transform duration-300 group-hover:scale-110"
+                style={{ background: `${project.accent}DD` }}
+              >
+                <Play className="h-6 w-6 text-black" fill="currentColor" />
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+    </motion.div>
   );
 }
 
