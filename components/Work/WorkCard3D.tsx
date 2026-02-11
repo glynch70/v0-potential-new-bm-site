@@ -39,7 +39,7 @@ export function WorkCard3D({
       onClick={() => setIsFlipped(!isFlipped)}
     >
       <motion.div
-        className="relative w-full h-full overflow-hidden bg-gradient-to-br from-gray-900 to-gray-800 shadow-xl"
+        className="relative w-full min-h-[320px] md:min-h-[380px] overflow-hidden bg-gradient-to-br from-gray-900 to-gray-800 shadow-xl"
         animate={{ rotateY: isFlipped ? 180 : 0 }}
         transition={{ duration: 0.6, ease: 'easeInOut' }}
         style={{ transformStyle: 'preserve-3d' }}
@@ -78,13 +78,13 @@ export function WorkCard3D({
               </div>
             )}
 
-            {/* Click hint */}
+            {/* Tap/click hint */}
             <motion.div
               className="absolute top-4 right-4 text-xs text-gray-300 uppercase tracking-wider opacity-0"
-              animate={{ opacity: 1, y: [0, -5, 0] }}
-              transition={{ duration: 2, repeat: Infinity }}
+              animate={{ opacity: [0, 1, 1, 0] }}
+              transition={{ duration: 3, delay: 1 }}
             >
-              Click to flip
+              Tap to flip
             </motion.div>
           </div>
 

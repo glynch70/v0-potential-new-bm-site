@@ -1,54 +1,42 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useRef } from 'react';
+import { useScroll, useTransform, MotionValue } from 'framer-motion';
 
 interface ParallaxOptions {
   speed?: number;
   direction?: 'up' | 'down' | 'left' | 'right';
-  offset?: number;
 }
 
 export function useParallax(options: ParallaxOptions = {}) {
-  const { speed = 0.5, direction = 'up', offset = 0 } = options;
+  const { speed = 0.5, direction = 'up' } = options;
   const ref = useRef<HTMLDivElement>(null);
-  const [yOffset, setYOffset] = useState(0);
-  const [xOffset, setXOffset] = useState(0);
 
-  useEffect(() => {
-    if (!ref.current) return;
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ['start end', 'end start'],
+  });
 
-    const handleScroll = () => {
-      const element = ref.current;
-      if (!element) return;
+  const range = 50 * speed;
+  const sign = direction === 'up' || direction === 'left' ? -1 : 1;
 
-      const rect = element.getBoundingClientRect();
-      const scrollY = window.scrollY;
-      const elementTop = rect.top + scrollY;
-      const windowHeight = window.innerHeight;
+  const yOffset = useTransform(
+    scrollYProgress,
+    [0, 1],
+    direction === 'up' || direction === 'down' ? [sign * range, -sign * range] : [0, 0]
+  );
 
-      // Calculate scroll progress
-      const scrollProgress =
-        (scrollY + windowHeight - elementTop) / (windowHeight + rect.height);
-
-      if (direction === 'up') {
-        setYOffset(Math.min(0, -(scrollProgress - 0.5) * 100 * speed));
-      } else if (direction === 'down') {
-        setYOffset(Math.max(0, (scrollProgress - 0.5) * 100 * speed));
-      } else if (direction === 'left') {
-        setXOffset(Math.min(0, -(scrollProgress - 0.5) * 100 * speed));
-      } else if (direction === 'right') {
-        setXOffset(Math.max(0, (scrollProgress - 0.5) * 100 * speed));
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [speed, direction]);
+  const xOffset = useTransform(
+    scrollYProgress,
+    [0, 1],
+    direction === 'left' || direction === 'right' ? [sign * range, -sign * range] : [0, 0]
+  );
 
   return {
     ref,
     style: {
-      transform: `translate(${xOffset}px, ${yOffset}px)`,
+      x: xOffset,
+      y: yOffset,
     },
   };
 }
