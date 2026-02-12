@@ -353,7 +353,7 @@ function HeroSection({ onNavigate }: { onNavigate: (id: string) => void }) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.8 }}
-          className="mx-auto mt-14 flex max-w-md justify-center gap-8 md:gap-12 border-t border-white/[0.06] pt-8"
+          className="mx-auto mt-14 mb-20 flex max-w-md justify-center gap-8 md:gap-12 border-t border-white/[0.06] pt-8"
         >
           {[
             { value: "50+", label: "Projects delivered" },
@@ -373,7 +373,7 @@ function HeroSection({ onNavigate }: { onNavigate: (id: string) => void }) {
       </motion.div>
 
       {/* Scroll indicator — bottom center */}
-      <div className="absolute bottom-8 left-1/2 z-10 -translate-x-1/2">
+      <div className="absolute bottom-4 left-1/2 z-10 -translate-x-1/2">
         <ScrollIndicator />
       </div>
     </section>
