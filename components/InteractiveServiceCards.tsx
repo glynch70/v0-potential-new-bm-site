@@ -2,7 +2,7 @@
 
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { Video, Monitor, Plus } from 'lucide-react'
+import { Video, Monitor, Plus, Brain, Camera, Film } from 'lucide-react'
 
 const SERVICES = [
   {
@@ -21,7 +21,7 @@ const SERVICES = [
     icon: Monitor,
     title: 'Websites',
     description: 'Fast, clean websites built to convert visitors.',
-    features: ['Landing pages', 'Business sites', 'Hosting'],
+    features: ['Landing pages', 'Business sites', 'Hosting', 'Maintenance'],
     accent: '#4ECDC4',
     accentBg: 'rgba(78, 205, 196, 0.1)',
     accentBorder: 'rgba(78, 205, 196, 0.3)',
@@ -29,10 +29,43 @@ const SERVICES = [
   },
   {
     number: '03',
+    icon: Film,
+    title: 'Video Production',
+    description: 'Professional video content that tells your story.',
+    features: ['Promo videos', 'Drone footage', 'Event coverage', 'Editing'],
+    accent: '#E879F9',
+    accentBg: 'rgba(232, 121, 249, 0.1)',
+    accentBorder: 'rgba(232, 121, 249, 0.3)',
+    glow: 'rgba(232, 121, 249, 0.15)',
+  },
+  {
+    number: '04',
+    icon: Camera,
+    title: 'Gallery & Photography',
+    description: 'Professional photography for your brand and business.',
+    features: ['Product shots', 'Headshots', 'Events', 'Interiors'],
+    accent: '#F97316',
+    accentBg: 'rgba(249, 115, 22, 0.1)',
+    accentBorder: 'rgba(249, 115, 22, 0.3)',
+    glow: 'rgba(249, 115, 22, 0.15)',
+  },
+  {
+    number: '05',
+    icon: Brain,
+    title: 'AI Training',
+    description: 'Learn how to use AI tools to grow your business faster.',
+    features: ['ChatGPT for business', 'Content automation', 'Workflow setup', '1-to-1 sessions'],
+    accent: '#818CF8',
+    accentBg: 'rgba(129, 140, 248, 0.1)',
+    accentBorder: 'rgba(129, 140, 248, 0.3)',
+    glow: 'rgba(129, 140, 248, 0.15)',
+  },
+  {
+    number: '06',
     icon: Plus,
     title: 'Extras & Add-ons',
     description: 'Everything else to support your brand.',
-    features: ['Drone', 'Photography', 'SEO', 'Google Business'],
+    features: ['SEO', 'Google Business', 'Branding', 'Logo design'],
     accent: '#5FD068',
     accentBg: 'rgba(95, 208, 104, 0.1)',
     accentBorder: 'rgba(95, 208, 104, 0.3)',
@@ -124,22 +157,29 @@ export default function InteractiveServiceCards() {
   const isInView = useInView(ref, { once: true, margin: '-80px' })
 
   return (
-    <section id="services" ref={ref} className="bg-[#0A0A0A] py-16 px-4 md:py-24 md:px-6">
-      <div className="mx-auto max-w-[1200px]">
+    <section id="services" ref={ref} className="border-t border-white/[0.04] bg-[#0A0A0A] py-16 px-4 md:py-24 md:px-6">
+      <div className="mx-auto max-w-7xl">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="mb-16 text-center md:mb-20"
+          className="mb-16 md:mb-20"
         >
-          <h1 className="mb-2 text-3xl font-extrabold text-white md:text-5xl">Services</h1>
-          <p className="mb-3 text-lg font-semibold text-[#D4A830] md:text-xl">Websites &amp; Social Media Content</p>
-          <p className="text-base text-white/40 md:text-lg">Clear, practical services that get results.</p>
+          <div className="mb-4 flex items-center gap-3">
+            <div className="h-px w-12 bg-[#D4A830]" />
+            <span className="text-[11px] font-medium uppercase tracking-[0.3em] text-[#D4A830]">
+              Services
+            </span>
+          </div>
+          <h2 className="mb-3 text-4xl font-bold uppercase leading-[1.1] tracking-tight text-white md:text-6xl">
+            Everything your business needs.
+          </h2>
+          <p className="text-base text-white/40 md:text-lg">Websites, content, video, photography, AI — all in-house.</p>
         </motion.div>
 
-        {/* Cards grid */}
-        <div className="grid gap-4 md:gap-8 lg:grid-cols-3">
+        {/* Cards grid — 3 columns */}
+        <div className="grid gap-4 md:gap-6 md:grid-cols-2 lg:grid-cols-3">
           {SERVICES.map((service, index) => (
             <ServiceCard key={service.number} service={service} index={index} />
           ))}

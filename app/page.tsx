@@ -79,9 +79,9 @@ export default function BearMediaSite() {
       <HeroSection onNavigate={scrollTo} />
       <MarqueeStrip />
       <PainSection />
-      <InteractiveServiceCards />
       <ProcessSection onNavigate={scrollTo} />
       <WorkSection />
+      <InteractiveServiceCards />
       <TestimonialsSection />
       <AboutSection />
       <CTASection onNavigate={scrollTo} />
@@ -96,6 +96,7 @@ export default function BearMediaSite() {
    ══════════════════════════════════════════════ */
 const NAV_LINKS = [
   { label: "Work", id: "work" },
+  { label: "Services", id: "services" },
   { label: "Process", id: "process" },
   { label: "About", id: "about" },
   { label: "Contact", id: "contact" },
