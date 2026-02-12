@@ -213,7 +213,7 @@ float noise(in vec2 p) {
 
 float fbm(vec2 p) {
   float t=.0, a=1.; mat2 m=mat2(1.,-.5,.2,1.2);
-  for (int i=0; i<5; i++) {
+  for (int i=0; i<3; i++) {
     t+=a*noise(p);
     p*=2.*m;
     a*=.5;
@@ -237,7 +237,7 @@ void main(void) {
   vec3 col=vec3(0);
   float bg=clouds(vec2(st.x+T*.5,-st.y));
   uv*=1.-.3*(sin(T*.2)*.5+.5);
-  for (float i=1.; i<12.; i++) {
+  for (float i=1.; i<6.; i++) {
     uv+=.1*cos(i*vec2(.1+.01*i, .8)+i*i+T*.5+.1*uv.x);
     vec2 p=uv;
     float d=length(p);
@@ -260,14 +260,24 @@ export function Hero3DCanvas({ className = '' }: ShaderBackgroundProps) {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
+    // Skip WebGL on mobile / low-memory devices — use CSS gradient fallback
+    const isMobile = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+    const lowMem = (navigator as any).deviceMemory && (navigator as any).deviceMemory < 4;
+    if (isMobile || lowMem) {
+      canvas.style.display = 'none';
+      return;
+    }
+
     // Check for WebGL2 support, fall back gracefully
     const gl = canvas.getContext('webgl2');
     if (!gl) {
       console.warn('WebGL2 not supported');
+      canvas.style.display = 'none';
       return;
     }
 
-    const dpr = Math.max(1, 0.5 * window.devicePixelRatio);
+    // Heavily reduced resolution — cap at 1.0 DPR (was 0.5 * devicePixelRatio which is ~1.5 on retina)
+    const dpr = Math.min(1.0, window.devicePixelRatio * 0.35);
     canvas.width = window.innerWidth * dpr;
     canvas.height = window.innerHeight * dpr;
 
@@ -285,19 +295,24 @@ export function Hero3DCanvas({ className = '' }: ShaderBackgroundProps) {
 
     const resize = () => {
       if (!canvas) return;
-      const d = Math.max(1, 0.5 * window.devicePixelRatio);
+      const d = Math.min(1.0, window.devicePixelRatio * 0.35);
       canvas.width = window.innerWidth * d;
       canvas.height = window.innerHeight * d;
       renderer.updateScale(d);
     };
 
+    // Throttle RAF to ~30fps instead of 60fps to halve GPU work
+    let lastTime = 0;
+    const FRAME_INTERVAL = 33; // ~30fps
     const loop = (now: number) => {
+      animationRef.current = requestAnimationFrame(loop);
+      if (now - lastTime < FRAME_INTERVAL) return;
+      lastTime = now;
       renderer.updateMouse(pointers.first);
       renderer.updatePointerCount(pointers.count);
       renderer.updatePointerCoords(pointers.coords);
       renderer.updateMove(pointers.move);
       renderer.render(now);
-      animationRef.current = requestAnimationFrame(loop);
     };
 
     loop(0);

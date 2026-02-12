@@ -4,12 +4,10 @@ import dynamic from "next/dynamic";
 import Image from "next/image";
 import { useEffect, useRef, useState, useCallback } from "react";
 import { motion, useScroll, useTransform, useInView, AnimatePresence } from "framer-motion";
-import { motion as m } from "motion/react";
 import {
   ArrowRight,
   ArrowUpRight,
   Star,
-  ChevronDown,
   Mail,
   Phone,
   MapPin,
@@ -18,7 +16,6 @@ import {
   Youtube,
   Facebook,
   X,
-  Minus,
 } from "lucide-react";
 
 const BLUR =
@@ -39,7 +36,6 @@ const InteractiveServiceCards = dynamic(
 import { AnimatedHeroText } from "@/components/Hero/AnimatedHeroText";
 import { ScrollIndicator } from "@/components/Hero/ScrollIndicator";
 import { StaggeredText } from "@/components/Text/StaggeredText";
-import { AnimatedHeading } from "@/components/Text/AnimatedHeading";
 import { ColorShiftText } from "@/components/Text/ColorShiftText";
 import { MaskedText } from "@/components/Text/MaskedText";
 import { AnimatedUnderline } from "@/components/ui/AnimatedUnderline";
@@ -338,15 +334,13 @@ function HeroSection({ onNavigate }: { onNavigate: (id: string) => void }) {
             className="relative group flex items-center gap-3 border border-white/20 px-8 py-4 text-sm font-medium uppercase tracking-[0.1em] text-white transition-all hover:border-white/40 hover:bg-white/5"
             whileTap={{ scale: 0.97 }}
           >
-            {/* Animated gold border trace */}
+            {/* Animated gold border trace — pure CSS */}
             <div
-              className="-inset-px pointer-events-none absolute rounded-[inherit] border-2 border-transparent [mask-clip:padding-box,border-box] [mask-composite:intersect] [mask-image:linear-gradient(transparent,transparent),linear-gradient(#000,#000)]"
+              className="border-trace -inset-px pointer-events-none absolute border-2 border-transparent [mask-clip:padding-box,border-box] [mask-composite:intersect] [mask-image:linear-gradient(transparent,transparent),linear-gradient(#000,#000)]"
             >
-              <m.div
-                className="absolute aspect-square bg-gradient-to-r from-transparent via-[#D4A830] to-[#D4A830]"
-                animate={{ offsetDistance: ["0%", "100%"] }}
+              <div
+                className="absolute aspect-square animate-border-trace bg-gradient-to-r from-transparent via-[#D4A830] to-[#D4A830]"
                 style={{ width: 20, offsetPath: `rect(0 auto auto 0 round 0px)` }}
-                transition={{ repeat: Infinity, duration: 5, ease: "linear" }}
               />
             </div>
             View our work
@@ -825,10 +819,10 @@ function TestimonialsSection() {
               Testimonials
             </span>
           </div>
-          <AnimatedHeading
+          <StaggeredText
             text="What they say."
-            level="h2"
             className="mb-6 text-4xl font-bold uppercase leading-[1.1] tracking-tight text-white md:text-5xl"
+            as="h2"
           />
           <div className="flex items-center gap-1 mb-2">
             {[1, 2, 3, 4, 5].map((s) => (
