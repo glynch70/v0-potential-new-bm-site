@@ -180,6 +180,15 @@
   100% { transform: translateY(100vh); }
 }
 
+@keyframes border-trace {
+  0% { offset-distance: 0%; }
+  100% { offset-distance: 100%; }
+}
+
+.animate-border-trace {
+  animation: border-trace 5s linear infinite;
+}
+
 /* ───────────────────────────────────────────────
    Utility Classes
    ─────────────────────────────────────────────── */
