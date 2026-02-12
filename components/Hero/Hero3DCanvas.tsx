@@ -213,7 +213,7 @@ float noise(in vec2 p) {
 
 float fbm(vec2 p) {
   float t=.0, a=1.; mat2 m=mat2(1.,-.5,.2,1.2);
-  for (int i=0; i<3; i++) {
+  for (int i=0; i<5; i++) {
     t+=a*noise(p);
     p*=2.*m;
     a*=.5;
@@ -237,7 +237,7 @@ void main(void) {
   vec3 col=vec3(0);
   float bg=clouds(vec2(st.x+T*.5,-st.y));
   uv*=1.-.3*(sin(T*.2)*.5+.5);
-  for (float i=1.; i<6.; i++) {
+  for (float i=1.; i<12.; i++) {
     uv+=.1*cos(i*vec2(.1+.01*i, .8)+i*i+T*.5+.1*uv.x);
     vec2 p=uv;
     float d=length(p);
@@ -277,7 +277,7 @@ export function Hero3DCanvas({ className = '' }: ShaderBackgroundProps) {
     }
 
     // Heavily reduced resolution — cap at 1.0 DPR (was 0.5 * devicePixelRatio which is ~1.5 on retina)
-    const dpr = Math.min(1.0, window.devicePixelRatio * 0.35);
+    const dpr = Math.min(1.0, window.devicePixelRatio * 0.5);
     canvas.width = window.innerWidth * dpr;
     canvas.height = window.innerHeight * dpr;
 
@@ -295,7 +295,7 @@ export function Hero3DCanvas({ className = '' }: ShaderBackgroundProps) {
 
     const resize = () => {
       if (!canvas) return;
-      const d = Math.min(1.0, window.devicePixelRatio * 0.35);
+      const d = Math.min(1.0, window.devicePixelRatio * 0.5);
       canvas.width = window.innerWidth * d;
       canvas.height = window.innerHeight * d;
       renderer.updateScale(d);
