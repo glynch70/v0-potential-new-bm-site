@@ -32,6 +32,11 @@ const InteractiveServiceCards = dynamic(
   { ssr: false }
 );
 
+const InteractiveBentoGallery = dynamic(
+  () => import("@/components/InteractiveBentoGallery"),
+  { ssr: false }
+);
+
 /* ─── Existing animation components ─── */
 import { AnimatedHeroText } from "@/components/Hero/AnimatedHeroText";
 import { ScrollIndicator } from "@/components/Hero/ScrollIndicator";
@@ -611,29 +616,80 @@ function ProcessSection({ onNavigate }: { onNavigate: (id: string) => void }) {
 }
 
 /* ══════════════════════════════════════════════
-   5. WORK / PORTFOLIO
+   5. WORK / PORTFOLIO — Interactive Bento Gallery
    ══════════════════════════════════════════════ */
-const PROJECTS = [
+const MEDIA_ITEMS = [
   {
+    id: 1,
+    type: "video",
+    title: "Client Feedback",
+    desc: "Real results, real words",
+    url: "/work/feedback-video.mp4",
+    span: "col-span-2 row-span-4",
+  },
+  {
+    id: 2,
+    type: "image",
     title: "Social Media Content",
-    description: "Scroll-stopping reels, posts, and stories that build audiences and drive engagement.",
-    image: "/work/mobile-social-showcase.jpg",
-    details: "We create consistent, on-brand social media content including Reels, Stories, promotional clips, and monthly content packages. Every piece is designed to build trust, increase visibility, and drive real engagement for your business.",
-    tags: ["Reels", "Stories", "Content Strategy"],
+    desc: "Scroll-stopping posts & reels",
+    url: "/work/mobile-social-showcase.jpg",
+    span: "col-span-1 row-span-3",
   },
   {
+    id: 3,
+    type: "image",
+    title: "Professional Photography",
+    desc: "Headshots & portraits",
+    url: "/garry-lynch-portrait.png",
+    span: "col-span-1 row-span-3",
+  },
+  {
+    id: 4,
+    type: "image",
     title: "Business Websites",
-    description: "Fast, clean websites built to convert visitors into paying customers.",
-    image: "/work/websites-desktop.jpg",
-    details: "Custom-built, mobile-first websites designed for speed and conversion. No templates. Each site is tailored to your business goals with SEO best practices, clear calls to action, and professional design that builds trust.",
-    tags: ["Web Design", "SEO", "Mobile-First"],
+    desc: "Fast, clean, built to convert",
+    url: "/work/websites-desktop.jpg",
+    span: "col-span-2 row-span-3",
   },
   {
+    id: 5,
+    type: "video",
+    title: "Promo Video",
+    desc: "Professional video content",
+    url: "/work/promo-video.mp4",
+    span: "col-span-1 row-span-4",
+  },
+  {
+    id: 6,
+    type: "image",
     title: "Brand & Design",
-    description: "Logos, visual identity, photography, and drone footage for complete brand packages.",
-    image: "/work/brand-collage.jpg",
-    details: "Complete brand identity packages including logo design, visual guidelines, professional photography, and aerial drone footage. Everything you need to present a cohesive, professional brand across all touchpoints.",
-    tags: ["Branding", "Photography", "Drone"],
+    desc: "Complete visual identity",
+    url: "/work/brand-collage.jpg",
+    span: "col-span-1 row-span-3",
+  },
+  {
+    id: 7,
+    type: "image",
+    title: "Poster Designs",
+    desc: "Print & digital design",
+    url: "/work/posters-collage.jpg",
+    span: "col-span-1 row-span-3",
+  },
+  {
+    id: 8,
+    type: "image",
+    title: "Short Form Content",
+    desc: "Reels, Shorts & Stories",
+    url: "/work/short-form-content.jpg",
+    span: "col-span-1 row-span-3",
+  },
+  {
+    id: 9,
+    type: "image",
+    title: "Brand Assets",
+    desc: "Logos, guidelines & visual systems",
+    url: "/work/brand-visual-assets.jpg",
+    span: "col-span-2 row-span-3",
   },
 ];
 
@@ -648,7 +704,7 @@ function WorkSection() {
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="mb-20 flex flex-col justify-between gap-8 md:flex-row md:items-end"
+          className="mb-16 flex flex-col justify-between gap-8 md:mb-20 md:flex-row md:items-end"
         >
           <div>
             <div className="mb-4 flex items-center gap-3">
@@ -674,28 +730,12 @@ function WorkSection() {
           </a>
         </motion.div>
 
-        {/* Project cards — 3D flip cards */}
-        <div className="grid gap-8 md:grid-cols-3">
-          {PROJECTS.map((project, i) => (
-            <WorkCard3D
-              key={project.title}
-              title={project.title}
-              description={project.description}
-              image={project.image}
-              details={project.details}
-              tags={project.tags}
-              index={i}
-            />
-          ))}
-        </div>
-
-        {/* Parallax gallery — hidden on mobile for performance */}
-        <div className="mt-16 hidden gap-4 md:grid md:grid-cols-4">
-          <ParallaxImage src="/work/short-form-content.jpg" alt="Short form content" speed={0.3} direction="up" className="aspect-square" />
-          <ParallaxImage src="/work/website-1-management.jpg" alt="Management website" speed={0.5} direction="down" className="aspect-square" />
-          <ParallaxImage src="/work/posters-collage.jpg" alt="Poster designs" speed={0.2} direction="up" className="aspect-square" />
-          <ParallaxImage src="/work/brand-visual-assets.jpg" alt="Brand assets" speed={0.4} direction="down" className="aspect-square" />
-        </div>
+        {/* Interactive Bento Gallery */}
+        <InteractiveBentoGallery
+          mediaItems={MEDIA_ITEMS}
+          title=""
+          description=""
+        />
 
         {/* Client logos */}
         <div className="mt-20">
