@@ -460,18 +460,26 @@ function PainSection() {
               The problem
             </span>
           </div>
-          <StaggeredText
-            text="If your business isn't online properly,"
-            className="max-w-3xl text-4xl font-bold uppercase leading-[1.1] tracking-tight md:text-6xl"
-            as="h2"
-          />
-          <StaggeredText
-            text="it basically doesn't exist."
-            className="max-w-3xl text-4xl font-bold uppercase leading-[1.1] tracking-tight md:text-6xl"
-            as="span"
-            color="rgba(255,255,255,0.3)"
-            delay={0.4}
-          />
+          <h2 className="max-w-3xl text-4xl font-bold uppercase leading-[1.1] tracking-tight md:text-6xl flex flex-wrap">
+            {"If your business isn't online properly,".split(" ").map((word, i) => (
+              <span
+                key={i}
+                className="mr-[0.3em] text-white/20 transition-colors duration-300 hover:text-white cursor-default"
+              >
+                {word}
+              </span>
+            ))}
+          </h2>
+          <p className="max-w-3xl text-4xl font-bold uppercase leading-[1.1] tracking-tight md:text-6xl flex flex-wrap">
+            {"it basically doesn't exist.".split(" ").map((word, i) => (
+              <span
+                key={i}
+                className="mr-[0.3em] text-white/[0.12] transition-colors duration-300 hover:text-white/40 cursor-default"
+              >
+                {word}
+              </span>
+            ))}
+          </p>
         </motion.div>
 
         {/* Pain grid */}
