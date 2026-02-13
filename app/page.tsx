@@ -16,6 +16,11 @@ import {
   Youtube,
   Facebook,
   X,
+  Home,
+  Layers,
+  Briefcase,
+  User,
+  MessageSquare,
 } from "lucide-react";
 
 const BLUR =
@@ -53,11 +58,33 @@ import { ParallaxImage } from "@/components/ui/ParallaxImage";
 export default function BearMediaSite() {
   const [navVisible, setNavVisible] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("home");
+  const [showBottomNav, setShowBottomNav] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setNavVisible(window.scrollY > 100);
+    const onScroll = () => {
+      setNavVisible(window.scrollY > 100);
+      setShowBottomNav(window.scrollY > 400);
+    };
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  /* Track active section via IntersectionObserver */
+  useEffect(() => {
+    const sectionIds = ["home", "work", "services", "process", "about", "contact"];
+    const observers: IntersectionObserver[] = [];
+    sectionIds.forEach((id) => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      const obs = new IntersectionObserver(
+        ([entry]) => { if (entry.isIntersecting) setActiveSection(id); },
+        { rootMargin: "-40% 0px -40% 0px", threshold: 0 }
+      );
+      obs.observe(el);
+      observers.push(obs);
+    });
+    return () => observers.forEach((o) => o.disconnect());
   }, []);
 
   const scrollTo = useCallback((id: string) => {
@@ -83,15 +110,19 @@ export default function BearMediaSite() {
       />
       <HeroSection onNavigate={scrollTo} />
       <MarqueeStrip />
-      <PainSection />
+      <PainSection onNavigate={scrollTo} />
       <ProcessSection onNavigate={scrollTo} />
-      <WorkSection />
+      <BackToTop />
+      <WorkSection onNavigate={scrollTo} />
       <InteractiveServiceCards />
-      <TestimonialsSection />
+      <BackToTop />
+      <TestimonialsSection onNavigate={scrollTo} />
       <AboutSection />
+      <BackToTop />
       <CTASection onNavigate={scrollTo} />
       <ContactSection />
       <Footer onNavigate={scrollTo} />
+      <FloatingBottomNav visible={showBottomNav} activeSection={activeSection} onNavigate={scrollTo} />
     </>
   );
 }
@@ -253,8 +284,8 @@ function HeroSection({ onNavigate }: { onNavigate: (id: string) => void }) {
       ref={ref}
       className="relative flex min-h-screen items-center justify-center overflow-hidden"
     >
-      {/* Shader background */}
-      <div className="absolute inset-0">
+      {/* Shader background — hero-mobile-gradient shows on mobile when WebGL is hidden */}
+      <div className="absolute inset-0 hero-mobile-gradient">
         <Hero3DCanvas className="h-full w-full" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-[#0A0A0A]/40 to-transparent" />
       </div>
@@ -295,14 +326,14 @@ function HeroSection({ onNavigate }: { onNavigate: (id: string) => void }) {
         <div className="mb-6">
           <AnimatedHeroText
             text="Your business deserves to be"
-            className="text-[clamp(2.2rem,7vw,6rem)] font-bold uppercase leading-[0.95] tracking-[-0.03em] text-white"
+            className="text-[clamp(2.8rem,8vw,6rem)] font-bold uppercase leading-[0.95] tracking-[-0.03em] text-white"
             delay={0.5}
           />
           <motion.span
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 1.0 }}
-            className="inline-block text-[clamp(2.2rem,7vw,6rem)] font-bold uppercase leading-[0.95] tracking-[-0.03em] text-[#EAB308]"
+            className="inline-block text-[clamp(2.8rem,8vw,6rem)] font-bold uppercase leading-[0.95] tracking-[-0.03em] text-[#EAB308]"
           >
             {" "}seen.
           </motion.span>
@@ -313,7 +344,7 @@ function HeroSection({ onNavigate }: { onNavigate: (id: string) => void }) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 1.2 }}
-          className="mx-auto mb-10 max-w-xl text-base leading-relaxed text-white/50 md:text-lg"
+          className="mx-auto mb-10 max-w-xl text-base leading-relaxed text-[#C9A227]/70 md:text-lg"
         >
           We build websites and create social media content that gets you noticed, builds trust, and fills your diary.
         </motion.p>
@@ -370,7 +401,7 @@ function HeroSection({ onNavigate }: { onNavigate: (id: string) => void }) {
               <p className="brutal-number text-2xl font-bold text-[#D4A830] md:text-3xl">
                 {stat.value}
               </p>
-              <p className="mt-1 text-[10px] uppercase tracking-[0.2em] text-white/30">
+              <p className="mt-1 text-[10px] uppercase tracking-[0.2em] text-[#D4A830]/50">
                 {stat.label}
               </p>
             </div>
@@ -446,7 +477,7 @@ const PAIN_POINTS = [
   },
 ];
 
-function PainSection() {
+function PainSection({ onNavigate }: { onNavigate: (id: string) => void }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
@@ -466,7 +497,7 @@ function PainSection() {
               The problem
             </span>
           </div>
-          <h2 className="max-w-3xl text-4xl font-bold uppercase leading-[1.1] tracking-tight md:text-6xl flex flex-wrap">
+          <h2 className="max-w-3xl text-5xl font-bold uppercase leading-[1.1] tracking-tight md:text-6xl flex flex-wrap">
             {"If your business isn't online properly,".split(" ").map((word, i) => (
               <span
                 key={i}
@@ -476,7 +507,7 @@ function PainSection() {
               </span>
             ))}
           </h2>
-          <p className="max-w-3xl text-4xl font-bold uppercase leading-[1.1] tracking-tight md:text-6xl flex flex-wrap">
+          <p className="max-w-3xl text-5xl font-bold uppercase leading-[1.1] tracking-tight md:text-6xl flex flex-wrap">
             {"it basically doesn't exist.".split(" ").map((word, i) => (
               <span
                 key={i}
@@ -498,10 +529,10 @@ function PainSection() {
               transition={{ duration: 0.5, delay: i * 0.1 }}
               className="bg-[#0A0A0A] p-8 md:p-12"
             >
-              <span className="brutal-number text-5xl font-bold text-white/[0.06] md:text-7xl">
+              <span className="brutal-number text-6xl font-bold text-white/[0.06] md:text-7xl">
                 {pain.number}
               </span>
-              <h3 className="mt-4 text-xl font-bold uppercase tracking-tight text-white">
+              <h3 className="mt-4 text-2xl font-bold uppercase tracking-tight text-white">
                 {pain.title}
               </h3>
               <p className="mt-3 leading-relaxed text-white/40">
@@ -510,6 +541,7 @@ function PainSection() {
             </motion.div>
           ))}
         </div>
+        <SectionCTA text="See how we fix this" target="services" onNavigate={onNavigate} />
       </div>
     </section>
   );
@@ -569,7 +601,7 @@ function ProcessSection({ onNavigate }: { onNavigate: (id: string) => void }) {
             </div>
             <MaskedText
               text="Simple process. Serious results."
-              className="max-w-2xl text-4xl font-bold uppercase leading-[1.1] tracking-tight text-white md:text-6xl"
+              className="max-w-2xl text-5xl font-bold uppercase leading-[1.1] tracking-tight text-white md:text-6xl"
               as="h2"
             />
           </div>
@@ -601,10 +633,10 @@ function ProcessSection({ onNavigate }: { onNavigate: (id: string) => void }) {
                   {step.duration}
                 </span>
               </div>
-              <h3 className="mb-3 text-lg font-bold uppercase tracking-tight text-white">
+              <h3 className="mb-3 text-xl font-bold uppercase tracking-tight text-white">
                 {step.title}
               </h3>
-              <p className="text-sm leading-relaxed text-white/40">
+              <p className="text-base leading-relaxed text-white/40">
                 {step.desc}
               </p>
             </motion.div>
@@ -655,7 +687,7 @@ const MEDIA_ITEMS = [
     id: 5,
     type: "video",
     title: "Promo Video",
-    desc: "Professional video content",
+    desc: "Promo videos that grab attention",
     url: "/work/promo-video.mp4",
     span: "col-span-1 row-span-4",
   },
@@ -693,7 +725,7 @@ const MEDIA_ITEMS = [
   },
 ];
 
-function WorkSection() {
+function WorkSection({ onNavigate }: { onNavigate: (id: string) => void }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
@@ -715,7 +747,7 @@ function WorkSection() {
             </div>
             <StaggeredText
               text="Real work. Real results."
-              className="text-4xl font-bold uppercase leading-[1.1] tracking-tight md:text-6xl"
+              className="text-5xl font-bold uppercase leading-[1.1] tracking-tight md:text-6xl"
               as="h2"
             />
           </div>
@@ -754,6 +786,7 @@ function WorkSection() {
             ))}
           </div>
         </div>
+        <SectionCTA text="Ready to start your project?" target="contact" onNavigate={onNavigate} />
       </div>
     </section>
   );
@@ -822,7 +855,7 @@ function TestimonialFlipCard({ review, index, isInView }: {
             ))}
           </div>
           <div className="h-px w-8 bg-[#D4A830] mb-4" />
-          <p className="text-lg font-bold uppercase tracking-tight text-white text-center">
+          <p className="text-xl font-bold uppercase tracking-tight text-white text-center">
             {review.name}
           </p>
           <p className="text-xs text-white/30 mt-1">{review.role}</p>
@@ -834,7 +867,7 @@ function TestimonialFlipCard({ review, index, isInView }: {
           className="absolute inset-0 border border-[#D4A830]/20 bg-[#0A0A0A] p-8 flex flex-col justify-center"
           style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
         >
-          <blockquote className="text-sm leading-relaxed text-white/70">
+          <blockquote className="text-base leading-relaxed text-white/70">
             &ldquo;{review.quote}&rdquo;
           </blockquote>
           <div className="flex items-center gap-3 mt-6">
@@ -848,7 +881,7 @@ function TestimonialFlipCard({ review, index, isInView }: {
   );
 }
 
-function TestimonialsSection() {
+function TestimonialsSection({ onNavigate }: { onNavigate: (id: string) => void }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
@@ -870,7 +903,7 @@ function TestimonialsSection() {
           </div>
           <StaggeredText
             text="What they say."
-            className="mb-6 text-4xl font-bold uppercase leading-[1.1] tracking-tight text-white md:text-5xl"
+            className="mb-6 text-5xl font-bold uppercase leading-[1.1] tracking-tight text-white md:text-5xl"
             as="h2"
           />
           <div className="flex items-center gap-1 mb-2">
@@ -896,6 +929,7 @@ function TestimonialsSection() {
             <TestimonialFlipCard key={i} review={review} index={i} isInView={isInView} />
           ))}
         </div>
+        <SectionCTA text="Join our happy clients" target="contact" onNavigate={onNavigate} />
       </div>
     </section>
   );
@@ -926,7 +960,7 @@ function AboutSection() {
             </div>
             <StaggeredText
               text="One person. On purpose."
-              className="mb-8 text-4xl font-bold uppercase leading-[1.1] tracking-tight md:text-6xl"
+              className="mb-8 text-5xl font-bold uppercase leading-[1.1] tracking-tight md:text-6xl"
               as="h2"
             />
             <div className="space-y-4 text-lg leading-relaxed text-white/50">
@@ -1023,7 +1057,7 @@ function CTASection({ onNavigate }: { onNavigate: (id: string) => void }) {
           <div>
             <ColorShiftText
               text="Ready to get your business seen?"
-              className="text-4xl font-bold uppercase leading-[1.1] tracking-tight md:text-6xl"
+              className="text-5xl font-bold uppercase leading-[1.1] tracking-tight md:text-6xl"
               as="h2"
               colors={["#000000", "#1E3A5F", "#000000"]}
             />
@@ -1103,7 +1137,7 @@ function ContactSection() {
             </div>
             <MaskedText
               text="Let's talk about your project."
-              className="mb-6 text-4xl font-bold uppercase leading-[1.1] tracking-tight text-white md:text-5xl"
+              className="mb-6 text-5xl font-bold uppercase leading-[1.1] tracking-tight text-white md:text-5xl"
               as="h2"
             />
             <p className="mb-10 text-lg leading-relaxed text-white/40">
@@ -1207,7 +1241,7 @@ function ContactSection() {
                         <option value="Website">Website Design</option>
                         <option value="Social Media Content">Social Media Content</option>
                         <option value="SEO">SEO Services</option>
-                        <option value="Drone">Drone Photography</option>
+                        <option value="Drone">Drone Photography & Video</option>
                         <option value="Complete Package">Complete Package</option>
                         <option value="Other">Other / Not Sure</option>
                       </select>
@@ -1252,11 +1286,93 @@ function ContactSection() {
 }
 
 /* ══════════════════════════════════════════════
+   FLOATING BOTTOM NAV — Mobile only
+   ══════════════════════════════════════════════ */
+const BOTTOM_NAV_ITEMS = [
+  { id: "home", label: "Home", icon: Home },
+  { id: "services", label: "Services", icon: Layers },
+  { id: "work", label: "Work", icon: Briefcase },
+  { id: "about", label: "About", icon: User },
+  { id: "contact", label: "Contact", icon: MessageSquare },
+];
+
+function FloatingBottomNav({
+  visible,
+  activeSection,
+  onNavigate,
+}: {
+  visible: boolean;
+  activeSection: string;
+  onNavigate: (id: string) => void;
+}) {
+  return (
+    <AnimatePresence>
+      {visible && (
+        <motion.nav
+          initial={{ y: 100, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          exit={{ y: 100, opacity: 0 }}
+          transition={{ type: "spring", stiffness: 400, damping: 30 }}
+          className="fixed bottom-5 left-1/2 z-50 -translate-x-1/2 md:hidden"
+        >
+          <div className="flex items-center gap-1 rounded-full border border-white/10 bg-black/70 px-3 py-2 backdrop-blur-xl">
+            {BOTTOM_NAV_ITEMS.map((item) => {
+              const Icon = item.icon;
+              const isActive = activeSection === item.id;
+              return (
+                <button
+                  key={item.id}
+                  onClick={() => onNavigate(item.id)}
+                  className={`flex flex-col items-center gap-0.5 px-3 py-1.5 transition-colors ${
+                    isActive ? "text-[#D4A830]" : "text-white/40"
+                  }`}
+                >
+                  <Icon className="h-4 w-4" />
+                  <span className="text-[9px] font-medium uppercase tracking-wider">
+                    {item.label}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+        </motion.nav>
+      )}
+    </AnimatePresence>
+  );
+}
+
+/* ──── Helpers: Section CTA + Back-to-top ──── */
+function SectionCTA({ text, target, onNavigate }: { text: string; target: string; onNavigate: (id: string) => void }) {
+  return (
+    <button
+      onClick={() => onNavigate(target)}
+      className="mt-12 inline-flex items-center gap-2 text-xs font-medium uppercase tracking-[0.2em] text-[#D4A830]/60 transition-colors hover:text-[#D4A830]"
+    >
+      {text}
+      <ArrowRight className="h-3 w-3" />
+    </button>
+  );
+}
+
+function BackToTop() {
+  return (
+    <div className="flex justify-center bg-[#0A0A0A] py-4">
+      <button
+        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+        className="text-[10px] uppercase tracking-[0.2em] text-white/15 transition-colors hover:text-[#D4A830]/50"
+      >
+        Back to top
+      </button>
+    </div>
+  );
+}
+
+/* ══════════════════════════════════════════════
    FOOTER — Brutalist minimal
    ══════════════════════════════════════════════ */
 function Footer({ onNavigate }: { onNavigate: (id: string) => void }) {
   return (
-    <footer className="border-t border-white/[0.04] bg-[#0A0A0A]">
+    <footer className="border-t border-white/[0.04] bg-[#0A0A0A] pb-24 md:pb-0">
       {/* Google Map — pointer-events-none prevents scroll hijacking on mobile */}
       <div className="relative h-64 w-full grayscale overflow-hidden">
         <iframe

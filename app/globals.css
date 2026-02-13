@@ -185,6 +185,18 @@
   100% { offset-distance: 100%; }
 }
 
+@keyframes gold-gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.hero-mobile-gradient {
+  background: linear-gradient(-45deg, #0A0A0A 0%, #1a1506 25%, #0A0A0A 40%, #1c1809 60%, #0A0A0A 75%, #14100a 100%);
+  background-size: 400% 400%;
+  animation: gold-gradient-shift 12s ease infinite;
+}
+
 .animate-border-trace {
   animation: border-trace 5s linear infinite;
 }
