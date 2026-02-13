@@ -2,7 +2,7 @@
 
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { Video, Monitor, Plus, Brain, Camera, Film } from 'lucide-react'
+import { Video, Monitor, Plus, Brain, Camera, Film, Layout, ArrowRight } from 'lucide-react'
 
 const SERVICES = [
   {
@@ -29,6 +29,17 @@ const SERVICES = [
   },
   {
     number: '03',
+    icon: Layout,
+    title: 'DIY Website Templates',
+    description: 'Professional templates you can customise yourself.',
+    features: ['Ready to go', 'Drag & drop', 'Mobile-ready', 'Affordable'],
+    accent: '#06B6D4',
+    accentBg: 'rgba(6, 182, 212, 0.1)',
+    accentBorder: 'rgba(6, 182, 212, 0.3)',
+    glow: 'rgba(6, 182, 212, 0.15)',
+  },
+  {
+    number: '04',
     icon: Film,
     title: 'Video Production',
     description: 'Professional video content that tells your story.',
@@ -39,7 +50,7 @@ const SERVICES = [
     glow: 'rgba(232, 121, 249, 0.15)',
   },
   {
-    number: '04',
+    number: '05',
     icon: Camera,
     title: 'Gallery & Photography',
     description: 'Professional photography for your brand and business.',
@@ -50,7 +61,7 @@ const SERVICES = [
     glow: 'rgba(249, 115, 22, 0.15)',
   },
   {
-    number: '05',
+    number: '06',
     icon: Brain,
     title: 'AI Training',
     description: 'Learn how to use AI tools to grow your business faster.',
@@ -61,10 +72,10 @@ const SERVICES = [
     glow: 'rgba(129, 140, 248, 0.15)',
   },
   {
-    number: '06',
+    number: '07',
     icon: Plus,
     title: 'Extras & Add-ons',
-    description: 'Everything else to support your brand.',
+    description: 'The wee extras that make a big difference.',
     features: ['SEO', 'Google Business', 'Branding', 'Logo design'],
     accent: '#5FD068',
     accentBg: 'rgba(95, 208, 104, 0.1)',
@@ -84,7 +95,8 @@ function ServiceCard({ service, index }: { service: typeof SERVICES[0]; index: n
       initial={{ opacity: 0, y: 40 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.6, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
-      className="group relative cursor-pointer overflow-hidden bg-[#1a1a1a] p-8 transition-transform duration-300 hover:-translate-y-1 md:p-12"
+      className="group relative cursor-pointer overflow-hidden bg-[#1a1a1a] p-8 transition-transform duration-300 hover:-translate-y-1 md:p-12 sticky md:static"
+      style={{ top: `${80 + index * 8}px` }}
     >
       {/* Hover glow — CSS only, no particles */}
       <div
@@ -125,8 +137,8 @@ function ServiceCard({ service, index }: { service: typeof SERVICES[0]; index: n
           <Icon size={32} strokeWidth={2} />
         </div>
 
-        <h2 className="mb-3 text-xl font-extrabold text-white md:text-2xl">{service.title}</h2>
-        <p className="mb-6 text-sm leading-relaxed text-white/60 md:mb-8 md:text-base">{service.description}</p>
+        <h2 className="mb-3 text-2xl font-extrabold text-white md:text-2xl">{service.title}</h2>
+        <p className="mb-6 text-base leading-relaxed text-white/60 md:mb-8 md:text-base">{service.description}</p>
 
         {/* Feature pills */}
         <div className="flex flex-wrap gap-2">
@@ -172,18 +184,25 @@ export default function InteractiveServiceCards() {
               Services
             </span>
           </div>
-          <h2 className="mb-3 text-4xl font-bold uppercase leading-[1.1] tracking-tight text-white md:text-6xl">
+          <h2 className="mb-3 text-5xl font-bold uppercase leading-[1.1] tracking-tight text-white md:text-6xl">
             Everything your business needs.
           </h2>
           <p className="text-base text-white/40 md:text-lg">Websites, content, video, photography, AI — all in-house.</p>
         </motion.div>
 
-        {/* Cards grid — 3 columns */}
-        <div className="grid gap-4 md:gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {/* Cards — stack on mobile, grid on desktop */}
+        <div className="flex flex-col gap-4 md:grid md:gap-6 md:grid-cols-2 lg:grid-cols-3">
           {SERVICES.map((service, index) => (
             <ServiceCard key={service.number} service={service} index={index} />
           ))}
         </div>
+        <a
+          href="#contact"
+          className="mt-12 inline-flex items-center gap-2 text-xs font-medium uppercase tracking-[0.2em] text-[#D4A830]/60 transition-colors hover:text-[#D4A830]"
+        >
+          Get a quote for any service
+          <ArrowRight className="h-3 w-3" />
+        </a>
       </div>
     </section>
   )
