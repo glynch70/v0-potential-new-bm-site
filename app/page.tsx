@@ -346,7 +346,7 @@ function HeroSection({ onNavigate }: { onNavigate: (id: string) => void }) {
           transition={{ duration: 0.6, delay: 1.2 }}
           className="mx-auto mb-10 max-w-xl text-base leading-relaxed text-[#C9A227]/70 md:text-lg"
         >
-          We build websites and create social media content that gets you noticed, builds trust, and fills your diary.
+          Websites that actually work. Social content that gets folk talking. No fluff — just results that fill your diary.
         </motion.p>
 
         {/* CTAs — centered */}
@@ -458,22 +458,22 @@ const PAIN_POINTS = [
   {
     number: "01",
     title: "Invisible online",
-    desc: "Your competitors show up on Google. You don't. Potential customers can't find you, so they go elsewhere.",
+    desc: "Folk are searching for exactly what you do — and finding your competitors instead. If you're not showing up on Google, you might as well not exist.",
   },
   {
     number: "02",
     title: "Dead social media",
-    desc: "You post when you remember. No strategy, no consistency. Your feed looks abandoned and unprofessional.",
+    desc: "A post every few weeks isn't a strategy. It's a ghost town. People check your socials before they check your website — and right now, it's not a great look.",
   },
   {
     number: "03",
     title: "Website that repels",
-    desc: "Slow, outdated, not mobile-friendly. Visitors leave in seconds. You're losing money every single day.",
+    desc: "Slow to load, looks like it was built in 2015, and doesn't work on phones. That's not a website — it's an expensive business card that puts people off.",
   },
   {
     number: "04",
     title: "No time for it",
-    desc: "You're running a business. You don't have hours to learn design, SEO, content calendars, and algorithms.",
+    desc: "You've got a business to run. You shouldn't have to spend your evenings learning Canva, SEO, and whatever the algorithm's doing this week.",
   },
 ];
 
@@ -556,25 +556,25 @@ const PROCESS_STEPS = [
   {
     step: "01",
     title: "Discovery call",
-    desc: "We talk about your business, your goals, and what's not working. No jargon. No pressure. Just a conversation.",
+    desc: "A proper chat about your business — what's working, what's not, and where you want to be. No sales pitch. Just a coffee and a conversation.",
     duration: "30 min",
   },
   {
     step: "02",
     title: "Strategy & proposal",
-    desc: "You get a clear plan with pricing, timelines, and exactly what you'll receive. No hidden costs. No surprises.",
+    desc: "I put together a clear plan — what you'll get, how much it costs, and when it'll be done. Everything upfront, nothing hidden.",
     duration: "2-3 days",
   },
   {
     step: "03",
     title: "Build & create",
-    desc: "I get to work. Website, content, photography — whatever you need. You get updates throughout. Revisions included.",
+    desc: "This is where the magic happens. I crack on with the work and keep you in the loop the whole way. Nothing goes live without your say-so.",
     duration: "1-3 weeks",
   },
   {
     step: "04",
     title: "Launch & grow",
-    desc: "Everything goes live. I train you on managing it, or I handle ongoing content. Your business starts getting noticed.",
+    desc: "We go live. I'll show you how everything works, or I can keep things ticking over for you. Either way — your business starts getting seen.",
     duration: "Ongoing",
   },
 ];
@@ -600,7 +600,7 @@ function ProcessSection({ onNavigate }: { onNavigate: (id: string) => void }) {
               </span>
             </div>
             <MaskedText
-              text="Simple process. Serious results."
+              text="Simple process. Serious results"
               className="max-w-2xl text-5xl font-bold uppercase leading-[1.1] tracking-tight text-white md:text-6xl"
               as="h2"
             />
@@ -746,7 +746,7 @@ function WorkSection({ onNavigate }: { onNavigate: (id: string) => void }) {
               </span>
             </div>
             <StaggeredText
-              text="Real work. Real results."
+              text="Real work. Real results"
               className="text-5xl font-bold uppercase leading-[1.1] tracking-tight md:text-6xl"
               as="h2"
             />
@@ -772,7 +772,7 @@ function WorkSection({ onNavigate }: { onNavigate: (id: string) => void }) {
         {/* Client logos */}
         <div className="mt-20">
           <p className="mb-8 text-[10px] font-medium uppercase tracking-[0.3em] text-white/20">
-            Trusted by businesses across Scotland
+            Some of the businesses we work with
           </p>
           <div className="flex flex-wrap gap-x-8 gap-y-3">
             {[
@@ -805,15 +805,15 @@ const REVIEWS = [
   },
   {
     quote:
-      "Bear Media transformed our online presence. The website is fast, clean, and professional. We've had a noticeable increase in enquiries since launch.",
-    name: "Local Business Client",
+      "Our old website was embarrassing. Garry rebuilt it in under a week and the difference is night and day. We have had more enquiries in the first month than the whole of last year.",
+    name: "GSM Electrical",
     role: "Edinburgh",
     stars: 5,
   },
   {
     quote:
-      "The social media content Garry produces is exactly what we needed. Consistent, professional, and it actually gets engagement.",
-    name: "Small Business Owner",
+      "I used to dread doing social media. Now Garry handles it all and our page actually looks like a proper business. Consistent, professional, and it gets real engagement.",
+    name: "Glens Pharmacies",
     role: "West Lothian",
     stars: 5,
   },
@@ -902,7 +902,7 @@ function TestimonialsSection({ onNavigate }: { onNavigate: (id: string) => void 
             </span>
           </div>
           <StaggeredText
-            text="What they say."
+            text="What they say"
             className="mb-6 text-5xl font-bold uppercase leading-[1.1] tracking-tight text-white md:text-5xl"
             as="h2"
           />
@@ -959,22 +959,22 @@ function AboutSection() {
               </span>
             </div>
             <StaggeredText
-              text="One person. On purpose."
+              text="One person. On purpose"
               className="mb-8 text-5xl font-bold uppercase leading-[1.1] tracking-tight md:text-6xl"
               as="h2"
             />
             <div className="space-y-4 text-lg leading-relaxed text-white/50">
               <p>
-                I&apos;m Garry, founder of Bear Media. I help small businesses across Scotland
-                get seen, build trust, and get contacted.
+                I&apos;m Garry. I started Bear Media because I was sick of seeing small businesses
+                get ripped off by agencies that charge a fortune and deliver hee-haw.
               </p>
               <p>
-                No agency fluff. No account managers. No outsourcing. Everything is produced
-                in-house &mdash; from content strategy to website build to analytics. You always
-                know exactly who you&apos;re working with.
+                When you work with me, you work with me &mdash; not a junior, not an intern,
+                not someone in another country. I do the lot: strategy, design, content, websites,
+                photography, and video. One person, no runaround.
               </p>
               <p>
-                Based in Broxburn, West Lothian. Working with businesses across Edinburgh,
+                Based in Broxburn, West Lothian &mdash; working with businesses across Edinburgh,
                 Fife, Glasgow, and Central Scotland.
               </p>
             </div>
@@ -1062,7 +1062,7 @@ function CTASection({ onNavigate }: { onNavigate: (id: string) => void }) {
               colors={["#000000", "#1E3A5F", "#000000"]}
             />
             <p className="mt-4 max-w-lg text-lg text-black/60">
-              Book a free 30-minute consultation. No pressure. No obligation. Just a genuine conversation about your goals.
+              Book a free 30-minute chat. No hard sell, no obligations &mdash; just an honest conversation about where your business is and where you want it to be.
             </p>
           </div>
           <motion.button
@@ -1136,12 +1136,12 @@ function ContactSection() {
               </span>
             </div>
             <MaskedText
-              text="Let's talk about your project."
+              text="Let's talk about your project"
               className="mb-6 text-5xl font-bold uppercase leading-[1.1] tracking-tight text-white md:text-5xl"
               as="h2"
             />
             <p className="mb-10 text-lg leading-relaxed text-white/40">
-              Every message comes directly to me. No bots. No sales team. Just a genuine conversation about what you need.
+              Drop me a message and I&apos;ll get back to you personally &mdash; no bots, no call centres, no being passed around. Just me.
             </p>
 
             <div className="space-y-6">
@@ -1402,7 +1402,7 @@ function Footer({ onNavigate }: { onNavigate: (id: string) => void }) {
               </div>
             </button>
             <p className="mb-6 text-sm leading-relaxed text-white/30">
-              Websites &amp; social media content for businesses that want to be seen.
+              Websites and social media for Scottish businesses that want to be seen.
             </p>
             <div className="flex gap-2">
               {[

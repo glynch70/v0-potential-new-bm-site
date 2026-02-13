@@ -9,7 +9,7 @@ const SERVICES = [
     number: '01',
     icon: Video,
     title: 'Social Media Content',
-    description: 'Consistent, on-brand content that builds trust and visibility.',
+    description: 'Content that actually gets likes, shares, and enquiries — not just likes from your mum.',
     features: ['Reels & Shorts', 'Promo clips', 'Monthly packages', 'Management'],
     accent: '#FFB84D',
     accentBg: 'rgba(255, 184, 77, 0.1)',
@@ -20,7 +20,7 @@ const SERVICES = [
     number: '02',
     icon: Monitor,
     title: 'Websites',
-    description: 'Fast, clean websites built to convert visitors.',
+    description: 'Fast, clean, and built to turn visitors into paying customers.',
     features: ['Landing pages', 'Business sites', 'Hosting', 'Maintenance'],
     accent: '#4ECDC4',
     accentBg: 'rgba(78, 205, 196, 0.1)',
@@ -31,7 +31,7 @@ const SERVICES = [
     number: '03',
     icon: Layout,
     title: 'DIY Website Templates',
-    description: 'Professional templates you can customise yourself.',
+    description: 'Good-looking templates you can tweak yourself — no developer needed.',
     features: ['Ready to go', 'Drag & drop', 'Mobile-ready', 'Affordable'],
     accent: '#06B6D4',
     accentBg: 'rgba(6, 182, 212, 0.1)',
@@ -42,7 +42,7 @@ const SERVICES = [
     number: '04',
     icon: Film,
     title: 'Video Production',
-    description: 'Professional video content that tells your story.',
+    description: 'Video that does the talking for you — promos, drone shots, and edits that grab attention.',
     features: ['Promo videos', 'Drone footage', 'Event coverage', 'Editing'],
     accent: '#E879F9',
     accentBg: 'rgba(232, 121, 249, 0.1)',
@@ -53,7 +53,7 @@ const SERVICES = [
     number: '05',
     icon: Camera,
     title: 'Gallery & Photography',
-    description: 'Professional photography for your brand and business.',
+    description: 'Proper photos that make your business look the part — not blurry phone snaps.',
     features: ['Product shots', 'Headshots', 'Events', 'Interiors'],
     accent: '#F97316',
     accentBg: 'rgba(249, 115, 22, 0.1)',
@@ -64,7 +64,7 @@ const SERVICES = [
     number: '06',
     icon: Brain,
     title: 'AI Training',
-    description: 'Learn how to use AI tools to grow your business faster.',
+    description: 'Stop fearing AI and start using it. I will show you how it can save you hours every week.',
     features: ['ChatGPT for business', 'Content automation', 'Workflow setup', '1-to-1 sessions'],
     accent: '#818CF8',
     accentBg: 'rgba(129, 140, 248, 0.1)',
@@ -185,9 +185,9 @@ export default function InteractiveServiceCards() {
             </span>
           </div>
           <h2 className="mb-3 text-5xl font-bold uppercase leading-[1.1] tracking-tight text-white md:text-6xl">
-            Everything your business needs.
+            Everything your business needs
           </h2>
-          <p className="text-base text-white/40 md:text-lg">Websites, content, video, photography, AI — all in-house.</p>
+          <p className="text-base text-white/40 md:text-lg">Websites, content, video, photography, AI — all done by one person who actually gives a damn.</p>
         </motion.div>
 
         {/* Cards — stack on mobile, grid on desktop */}
