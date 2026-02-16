@@ -284,11 +284,9 @@ function HeroSection({ onNavigate }: { onNavigate: (id: string) => void }) {
       ref={ref}
       className="relative flex min-h-screen items-center justify-center overflow-hidden"
     >
-      {/* Shader background — hero-mobile-gradient shows on mobile when WebGL is hidden */}
+      {/* Shader background with trail lights */}
       <div className="absolute inset-0 hero-mobile-gradient">
-        <div className="hidden md:block h-full w-full">
-          <Hero3DCanvas className="h-full w-full" />
-        </div>
+        <Hero3DCanvas className="h-full w-full" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-[#0A0A0A]/40 to-transparent" />
       </div>
 
