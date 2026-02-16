@@ -11,9 +11,9 @@ export function ScrollIndicator() {
       variants={scrollIndicatorVariants}
       animate="animate"
     >
-      <span className="text-sm text-white/60 uppercase tracking-widest">Scroll</span>
+      <span className="text-sm text-white uppercase tracking-widest">Scroll</span>
       <motion.div animate={{ y: [0, 8, 0] }} transition={{ duration: 2, repeat: Infinity }}>
-        <ChevronDown className="w-5 h-5 text-white/60" />
+        <ChevronDown className="w-5 h-5 text-white" />
       </motion.div>
     </motion.div>
   );

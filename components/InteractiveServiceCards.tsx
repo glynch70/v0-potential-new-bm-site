@@ -138,7 +138,7 @@ function ServiceCard({ service, index }: { service: typeof SERVICES[0]; index: n
         </div>
 
         <h2 className="mb-3 text-2xl font-extrabold text-white md:text-2xl">{service.title}</h2>
-        <p className="mb-6 text-base leading-relaxed text-white/60 md:mb-8 md:text-base">{service.description}</p>
+        <p className="mb-6 text-base leading-relaxed text-white md:mb-8 md:text-base">{service.description}</p>
 
         {/* Feature pills */}
         <div className="flex flex-wrap gap-2">
@@ -187,7 +187,7 @@ export default function InteractiveServiceCards() {
           <h2 className="mb-3 text-5xl font-bold uppercase leading-[1.1] tracking-tight text-white md:text-6xl">
             Everything your business needs
           </h2>
-          <p className="text-base text-white/40 md:text-lg">Websites, content, video, photography, AI — all done by one person who actually gives a damn.</p>
+          <p className="text-base text-white md:text-lg">Websites, content, video, photography, AI — all done by one person who actually gives a damn.</p>
         </motion.div>
 
         {/* Cards — stack on mobile, grid on desktop */}

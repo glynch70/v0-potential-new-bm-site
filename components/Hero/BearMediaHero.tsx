@@ -94,7 +94,7 @@ export function BearMediaHero() {
           <br />
           Social Media Content
         </h1>
-        <p className="mx-auto mt-6 max-w-xl text-lg text-white/80 md:text-2xl">
+        <p className="mx-auto mt-6 max-w-xl text-lg text-white md:text-2xl">
           Helping small businesses get seen, trusted, and contacted.
         </p>
 

@@ -38,7 +38,7 @@ export function RiveAnimationShowcase({
       {/* Content */}
       <div className="relative z-10">
         <h3 className="text-2xl font-bold text-white mb-3">{title}</h3>
-        <p className="text-gray-300 mb-6">{description}</p>
+        <p className="text-white mb-6">{description}</p>
 
         {/* Animation placeholder - in real implementation would use Rive library */}
         <div className="relative w-full h-64 bg-gradient-to-br from-amber-900/20 to-black rounded-xl mb-6 flex items-center justify-center border border-amber-400/20">
@@ -48,8 +48,8 @@ export function RiveAnimationShowcase({
             transition={{ duration: 3, repeat: Infinity }}
           >
             <div className="text-4xl font-bold text-amber-400/40 mb-2">◈</div>
-            <p className="text-sm text-gray-400">Animation Canvas</p>
-            <p className="text-xs text-gray-500 mt-2">Rive Animation Ready</p>
+            <p className="text-sm text-white">Animation Canvas</p>
+            <p className="text-xs text-[#D4A830] mt-2">Rive Animation Ready</p>
           </motion.div>
         </div>
 

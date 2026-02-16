@@ -62,7 +62,7 @@ export function WorkCard3D({
           {/* Content */}
           <div className="absolute inset-0 flex flex-col justify-end p-6 text-white">
             <h3 className="text-2xl font-bold mb-2">{title}</h3>
-            <p className="text-sm text-gray-200 mb-4">{description}</p>
+            <p className="text-sm text-white mb-4">{description}</p>
 
             {/* Tags */}
             {tags.length > 0 && (
@@ -80,7 +80,7 @@ export function WorkCard3D({
 
             {/* Tap/click hint */}
             <motion.div
-              className="absolute top-4 right-4 text-xs text-gray-300 uppercase tracking-wider opacity-0"
+              className="absolute top-4 right-4 text-xs text-[#D4A830] uppercase tracking-wider opacity-0"
               animate={{ opacity: [0, 1, 1, 0] }}
               transition={{ duration: 3, delay: 1 }}
             >
@@ -110,7 +110,7 @@ export function WorkCard3D({
             <h3 className="text-2xl font-bold mb-4">{title}</h3>
 
             {details && (
-              <p className="text-sm text-gray-200 mb-6 leading-relaxed max-h-48 overflow-y-auto">
+              <p className="text-sm text-white mb-6 leading-relaxed max-h-48 overflow-y-auto">
                 {details}
               </p>
             )}
@@ -124,7 +124,7 @@ export function WorkCard3D({
             </motion.button>
 
             {/* Click hint for back */}
-            <p className="text-xs text-gray-400 mt-6 uppercase tracking-wider">
+            <p className="text-xs text-[#D4A830] mt-6 uppercase tracking-wider">
               Click to flip back
             </p>
           </div>

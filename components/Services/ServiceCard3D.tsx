@@ -121,7 +121,7 @@ export function ServiceCard3D({
             <h3 className="text-2xl font-bold text-white mb-2">{title}</h3>
 
             {/* Description */}
-            <p className="text-gray-300 text-sm leading-relaxed">{description}</p>
+            <p className="text-white text-sm leading-relaxed">{description}</p>
           </div>
 
           {/* Features list with stagger animation */}
@@ -132,13 +132,13 @@ export function ServiceCard3D({
             transition={{ delay: 0.3, duration: 0.5 }}
           >
             {features.map((feature, index) => (
-              <motion.div
-                key={feature}
-                className="flex items-center gap-3 text-sm text-gray-200"
-                initial={{ opacity: 0, x: -10 }}
-                animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }}
-                transition={{ delay: 0.3 + index * 0.1, duration: 0.4 }}
-              >
+                <motion.div
+                  key={feature}
+                  className="flex items-center gap-3 text-sm text-white"
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }}
+                  transition={{ delay: 0.3 + index * 0.1, duration: 0.4 }}
+                >
                 <motion.div
                   className="w-2 h-2 rounded-full"
                   style={{ backgroundColor: accentColor }}

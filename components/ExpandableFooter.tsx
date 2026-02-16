@@ -49,8 +49,8 @@ export default function ExpandableFooter() {
                       <span className="text-2xl font-bold text-[#C9A227]">Media</span>
                     </div>
                   </div>
-                  <p className="text-white/70 text-sm mb-2">Broxburn, West Lothian, EH52 6PH</p>
-                  <p className="text-white/60 text-sm">
+                  <p className="text-[#D4A830] text-sm mb-2">Broxburn, West Lothian, EH52 6PH</p>
+                  <p className="text-white text-sm">
                     Serving Edinburgh, West Lothian, Fife, Glasgow, Falkirk & Central Scotland
                   </p>
                 </div>
@@ -64,7 +64,7 @@ export default function ExpandableFooter() {
                       <li>
                         <a
                           href="#about"
-                          className="text-white/70 hover:text-[#C9A227] hover:translate-x-1 inline-block transition-all duration-250 ease-[cubic-bezier(0.16,1,0.3,1)]"
+                          className="text-white hover:text-[#D4A830] hover:translate-x-1 inline-block transition-all duration-250 ease-[cubic-bezier(0.16,1,0.3,1)]"
                         >
                           About
                         </a>
@@ -72,7 +72,7 @@ export default function ExpandableFooter() {
                       <li>
                         <a
                           href="#services"
-                          className="text-white/70 hover:text-[#C9A227] hover:translate-x-1 inline-block transition-all duration-250 ease-[cubic-bezier(0.16,1,0.3,1)]"
+                          className="text-white hover:text-[#D4A830] hover:translate-x-1 inline-block transition-all duration-250 ease-[cubic-bezier(0.16,1,0.3,1)]"
                         >
                           Services
                         </a>
@@ -80,7 +80,7 @@ export default function ExpandableFooter() {
                       <li>
                         <a
                           href="#work"
-                          className="text-white/70 hover:text-[#C9A227] hover:translate-x-1 inline-block transition-all duration-250 ease-[cubic-bezier(0.16,1,0.3,1)]"
+                          className="text-white hover:text-[#D4A830] hover:translate-x-1 inline-block transition-all duration-250 ease-[cubic-bezier(0.16,1,0.3,1)]"
                         >
                           Portfolio
                         </a>
@@ -88,7 +88,7 @@ export default function ExpandableFooter() {
                       <li>
                         <a
                           href="#reviews"
-                          className="text-white/70 hover:text-[#C9A227] hover:translate-x-1 inline-block transition-all duration-250 ease-[cubic-bezier(0.16,1,0.3,1)]"
+                          className="text-white hover:text-[#D4A830] hover:translate-x-1 inline-block transition-all duration-250 ease-[cubic-bezier(0.16,1,0.3,1)]"
                         >
                           Testimonials
                         </a>
@@ -96,7 +96,7 @@ export default function ExpandableFooter() {
                       <li>
                         <a
                           href="#contact"
-                          className="text-white/70 hover:text-[#C9A227] hover:translate-x-1 inline-block transition-all duration-250 ease-[cubic-bezier(0.16,1,0.3,1)]"
+                          className="text-white hover:text-[#D4A830] hover:translate-x-1 inline-block transition-all duration-250 ease-[cubic-bezier(0.16,1,0.3,1)]"
                         >
                           Contact
                         </a>
@@ -108,15 +108,15 @@ export default function ExpandableFooter() {
                   <div>
                     <h3 className="font-semibold mb-4 text-white">Services</h3>
                     <ul className="space-y-2 text-sm">
-                      <li className="text-white/70">Websites</li>
-                      <li className="text-white/70">Social Media Content</li>
+                      <li className="text-white">Websites</li>
+                      <li className="text-white">Social Media Content</li>
                     </ul>
                   </div>
 
                   {/* Service Areas */}
                   <div>
                     <h3 className="font-semibold mb-4 text-white">Service Areas</h3>
-                    <ul className="space-y-2 text-sm text-white/70">
+                    <ul className="space-y-2 text-sm text-white">
                       <li>Edinburgh</li>
                       <li>West Lothian</li>
                       <li>Fife</li>
@@ -138,14 +138,22 @@ export default function ExpandableFooter() {
                       <Mail className="w-4 h-4" />
                       <span>info@bear-media.com</span>
                     </a>
+                      <a
+                        href="mailto:info@bear-media.com"
+                        className="flex items-center gap-3 text-white hover:text-[#D4A830] transition-all duration-250 ease-[cubic-bezier(0.16,1,0.3,1)]"
+                      >
+                        <Mail className="w-4 h-4" />
+                        <span>info@bear-media.com</span>
+                      </a>
+                    </a>
                     <a
                       href="tel:+447879011860"
-                      className="flex items-center gap-3 text-white/70 hover:text-[#C9A227] transition-all duration-250 ease-[cubic-bezier(0.16,1,0.3,1)]"
+                      className="flex items-center gap-3 text-white hover:text-[#D4A830] transition-all duration-250 ease-[cubic-bezier(0.16,1,0.3,1)]"
                     >
                       <Phone className="w-4 h-4" />
                       <span>+44 7879 011860</span>
                     </a>
-                    <div className="flex items-center gap-3 text-white/70">
+                    <div className="flex items-center gap-3 text-white">
                       <MapPin className="w-4 h-4" />
                       <span>Broxburn, West Lothian, Scotland</span>
                     </div>

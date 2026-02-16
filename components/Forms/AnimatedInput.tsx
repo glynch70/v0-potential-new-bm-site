@@ -37,7 +37,7 @@ export function AnimatedInput({
     <div className={`relative w-full ${className}`}>
       {icon && (
         <motion.div
-          className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
+          className="absolute left-3 top-1/2 -translate-y-1/2 text-white"
           animate={{ scale: isFocused ? 1.2 : 1 }}
           transition={{ duration: 0.2 }}
         >
@@ -49,7 +49,7 @@ export function AnimatedInput({
         variants={labelFloatVariants}
         initial="initial"
         animate={isFocused || hasValue ? 'focus' : 'initial'}
-        className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 pointer-events-none origin-left"
+        className="absolute left-3 top-1/2 -translate-y-1/2 text-white pointer-events-none origin-left"
         style={{
           paddingLeft: icon ? '2rem' : '0',
         }}

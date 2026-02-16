@@ -37,7 +37,7 @@ export function CustomLoader({
           ))}
         </div>
         {text && (
-          <p className="text-sm font-medium text-gray-600">{text}</p>
+          <p className="text-sm font-medium text-white">{text}</p>
         )}
       </div>
     );
@@ -55,7 +55,7 @@ export function CustomLoader({
           <div className="absolute inset-1 bg-white rounded-full" />
         </div>
         {text && (
-          <p className="text-sm font-medium text-gray-600">{text}</p>
+          <p className="text-sm font-medium text-white">{text}</p>
         )}
       </div>
     );
@@ -94,7 +94,7 @@ export function CustomLoader({
       {text && (
         <div className="text-center">
           <motion.p
-            className="text-sm font-medium text-gray-600"
+            className="text-sm font-medium text-white"
             animate={{ opacity: [0.5, 1, 0.5] }}
             transition={{ duration: 1.5, repeat: Infinity }}
           >
