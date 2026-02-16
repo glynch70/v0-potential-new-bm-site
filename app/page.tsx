@@ -1128,7 +1128,7 @@ function ContactSection() {
 
   return (
     <section id="contact" className="relative border-t border-white/[0.04] bg-[#0A0A0A] py-32 md:py-40">
-      <div ref={ref} className="mx-auto max-w-7xl px-6">
+      <div ref={ref} className="relative mx-auto max-w-7xl px-6">
         <div className="grid gap-16 md:grid-cols-2">
           {/* Left — Info */}
           <motion.div
