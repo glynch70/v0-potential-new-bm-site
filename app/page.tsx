@@ -286,7 +286,9 @@ function HeroSection({ onNavigate }: { onNavigate: (id: string) => void }) {
     >
       {/* Shader background — hero-mobile-gradient shows on mobile when WebGL is hidden */}
       <div className="absolute inset-0 hero-mobile-gradient">
-        <Hero3DCanvas className="h-full w-full" />
+        <div className="hidden md:block h-full w-full">
+          <Hero3DCanvas className="h-full w-full" />
+        </div>
         <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-[#0A0A0A]/40 to-transparent" />
       </div>
 
@@ -344,9 +346,9 @@ function HeroSection({ onNavigate }: { onNavigate: (id: string) => void }) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 1.2 }}
-          className="mx-auto mb-10 max-w-xl text-base leading-relaxed text-[#C9A227]/70 md:text-lg"
+          className="mx-auto mb-10 max-w-xl text-base leading-relaxed text-[#D4A830]/70 md:text-lg"
         >
-          Websites that actually work. Social content that gets folk talking. No fluff — just results that fill your diary.
+          Websites that actually work. Social content that gets folk talking. No fluff — just results that fill your diary
         </motion.p>
 
         {/* CTAs — centered */}
@@ -458,22 +460,22 @@ const PAIN_POINTS = [
   {
     number: "01",
     title: "Invisible online",
-    desc: "Folk are searching for exactly what you do — and finding your competitors instead. If you're not showing up on Google, you might as well not exist.",
+    desc: "Folk are searching for exactly what you do — and finding your competitors instead. If you're not showing up on Google, you might as well not exist",
   },
   {
     number: "02",
     title: "Dead social media",
-    desc: "A post every few weeks isn't a strategy. It's a ghost town. People check your socials before they check your website — and right now, it's not a great look.",
+    desc: "A post every few weeks isn't a strategy. It's a ghost town. People check your socials before they check your website — and right now, it's not a great look",
   },
   {
     number: "03",
     title: "Website that repels",
-    desc: "Slow to load, looks like it was built in 2015, and doesn't work on phones. That's not a website — it's an expensive business card that puts people off.",
+    desc: "Slow to load, looks like it was built in 2015, and doesn't work on phones. That's not a website — it's an expensive business card that puts people off",
   },
   {
     number: "04",
     title: "No time for it",
-    desc: "You've got a business to run. You shouldn't have to spend your evenings learning Canva, SEO, and whatever the algorithm's doing this week.",
+    desc: "You've got a business to run. You shouldn't have to spend your evenings learning Canva, SEO, and whatever the algorithm's doing this week",
   },
 ];
 
@@ -556,25 +558,25 @@ const PROCESS_STEPS = [
   {
     step: "01",
     title: "Discovery call",
-    desc: "A proper chat about your business — what's working, what's not, and where you want to be. No sales pitch. Just a coffee and a conversation.",
+    desc: "A proper chat about your business — what's working, what's not, and where you want to be. No sales pitch. Just a coffee and a conversation",
     duration: "30 min",
   },
   {
     step: "02",
     title: "Strategy & proposal",
-    desc: "I put together a clear plan — what you'll get, how much it costs, and when it'll be done. Everything upfront, nothing hidden.",
+    desc: "I put together a clear plan — what you'll get, how much it costs, and when it'll be done. Everything upfront, nothing hidden",
     duration: "2-3 days",
   },
   {
     step: "03",
     title: "Build & create",
-    desc: "This is where the magic happens. I crack on with the work and keep you in the loop the whole way. Nothing goes live without your say-so.",
+    desc: "This is where the magic happens. I crack on with the work and keep you in the loop the whole way. Nothing goes live without your say-so",
     duration: "1-3 weeks",
   },
   {
     step: "04",
     title: "Launch & grow",
-    desc: "We go live. I'll show you how everything works, or I can keep things ticking over for you. Either way — your business starts getting seen.",
+    desc: "We go live. I'll show you how everything works, or I can keep things ticking over for you. Either way — your business starts getting seen",
     duration: "Ongoing",
   },
 ];
@@ -965,17 +967,17 @@ function AboutSection() {
             />
             <div className="space-y-4 text-lg leading-relaxed text-white/50">
               <p>
-                I&apos;m Garry. I started Bear Media because I was sick of seeing small businesses
-                get ripped off by agencies that charge a fortune and deliver hee-haw.
+                I'm Garry. I started Bear Media because I was sick of seeing small businesses
+                get ripped off by agencies that charge a fortune and deliver hee-haw
               </p>
               <p>
-                When you work with me, you work with me &mdash; not a junior, not an intern,
+                When you work with me, you work with me — not a junior, not an intern,
                 not someone in another country. I do the lot: strategy, design, content, websites,
-                photography, and video. One person, no runaround.
+                photography, and video. One person, no runaround
               </p>
               <p>
-                Based in Broxburn, West Lothian &mdash; working with businesses across Edinburgh,
-                Fife, Glasgow, and Central Scotland.
+                Based in Broxburn, West Lothian — working with businesses across Edinburgh,
+                Fife, Glasgow, and Central Scotland
               </p>
             </div>
 
@@ -1062,7 +1064,7 @@ function CTASection({ onNavigate }: { onNavigate: (id: string) => void }) {
               colors={["#000000", "#1E3A5F", "#000000"]}
             />
             <p className="mt-4 max-w-lg text-lg text-black/60">
-              Book a free 30-minute chat. No hard sell, no obligations &mdash; just an honest conversation about where your business is and where you want it to be.
+              Book a free 30-minute chat. No hard sell, no obligations — just an honest conversation about where your business is and where you want it to be
             </p>
           </div>
           <motion.button
@@ -1141,7 +1143,7 @@ function ContactSection() {
               as="h2"
             />
             <p className="mb-10 text-lg leading-relaxed text-white/40">
-              Drop me a message and I&apos;ll get back to you personally &mdash; no bots, no call centres, no being passed around. Just me.
+              Drop me a message and I'll get back to you personally — no bots, no call centres, no being passed around. Just me
             </p>
 
             <div className="space-y-6">
@@ -1186,7 +1188,7 @@ function ContactSection() {
                   <h3 className="mb-2 text-xl font-bold uppercase tracking-tight text-white">
                     Message sent
                   </h3>
-                  <p className="text-sm text-white/40">I&apos;ll get back to you within 24 hours.</p>
+                  <p className="text-sm text-white/40">I'll get back to you within 24 hours</p>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-4">
@@ -1401,8 +1403,8 @@ function Footer({ onNavigate }: { onNavigate: (id: string) => void }) {
                 <span className="text-base font-bold tracking-tight text-[#D4A830]">MEDIA</span>
               </div>
             </button>
-            <p className="mb-6 text-sm leading-relaxed text-white/30">
-              Websites and social media for Scottish businesses that want to be seen.
+            <p className="mb-6 text-sm leading-relaxed text-[#D4A830]/60">
+              Websites and social media for Scottish businesses that want to be seen
             </p>
             <div className="flex gap-2">
               {[
@@ -1426,7 +1428,7 @@ function Footer({ onNavigate }: { onNavigate: (id: string) => void }) {
 
           {/* Links */}
           <div>
-            <h4 className="mb-4 text-[10px] font-bold uppercase tracking-[0.25em] text-white/25">
+            <h4 className="mb-4 text-[10px] font-bold uppercase tracking-[0.25em] text-[#D4A830]/60">
               Navigate
             </h4>
             <ul className="space-y-3 text-sm">
@@ -1455,7 +1457,7 @@ function Footer({ onNavigate }: { onNavigate: (id: string) => void }) {
 
           {/* Services */}
           <div>
-            <h4 className="mb-4 text-[10px] font-bold uppercase tracking-[0.25em] text-white/25">
+            <h4 className="mb-4 text-[10px] font-bold uppercase tracking-[0.25em] text-[#D4A830]/60">
               Services
             </h4>
             <ul className="space-y-3 text-sm">
@@ -1469,7 +1471,7 @@ function Footer({ onNavigate }: { onNavigate: (id: string) => void }) {
 
           {/* Contact */}
           <div>
-            <h4 className="mb-4 text-[10px] font-bold uppercase tracking-[0.25em] text-white/25">
+            <h4 className="mb-4 text-[10px] font-bold uppercase tracking-[0.25em] text-[#D4A830]/60">
               Contact
             </h4>
             <ul className="space-y-3 text-sm">
@@ -1487,10 +1489,10 @@ function Footer({ onNavigate }: { onNavigate: (id: string) => void }) {
               <li className="text-white/40">EH52 6PH, Scotland</li>
             </ul>
             <div className="mt-6">
-              <h4 className="mb-2 text-[10px] font-bold uppercase tracking-[0.25em] text-white/25">
+              <h4 className="mb-2 text-[10px] font-bold uppercase tracking-[0.25em] text-[#D4A830]/60">
                 Areas
               </h4>
-              <p className="text-xs text-white/30">
+              <p className="text-xs text-[#D4A830]/50">
                 Edinburgh, West Lothian, Fife, Glasgow, Falkirk &amp; Central Scotland
               </p>
             </div>
@@ -1500,21 +1502,21 @@ function Footer({ onNavigate }: { onNavigate: (id: string) => void }) {
         {/* Legal links + bottom */}
         <div className="mt-16 border-t border-white/[0.04] pt-8">
           <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
-            <p className="text-[10px] uppercase tracking-[0.2em] text-white/20">
-              &copy; {new Date().getFullYear()} Bear Media. All rights reserved.
+            <p className="text-[10px] uppercase tracking-[0.2em] text-[#D4A830]/50">
+              &copy; {new Date().getFullYear()} Bear Media. All rights reserved
             </p>
             <div className="flex gap-6">
-              <a href="/terms-conditions" className="text-[10px] uppercase tracking-[0.2em] text-white/20 transition-colors hover:text-white/40">
+              <a href="/terms-conditions" className="text-[10px] uppercase tracking-[0.2em] text-[#D4A830]/50 transition-colors hover:text-[#D4A830]">
                 Terms &amp; Conditions
               </a>
-              <a href="/privacy-policy" className="text-[10px] uppercase tracking-[0.2em] text-white/20 transition-colors hover:text-white/40">
+              <a href="/privacy-policy" className="text-[10px] uppercase tracking-[0.2em] text-[#D4A830]/50 transition-colors hover:text-[#D4A830]">
                 Privacy Policy
               </a>
-              <a href="/cookie-policy" className="text-[10px] uppercase tracking-[0.2em] text-white/20 transition-colors hover:text-white/40">
+              <a href="/cookie-policy" className="text-[10px] uppercase tracking-[0.2em] text-[#D4A830]/50 transition-colors hover:text-[#D4A830]">
                 Cookie Policy
               </a>
             </div>
-            <p className="text-[10px] uppercase tracking-[0.2em] text-white/10">
+            <p className="text-[10px] uppercase tracking-[0.2em] text-[#D4A830]/40">
               Designed &amp; built by Bear Media
             </p>
           </div>
