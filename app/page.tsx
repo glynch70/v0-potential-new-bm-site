@@ -1127,8 +1127,8 @@ function ContactSection() {
     "w-full border border-white/[0.08] bg-transparent px-4 py-4 text-sm text-white placeholder:text-white/20 focus:border-[#D4A830] focus:outline-none transition-colors";
 
   return (
-    <section id="contact" ref={ref} className="relative border-t border-white/[0.04] bg-[#0A0A0A] py-32 md:py-40">
-      <div className="mx-auto max-w-7xl px-6">
+    <section id="contact" className="relative border-t border-white/[0.04] bg-[#0A0A0A] py-32 md:py-40">
+      <div ref={ref} className="mx-auto max-w-7xl px-6">
         <div className="grid gap-16 md:grid-cols-2">
           {/* Left — Info */}
           <motion.div
