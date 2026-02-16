@@ -1088,6 +1088,11 @@ function ContactSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [formState, setFormState] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -1190,7 +1195,7 @@ function ContactSection() {
                   </h3>
                   <p className="text-sm text-white/40">I'll get back to you within 24 hours</p>
                 </div>
-              ) : (
+              ) : mounted ? (
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <div className="grid gap-4 md:grid-cols-2">
                     <div>
@@ -1278,6 +1283,16 @@ function ContactSection() {
                     <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </motion.button>
                 </form>
+              ) : (
+                <div className="space-y-4">
+                  <div className="h-12 w-full animate-pulse rounded border border-white/[0.08]" />
+                  <div className="grid gap-4 md:grid-cols-2">
+                    <div className="h-12 w-full animate-pulse rounded border border-white/[0.08]" />
+                    <div className="h-12 w-full animate-pulse rounded border border-white/[0.08]" />
+                  </div>
+                  <div className="h-32 w-full animate-pulse rounded border border-white/[0.08]" />
+                  <div className="h-12 w-full animate-pulse rounded border border-white/[0.08]" />
+                </div>
               )}
             </div>
           </motion.div>
