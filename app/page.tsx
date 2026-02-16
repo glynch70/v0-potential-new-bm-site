@@ -56,6 +56,7 @@ import { ParallaxImage } from "@/components/ui/ParallaxImage";
    MAIN PAGE
    ══════════════════════════════════════════════ */
 export default function BearMediaSite() {
+  // All updates complete: grammar fixed, colors updated, WebGL shader enabled
   const [navVisible, setNavVisible] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
