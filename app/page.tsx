@@ -1196,7 +1196,7 @@ function ContactSection() {
                   <p className="text-sm text-white/40">I'll get back to you within 24 hours</p>
                 </div>
               ) : mounted ? (
-                <form onSubmit={handleSubmit} className="space-y-4">
+                <form onSubmit={handleSubmit} className="space-y-4" suppressHydrationWarning>
                   <div className="grid gap-4 md:grid-cols-2">
                     <div>
                       <label className="mb-2 block text-[10px] font-medium uppercase tracking-[0.2em] text-white/30">
