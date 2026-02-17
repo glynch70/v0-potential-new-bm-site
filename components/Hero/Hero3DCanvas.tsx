@@ -271,10 +271,11 @@ export function Hero3DCanvas({ className = '' }: ShaderBackgroundProps) {
     // Check for WebGL2 support, fall back gracefully
     const gl = canvas.getContext('webgl2');
     if (!gl) {
-      console.warn('WebGL2 not supported');
+      console.warn('Hero3DCanvas: WebGL2 not supported');
       canvas.style.display = 'none';
       return;
     }
+    console.log('Hero3DCanvas: WebGL2 initialized');
 
     // Heavily reduced resolution — cap at 1.0 DPR (was 0.5 * devicePixelRatio which is ~1.5 on retina)
     const dpr = Math.min(1.0, window.devicePixelRatio * 0.5);
@@ -328,8 +329,8 @@ export function Hero3DCanvas({ className = '' }: ShaderBackgroundProps) {
   return (
     <canvas
       ref={canvasRef}
-      className={`absolute inset-0 -z-10 touch-none ${className}`}
-      style={{ display: 'block', background: '#0A0A0A' }}
+      className={`absolute inset-0 touch-none ${className}`}
+      style={{ display: 'block' }} // Removed background: #0A0A0A so it doesn't obscure the gradient if WebGL fails
     />
   );
 }
