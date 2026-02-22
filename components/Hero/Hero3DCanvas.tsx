@@ -1,9 +1,10 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState, useCallback } from 'react';
 
 interface ShaderBackgroundProps {
   className?: string;
+  onError?: () => void;
 }
 
 /* ── WebGL2 Renderer ─────────────────────────── */
@@ -250,7 +251,7 @@ void main(void) {
 }`;
 
 /* ── Exported Component ─────────────────────── */
-export function Hero3DCanvas({ className = '' }: ShaderBackgroundProps) {
+export function Hero3DCanvas({ className = '', onError }: ShaderBackgroundProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const animationRef = useRef<number>();
   const rendererRef = useRef<WebGLRenderer | null>(null);
@@ -260,77 +261,79 @@ export function Hero3DCanvas({ className = '' }: ShaderBackgroundProps) {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    // Skip WebGL on mobile / low-memory devices — use CSS gradient fallback
-    const isMobile = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
-    const lowMem = (navigator as any).deviceMemory && (navigator as any).deviceMemory < 4;
-    if (isMobile || lowMem) {
-      canvas.style.display = 'none';
-      return;
-    }
-
-    // Check for WebGL2 support, fall back gracefully
+    // Check for WebGL2 support — if not available, notify parent to show fallback
     const gl = canvas.getContext('webgl2');
     if (!gl) {
-      console.warn('Hero3DCanvas: WebGL2 not supported');
-      canvas.style.display = 'none';
+      console.warn('Hero3DCanvas: WebGL2 not supported — falling back');
+      onError?.();
       return;
     }
-    console.log('Hero3DCanvas: WebGL2 initialized');
 
-    // Heavily reduced resolution — cap at 1.0 DPR (was 0.5 * devicePixelRatio which is ~1.5 on retina)
+    // Use conservative DPR for performance but don't block any devices
     const dpr = Math.min(1.0, window.devicePixelRatio * 0.5);
     canvas.width = window.innerWidth * dpr;
     canvas.height = window.innerHeight * dpr;
 
-    const renderer = new WebGLRenderer(canvas, dpr, FRAGMENT_SHADER);
-    const pointers = new PointerHandler(canvas, dpr);
-    rendererRef.current = renderer;
-    pointersRef.current = pointers;
+    try {
+      const renderer = new WebGLRenderer(canvas, dpr, FRAGMENT_SHADER);
+      const pointers = new PointerHandler(canvas, dpr);
+      rendererRef.current = renderer;
+      pointersRef.current = pointers;
 
-    renderer.setup();
-    renderer.init();
+      renderer.setup();
+      renderer.init();
 
-    if (renderer.test(FRAGMENT_SHADER) === null) {
+      // Test shader compilation — if it fails, fall back gracefully
+      const testResult = renderer.test(FRAGMENT_SHADER);
+      if (testResult !== null) {
+        console.warn('Hero3DCanvas: Shader compilation failed —', testResult);
+        onError?.();
+        return;
+      }
+
       renderer.updateShader(FRAGMENT_SHADER);
+
+      const resize = () => {
+        if (!canvas) return;
+        const d = Math.min(1.0, window.devicePixelRatio * 0.5);
+        canvas.width = window.innerWidth * d;
+        canvas.height = window.innerHeight * d;
+        renderer.updateScale(d);
+      };
+
+      // Throttle to ~30fps for performance
+      let lastTime = 0;
+      const FRAME_INTERVAL = 33;
+      const loop = (now: number) => {
+        animationRef.current = requestAnimationFrame(loop);
+        if (now - lastTime < FRAME_INTERVAL) return;
+        lastTime = now;
+        renderer.updateMouse(pointers.first);
+        renderer.updatePointerCount(pointers.count);
+        renderer.updatePointerCoords(pointers.coords);
+        renderer.updateMove(pointers.move);
+        renderer.render(now);
+      };
+
+      loop(0);
+      window.addEventListener('resize', resize);
+
+      return () => {
+        window.removeEventListener('resize', resize);
+        if (animationRef.current) cancelAnimationFrame(animationRef.current);
+        renderer.reset();
+      };
+    } catch (err) {
+      console.warn('Hero3DCanvas: WebGL error —', err);
+      onError?.();
     }
-
-    const resize = () => {
-      if (!canvas) return;
-      const d = Math.min(1.0, window.devicePixelRatio * 0.5);
-      canvas.width = window.innerWidth * d;
-      canvas.height = window.innerHeight * d;
-      renderer.updateScale(d);
-    };
-
-    // Throttle RAF to ~30fps instead of 60fps to halve GPU work
-    let lastTime = 0;
-    const FRAME_INTERVAL = 33; // ~30fps
-    const loop = (now: number) => {
-      animationRef.current = requestAnimationFrame(loop);
-      if (now - lastTime < FRAME_INTERVAL) return;
-      lastTime = now;
-      renderer.updateMouse(pointers.first);
-      renderer.updatePointerCount(pointers.count);
-      renderer.updatePointerCoords(pointers.coords);
-      renderer.updateMove(pointers.move);
-      renderer.render(now);
-    };
-
-    loop(0);
-    window.addEventListener('resize', resize);
-
-    return () => {
-      window.removeEventListener('resize', resize);
-      if (animationRef.current) cancelAnimationFrame(animationRef.current);
-      renderer.reset();
-    };
-  }, []);
+  }, [onError]);
 
   return (
     <canvas
       ref={canvasRef}
       className={`absolute inset-0 touch-none ${className}`}
-      style={{ display: 'block' }} // Removed background: #0A0A0A so it doesn't obscure the gradient if WebGL fails
+      style={{ display: 'block' }}
     />
   );
 }
