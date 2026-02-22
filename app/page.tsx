@@ -27,10 +27,163 @@ const BLUR =
   "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSIjMTExMTExIi8+";
 
 /* ─────────────────────── lazy shader background ─────────────────────── */
-const Hero3DCanvas = dynamic(
-  () => import("@/components/Hero/Hero3DCanvas").then((m) => ({ default: m.Hero3DCanvas })),
-  { ssr: false }
-);
+// ═══════════════════════════════════════════════
+// PASTE THIS INTO page.tsx
+// ═══════════════════════════════════════════════
+//
+// STEP 1: DELETE line 30-33 (the old dynamic import):
+//   const Hero3DCanvas = dynamic(
+//     () => import("@/components/Hero/Hero3DCanvas").then((m) => ({ default: m.Hero3DCanvas })),
+//     { ssr: false }
+//   );
+//
+// STEP 2: PASTE the InlineShaderCanvas function below
+//         somewhere BEFORE the HeroSection function
+//         (around line 30, where the old import was)
+//
+// STEP 3: In the HeroSection function, REPLACE:
+//   <Hero3DCanvas className="h-full w-full" />
+// WITH:
+//   <InlineShaderCanvas />
+//
+// ═══════════════════════════════════════════════
+
+function InlineShaderCanvas() {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    const gl = canvas.getContext('webgl2');
+    if (!gl) {
+      console.warn('InlineShaderCanvas: WebGL2 not supported');
+      return;
+    }
+
+    // Set canvas size
+    const dpr = Math.min(1.0, window.devicePixelRatio * 0.5);
+    canvas.width = window.innerWidth * dpr;
+    canvas.height = window.innerHeight * dpr;
+
+    // Vertex shader
+    const vertSrc = `#version 300 es
+    precision highp float;
+    in vec4 position;
+    void main(){gl_Position=position;}`;
+
+    // Fragment shader — Edinburgh trail lights effect
+    const fragSrc = `#version 300 es
+    precision highp float;
+    uniform float T;
+    uniform vec2 r;
+    out vec4 O;
+
+    float noise(vec2 p){
+      vec2 i=floor(p);
+      vec2 f=fract(p);
+      f=f*f*(3.-2.*f);
+      float a=sin(dot(i,vec2(127.1,311.7)))*43758.5453;
+      float b=sin(dot(i+vec2(1,0),vec2(127.1,311.7)))*43758.5453;
+      float c=sin(dot(i+vec2(0,1),vec2(127.1,311.7)))*43758.5453;
+      float d=sin(dot(i+vec2(1,1),vec2(127.1,311.7)))*43758.5453;
+      return mix(mix(fract(a),fract(b),f.x),mix(fract(c),fract(d),f.x),f.y);
+    }
+
+    void main(){
+      vec2 uv=(gl_FragCoord.xy-.5*r)/r.y;
+      vec3 col=vec3(0);
+      float bg=noise(uv*3.+T*.1);
+      uv*=1.-.3*(sin(T*.2)*.5+.5);
+      for(float i=1.;i<12.;i++){
+        uv+=.1*cos(i*vec2(.1+.01*i,.8)+i*i+T*.5+.1*uv.x);
+        vec2 p=uv;
+        float d=length(p);
+        col+=.00125/d*(cos(sin(i)*vec3(1,2,3))+1.);
+        float b=noise(i+p+bg*1.731);
+        col+=.002*b/length(max(p,vec2(b*p.x*.02,p.y)));
+        col=mix(col,vec3(bg*.28,bg*.22,bg*.06),d);
+      }
+      O=vec4(col,1);
+    }`;
+
+    // Compile shader
+    const compile = (type: number, src: string) => {
+      const s = gl.createShader(type)!;
+      gl.shaderSource(s, src);
+      gl.compileShader(s);
+      if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) {
+        console.warn('Shader compile error:', gl.getShaderInfoLog(s));
+        return null;
+      }
+      return s;
+    };
+
+    const vs = compile(gl.VERTEX_SHADER, vertSrc);
+    const fs = compile(gl.FRAGMENT_SHADER, fragSrc);
+    if (!vs || !fs) return;
+
+    const program = gl.createProgram()!;
+    gl.attachShader(program, vs);
+    gl.attachShader(program, fs);
+    gl.linkProgram(program);
+    if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
+      console.warn('Program link error:', gl.getProgramInfoLog(program));
+      return;
+    }
+    gl.useProgram(program);
+
+    // Set up geometry (full-screen quad)
+    const buf = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,1,-1,-1,1,1,1,-1]), gl.STATIC_DRAW);
+    const pos = gl.getAttribLocation(program, 'position');
+    gl.enableVertexAttribArray(pos);
+    gl.vertexAttribPointer(pos, 2, gl.FLOAT, false, 0, 0);
+
+    // Uniform locations
+    const uT = gl.getUniformLocation(program, 'T');
+    const uR = gl.getUniformLocation(program, 'r');
+
+    // Render loop — throttled to 30fps
+    let raf: number;
+    let lastTime = 0;
+    const loop = (now: number) => {
+      raf = requestAnimationFrame(loop);
+      if (now - lastTime < 33) return;
+      lastTime = now;
+      gl.viewport(0, 0, canvas.width, canvas.height);
+      gl.uniform1f(uT, now * 0.001);
+      gl.uniform2f(uR, canvas.width, canvas.height);
+      gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+    };
+    raf = requestAnimationFrame(loop);
+
+    // Resize handler
+    const resize = () => {
+      const d = Math.min(1.0, window.devicePixelRatio * 0.5);
+      canvas.width = window.innerWidth * d;
+      canvas.height = window.innerHeight * d;
+    };
+    window.addEventListener('resize', resize);
+
+    return () => {
+      window.removeEventListener('resize', resize);
+      cancelAnimationFrame(raf);
+      gl.deleteProgram(program);
+      gl.deleteShader(vs);
+      gl.deleteShader(fs);
+      gl.deleteBuffer(buf);
+    };
+  }, []);
+
+  return (
+    <canvas
+      ref={canvasRef}
+      style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', display: 'block' }}
+    />
+  );
+}
 
 const InteractiveServiceCards = dynamic(
   () => import("@/components/InteractiveServiceCards"),
