@@ -1,6 +1,6 @@
 "use client";
 
-import { Suspense, lazy, useEffect, useRef, useState } from "react";
+import { Suspense, lazy, useCallback, useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 
@@ -16,31 +16,48 @@ const BLUR_PLACEHOLDER =
 
 export function BearMediaHero() {
   const heroRef = useRef<HTMLElement>(null);
-  const [isDesktop, setIsDesktop] = useState(false);
-  const [shouldRenderShader, setShouldRenderShader] = useState(false);
+  const [backgroundMode, setBackgroundMode] = useState<"loading" | "shader" | "video" | "gradient">("loading");
 
+  // Determine initial background mode based on device
   useEffect(() => {
     if (typeof window === "undefined") return;
-    const query = window.matchMedia("(min-width: 1024px)");
-    const update = (event: MediaQueryListEvent | MediaQueryList) => {
-      setIsDesktop(event.matches);
-      if (!event.matches) {
-        setShouldRenderShader(false);
-      }
-    };
 
-    update(query);
-    query.addEventListener("change", update);
+    // Mobile devices → video background (better performance)
+    const isMobile = window.innerWidth < 1024;
+    if (isMobile) {
+      setBackgroundMode("video");
+      return;
+    }
 
-    return () => query.removeEventListener("change", update);
+    // Desktop → try shader first
+    setBackgroundMode("shader");
   }, []);
 
-  // Render shader immediately when desktop
+  // Listen for screen resize (e.g. rotating tablet)
   useEffect(() => {
-    if (isDesktop) {
-      setShouldRenderShader(true);
-    }
-  }, [isDesktop]);
+    if (typeof window === "undefined") return;
+
+    const handleResize = () => {
+      const isMobile = window.innerWidth < 1024;
+      setBackgroundMode((prev) => {
+        // If we're on mobile, always use video
+        if (isMobile) return "video";
+        // If we were on video because of mobile, switch to shader on desktop
+        if (prev === "video") return "shader";
+        // Otherwise keep current mode (don't reset shader if it's working)
+        return prev;
+      });
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  // If shader fails, fall back to video → then gradient as last resort
+  const handleShaderError = useCallback(() => {
+    console.warn("BearMediaHero: Shader failed, falling back to video");
+    setBackgroundMode("video");
+  }, []);
 
   return (
     <section
@@ -48,31 +65,36 @@ export function BearMediaHero() {
       ref={heroRef}
       className="relative flex min-h-screen items-center justify-center overflow-hidden"
     >
-      {isDesktop ? (
-        <div className="absolute inset-0">
-          {shouldRenderShader ? (
-            <Suspense fallback={<GradientBackdrop />}>
-              <Hero3DCanvas
-                imageSrc={HERO_VIDEO_SOURCES.poster}
-                intensity={0.7}
-                className="h-full w-full"
-              />
-            </Suspense>
-          ) : (
-            <GradientBackdrop />
-          )}
-        </div>
-      ) : (
-        <VideoBackdrop />
-      )}
+      {/* ── Background Layer ── */}
+      <div className="absolute inset-0">
+        {/* Always show gradient as base layer (visible during loading & as fallback) */}
+        <GradientBackdrop />
+
+        {/* Shader effect — desktop only, with error callback */}
+        {backgroundMode === "shader" && (
+          <Suspense fallback={null}>
+            <Hero3DCanvas
+              className="h-full w-full"
+              onError={handleShaderError}
+            />
+          </Suspense>
+        )}
+
+        {/* Video background — mobile default & shader fallback */}
+        {backgroundMode === "video" && <VideoBackdrop />}
+      </div>
+
+      {/* ── Overlay gradient for text readability ── */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/15 via-transparent to-transparent" />
 
+      {/* ── Hero Content ── */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
         className="relative z-10 px-6 py-16 text-center"
       >
+        {/* Location badge */}
         <div className="mx-auto mb-6 flex max-w-md items-center justify-center gap-3 rounded-full border border-white/20 bg-white/10 px-5 py-2 text-white/80 backdrop-blur">
           <div className="relative h-8 w-8">
             <Image
@@ -89,6 +111,7 @@ export function BearMediaHero() {
           </span>
         </div>
 
+        {/* Headline */}
         <h1 className="text-4xl font-bold text-white sm:text-5xl md:text-7xl">
           Websites &amp;
           <br />
@@ -98,6 +121,7 @@ export function BearMediaHero() {
           Helping small businesses get seen, trusted, and contacted.
         </p>
 
+        {/* CTA Buttons */}
         <div className="mt-10 flex flex-wrap justify-center gap-4">
           <Button className="rounded-full bg-[#C9A227] px-8 py-6 text-base font-semibold text-black shadow-[0_4px_20px_rgba(201,162,39,0.35)] transition hover:bg-[#B89120]">
             Book a call
@@ -106,7 +130,7 @@ export function BearMediaHero() {
             asChild
             className="rounded-full bg-white px-8 py-6 text-base font-semibold text-black shadow-[0_4px_20px_rgba(255,255,255,0.3)] transition hover:bg-white/90"
           >
-            
+            <a
               href="https://portfolio.bear-media.com"
               target="_blank"
               rel="noopener noreferrer"
@@ -120,14 +144,17 @@ export function BearMediaHero() {
   );
 }
 
+/* ── Gradient Fallback (always rendered as base layer) ── */
 function GradientBackdrop() {
   return (
-    <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(201,162,39,0.45),_transparent_55%)] from-zinc-900 via-black to-black">
+    <div className="absolute inset-0 bg-black">
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(201,162,39,0.45),_transparent_55%)]" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(255,255,255,0.15),transparent_45%)]" />
     </div>
   );
 }
 
+/* ── Video Background (mobile default & shader fallback) ── */
 function VideoBackdrop() {
   return (
     <video
@@ -137,7 +164,6 @@ function VideoBackdrop() {
       muted
       playsInline
       preload="none"
-      poster={HERO_VIDEO_SOURCES.poster}
     >
       <source src={HERO_VIDEO_SOURCES.mp4} type='video/mp4; codecs="hvc1"' />
       <source src={HERO_VIDEO_SOURCES.webm} type="video/webm" />
