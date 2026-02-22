@@ -287,7 +287,7 @@ function HeroSection({ onNavigate }: { onNavigate: (id: string) => void }) {
       {/* Shader background — hero-mobile-gradient shows on mobile when WebGL is hidden */}
       <div className="absolute inset-0 hero-mobile-gradient">
         <Hero3DCanvas className="h-full w-full" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-[#0A0A0A]/40 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-[#0A0A0A]/10 to-transparent" />
       </div>
 
       <motion.div style={{ opacity, y }} className="relative z-10 mx-auto w-full max-w-5xl px-6 text-center">
