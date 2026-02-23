@@ -50,14 +50,14 @@ import { ParallaxImage } from "@/components/ui/ParallaxImage";
    MAIN PAGE
    ══════════════════════════════════════════════ */
 export default function BearMediaSite() {
-  const [navVisible, setNavVisible] = useState(false);
+  const [navVisible, setNavVisible] = useState(true);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
   const [showBottomNav, setShowBottomNav] = useState(false);
 
   useEffect(() => {
     const onScroll = () => {
-      setNavVisible(window.scrollY > 100);
+      
       setShowBottomNav(window.scrollY > 400);
     };
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -146,7 +146,7 @@ function SiteNav({
   return (
     <>
       <motion.header
-        initial={{ y: -100 }}
+        initial={{ y: 0 }}
         animate={{ y: visible ? 0 : -100 }}
         transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
         className="fixed inset-x-0 top-0 z-50 border-b border-white/[0.06] bg-[#0A0A0A]/90 backdrop-blur-md"
@@ -452,23 +452,90 @@ const PAIN_POINTS = [
     number: "01",
     title: "Invisible online",
     desc: "Folk are searching for exactly what you do — and finding your competitors instead. If you're not showing up on Google, you might as well not exist.",
+    image: "/work/websites-desktop.jpg",
   },
   {
     number: "02",
     title: "Dead social media",
     desc: "A post every few weeks isn't a strategy. It's a ghost town. People check your socials before they check your website — and right now, it's not a great look.",
+    image: "/services-social-media.jpg",
   },
   {
     number: "03",
     title: "Website that repels",
     desc: "Slow to load, looks like it was built in 2015, and doesn't work on phones. That's not a website — it's an expensive business card that puts people off.",
+    image: "/work/website-3-herb-soul.jpg",
   },
   {
     number: "04",
     title: "No time for it",
     desc: "You've got a business to run. You shouldn't have to spend your evenings learning Canva, SEO, and whatever the algorithm's doing this week.",
+    image: "/services-extras.jpg",
   },
 ];
+
+function PainFlipCard({ pain, index, isInView }: {
+  pain: typeof PAIN_POINTS[0];
+  index: number;
+  isInView: boolean;
+}) {
+  const [isFlipped, setIsFlipped] = useState(false);
+
+  return (
+    <motion.div
+      className="cursor-pointer"
+      style={{ perspective: "1000px" }}
+      initial={{ opacity: 0, y: 40 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+      onClick={() => setIsFlipped(!isFlipped)}
+    >
+      <motion.div
+        className="relative w-full min-h-[260px]"
+        animate={{ rotateY: isFlipped ? 180 : 0 }}
+        transition={{ duration: 0.6, ease: "easeInOut" }}
+        style={{ transformStyle: "preserve-3d" }}
+      >
+        {/* Front: text */}
+        <div
+          className="absolute inset-0 bg-[#0A0A0A] p-8 md:p-12"
+          style={{ backfaceVisibility: "hidden" }}
+        >
+          <span className="brutal-number text-6xl font-bold text-[#D4A830]/30 md:text-7xl">
+            {pain.number}
+          </span>
+          <h3 className="mt-4 text-2xl font-bold uppercase tracking-tight text-white">
+            {pain.title}
+          </h3>
+          <p className="mt-3 leading-relaxed text-white/80">
+            {pain.desc}
+          </p>
+          <p className="text-[9px] uppercase tracking-[0.2em] text-white/50 mt-4">Tap to see example</p>
+        </div>
+
+        {/* Back: image */}
+        <div
+          className="absolute inset-0 overflow-hidden"
+          style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
+        >
+          <Image
+            src={pain.image}
+            alt={pain.title}
+            fill
+            className="object-cover"
+            sizes="(max-width: 768px) 100vw, 50vw"
+          />
+          <div className="absolute inset-0 bg-black/40 flex items-end p-8">
+            <div>
+              <p className="text-lg font-bold text-white">{pain.title}</p>
+              <p className="text-[9px] uppercase tracking-[0.2em] text-white/70 mt-2">Tap to flip back</p>
+            </div>
+          </div>
+        </div>
+      </motion.div>
+    </motion.div>
+  );
+}
 
 function PainSection({ onNavigate }: { onNavigate: (id: string) => void }) {
   const ref = useRef(null);
@@ -512,26 +579,10 @@ function PainSection({ onNavigate }: { onNavigate: (id: string) => void }) {
           </p>
         </motion.div>
 
-        {/* Pain grid */}
+        {/* Pain flip cards */}
         <div className="grid gap-px bg-white/[0.04] md:grid-cols-2">
           {PAIN_POINTS.map((pain, i) => (
-            <motion.div
-              key={pain.number}
-              initial={{ opacity: 0, y: 40 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="bg-[#0A0A0A] p-8 md:p-12"
-            >
-              <span className="brutal-number text-6xl font-bold text-white/[0.06] md:text-7xl">
-                {pain.number}
-              </span>
-              <h3 className="mt-4 text-2xl font-bold uppercase tracking-tight text-white">
-                {pain.title}
-              </h3>
-              <p className="mt-3 leading-relaxed text-white/80">
-                {pain.desc}
-              </p>
-            </motion.div>
+            <PainFlipCard key={pain.number} pain={pain} index={i} isInView={isInView} />
           ))}
         </div>
         <SectionCTA text="See how we fix this" target="services" onNavigate={onNavigate} />
@@ -551,26 +602,101 @@ const PROCESS_STEPS = [
     title: "Discovery call",
     desc: "A proper chat about your business — what's working, what's not, and where you want to be. No sales pitch. Just a coffee and a conversation.",
     duration: "30 min",
+    image: "/garry-lynch-portrait.png",
   },
   {
     step: "02",
     title: "Strategy & proposal",
     desc: "I put together a clear plan — what you'll get, how much it costs, and when it'll be done. Everything upfront, nothing hidden.",
     duration: "2-3 days",
+    image: "/work/brand-visual-assets.jpg",
   },
   {
     step: "03",
     title: "Build & create",
     desc: "This is where the magic happens. I crack on with the work and keep you in the loop the whole way. Nothing goes live without your say-so.",
     duration: "1-3 weeks",
+    image: "/work/brand-collage.jpg",
   },
   {
     step: "04",
     title: "Launch & grow",
     desc: "We go live. I'll show you how everything works, or I can keep things ticking over for you. Either way — your business starts getting seen.",
     duration: "Ongoing",
+    image: "/work/mobile-social-showcase.jpg",
   },
 ];
+
+function ProcessFlipCard({ step, index, isInView }: {
+  step: typeof PROCESS_STEPS[0];
+  index: number;
+  isInView: boolean;
+}) {
+  const [isFlipped, setIsFlipped] = useState(false);
+
+  return (
+    <motion.div
+      className="cursor-pointer"
+      style={{ perspective: "1000px" }}
+      initial={{ opacity: 0, y: 40 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.5, delay: index * 0.12 }}
+      onClick={() => setIsFlipped(!isFlipped)}
+    >
+      <motion.div
+        className="relative w-full min-h-[280px]"
+        animate={{ rotateY: isFlipped ? 180 : 0 }}
+        transition={{ duration: 0.6, ease: "easeInOut" }}
+        style={{ transformStyle: "preserve-3d" }}
+      >
+        {/* Front: text */}
+        <div
+          className="absolute inset-0 bg-[#0A0A0A] p-8 md:p-10 flex flex-col justify-between"
+          style={{ backfaceVisibility: "hidden" }}
+        >
+          <div>
+            <div className="mb-6 flex items-center justify-between">
+              <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#D4A830]">
+                Step {step.step}
+              </span>
+              <span className="text-[10px] uppercase tracking-[0.15em] text-white/60">
+                {step.duration}
+              </span>
+            </div>
+            <h3 className="mb-3 text-xl font-bold uppercase tracking-tight text-white">
+              {step.title}
+            </h3>
+            <p className="text-base leading-relaxed text-white/80">
+              {step.desc}
+            </p>
+          </div>
+          <p className="text-[9px] uppercase tracking-[0.2em] text-white/50 mt-4">Tap to see</p>
+        </div>
+
+        {/* Back: image */}
+        <div
+          className="absolute inset-0 overflow-hidden"
+          style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
+        >
+          <Image
+            src={step.image}
+            alt={step.title}
+            fill
+            className="object-cover"
+            sizes="(max-width: 768px) 100vw, 25vw"
+          />
+          <div className="absolute inset-0 bg-black/40 flex flex-col items-center justify-center p-6 text-center">
+            <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#D4A830]">
+              Step {step.step}
+            </span>
+            <p className="text-lg font-bold text-white mt-2">{step.title}</p>
+            <p className="text-[9px] uppercase tracking-[0.2em] text-white/70 mt-4">Tap to flip back</p>
+          </div>
+        </div>
+      </motion.div>
+    </motion.div>
+  );
+}
 
 function ProcessSection({ onNavigate }: { onNavigate: (id: string) => void }) {
   const ref = useRef(null);
@@ -608,31 +734,10 @@ function ProcessSection({ onNavigate }: { onNavigate: (id: string) => void }) {
           </motion.button>
         </motion.div>
 
-        {/* Steps — horizontal brutalist timeline */}
+        {/* Steps — flip cards */}
         <div className="grid gap-px bg-white/[0.04] md:grid-cols-4">
           {PROCESS_STEPS.map((step, i) => (
-            <motion.div
-              key={step.step}
-              initial={{ opacity: 0, y: 40 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: i * 0.12 }}
-              className="bg-[#0A0A0A] p-8 md:p-10"
-            >
-              <div className="mb-6 flex items-center justify-between">
-                <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#D4A830]">
-                  Step {step.step}
-                </span>
-                <span className="text-[10px] uppercase tracking-[0.15em] text-white/60">
-                  {step.duration}
-                </span>
-              </div>
-              <h3 className="mb-3 text-xl font-bold uppercase tracking-tight text-white">
-                {step.title}
-              </h3>
-              <p className="text-base leading-relaxed text-white/80">
-                {step.desc}
-              </p>
-            </motion.div>
+            <ProcessFlipCard key={step.step} step={step} index={i} isInView={isInView} />
           ))}
         </div>
       </div>
@@ -762,21 +867,32 @@ function WorkSection({ onNavigate }: { onNavigate: (id: string) => void }) {
           description=""
         />
 
-        {/* Client logos */}
+        {/* Client marquee */}
         <div className="mt-20">
           <p className="mb-8 text-[10px] font-medium uppercase tracking-[0.3em] text-white/60">
             Some of the businesses we work with
           </p>
-          <div className="flex flex-wrap gap-x-8 gap-y-3">
-            {[
-              "Glens Pharmacies", "GB Masterchef", "GSM Electrical", "K.Lewis Joinery",
-              "The Free Spirit", "Herb & Soul", "M&M CTS", "RTL Transport",
-              "Almond Vet Care", "Voice2Lead",
-            ].map((client) => (
-              <span key={client} className="text-sm text-white/60 transition-colors hover:text-white">
-                {client}
-              </span>
-            ))}
+          <div className="relative overflow-hidden">
+            <div className="pointer-events-none absolute left-0 top-0 z-10 h-full w-16 bg-gradient-to-r from-[#0A0A0A] to-transparent" />
+            <div className="pointer-events-none absolute right-0 top-0 z-10 h-full w-16 bg-gradient-to-l from-[#0A0A0A] to-transparent" />
+            <motion.div
+              className="flex gap-12 whitespace-nowrap"
+              animate={{ x: ["0%", "-50%"] }}
+              transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+            >
+              {[
+                "Glens Pharmacies", "GB Masterchef", "GSM Electrical", "K.Lewis Joinery",
+                "The Free Spirit", "Herb & Soul", "M&M CTS", "RTL Transport",
+                "Almond Vet Care", "Voice2Lead",
+                "Glens Pharmacies", "GB Masterchef", "GSM Electrical", "K.Lewis Joinery",
+                "The Free Spirit", "Herb & Soul", "M&M CTS", "RTL Transport",
+                "Almond Vet Care", "Voice2Lead",
+              ].map((client, i) => (
+                <span key={`${client}-${i}`} className="text-lg font-semibold text-white/70 transition-colors hover:text-white md:text-xl">
+                  {client}
+                </span>
+              ))}
+            </motion.div>
           </div>
         </div>
         <SectionCTA text="Ready to start your project?" target="contact" onNavigate={onNavigate} />
@@ -791,24 +907,43 @@ function WorkSection({ onNavigate }: { onNavigate: (id: string) => void }) {
 const REVIEWS = [
   {
     quote:
-      "Garry created a simple, powerful website that sells our Manager Training Programme and clearly sets us apart. Delivered within days, with zero fuss. Exactly what we needed.",
-    name: "Managing What Matters",
-    role: "Leadership & Management Training",
+      "Bear Media created an amazing social media campaign for my coaching and healing business. Garry took the time to understand what my business was all about in order to create posts that expertly promoted my new programme. 5* service!!",
+    name: "Leanne Murphy",
+    role: "The Free Spirit",
     stars: 5,
+    image: "/testimonials/leanne-free-spirit.webp",
   },
   {
     quote:
-      "Our old website was embarrassing. Garry rebuilt it in under a week and the difference is night and day. We have had more enquiries in the first month than the whole of last year.",
-    name: "GSM Electrical",
-    role: "Edinburgh",
+      "I highly recommend Bear Media, Garry is always a pleasure to work with. I have used Bear Media on a few projects now and they are very professional. You can tell Garry genuinely cares about his clients and is always willing to go the extra mile. Overall fantastic service.",
+    name: "Steven Johnstone",
+    role: "JRPH Boilers",
     stars: 5,
+    image: "/testimonials/stephen-johnstone-heating.webp",
   },
   {
     quote:
-      "I used to dread doing social media. Now Garry handles it all and our page actually looks like a proper business. Consistent, professional, and it gets real engagement.",
-    name: "Glens Pharmacies",
-    role: "West Lothian",
+      "Omg what an amazing service. Garry has been an amazing support in the development of my digital media footprint and nothing has been too much trouble. I am honoured and humbled to retain Garry and Bear Media for all my media needs and highly recommend Garry and his services to you.",
+    name: "Seamus Corry",
+    role: "Mental Health Matters Podcast",
     stars: 5,
+    image: "/testimonials/seamus-corry.webp",
+  },
+  {
+    quote:
+      "Website wizard who delivers at lightning speed. I've been collaborating with Garry on Voice2Lead, and his work on our websites has been absolutely outstanding. 72-hour website delivery — from brief to live site in 3 days. Quality work, not rushed rubbish.",
+    name: "Steven Summon",
+    role: "Summone Consulting / Voice2Lead",
+    stars: 5,
+    image: "/testimonials/steven-summone.webp",
+  },
+  {
+    quote:
+      "It's been a great experience working with Garry and Bear Media. Slick process, reliable, good communication and happy with the end results on my project. Overall a top quality service. Highly recommend.",
+    name: "Gary Young",
+    role: "Client",
+    stars: 5,
+    image: null,
   },
 ];
 
@@ -832,16 +967,27 @@ function TestimonialFlipCard({ review, index, isInView }: {
       onKeyDown={(e) => e.key === "Enter" && setIsFlipped(!isFlipped)}
     >
       <motion.div
-        className="relative w-full min-h-[280px]"
+        className="relative w-full min-h-[320px]"
         animate={{ rotateY: isFlipped ? 180 : 0 }}
         transition={{ duration: 0.6, ease: "easeInOut" }}
         style={{ transformStyle: "preserve-3d" }}
       >
-        {/* Front: name + stars */}
+        {/* Front: photo + name + stars */}
         <div
           className="absolute inset-0 border border-white/[0.06] bg-[#0A0A0A] p-8 flex flex-col justify-center items-center"
           style={{ backfaceVisibility: "hidden" }}
         >
+          {review.image && (
+            <div className="relative h-20 w-20 rounded-full overflow-hidden mb-4 border-2 border-[#D4A830]/30">
+              <Image
+                src={review.image}
+                alt={review.name}
+                fill
+                className="object-cover"
+                sizes="80px"
+              />
+            </div>
+          )}
           <div className="flex gap-1 mb-4">
             {Array.from({ length: review.stars }).map((_, s) => (
               <Star key={s} className="h-4 w-4 fill-[#D4A830] text-[#D4A830]" />
@@ -864,8 +1010,21 @@ function TestimonialFlipCard({ review, index, isInView }: {
             &ldquo;{review.quote}&rdquo;
           </blockquote>
           <div className="flex items-center gap-3 mt-6">
-            <div className="h-px w-6 bg-[#D4A830]" />
-            <p className="text-xs font-bold uppercase text-white">{review.name}</p>
+            {review.image && (
+              <div className="relative h-10 w-10 rounded-full overflow-hidden shrink-0 border border-[#D4A830]/30">
+                <Image
+                  src={review.image}
+                  alt={review.name}
+                  fill
+                  className="object-cover"
+                  sizes="40px"
+                />
+              </div>
+            )}
+            <div>
+              <p className="text-xs font-bold uppercase text-white">{review.name}</p>
+              <p className="text-[9px] text-white/60">{review.role}</p>
+            </div>
           </div>
           <p className="text-[9px] uppercase tracking-[0.2em] text-white/60 mt-4">Tap to flip back</p>
         </div>
@@ -904,7 +1063,7 @@ function TestimonialsSection({ onNavigate }: { onNavigate: (id: string) => void 
               <Star key={s} className="h-4 w-4 fill-[#D4A830] text-[#D4A830]" />
             ))}
           </div>
-          <p className="text-sm text-white/80">5.0 from 18+ Google reviews</p>
+          <p className="text-sm text-white/80">5.0 from 24+ Google reviews</p>
           <a
             href="https://www.google.com/gasearch?q=Bear%20Media&source=sh/x/gs/m2/5"
             target="_blank"
@@ -917,7 +1076,7 @@ function TestimonialsSection({ onNavigate }: { onNavigate: (id: string) => void 
         </motion.div>
 
         {/* 3D Flip testimonial cards */}
-        <div className="grid gap-8 md:grid-cols-3">
+        <div className="grid gap-6 md:grid-cols-3 lg:grid-cols-5">
           {REVIEWS.map((review, i) => (
             <TestimonialFlipCard key={i} review={review} index={i} isInView={isInView} />
           ))}
@@ -1367,7 +1526,7 @@ function Footer({ onNavigate }: { onNavigate: (id: string) => void }) {
   return (
     <footer className="border-t border-white/[0.04] bg-[#0A0A0A] pb-24 md:pb-0">
       {/* Google Map — pointer-events-none prevents scroll hijacking on mobile */}
-      <div className="relative h-64 w-full grayscale overflow-hidden">
+      <div className="relative h-64 w-full overflow-hidden">
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d17892.82!2d-3.4711!3d55.9342!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4887c7a3c07f70c7%3A0x4c0e6d8f82e9e4c0!2sBroxburn%2C%20West%20Lothian%20EH52%206PH!5e0!3m2!1sen!2suk!4v1"
           className="w-full h-full border-0 pointer-events-none"
