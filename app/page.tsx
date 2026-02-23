@@ -26,165 +26,6 @@ import {
 const BLUR =
   "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSIjMTExMTExIi8+";
 
-/* ─────────────────────── lazy shader background ─────────────────────── */
-// ═══════════════════════════════════════════════
-// PASTE THIS INTO page.tsx
-// ═══════════════════════════════════════════════
-//
-// STEP 1: DELETE line 30-33 (the old dynamic import):
-//   const Hero3DCanvas = dynamic(
-//     () => import("@/components/Hero/Hero3DCanvas").then((m) => ({ default: m.Hero3DCanvas })),
-//     { ssr: false }
-//   );
-//
-// STEP 2: PASTE the InlineShaderCanvas function below
-//         somewhere BEFORE the HeroSection function
-//         (around line 30, where the old import was)
-//
-// STEP 3: In the HeroSection function, REPLACE:
-//   <Hero3DCanvas className="h-full w-full" />
-// WITH:
-//   <InlineShaderCanvas />
-//
-// ═══════════════════════════════════════════════
-
-function InlineShaderCanvas() {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-
-    const gl = canvas.getContext('webgl2');
-    if (!gl) {
-      console.warn('InlineShaderCanvas: WebGL2 not supported');
-      return;
-    }
-
-    // Set canvas size
-    const dpr = Math.min(1.0, window.devicePixelRatio * 0.5);
-    canvas.width = window.innerWidth * dpr;
-    canvas.height = window.innerHeight * dpr;
-
-    // Vertex shader
-    const vertSrc = `#version 300 es
-    precision highp float;
-    in vec4 position;
-    void main(){gl_Position=position;}`;
-
-    // Fragment shader — Edinburgh trail lights effect
-    const fragSrc = `#version 300 es
-    precision highp float;
-    uniform float T;
-    uniform vec2 r;
-    out vec4 O;
-
-    float noise(vec2 p){
-      vec2 i=floor(p);
-      vec2 f=fract(p);
-      f=f*f*(3.-2.*f);
-      float a=sin(dot(i,vec2(127.1,311.7)))*43758.5453;
-      float b=sin(dot(i+vec2(1,0),vec2(127.1,311.7)))*43758.5453;
-      float c=sin(dot(i+vec2(0,1),vec2(127.1,311.7)))*43758.5453;
-      float d=sin(dot(i+vec2(1,1),vec2(127.1,311.7)))*43758.5453;
-      return mix(mix(fract(a),fract(b),f.x),mix(fract(c),fract(d),f.x),f.y);
-    }
-
-    void main(){
-      vec2 uv=(gl_FragCoord.xy-.5*r)/r.y;
-      vec3 col=vec3(0);
-      float bg=noise(uv*3.+T*.1);
-      uv*=1.-.3*(sin(T*.2)*.5+.5);
-      for(float i=1.;i<12.;i++){
-        uv+=.1*cos(i*vec2(.1+.01*i,.8)+i*i+T*.5+.1*uv.x);
-        vec2 p=uv;
-        float d=length(p);
-        col+=.00125/d*(cos(sin(i)*vec3(1,2,3))+1.);
-        float b=noise(i+p+bg*1.731);
-        col+=.002*b/length(max(p,vec2(b*p.x*.02,p.y)));
-        col=mix(col,vec3(bg*.28,bg*.22,bg*.06),d);
-      }
-      O=vec4(col,1);
-    }`;
-
-    // Compile shader
-    const compile = (type: number, src: string) => {
-      const s = gl.createShader(type)!;
-      gl.shaderSource(s, src);
-      gl.compileShader(s);
-      if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) {
-        console.warn('Shader compile error:', gl.getShaderInfoLog(s));
-        return null;
-      }
-      return s;
-    };
-
-    const vs = compile(gl.VERTEX_SHADER, vertSrc);
-    const fs = compile(gl.FRAGMENT_SHADER, fragSrc);
-    if (!vs || !fs) return;
-
-    const program = gl.createProgram()!;
-    gl.attachShader(program, vs);
-    gl.attachShader(program, fs);
-    gl.linkProgram(program);
-    if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
-      console.warn('Program link error:', gl.getProgramInfoLog(program));
-      return;
-    }
-    gl.useProgram(program);
-
-    // Set up geometry (full-screen quad)
-    const buf = gl.createBuffer();
-    gl.bindBuffer(gl.ARRAY_BUFFER, buf);
-    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,1,-1,-1,1,1,1,-1]), gl.STATIC_DRAW);
-    const pos = gl.getAttribLocation(program, 'position');
-    gl.enableVertexAttribArray(pos);
-    gl.vertexAttribPointer(pos, 2, gl.FLOAT, false, 0, 0);
-
-    // Uniform locations
-    const uT = gl.getUniformLocation(program, 'T');
-    const uR = gl.getUniformLocation(program, 'r');
-
-    // Render loop — throttled to 30fps
-    let raf: number;
-    let lastTime = 0;
-    const loop = (now: number) => {
-      raf = requestAnimationFrame(loop);
-      if (now - lastTime < 33) return;
-      lastTime = now;
-      gl.viewport(0, 0, canvas.width, canvas.height);
-      gl.uniform1f(uT, now * 0.001);
-      gl.uniform2f(uR, canvas.width, canvas.height);
-      gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
-    };
-    raf = requestAnimationFrame(loop);
-
-    // Resize handler
-    const resize = () => {
-      const d = Math.min(1.0, window.devicePixelRatio * 0.5);
-      canvas.width = window.innerWidth * d;
-      canvas.height = window.innerHeight * d;
-    };
-    window.addEventListener('resize', resize);
-
-    return () => {
-      window.removeEventListener('resize', resize);
-      cancelAnimationFrame(raf);
-      gl.deleteProgram(program);
-      gl.deleteShader(vs);
-      gl.deleteShader(fs);
-      gl.deleteBuffer(buf);
-    };
-  }, []);
-
-  return (
-    <canvas
-      ref={canvasRef}
-      style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', display: 'block' }}
-    />
-  );
-}
-
 const InteractiveServiceCards = dynamic(
   () => import("@/components/InteractiveServiceCards"),
   { ssr: false }
@@ -330,7 +171,7 @@ function SiteNav({
               <button
                 key={link.id}
                 onClick={() => onNavigate(link.id)}
-                className="text-[11px] font-medium uppercase tracking-[0.2em] text-white/50 transition-colors hover:text-white"
+                className="text-[11px] font-medium uppercase tracking-[0.2em] text-white/80 transition-colors hover:text-white"
               >
                 <AnimatedUnderline color="#D4A830" thickness={1}>
                   {link.label}
@@ -383,7 +224,7 @@ function SiteNav({
           >
             <button
               onClick={onToggleMobile}
-              className="absolute top-5 right-6 p-2 text-white/50"
+              className="absolute top-5 right-6 p-2 text-white/80"
               aria-label="Close menu"
             >
               <X className="h-6 w-6" />
@@ -408,7 +249,7 @@ function SiteNav({
               transition={{ delay: 0.4 }}
               className="mt-12 border-t border-white/10 pt-6"
             >
-              <a href="mailto:info@bear-media.com" className="text-sm text-white/40">
+              <a href="mailto:info@bear-media.com" className="text-sm text-white/80">
                 info@bear-media.com
               </a>
             </motion.div>
@@ -439,7 +280,6 @@ function HeroSection({ onNavigate }: { onNavigate: (id: string) => void }) {
     >
       {/* Shader background — hero-mobile-gradient shows on mobile when WebGL is hidden */}
       <div className="absolute inset-0 hero-mobile-gradient">
-        <Hero3DCanvas className="h-full w-full" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-[#0A0A0A]/10 to-transparent" />
       </div>
 
@@ -476,7 +316,7 @@ function HeroSection({ onNavigate }: { onNavigate: (id: string) => void }) {
         </motion.div>
 
         {/* 3. Main headline — staggered word reveal */}
-        <div className="mb-6">
+        <h1 className="mb-6">
           <AnimatedHeroText
             text="Your business deserves to be"
             className="text-[clamp(2.8rem,8vw,6rem)] font-bold uppercase leading-[0.95] tracking-[-0.03em] text-white"
@@ -490,14 +330,14 @@ function HeroSection({ onNavigate }: { onNavigate: (id: string) => void }) {
           >
             {" "}seen.
           </motion.span>
-        </div>
+        </h1>
 
         {/* Sub copy */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 1.2 }}
-          className="mx-auto mb-10 max-w-xl text-base leading-relaxed text-[#C9A227]/70 md:text-lg"
+          className="mx-auto mb-10 max-w-xl text-base leading-relaxed text-[#D4A830] md:text-lg"
         >
           Websites that actually work. Social content that gets folk talking. No fluff — just results that fill your diary.
         </motion.p>
@@ -554,7 +394,7 @@ function HeroSection({ onNavigate }: { onNavigate: (id: string) => void }) {
               <p className="brutal-number text-2xl font-bold text-[#D4A830] md:text-3xl">
                 {stat.value}
               </p>
-              <p className="mt-1 text-[10px] uppercase tracking-[0.2em] text-[#D4A830]/50">
+              <p className="mt-1 text-[10px] uppercase tracking-[0.2em] text-[#D4A830]">
                 {stat.label}
               </p>
             </div>
@@ -593,7 +433,7 @@ function MarqueeStrip() {
         {doubled.map((item, i) => (
           <span
             key={i}
-            className="flex items-center gap-4 text-xs font-medium uppercase tracking-[0.25em] text-white/15"
+            className="flex items-center gap-4 text-xs font-medium uppercase tracking-[0.25em] text-white/50"
           >
             <span className="h-1 w-1 bg-[#D4A830]" />
             {item}
@@ -654,7 +494,7 @@ function PainSection({ onNavigate }: { onNavigate: (id: string) => void }) {
             {"If your business isn't online properly,".split(" ").map((word, i) => (
               <span
                 key={i}
-                className="mr-[0.3em] text-white/20 transition-colors duration-300 hover:text-white cursor-default"
+                className="mr-[0.3em] text-white/60 transition-colors duration-300 hover:text-white cursor-default"
               >
                 {word}
               </span>
@@ -664,7 +504,7 @@ function PainSection({ onNavigate }: { onNavigate: (id: string) => void }) {
             {"it basically doesn't exist.".split(" ").map((word, i) => (
               <span
                 key={i}
-                className="mr-[0.3em] text-white/[0.12] transition-colors duration-300 hover:text-white/40 cursor-default"
+                className="mr-[0.3em] text-white/40 transition-colors duration-300 hover:text-white cursor-default"
               >
                 {word}
               </span>
@@ -688,7 +528,7 @@ function PainSection({ onNavigate }: { onNavigate: (id: string) => void }) {
               <h3 className="mt-4 text-2xl font-bold uppercase tracking-tight text-white">
                 {pain.title}
               </h3>
-              <p className="mt-3 leading-relaxed text-white/40">
+              <p className="mt-3 leading-relaxed text-white/80">
                 {pain.desc}
               </p>
             </motion.div>
@@ -782,14 +622,14 @@ function ProcessSection({ onNavigate }: { onNavigate: (id: string) => void }) {
                 <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#D4A830]">
                   Step {step.step}
                 </span>
-                <span className="text-[10px] uppercase tracking-[0.15em] text-white/20">
+                <span className="text-[10px] uppercase tracking-[0.15em] text-white/60">
                   {step.duration}
                 </span>
               </div>
               <h3 className="mb-3 text-xl font-bold uppercase tracking-tight text-white">
                 {step.title}
               </h3>
-              <p className="text-base leading-relaxed text-white/40">
+              <p className="text-base leading-relaxed text-white/80">
                 {step.desc}
               </p>
             </motion.div>
@@ -908,7 +748,7 @@ function WorkSection({ onNavigate }: { onNavigate: (id: string) => void }) {
             href="https://portfolio.bear-media.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex w-fit items-center gap-3 text-[11px] font-medium uppercase tracking-[0.2em] text-white/40 transition-colors hover:text-[#D4A830]"
+            className="group flex w-fit items-center gap-3 text-[11px] font-medium uppercase tracking-[0.2em] text-white/80 transition-colors hover:text-[#D4A830]"
           >
             Full portfolio
             <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -924,7 +764,7 @@ function WorkSection({ onNavigate }: { onNavigate: (id: string) => void }) {
 
         {/* Client logos */}
         <div className="mt-20">
-          <p className="mb-8 text-[10px] font-medium uppercase tracking-[0.3em] text-white/20">
+          <p className="mb-8 text-[10px] font-medium uppercase tracking-[0.3em] text-white/60">
             Some of the businesses we work with
           </p>
           <div className="flex flex-wrap gap-x-8 gap-y-3">
@@ -933,7 +773,7 @@ function WorkSection({ onNavigate }: { onNavigate: (id: string) => void }) {
               "The Free Spirit", "Herb & Soul", "M&M CTS", "RTL Transport",
               "Almond Vet Care", "Voice2Lead",
             ].map((client) => (
-              <span key={client} className="text-sm text-white/20 transition-colors hover:text-white/40">
+              <span key={client} className="text-sm text-white/60 transition-colors hover:text-white">
                 {client}
               </span>
             ))}
@@ -1011,8 +851,8 @@ function TestimonialFlipCard({ review, index, isInView }: {
           <p className="text-xl font-bold uppercase tracking-tight text-white text-center">
             {review.name}
           </p>
-          <p className="text-xs text-white/30 mt-1">{review.role}</p>
-          <p className="text-[9px] uppercase tracking-[0.2em] text-white/20 mt-6">Tap to read</p>
+          <p className="text-xs text-white/70 mt-1">{review.role}</p>
+          <p className="text-[9px] uppercase tracking-[0.2em] text-white/60 mt-6">Tap to read</p>
         </div>
 
         {/* Back: review text */}
@@ -1020,14 +860,14 @@ function TestimonialFlipCard({ review, index, isInView }: {
           className="absolute inset-0 border border-[#D4A830]/20 bg-[#0A0A0A] p-8 flex flex-col justify-center"
           style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
         >
-          <blockquote className="text-base leading-relaxed text-white/70">
+          <blockquote className="text-base leading-relaxed text-white/90">
             &ldquo;{review.quote}&rdquo;
           </blockquote>
           <div className="flex items-center gap-3 mt-6">
             <div className="h-px w-6 bg-[#D4A830]" />
             <p className="text-xs font-bold uppercase text-white">{review.name}</p>
           </div>
-          <p className="text-[9px] uppercase tracking-[0.2em] text-white/20 mt-4">Tap to flip back</p>
+          <p className="text-[9px] uppercase tracking-[0.2em] text-white/60 mt-4">Tap to flip back</p>
         </div>
       </motion.div>
     </motion.div>
@@ -1064,12 +904,12 @@ function TestimonialsSection({ onNavigate }: { onNavigate: (id: string) => void 
               <Star key={s} className="h-4 w-4 fill-[#D4A830] text-[#D4A830]" />
             ))}
           </div>
-          <p className="text-sm text-white/40">5.0 from 18+ Google reviews</p>
+          <p className="text-sm text-white/80">5.0 from 18+ Google reviews</p>
           <a
             href="https://www.google.com/gasearch?q=Bear%20Media&source=sh/x/gs/m2/5"
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-4 inline-flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.15em] text-white/30 transition-colors hover:text-[#D4A830]"
+            className="mt-4 inline-flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.15em] text-white/70 transition-colors hover:text-[#D4A830]"
           >
             Read all reviews
             <ExternalLink className="h-3 w-3" />
@@ -1116,7 +956,7 @@ function AboutSection() {
               className="mb-8 text-5xl font-bold uppercase leading-[1.1] tracking-tight md:text-6xl"
               as="h2"
             />
-            <div className="space-y-4 text-lg leading-relaxed text-white/50">
+            <div className="space-y-4 text-lg leading-relaxed text-white/80">
               <p>
                 I&apos;m Garry. I started Bear Media because I was sick of seeing small businesses
                 get ripped off by agencies that charge a fortune and deliver hee-haw.
@@ -1148,7 +988,7 @@ function AboutSection() {
                   <p className="brutal-number text-3xl font-bold text-[#D4A830] md:text-4xl">
                     {stat.value}
                   </p>
-                  <p className="mt-1 text-[10px] uppercase tracking-[0.2em] text-white/30">
+                  <p className="mt-1 text-[10px] uppercase tracking-[0.2em] text-white/70">
                     {stat.label}
                   </p>
                 </motion.div>
@@ -1180,7 +1020,7 @@ function AboutSection() {
               <p className="text-sm font-bold uppercase tracking-tight text-white">
                 Garry Lynch
               </p>
-              <p className="text-[10px] uppercase tracking-[0.2em] text-white/40">
+              <p className="text-[10px] uppercase tracking-[0.2em] text-white/80">
                 Founder
               </p>
             </div>
@@ -1270,7 +1110,7 @@ function ContactSection() {
   };
 
   const inputClasses =
-    "w-full border border-white/[0.08] bg-transparent px-4 py-4 text-sm text-white placeholder:text-white/20 focus:border-[#D4A830] focus:outline-none transition-colors";
+    "w-full border border-white/[0.08] bg-transparent px-4 py-4 text-sm text-white placeholder:text-white/40 focus:border-[#D4A830] focus:outline-none transition-colors";
 
   return (
     <section id="contact" ref={ref} className="relative border-t border-white/[0.04] bg-[#0A0A0A] py-32 md:py-40">
@@ -1293,7 +1133,7 @@ function ContactSection() {
               className="mb-6 text-5xl font-bold uppercase leading-[1.1] tracking-tight text-white md:text-5xl"
               as="h2"
             />
-            <p className="mb-10 text-lg leading-relaxed text-white/40">
+            <p className="mb-10 text-lg leading-relaxed text-white/80">
               Drop me a message and I&apos;ll get back to you personally &mdash; no bots, no call centres, no being passed around. Just me.
             </p>
 
@@ -1309,13 +1149,13 @@ function ContactSection() {
                   <Tag
                     key={item.label}
                     {...(item.href ? { href: item.href } : {})}
-                    className="flex items-center gap-4 text-white/50 transition-colors hover:text-white"
+                    className="flex items-center gap-4 text-white/80 transition-colors hover:text-white"
                   >
                     <div className="flex h-10 w-10 items-center justify-center border border-white/[0.08]">
                       <Icon className="h-4 w-4" />
                     </div>
                     <div>
-                      <p className="text-[10px] uppercase tracking-[0.2em] text-white/25">{item.label}</p>
+                      <p className="text-[10px] uppercase tracking-[0.2em] text-white/60">{item.label}</p>
                       <p className="text-sm">{item.value}</p>
                     </div>
                   </Tag>
@@ -1339,13 +1179,13 @@ function ContactSection() {
                   <h3 className="mb-2 text-xl font-bold uppercase tracking-tight text-white">
                     Message sent
                   </h3>
-                  <p className="text-sm text-white/40">I&apos;ll get back to you within 24 hours.</p>
+                  <p className="text-sm text-white/80">I&apos;ll get back to you within 24 hours.</p>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <div className="grid gap-4 md:grid-cols-2">
                     <div>
-                      <label className="mb-2 block text-[10px] font-medium uppercase tracking-[0.2em] text-white/30">
+                      <label className="mb-2 block text-[10px] font-medium uppercase tracking-[0.2em] text-white/70">
                         Name *
                       </label>
                       <input
@@ -1357,7 +1197,7 @@ function ContactSection() {
                       />
                     </div>
                     <div>
-                      <label className="mb-2 block text-[10px] font-medium uppercase tracking-[0.2em] text-white/30">
+                      <label className="mb-2 block text-[10px] font-medium uppercase tracking-[0.2em] text-white/70">
                         Email *
                       </label>
                       <input
@@ -1371,7 +1211,7 @@ function ContactSection() {
                   </div>
                   <div className="grid gap-4 md:grid-cols-2">
                     <div>
-                      <label className="mb-2 block text-[10px] font-medium uppercase tracking-[0.2em] text-white/30">
+                      <label className="mb-2 block text-[10px] font-medium uppercase tracking-[0.2em] text-white/70">
                         Phone
                       </label>
                       <input
@@ -1382,7 +1222,7 @@ function ContactSection() {
                       />
                     </div>
                     <div>
-                      <label className="mb-2 block text-[10px] font-medium uppercase tracking-[0.2em] text-white/30">
+                      <label className="mb-2 block text-[10px] font-medium uppercase tracking-[0.2em] text-white/70">
                         Service
                       </label>
                       <select
@@ -1401,7 +1241,7 @@ function ContactSection() {
                     </div>
                   </div>
                   <div>
-                    <label className="mb-2 block text-[10px] font-medium uppercase tracking-[0.2em] text-white/30">
+                    <label className="mb-2 block text-[10px] font-medium uppercase tracking-[0.2em] text-white/70">
                       Message *
                     </label>
                     <textarea
@@ -1477,7 +1317,7 @@ function FloatingBottomNav({
                   key={item.id}
                   onClick={() => onNavigate(item.id)}
                   className={`flex flex-col items-center gap-0.5 px-3 py-1.5 transition-colors ${
-                    isActive ? "text-[#D4A830]" : "text-white/40"
+                    isActive ? "text-[#D4A830]" : "text-white/60"
                   }`}
                 >
                   <Icon className="h-4 w-4" />
@@ -1499,7 +1339,7 @@ function SectionCTA({ text, target, onNavigate }: { text: string; target: string
   return (
     <button
       onClick={() => onNavigate(target)}
-      className="mt-12 inline-flex items-center gap-2 text-xs font-medium uppercase tracking-[0.2em] text-[#D4A830]/60 transition-colors hover:text-[#D4A830]"
+      className="mt-12 inline-flex items-center gap-2 text-xs font-medium uppercase tracking-[0.2em] text-[#D4A830] transition-colors hover:text-[#D4A830]"
     >
       {text}
       <ArrowRight className="h-3 w-3" />
@@ -1512,7 +1352,7 @@ function BackToTop() {
     <div className="flex justify-center bg-[#0A0A0A] py-4">
       <button
         onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-        className="text-[10px] uppercase tracking-[0.2em] text-white/15 transition-colors hover:text-[#D4A830]/50"
+        className="text-[10px] uppercase tracking-[0.2em] text-white/50 transition-colors hover:text-[#D4A830]"
       >
         Back to top
       </button>
@@ -1554,7 +1394,7 @@ function Footer({ onNavigate }: { onNavigate: (id: string) => void }) {
                 <span className="text-base font-bold tracking-tight text-[#D4A830]">MEDIA</span>
               </div>
             </button>
-            <p className="mb-6 text-sm leading-relaxed text-white/30">
+            <p className="mb-6 text-sm leading-relaxed text-white/70">
               Websites and social media for Scottish businesses that want to be seen.
             </p>
             <div className="flex gap-2">
@@ -1568,7 +1408,7 @@ function Footer({ onNavigate }: { onNavigate: (id: string) => void }) {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex h-9 w-9 items-center justify-center border border-white/[0.06] text-white/30 transition-all hover:border-[#D4A830] hover:text-[#D4A830]"
+                  className="flex h-9 w-9 items-center justify-center border border-white/[0.06] text-white/70 transition-all hover:border-[#D4A830] hover:text-[#D4A830]"
                   aria-label={social.label}
                 >
                   <social.icon className="h-3.5 w-3.5" />
@@ -1579,7 +1419,7 @@ function Footer({ onNavigate }: { onNavigate: (id: string) => void }) {
 
           {/* Links */}
           <div>
-            <h4 className="mb-4 text-[10px] font-bold uppercase tracking-[0.25em] text-white/25">
+            <h4 className="mb-4 text-[10px] font-bold uppercase tracking-[0.25em] text-white/60">
               Navigate
             </h4>
             <ul className="space-y-3 text-sm">
@@ -1587,7 +1427,7 @@ function Footer({ onNavigate }: { onNavigate: (id: string) => void }) {
                 <li key={link}>
                   <button
                     onClick={() => onNavigate(link.toLowerCase())}
-                    className="text-white/40 transition-colors hover:text-white"
+                    className="text-white/80 transition-colors hover:text-white"
                   >
                     {link}
                   </button>
@@ -1598,7 +1438,7 @@ function Footer({ onNavigate }: { onNavigate: (id: string) => void }) {
                   href="https://portfolio.bear-media.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-white/40 transition-colors hover:text-white"
+                  className="text-white/80 transition-colors hover:text-white"
                 >
                   Portfolio
                 </a>
@@ -1608,13 +1448,13 @@ function Footer({ onNavigate }: { onNavigate: (id: string) => void }) {
 
           {/* Services */}
           <div>
-            <h4 className="mb-4 text-[10px] font-bold uppercase tracking-[0.25em] text-white/25">
+            <h4 className="mb-4 text-[10px] font-bold uppercase tracking-[0.25em] text-white/60">
               Services
             </h4>
             <ul className="space-y-3 text-sm">
               {["Websites", "Social Media Content", "Photography", "Drone Footage", "SEO", "Google Business"].map(
                 (item) => (
-                  <li key={item} className="text-white/40">{item}</li>
+                  <li key={item} className="text-white/80">{item}</li>
                 )
               )}
             </ul>
@@ -1622,28 +1462,28 @@ function Footer({ onNavigate }: { onNavigate: (id: string) => void }) {
 
           {/* Contact */}
           <div>
-            <h4 className="mb-4 text-[10px] font-bold uppercase tracking-[0.25em] text-white/25">
+            <h4 className="mb-4 text-[10px] font-bold uppercase tracking-[0.25em] text-white/60">
               Contact
             </h4>
             <ul className="space-y-3 text-sm">
               <li>
-                <a href="mailto:info@bear-media.com" className="text-white/40 transition-colors hover:text-white">
+                <a href="mailto:info@bear-media.com" className="text-white/80 transition-colors hover:text-white">
                   info@bear-media.com
                 </a>
               </li>
               <li>
-                <a href="tel:+447879011860" className="text-white/40 transition-colors hover:text-white">
+                <a href="tel:+447879011860" className="text-white/80 transition-colors hover:text-white">
                   +44 7879 011860
                 </a>
               </li>
-              <li className="text-white/40">Broxburn, West Lothian</li>
-              <li className="text-white/40">EH52 6PH, Scotland</li>
+              <li className="text-white/80">Broxburn, West Lothian</li>
+              <li className="text-white/80">EH52 6PH, Scotland</li>
             </ul>
             <div className="mt-6">
-              <h4 className="mb-2 text-[10px] font-bold uppercase tracking-[0.25em] text-white/25">
+              <h4 className="mb-2 text-[10px] font-bold uppercase tracking-[0.25em] text-white/60">
                 Areas
               </h4>
-              <p className="text-xs text-white/30">
+              <p className="text-xs text-white/70">
                 Edinburgh, West Lothian, Fife, Glasgow, Falkirk &amp; Central Scotland
               </p>
             </div>
@@ -1653,21 +1493,21 @@ function Footer({ onNavigate }: { onNavigate: (id: string) => void }) {
         {/* Legal links + bottom */}
         <div className="mt-16 border-t border-white/[0.04] pt-8">
           <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
-            <p className="text-[10px] uppercase tracking-[0.2em] text-white/20">
+            <p className="text-[10px] uppercase tracking-[0.2em] text-white/60">
               &copy; {new Date().getFullYear()} Bear Media. All rights reserved.
             </p>
             <div className="flex gap-6">
-              <a href="/terms-conditions" className="text-[10px] uppercase tracking-[0.2em] text-white/20 transition-colors hover:text-white/40">
+              <a href="/terms-conditions" className="text-[10px] uppercase tracking-[0.2em] text-white/60 transition-colors hover:text-white">
                 Terms &amp; Conditions
               </a>
-              <a href="/privacy-policy" className="text-[10px] uppercase tracking-[0.2em] text-white/20 transition-colors hover:text-white/40">
+              <a href="/privacy-policy" className="text-[10px] uppercase tracking-[0.2em] text-white/60 transition-colors hover:text-white">
                 Privacy Policy
               </a>
-              <a href="/cookie-policy" className="text-[10px] uppercase tracking-[0.2em] text-white/20 transition-colors hover:text-white/40">
+              <a href="/cookie-policy" className="text-[10px] uppercase tracking-[0.2em] text-white/60 transition-colors hover:text-white">
                 Cookie Policy
               </a>
             </div>
-            <p className="text-[10px] uppercase tracking-[0.2em] text-white/10">
+            <p className="text-[10px] uppercase tracking-[0.2em] text-white/40">
               Designed &amp; built by Bear Media
             </p>
           </div>
