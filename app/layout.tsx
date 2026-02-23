@@ -3,7 +3,6 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import { Space_Grotesk, Inter } from "next/font/google";
 import { LenisScrollProvider } from "@/components/LenisScrollProvider";
-import { CustomCursor } from "@/components/ui/CustomCursor";
 import { ScrollProgress } from "@/components/ui/ScrollProgress";
 import "./globals.css";
 
@@ -182,7 +181,6 @@ export default function RootLayout({
         </>
       ) : null}
       <body className="font-sans antialiased">
-        <CustomCursor />
         <ScrollProgress />
         <LenisScrollProvider>
           {children}
