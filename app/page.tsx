@@ -21,6 +21,7 @@ import {
   Briefcase,
   User,
   MessageSquare,
+  ChevronDown,
 } from "lucide-react";
 
 const BLUR =
@@ -276,7 +277,7 @@ function HeroSection({ onNavigate }: { onNavigate: (id: string) => void }) {
     <section
       id="home"
       ref={ref}
-      className="relative flex min-h-screen items-center justify-center overflow-hidden"
+      className="relative flex min-h-screen items-center justify-center overflow-hidden pt-20"
     >
       {/* Shader background — hero-mobile-gradient shows on mobile when WebGL is hidden */}
       <div className="absolute inset-0 hero-mobile-gradient">
@@ -616,7 +617,7 @@ const PROCESS_STEPS = [
     title: "Build & create",
     desc: "This is where the magic happens. I crack on with the work and keep you in the loop the whole way. Nothing goes live without your say-so.",
     duration: "1-3 weeks",
-    image: "/work/brand-collage.jpg",
+    image: "/work/website-4-almond-vet.jpg",
   },
   {
     step: "04",
@@ -907,7 +908,7 @@ function WorkSection({ onNavigate }: { onNavigate: (id: string) => void }) {
 const REVIEWS = [
   {
     quote:
-      "Bear Media created an amazing social media campaign for my coaching and healing business. Garry took the time to understand what my business was all about in order to create posts that expertly promoted my new programme. 5* service!!",
+      "Bear Media created an amazing social media campaign for my coaching and healing business. Garry took the time to understand what my business was all about. 5* service!!",
     name: "Leanne Murphy",
     role: "The Free Spirit",
     stars: 5,
@@ -915,7 +916,7 @@ const REVIEWS = [
   },
   {
     quote:
-      "I highly recommend Bear Media, Garry is always a pleasure to work with. I have used Bear Media on a few projects now and they are very professional. You can tell Garry genuinely cares about his clients and is always willing to go the extra mile. Overall fantastic service.",
+      "Garry is always a pleasure to work with. Very professional. You can tell he genuinely cares about his clients and is always willing to go the extra mile. Fantastic service.",
     name: "Steven Johnstone",
     role: "JRPH Boilers",
     stars: 5,
@@ -923,7 +924,7 @@ const REVIEWS = [
   },
   {
     quote:
-      "Omg what an amazing service. Garry has been an amazing support in the development of my digital media footprint and nothing has been too much trouble. I am honoured and humbled to retain Garry and Bear Media for all my media needs and highly recommend Garry and his services to you.",
+      "Garry has been an amazing support in the development of my digital media footprint. Nothing has been too much trouble. Highly recommend.",
     name: "Seamus Corry",
     role: "Mental Health Matters Podcast",
     stars: 5,
@@ -931,7 +932,7 @@ const REVIEWS = [
   },
   {
     quote:
-      "Website wizard who delivers at lightning speed. I've been collaborating with Garry on Voice2Lead, and his work on our websites has been absolutely outstanding. 72-hour website delivery — from brief to live site in 3 days. Quality work, not rushed rubbish.",
+      "Website wizard who delivers at lightning speed. 72-hour website delivery — from brief to live site in 3 days. Quality work, not rushed rubbish.",
     name: "Steven Summon",
     role: "Summone Consulting / Voice2Lead",
     stars: 5,
@@ -939,7 +940,7 @@ const REVIEWS = [
   },
   {
     quote:
-      "It's been a great experience working with Garry and Bear Media. Slick process, reliable, good communication and happy with the end results on my project. Overall a top quality service. Highly recommend.",
+      "Slick process, reliable, good communication. Happy with the end results on my project. Top quality service. Highly recommend.",
     name: "Gary Young",
     role: "Client",
     stars: 5,
@@ -947,95 +948,17 @@ const REVIEWS = [
   },
 ];
 
-function TestimonialFlipCard({ review, index, isInView }: {
-  review: typeof REVIEWS[0];
-  index: number;
-  isInView: boolean;
-}) {
-  const [isFlipped, setIsFlipped] = useState(false);
-
-  return (
-    <motion.div
-      className="cursor-pointer"
-      style={{ perspective: "1000px" }}
-      initial={{ opacity: 0, y: 40 }}
-      animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.5, delay: index * 0.12 }}
-      onClick={() => setIsFlipped(!isFlipped)}
-      role="button"
-      tabIndex={0}
-      onKeyDown={(e) => e.key === "Enter" && setIsFlipped(!isFlipped)}
-    >
-      <motion.div
-        className="relative w-full min-h-[320px]"
-        animate={{ rotateY: isFlipped ? 180 : 0 }}
-        transition={{ duration: 0.6, ease: "easeInOut" }}
-        style={{ transformStyle: "preserve-3d" }}
-      >
-        {/* Front: photo + name + stars */}
-        <div
-          className="absolute inset-0 border border-white/[0.06] bg-[#0A0A0A] p-8 flex flex-col justify-center items-center"
-          style={{ backfaceVisibility: "hidden" }}
-        >
-          {review.image && (
-            <div className="relative h-20 w-20 rounded-full overflow-hidden mb-4 border-2 border-[#D4A830]/30">
-              <Image
-                src={review.image}
-                alt={review.name}
-                fill
-                className="object-cover"
-                sizes="80px"
-              />
-            </div>
-          )}
-          <div className="flex gap-1 mb-4">
-            {Array.from({ length: review.stars }).map((_, s) => (
-              <Star key={s} className="h-4 w-4 fill-[#D4A830] text-[#D4A830]" />
-            ))}
-          </div>
-          <div className="h-px w-8 bg-[#D4A830] mb-4" />
-          <p className="text-xl font-bold uppercase tracking-tight text-white text-center">
-            {review.name}
-          </p>
-          <p className="text-xs text-white/70 mt-1">{review.role}</p>
-          <p className="text-[9px] uppercase tracking-[0.2em] text-white/60 mt-6">Tap to read</p>
-        </div>
-
-        {/* Back: review text */}
-        <div
-          className="absolute inset-0 border border-[#D4A830]/20 bg-[#0A0A0A] p-8 flex flex-col justify-center"
-          style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
-        >
-          <blockquote className="text-base leading-relaxed text-white/90">
-            &ldquo;{review.quote}&rdquo;
-          </blockquote>
-          <div className="flex items-center gap-3 mt-6">
-            {review.image && (
-              <div className="relative h-10 w-10 rounded-full overflow-hidden shrink-0 border border-[#D4A830]/30">
-                <Image
-                  src={review.image}
-                  alt={review.name}
-                  fill
-                  className="object-cover"
-                  sizes="40px"
-                />
-              </div>
-            )}
-            <div>
-              <p className="text-xs font-bold uppercase text-white">{review.name}</p>
-              <p className="text-[9px] text-white/60">{review.role}</p>
-            </div>
-          </div>
-          <p className="text-[9px] uppercase tracking-[0.2em] text-white/60 mt-4">Tap to flip back</p>
-        </div>
-      </motion.div>
-    </motion.div>
-  );
-}
-
 function TestimonialsSection({ onNavigate }: { onNavigate: (id: string) => void }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % REVIEWS.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
 
   return (
     <section ref={ref} className="relative border-t border-white/[0.04] bg-[#0A0A0A] py-32 md:py-40">
@@ -1075,12 +998,85 @@ function TestimonialsSection({ onNavigate }: { onNavigate: (id: string) => void 
           </a>
         </motion.div>
 
-        {/* 3D Flip testimonial cards */}
-        <div className="grid gap-6 md:grid-cols-3 lg:grid-cols-5">
-          {REVIEWS.map((review, i) => (
-            <TestimonialFlipCard key={i} review={review} index={i} isInView={isInView} />
-          ))}
+        {/* Auto-scrolling testimonial carousel */}
+        <div className="relative overflow-hidden">
+          <motion.div
+            className="flex"
+            animate={{ x: `${-currentIndex * 100}%` }}
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          >
+            {REVIEWS.map((review, i) => (
+              <div key={i} className="w-full flex-shrink-0 px-4">
+                <div className="mx-auto max-w-3xl text-center">
+                  {/* Photo */}
+                  {review.image ? (
+                    <div className="relative mx-auto mb-6 h-24 w-24 overflow-hidden rounded-full border-2 border-[#D4A830]/40">
+                      <Image
+                        src={review.image}
+                        alt={review.name}
+                        fill
+                        className="object-cover"
+                        sizes="96px"
+                      />
+                    </div>
+                  ) : (
+                    <div className="mx-auto mb-6 flex h-24 w-24 items-center justify-center rounded-full border-2 border-[#D4A830]/40 bg-[#1a1a1a]">
+                      <span className="text-2xl font-bold text-[#D4A830]">{review.name.charAt(0)}</span>
+                    </div>
+                  )}
+
+                  {/* Stars */}
+                  <div className="mb-6 flex justify-center gap-1">
+                    {Array.from({ length: review.stars }).map((_, s) => (
+                      <Star key={s} className="h-5 w-5 fill-[#D4A830] text-[#D4A830]" />
+                    ))}
+                  </div>
+
+                  {/* Quote */}
+                  <blockquote className="mb-8 text-xl leading-relaxed text-white/90 md:text-2xl">
+                    &ldquo;{review.quote}&rdquo;
+                  </blockquote>
+
+                  {/* Name */}
+                  <p className="text-sm font-bold uppercase tracking-wider text-white">{review.name}</p>
+                  <p className="text-xs text-white/60 mt-1">{review.role}</p>
+                </div>
+              </div>
+            ))}
+          </motion.div>
+
+          {/* Navigation dots */}
+          <div className="mt-10 flex justify-center gap-3">
+            {REVIEWS.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setCurrentIndex(i)}
+                className={`h-2 transition-all duration-300 ${
+                  i === currentIndex ? "w-8 bg-[#D4A830]" : "w-2 bg-white/30 hover:bg-white/50"
+                }`}
+                style={{ borderRadius: "4px" }}
+                aria-label={`Go to review ${i + 1}`}
+              />
+            ))}
+          </div>
+
+          {/* Left/Right arrows */}
+          <button
+            onClick={() => setCurrentIndex((prev) => (prev - 1 + REVIEWS.length) % REVIEWS.length)}
+            className="absolute left-0 top-1/2 -translate-y-1/2 p-3 text-white/40 hover:text-[#D4A830] transition-colors"
+            aria-label="Previous review"
+          >
+            <ChevronDown className="h-6 w-6 -rotate-90" />
+          </button>
+          <button
+            onClick={() => setCurrentIndex((prev) => (prev + 1) % REVIEWS.length)}
+            className="absolute right-0 top-1/2 -translate-y-1/2 p-3 text-white/40 hover:text-[#D4A830] transition-colors"
+            aria-label="Next review"
+          >
+            <ChevronDown className="h-6 w-6 rotate-90" />
+          </button>
         </div>
+
         <SectionCTA text="Join our happy clients" target="contact" onNavigate={onNavigate} />
       </div>
     </section>

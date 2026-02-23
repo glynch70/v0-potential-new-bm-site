@@ -1,8 +1,9 @@
 'use client'
 
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { Video, Monitor, Sparkles, Camera, Film, Brain, Layout, Plus, ArrowRight } from 'lucide-react'
+import Image from 'next/image'
 
 const MAIN_SERVICES = [
   {
@@ -14,7 +15,7 @@ const MAIN_SERVICES = [
     accent: '#D4A830',
     accentBg: 'rgba(212, 168, 48, 0.1)',
     accentBorder: 'rgba(212, 168, 48, 0.3)',
-    glow: 'rgba(212, 168, 48, 0.15)',
+    image: '/work/websites-desktop.jpg',
   },
   {
     number: '02',
@@ -25,7 +26,7 @@ const MAIN_SERVICES = [
     accent: '#4ECDC4',
     accentBg: 'rgba(78, 205, 196, 0.1)',
     accentBorder: 'rgba(78, 205, 196, 0.3)',
-    glow: 'rgba(78, 205, 196, 0.15)',
+    image: '/services-social-media.jpg',
   },
   {
     number: '03',
@@ -36,7 +37,7 @@ const MAIN_SERVICES = [
     accent: '#E879F9',
     accentBg: 'rgba(232, 121, 249, 0.1)',
     accentBorder: 'rgba(232, 121, 249, 0.3)',
-    glow: 'rgba(232, 121, 249, 0.15)',
+    image: '/work/brand-collage.jpg',
   },
 ]
 
@@ -51,82 +52,121 @@ const ADDITIONAL_SERVICES = [
   { icon: Plus, label: 'Podcast Production' },
 ]
 
-function ServiceCard({ service, index }: { service: typeof MAIN_SERVICES[0]; index: number }) {
+function ServiceFlipCard({ service, index }: { service: typeof MAIN_SERVICES[0]; index: number }) {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-80px' })
+  const [isFlipped, setIsFlipped] = useState(false)
   const Icon = service.icon
 
   return (
     <motion.div
       ref={ref}
+      className="cursor-pointer sticky md:static"
+      style={{ perspective: '1000px', top: `${80 + index * 40}px` }}
       initial={{ opacity: 0, y: 40 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.6, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
-      className="group relative cursor-pointer overflow-hidden bg-[#1a1a1a] p-8 transition-transform duration-300 hover:-translate-y-1 md:p-12 sticky md:static"
-      style={{ top: `${80 + index * 40}px` }}
+      onClick={() => setIsFlipped(!isFlipped)}
     >
-      {/* Hover glow */}
-      <div
-        className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-        style={{
-          background: `radial-gradient(circle at center, ${service.glow}, transparent 70%)`,
-        }}
-      />
-
-      {/* Hover border */}
-      <div
-        className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-        style={{
-          boxShadow: `inset 0 0 0 2px ${service.accentBorder}`,
-        }}
-      />
-
-      {/* Number badge */}
-      <div
-        className="absolute right-6 top-6 flex h-10 w-10 items-center justify-center text-sm font-extrabold text-[#1a1a1a] md:right-8 md:top-8 md:h-12 md:w-12 md:text-base"
-        style={{ background: service.accent, borderRadius: '50%' }}
+      <motion.div
+        className="relative w-full min-h-[380px] md:min-h-[420px]"
+        animate={{ rotateY: isFlipped ? 180 : 0 }}
+        transition={{ duration: 0.6, ease: 'easeInOut' }}
+        style={{ transformStyle: 'preserve-3d' }}
       >
-        {service.number}
-      </div>
-
-      {/* Content */}
-      <div className="relative z-10">
-        {/* Icon */}
+        {/* Front: service info */}
         <div
-          className="mb-6 flex h-16 w-16 items-center justify-center transition-transform duration-500 group-hover:scale-110 md:mb-8 md:h-20 md:w-20"
-          style={{
-            background: service.accentBg,
-            border: `3px solid ${service.accent}`,
-            borderRadius: '50%',
-            color: service.accent,
-          }}
+          className="absolute inset-0 bg-[#1a1a1a] p-8 md:p-12"
+          style={{ backfaceVisibility: 'hidden' }}
         >
-          <Icon size={32} strokeWidth={2} />
+          {/* Number badge */}
+          <div
+            className="absolute right-6 top-6 flex h-10 w-10 items-center justify-center text-sm font-extrabold text-[#1a1a1a] md:right-8 md:top-8 md:h-12 md:w-12 md:text-base"
+            style={{ background: service.accent, borderRadius: '50%' }}
+          >
+            {service.number}
+          </div>
+
+          {/* Icon */}
+          <div
+            className="mb-6 flex h-16 w-16 items-center justify-center md:mb-8 md:h-20 md:w-20"
+            style={{
+              background: service.accentBg,
+              border: `3px solid ${service.accent}`,
+              borderRadius: '50%',
+              color: service.accent,
+            }}
+          >
+            <Icon size={32} strokeWidth={2} />
+          </div>
+
+          <h2 className="mb-3 text-2xl font-extrabold text-white">{service.title}</h2>
+          <p className="mb-6 text-base leading-relaxed text-white/80 md:mb-8">{service.description}</p>
+
+          {/* Feature pills */}
+          <div className="flex flex-wrap gap-2">
+            {service.features.map((feature) => (
+              <span
+                key={feature}
+                className="border-2 px-3 py-1.5 text-xs font-semibold md:px-4 md:py-2 md:text-sm"
+                style={{
+                  background: service.accentBg,
+                  borderColor: service.accentBorder,
+                  color: service.accent,
+                }}
+              >
+                {feature}
+              </span>
+            ))}
+          </div>
+
+          <p className="text-[9px] uppercase tracking-[0.2em] text-white/50 mt-6">Tap to see examples</p>
         </div>
 
-        <h2 className="mb-3 text-2xl font-extrabold text-white md:text-2xl">{service.title}</h2>
-        <p className="mb-6 text-base leading-relaxed text-white/80 md:mb-8 md:text-base">{service.description}</p>
-
-        {/* Feature pills */}
-        <div className="flex flex-wrap gap-2">
-          {service.features.map((feature, i) => (
-            <motion.span
-              key={feature}
-              initial={{ opacity: 0, y: 12 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.4, delay: 0.4 + i * 0.08 }}
-              className="border-2 px-3 py-1.5 text-xs font-semibold transition-colors duration-300 group-hover:border-opacity-60 md:px-4 md:py-2 md:text-sm"
+        {/* Back: image with overlay */}
+        <div
+          className="absolute inset-0 overflow-hidden"
+          style={{ backfaceVisibility: 'hidden', transform: 'rotateY(180deg)' }}
+        >
+          <Image
+            src={service.image}
+            alt={service.title}
+            fill
+            className="object-cover"
+            sizes="(max-width: 768px) 100vw, 33vw"
+          />
+          <div className="absolute inset-0 bg-black/50 flex flex-col items-center justify-center p-8 text-center">
+            <div
+              className="mb-4 flex h-16 w-16 items-center justify-center"
               style={{
                 background: service.accentBg,
-                borderColor: service.accentBorder,
+                border: `3px solid ${service.accent}`,
+                borderRadius: '50%',
                 color: service.accent,
               }}
             >
-              {feature}
-            </motion.span>
-          ))}
+              <Icon size={28} strokeWidth={2} />
+            </div>
+            <h3 className="text-2xl font-extrabold text-white mb-2">{service.title}</h3>
+            <div className="flex flex-wrap gap-2 justify-center">
+              {service.features.map((feature) => (
+                <span
+                  key={feature}
+                  className="border px-3 py-1 text-xs font-semibold"
+                  style={{
+                    borderColor: service.accent,
+                    color: service.accent,
+                    background: 'rgba(0,0,0,0.5)',
+                  }}
+                >
+                  {feature}
+                </span>
+              ))}
+            </div>
+            <p className="text-[9px] uppercase tracking-[0.2em] text-white/70 mt-6">Tap to flip back</p>
+          </div>
         </div>
-      </div>
+      </motion.div>
     </motion.div>
   )
 }
@@ -157,10 +197,10 @@ export default function InteractiveServiceCards() {
           <p className="text-base text-white/80 md:text-lg">Websites, content, and creative — all done by one person who actually gives a damn.</p>
         </motion.div>
 
-        {/* 3 Main Service Cards */}
+        {/* 3 Main Service Flip Cards */}
         <div className="grid gap-6 md:grid-cols-3">
           {MAIN_SERVICES.map((service, index) => (
-            <ServiceCard key={service.number} service={service} index={index} />
+            <ServiceFlipCard key={service.number} service={service} index={index} />
           ))}
         </div>
 
