@@ -55,8 +55,10 @@ interface VideoHeroProps {
 export const VideoHero = ({ onContentLabClick }: VideoHeroProps) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isVisible, setIsVisible] = useState(true);
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
+    setIsMounted(true);
     if (videoRef.current) {
       videoRef.current.play().catch(() => {
         // Video autoplay failed, likely due to browser policies
@@ -95,7 +97,7 @@ export const VideoHero = ({ onContentLabClick }: VideoHeroProps) => {
       ></div>
 
       {/* Production Metadata */}
-      <ProductionMetadata isVisible={isVisible} />
+      <ProductionMetadata isVisible={isMounted && isVisible} />
 
       {/* Content */}
       <motion.div
