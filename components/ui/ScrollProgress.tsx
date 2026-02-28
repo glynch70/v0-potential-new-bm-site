@@ -5,8 +5,11 @@ import { motion } from 'framer-motion';
 
 export function ScrollProgress() {
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
+    setIsMounted(true);
+    
     const handleScroll = () => {
       const windowHeight = document.documentElement.scrollHeight - window.innerHeight;
       const scrolled = window.scrollY;
@@ -17,6 +20,9 @@ export function ScrollProgress() {
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Don't render on server to avoid hydration mismatch
+  if (!isMounted) return null;
 
   return (
     <motion.div
