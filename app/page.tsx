@@ -46,6 +46,9 @@ import { MaskedText } from "@/components/Text/MaskedText";
 import { AnimatedUnderline } from "@/components/ui/AnimatedUnderline";
 import { WorkCard3D } from "@/components/Work/WorkCard3D";
 import { ParallaxImage } from "@/components/ui/ParallaxImage";
+import { VideoHero } from "@/components/Hero/VideoHero";
+import { ContentLabModal } from "@/components/Hero/ContentLabModal";
+import { ArsenalSection } from "@/components/sections/ArsenalSection";
 
 /* ══════════════════════════════════════════════
    MAIN PAGE
@@ -55,6 +58,7 @@ export default function BearMediaSite() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
   const [showBottomNav, setShowBottomNav] = useState(false);
+  const [contentLabOpen, setContentLabOpen] = useState(false);
 
   useEffect(() => {
     const onScroll = () => {
@@ -103,8 +107,10 @@ export default function BearMediaSite() {
         onToggleMobile={() => setMobileMenuOpen((v) => !v)}
         onNavigate={scrollTo}
       />
-      <HeroSection onNavigate={scrollTo} />
+      <VideoHero onContentLabClick={() => setContentLabOpen(true)} />
+      <ContentLabModal isOpen={contentLabOpen} onClose={() => setContentLabOpen(false)} />
       <MarqueeStrip />
+      <ArsenalSection />
       <PainSection onNavigate={scrollTo} />
       <ProcessSection onNavigate={scrollTo} />
       <BackToTop />
@@ -261,8 +267,10 @@ function SiteNav({
   );
 }
 
+
+
 /* ══════════════════════════════════════════════
-   1. HERO — Centered logo-first layout
+   MARQUEE STRIP — industrial ticker
    ══════════════════════════════════════════════ */
 function HeroSection({ onNavigate }: { onNavigate: (id: string) => void }) {
   const ref = useRef<HTMLElement>(null);
