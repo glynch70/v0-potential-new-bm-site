@@ -80,7 +80,8 @@ export const VideoHero = ({ onContentLabClick }: VideoHeroProps) => {
         playsInline
         loop
       >
-        <source src="/newherovid.mov" type="video/quicktime" />
+        <source src="/media/bear-hero-vp9.webm" type="video/webm" />
+        <source src="/media/bear-hero-h265.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
 
