@@ -49,6 +49,10 @@ import { ParallaxImage } from "@/components/ui/ParallaxImage";
 import { VideoHero } from "@/components/Hero/VideoHero";
 import { ContentLabModal } from "@/components/Hero/ContentLabModal";
 import { ArsenalSection } from "@/components/sections/ArsenalSection";
+import { ServiceCardsSection } from "@/components/sections/ServiceCardsSection";
+import { GallerySection } from "@/components/sections/GallerySection";
+import { PhilosophySection } from "@/components/sections/PhilosophySection";
+import { MinimalFooter } from "@/components/sections/MinimalFooter";
 
 /* ══════════════════════════════════════════════
    MAIN PAGE
@@ -109,6 +113,9 @@ export default function BearMediaSite() {
       />
       <VideoHero onContentLabClick={() => setContentLabOpen(true)} />
       <ContentLabModal isOpen={contentLabOpen} onClose={() => setContentLabOpen(false)} />
+      <ServiceCardsSection />
+      <GallerySection />
+      <PhilosophySection />
       <MarqueeStrip />
       <ArsenalSection />
       <PainSection onNavigate={scrollTo} />
@@ -122,7 +129,7 @@ export default function BearMediaSite() {
       <BackToTop />
       <CTASection onNavigate={scrollTo} />
       <ContactSection />
-      <Footer onNavigate={scrollTo} />
+      <MinimalFooter />
       <FloatingBottomNav visible={showBottomNav} activeSection={activeSection} onNavigate={scrollTo} />
     </>
   );
@@ -602,7 +609,7 @@ function PainSection({ onNavigate }: { onNavigate: (id: string) => void }) {
 
 /* SolutionSection replaced by InteractiveServiceCards component */
 
-/* ══════════════════════════════════════════════
+/* ═════════════════════════════���════════════════
    4. HOW IT WORKS / PROCESS
    ══════════════════════════════════════════════ */
 const PROCESS_STEPS = [
