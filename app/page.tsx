@@ -52,6 +52,7 @@ import { ArsenalSection } from "@/components/sections/ArsenalSection";
 import { ServiceCardsSection } from "@/components/sections/ServiceCardsSection";
 import { GallerySection } from "@/components/sections/GallerySection";
 import { PhilosophySection } from "@/components/sections/PhilosophySection";
+import { ContentLabSection } from "@/components/sections/ContentLabSection";
 import { MinimalFooter } from "@/components/sections/MinimalFooter";
 
 /* ══════════════════════════════════════════════
@@ -116,6 +117,7 @@ export default function BearMediaSite() {
       <ServiceCardsSection />
       <GallerySection />
       <PhilosophySection />
+      <ContentLabSection />
       <MarqueeStrip />
       <ArsenalSection />
       <PainSection onNavigate={scrollTo} />
@@ -1203,7 +1205,7 @@ function AboutSection() {
 
 /* ══════════════════════════════════════════════
    8. FINAL CTA — Brutalist full-width block
-   ══════════════════════════════════════════════ */
+   ══════════════��═══════════════════════════════ */
 function CTASection({ onNavigate }: { onNavigate: (id: string) => void }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
