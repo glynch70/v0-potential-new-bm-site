@@ -34,7 +34,6 @@ export const ServiceCardsSection = () => {
   return (
     <section id="services" className="w-full bg-black py-24 md:py-32 px-4 md:px-8">
       <div className="max-w-7xl mx-auto">
-        {/* Section Title */}
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -53,7 +52,6 @@ export const ServiceCardsSection = () => {
           Everything you need to dominate your market
         </motion.p>
 
-        {/* 2-Column Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
           {services.map((service, index) => (
             <motion.div
@@ -61,24 +59,27 @@ export const ServiceCardsSection = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
+              role="button"
+              tabIndex={0}
               onClick={() => isMounted && setExpandedCard(expandedCard === service.id ? null : service.id)}
-              className="bg-black border border-zinc-700 rounded-3xl p-8 md:p-10 hover:border-yellow-400 hover:shadow-[0_0_30px_rgba(234,179,8,0.3)] transition-all duration-300 group cursor-pointer min-h-96 flex flex-col justify-between"
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  isMounted && setExpandedCard(expandedCard === service.id ? null : service.id);
+                }
+              }}
+              className="bg-black border border-zinc-700 rounded-3xl p-8 md:p-10 hover:border-yellow-400 hover:shadow-[0_0_30px_rgba(234,179,8,0.3)] transition-all duration-300 cursor-pointer min-h-96 flex flex-col justify-between"
             >
-              {/* Icon */}
               <div className="text-5xl mb-6">{service.icon}</div>
 
-              {/* Title */}
               <div>
                 <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
                   {service.title}
                 </h3>
 
-                {/* Description - Toggle between short and expanded */}
                 <p className="text-gray-300 text-lg leading-relaxed mb-6">
                   {isMounted && expandedCard === service.id ? service.expandedContent : service.shortDescription}
                 </p>
 
-                {/* Click to Expand Hint / Back Button */}
                 <motion.div
                   whileHover={{ x: isMounted && expandedCard === service.id ? -4 : 4 }}
                   className="flex items-center gap-2 text-yellow-400 font-semibold mb-6"
@@ -96,7 +97,6 @@ export const ServiceCardsSection = () => {
                   )}
                 </motion.div>
 
-                {/* Action Button (when expanded) */}
                 {isMounted && expandedCard === service.id && (
                   <motion.button
                     initial={{ opacity: 0, y: 10 }}
