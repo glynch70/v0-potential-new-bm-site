@@ -61,57 +61,53 @@ export const ServiceCardsSection = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="relative"
+              onClick={() => isMounted && setExpandedCard(expandedCard === service.id ? null : service.id)}
+              className="bg-black border border-zinc-700 rounded-3xl p-8 md:p-10 hover:border-yellow-400 hover:shadow-[0_0_30px_rgba(234,179,8,0.3)] transition-all duration-300 group cursor-pointer min-h-96 flex flex-col justify-between"
             >
-              <motion.button
-                onClick={() => isMounted && setExpandedCard(expandedCard === service.id ? null : service.id)}
-                className="w-full text-left bg-black border border-zinc-700 rounded-3xl p-8 md:p-10 hover:border-yellow-400 hover:shadow-[0_0_30px_rgba(234,179,8,0.3)] transition-all duration-300 group cursor-pointer min-h-96 flex flex-col justify-between"
-              >
-                {/* Icon */}
-                <div className="text-5xl mb-6">{service.icon}</div>
+              {/* Icon */}
+              <div className="text-5xl mb-6">{service.icon}</div>
 
-                {/* Title */}
-                <div>
-                  <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
-                    {service.title}
-                  </h3>
+              {/* Title */}
+              <div>
+                <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
+                  {service.title}
+                </h3>
 
-                  {/* Description - Toggle between short and expanded */}
-                  <p className="text-gray-300 text-lg leading-relaxed mb-6">
-                    {isMounted && expandedCard === service.id ? service.expandedContent : service.shortDescription}
-                  </p>
+                {/* Description - Toggle between short and expanded */}
+                <p className="text-gray-300 text-lg leading-relaxed mb-6">
+                  {isMounted && expandedCard === service.id ? service.expandedContent : service.shortDescription}
+                </p>
 
-                  {/* Click to Expand Hint / Back Button */}
-                  <motion.div
-                    whileHover={{ x: isMounted && expandedCard === service.id ? -4 : 4 }}
-                    className="flex items-center gap-2 text-yellow-400 font-semibold"
-                  >
-                    {isMounted && expandedCard === service.id ? (
-                      <>
-                        <ChevronLeft className="w-5 h-5" />
-                        <span>Back</span>
-                      </>
-                    ) : (
-                      <>
-                        <span>Click to expand</span>
-                        <span>→</span>
-                      </>
-                    )}
-                  </motion.div>
-
-                  {/* Action Button (when expanded) */}
-                  {isMounted && expandedCard === service.id && (
-                    <motion.button
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      className="mt-6 px-6 md:px-8 py-3 md:py-4 bg-yellow-400 text-black font-bold rounded-full hover:bg-yellow-300 transition-colors"
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      {service.buttonText}
-                    </motion.button>
+                {/* Click to Expand Hint / Back Button */}
+                <motion.div
+                  whileHover={{ x: isMounted && expandedCard === service.id ? -4 : 4 }}
+                  className="flex items-center gap-2 text-yellow-400 font-semibold mb-6"
+                >
+                  {isMounted && expandedCard === service.id ? (
+                    <>
+                      <ChevronLeft className="w-5 h-5" />
+                      <span>Back</span>
+                    </>
+                  ) : (
+                    <>
+                      <span>Click to expand</span>
+                      <span>→</span>
+                    </>
                   )}
-                </div>
-              </motion.button>
+                </motion.div>
+
+                {/* Action Button (when expanded) */}
+                {isMounted && expandedCard === service.id && (
+                  <motion.button
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="px-6 md:px-8 py-3 md:py-4 bg-yellow-400 text-black font-bold rounded-full hover:bg-yellow-300 transition-colors"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    {service.buttonText}
+                  </motion.button>
+                )}
+              </div>
             </motion.div>
           ))}
         </div>
