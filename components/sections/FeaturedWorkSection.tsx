@@ -7,7 +7,9 @@ import Image from 'next/image';
 export const FeaturedWorkSection = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isMounted, setIsMounted] = useState(false);
+  const [videoError, setVideoError] = useState(false);
   const autoSlideIntervalRef = useRef<NodeJS.Timeout | null>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   const slides = [
     {
@@ -46,6 +48,19 @@ export const FeaturedWorkSection = () => {
     };
   }, [isMounted, slides.length]);
 
+  const handleVideoError = () => {
+    console.log('[v0] Video failed to load');
+    setVideoError(true);
+  };
+
+  const handleVideoSuccess = () => {
+    if (videoRef.current) {
+      videoRef.current.play().catch(() => {
+        console.log('[v0] Video autoplay failed');
+      });
+    }
+  };
+
   return (
     <section id="featured-work" className="w-full bg-black py-24 md:py-32 px-4 md:px-8">
       <div className="max-w-7xl mx-auto">
@@ -78,15 +93,42 @@ export const FeaturedWorkSection = () => {
             className="relative overflow-hidden rounded-3xl bg-black border border-zinc-700"
           >
             <div className="relative w-full" style={{ aspectRatio: '9 / 16' }}>
-              <video
-                src="https://dealfl2hu4uruunq.public.blob.vercel-storage.com/Bridges%283%29.mov"
-                autoPlay
-                loop
-                muted
-                playsInline
-                controls={false}
-                className="w-full h-full object-cover"
-              />
+              {/* Video or Fallback */}
+              {!videoError ? (
+                <video
+                  ref={videoRef}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  controls={false}
+                  className="w-full h-full object-cover"
+                  onError={handleVideoError}
+                  onLoadedMetadata={handleVideoSuccess}
+                >
+                  <source 
+                    src="https://dealfl2hu4uruunq.public.blob.vercel-storage.com/Bridges%283%29.mov" 
+                    type="video/quicktime"
+                  />
+                  <source 
+                    src="https://dealfl2hu4uruunq.public.blob.vercel-storage.com/Bridges%283%29.mov" 
+                    type="video/mp4"
+                  />
+                  Your browser does not support the video tag.
+                </video>
+              ) : (
+                /* Fallback Blurred Placeholder */
+                <div className="w-full h-full bg-gradient-to-br from-zinc-900 to-black flex flex-col items-center justify-center backdrop-blur-md">
+                  <div className="absolute inset-0 bg-zinc-900/50 backdrop-blur-xl" />
+                  <div className="relative z-10 text-center">
+                    <div className="w-16 h-16 mx-auto mb-4 bg-yellow-400/20 rounded-full flex items-center justify-center">
+                      <div className="w-12 h-12 bg-yellow-400/40 rounded-full animate-pulse" />
+                    </div>
+                    <p className="text-white font-semibold text-lg">Loading Cinematic Reel...</p>
+                    <p className="text-gray-400 text-sm mt-2">Preparing your content</p>
+                  </div>
+                </div>
+              )}
 
               {/* Bottom-Left Label */}
               <div className="absolute bottom-4 left-4 z-10">
@@ -131,6 +173,7 @@ export const FeaturedWorkSection = () => {
                       fill
                       className="object-cover"
                       priority={index === currentSlide}
+                      sizes="(max-width: 768px) 100vw, 50vw"
                     />
                   </motion.div>
                 ))}
