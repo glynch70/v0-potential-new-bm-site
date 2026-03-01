@@ -1,27 +1,22 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import { useState, useEffect, useRef } from 'react';
 
 const BLOB_VIDEO = 'https://dealfl2hu4uruunq.public.blob.vercel-storage.com/Bridges%283%29.mov';
-const BLOB_IMAGES = [
-  'https://dealfl2hu4uruunq.public.blob.vercel-storage.com/jordan%20speaker%20glasgow.jpg',
-  'https://dealfl2hu4uruunq.public.blob.vercel-storage.com/tdm%20collage.jpg',
-  'https://dealfl2hu4uruunq.public.blob.vercel-storage.com/Balmoral%20Hotel.jpg',
-];
+const BLOB_IMG_1 = 'https://dealfl2hu4uruunq.public.blob.vercel-storage.com/jordan%20speaker%20glasgow.jpg';
+const BLOB_IMG_2 = 'https://dealfl2hu4uruunq.public.blob.vercel-storage.com/tdm%20collage.jpg';
+const BLOB_IMG_3 = 'https://dealfl2hu4uruunq.public.blob.vercel-storage.com/Balmoral%20Hotel.jpg';
 
 const CAROUSEL_SLIDES = [
-  { id: 1, url: BLOB_IMAGES[0], alt: 'Jordan Speaker Glasgow' },
-  { id: 2, url: BLOB_IMAGES[1], alt: 'TDM Collage' },
-  { id: 3, url: BLOB_IMAGES[2], alt: 'Balmoral Hotel' },
+  { id: 1, url: BLOB_IMG_1, alt: 'Jordan Speaker Glasgow' },
+  { id: 2, url: BLOB_IMG_2, alt: 'TDM Collage' },
+  { id: 3, url: BLOB_IMG_3, alt: 'Balmoral Hotel' },
 ];
 
 export const FeaturedWorkSection = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isMounted, setIsMounted] = useState(false);
-  const [videoError, setVideoError] = useState(false);
   const autoSlideIntervalRef = useRef<NodeJS.Timeout | null>(null);
-  const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     setIsMounted(true);
@@ -41,64 +36,35 @@ export const FeaturedWorkSection = () => {
     };
   }, [isMounted]);
 
-  const handleVideoError = () => {
-    console.log('[v0] Video load failed');
-    setVideoError(true);
-  };
-
   return (
     <section id="featured-work" className="w-full bg-black py-24 md:py-32 px-4 md:px-8">
       <div className="max-w-7xl mx-auto">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-4xl md:text-5xl font-bold text-white mb-4 text-center"
-        >
+        {/* Section Title */}
+        <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 text-center">
           Featured Work
-        </motion.h2>
+        </h2>
 
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-gray-400 text-center mb-16 max-w-2xl mx-auto"
-        >
+        <p className="text-gray-400 text-center mb-16 max-w-2xl mx-auto">
           Cinematic storytelling meets digital strategy
-        </motion.p>
+        </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-          {/* Left Column - Video Player */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6 }}
-            className="relative overflow-hidden rounded-3xl bg-black border border-yellow-400"
-          >
-            <div className="relative w-full" style={{ aspectRatio: '9 / 16' }}>
-              {!videoError ? (
-                <video
-                  ref={videoRef}
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  preload="metadata"
-                  className="w-full h-full object-cover"
-                  onError={handleVideoError}
-                >
-                  <source src={BLOB_VIDEO} type="video/quicktime" />
-                  Your browser does not support the video tag.
-                </video>
-              ) : (
-                <div className="w-full h-full bg-black flex items-center justify-center">
-                  <div className="text-center">
-                    <p className="text-white font-semibold text-lg">Cinematic Reel</p>
-                    <p className="text-gray-400 text-sm mt-2">Video unavailable</p>
-                  </div>
-                </div>
-              )}
+        {/* Static Bento Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6">
+          {/* Left Column - Video (9:16 aspect) */}
+          <div className="md:col-span-4 rounded-2xl overflow-hidden bg-zinc-900 border border-yellow-400">
+            <div style={{ aspectRatio: '9 / 16' }} className="relative w-full">
+              <video
+                autoPlay
+                loop
+                muted
+                playsInline
+                preload="none"
+                className="w-full h-full object-cover"
+              >
+                <source src={BLOB_VIDEO} type="video/quicktime" />
+              </video>
 
+              {/* Label */}
               <div className="absolute bottom-4 left-4 z-10">
                 <div className="bg-black/80 backdrop-blur-sm px-4 py-2 rounded-lg">
                   <p className="text-white text-xs font-mono font-bold tracking-wider">
@@ -107,24 +73,21 @@ export const FeaturedWorkSection = () => {
                 </div>
               </div>
             </div>
-          </motion.div>
+          </div>
 
-          {/* Right Column - Auto-Sliding Carousel */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="relative overflow-hidden rounded-3xl bg-black border border-yellow-400"
-          >
-            <div className="relative w-full" style={{ aspectRatio: '16 / 9' }}>
+          {/* Right Column - Carousel (16:9 aspect) */}
+          <div className="md:col-span-8 rounded-2xl overflow-hidden bg-zinc-900 border border-yellow-400">
+            <div style={{ aspectRatio: '16 / 9' }} className="relative w-full">
+              {/* Fade Carousel */}
               {isMounted &&
                 CAROUSEL_SLIDES.map((slide, index) => (
-                  <motion.div
+                  <div
                     key={slide.id}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: index === currentSlide ? 1 : 0 }}
-                    transition={{ duration: 0.5 }}
-                    className="absolute inset-0"
+                    className="absolute inset-0 transition-opacity duration-500"
+                    style={{
+                      opacity: index === currentSlide ? 1 : 0,
+                      pointerEvents: index === currentSlide ? 'auto' : 'none',
+                    }}
                   >
                     <img
                       src={slide.url}
@@ -132,9 +95,10 @@ export const FeaturedWorkSection = () => {
                       className="w-full h-full object-cover"
                       loading={index === 0 ? 'eager' : 'lazy'}
                     />
-                  </motion.div>
+                  </div>
                 ))}
 
+              {/* Slide Indicators */}
               <div className="absolute bottom-4 left-4 right-4 flex gap-2 z-10">
                 {CAROUSEL_SLIDES.map((_, index) => (
                   <button
@@ -150,7 +114,7 @@ export const FeaturedWorkSection = () => {
                 ))}
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>
