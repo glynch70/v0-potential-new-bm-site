@@ -46,6 +46,15 @@ import { MaskedText } from "@/components/Text/MaskedText";
 import { AnimatedUnderline } from "@/components/ui/AnimatedUnderline";
 import { WorkCard3D } from "@/components/Work/WorkCard3D";
 import { ParallaxImage } from "@/components/ui/ParallaxImage";
+import { VideoHero } from "@/components/Hero/VideoHero";
+import { ContentLabModal } from "@/components/Hero/ContentLabModal";
+import { ArsenalSection } from "@/components/sections/ArsenalSection";
+import { ServiceCardsSection } from "@/components/sections/ServiceCardsSection";
+import { FeaturedWorkSection } from "@/components/sections/FeaturedWorkSection";
+import { GallerySection } from "@/components/sections/GallerySection";
+import { PhilosophySection } from "@/components/sections/PhilosophySection";
+import { ContentLabSection } from "@/components/sections/ContentLabSection";
+import { MinimalFooter } from "@/components/sections/MinimalFooter";
 
 /* ══════════════════════════════════════════════
    MAIN PAGE
@@ -55,6 +64,7 @@ export default function BearMediaSite() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
   const [showBottomNav, setShowBottomNav] = useState(false);
+  const [contentLabOpen, setContentLabOpen] = useState(false);
 
   useEffect(() => {
     const onScroll = () => {
@@ -103,8 +113,15 @@ export default function BearMediaSite() {
         onToggleMobile={() => setMobileMenuOpen((v) => !v)}
         onNavigate={scrollTo}
       />
-      <HeroSection onNavigate={scrollTo} />
+      <VideoHero onContentLabClick={() => setContentLabOpen(true)} />
+      <ContentLabModal isOpen={contentLabOpen} onClose={() => setContentLabOpen(false)} />
+      <ServiceCardsSection />
+      <FeaturedWorkSection />
+      <GallerySection />
+      <PhilosophySection />
+      <ContentLabSection />
       <MarqueeStrip />
+      <ArsenalSection />
       <PainSection onNavigate={scrollTo} />
       <ProcessSection onNavigate={scrollTo} />
       <BackToTop />
@@ -116,7 +133,7 @@ export default function BearMediaSite() {
       <BackToTop />
       <CTASection onNavigate={scrollTo} />
       <ContactSection />
-      <Footer onNavigate={scrollTo} />
+      <MinimalFooter />
       <FloatingBottomNav visible={showBottomNav} activeSection={activeSection} onNavigate={scrollTo} />
     </>
   );
@@ -261,8 +278,10 @@ function SiteNav({
   );
 }
 
+
+
 /* ══════════════════════════════════════════════
-   1. HERO — Centered logo-first layout
+   MARQUEE STRIP — industrial ticker
    ══════════════════════════════════════════════ */
 function HeroSection({ onNavigate }: { onNavigate: (id: string) => void }) {
   const ref = useRef<HTMLElement>(null);
@@ -594,7 +613,7 @@ function PainSection({ onNavigate }: { onNavigate: (id: string) => void }) {
 
 /* SolutionSection replaced by InteractiveServiceCards component */
 
-/* ══════════════════════════════════════════════
+/* ═════════════════════════════���════════════════
    4. HOW IT WORKS / PROCESS
    ══════════════════════════════════════════════ */
 const PROCESS_STEPS = [
@@ -1188,7 +1207,7 @@ function AboutSection() {
 
 /* ══════════════════════════════════════════════
    8. FINAL CTA — Brutalist full-width block
-   ══════════════════════════════════════════════ */
+   ══════════════��═══════════════════════════════ */
 function CTASection({ onNavigate }: { onNavigate: (id: string) => void }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });

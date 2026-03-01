@@ -151,7 +151,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`dark ${spaceGrotesk.variable} ${inter.variable}`}>
+    <html lang="en" className={`dark ${spaceGrotesk.variable} ${inter.variable}`} suppressHydrationWarning>
       <head>
         {/* Local Business Schema for Google */}
         <script
@@ -160,27 +160,28 @@ export default function RootLayout({
             __html: JSON.stringify(localBusinessSchema),
           }}
         />
+        {/* Google Analytics - moved to head to prevent hydration mismatch */}
+        {GA_ID && (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+              strategy="afterInteractive"
+            />
+            <Script id="ga-init" strategy="afterInteractive">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${GA_ID}', {
+                  anonymize_ip: true,
+                  page_path: window.location.pathname
+                });
+              `}
+            </Script>
+          </>
+        )}
       </head>
-      {GA_ID ? (
-        <>
-          <Script
-            src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
-            strategy="afterInteractive"
-          />
-          <Script id="ga-init" strategy="afterInteractive">
-            {`
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', '${GA_ID}', {
-                anonymize_ip: true,
-                page_path: window.location.pathname
-              });
-            `}
-          </Script>
-        </>
-      ) : null}
-      <body className="font-sans antialiased">
+      <body className="font-sans antialiased" suppressHydrationWarning>
         <ScrollProgress />
         <LenisScrollProvider>
           {children}
