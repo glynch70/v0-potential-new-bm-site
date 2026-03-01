@@ -1,56 +1,48 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import Image from 'next/image';
 
 export const GallerySection = () => {
-  const galleryItems = [
+  const mediaItems = [
     {
       id: 1,
-      title: 'Viral Reel Series',
+      label: '01 / INSTAGRAM',
+      embedUrl: 'https://www.instagram.com/reel/DNP1zQmv2uj/embed',
+      type: 'instagram',
       aspect: '9/16',
-      type: 'Reels',
-      color: 'bg-gradient-to-br from-purple-600 to-pink-600',
     },
     {
       id: 2,
-      title: 'Website Launch',
-      aspect: '16/9',
-      type: 'Web',
-      color: 'bg-gradient-to-br from-blue-600 to-cyan-600',
+      label: '02 / INSTAGRAM',
+      embedUrl: 'https://www.instagram.com/reel/DKjbWgHudX6/embed',
+      type: 'instagram',
+      aspect: '9/16',
     },
     {
       id: 3,
-      title: 'Brand Documentary',
+      label: '03 / TIKTOK',
+      embedUrl: 'https://www.tiktok.com/embed/v2/7492868712656096534',
+      type: 'tiktok',
       aspect: '16/9',
-      type: 'YouTube',
-      color: 'bg-gradient-to-br from-orange-600 to-red-600',
     },
     {
       id: 4,
-      title: 'Social Campaign',
+      label: '04 / YOUTUBE',
+      embedUrl: 'https://www.youtube.com/embed/oXK8lq0ebYU',
+      type: 'youtube',
       aspect: '9/16',
-      type: 'TikTok',
-      color: 'bg-gradient-to-br from-green-600 to-emerald-600',
     },
     {
       id: 5,
-      title: 'Product Showcase',
+      label: '05 / YOUTUBE',
+      embedUrl: 'https://www.youtube.com/embed/lRfJ88GMozQ',
+      type: 'youtube',
       aspect: '9/16',
-      type: 'Shorts',
-      color: 'bg-gradient-to-br from-indigo-600 to-purple-600',
-    },
-    {
-      id: 6,
-      title: 'Case Study',
-      aspect: '16/9',
-      type: 'Web',
-      color: 'bg-gradient-to-br from-yellow-600 to-orange-600',
     },
   ];
 
   return (
-    <section id="work" className="w-full bg-black py-24 md:py-32 px-4 md:px-8">
+    <section id="media" className="w-full bg-black py-24 md:py-32 px-4 md:px-8">
       <div className="max-w-7xl mx-auto">
         {/* Section Title */}
         <motion.h2
@@ -59,7 +51,7 @@ export const GallerySection = () => {
           transition={{ duration: 0.6 }}
           className="text-4xl md:text-5xl font-bold text-white mb-4 text-center"
         >
-          Selected Work
+          The Media Wall
         </motion.h2>
 
         <motion.p
@@ -68,13 +60,13 @@ export const GallerySection = () => {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="text-gray-400 text-center mb-16 max-w-2xl mx-auto"
         >
-          A curated collection of projects that moved the needle
+          High-octane content that moves the needle
         </motion.p>
 
         {/* 3-Column Grid with Mixed Aspect Ratios */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
-          {galleryItems.map((item, index) => {
-            const isWide = item.aspect === '16/9';
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {mediaItems.map((item, index) => {
+            const isWide = item.type === 'tiktok';
             return (
               <motion.div
                 key={item.id}
@@ -82,26 +74,40 @@ export const GallerySection = () => {
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5, delay: index * 0.05 }}
                 whileHover={{ scale: 1.02 }}
-                className={`${isWide ? 'md:col-span-2' : ''} group cursor-pointer overflow-hidden rounded-2xl`}
+                className={`${isWide ? 'md:col-span-2' : ''} group relative overflow-hidden rounded-3xl bg-black border border-zinc-700`}
               >
+                {/* Media Container with Label */}
                 <div
-                  className={`${item.color} w-full h-full min-h-80 flex flex-col items-center justify-center relative overflow-hidden`}
+                  className="relative w-full h-full"
                   style={{
                     aspectRatio: isWide ? '16 / 9' : '9 / 16',
                   }}
                 >
-                  {/* Overlay on hover */}
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    whileHover={{ opacity: 1 }}
-                    className="absolute inset-0 bg-black/40 flex flex-col items-center justify-center gap-3 z-10"
-                  >
-                    <h3 className="text-white font-bold text-lg text-center">{item.title}</h3>
-                    <p className="text-yellow-400 text-sm font-semibold">{item.type}</p>
-                  </motion.div>
+                  {/* Embedded Media */}
+                  <iframe
+                    src={item.embedUrl}
+                    className="w-full h-full"
+                    style={{
+                      border: 'none',
+                      borderRadius: '24px',
+                    }}
+                    allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                    loading="lazy"
+                  ></iframe>
 
-                  {/* Placeholder text */}
-                  <p className="text-white/40 text-center text-sm">{item.type}</p>
+                  {/* Bottom-Left Label */}
+                  <div className="absolute bottom-4 left-4 z-10">
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      whileInView={{ opacity: 1 }}
+                      transition={{ delay: 0.3 }}
+                      className="bg-black/80 backdrop-blur-sm px-3 py-2 rounded-lg"
+                    >
+                      <p className="text-white text-xs font-mono font-bold tracking-wider">
+                        {item.label}
+                      </p>
+                    </motion.div>
+                  </div>
                 </div>
               </motion.div>
             );

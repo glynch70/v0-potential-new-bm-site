@@ -1,24 +1,23 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { ChevronLeft } from 'lucide-react';
 
 export const ServiceCardsSection = () => {
   const [expandedCard, setExpandedCard] = useState<number | null>(null);
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   const services = [
     {
       id: 0,
       title: 'Vertical Dominance',
       shortDescription: 'High-retention Reels, TikToks, and Shorts designed to stop the scroll and build community.',
-      detailTitle: 'Short-Form Mastery',
-      features: [
-        'Viral Scripting & Hook Design',
-        'High-Retention Cinematic Editing',
-        'Multi-Platform Distribution (IG, TikTok, YT)',
-        'Weekly Trend Analysis',
-      ],
+      expandedContent: 'Viral Scripting, Cinematic Hooks, Multi-Platform Distribution (IG/TikTok/YT), and Daily Trend Analysis.',
       buttonText: 'Get Started',
       icon: '🎬',
     },
@@ -26,13 +25,7 @@ export const ServiceCardsSection = () => {
       id: 1,
       title: 'Digital Presence',
       shortDescription: 'Premium website design and strategic YouTube production for long-form authority and conversion.',
-      detailTitle: 'Full-Scale Authority',
-      features: [
-        'Custom Website Design & Development',
-        'YouTube Strategy & Long-form Production',
-        'Conversion-Optimized Landing Pages',
-        'Search Engine Authority (SEO)',
-      ],
+      expandedContent: 'Conversion-Focused Web Design, YouTube Authority Strategy, Brand Identity, and SEO Ecosystems.',
       buttonText: 'Build Now',
       icon: '🌐',
     },
@@ -68,92 +61,57 @@ export const ServiceCardsSection = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              onClick={() => setExpandedCard(expandedCard === service.id ? null : service.id)}
-              className="relative h-96 cursor-pointer perspective"
+              className="relative"
             >
-              {/* Front Card */}
-              {expandedCard !== service.id && (
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.9 }}
-                  transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-                  className="w-full h-full bg-black border border-zinc-700 rounded-3xl p-8 md:p-10 hover:border-yellow-400 transition-colors duration-300 flex flex-col justify-between group"
-                >
-                  {/* Icon */}
-                  <div className="text-5xl">{service.icon}</div>
+              <motion.button
+                onClick={() => isMounted && setExpandedCard(expandedCard === service.id ? null : service.id)}
+                className="w-full text-left bg-black border border-zinc-700 rounded-3xl p-8 md:p-10 hover:border-yellow-400 hover:shadow-[0_0_30px_rgba(234,179,8,0.3)] transition-all duration-300 group cursor-pointer min-h-96 flex flex-col justify-between"
+              >
+                {/* Icon */}
+                <div className="text-5xl mb-6">{service.icon}</div>
 
-                  {/* Title */}
-                  <div>
-                    <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
-                      {service.title}
-                    </h3>
+                {/* Title */}
+                <div>
+                  <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
+                    {service.title}
+                  </h3>
 
-                    {/* Description */}
-                    <p className="text-gray-300 text-lg leading-relaxed mb-6">
-                      {service.shortDescription}
-                    </p>
+                  {/* Description - Toggle between short and expanded */}
+                  <p className="text-gray-300 text-lg leading-relaxed mb-6">
+                    {isMounted && expandedCard === service.id ? service.expandedContent : service.shortDescription}
+                  </p>
 
-                    {/* Click to Expand Hint */}
-                    <motion.button
-                      whileHover={{ x: 4 }}
-                      className="flex items-center gap-2 text-yellow-400 font-semibold group"
-                    >
-                      Click to expand
-                      <span className="group-hover:translate-x-1 transition-transform">→</span>
-                    </motion.button>
-                  </div>
-                </motion.div>
-              )}
-
-              {/* Back Card (Detail View) */}
-              {expandedCard === service.id && (
-                <motion.div
-                  initial={{ opacity: 0, rotateY: 180 }}
-                  animate={{ opacity: 1, rotateY: 0 }}
-                  exit={{ opacity: 0, rotateY: 180 }}
-                  transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-                  className="w-full h-full bg-black border border-yellow-400 rounded-3xl p-8 md:p-10 flex flex-col justify-between"
-                  style={{ backfaceVisibility: 'hidden' }}
-                >
-                  {/* Back Button */}
-                  <motion.button
-                    whileHover={{ x: -4 }}
-                    className="flex items-center gap-2 text-yellow-400 font-semibold mb-6 group"
+                  {/* Click to Expand Hint / Back Button */}
+                  <motion.div
+                    whileHover={{ x: isMounted && expandedCard === service.id ? -4 : 4 }}
+                    className="flex items-center gap-2 text-yellow-400 font-semibold"
                   >
-                    <ChevronLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
-                    <span>Back</span>
-                  </motion.button>
+                    {isMounted && expandedCard === service.id ? (
+                      <>
+                        <ChevronLeft className="w-5 h-5" />
+                        <span>Back</span>
+                      </>
+                    ) : (
+                      <>
+                        <span>Click to expand</span>
+                        <span>→</span>
+                      </>
+                    )}
+                  </motion.div>
 
-                  {/* Detail Title */}
-                  <div>
-                    <h3 className="text-3xl md:text-4xl font-bold text-white mb-8">
-                      {service.detailTitle}
-                    </h3>
-
-                    {/* Features List */}
-                    <ul className="space-y-4 mb-8">
-                      {service.features.map((feature, i) => (
-                        <li key={i} className="flex items-start gap-3">
-                          <span className="text-yellow-400 font-bold text-xl mt-1">•</span>
-                          <span className="text-gray-100 text-lg leading-relaxed">
-                            {feature}
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
-
-                    {/* Button */}
+                  {/* Action Button (when expanded) */}
+                  {isMounted && expandedCard === service.id && (
                     <motion.button
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="px-6 md:px-8 py-3 md:py-4 bg-yellow-400 text-black font-bold rounded-full hover:bg-yellow-300 transition-colors"
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className="mt-6 px-6 md:px-8 py-3 md:py-4 bg-yellow-400 text-black font-bold rounded-full hover:bg-yellow-300 transition-colors"
+                      onClick={(e) => e.stopPropagation()}
                     >
                       {service.buttonText}
                     </motion.button>
-                  </div>
-                </motion.div>
-              )}
+                  )}
+                </div>
+              </motion.button>
             </motion.div>
           ))}
         </div>
