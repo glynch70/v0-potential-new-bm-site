@@ -2,7 +2,6 @@
 
 import { motion } from 'framer-motion';
 import { useState, useEffect, useRef } from 'react';
-import Image from 'next/image';
 
 const BLOB_VIDEO = 'https://dealfl2hu4uruunq.public.blob.vercel-storage.com/Bridges%283%29.mov';
 const BLOB_IMAGES = [
@@ -127,13 +126,11 @@ export const FeaturedWorkSection = () => {
                     transition={{ duration: 0.5 }}
                     className="absolute inset-0"
                   >
-                    <Image
+                    <img
                       src={slide.url}
                       alt={slide.alt}
-                      fill
-                      className="object-cover"
-                      priority={index === 0}
-                      sizes="(max-width: 768px) 100vw, 50vw"
+                      className="w-full h-full object-cover"
+                      loading={index === 0 ? 'eager' : 'lazy'}
                     />
                   </motion.div>
                 ))}

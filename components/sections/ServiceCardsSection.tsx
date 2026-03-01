@@ -59,15 +59,8 @@ export const ServiceCardsSection = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              role="button"
-              tabIndex={0}
-              onClick={() => isMounted && setExpandedCard(expandedCard === service.id ? null : service.id)}
-              onKeyDown={(e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                  isMounted && setExpandedCard(expandedCard === service.id ? null : service.id);
-                }
-              }}
               className="bg-black border border-zinc-700 rounded-3xl p-8 md:p-10 hover:border-yellow-400 hover:shadow-[0_0_30px_rgba(234,179,8,0.3)] transition-all duration-300 cursor-pointer min-h-96 flex flex-col justify-between"
+              onClick={() => isMounted && setExpandedCard(expandedCard === service.id ? null : service.id)}
             >
               <div className="text-5xl mb-6">{service.icon}</div>
 
