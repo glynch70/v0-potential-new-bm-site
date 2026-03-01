@@ -50,6 +50,7 @@ import { VideoHero } from "@/components/Hero/VideoHero";
 import { ContentLabModal } from "@/components/Hero/ContentLabModal";
 import { ArsenalSection } from "@/components/sections/ArsenalSection";
 import { ServiceCardsSection } from "@/components/sections/ServiceCardsSection";
+import { FeaturedWorkSection } from "@/components/sections/FeaturedWorkSection";
 import { GallerySection } from "@/components/sections/GallerySection";
 import { PhilosophySection } from "@/components/sections/PhilosophySection";
 import { ContentLabSection } from "@/components/sections/ContentLabSection";
@@ -115,6 +116,7 @@ export default function BearMediaSite() {
       <VideoHero onContentLabClick={() => setContentLabOpen(true)} />
       <ContentLabModal isOpen={contentLabOpen} onClose={() => setContentLabOpen(false)} />
       <ServiceCardsSection />
+      <FeaturedWorkSection />
       <GallerySection />
       <PhilosophySection />
       <ContentLabSection />
