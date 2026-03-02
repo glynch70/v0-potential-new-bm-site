@@ -34,31 +34,48 @@ export const GallerySection = () => {
         </motion.p>
 
         {/* 3-Column Grid with Mixed Aspect Ratios */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16">
           {containerItems.map((item, index) => {
             const isWide = item.span === 2;
             return (
               <motion.div
                 key={item.id}
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5, delay: index * 0.05 }}
-                whileHover={{ scale: 1.02 }}
-                className={`${isWide ? 'md:col-span-2' : ''} group relative overflow-hidden rounded-3xl bg-black border border-zinc-700 hover:border-yellow-400 transition-colors`}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className={`${isWide ? 'md:col-span-2' : ''} group relative`}
               >
-                {/* Container Placeholder */}
+                {/* Portal Media Container */}
                 <div
-                  className="w-full h-full bg-zinc-900 flex flex-col items-center justify-center relative"
+                  className={`w-full h-full bg-zinc-900 floating overflow-hidden relative ${index % 2 === 0 ? 'blob-portal' : 'organic-portal'
+                    }`}
                   style={{
-                    aspectRatio: isWide ? '16 / 9' : '9 / 16',
+                    aspectRatio: isWide ? '16 / 10' : '10 / 16',
                   }}
                 >
-                  {/* Label */}
-                  <div className="text-center">
-                    <p className="text-gray-400 text-sm font-mono tracking-wider mb-3">
+                  <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+
+                  {/* Mock Image Placeholder with Texture */}
+                  <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/dark-matter.png')] opacity-20" />
+
+                  {/* Floating Number Overlay */}
+                  <div className="absolute top-8 left-8">
+                    <span className="text-white/10 text-8xl font-bold leading-none select-none">
+                      0{item.id}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Overlapping Text Layout (Half-on, Half-off) */}
+                <div className="absolute -bottom-6 -right-4 md:-right-8 z-20 max-w-[80%]">
+                  <div className="glass p-6 md:p-8 rounded-2xl shadow-floating transform transition-transform duration-500 group-hover:-translate-y-2 group-hover:translate-x-1">
+                    <h3 className="text-xl md:text-2xl font-bold text-white uppercase tracking-tight mb-2">
                       {item.label}
+                    </h3>
+                    <p className="text-primary text-[10px] font-bold uppercase tracking-[0.2em]">
+                      View Case Study &rarr;
                     </p>
-                    <p className="text-gray-600 text-xs">Coming soon</p>
                   </div>
                 </div>
               </motion.div>

@@ -11,15 +11,23 @@ interface VideoHeroProps {
 export const VideoHero = ({ onContentLabClick }: VideoHeroProps) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isMounted, setIsMounted] = useState(false);
+  const [lowBandwidth, setLowBandwidth] = useState(false);
 
   useEffect(() => {
     setIsMounted(true);
-    if (videoRef.current) {
-      videoRef.current.play().catch(() => {
-        // Video autoplay failed, likely due to browser policies
-      });
+
+    // Adaptive Media Loading: Detect connection speed
+    if (typeof navigator !== 'undefined' && (navigator as any).connection) {
+      const conn = (navigator as any).connection;
+      if (conn.saveData || (conn.effectiveType && ['slow-2g', '2g', '3g'].includes(conn.effectiveType))) {
+        setLowBandwidth(true);
+      }
     }
-  }, []);
+
+    if (videoRef.current && !lowBandwidth) {
+      videoRef.current.play().catch(() => { });
+    }
+  }, [lowBandwidth]);
 
   const scrollToSection = (id: string) => {
     const el = document.getElementById(id);
@@ -31,76 +39,94 @@ export const VideoHero = ({ onContentLabClick }: VideoHeroProps) => {
 
   return (
     <section
-      id="hero"
-      className="relative w-full h-screen flex flex-col items-center justify-center overflow-hidden bg-black"
+      id="home"
+      className="relative w-full h-[100dvh] flex flex-col items-center justify-center overflow-hidden bg-black"
     >
-      {/* Video Background */}
-      <video
-        ref={videoRef}
-        className="absolute inset-0 w-full h-full object-cover"
-        autoPlay
-        muted
-        playsInline
-        loop
-      >
-        <source src="/media/bear-hero-vp9.webm" type="video/webm" />
-        <source src="/media/bear-hero-h265.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
+      {/* TikTok Hero - Full screen background */}
+      <div className="absolute inset-0 z-0">
+        {!lowBandwidth ? (
+          <video
+            ref={videoRef}
+            className="w-full h-full object-cover"
+            autoPlay
+            muted
+            playsInline
+            loop
+            poster="https://dealfl2hu4uruunq.public.blob.vercel-storage.com/hero-still.webp"
+          >
+            <source src="https://dealfl2hu4uruunq.public.blob.vercel-storage.com/bear-hero-vertical.mp4" type="video/mp4" />
+          </video>
+        ) : (
+          <img
+            src="https://dealfl2hu4uruunq.public.blob.vercel-storage.com/hero-still.webp"
+            alt="Hero Still"
+            className="w-full h-full object-cover"
+          />
+        )}
+        {/* Anti-gravity Mesh Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/80" />
+      </div>
 
-      {/* Dark Overlay for Text Readability */}
-      <div className="absolute inset-0 bg-black/55"></div>
-
-      {/* Content Container - Perfectly Centered */}
-      {isMounted && (
+      {/* Floating Content Layers */}
+      <div className="relative z-10 w-full h-full flex flex-col px-6">
+        {/* Top Floating Text - Portal Style */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2, duration: 0.8 }}
-          className="relative z-10 flex flex-col items-center justify-center text-center px-4 md:px-8 max-w-4xl"
+          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+          className="mt-24 md:mt-32 max-w-2xl mx-auto text-center"
         >
-          {/* Main Headline */}
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-white mb-6 text-balance max-w-3xl">
-            Your Website. No Templates. No Monthly Fees. Just Results.
+          <span className="inline-block px-4 py-1.5 glass rounded-full text-[10px] uppercase tracking-[0.3em] text-primary mb-6 animate-drift">
+            West Lothian &middot; Scotland
+          </span>
+          <h1 className="text-[clamp(2.5rem,10vw,5rem)] font-bold leading-[1] text-white uppercase tracking-tighter mb-4">
+            Elevate Your <br />
+            <span className="text-primary italic">Local Presence.</span>
           </h1>
+        </motion.div>
 
-          {/* Subheadline */}
-          <p className="text-lg md:text-xl text-gray-100 mb-10 font-normal max-w-2xl">
-            One-time investment. You own it outright. Built for Scottish businesses that want a site that actually works.
+        {/* Bottom Third - Thumb-Zone Navigation */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5, duration: 1, ease: [0.16, 1, 0.3, 1] }}
+          className="mt-auto mb-16 md:mb-24 w-full max-w-xl mx-auto"
+        >
+          <p className="text-base md:text-lg text-white/90 mb-10 text-center font-medium leading-relaxed max-w-md mx-auto">
+            We strip away the weight of traditional marketing. <br className="hidden md:block" />
+            <span className="text-primary">High-impact video</span> and <span className="text-primary">conversion-led web design</span> for West Lothian SMEs.
           </p>
 
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 md:gap-6 items-center justify-center">
-            {/* CTA 1 - Get Your Free Review */}
+          <div className="flex flex-col gap-4 w-full px-4">
             <motion.button
               onClick={() => scrollToSection('contact')}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-8 md:px-10 py-3 md:py-4 bg-[#FFD000] text-black font-bold text-base md:text-lg rounded-full hover:bg-yellow-300 transition-colors"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="w-full h-14 md:h-16 bg-primary text-black font-bold text-sm uppercase tracking-widest rounded-2xl floating transition-all flex items-center justify-center gap-3"
             >
-              Get Your Free Review
+              Book a free consultation
+              <span className="text-xl">→</span>
             </motion.button>
 
-            {/* CTA 2 - See Our Work */}
             <motion.button
               onClick={() => scrollToSection('work')}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-8 md:px-10 py-3 md:py-4 bg-white text-black font-bold text-base md:text-lg rounded-full hover:bg-gray-100 transition-colors"
+              whileHover={{ scale: 1.02, backgroundColor: 'rgba(255,255,255,0.1)' }}
+              whileTap={{ scale: 0.98 }}
+              className="w-full h-14 md:h-16 glass text-white font-bold text-sm uppercase tracking-widest rounded-2xl transition-all"
             >
-              See Our Work
+              View Our Work
             </motion.button>
           </div>
         </motion.div>
-      )}
+      </div>
 
-      {/* Scroll Indicator */}
+      {/* Animated Scroll Indicator - Weightless Drifting */}
       <motion.div
-        animate={{ y: [0, 8, 0] }}
-        transition={{ duration: 2, repeat: Infinity }}
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10"
+        animate={{ y: [0, 10, 0] }}
+        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 opacity-40"
       >
-        <ChevronDown className="w-8 h-8 text-white/60 hover:text-white transition-colors" />
+        <ChevronDown className="w-6 h-6 text-white" />
       </motion.div>
     </section>
   );

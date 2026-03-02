@@ -37,16 +37,18 @@
   --border: rgba(255, 255, 255, 0.06);
   --input: rgba(255, 255, 255, 0.06);
   --ring: var(--accent);
-  --radius: 0px;
-
-  /* Brutalist easing — sharp, deliberate */
-  --ease-sharp: cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-brutal: cubic-bezier(0.83, 0, 0.17, 1);
-  --ease-snap: cubic-bezier(0.22, 1, 0.36, 1);
+  /* Weightless / Anti-gravity easing */
+  --ease-elastic: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  --ease-soft: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-in-out: cubic-bezier(0.645, 0.045, 0.355, 1);
 
   --transition-fast: 150ms;
   --transition-normal: 300ms;
   --transition-slow: 600ms;
+
+  /* Floating shadows */
+  --shadow-floating: 0 40px 80px -20px rgba(0, 0, 0, 0.5), 0 0 40px -10px rgba(212, 168, 48, 0.15);
+  --shadow-soft: 0 20px 40px -10px rgba(0, 0, 0, 0.3);
 }
 
 @theme inline {
@@ -67,10 +69,11 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
-  --radius-sm: 0px;
-  --radius-md: 0px;
-  --radius-lg: 0px;
-  --radius-xl: 0px;
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+  --radius-full: 9999px;
 }
 
 @layer base {
@@ -96,13 +99,21 @@
     color: #000;
   }
 
-  a, button, input, textarea, select, [role="button"] {
+  a,
+  button,
+  input,
+  textarea,
+  select,
+  [role="button"] {
     transition-timing-function: var(--ease-sharp);
     transition-duration: var(--transition-normal);
   }
 
   @media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after {
+
+    *,
+    *::before,
+    *::after {
       animation-duration: 0.01ms !important;
       animation-iteration-count: 1 !important;
       transition-duration: 0.01ms !important;
@@ -114,81 +125,236 @@
 /* ───────────────────────────────────────────────
    Scrollbar — brutalist thin line
    ─────────────────────────────────────────────── */
-::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: #0A0A0A; }
-::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 0; }
-::-webkit-scrollbar-thumb:hover { background: var(--accent-light); }
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0A0A0A;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 0;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-light);
+}
 
 /* ───────────────────────────────────────────────
    Animations
    ─────────────────────────────────────────────── */
 @keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(60px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(60px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes slideInLeft {
-  from { opacity: 0; transform: translateX(-80px); }
-  to { opacity: 1; transform: translateX(0); }
+  from {
+    opacity: 0;
+    transform: translateX(-80px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 @keyframes slideInRight {
-  from { opacity: 0; transform: translateX(80px); }
-  to { opacity: 1; transform: translateX(0); }
+  from {
+    opacity: 0;
+    transform: translateX(80px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 @keyframes marquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 @keyframes grain {
-  0%, 100% { transform: translate(0, 0); }
-  10% { transform: translate(-5%, -10%); }
-  20% { transform: translate(-15%, 5%); }
-  30% { transform: translate(7%, -25%); }
-  40% { transform: translate(-5%, 25%); }
-  50% { transform: translate(-15%, 10%); }
-  60% { transform: translate(15%, 0); }
-  70% { transform: translate(0, 15%); }
-  80% { transform: translate(3%, 35%); }
-  90% { transform: translate(-10%, 10%); }
+
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+
+  10% {
+    transform: translate(-5%, -10%);
+  }
+
+  20% {
+    transform: translate(-15%, 5%);
+  }
+
+  30% {
+    transform: translate(7%, -25%);
+  }
+
+  40% {
+    transform: translate(-5%, 25%);
+  }
+
+  50% {
+    transform: translate(-15%, 10%);
+  }
+
+  60% {
+    transform: translate(15%, 0);
+  }
+
+  70% {
+    transform: translate(0, 15%);
+  }
+
+  80% {
+    transform: translate(3%, 35%);
+  }
+
+  90% {
+    transform: translate(-10%, 10%);
+  }
 }
 
 @keyframes line-expand {
-  from { transform: scaleX(0); }
-  to { transform: scaleX(1); }
+  from {
+    transform: scaleX(0);
+  }
+
+  to {
+    transform: scaleX(1);
+  }
 }
 
 @keyframes pulse-accent {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(212, 168, 48, 0.5); }
-  50% { box-shadow: 0 0 0 16px rgba(212, 168, 48, 0); }
+
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(212, 168, 48, 0.5);
+  }
+
+  50% {
+    box-shadow: 0 0 0 16px rgba(212, 168, 48, 0);
+  }
 }
 
 @keyframes ticker {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 @keyframes scan-line {
-  0% { transform: translateY(-100%); }
-  100% { transform: translateY(100vh); }
+  0% {
+    transform: translateY(-100%);
+  }
+
+  100% {
+    transform: translateY(100vh);
+  }
 }
 
 @keyframes border-trace {
-  0% { offset-distance: 0%; }
-  100% { offset-distance: 100%; }
+  0% {
+    offset-distance: 0%;
+  }
+
+  100% {
+    offset-distance: 100%;
+  }
 }
 
 @keyframes gold-gradient-shift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes drift {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes drift-slow {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes float-rotate {
+
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-10px) rotate(1deg);
+  }
+}
+
+@keyframes mesh-gradient {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
 }
 
 .hero-mobile-gradient {
@@ -236,10 +402,56 @@
 
 /* Brutalist glass — minimal blur, hard borders */
 .glass {
-  background: rgba(10, 10, 10, 0.85);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(10, 10, 10, 0.4);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+.glass-nav {
+  background: rgba(10, 10, 10, 0.6);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* Floating Elements */
+.floating {
+  box-shadow: var(--shadow-floating);
+  transition: transform 0.6s var(--ease-elastic), box-shadow 0.6s var(--ease-soft);
+}
+
+.floating:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 50px 100px -20px rgba(0, 0, 0, 0.6), 0 0 50px -10px rgba(212, 168, 48, 0.25);
+}
+
+/* Drifting micro-interactions */
+.animate-drift {
+  animation: drift 4s ease-in-out infinite;
+}
+
+.animate-drift-slow {
+  animation: drift-slow 6s ease-in-out infinite;
+}
+
+.animate-float-rotate {
+  animation: float-rotate 8s ease-in-out infinite;
+}
+
+/* Blob / Portal shapes */
+.blob-portal {
+  clip-path: url(#blob-shape);
+}
+
+.organic-portal {
+  clip-path: ellipse(48% 45% at 50% 50%);
+  transition: clip-path 0.8s var(--ease-in-out);
+}
+
+.organic-portal:hover {
+  clip-path: ellipse(52% 48% at 50% 50%);
 }
 
 /* Accent gradient text */
@@ -248,6 +460,32 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+/* Mesh Background */
+.mesh-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.4;
+  filter: blur(100px);
+}
+
+.mesh-blob {
+  position: absolute;
+  width: 800px;
+  height: 800px;
+  border-radius: 100%;
+  background: var(--accent);
+  opacity: 0.2;
+  top: -200px;
+  left: -200px;
+  animation: mesh-gradient 20s linear infinite;
 }
 
 /* Brutalist divider — hard line, not gradient */
@@ -267,8 +505,22 @@
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
+}
+
+/* Mobile-First Media Containers */
+.media-container {
+  border-radius: 24px;
+  /* Premium rounded corners */
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  /* Floating effect */
+  transform: translateY(0);
+  transition: transform 0.3s ease;
+  aspect-ratio: 9 / 16;
+  /* Perfect for mobile UGC video */
 }
 
 /* Brutalist number — massive display numbers */
@@ -278,10 +530,55 @@
   line-height: 0.85;
 }
 
+/* Responsive Typography */
+.text-hero {
+  font-size: clamp(3rem, 12vw, 8rem);
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+}
+
+.text-title {
+  font-size: clamp(2rem, 8vw, 4.5rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.text-body-lg {
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  line-height: 1.6;
+}
+
 /* Stagger animation delays */
-.stagger-1 { animation-delay: 0.1s; }
-.stagger-2 { animation-delay: 0.2s; }
-.stagger-3 { animation-delay: 0.3s; }
-.stagger-4 { animation-delay: 0.4s; }
-.stagger-5 { animation-delay: 0.5s; }
-.stagger-6 { animation-delay: 0.6s; }
+.stagger-1 {
+  animation-delay: 0.1s;
+}
+
+.stagger-2 {
+  animation-delay: 0.2s;
+}
+
+.stagger-3 {
+  animation-delay: 0.3s;
+}
+
+.stagger-4 {
+  animation-delay: 0.4s;
+}
+
+.stagger-5 {
+  animation-delay: 0.5s;
+}
+
+.stagger-6 {
+  animation-delay: 0.6s;
+}
+
+/* Blob Portal Shapes */
+.portal-blob-1 {
+  clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 25%);
+  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+}
+
+.portal-blob-2 {
+  border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+}

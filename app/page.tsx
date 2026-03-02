@@ -56,6 +56,9 @@ import { PhilosophySection } from "@/components/sections/PhilosophySection";
 import { ContentLabSection } from "@/components/sections/ContentLabSection";
 import { MinimalFooter } from "@/components/sections/MinimalFooter";
 
+import { AntigravityBackground } from "@/components/ui/AntigravityBackground";
+import { PortalShapes } from "@/components/ui/PortalShapes";
+
 /* ══════════════════════════════════════════════
    MAIN PAGE
    ══════════════════════════════════════════════ */
@@ -66,9 +69,13 @@ export default function BearMediaSite() {
   const [showBottomNav, setShowBottomNav] = useState(false);
   const [contentLabOpen, setContentLabOpen] = useState(false);
 
+  /* Track scroll for parallax and nav visibility */
+  const { scrollY } = useScroll();
+  const backgroundY = useTransform(scrollY, [0, 5000], [0, 500]);
+
   useEffect(() => {
     const onScroll = () => {
-      
+
       setShowBottomNav(window.scrollY > 400);
     };
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -107,6 +114,8 @@ export default function BearMediaSite() {
 
   return (
     <>
+      <AntigravityBackground />
+      <PortalShapes />
       <SiteNav
         visible={navVisible}
         mobileOpen={mobileMenuOpen}
@@ -169,7 +178,7 @@ function SiteNav({
         initial={{ y: 0 }}
         animate={{ y: visible ? 0 : -100 }}
         transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-        className="fixed inset-x-0 top-0 z-50 border-b border-white/[0.06] bg-[#0A0A0A]/90 backdrop-blur-md"
+        className="fixed inset-x-0 top-0 z-50 glass-nav"
       >
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
           <button onClick={() => onNavigate("home")} className="flex items-center gap-2">
@@ -340,17 +349,17 @@ function HeroSection({ onNavigate }: { onNavigate: (id: string) => void }) {
         {/* 3. Main headline — staggered word reveal */}
         <h1 className="mb-6">
           <AnimatedHeroText
-            text="Your business deserves to be"
+            text="Elevate Your"
             className="text-[clamp(2.8rem,8vw,6rem)] font-bold uppercase leading-[0.95] tracking-[-0.03em] text-white"
             delay={0.5}
           />
           <motion.span
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 1.0 }}
-            className="inline-block text-[clamp(2.8rem,8vw,6rem)] font-bold uppercase leading-[0.95] tracking-[-0.03em] text-[#EAB308]"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 1.0, ease: "easeOut" }}
+            className="inline-block text-[clamp(2.8rem,8vw,6rem)] font-bold uppercase leading-[0.95] tracking-[-0.03em] text-[#EAB308] ml-2"
           >
-            {" "}seen.
+            Local Presence.
           </motion.span>
         </h1>
 
@@ -359,9 +368,9 @@ function HeroSection({ onNavigate }: { onNavigate: (id: string) => void }) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 1.2 }}
-          className="mx-auto mb-10 max-w-xl text-base leading-relaxed text-[#D4A830] md:text-lg"
+          className="mx-auto mb-10 max-w-2xl text-base leading-relaxed text-[#D4A830] md:text-xl font-medium"
         >
-          Websites that actually work. Social content that gets folk talking. No fluff — just results that fill your diary.
+          We strip away the weight of traditional marketing. High-impact video and conversion-led web design for West Lothian SMEs.
         </motion.p>
 
         {/* CTAs — centered */}
@@ -1296,9 +1305,8 @@ function TestimonialsSection({ onNavigate }: { onNavigate: (id: string) => void 
               <button
                 key={i}
                 onClick={() => setCurrentIndex(i)}
-                className={`h-2 transition-all duration-300 ${
-                  i === currentIndex ? "w-8 bg-[#D4A830]" : "w-2 bg-white/30 hover:bg-white/50"
-                }`}
+                className={`h-2 transition-all duration-300 ${i === currentIndex ? "w-8 bg-[#D4A830]" : "w-2 bg-white/30 hover:bg-white/50"
+                  }`}
                 style={{ borderRadius: "4px" }}
                 aria-label={`Go to review ${i + 1}`}
               />
@@ -1736,9 +1744,8 @@ function FloatingBottomNav({
                 <button
                   key={item.id}
                   onClick={() => onNavigate(item.id)}
-                  className={`flex flex-col items-center gap-0.5 px-3 py-1.5 transition-colors ${
-                    isActive ? "text-[#D4A830]" : "text-white/60"
-                  }`}
+                  className={`flex flex-col items-center gap-0.5 px-3 py-1.5 transition-colors ${isActive ? "text-[#D4A830]" : "text-white/60"
+                    }`}
                 >
                   <Icon className="h-4 w-4" />
                   <span className="text-[9px] font-medium uppercase tracking-wider">

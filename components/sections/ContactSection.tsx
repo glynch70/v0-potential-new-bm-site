@@ -29,37 +29,37 @@ export default function ContactSection() {
   };
 
   return (
-    <div className="relative mb-8 overflow-hidden bg-black py-20 md:mb-12 md:py-20">
-      <video
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="none"
-        poster={HERO_VIDEO_SOURCES.poster}
-        className="absolute inset-0 h-full w-full object-cover"
-      >
-        <source src={HERO_VIDEO_SOURCES.mp4} type='video/mp4; codecs="hvc1"' />
-        <source src={HERO_VIDEO_SOURCES.webm} type="video/webm" />
-      </video>
-      <div className="absolute inset-0 bg-black/65" />
+    <section id="contact" className="relative mb-8 overflow-hidden bg-black py-24 md:py-40">
+      {/* Background Portal Video */}
+      <div className="absolute inset-0 organic-portal overflow-hidden opacity-40 scale-110">
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="h-full w-full object-cover"
+        >
+          <source src="https://dealfl2hu4uruunq.public.blob.vercel-storage.com/bear-hero-vertical.mp4" type="video/mp4" />
+        </video>
+      </div>
+      <div className="absolute inset-0 bg-black/60" />
 
       <motion.div
-        initial={{ opacity: 0, y: 30 }}
+        initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
         className="relative z-10 mx-auto max-w-2xl px-6"
       >
-        <div className="rounded-3xl bg-card/95 p-8 shadow-[0_8px_30px_rgba(0,0,0,0.25)] backdrop-blur-md md:p-12">
-          <h2 className="mb-3 text-center text-4xl font-bold text-foreground md:text-5xl">
-            Get in touch
+        <div className="glass floating rounded-[2.5rem] p-8 md:p-14 shadow-floating backdrop-blur-2xl">
+          <h2 className="mb-4 text-center text-4xl font-bold text-white uppercase tracking-tighter md:text-5xl">
+            Elevate Your <span className="text-primary italic">Presence.</span>
           </h2>
-          <p className="mb-8 text-center text-lg leading-[1.7] text-muted-foreground">
-            Send a message and I&apos;ll get back to you within 24 hours.
+          <p className="mb-12 text-center text-white/60 text-sm uppercase tracking-widest font-medium">
+            Let's build something weightless.
           </p>
 
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-8">
             <FormControl id="name" label="Name">
               <input type="text" name="name" required placeholder="Your name" />
             </FormControl>
@@ -75,32 +75,32 @@ export default function ContactSection() {
 
             <FormControl id="projectType" label="Project Type">
               <select name="projectType" defaultValue="Website" required>
-                <option value="Website">Website</option>
-                <option value="Social Media Content">Social Media Content</option>
-                <option value="Branding">Branding</option>
-                <option value="Other">Other</option>
+                <option value="Website">Website Development</option>
+                <option value="Social Media Content">Short-form Video / Reels</option>
+                <option value="Branding">Brand Identity</option>
+                <option value="Other">Other Query</option>
               </select>
             </FormControl>
 
             <FormControl id="message" label="Message">
               <textarea
                 name="message"
-                rows={5}
+                rows={4}
                 required
-                placeholder="Tell me about your project..."
+                placeholder="Tell us about your local business..."
               />
             </FormControl>
 
             <Button
               type="submit"
-              className="w-full rounded-xl bg-[#C9A227] py-7 text-lg font-bold text-black shadow-[0_4px_20px_rgba(201,162,39,0.3)] transition hover:bg-[#B89120] hover:shadow-[0_8px_30px_rgba(201,162,39,0.4)]"
+              className="w-full h-16 rounded-2xl bg-primary text-black text-sm font-bold uppercase tracking-widest shadow-xl transition-all hover:bg-white hover:-translate-y-1 block"
             >
-              Send Message
+              Send Request &uarr;
             </Button>
           </form>
         </div>
       </motion.div>
-    </div>
+    </section>
   );
 }
 
