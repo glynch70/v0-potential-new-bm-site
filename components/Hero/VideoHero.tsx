@@ -54,7 +54,7 @@ export const VideoHero = ({ onContentLabClick }: VideoHeroProps) => {
             loop
             poster="https://dealfl2hu4uruunq.public.blob.vercel-storage.com/hero-still.webp"
           >
-            <source src="https://dealfl2hu4uruunq.public.blob.vercel-storage.com/bear-hero-vertical.mp4" type="video/mp4" />
+            <source src="https://dealfl2hu4uruunq.public.blob.vercel-storage.com/newherovid.mov" type="video/mp4" />
           </video>
         ) : (
           <img

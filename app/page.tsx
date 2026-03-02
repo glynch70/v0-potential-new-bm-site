@@ -124,26 +124,28 @@ export default function BearMediaSite() {
       />
       <VideoHero onContentLabClick={() => setContentLabOpen(true)} />
       <ContentLabModal isOpen={contentLabOpen} onClose={() => setContentLabOpen(false)} />
-      <ServiceCardsSection />
-      <WhyBearMediaSection />
-      <FlipCardGallerySection />
-      <FeaturedWorkSection />
-      <GallerySection />
-      <PhilosophySection />
-      <ContentLabSection />
       <MarqueeStrip />
-      <ArsenalSection />
+
+      {/* 2. THE EMPATHY */}
       <PainSection onNavigate={scrollTo} />
-      <ProcessSection onNavigate={scrollTo} />
-      <BackToTop />
-      <WorkSection onNavigate={scrollTo} />
-      <InteractiveServiceCards />
-      <BackToTop />
+
+      {/* 3. THE PROMISE */}
+      <ServiceCardsSection />
+
+      {/* 4. THE PROOF */}
+      <FeaturedWorkSection />
       <TestimonialsSection onNavigate={scrollTo} />
+
+      {/* 5. THE TRUST */}
+      <PhilosophySection />
+      <ProcessSection onNavigate={scrollTo} />
+
+      {/* 6. THE MAN */}
       <AboutSection />
-      <BackToTop />
-      <CTASection onNavigate={scrollTo} />
+
+      {/* 7. THE CONVERSION */}
       <ContactSection />
+
       <MinimalFooter />
       <FloatingBottomNav visible={showBottomNav} activeSection={activeSection} onNavigate={scrollTo} />
     </>
@@ -573,54 +575,43 @@ function PainSection({ onNavigate }: { onNavigate: (id: string) => void }) {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section ref={ref} className="relative bg-[#0A0A0A] py-32 md:py-40">
-      <div className="mx-auto max-w-7xl px-6">
+    <section ref={ref} className="relative bg-black py-32 md:py-56 overflow-hidden">
+      <div className="mx-auto max-w-7xl px-6 relative z-10">
         {/* Section header */}
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="mb-20"
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={isInView ? { opacity: 1, scale: 1 } : {}}
+          transition={{ duration: 0.8 }}
+          className="mb-24 text-center md:text-left"
         >
-          <div className="mb-4 flex items-center gap-3">
-            <div className="h-px w-12 bg-[#D4A830]" />
-            <span className="text-[11px] font-medium uppercase tracking-[0.3em] text-[#D4A830]">
-              The problem
+          <div className="mb-6 flex items-center justify-center md:justify-start gap-3">
+            <div className="h-px w-12 bg-primary" />
+            <span className="text-[11px] font-bold uppercase tracking-[0.4em] text-primary">
+              The Reality Gap
             </span>
           </div>
-          <h2 className="max-w-3xl text-5xl font-bold uppercase leading-[1.1] tracking-tight md:text-6xl flex flex-wrap">
-            {"If your business isn't online properly,".split(" ").map((word, i) => (
-              <span
-                key={i}
-                className="mr-[0.3em] text-white/60 transition-colors duration-300 hover:text-white cursor-default"
-              >
-                {word}
-              </span>
-            ))}
+          <h2 className="text-title text-white uppercase tracking-tighter mb-8 max-w-4xl">
+            If your business isn't <span className="text-primary italic">online properly,</span> you're losing money.
           </h2>
-          <p className="max-w-3xl text-5xl font-bold uppercase leading-[1.1] tracking-tight md:text-6xl flex flex-wrap">
-            {"it basically doesn't exist.".split(" ").map((word, i) => (
-              <span
-                key={i}
-                className="mr-[0.3em] text-white/40 transition-colors duration-300 hover:text-white cursor-default"
-              >
-                {word}
-              </span>
-            ))}
+          <p className="text-white/60 text-lg md:text-xl max-w-2xl leading-relaxed">
+            Beautiful content is useless if it doesn't convert. We identify the friction in your digital presence and strip it away.
           </p>
         </motion.div>
 
-        {/* Pain flip cards */}
-        <div className="grid gap-px bg-white/[0.04] md:grid-cols-2">
+        {/* Flip Cards Grid */}
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
           {PAIN_POINTS.map((pain, i) => (
-            <PainFlipCard key={pain.number} pain={pain} index={i} isInView={isInView} />
+            <PainFlipCard key={i} pain={pain} index={i} isInView={isInView} />
           ))}
         </div>
-        <SectionCTA text="See how we fix this" target="services" onNavigate={onNavigate} />
       </div>
+
+      {/* Background Accent Blob */}
+      <div className="absolute top-1/2 right-0 -translate-y-1/2 w-[60%] h-[60%] bg-primary/5 blur-[150px] rounded-full pointer-events-none" />
     </section>
   );
 }
+
 
 /* SolutionSection replaced by InteractiveServiceCards component */
 
