@@ -4,6 +4,16 @@ import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import { ChevronLeft } from 'lucide-react';
 
+interface Service {
+  id: number;
+  title: string;
+  shortDescription: string;
+  expandedContent: string;
+  bullets?: string[];
+  buttonText: string;
+  icon: string;
+}
+
 export const ServiceCardsSection = () => {
   const [expandedCard, setExpandedCard] = useState<number | null>(null);
   const [isMounted, setIsMounted] = useState(false);
@@ -12,7 +22,7 @@ export const ServiceCardsSection = () => {
     setIsMounted(true);
   }, []);
 
-  const services = [
+  const services: Service[] = [
     {
       id: 0,
       title: 'Vertical Dominance',
@@ -23,10 +33,11 @@ export const ServiceCardsSection = () => {
     },
     {
       id: 1,
-      title: 'Digital Presence',
-      shortDescription: 'Premium website design and strategic YouTube production for long-form authority and conversion.',
-      expandedContent: 'Conversion-Focused Web Design, YouTube Authority Strategy, Brand Identity, and SEO Ecosystems.',
-      buttonText: 'Build Now',
+      title: 'Websites',
+      shortDescription: 'Fast, clean websites built to convert visitors into customers. No templates. No monthly fees. You own your site outright from day one.',
+      expandedContent: '',
+      bullets: ['Landing pages', 'Business sites', 'Free hosting (no monthly fees)', 'You own it outright'],
+      buttonText: 'Get Started',
       icon: '🌐',
     },
   ];
@@ -59,7 +70,7 @@ export const ServiceCardsSection = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="bg-black border border-zinc-700 rounded-3xl p-8 md:p-10 hover:border-yellow-400 hover:shadow-[0_0_30px_rgba(234,179,8,0.3)] transition-all duration-300 cursor-pointer min-h-96 flex flex-col justify-between"
+              className="bg-black border border-zinc-700 rounded-3xl p-8 md:p-10 hover:border-yellow-400 hover:shadow-[0_0_30px_rgba(255,208,0,0.3)] transition-all duration-300 cursor-pointer min-h-96 flex flex-col justify-between"
               onClick={() => isMounted && setExpandedCard(expandedCard === service.id ? null : service.id)}
             >
               <div className="text-5xl mb-6">{service.icon}</div>
@@ -69,13 +80,24 @@ export const ServiceCardsSection = () => {
                   {service.title}
                 </h3>
 
-                <p className="text-gray-300 text-lg leading-relaxed mb-6">
-                  {isMounted && expandedCard === service.id ? service.expandedContent : service.shortDescription}
-                </p>
+                {isMounted && expandedCard === service.id && service.bullets ? (
+                  <ul className="mb-6 space-y-2">
+                    {service.bullets.map((bullet, i) => (
+                      <li key={i} className="flex items-center gap-3 text-gray-300 text-lg">
+                        <span className="text-[#FFD000] font-bold">✓</span>
+                        {bullet}
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  <p className="text-gray-300 text-lg leading-relaxed mb-6">
+                    {isMounted && expandedCard === service.id ? service.expandedContent : service.shortDescription}
+                  </p>
+                )}
 
                 <motion.div
                   whileHover={{ x: isMounted && expandedCard === service.id ? -4 : 4 }}
-                  className="flex items-center gap-2 text-yellow-400 font-semibold mb-6"
+                  className="flex items-center gap-2 text-[#FFD000] font-semibold mb-6"
                 >
                   {isMounted && expandedCard === service.id ? (
                     <>
@@ -94,7 +116,7 @@ export const ServiceCardsSection = () => {
                   <motion.button
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="px-6 md:px-8 py-3 md:py-4 bg-yellow-400 text-black font-bold rounded-full hover:bg-yellow-300 transition-colors"
+                    className="px-6 md:px-8 py-3 md:py-4 bg-[#FFD000] text-black font-bold rounded-full hover:bg-yellow-300 transition-colors"
                     onClick={(e) => e.stopPropagation()}
                   >
                     {service.buttonText}
