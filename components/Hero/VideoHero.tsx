@@ -79,9 +79,9 @@ export const VideoHero = ({ onContentLabClick }: VideoHeroProps) => {
           <span className="inline-block px-4 py-1.5 glass rounded-full text-[10px] uppercase tracking-[0.3em] text-primary mb-6 animate-drift">
             West Lothian &middot; Scotland
           </span>
-          <h1 className="text-[clamp(2.5rem,10vw,5rem)] font-bold leading-[1] text-white uppercase tracking-tighter mb-4">
-            Elevate Your <br />
-            <span className="text-primary italic">Local Presence.</span>
+          <h1 className="text-[clamp(2.5rem,10vw,6rem)] font-bold leading-[1.1] text-white tracking-tighter mb-4">
+            Websites & <br />
+            <span className="text-primary italic font-black">Social Media.</span>
           </h1>
         </motion.div>
 
