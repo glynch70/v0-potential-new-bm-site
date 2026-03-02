@@ -113,7 +113,7 @@ export default function BearMediaSite() {
         onToggleMobile={() => setMobileMenuOpen((v) => !v)}
         onNavigate={scrollTo}
       />
-      <VideoHero onContentLabClick={() => setContentLabOpen(true)} />
+      <VideoHero onContentLabClick={() => setContentLabOpen(true)} onNavigate={scrollTo} />
       <ContentLabModal isOpen={contentLabOpen} onClose={() => setContentLabOpen(false)} />
       <ServiceCardsSection />
       <FeaturedWorkSection />
@@ -127,6 +127,7 @@ export default function BearMediaSite() {
       <BackToTop />
       <WorkSection onNavigate={scrollTo} />
       <InteractiveServiceCards />
+      <WhyBearMediaSection />
       <BackToTop />
       <TestimonialsSection onNavigate={scrollTo} />
       <AboutSection />
@@ -922,6 +923,74 @@ function WorkSection({ onNavigate }: { onNavigate: (id: string) => void }) {
 }
 
 /* ══════════════════════════════════════════════
+   WHY BEAR MEDIA — 3-column trust section
+   ══════════════════════════════════════════════ */
+function WhyBearMediaSection() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+
+  const pillars = [
+    {
+      icon: "✅",
+      title: "No Monthly Fees",
+      text: "Most agencies charge £50–£100 a month forever. We don't. One price, yours for life.",
+    },
+    {
+      icon: "✅",
+      title: "No Templates",
+      text: "Your business isn't off the shelf, so your website won't be either. Built from scratch, every time.",
+    },
+    {
+      icon: "✅",
+      title: "You Own It",
+      text: "We hand it over and you're in full control. No lock-in, no strings attached.",
+    },
+  ];
+
+  return (
+    <section ref={ref} className="relative border-t border-white/[0.04] bg-[#0A0A0A] py-24 md:py-32">
+      <div className="mx-auto max-w-7xl px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+          className="mb-16 text-center"
+        >
+          <div className="mb-4 flex items-center justify-center gap-3">
+            <div className="h-px w-12 bg-[#FFD000]" />
+            <span className="text-[11px] font-medium uppercase tracking-[0.3em] text-[#FFD000]">
+              Why choose us
+            </span>
+            <div className="h-px w-12 bg-[#FFD000]" />
+          </div>
+          <h2 className="text-4xl font-bold uppercase leading-tight tracking-tight text-white md:text-5xl">
+            Why Bear Media?
+          </h2>
+        </motion.div>
+
+        <div className="grid gap-px bg-white/[0.04] md:grid-cols-3">
+          {pillars.map((pillar, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 40 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, delay: i * 0.12 }}
+              className="flex flex-col gap-4 bg-[#0A0A0A] p-10 md:p-12"
+            >
+              <span className="text-4xl">{pillar.icon}</span>
+              <h3 className="text-xl font-bold uppercase tracking-tight text-[#FFD000]">
+                {pillar.title}
+              </h3>
+              <p className="text-base leading-relaxed text-white/80">{pillar.text}</p>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ══════════════════════════════════════════════
    6. TESTIMONIALS / SOCIAL PROOF
    ══════════════════════════════════════════════ */
 const REVIEWS = [
@@ -962,6 +1031,30 @@ const REVIEWS = [
       "Slick process, reliable, good communication. Happy with the end results on my project. Top quality service. Highly recommend.",
     name: "Gary Young",
     role: "Client",
+    stars: 5,
+    image: null,
+  },
+  {
+    quote:
+      "Garry created a simple, powerful website that sells our Manager Training Programme and clearly sets us apart. Delivered within days, with zero fuss. Exactly what we needed.",
+    name: "Managing What Matters",
+    role: "Leadership & Management Training",
+    stars: 5,
+    image: null,
+  },
+  {
+    quote:
+      "Bear Media built us a site that actually brings in enquiries. Fast, clean and no ongoing costs. Exactly what a trade business needs.",
+    name: "K. Lewis Joinery",
+    role: "Equestrian Construction & Bespoke Joinery",
+    stars: 5,
+    image: null,
+  },
+  {
+    quote:
+      "From the first call to launch it was seamless. Our site looks stunning and our customers love it.",
+    name: "Herb & Soul",
+    role: "Celtic Herbalism & Nature Immersion",
     stars: 5,
     image: null,
   },
@@ -1289,6 +1382,35 @@ function ContactSection() {
   return (
     <section id="contact" ref={ref} className="relative border-t border-white/[0.04] bg-[#0A0A0A] py-32 md:py-40">
       <div className="mx-auto max-w-7xl px-6">
+        {/* Instagram DM block */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+          className="mb-16 bg-[#FFD000] px-8 py-10 md:px-12 md:py-12"
+        >
+          <div className="flex flex-col items-start gap-6 md:flex-row md:items-center md:justify-between">
+            <div>
+              <h3 className="mb-3 text-2xl font-bold uppercase tracking-tight text-black md:text-3xl">
+                Want a Free 5-Minute Site Review?
+              </h3>
+              <p className="max-w-xl text-base text-black/80 leading-relaxed">
+                DM the word <strong>SLAY</strong> on Instagram and I&apos;ll tell you exactly what&apos;s holding your current site back. No fluff, just facts.
+              </p>
+            </div>
+            <motion.a
+              href="https://www.instagram.com/bear.media.scotland"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex shrink-0 items-center gap-3 border-2 border-black bg-black px-7 py-4 text-sm font-bold uppercase tracking-[0.1em] text-[#FFD000] transition-all hover:bg-transparent hover:text-black"
+              whileTap={{ scale: 0.97 }}
+            >
+              <Instagram className="h-4 w-4" />
+              DM on Instagram
+            </motion.a>
+          </div>
+        </motion.div>
+
         <div className="grid gap-16 md:grid-cols-2">
           {/* Left — Info */}
           <motion.div

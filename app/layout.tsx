@@ -30,12 +30,12 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://bear-media.com"),
 
   title: {
-    default: "Bear Media | Websites & Content Creation | Edinburgh Scotland",
+    default: "Website Design Edinburgh | No Monthly Fees | Bear Media",
     template: "%s | Bear Media Edinburgh",
   },
 
   description:
-    "Websites, social media content, video production & drone services for small businesses across Edinburgh, West Lothian, Fife & Scotland. Book a free call.",
+    "Bear Media builds fast, custom websites for Scottish businesses. No monthly fees, no templates — you own it outright. Based in Edinburgh. Free site review available.",
 
   keywords: [
     "website design Edinburgh",
