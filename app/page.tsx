@@ -113,7 +113,7 @@ export default function BearMediaSite() {
         onToggleMobile={() => setMobileMenuOpen((v) => !v)}
         onNavigate={scrollTo}
       />
-      <VideoHero onContentLabClick={() => setContentLabOpen(true)} />
+      <VideoHero onContentLabClick={() => setContentLabOpen(true)} onNavigate={scrollTo} />
       <ContentLabModal isOpen={contentLabOpen} onClose={() => setContentLabOpen(false)} />
       <ServiceCardsSection />
       <FeaturedWorkSection />
@@ -127,6 +127,8 @@ export default function BearMediaSite() {
       <BackToTop />
       <WorkSection onNavigate={scrollTo} />
       <InteractiveServiceCards />
+      <WhyBearMediaSection />
+      <WorkFlipCardGallery />
       <BackToTop />
       <TestimonialsSection onNavigate={scrollTo} />
       <AboutSection />
@@ -922,6 +924,236 @@ function WorkSection({ onNavigate }: { onNavigate: (id: string) => void }) {
 }
 
 /* ══════════════════════════════════════════════
+   OUR WORK ACROSS SCOTLAND — Flip card gallery
+   ══════════════════════════════════════════════ */
+const WORK_CARDS = [
+  {
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Edinburgh%20Sunset.jpg",
+    frontLabel: "Edinburgh",
+    backTitle: "Local & Proud",
+    backText: "Based in Edinburgh, we work with Scottish businesses who want results, not excuses.",
+  },
+  {
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/horse%20sheds.jpeg",
+    frontLabel: "K. Lewis Joinery",
+    backTitle: "Trades & Construction",
+    backText: "Custom websites built for tradespeople. Fast, clear, and built to get you enquiries.",
+  },
+  {
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/chefs%20at%20work.jpg",
+    frontLabel: "Hospitality",
+    backTitle: "Food & Hospitality",
+    backText: "Stunning visual sites for restaurants, hotels and events. Your food deserves to look this good online.",
+  },
+  {
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Speaker%20Event1.jpg",
+    frontLabel: "Events & Speaking",
+    backTitle: "Events & Speakers",
+    backText: "Book more clients with a website that sells your expertise before you even walk in the room.",
+  },
+  {
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/dundas%20castle.jpeg",
+    frontLabel: "Venues",
+    backTitle: "Venues & Tourism",
+    backText: "Showcase your space with high-quality visual storytelling that turns browsers into bookings.",
+  },
+  {
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/bear%20media%20drone%20showreel%20july%2025%20mobile-Cover.jpg",
+    frontLabel: "Drone & Video",
+    backTitle: "Video Content",
+    backText: "Drone footage, reels, promos — content that stops the scroll and builds your brand fast.",
+  },
+];
+
+function FlipCard({
+  card,
+  index,
+  isInView,
+}: {
+  card: typeof WORK_CARDS[0];
+  index: number;
+  isInView: boolean;
+}) {
+  const [flipped, setFlipped] = useState(false);
+  const [imgError, setImgError] = useState(false);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 40 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.5, delay: index * 0.08 }}
+      className="cursor-pointer"
+      style={{ perspective: "1200px" }}
+      onMouseEnter={() => setFlipped(true)}
+      onMouseLeave={() => setFlipped(false)}
+      onClick={() => setFlipped((v) => !v)}
+    >
+      <div
+        className="relative w-full transition-transform duration-700"
+        style={{
+          aspectRatio: "3/4",
+          transformStyle: "preserve-3d",
+          transform: flipped ? "rotateY(180deg)" : "rotateY(0deg)",
+        }}
+      >
+        {/* Front face */}
+        <div
+          className="absolute inset-0 overflow-hidden rounded-lg shadow-lg"
+          style={{ backfaceVisibility: "hidden" }}
+        >
+          {imgError ? (
+            <div className="absolute inset-0 bg-[#1a1a1a]" />
+          ) : (
+            <Image
+              src={card.image}
+              alt={card.frontLabel}
+              fill
+              className="object-cover"
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+              onError={() => setImgError(true)}
+              unoptimized
+            />
+          )}
+          <div className="absolute inset-0 bg-black/40" />
+          {/* Label badge */}
+          <div className="absolute bottom-0 left-0 right-0 p-5">
+            <span className="inline-block bg-[#FFD000] px-3 py-1 text-xs font-bold uppercase tracking-[0.15em] text-black">
+              {card.frontLabel}
+            </span>
+          </div>
+          {/* Tap hint */}
+          <span className="absolute top-3 right-3 text-[9px] uppercase tracking-[0.2em] text-white/50 md:hidden">
+            Tap to flip
+          </span>
+          <span className="absolute top-3 right-3 hidden text-[9px] uppercase tracking-[0.2em] text-white/50 md:inline">
+            Hover to flip
+          </span>
+        </div>
+
+        {/* Back face */}
+        <div
+          className="absolute inset-0 flex flex-col items-center justify-center rounded-lg bg-black px-8 py-10 shadow-lg text-center"
+          style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
+        >
+          <h3 className="mb-4 text-xl font-bold uppercase tracking-tight text-[#FFD000]">
+            {card.backTitle}
+          </h3>
+          <p className="text-base leading-relaxed text-white/80">{card.backText}</p>
+          <span className="mt-8 text-[9px] uppercase tracking-[0.2em] text-white/30">
+            Tap to flip back
+          </span>
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
+function WorkFlipCardGallery() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+
+  return (
+    <section ref={ref} className="relative border-t border-white/[0.04] bg-[#0A0A0A] py-24 md:py-32">
+      <div className="mx-auto max-w-7xl px-6">
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+          className="mb-16 text-center"
+        >
+          <div className="mb-4 flex items-center justify-center gap-3">
+            <div className="h-px w-12 bg-[#FFD000]" />
+            <span className="text-[11px] font-medium uppercase tracking-[0.3em] text-[#FFD000]">
+              Portfolio
+            </span>
+            <div className="h-px w-12 bg-[#FFD000]" />
+          </div>
+          <h2 className="text-4xl font-bold uppercase leading-tight tracking-tight text-white md:text-5xl">
+            Our Work Across Scotland
+          </h2>
+        </motion.div>
+
+        {/* Grid — 1 col mobile / 2 col tablet / 3 col desktop */}
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {WORK_CARDS.map((card, i) => (
+            <FlipCard key={i} card={card} index={i} isInView={isInView} />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ══════════════════════════════════════════════
+   WHY BEAR MEDIA — 3-column trust section
+   ══════════════════════════════════════════════ */
+function WhyBearMediaSection() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+
+  const pillars = [
+    {
+      icon: "✅",
+      title: "No Monthly Fees",
+      text: "Most agencies charge £50–£100 a month forever. We don't. One price, yours for life.",
+    },
+    {
+      icon: "✅",
+      title: "No Templates",
+      text: "Your business isn't off the shelf, so your website won't be either. Built from scratch, every time.",
+    },
+    {
+      icon: "✅",
+      title: "You Own It",
+      text: "We hand it over and you're in full control. No lock-in, no strings attached.",
+    },
+  ];
+
+  return (
+    <section ref={ref} className="relative border-t border-white/[0.04] bg-[#0A0A0A] py-24 md:py-32">
+      <div className="mx-auto max-w-7xl px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+          className="mb-16 text-center"
+        >
+          <div className="mb-4 flex items-center justify-center gap-3">
+            <div className="h-px w-12 bg-[#FFD000]" />
+            <span className="text-[11px] font-medium uppercase tracking-[0.3em] text-[#FFD000]">
+              Why choose us
+            </span>
+            <div className="h-px w-12 bg-[#FFD000]" />
+          </div>
+          <h2 className="text-4xl font-bold uppercase leading-tight tracking-tight text-white md:text-5xl">
+            Why Bear Media?
+          </h2>
+        </motion.div>
+
+        <div className="grid gap-px bg-white/[0.04] md:grid-cols-3">
+          {pillars.map((pillar, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 40 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, delay: i * 0.12 }}
+              className="flex flex-col gap-4 bg-[#0A0A0A] p-10 md:p-12"
+            >
+              <span className="text-4xl">{pillar.icon}</span>
+              <h3 className="text-xl font-bold uppercase tracking-tight text-[#FFD000]">
+                {pillar.title}
+              </h3>
+              <p className="text-base leading-relaxed text-white/80">{pillar.text}</p>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ══════════════════════════════════════════════
    6. TESTIMONIALS / SOCIAL PROOF
    ══════════════════════════════════════════════ */
 const REVIEWS = [
@@ -962,6 +1194,30 @@ const REVIEWS = [
       "Slick process, reliable, good communication. Happy with the end results on my project. Top quality service. Highly recommend.",
     name: "Gary Young",
     role: "Client",
+    stars: 5,
+    image: null,
+  },
+  {
+    quote:
+      "Garry created a simple, powerful website that sells our Manager Training Programme and clearly sets us apart. Delivered within days, with zero fuss. Exactly what we needed.",
+    name: "Managing What Matters",
+    role: "Leadership & Management Training",
+    stars: 5,
+    image: null,
+  },
+  {
+    quote:
+      "Bear Media built us a site that actually brings in enquiries. Fast, clean and no ongoing costs. Exactly what a trade business needs.",
+    name: "K. Lewis Joinery",
+    role: "Equestrian Construction & Bespoke Joinery",
+    stars: 5,
+    image: null,
+  },
+  {
+    quote:
+      "From the first call to launch it was seamless. Our site looks stunning and our customers love it.",
+    name: "Herb & Soul",
+    role: "Celtic Herbalism & Nature Immersion",
     stars: 5,
     image: null,
   },
@@ -1289,6 +1545,35 @@ function ContactSection() {
   return (
     <section id="contact" ref={ref} className="relative border-t border-white/[0.04] bg-[#0A0A0A] py-32 md:py-40">
       <div className="mx-auto max-w-7xl px-6">
+        {/* Instagram DM block */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+          className="mb-16 bg-[#FFD000] px-8 py-10 md:px-12 md:py-12"
+        >
+          <div className="flex flex-col items-start gap-6 md:flex-row md:items-center md:justify-between">
+            <div>
+              <h3 className="mb-3 text-2xl font-bold uppercase tracking-tight text-black md:text-3xl">
+                Want a Free 5-Minute Site Review?
+              </h3>
+              <p className="max-w-xl text-base text-black/80 leading-relaxed">
+                DM the word <strong>SLAY</strong> on Instagram and I&apos;ll tell you exactly what&apos;s holding your current site back. No fluff, just facts.
+              </p>
+            </div>
+            <motion.a
+              href="https://www.instagram.com/bear.media.scotland"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex shrink-0 items-center gap-3 border-2 border-black bg-black px-7 py-4 text-sm font-bold uppercase tracking-[0.1em] text-[#FFD000] transition-all hover:bg-transparent hover:text-black"
+              whileTap={{ scale: 0.97 }}
+            >
+              <Instagram className="h-4 w-4" />
+              DM on Instagram
+            </motion.a>
+          </div>
+        </motion.div>
+
         <div className="grid gap-16 md:grid-cols-2">
           {/* Left — Info */}
           <motion.div
