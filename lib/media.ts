@@ -6,6 +6,6 @@
  * serves as the loading state instead.
  */
 export const HERO_VIDEO_SOURCES = {
-    mp4: "/media/newherovid.mov",
-    webm: "/media/newherovid.mov",
+      mp4: "/media/hero-drone.mp4",
+      webm: "/media/hero-drone.mp4",
 } as const;
