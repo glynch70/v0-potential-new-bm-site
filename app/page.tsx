@@ -140,11 +140,10 @@ function Work() {
   const [activeTab, setActiveTab] = useState<'websites' | 'social' | 'brand'>('websites')
 
   const websites = [
-    { img: '/work/website-5-lewis-joinery.jpg', name: 'L Lewis Joinery', desc: 'Expert equestrian construction & bespoke joinery' },
-    { img: '/work/website-6-transport.jpg', name: 'Transport Co', desc: 'Transport solutions you can trust' },
-    { img: '/work/website-2-dalgety.jpg', name: 'Dalgety Bay', desc: 'Welcome to Dalgety Bay' },
-    { img: '/work/website-3-herb-soul.jpg', name: 'Herb & Soul', desc: 'Natural wellness & herbal remedies' },
-    { img: '/work/website-4-almond-vet.jpg', name: 'Almond Vet Care', desc: 'Professional veterinary care' },
+    { img: '/work/website-5-lewis-joinery.jpg', name: 'L Lewis Joinery', desc: 'Expert equestrian construction & bespoke joinery', url: 'https://www.klewisjoineryltd.co.uk/' },
+    { img: '/work/website-6-transport.jpg', name: 'RT Ltd', desc: 'Transport solutions you can trust', url: 'https://rt-ltd.uk/' },
+    { img: '/work/website-3-herb-soul.jpg', name: 'Herb & Soul', desc: 'Natural wellness & herbal remedies', url: 'https://www.herbandsoul.uk/' },
+    { img: '/work/website-4-almond-vet.jpg', name: 'Almond Vet Care', desc: 'Professional veterinary care', url: 'https://almondvetcare.co.uk/' },
   ]
 
   const social = [
@@ -190,14 +189,30 @@ function Work() {
 
         {/* Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {current.items.map((item, i) => (
+          {current.items.map((item: {img: string, name: string, desc: string, url?: string | null}, i: number) => (
             <div key={i} className="group rounded-2xl overflow-hidden bg-zinc-900 border border-zinc-800 hover:border-amber-500/50 transition-all">
               <div className="relative h-48">
                 <Image src={item.img} alt={item.name} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
+                {item.url && (
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/50 transition-all flex items-center justify-center">
+                    <a href={item.url} target="_blank" rel="noopener noreferrer"
+                      className="opacity-0 group-hover:opacity-100 transition-opacity bg-amber-500 hover:bg-amber-400 text-black font-bold px-5 py-2.5 rounded-full text-sm">
+                      View live site →
+                    </a>
+                  </div>
+                )}
               </div>
-              <div className="p-4">
-                <h3 className="text-white font-bold">{item.name}</h3>
-                <p className="text-zinc-400 text-sm mt-1">{item.desc}</p>
+              <div className="p-4 flex items-start justify-between gap-2">
+                <div>
+                  <h3 className="text-white font-bold">{item.name}</h3>
+                  <p className="text-zinc-400 text-sm mt-1">{item.desc}</p>
+                </div>
+                {item.url && (
+                  <a href={item.url} target="_blank" rel="noopener noreferrer"
+                    className="flex-shrink-0 bg-zinc-800 hover:bg-amber-500 hover:text-black text-zinc-300 text-xs font-semibold px-3 py-1.5 rounded-full transition-all mt-1">
+                    Visit ↗
+                  </a>
+                )}
               </div>
             </div>
           ))}
