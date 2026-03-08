@@ -144,6 +144,7 @@ function Work() {
     { img: '/work/website-6-transport.jpg', name: 'RT Ltd', desc: 'Transport solutions you can trust', url: 'https://rt-ltd.uk/' },
     { img: '/work/website-3-herb-soul.jpg', name: 'Herb & Soul', desc: 'Natural wellness & herbal remedies', url: 'https://www.herbandsoul.uk/' },
     { img: '/work/website-4-almond-vet.jpg', name: 'Almond Vet Care', desc: 'Professional veterinary care', url: 'https://almondvetcare.co.uk/' },
+    { img: '/work/website-managing.jpg', name: 'Managing What Matters', desc: 'Lead people, not just tasks', url: 'https://managingwhatmatters.co.uk/' },
   ]
 
   const social = [
