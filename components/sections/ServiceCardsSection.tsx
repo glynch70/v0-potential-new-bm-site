@@ -6,7 +6,7 @@ import FlipCard from './FlipCard'
 const services = [
   {
     id: 'social-media',
-    frontImage: '/work/IMG_9913.jpeg',  // Team/people image
+    frontImage: '/work/team-at-work.png',
     frontTitle: 'Social Media Content',
     frontDescription: 'Consistent, on-brand content that builds trust and visibility.',
     backTitle: 'See Our Work',
@@ -28,7 +28,7 @@ const services = [
   },
   {
     id: 'websites',
-    frontImage: '/work/favs_from_25_-_1.png',  // Edinburgh cityscape
+    frontImage: '/work/kris-lewis-mobile.png',
     frontTitle: 'Websites',
     frontDescription: 'Fast, clean websites built to convert visitors.',
     backTitle: 'Case Studies',
@@ -49,7 +49,7 @@ const services = [
   },
   {
     id: 'extras',
-    frontImage: '/work/favs_from_25_-_3.png',  // K Lewis Joinery work
+    frontImage: '/work/dundas-castle.png',
     frontTitle: 'Extras & Add-ons',
     frontDescription: 'Everything else to support your brand.',
     backTitle: 'Behind the Scenes',
