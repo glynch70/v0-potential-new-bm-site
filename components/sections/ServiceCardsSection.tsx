@@ -6,9 +6,11 @@ import FlipCard from './FlipCard'
 const services = [
   {
     id: 'social-media',
-    frontImage: '/work/team-at-work.png',
+    frontImage: '/seamus-corry-2025.png',
     frontTitle: 'Social Media Content',
     frontDescription: 'Consistent, on-brand content that builds trust and visibility.',
+    frontOverlayOpacity: 0.5,
+    useAccentText: true,
     backTitle: 'See Our Work',
     backContent: (
       <div>
@@ -28,9 +30,11 @@ const services = [
   },
   {
     id: 'websites',
-    frontImage: '/work/kris-lewis-mobile.png',
+    frontImage: '/almond-vet-care.png',
     frontTitle: 'Websites',
     frontDescription: 'Fast, clean websites built to convert visitors.',
+    frontOverlayOpacity: 0.4,
+    useAccentText: false,
     backTitle: 'Case Studies',
     backContent: (
       <div>
@@ -51,6 +55,8 @@ const services = [
     id: 'extras',
     frontImage: '/work/dundas-castle.png',
     frontTitle: 'Extras & Add-ons',
+    frontOverlayOpacity: 0.4,
+    useAccentText: true,
     frontDescription: 'Everything else to support your brand.',
     backTitle: 'Behind the Scenes',
     backContent: (
@@ -97,6 +103,8 @@ export function ServiceCardsSection() {
                 backTitle={service.backTitle}
                 backContent={service.backContent}
                 links={service.links}
+                frontOverlayOpacity={service.frontOverlayOpacity ?? 0.4}
+                useAccentText={service.useAccentText ?? true}
               />
             </motion.div>
           ))}
