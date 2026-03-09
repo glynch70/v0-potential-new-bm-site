@@ -1,41 +1,80 @@
 'use client'
 
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 
 const services = [
   {
-    icon: '🎬',
-    number: '01',
-    title: 'Social Media Content',
-    description: 'Consistent, on-brand content that builds trust and visibility.',
-    features: ['Reels & Shorts', 'Promo clips', 'Monthly packages', 'Management'],
-    bgClass: 'bg-amber-800',
-    accent: '#C9A227',
+    id: 'social-media',
+    frontImage: '/work/mobile-social-showcase.jpg',
+    frontTitle: 'Social Media Content',
+    frontDescription: 'Consistent, on-brand content that builds trust and visibility.',
+    backTitle: 'See Our Work',
+    backContent: (
+      <div>
+        <p className="mb-3"><strong>Client Channels:</strong></p>
+        <ul className="space-y-1 text-sm">
+          <li>• C&G Development</li>
+          <li>• M&M Compliance</li>
+          <li>• Webuyanyhome</li>
+        </ul>
+        <p className="mt-3"><strong>Follow Bear Media:</strong></p>
+      </div>
+    ),
+    links: [
+      { label: 'Instagram', url: 'https://www.instagram.com/bearmedia70' },
+      { label: 'Facebook', url: 'https://www.facebook.com/share/1BhgWafSR2/' },
+      { label: 'TikTok', url: 'https://www.tiktok.com/@bearmediascotland' },
+    ],
   },
   {
-    icon: '🖥️',
-    number: '02',
-    title: 'Websites',
-    description: 'Fast, clean websites built to convert visitors.',
-    features: ['Landing pages', 'Business sites', 'Hosting'],
-    bgClass: 'bg-zinc-900',
-    accent: '#3b82f6',
+    id: 'websites',
+    frontImage: '/work/websites-desktop.jpg',
+    frontTitle: 'Websites',
+    frontDescription: 'Fast, clean websites built to convert visitors.',
+    backTitle: 'Case Studies',
+    backContent: (
+      <div>
+        <p className="mb-3"><strong>Recent Projects:</strong></p>
+        <ul className="space-y-1 text-sm">
+          <li>• K Lewis Joinery</li>
+          <li>• Robertson Transport</li>
+          <li>• Herb & Soul</li>
+          <li>• Almond Vet Care</li>
+        </ul>
+      </div>
+    ),
+    links: [
+      { label: 'View Portfolio', url: '#work' },
+    ],
   },
   {
-    icon: '➕',
-    number: '03',
-    title: 'Extras & Add-ons',
-    description: 'Everything else to support your brand.',
-    features: ['Drone', 'Photography', 'SEO', 'Google Business'],
-    bgClass: 'bg-emerald-900',
-    accent: '#10b981',
+    id: 'extras',
+    frontImage: '/work/brand-visual-assets.jpg',
+    frontTitle: 'Extras & Add-ons',
+    frontDescription: 'Everything else to support your brand.',
+    backTitle: 'Behind the Scenes',
+    backContent: (
+      <div>
+        <p className="mb-3"><strong>Services Include:</strong></p>
+        <ul className="space-y-1 text-sm">
+          <li>• Drone Photography & Footage</li>
+          <li>• Professional Photography</li>
+          <li>• SEO Optimization</li>
+          <li>• Google Business Management</li>
+        </ul>
+      </div>
+    ),
+    links: [
+      { label: 'Book a Service', url: '#contact' },
+    ],
   },
 ]
 
 export function ServiceCardsSection() {
   return (
     <section id="services" className="py-24 px-4 bg-black">
-      <div className="max-w-3xl mx-auto">
+      <div className="max-w-4xl mx-auto">
         <div className="text-center mb-16">
           <p className="text-amber-400 text-sm font-medium uppercase tracking-widest mb-3">
             Websites & Social Media Content
@@ -43,47 +82,85 @@ export function ServiceCardsSection() {
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">Services</h2>
           <p className="text-zinc-400 text-lg">Clear, practical services that get results.</p>
         </div>
-        <div className="flex flex-col gap-6">
+        <div className="grid gap-6 md:grid-cols-3">
           {services.map((service, index) => (
-            <motion.div
-              key={service.title}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.15 }}
-              className={`rounded-3xl p-8 ${service.bgClass} relative overflow-hidden`}
-            >
-              <div className="flex items-center gap-3 mb-4">
-                <div
-                  className="w-10 h-10 rounded-xl flex items-center justify-center text-lg"
-                  style={{ backgroundColor: service.accent + '33' }}
-                >
-                  {service.icon}
-                </div>
-                <h3 className="text-white text-2xl font-bold">{service.title}</h3>
-                <span
-                  className="ml-auto text-xs font-bold px-2 py-1 rounded-full"
-                  style={{ backgroundColor: service.accent + '33', color: service.accent }}
-                >
-                  {service.number}
-                </span>
-              </div>
-              <p className="text-zinc-300 text-base mb-5">{service.description}</p>
-              <ul className="flex flex-col gap-2">
-                {service.features.map((feature) => (
-                  <li key={feature} className="flex items-center gap-2 text-zinc-200 text-sm">
-                    <span
-                      className="w-1.5 h-1.5 rounded-full flex-shrink-0"
-                      style={{ backgroundColor: service.accent }}
-                    />
-                    {feature}
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
+            <ServiceFlipCard key={service.id} service={service} index={index} />
           ))}
         </div>
       </div>
     </section>
+  )
+}
+
+function ServiceFlipCard({
+  service,
+  index,
+}: {
+  service: (typeof services)[0]
+  index: number
+}) {
+  const [isFlipped, setIsFlipped] = useState(false)
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, delay: index * 0.15 }}
+      className="perspective cursor-pointer"
+      style={{ perspective: '1000px' }}
+      onClick={() => setIsFlipped(!isFlipped)}
+    >
+      <motion.div
+        className="relative min-h-[320px] overflow-hidden rounded-2xl"
+        animate={{ rotateY: isFlipped ? 180 : 0 }}
+        transition={{ duration: 0.6, ease: 'easeInOut' }}
+        style={{ transformStyle: 'preserve-3d' }}
+      >
+        {/* Front */}
+        <div
+          className="absolute inset-0"
+          style={{ backfaceVisibility: 'hidden' }}
+        >
+          <img
+            src={service.frontImage}
+            alt={service.frontTitle}
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
+          <div className="absolute inset-0 flex flex-col justify-end p-6 text-white">
+            <h3 className="text-xl font-bold mb-2">{service.frontTitle}</h3>
+            <p className="text-sm text-zinc-200">{service.frontDescription}</p>
+            <p className="text-xs text-amber-400 mt-3 uppercase tracking-wider">Tap to flip</p>
+          </div>
+        </div>
+
+        {/* Back */}
+        <div
+          className="absolute inset-0 p-6 flex flex-col justify-between bg-gradient-to-br from-[#A88520]/20 to-black text-white rounded-2xl border border-white/10"
+          style={{
+            backfaceVisibility: 'hidden',
+            transform: 'rotateY(180deg)',
+          }}
+        >
+          <div>
+            <h3 className="text-xl font-bold mb-4 text-amber-400">{service.backTitle}</h3>
+            <div className="text-sm text-zinc-200">{service.backContent}</div>
+          </div>
+          <div className="flex flex-wrap gap-2 mt-4">
+            {service.links.map((link) => (
+              <a
+                key={link.label}
+                href={link.url}
+                onClick={(e) => e.stopPropagation()}
+                className="text-xs px-3 py-2 bg-[#D4A830] text-black font-semibold hover:bg-[#E4BF4A] transition-colors"
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
+        </div>
+      </motion.div>
+    </motion.div>
   )
 }
