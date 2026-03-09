@@ -6,7 +6,7 @@ import FlipCard from './FlipCard'
 const services = [
   {
     id: 'social-media',
-    frontImage: '/work/mobile-social-showcase.jpg',
+    frontImage: '/work/IMG_9913.jpeg',  // Team/people image
     frontTitle: 'Social Media Content',
     frontDescription: 'Consistent, on-brand content that builds trust and visibility.',
     backTitle: 'See Our Work',
@@ -28,7 +28,7 @@ const services = [
   },
   {
     id: 'websites',
-    frontImage: '/work/websites-desktop.jpg',
+    frontImage: '/work/favs_from_25_-_1.png',  // Edinburgh cityscape
     frontTitle: 'Websites',
     frontDescription: 'Fast, clean websites built to convert visitors.',
     backTitle: 'Case Studies',
@@ -49,7 +49,7 @@ const services = [
   },
   {
     id: 'extras',
-    frontImage: '/work/brand-visual-assets.jpg',
+    frontImage: '/work/favs_from_25_-_3.png',  // K Lewis Joinery work
     frontTitle: 'Extras & Add-ons',
     frontDescription: 'Everything else to support your brand.',
     backTitle: 'Behind the Scenes',
@@ -68,7 +68,7 @@ const services = [
       { label: 'Book a Service', url: '#contact' },
     ],
   },
-]
+];
 
 export function ServiceCardsSection() {
   return (
@@ -90,6 +90,7 @@ export function ServiceCardsSection() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.15 }}
             >
+              import FlipCard from './FlipCard';
               <FlipCard
                 frontImage={service.frontImage}
                 frontTitle={service.frontTitle}
