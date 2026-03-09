@@ -33,7 +33,7 @@ const services = [
     frontImage: '/almond-vet-care.png',
     frontTitle: 'Websites',
     frontDescription: 'Fast, clean websites built to convert visitors.',
-    frontOverlayOpacity: 0.4,
+    frontOverlayOpacity: 0.5,
     useAccentText: false,
     backTitle: 'Case Studies',
     backContent: (
@@ -55,7 +55,7 @@ const services = [
     id: 'extras',
     frontImage: '/work/dundas-castle.png',
     frontTitle: 'Extras & Add-ons',
-    frontOverlayOpacity: 0.4,
+    frontOverlayOpacity: 0.5,
     useAccentText: true,
     frontDescription: 'Everything else to support your brand.',
     backTitle: 'Behind the Scenes',

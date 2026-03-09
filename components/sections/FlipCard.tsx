@@ -51,13 +51,11 @@ export default function FlipCard({
             backfaceVisibility: 'hidden',
           }}
         >
-          {/* Dark overlay for text readability — behind text, doesn't cover content */}
+          {/* Dark overlay behind text only — improves readability without covering image */}
           <div
-            className="absolute inset-0 rounded-lg"
+            className="relative z-10 mt-auto -mx-6 -mb-6 px-6 pb-6 pt-4 rounded-b-lg"
             style={{ backgroundColor: `rgba(0, 0, 0, ${frontOverlayOpacity})` }}
-          />
-
-          <div className="relative z-10">
+          >
             <h3 className="text-2xl font-bold text-white mb-2">{frontTitle}</h3>
             <p className="text-white/90 text-sm">{frontDescription}</p>
             <p className={`text-xs mt-3 ${useAccentText ? 'text-amber-400' : 'text-white/80'}`}>← Click to flip →</p>
