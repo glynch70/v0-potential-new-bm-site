@@ -82,9 +82,9 @@ function Work() {
   ]
 
   const social = [
-    { img: '/work/mobile-social-showcase.jpg', name: 'Social Media Reels', desc: 'Scroll-stopping video content' },
-    { img: '/work/short-form-content.jpg', name: 'Short Form Content', desc: 'Engaging posts that convert' },
-    { img: '/work/posters-collage.jpg', name: 'Promotional Posters', desc: 'Eye-catching graphics' },
+    { img: '/work/content-creation.png', name: 'Content Creation', desc: 'Social media posts and graphics for Scottish businesses' },
+    { img: '/work/youtube-management.png', name: 'YouTube Management', desc: 'Channel setup, shorts, thumbnails, and content strategy' },
+    { img: '/work/social-media-management.png', name: 'Social Media Management', desc: 'Monthly content creation and posting for Scottish businesses' },
   ]
 
   const brand = [

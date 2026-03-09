@@ -11,9 +11,9 @@ const websites = [
 ]
 
 const social = [
-  { img: '/work/mobile-social-showcase.jpg', name: 'Social Media Reels', desc: 'Scroll-stopping video content for social feeds', url: null },
-  { img: '/work/short-form-content.jpg', name: 'Short Form Content', desc: 'Engaging posts that get seen and shared', url: null },
-  { img: '/work/posters-collage.jpg', name: 'Promotional Posters', desc: 'Eye-catching graphics that stop the scroll', url: null },
+  { img: '/work/content-creation.png', name: 'Content Creation', desc: 'Social media posts and graphics for Scottish businesses', url: null },
+  { img: '/work/youtube-management.png', name: 'YouTube Management', desc: 'Channel setup, shorts, thumbnails, and content strategy', url: null },
+  { img: '/work/social-media-management.png', name: 'Social Media Management', desc: 'Monthly content creation and posting for Scottish businesses', url: null },
 ]
 
 const brand = [
