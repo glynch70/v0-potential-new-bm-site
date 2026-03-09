@@ -226,16 +226,13 @@ function VideoReel() {
         <p className="text-amber-400 text-sm font-semibold uppercase tracking-widest mb-2">Content creation</p>
         <h2 className="text-4xl md:text-5xl font-black text-white mb-3">See it in action</h2>
         <p className="text-zinc-400 text-lg mb-6">Scroll-stopping content that gets your business noticed.</p>
-        <div className="w-full max-w-xl mx-auto aspect-video rounded-2xl overflow-hidden bg-zinc-900 border border-zinc-800 shadow-lg">
-          <iframe
-            width="100%"
-            height="100%"
-            src="https://www.youtube.com/embed/@bearmedia70?utm_source=bear-media"
-            title="Bear Media YouTube"
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-            className="pointer-events-none"
+        <div className="relative w-full max-w-xl mx-auto aspect-video rounded-2xl overflow-hidden bg-zinc-900 border border-zinc-800 shadow-lg">
+          <Image
+            src="/work/content-creation-showcase.png"
+            alt="Bear Media video content — Forth Bridges tiny planet drone footage"
+            fill
+            className="object-cover"
+            sizes="(max-width: 768px) 100vw, 36rem"
           />
         </div>
         <p className="text-center text-sm text-amber-400/90 mt-3 flex items-center justify-center gap-2">
