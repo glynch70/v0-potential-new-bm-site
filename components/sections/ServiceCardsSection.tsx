@@ -90,7 +90,6 @@ export function ServiceCardsSection() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.15 }}
             >
-              import FlipCard from './FlipCard';
               <FlipCard
                 frontImage={service.frontImage}
                 frontTitle={service.frontTitle}
