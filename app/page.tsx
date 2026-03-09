@@ -251,33 +251,38 @@ function Testimonials() {
   const [current, setCurrent] = useState(0)
   const reviews = [
     {
-      quote: "Garry created a simple, powerful website that sells our Manager Training Programme clearly and convincingly. Delivered within days, zero fuss. Exactly what we needed.",
-      name: "Managing What Matters",
-      role: "Leadership & Management Training",
-      stars: 5,
-    },
-    {
-      quote: "Website wizard who delivers at lightning speed! 72-hour website delivery — from brief to live site in 3 days. Modern, fast, and it actually converts visitors.",
-      name: "Steven Summon",
-      role: "Voice2Lead",
+      quote: "Slick process, reliable, good communication and happy with the end results. Top quality service. Highly recommend for website design and digital marketing.",
+      name: "Gary Young",
+      role: "Therapist | Mindfulness Tutor",
+      image: "/testimonials/gary.png",
       stars: 5,
     },
     {
       quote: "Bear Media created an amazing social media campaign for my coaching business. Garry took the time to understand what my business was all about. Professional and reliable.",
       name: "Leanne Murphy",
-      role: "Coach & Healer",
+      role: "Therapist",
+      image: "/testimonials/leanne.png",
       stars: 5,
     },
     {
-      quote: "Slick process, reliable, good communication and happy with the end results. Top quality service. Highly recommend for website design and digital marketing.",
-      name: "Gary Young",
-      role: "Business Owner",
+      quote: "Garry created a simple, powerful website that sells our Manager Training Programme clearly and convincingly. Delivered within days, zero fuss. Exactly what we needed.",
+      name: "Seamus Corry",
+      role: "Trainer",
+      image: "/testimonials/seamus.png",
       stars: 5,
     },
     {
       quote: "Garry genuinely cares about his clients and is always willing to go the extra mile. Professional video production, drone photography, and social media content creation.",
-      name: "Stephen Johnstone",
-      role: "Local Guide",
+      name: "Stephen Robertson",
+      role: "Gas Heating Engineer",
+      image: "/testimonials/stephen.png",
+      stars: 5,
+    },
+    {
+      quote: "Website wizard who delivers at lightning speed! 72-hour website delivery — from brief to live site in 3 days. Modern, fast, and it actually converts visitors.",
+      name: "Steven Summone",
+      role: "Architect, Consultant, Entrepreneur",
+      image: "/testimonials/steven.png",
       stars: 5,
     },
   ]
@@ -293,9 +298,20 @@ function Testimonials() {
             ))}
           </div>
           <p className="text-zinc-200 text-lg md:text-xl leading-relaxed mb-8">"{reviews[current].quote}"</p>
-          <div>
-            <p className="text-white font-bold">{reviews[current].name}</p>
-            <p className="text-zinc-400 text-sm">{reviews[current].role}</p>
+          <div className="flex flex-col items-center gap-3">
+            <div className="relative w-20 h-20 rounded-full overflow-hidden flex-shrink-0 ring-2 ring-amber-500/30">
+              <Image
+                src={reviews[current].image}
+                alt={reviews[current].name}
+                fill
+                className="object-cover"
+                sizes="80px"
+              />
+            </div>
+            <div className="text-center">
+              <p className="text-white font-bold">{reviews[current].name}</p>
+              <p className="text-zinc-400 text-sm">{reviews[current].role}</p>
+            </div>
           </div>
           <div className="flex justify-center gap-2 mt-8">
             {reviews.map((_, i) => (
