@@ -1,9 +1,11 @@
 'use client'
 
-import { useState, useRef } from 'react'
+import { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { ChevronLeft, ChevronRight, Menu, X, Phone, Mail, MapPin } from 'lucide-react'
+import { Menu, X, Phone, Mail, MapPin } from 'lucide-react'
+import { ServiceCardsSection } from '@/components/sections/ServiceCardsSection'
+import { MinimalFooter } from '@/components/sections/MinimalFooter'
 
 // ─── NAV ───────────────────────────────────────────────────────────────────
 function Nav() {
@@ -20,7 +22,7 @@ function Nav() {
           {links.map(l => (
             <a key={l} href={`#${l.toLowerCase()}`} className="text-zinc-300 hover:text-amber-400 transition-colors text-sm font-medium">{l}</a>
           ))}
-          <a href="#contact" className="bg-amber-500 hover:bg-amber-400 text-black font-bold px-5 py-2 rounded-full text-sm transition-colors">Book a call</a>
+          <a href="#contact" className="bg-amber-500 hover:bg-amber-400 text-black font-bold px-5 py-2 rounded-full text-sm transition-colors">Book a Service</a>
         </div>
         <button onClick={() => setOpen(!open)} className="md:hidden text-white p-2">
           {open ? <X size={24} /> : <Menu size={24} />}
@@ -31,7 +33,7 @@ function Nav() {
           {links.map(l => (
             <a key={l} href={`#${l.toLowerCase()}`} onClick={() => setOpen(false)} className="text-zinc-300 text-lg font-medium">{l}</a>
           ))}
-          <a href="#contact" onClick={() => setOpen(false)} className="bg-amber-500 text-black font-bold px-5 py-3 rounded-full text-center">Book a call</a>
+          <a href="#contact" onClick={() => setOpen(false)} className="bg-amber-500 text-black font-bold px-5 py-3 rounded-full text-center">Book a Service</a>
         </div>
       )}
     </nav>
@@ -47,8 +49,7 @@ function Hero() {
         className="absolute inset-0 w-full h-full object-cover"
         poster="/work/websites-desktop.jpg"
       >
-        <source src="/media/hero-drone.mp4" type="video/mp4" />
-        <source src="/media/hero-drone-2-1-1.mov" type="video/quicktime" />
+        <source src="/media/NEW BM DRONE HERO.mp4" type="video/mp4" />
       </video>
       <div className="absolute inset-0 bg-black/55" />
       <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
@@ -60,75 +61,8 @@ function Hero() {
           Helping businesses get seen, trusted, and contacted.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="#contact" className="bg-amber-500 hover:bg-amber-400 text-black font-bold px-8 py-4 rounded-full text-lg transition-colors">Book a free call</a>
+          <a href="#contact" className="bg-amber-500 hover:bg-amber-400 text-black font-bold px-8 py-4 rounded-full text-lg transition-colors">Book a Service</a>
           <a href="#work" className="border-2 border-white/50 hover:border-white text-white font-bold px-8 py-4 rounded-full text-lg transition-colors">See our work</a>
-        </div>
-      </div>
-    </section>
-  )
-}
-
-// ─── SERVICES ─────────────────────────────────────────────────────────────
-function Services() {
-  const services = [
-    {
-      number: '01',
-      title: 'Social Media Content',
-      description: 'Consistent, on-brand content that builds trust and gets your business noticed. From reels to monthly packages — we handle it all.',
-      features: ['Reels & Shorts', 'Promo clips', 'Monthly packages', 'Full management'],
-      accent: '#C9A227',
-      bg: 'bg-amber-950',
-      image: '/services-social-media.jpg',
-    },
-    {
-      number: '02',
-      title: 'Websites',
-      description: 'Fast, clean websites built to convert visitors into customers. No fluff, no filler — just sites that work.',
-      features: ['Landing pages', 'Business sites', 'E-commerce', 'Hosting included'],
-      accent: '#3b82f6',
-      bg: 'bg-zinc-900',
-      image: '/work/websites-desktop.jpg',
-    },
-    {
-      number: '03',
-      title: 'Extras & Add-ons',
-      description: 'Everything else to support your brand and help you stand out locally.',
-      features: ['Drone footage', 'Photography', 'SEO', 'Google Business'],
-      accent: '#10b981',
-      bg: 'bg-emerald-950',
-      image: '/services-extras.jpg',
-    },
-  ]
-  return (
-    <section id="services" className="py-24 px-4 bg-black">
-      <div className="max-w-3xl mx-auto">
-        <div className="text-center mb-16">
-          <p className="text-amber-400 text-sm font-semibold uppercase tracking-widest mb-3">What we do</p>
-          <h2 className="text-4xl md:text-5xl font-black text-white mb-4">Services</h2>
-          <p className="text-zinc-400 text-lg">Clear, practical services that get results.</p>
-        </div>
-        <div className="flex flex-col gap-6">
-          {services.map((s, i) => (
-            <div key={i} className={`rounded-3xl overflow-hidden ${s.bg}`}>
-              <div className="relative h-48 w-full">
-                <Image src={s.image} alt={s.title} fill className="object-cover opacity-60" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
-                <span className="absolute top-4 right-4 text-xs font-bold px-3 py-1 rounded-full bg-black/40 backdrop-blur-sm" style={{ color: s.accent }}>{s.number}</span>
-              </div>
-              <div className="p-8">
-                <h3 className="text-white text-2xl font-bold mb-3">{s.title}</h3>
-                <p className="text-zinc-300 mb-5">{s.description}</p>
-                <ul className="flex flex-col gap-2">
-                  {s.features.map(f => (
-                    <li key={f} className="flex items-center gap-2 text-zinc-200 text-sm">
-                      <span className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ backgroundColor: s.accent }} />
-                      {f}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          ))}
         </div>
       </div>
     </section>
@@ -231,10 +165,26 @@ function VideoReel() {
         <p className="text-amber-400 text-sm font-semibold uppercase tracking-widest mb-3">Content creation</p>
         <h2 className="text-4xl md:text-5xl font-black text-white mb-4">See it in action</h2>
         <p className="text-zinc-400 text-lg mb-10">Scroll-stopping content that gets your business noticed.</p>
-        <div className="rounded-3xl overflow-hidden bg-zinc-900 border border-zinc-800">
+        <div className="rounded-3xl overflow-hidden bg-zinc-900 border border-zinc-800 mb-10">
           <video controls playsInline className="w-full" poster="/work/mobile-social-showcase.jpg">
             <source src="/work/promo-video.mp4" type="video/mp4" />
           </video>
+        </div>
+        <div className="w-full max-w-2xl mx-auto">
+          <div className="aspect-video rounded-lg overflow-hidden shadow-lg">
+            <iframe
+              width="100%"
+              height="100%"
+              src="https://www.youtube.com/embed/@bearmedia70?utm_source=bear-media"
+              title="Bear Media YouTube"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
+          </div>
+          <p className="text-center text-sm text-zinc-500 mt-4">
+            Subscribe to see more content creation work
+          </p>
         </div>
       </div>
     </section>
@@ -433,38 +383,19 @@ function ContactForm() {
   )
 }
 
-// ─── FOOTER ───────────────────────────────────────────────────────────────
-function Footer() {
-  return (
-    <footer className="bg-black border-t border-zinc-800 py-10 px-4">
-      <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
-        <div className="flex items-center gap-2">
-          <Image src="/bear-media-logo.png" alt="Bear Media" width={32} height={32} />
-          <span className="font-bold text-white">Bear<span className="text-amber-400">Media</span></span>
-        </div>
-        <p className="text-zinc-500 text-sm text-center">© {new Date().getFullYear()} Bear Media · Broxburn, West Lothian</p>
-        <div className="flex gap-4 text-sm">
-          <Link href="/privacy-policy" className="text-zinc-500 hover:text-zinc-300">Privacy</Link>
-          <Link href="/terms-conditions" className="text-zinc-500 hover:text-zinc-300">Terms</Link>
-        </div>
-      </div>
-    </footer>
-  )
-}
-
 // ─── PAGE ─────────────────────────────────────────────────────────────────
 export default function Home() {
   return (
     <main>
       <Nav />
       <Hero />
-      <Services />
+      <ServiceCardsSection />
       <Work />
       <VideoReel />
       <Testimonials />
       <About />
       <Contact />
-      <Footer />
+      <MinimalFooter />
     </main>
   )
 }
