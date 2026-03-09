@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Menu, X, Phone, Mail, MapPin } from 'lucide-react'
@@ -71,7 +71,8 @@ function Hero() {
 
 // ─── WORK ─────────────────────────────────────────────────────────────────
 function Work() {
-  const [activeTab, setActiveTab] = useState<'websites' | 'social' | 'brand'>('websites')
+  const [activeTab, setActiveTab] = useState<'websites' | 'social'>('websites')
+  const [lightboxImage, setLightboxImage] = useState<{ src: string; alt: string } | null>(null)
 
   const websites = [
     { img: '/work/website-5-lewis-joinery.jpg', name: 'K Lewis Joinery', desc: 'Expert equestrian construction & bespoke joinery', url: 'https://www.klewisjoineryltd.co.uk/' },
@@ -87,18 +88,19 @@ function Work() {
     { img: '/work/social-media-management.png', name: 'Social Media Management', desc: 'Monthly content creation and posting for Scottish businesses' },
   ]
 
-  const brand = [
-    { img: '/work/brand-collage.jpg', name: 'Brand Identities', desc: 'Logos and visual systems' },
-    { img: '/work/brand-visual-assets.jpg', name: 'Visual Assets', desc: 'Graphics that stand out' },
-  ]
-
   const tabs = [
     { id: 'websites' as const, label: 'Websites', items: websites },
     { id: 'social' as const, label: 'Social Media', items: social },
-    { id: 'brand' as const, label: 'Brand', items: brand },
   ]
 
   const current = tabs.find(t => t.id === activeTab)!
+
+  const handleCardClick = (item: { img: string; name: string; desc: string; url?: string | null }) => {
+    if (item.url) return
+    setLightboxImage({ src: item.img, alt: item.name })
+  }
+
+  const closeLightbox = () => setLightboxImage(null)
 
   return (
     <section id="work" className="py-24 px-4 bg-zinc-950">
@@ -125,12 +127,19 @@ function Work() {
         {/* Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {current.items.map((item: {img: string, name: string, desc: string, url?: string | null}, i: number) => (
-            <div key={i} className="group rounded-2xl overflow-hidden bg-zinc-900 border border-zinc-800 hover:border-amber-500/50 transition-all">
+            <div
+              key={i}
+              className={`group rounded-2xl overflow-hidden bg-zinc-900 border border-zinc-800 hover:border-amber-500/50 transition-all ${!item.url ? 'cursor-pointer' : ''}`}
+              onClick={() => handleCardClick(item)}
+              role={!item.url ? 'button' : undefined}
+              tabIndex={!item.url ? 0 : undefined}
+              onKeyDown={!item.url ? (e) => e.key === 'Enter' && handleCardClick(item) : undefined}
+            >
               <div className="relative h-48">
                 <Image src={item.img} alt={item.name} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
                 {item.url && (
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/50 transition-all flex items-center justify-center">
-                    <a href={item.url} target="_blank" rel="noopener noreferrer"
+                    <a href={item.url} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()}
                       className="opacity-0 group-hover:opacity-100 transition-opacity bg-amber-500 hover:bg-amber-400 text-black font-bold px-5 py-2.5 rounded-full text-sm">
                       View live site →
                     </a>
@@ -143,7 +152,7 @@ function Work() {
                   <p className="text-zinc-400 text-sm mt-1">{item.desc}</p>
                 </div>
                 {item.url && (
-                  <a href={item.url} target="_blank" rel="noopener noreferrer"
+                  <a href={item.url} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()}
                     className="flex-shrink-0 bg-zinc-800 hover:bg-amber-500 hover:text-black text-zinc-300 text-xs font-semibold px-3 py-1.5 rounded-full transition-all mt-1">
                     Visit ↗
                   </a>
@@ -153,40 +162,89 @@ function Work() {
           ))}
         </div>
       </div>
+
+      {/* Lightbox modal for Social Media cards */}
+      {lightboxImage && (
+        <Lightbox image={lightboxImage} onClose={closeLightbox} />
+      )}
     </section>
+  )
+}
+
+// ─── LIGHTBOX ──────────────────────────────────────────────────────────────
+function Lightbox({ image, onClose }: { image: { src: string; alt: string }; onClose: () => void }) {
+  const handleBackdropClick = (e: React.MouseEvent) => {
+    if (e.target === e.currentTarget) onClose()
+  }
+
+  useEffect(() => {
+    const handleEsc = (e: KeyboardEvent) => e.key === 'Escape' && onClose()
+    window.addEventListener('keydown', handleEsc)
+    document.body.style.overflow = 'hidden'
+    return () => {
+      window.removeEventListener('keydown', handleEsc)
+      document.body.style.overflow = ''
+    }
+  }, [onClose])
+
+  return (
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 animate-fade-in"
+      onClick={handleBackdropClick}
+    >
+      <button
+        onClick={onClose}
+        className="absolute top-4 right-4 z-10 p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors"
+        aria-label="Close"
+      >
+        <X className="w-6 h-6" />
+      </button>
+      <div className="relative w-[90vw] max-w-5xl h-[85vh] p-4">
+        <Image
+          src={image.src}
+          alt={image.alt}
+          fill
+          className="object-contain"
+          sizes="90vw"
+          onClick={(e) => e.stopPropagation()}
+        />
+      </div>
+    </div>
   )
 }
 
 // ─── SOCIAL VIDEO REEL ────────────────────────────────────────────────────
 function VideoReel() {
   return (
-    <section className="py-24 px-4 bg-black">
-      <div className="max-w-4xl mx-auto text-center">
-        <p className="text-amber-400 text-sm font-semibold uppercase tracking-widest mb-3">Content creation</p>
-        <h2 className="text-4xl md:text-5xl font-black text-white mb-4">See it in action</h2>
-        <p className="text-zinc-400 text-lg mb-10">Scroll-stopping content that gets your business noticed.</p>
-        <div className="rounded-3xl overflow-hidden bg-zinc-900 border border-zinc-800 mb-10">
-          <video controls playsInline className="w-full" poster="/work/mobile-social-showcase.jpg">
-            <source src="/work/promo-video.mp4" type="video/mp4" />
-          </video>
+    <section className="py-14 px-4 bg-black">
+      <a
+        href="https://www.youtube.com/@bearmedia70"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="block max-w-3xl mx-auto text-center group cursor-pointer transition-all duration-300 hover:opacity-90 hover:scale-[1.02]"
+      >
+        <p className="text-amber-400 text-sm font-semibold uppercase tracking-widest mb-2">Content creation</p>
+        <h2 className="text-4xl md:text-5xl font-black text-white mb-3">See it in action</h2>
+        <p className="text-zinc-400 text-lg mb-6">Scroll-stopping content that gets your business noticed.</p>
+        <div className="w-full max-w-xl mx-auto aspect-video rounded-2xl overflow-hidden bg-zinc-900 border border-zinc-800 shadow-lg">
+          <iframe
+            width="100%"
+            height="100%"
+            src="https://www.youtube.com/embed/@bearmedia70?utm_source=bear-media"
+            title="Bear Media YouTube"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+            className="pointer-events-none"
+          />
         </div>
-        <div className="w-full max-w-2xl mx-auto">
-          <div className="aspect-video rounded-lg overflow-hidden shadow-lg">
-            <iframe
-              width="100%"
-              height="100%"
-              src="https://www.youtube.com/embed/@bearmedia70?utm_source=bear-media"
-              title="Bear Media YouTube"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            />
-          </div>
-          <p className="text-center text-sm text-zinc-500 mt-4">
-            Subscribe to see more content creation work
-          </p>
-        </div>
-      </div>
+        <p className="text-center text-sm text-amber-400/90 mt-3 flex items-center justify-center gap-2">
+          <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+          </svg>
+          View Channel
+        </p>
+      </a>
     </section>
   )
 }
