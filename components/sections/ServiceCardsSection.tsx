@@ -1,16 +1,20 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { Video, Monitor, Zap } from 'lucide-react'
 import FlipCard from './FlipCard'
 
 const services = [
   {
     id: 'social-media',
-    frontImage: '/seamus-corry-2025.png',
+    icon: Video,
+    iconAnimation: {
+      animate: { y: [0, -10, 0] },
+      transition: { duration: 2.5, repeat: Infinity, ease: "easeInOut" }
+    },
+    bgClass: "bg-[#b8860b]", // Gold/Amber
     frontTitle: 'Social Media Content',
     frontDescription: 'Consistent, on-brand content that builds trust and visibility.',
-    frontOverlayOpacity: 0.5,
-    useAccentText: true,
     backTitle: 'Herb & Soul',
     backContent: (
       <div className="flex flex-col gap-2">
@@ -35,11 +39,14 @@ const services = [
   },
   {
     id: 'websites',
-    frontImage: '/work/website-5-lewis-joinery.jpg',
+    icon: Monitor,
+    iconAnimation: {
+      animate: { scale: [1, 1.08, 1] },
+      transition: { duration: 2.5, repeat: Infinity, ease: "easeInOut" }
+    },
+    bgClass: "bg-[#1c1c1e]", // Dark
     frontTitle: 'Websites',
     frontDescription: 'Fast, clean websites built to convert visitors.',
-    frontOverlayOpacity: 0.5,
-    useAccentText: false,
     backTitle: 'K Lewis Joinery',
     backContent: (
       <div className="flex flex-col gap-2">
@@ -65,10 +72,13 @@ const services = [
   },
   {
     id: 'extras',
-    frontImage: '/work/dundas-castle.png',
+    icon: Zap,
+    iconAnimation: {
+      animate: { rotate: [-8, 8, -8] },
+      transition: { duration: 2, repeat: Infinity, ease: "easeInOut" }
+    },
+    bgClass: "bg-[#1a3a2a]", // Dark Green
     frontTitle: 'Extras & Add-ons',
-    frontOverlayOpacity: 0.5,
-    useAccentText: true,
     frontDescription: 'Everything else to support your brand.',
     backTitle: 'Full Service',
     backContent: (
@@ -117,14 +127,14 @@ export function ServiceCardsSection() {
               transition={{ duration: 0.5, delay: index * 0.15 }}
             >
               <FlipCard
-                frontImage={service.frontImage}
                 frontTitle={service.frontTitle}
                 frontDescription={service.frontDescription}
+                icon={service.icon}
+                iconAnimation={service.iconAnimation}
+                bgClass={service.bgClass}
                 backTitle={service.backTitle}
                 backContent={service.backContent}
                 links={service.links}
-                frontOverlayOpacity={service.frontOverlayOpacity ?? 0.4}
-                useAccentText={service.useAccentText ?? true}
               />
               <div className="md:hidden mt-4 text-center flex justify-center w-full">
                 <a 

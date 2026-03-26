@@ -2,12 +2,16 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
-import { ExternalLink } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { ExternalLink, LucideIcon } from 'lucide-react';
 
 interface FlipCardProps {
-  frontImage: string;
+  frontImage?: string;
   frontTitle: string;
   frontDescription: string;
+  icon?: LucideIcon;
+  iconAnimation?: any;
+  bgClass?: string;
   backTitle?: string;
   backContent: React.ReactNode;
   links?: Array<{ label: string; url: string }>;
@@ -21,6 +25,9 @@ export default function FlipCard({
   frontImage,
   frontTitle,
   frontDescription,
+  icon: Icon,
+  iconAnimation,
+  bgClass = "bg-zinc-900",
   backTitle,
   backContent,
   links,
@@ -46,38 +53,66 @@ export default function FlipCard({
       >
         {/* Front of card */}
         <div
-          className="absolute w-full h-full rounded-2xl shadow-lg overflow-hidden flex flex-col justify-end"
+          className={`absolute w-full h-full rounded-2xl shadow-lg overflow-hidden flex flex-col ${bgClass} ${Icon ? 'items-center justify-center p-8 text-center' : 'justify-end'}`}
           style={{
             backfaceVisibility: 'hidden',
           }}
         >
-          {/* Background Image */}
-          <div className="absolute inset-0 z-0 text-white flex items-center justify-center bg-zinc-900">
-             <Image
-                src={frontImage}
-                alt={frontTitle}
-                fill
-                className="object-cover w-full h-full"
-                sizes="(max-width: 768px) 100vw, 33vw"
+          {Icon ? (
+            <>
+              {/* Icon Based Layout */}
+              <div className="rounded-2xl p-5 bg-white/10 backdrop-blur-sm mb-6">
+                <motion.div
+                  {...iconAnimation}
+                >
+                  <Icon className="w-16 h-16 text-white" />
+                </motion.div>
+              </div>
+              
+              <h3 className="text-2xl font-bold text-white mb-2">{frontTitle}</h3>
+              <p className="text-white/80 text-sm leading-relaxed max-w-xs mx-auto mb-8">
+                {frontDescription}
+              </p>
+              
+              <div className="mt-auto pt-4">
+                <p className="text-white/60 text-xs tracking-widest uppercase font-bold">
+                  ← Click to flip →
+                </p>
+              </div>
+            </>
+          ) : (
+            <>
+              {/* Image Based Layout (Legacy) */}
+              {frontImage && (
+                <div className="absolute inset-0 z-0 text-white flex items-center justify-center bg-zinc-900 border border-white/10">
+                  <Image
+                    src={frontImage}
+                    alt={frontTitle}
+                    fill
+                    className="object-cover w-full h-full"
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                  />
+                </div>
+              )}
+
+              {/* Gradient Overlay */}
+              <div 
+                className="absolute inset-0 z-10"
+                style={{ 
+                  background: 'linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.45) 50%, rgba(0,0,0,0.05) 100%)' 
+                }}
               />
-          </div>
 
-          {/* Gradient Overlay */}
-          <div 
-            className="absolute inset-0 z-10"
-            style={{ 
-              background: 'linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.45) 50%, rgba(0,0,0,0.05) 100%)' 
-            }}
-          />
-
-          {/* Text Content */}
-          <div className="absolute bottom-0 left-0 right-0 p-6 z-20">
-            <h3 className="text-xl font-bold text-white mb-1">{frontTitle}</h3>
-            <p className="text-white/80 text-base mt-2 leading-relaxed">{frontDescription}</p>
-            <button className="text-[#C9A227] text-base mt-4 tracking-wide uppercase font-bold flex items-center justify-center p-3 -ml-3 min-h-[44px] min-w-[44px] bg-white/5 rounded-lg border border-white/10 hover:bg-white/10 transition-colors">
-              ← Click to flip →
-            </button>
-          </div>
+              {/* Text Content */}
+              <div className="absolute bottom-0 left-0 right-0 p-6 z-20">
+                <h3 className="text-xl font-bold text-white mb-1">{frontTitle}</h3>
+                <p className="text-white/80 text-base mt-2 leading-relaxed">{frontDescription}</p>
+                <div className="text-[#C9A227] text-base mt-4 tracking-wide uppercase font-bold flex items-center justify-center py-3 px-4 bg-white/5 rounded-xl border border-white/10 w-fit">
+                  ← Click to flip →
+                </div>
+              </div>
+            </>
+          )}
         </div>
 
         {/* Back of card */}
