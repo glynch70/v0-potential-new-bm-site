@@ -123,47 +123,60 @@ function ServiceFlipCard({ service, index }: { service: typeof MAIN_SERVICES[0];
           <p className="text-[9px] uppercase tracking-[0.2em] text-white/50 mt-6">Tap to see examples</p>
         </div>
 
-        {/* Back: image with overlay */}
+        {/* Back: service details */}
         <div
-          className="absolute inset-0 overflow-hidden"
+          className="absolute inset-0 bg-[#1a1a1a] p-8 md:p-12 border border-zinc-800 rounded-2xl"
           style={{ backfaceVisibility: 'hidden', transform: 'rotateY(180deg)' }}
         >
-          <Image
-            src={service.image}
-            alt={service.title}
-            fill
-            className="object-cover"
-            sizes="(max-width: 768px) 100vw, 33vw"
-          />
-          <div className="absolute inset-0 bg-black/50 flex flex-col items-center justify-center p-8 text-center">
-            <div
-              className="mb-4 flex h-16 w-16 items-center justify-center"
-              style={{
-                background: service.accentBg,
-                border: `3px solid ${service.accent}`,
-                borderRadius: '50%',
-                color: service.accent,
-              }}
-            >
-              <Icon size={28} strokeWidth={2} />
+          <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-[#C9A227] to-transparent opacity-80" />
+          
+          <div className="flex flex-col h-full">
+            <h3 className="text-2xl font-bold text-[#C9A227] mb-4">{service.title}</h3>
+            <p className="text-white font-bold mb-4">What's included:</p>
+            
+            <ul className="space-y-3 text-sm text-white/90 leading-relaxed mb-8">
+              {service.title === 'Social Media Content' ? (
+                <>
+                  <li>• Reels & short-form video</li>
+                  <li>• Branded graphics & carousels</li>
+                  <li>• Monthly content calendar</li>
+                  <li>• Caption writing & hashtag strategy</li>
+                  <li>• Scheduling & posting</li>
+                  <li>• Monthly performance report</li>
+                </>
+              ) : service.title === 'Websites' ? (
+                <>
+                  <li>• Custom designed & built in Next.js</li>
+                  <li>• Mobile-first & fast loading</li>
+                  <li>• SEO foundations built in</li>
+                  <li>• Contact forms & Google Maps</li>
+                  <li>• Google Analytics setup</li>
+                  <li>• Handed over — you own it outright</li>
+                </>
+              ) : (
+                <>
+                  <li>• Drone Photography & 4K Footage</li>
+                  <li>• Professional Headshots & Branding</li>
+                  <li>• Local SEO Optimization</li>
+                  <li>• Google Business Management</li>
+                  <li>• Monthly Performance Consulting</li>
+                  <li>• Group Training Packages</li>
+                </>
+              )}
+            </ul>
+
+            <div className="mt-auto pt-6 border-t border-zinc-800">
+              <a 
+                href="#contact" 
+                className="text-[#C9A227] font-bold flex items-center gap-2 hover:text-[#FF6B35] transition-colors"
+                onClick={(e) => e.stopPropagation()}
+              >
+                Get started <ArrowRight size={16} />
+              </a>
+              <p className="text-[10px] uppercase tracking-[0.2em] text-white/40 mt-6">
+                ← CLICK TO FLIP BACK →
+              </p>
             </div>
-            <h3 className="text-2xl font-extrabold text-white mb-2">{service.title}</h3>
-            <div className="flex flex-wrap gap-2 justify-center">
-              {service.features.map((feature) => (
-                <span
-                  key={feature}
-                  className="border px-3 py-1 text-xs font-semibold"
-                  style={{
-                    borderColor: service.accent,
-                    color: service.accent,
-                    background: 'rgba(0,0,0,0.5)',
-                  }}
-                >
-                  {feature}
-                </span>
-              ))}
-            </div>
-            <p className="text-[9px] uppercase tracking-[0.2em] text-white/70 mt-6">Tap to flip back</p>
           </div>
         </div>
       </motion.div>

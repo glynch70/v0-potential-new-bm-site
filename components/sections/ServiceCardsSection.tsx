@@ -15,21 +15,23 @@ const services = [
     bgClass: "bg-[#b8860b]", // Gold/Amber
     frontTitle: 'Social Media Content',
     frontDescription: 'Consistent, on-brand content that builds trust and visibility.',
-    backTitle: 'Herb & Soul',
+    backTitle: 'Social Media Content',
     backContent: (
-      <div className="flex flex-col gap-2">
-        <p className="text-white font-semibold">Social Growth Strategy</p>
-        <div className="grid grid-cols-2 gap-2 mt-2">
-          <div className="bg-zinc-900 rounded-lg p-3 border border-zinc-800">
-            <p className="text-xs text-zinc-500 uppercase">Followers</p>
-            <p className="text-lg text-[#C9A227] font-bold">+1.2k/mo</p>
-          </div>
-          <div className="bg-zinc-900 rounded-lg p-3 border border-zinc-800">
-            <p className="text-xs text-zinc-500 uppercase">Engagement</p>
-            <p className="text-lg text-[#C9A227] font-bold">18.4%</p>
-          </div>
+      <div className="flex flex-col gap-4">
+        <p className="text-white font-bold">What's included:</p>
+        <ul className="space-y-2 text-sm text-white leading-relaxed">
+          <li>• Reels & short-form video</li>
+          <li>• Branded graphics & carousels</li>
+          <li>• Monthly content calendar</li>
+          <li>• Caption writing & hashtag strategy</li>
+          <li>• Scheduling & posting</li>
+          <li>• Monthly performance report</li>
+        </ul>
+        <div className="pt-4 border-t border-zinc-800">
+          <a href="#contact" className="text-[#C9A227] font-bold flex items-center gap-2 hover:text-[#FF6B35] transition-colors">
+            Get started <span>→</span>
+          </a>
         </div>
-        <p className="text-sm italic mt-2">Consistent organic growth & community building.</p>
       </div>
     ),
     links: [
@@ -47,21 +49,23 @@ const services = [
     bgClass: "bg-[#1c1c1e]", // Dark
     frontTitle: 'Websites',
     frontDescription: 'Fast, clean websites built to convert visitors.',
-    backTitle: 'K Lewis Joinery',
+    backTitle: 'Websites',
     backContent: (
-      <div className="flex flex-col gap-2">
-        <p className="text-white font-semibold">Conversion Optimization</p>
-        <div className="grid grid-cols-2 gap-2 mt-2">
-          <div className="bg-zinc-900 rounded-lg p-3 border border-zinc-800">
-            <p className="text-xs text-zinc-500 uppercase">Visitors</p>
-            <p className="text-lg text-[#C9A227] font-bold">+40%</p>
-          </div>
-          <div className="bg-zinc-900 rounded-lg p-3 border border-zinc-800">
-            <p className="text-xs text-zinc-500 uppercase">Leads</p>
-            <p className="text-lg text-[#C9A227] font-bold">3x</p>
-          </div>
+      <div className="flex flex-col gap-4">
+        <p className="text-white font-bold">What's included:</p>
+        <ul className="space-y-2 text-sm text-white leading-relaxed">
+          <li>• Custom designed & built in Next.js</li>
+          <li>• Mobile-first & fast loading</li>
+          <li>• SEO foundations built in</li>
+          <li>• Contact forms & Google Maps</li>
+          <li>• Google Analytics setup</li>
+          <li>• Handed over — you own it outright</li>
+        </ul>
+        <div className="pt-4 border-t border-zinc-800">
+          <a href="#contact" className="text-[#C9A227] font-bold flex items-center gap-2 hover:text-[#FF6B35] transition-colors">
+            Get started <span>→</span>
+          </a>
         </div>
-        <p className="text-sm italic mt-2">Dramatically increased genuine quote requests.</p>
       </div>
     ),
     links: [
