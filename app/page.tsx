@@ -521,7 +521,7 @@ function Contact() {
             <div className="w-full h-72 md:h-96 rounded-2xl overflow-hidden border border-yellow-600/30 shadow-lg">
               <iframe
                 title="Bear Media location — Broxburn, West Lothian"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2231.5!2d-3.4714!3d55.9343!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4887c4e4e4e4e4e4%3A0x1234!2sBroxburn%2C+West+Lothian!5e0!3m2!1sen!2suk!4v1234567890"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d17878.354173006806!2d-3.4643954999999997!3d55.935604299999994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4887d07068c38c67%3A0x35611ff4d92864de!2sBroxburn!5e0!3m2!1sen!2suk!4v1774523945654!5m2!1sen!2suk"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
@@ -603,10 +603,10 @@ export default function Home() {
       <ServiceCardsSection />
       <HowItWorks />
       <Work />
+      <Testimonials />
       <VideoReel />
       <ClientMarquee />
       <About />
-      <Testimonials />
       <Contact />
       <MinimalFooter />
     </main>
