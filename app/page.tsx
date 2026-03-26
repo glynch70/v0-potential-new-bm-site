@@ -7,8 +7,7 @@ import { Menu, X, Phone, Mail, MapPin, Star, ExternalLink, Search, Map, Layers, 
 import { motion } from 'framer-motion'
 import { ServiceCardsSection } from '@/components/sections/ServiceCardsSection'
 import { BrandStorySection } from '@/components/sections/BrandStorySection'
-import { WhoIWorkWithSection } from '@/components/sections/WhoIWorkWithSection'
-import { PartnerLogosSection } from '@/components/sections/PartnerLogosSection'
+import ClientMarquee from '@/components/ClientMarquee'
 import { MinimalFooter } from '@/components/sections/MinimalFooter'
 import AnimatedButton from '@/components/ui/button-with-icon'
 
@@ -587,8 +586,7 @@ export default function Home() {
       <Work />
       <VideoReel />
       <Testimonials />
-      <WhoIWorkWithSection />
-      <PartnerLogosSection />
+      <ClientMarquee />
       <About />
       <Contact />
       <MinimalFooter />

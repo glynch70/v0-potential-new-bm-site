@@ -14,7 +14,6 @@ interface FlipCardProps {
   bgClass?: string;
   backTitle?: string;
   backContent: React.ReactNode;
-  links?: Array<{ label: string; url: string }>;
   /** Overlay opacity 0–1 for text readability (default 0.4) */
   frontOverlayOpacity?: number;
   /** Use gold/amber accent for front text (default true). Set false for pure white. */
@@ -30,7 +29,6 @@ export default function FlipCard({
   bgClass = "bg-zinc-900",
   backTitle,
   backContent,
-  links,
   frontOverlayOpacity = 0.4,
   useAccentText = true,
 }: FlipCardProps) {
@@ -132,25 +130,6 @@ export default function FlipCard({
             )}
             <div className="text-zinc-300 text-base space-y-3 leading-relaxed">{backContent}</div>
           </div>
-
-          {/* Links section */}
-          {links && links.length > 0 && (
-            <div className="space-y-3 mt-6 pt-4 border-t border-zinc-800 relative z-10 pl-2">
-              {links.map((link, idx) => (
-                <a
-                  key={idx}
-                  href={link.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-[#C9A227] hover:text-[#FF6B35] transition-colors text-base font-bold min-h-[44px]"
-                  onClick={(e) => e.stopPropagation()}
-                >
-                  {link.label}
-                  <ExternalLink size={18} />
-                </a>
-              ))}
-            </div>
-          )}
 
           <p className="text-zinc-500 text-sm mt-4 pl-2 relative z-10 uppercase font-medium">← Click to flip back →</p>
         </div>

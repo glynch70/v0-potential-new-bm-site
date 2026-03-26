@@ -165,13 +165,13 @@ function ServiceFlipCard({ service, index }: { service: typeof MAIN_SERVICES[0];
               )}
             </ul>
 
-            <div className="mt-auto pt-6 border-t border-zinc-800">
+            <div className="mt-auto pt-6 border-t border-white/10">
               <a 
                 href="#contact" 
-                className="text-[#C9A227] font-bold flex items-center gap-2 hover:text-[#FF6B35] transition-colors"
+                className="text-[#C9A227] text-sm font-medium hover:underline flex items-center gap-1"
                 onClick={(e) => e.stopPropagation()}
               >
-                Get started <ArrowRight size={16} />
+                Get started <span>→</span>
               </a>
               <p className="text-[10px] uppercase tracking-[0.2em] text-white/40 mt-6">
                 ← CLICK TO FLIP BACK →

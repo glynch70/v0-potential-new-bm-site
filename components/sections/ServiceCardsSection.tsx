@@ -17,9 +17,9 @@ const services = [
     frontDescription: 'Consistent, on-brand content that builds trust and visibility.',
     backTitle: 'Social Media Content',
     backContent: (
-      <div className="flex flex-col gap-4">
-        <p className="text-white font-bold">What's included:</p>
-        <ul className="space-y-2 text-sm text-white leading-relaxed">
+      <div className="flex flex-col h-full">
+        <p className="text-white font-bold mb-4">What's included:</p>
+        <ul className="space-y-2 text-sm text-white/90 leading-relaxed mb-6">
           <li>• Reels & short-form video</li>
           <li>• Branded graphics & carousels</li>
           <li>• Monthly content calendar</li>
@@ -27,17 +27,14 @@ const services = [
           <li>• Scheduling & posting</li>
           <li>• Monthly performance report</li>
         </ul>
-        <div className="pt-4 border-t border-zinc-800">
-          <a href="#contact" className="text-[#C9A227] font-bold flex items-center gap-2 hover:text-[#FF6B35] transition-colors">
+        <div className="pt-6 border-t border-white/10 mt-auto">
+          <a href="#contact" className="text-[#C9A227] text-sm font-medium hover:underline flex items-center gap-1">
             Get started <span>→</span>
           </a>
         </div>
       </div>
     ),
-    links: [
-      { label: 'View Portfolio', url: 'https://portfolio.bear-media.com/' },
-    ],
-    mobileCta: { label: 'Get social media content', url: '#contact' },
+    mobileCta: { label: 'Get started', url: '#contact' },
   },
   {
     id: 'websites',
@@ -51,9 +48,9 @@ const services = [
     frontDescription: 'Fast, clean websites built to convert visitors.',
     backTitle: 'Websites',
     backContent: (
-      <div className="flex flex-col gap-4">
-        <p className="text-white font-bold">What's included:</p>
-        <ul className="space-y-2 text-sm text-white leading-relaxed">
+      <div className="flex flex-col h-full">
+        <p className="text-white font-bold mb-4">What's included:</p>
+        <ul className="space-y-2 text-sm text-white/90 leading-relaxed mb-6">
           <li>• Custom designed & built in Next.js</li>
           <li>• Mobile-first & fast loading</li>
           <li>• SEO foundations built in</li>
@@ -61,18 +58,14 @@ const services = [
           <li>• Google Analytics setup</li>
           <li>• Handed over — you own it outright</li>
         </ul>
-        <div className="pt-4 border-t border-zinc-800">
-          <a href="#contact" className="text-[#C9A227] font-bold flex items-center gap-2 hover:text-[#FF6B35] transition-colors">
+        <div className="pt-6 border-t border-white/10 mt-auto">
+          <a href="#contact" className="text-[#C9A227] text-sm font-medium hover:underline flex items-center gap-1">
             Get started <span>→</span>
           </a>
         </div>
       </div>
     ),
-    links: [
-      { label: 'Visit Website', url: 'https://www.klewisjoineryltd.co.uk/' },
-      { label: 'Full Portfolio', url: 'https://portfolio.bear-media.com/' },
-    ],
-    mobileCta: { label: 'Get a website', url: '#contact' },
+    mobileCta: { label: 'Get started', url: '#contact' },
   },
   {
     id: 'extras',
@@ -86,21 +79,22 @@ const services = [
     frontDescription: 'Everything else to support your brand.',
     backTitle: 'Full Service',
     backContent: (
-      <div>
-        <p className="mb-3 text-white"><strong>We also provide:</strong></p>
-        <ul className="space-y-1.5 text-sm">
+      <div className="flex flex-col h-full">
+        <p className="text-white font-bold mb-4">What's included:</p>
+        <ul className="space-y-2 text-sm text-white/90 leading-relaxed mb-6">
           <li>• Drone Photography & 4K Footage</li>
           <li>• Professional Headshots & Branding</li>
           <li>• Local SEO Optimization</li>
           <li>• Google Business Management</li>
         </ul>
-        <p className="mt-4 text-[#C9A227] text-sm font-semibold">Ask about our group training packages!</p>
+        <div className="pt-6 border-t border-white/10 mt-auto">
+          <a href="#contact" className="text-[#C9A227] text-sm font-medium hover:underline flex items-center gap-1">
+            Get started <span>→</span>
+          </a>
+        </div>
       </div>
     ),
-    links: [
-      { label: 'View Portfolio', url: 'https://portfolio.bear-media.com/' },
-    ],
-    mobileCta: { label: 'Ask about extras', url: '#contact' },
+    mobileCta: { label: 'Get started', url: '#contact' },
   },
 ];
 
@@ -138,7 +132,6 @@ export function ServiceCardsSection() {
                 bgClass={service.bgClass}
                 backTitle={service.backTitle}
                 backContent={service.backContent}
-                links={service.links}
               />
               <div className="md:hidden mt-4 text-center flex justify-center w-full">
                 <a 
