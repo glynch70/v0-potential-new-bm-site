@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 import { ExternalLink } from 'lucide-react';
 
 interface FlipCardProps {
@@ -30,7 +31,7 @@ export default function FlipCard({
 
   return (
     <div
-      className="h-80 cursor-pointer perspective"
+      className="h-80 md:h-96 cursor-pointer perspective w-full"
       onClick={() => setIsFlipped(!isFlipped)}
       style={{
         perspective: '1000px',
@@ -45,26 +46,41 @@ export default function FlipCard({
       >
         {/* Front of card */}
         <div
-          className="absolute w-full h-full bg-cover bg-center rounded-lg shadow-lg p-6 flex flex-col justify-end overflow-hidden"
+          className="absolute w-full h-full rounded-2xl shadow-lg overflow-hidden flex flex-col justify-end"
           style={{
-            backgroundImage: `url('${frontImage}')`,
             backfaceVisibility: 'hidden',
           }}
         >
-          {/* Dark overlay behind text only — improves readability without covering image */}
-          <div
-            className="relative z-10 mt-auto -mx-6 -mb-6 px-6 pb-6 pt-4 rounded-b-lg"
-            style={{ backgroundColor: `rgba(0, 0, 0, ${frontOverlayOpacity})` }}
-          >
-            <h3 className="text-2xl font-bold text-white mb-2">{frontTitle}</h3>
-            <p className="text-white/90 text-sm">{frontDescription}</p>
-            <p className={`text-xs mt-3 ${useAccentText ? 'text-amber-400' : 'text-white/80'}`}>← Click to flip →</p>
+          {/* Background Image */}
+          <div className="absolute inset-0 z-0 text-white flex items-center justify-center bg-zinc-900">
+             <Image
+                src={frontImage}
+                alt={frontTitle}
+                fill
+                className="object-cover w-full h-full"
+                sizes="(max-width: 768px) 100vw, 33vw"
+              />
+          </div>
+
+          {/* Gradient Overlay */}
+          <div 
+            className="absolute inset-0 z-10"
+            style={{ 
+              background: 'linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.45) 50%, rgba(0,0,0,0.05) 100%)' 
+            }}
+          />
+
+          {/* Text Content */}
+          <div className="absolute bottom-0 left-0 right-0 p-6 z-20">
+            <h3 className="text-xl font-bold text-white mb-1">{frontTitle}</h3>
+            <p className="text-white/80 text-sm mt-1">{frontDescription}</p>
+            <p className="text-yellow-400 text-xs mt-3 tracking-wide uppercase font-semibold">← Click to flip →</p>
           </div>
         </div>
 
         {/* Back of card */}
         <div
-          className="absolute w-full h-full bg-gradient-to-br from-[#0A0A0A] to-[#0A0A0A]/90 rounded-lg shadow-lg p-6 flex flex-col justify-between border border-zinc-800"
+          className="absolute w-full h-full bg-gradient-to-br from-[#0A0A0A] to-[#0A0A0A]/90 rounded-2xl shadow-lg p-6 flex flex-col justify-between border border-zinc-800"
           style={{
             backfaceVisibility: 'hidden',
             transform: 'rotateY(180deg)',

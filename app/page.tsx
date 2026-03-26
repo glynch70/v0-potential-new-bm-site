@@ -3,7 +3,8 @@
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Menu, X, Phone, Mail, MapPin, Star, ExternalLink } from 'lucide-react'
+import { Menu, X, Phone, Mail, MapPin, Star, ExternalLink, Search, Map, Layers, Rocket, ChevronRight } from 'lucide-react'
+import { motion } from 'framer-motion'
 import { ServiceCardsSection } from '@/components/sections/ServiceCardsSection'
 import { BrandStorySection } from '@/components/sections/BrandStorySection'
 import { WhoIWorkWithSection } from '@/components/sections/WhoIWorkWithSection'
@@ -59,7 +60,6 @@ function Hero() {
       <video
         autoPlay muted loop playsInline
         className="absolute inset-0 w-full h-full object-cover"
-        poster="/work/websites-desktop.jpg"
       >
         <source src="/media/NEW BM DRONE HERO.mp4" type="video/mp4" />
       </video>
@@ -341,6 +341,93 @@ function Testimonials() {
   )
 }
 
+// ─── HOW IT WORKS ────────────────────────────────────────────────────────
+function HowItWorks() {
+  const steps = [
+    {
+      id: 1,
+      title: "Discovery",
+      icon: Search,
+      body: "We have a quick call to find out what you need, who you're trying to reach, and what success looks like for you."
+    },
+    {
+      id: 2,
+      title: "Strategy",
+      icon: Map,
+      body: "We put together a clear plan — whether that's a website, social content, or both. No fluff, just what will actually work."
+    },
+    {
+      id: 3,
+      title: "Creation",
+      icon: Layers,
+      body: "We build it. Websites go live fast. Content gets made to a schedule. You see everything before it's published."
+    },
+    {
+      id: 4,
+      title: "Results",
+      icon: Rocket,
+      body: "Your site is live or your content is rolling. We stay in touch, tweak what needs tweaking, and keep things moving."
+    }
+  ]
+
+  return (
+    <section className="py-24 px-4 bg-zinc-900 border-t border-zinc-800 overflow-hidden">
+      <div className="max-w-4xl mx-auto text-center mb-16 px-4">
+        <p className="text-[#C9A227] text-sm font-semibold uppercase tracking-widest mb-3">The Process</p>
+        <h2 className="text-4xl md:text-5xl font-black text-white mb-4">How it works</h2>
+        <p className="text-zinc-400 text-lg max-w-2xl mx-auto italic">No jargon. No surprises. Just a clear path from first chat to live results.</p>
+      </div>
+
+      <div className="max-w-6xl mx-auto relative px-4">
+        {/* Mobile vertical line connector */}
+        <div className="absolute left-10 md:left-1/2 top-10 bottom-10 w-px bg-gradient-to-b from-[#C9A227]/40 via-[#C9A227]/20 to-transparent md:hidden" />
+
+        <motion.div 
+          className="grid gap-8 md:grid-cols-4 md:gap-6 relative"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={{
+            hidden: {},
+            visible: { transition: { staggerChildren: 0.15 } }
+          }}
+        >
+          {steps.map((step, index) => (
+            <div key={step.id} className="relative">
+              {/* Desktop Arrow */}
+              {index < steps.length - 1 && (
+                <div className="hidden md:flex absolute top-1/2 -right-4 -translate-y-1/2 z-20 pointer-events-none">
+                  <ChevronRight size={24} className="text-[#C9A227] opacity-40" />
+                </div>
+              )}
+
+              <motion.div
+                variants={{
+                  hidden: { opacity: 0, y: 30 },
+                  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
+                }}
+                whileHover={{ scale: 1.05, borderColor: "rgba(255, 255, 255, 0.2)" }}
+                className="relative bg-white/5 border border-white/10 rounded-2xl p-6 h-full backdrop-blur-sm transition-all duration-300"
+              >
+                {/* Decorative Number */}
+                <span className="absolute top-4 right-6 text-7xl md:text-8xl font-black text-[#C9A227] opacity-20 select-none pointer-events-none">
+                   {step.id}
+                </span>
+
+                <div className="relative z-10">
+                  <step.icon size={32} className="text-[#C9A227] mb-6" />
+                  <h3 className="text-xl font-bold text-white mb-3">{step.id}. {step.title}</h3>
+                  <p className="text-zinc-400 text-sm leading-relaxed">{step.body}</p>
+                </div>
+              </motion.div>
+            </div>
+          ))}
+        </motion.div>
+      </div>
+    </section>
+  )
+}
+
 // ─── ABOUT ────────────────────────────────────────────────────────────────
 function About() {
   return (
@@ -496,6 +583,7 @@ export default function Home() {
       <Hero />
       <BrandStorySection />
       <ServiceCardsSection />
+      <HowItWorks />
       <Work />
       <VideoReel />
       <Testimonials />
