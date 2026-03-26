@@ -3,18 +3,18 @@
 import React from 'react';
 
 const clients = [
-  'K Lewis Joinery',
-  'Robertsons Transport',
-  'Herb & Soul',
-  'Almond Vet Care',
-  'Managing What Matters',
-  'Glens Pharmacy',
-  'Seamus Corry',
-  'Voice to Lead',
-  'Muirhouse H.A.',
-  'Simply Sheds',
-  'C&G Developments',
-  'Simply Sheds',
+  { name: 'K Lewis Joinery', url: 'https://www.klewisjoineryltd.co.uk/' },
+  { name: 'Robertsons Transport', url: 'https://rt-ltd.uk/' },
+  { name: 'Herb & Soul', url: 'https://www.herbandsoul.uk/' },
+  { name: 'Almond Vet Care', url: 'https://almondvetcare.co.uk/' },
+  { name: 'Managing What Matters', url: 'https://managingwhatmatters.co.uk/' },
+  { name: 'Glens Pharmacy', url: 'https://www.glenspharmacy.com/' },
+  { name: 'Seamus Corry', url: 'https://www.thepotentiallyyouproject.com/' },
+  { name: 'Voice to Lead', url: 'https://voice2lead.co.uk/' },
+  { name: 'Muirhouse H.A.', url: 'https://muirhouseha.org.uk/' },
+  { name: 'Simply Sheds', url: 'https://simplyshedsscotland.com/' },
+  { name: 'C&G Developments', url: 'https://candgdevelopment.co.uk/' },
+  { name: 'Simply Sheds', url: 'https://simplyshedsscotland.com/' },
 ];
 
 export default function ClientMarquee() {
@@ -38,9 +38,14 @@ export default function ClientMarquee() {
           <div className="marquee-row animate-scroll-left [.group:hover_&]:pause-scroll">
             {duplicatedClients.map((client, i) => (
               <div key={`r1-${i}`} className="flex items-center">
-                <div className="bg-white/5 border border-white/10 rounded-full px-5 py-2 text-white/80 text-sm font-medium whitespace-nowrap">
-                  {client}
-                </div>
+                <a
+                  href={client.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-white/5 border border-white/10 rounded-full px-5 py-2 text-white/80 text-sm font-medium whitespace-nowrap hover:bg-white/10 hover:border-[#C9A227]/50 hover:text-[#C9A227] transition-all duration-300 hover:scale-105"
+                >
+                  {client.name}
+                </a>
                 <span className="text-yellow-500 mx-5 text-lg flex items-center h-full">·</span>
               </div>
             ))}
@@ -52,9 +57,14 @@ export default function ClientMarquee() {
           <div className="marquee-row animate-scroll-right [.group:hover_&]:pause-scroll">
             {duplicatedClients.map((client, i) => (
               <div key={`r2-${i}`} className="flex items-center">
-                <div className="bg-white/5 border border-white/10 rounded-full px-5 py-2 text-white/80 text-sm font-medium whitespace-nowrap">
-                  {client}
-                </div>
+                <a
+                  href={client.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-white/5 border border-white/10 rounded-full px-5 py-2 text-white/80 text-sm font-medium whitespace-nowrap hover:bg-white/10 hover:border-[#C9A227]/50 hover:text-[#C9A227] transition-all duration-300 hover:scale-105"
+                >
+                  {client.name}
+                </a>
                 <span className="text-yellow-500 mx-5 text-lg flex items-center h-full">·</span>
               </div>
             ))}
