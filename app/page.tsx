@@ -512,6 +512,25 @@ function Contact() {
             </div>
           </div>
           <ContactForm />
+          
+          {/* Google Map Integration */}
+          <div className="mt-12">
+            <p className="text-sm text-white/50 text-center mb-3">
+              📍 Based in Broxburn, West Lothian — serving clients across Central Scotland
+            </p>
+            <div className="w-full h-72 md:h-96 rounded-2xl overflow-hidden border border-yellow-600/30 shadow-lg">
+              <iframe
+                title="Bear Media location — Broxburn, West Lothian"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2231.5!2d-3.4714!3d55.9343!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4887c4e4e4e4e4e4%3A0x1234!2sBroxburn%2C+West+Lothian!5e0!3m2!1sen!2suk!4v1234567890"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            </div>
+          </div>
         </div>
       </section>
   )
@@ -585,9 +604,9 @@ export default function Home() {
       <HowItWorks />
       <Work />
       <VideoReel />
-      <Testimonials />
       <ClientMarquee />
       <About />
+      <Testimonials />
       <Contact />
       <MinimalFooter />
     </main>
