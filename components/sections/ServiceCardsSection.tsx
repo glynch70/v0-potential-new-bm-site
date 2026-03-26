@@ -29,8 +29,9 @@ const services = [
       </div>
     ),
     links: [
-      { label: 'View Portfolio', url: '/#work' },
+      { label: 'View Portfolio', url: 'https://portfolio.bear-media.com/' },
     ],
+    mobileCta: { label: 'Get social media content', url: '#contact' },
   },
   {
     id: 'websites',
@@ -57,8 +58,10 @@ const services = [
       </div>
     ),
     links: [
-      { label: 'Visit Site', url: 'https://www.klewisjoineryltd.co.uk/' },
+      { label: 'Visit Website', url: 'https://www.klewisjoineryltd.co.uk/' },
+      { label: 'Full Portfolio', url: 'https://portfolio.bear-media.com/' },
     ],
+    mobileCta: { label: 'Get a website', url: '#contact' },
   },
   {
     id: 'extras',
@@ -81,8 +84,9 @@ const services = [
       </div>
     ),
     links: [
-      { label: 'View Samples', url: '/#work' },
+      { label: 'View Portfolio', url: 'https://portfolio.bear-media.com/' },
     ],
+    mobileCta: { label: 'Ask about extras', url: '#contact' },
   },
 ];
 
@@ -122,6 +126,14 @@ export function ServiceCardsSection() {
                 frontOverlayOpacity={service.frontOverlayOpacity ?? 0.4}
                 useAccentText={service.useAccentText ?? true}
               />
+              <div className="md:hidden mt-4 text-center flex justify-center w-full">
+                <a 
+                  href={service.mobileCta.url} 
+                  className="inline-flex items-center gap-2 rounded-full bg-white/10 text-white border border-white/20 hover:bg-white/20 px-6 py-2.5 text-sm font-semibold transition-colors"
+                >
+                  {service.mobileCta.label} <span>→</span>
+                </a>
+              </div>
             </motion.div>
           ))}
         </div>

@@ -50,16 +50,11 @@ export const PartnerLogosSection = ({ heading = "Networks & Partners" }: Partner
                 key={logo.id}
                 className="flex basis-1/2 justify-center pl-0 sm:basis-1/3 md:basis-1/4"
               >
-                <div className="mx-10 flex shrink-0 items-center justify-center py-4">
-                  {/* Invert logos for dark background */}
-                  <div className="relative h-12 w-36 opacity-70 hover:opacity-100 transition-opacity duration-300 brightness-0 invert">
-                    <Image
-                      src={logo.image}
-                      alt={logo.description}
-                      fill
-                      className="object-contain"
-                      sizes="144px"
-                    />
+                <div className="mx-4 flex shrink-0 items-center justify-center py-4">
+                  <div className="flex h-24 w-56 items-center justify-center rounded-xl border border-white/10 bg-[#111111] px-4 text-center transition-colors hover:bg-zinc-800">
+                    <span className="text-sm font-semibold text-[#C9A227] leading-tight">
+                      {logo.description}
+                    </span>
                   </div>
                 </div>
               </CarouselItem>

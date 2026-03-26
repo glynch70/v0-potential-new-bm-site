@@ -61,13 +61,23 @@ export const MinimalFooter = () => {
               {['Home', 'Services', 'Work', 'About', 'Contact'].map((link) => (
                 <li key={link}>
                   <a
-                    href={`#${link.toLowerCase()}`}
+                    href={`/#${link.toLowerCase()}`}
                     className="text-gray-400 hover:text-amber-400 transition-colors text-sm"
                   >
                     {link}
                   </a>
                 </li>
               ))}
+              <li>
+                <a
+                  href="https://portfolio.bear-media.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-400 hover:text-amber-400 transition-colors text-sm"
+                >
+                  Portfolio
+                </a>
+              </li>
             </ul>
           </motion.div>
 

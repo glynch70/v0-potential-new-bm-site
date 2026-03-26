@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Menu, X, Phone, Mail, MapPin, Star } from 'lucide-react'
+import { Menu, X, Phone, Mail, MapPin, Star, ExternalLink } from 'lucide-react'
 import { ServiceCardsSection } from '@/components/sections/ServiceCardsSection'
 import { BrandStorySection } from '@/components/sections/BrandStorySection'
 import { WhoIWorkWithSection } from '@/components/sections/WhoIWorkWithSection'
@@ -30,6 +30,7 @@ function Nav() {
           ))}
           <Link href="/training" className="text-zinc-300 hover:text-[#C9A227] transition-colors text-sm font-medium">Training</Link>
           <Link href="/testimonials" className="text-zinc-300 hover:text-[#C9A227] transition-colors text-sm font-medium">Testimonials</Link>
+          <a href="https://portfolio.bear-media.com/" target="_blank" rel="noopener noreferrer" className="text-zinc-300 hover:text-[#C9A227] transition-colors text-sm font-medium">Portfolio</a>
           <a href="/#contact" className="bg-[#C9A227] hover:bg-[#FF6B35] text-[#0f172a] font-bold px-5 py-2 rounded-full text-sm transition-colors">Book a Service</a>
         </div>
         <button onClick={() => setOpen(!open)} className="md:hidden text-white p-2">
@@ -43,6 +44,7 @@ function Nav() {
           ))}
           <Link href="/training" onClick={() => setOpen(false)} className="text-zinc-300 text-lg font-medium">Training</Link>
           <Link href="/testimonials" onClick={() => setOpen(false)} className="text-zinc-300 text-lg font-medium">Testimonials</Link>
+          <a href="https://portfolio.bear-media.com/" target="_blank" rel="noopener noreferrer" onClick={() => setOpen(false)} className="text-zinc-300 text-lg font-medium">Portfolio</a>
           <a href="/#contact" onClick={() => setOpen(false)} className="bg-[#C9A227] hover:bg-[#FF6B35] text-[#0f172a] font-bold px-5 py-3 rounded-full text-center">Book a Service</a>
         </div>
       )}
@@ -72,7 +74,7 @@ function Hero() {
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <AnimatedButton label="Book a Service" href="#contact" />
-          <a href="#work" className="border-2 border-white/50 hover:border-white text-white font-bold px-8 py-4 rounded-full text-lg transition-colors">See our work</a>
+          <a href="https://portfolio.bear-media.com/" target="_blank" rel="noopener noreferrer" className="border-2 border-white/50 hover:border-white text-white font-bold px-8 py-4 rounded-full text-lg transition-colors">View Portfolio</a>
         </div>
       </div>
     </section>
@@ -171,6 +173,13 @@ function Work() {
             </div>
           ))}
         </div>
+
+        <div className="mt-12 text-center">
+          <a href="https://portfolio.bear-media.com/" target="_blank" rel="noopener noreferrer" 
+             className="inline-flex items-center gap-2 bg-zinc-800 hover:bg-zinc-700 text-white font-bold px-8 py-4 rounded-full text-lg transition-colors border border-white/10">
+            View full portfolio gallery <ExternalLink size={20} className="text-amber-500" />
+          </a>
+        </div>
       </div>
 
       {/* Lightbox modal for Social Media cards */}
@@ -258,84 +267,75 @@ function VideoReel() {
 
 // ─── TESTIMONIALS ─────────────────────────────────────────────────────────
 function Testimonials() {
-  const [current, setCurrent] = useState(0)
   const reviews = [
     {
-      quote: "Slick process, reliable, good communication and happy with the end results. Top quality service. Highly recommend for website design and digital marketing.",
       name: "Gary Young",
-      role: "Therapist | Mindfulness Tutor",
-      image: "/testimonials/gary.png",
-      stars: 5,
+      business: "WeBuyAnyHome Edinburgh",
+      quote: "Garry built our website fast and it looks brilliant. Clean, professional and exactly what we needed. Highly recommend.",
     },
     {
-      quote: "Bear Media created an amazing social media campaign for my coaching business. Garry took the time to understand what my business was all about. Professional and reliable.",
       name: "Leanne Murphy",
-      role: "Therapist",
-      image: "/testimonials/leanne.png",
-      stars: 5,
+      business: "Managing What Matters",
+      quote: "Really impressed with the whole process. The site came together quickly and the social content has been consistent and on-brand from day one.",
     },
     {
-      quote: "Garry created a simple, powerful website that sells our Manager Training Programme clearly and convincingly. Delivered within days, zero fuss. Exactly what we needed.",
       name: "Seamus Corry",
-      role: "Trainer",
-      image: "/testimonials/seamus.png",
-      stars: 5,
+      business: "The Potentially You Project",
+      quote: "Garry just gets it. No faff, no jargon — just great content that actually connects with people.",
     },
     {
-      quote: "Garry genuinely cares about his clients and is always willing to go the extra mile. Professional video production, drone photography, and social media content creation.",
-      name: "Stephen Robertson",
-      role: "Gas Heating Engineer",
-      image: "/testimonials/stephen.png",
-      stars: 5,
+      name: "Stephen Johnstone",
+      business: "M&M Compliance Training",
+      quote: "Professional, reliable and quick to turnaround. The video content has made a real difference to our online presence.",
     },
     {
-      quote: "Website wizard who delivers at lightning speed! 72-hour website delivery — from brief to live site in 3 days. Modern, fast, and it actually converts visitors.",
-      name: "Steven Summone",
-      role: "Architect, Consultant, Entrepreneur",
-      image: "/testimonials/steven.png",
-      stars: 5,
+      name: "Steven Summon",
+      business: "Voice2Lead",
+      quote: "Working with Bear Media has been seamless. The content quality is consistently high and Garry is great to work with.",
     },
   ]
+
   return (
-    <section className="py-24 px-4 bg-zinc-950">
-      <div className="max-w-2xl mx-auto text-center">
-        <p className="text-amber-400 text-sm font-semibold uppercase tracking-widest mb-3">Reviews</p>
-        <h2 className="text-4xl md:text-5xl font-black text-white mb-12">What clients say</h2>
-        <div className="relative bg-zinc-900 rounded-3xl p-8 md:p-10 border border-zinc-800">
-          <div className="flex justify-center gap-1 mb-6">
-            {Array(reviews[current].stars).fill(0).map((_, i) => (
-              <span key={i} className="text-amber-400 text-xl">★</span>
-            ))}
-          </div>
-          <p className="text-zinc-200 text-lg md:text-xl leading-relaxed mb-8">"{reviews[current].quote}"</p>
-          <div className="flex flex-col items-center gap-3">
-            <div className="relative w-20 h-20 rounded-full overflow-hidden flex-shrink-0 ring-2 ring-amber-500/30">
-              <Image
-                src={reviews[current].image}
-                alt={reviews[current].name}
-                fill
-                className="object-cover"
-                sizes="80px"
-              />
-            </div>
-            <div className="text-center">
-              <p className="text-white font-bold">{reviews[current].name}</p>
-              <p className="text-zinc-400 text-sm">{reviews[current].role}</p>
-            </div>
-          </div>
-          <div className="flex justify-center gap-2 mt-8">
-            {reviews.map((_, i) => (
-              <button key={i} onClick={() => setCurrent(i)}
-                className="w-2 h-2 rounded-full transition-all"
-                style={{ backgroundColor: i === current ? '#C9A227' : '#52525b' }}
-              />
-            ))}
+    <section className="py-24 px-4 bg-zinc-950 overflow-hidden">
+      <div className="max-w-6xl mx-auto">
+        <div className="text-center mb-12">
+          <p className="text-amber-400 text-sm font-semibold uppercase tracking-widest mb-3">Reviews</p>
+          <div className="flex flex-col items-center justify-center gap-4 mb-6">
+            <h2 className="text-4xl md:text-5xl font-black text-white">What clients say</h2>
+            <a href="https://g.page/r/bear-media" target="_blank" rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-4 py-2 bg-zinc-900 border border-[#C9A227]/30 rounded-full hover:bg-zinc-800 transition-colors">
+              <span className="text-zinc-300 text-sm font-medium">25 reviews · <span className="text-[#C9A227] font-bold">5.0 ★</span> on Google</span>
+            </a>
           </div>
         </div>
-        <a href="https://g.page/r/bear-media/review" target="_blank" rel="noopener noreferrer"
-          className="inline-block mt-6 text-zinc-400 hover:text-amber-400 text-sm transition-colors">
-          Read all reviews on Google →
-        </a>
+        
+        {/* Mobile: Horizontal scroll, Desktop: Grid */}
+        <div className="flex overflow-x-auto pb-8 -mx-4 px-4 gap-6 md:grid md:grid-cols-3 md:gap-8 md:overflow-visible md:pb-0 md:px-0 scrollbar-hide snap-x md:snap-none">
+          {reviews.map((review, i) => (
+            <div key={i} className="min-w-[85vw] sm:min-w-[400px] md:min-w-0 snap-center bg-zinc-900 rounded-3xl p-8 border border-zinc-800 flex flex-col justify-between">
+              <div>
+                <div className="flex gap-1 mb-6">
+                  {Array(5).fill(0).map((_, idx) => (
+                    <span key={idx} className="text-[#C9A227] text-lg">★</span>
+                  ))}
+                </div>
+                <p className="text-zinc-200 text-lg leading-relaxed mb-8">"{review.quote}"</p>
+              </div>
+              <div>
+                <p className="text-white font-bold">{review.name}</p>
+                <p className="text-zinc-400 text-sm">{review.business}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-16 text-center">
+          <p className="text-white text-xl md:text-2xl font-bold mb-6">Ready to get results like this?</p>
+          <a href="#contact"
+             className="inline-block bg-[#C9A227] hover:bg-[#FF6B35] text-[#0f172a] font-bold px-8 py-4 rounded-full text-lg transition-colors">
+            Book a call
+          </a>
+        </div>
       </div>
     </section>
   )
