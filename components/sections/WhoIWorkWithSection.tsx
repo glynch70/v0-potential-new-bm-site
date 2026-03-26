@@ -70,7 +70,7 @@ export const WhoIWorkWithSection = () => {
       <div className="max-w-5xl mx-auto">
         {/* Header */}
         <div className="text-center mb-14">
-          <p className="text-amber-400 text-sm font-semibold uppercase tracking-widest mb-3">
+          <p className="text-amber-400 text-base font-semibold uppercase tracking-widest mb-3">
             Who I Work With
           </p>
           <h2 className="text-4xl md:text-5xl font-black text-white mb-4">
@@ -105,11 +105,11 @@ export const WhoIWorkWithSection = () => {
 
             {/* Content */}
             <div className="bg-zinc-900 p-8 md:p-12 flex flex-col justify-center">
-              <span className="inline-block text-amber-500 text-xs font-bold uppercase tracking-widest mb-3 bg-amber-500/10 px-3 py-1 rounded-full w-fit">
+              <span className="inline-block text-amber-500 text-sm font-bold uppercase tracking-widest mb-3 bg-amber-500/10 px-4 py-2 rounded-full w-fit">
                 {client.type}
               </span>
               <h3 className="text-3xl font-black text-white mb-4">{client.name}</h3>
-              <p className="text-zinc-400 text-lg leading-relaxed mb-8">{client.description}</p>
+              <p className="text-zinc-400 text-lg md:text-xl leading-relaxed mb-8">{client.description}</p>
               {client.url ? (
                 <a
                   href={client.url}
@@ -120,7 +120,7 @@ export const WhoIWorkWithSection = () => {
                   Visit site ↗
                 </a>
               ) : (
-                <span className="inline-flex items-center gap-2 text-zinc-500 text-sm font-medium px-6 py-3 rounded-full bg-zinc-800 w-fit">
+                <span className="inline-flex items-center gap-2 text-zinc-400 text-base font-medium px-6 py-4 rounded-full bg-zinc-800 w-fit min-h-[44px]">
                   Social Media Client
                 </span>
               )}
@@ -164,9 +164,9 @@ export const WhoIWorkWithSection = () => {
             { value: '5★', label: 'Google rating' },
             { value: '72h', label: 'Avg. site delivery' },
           ].map(({ value, label }) => (
-            <div key={label} className="py-6 px-4 rounded-2xl bg-zinc-900 border border-zinc-800">
+            <div key={label} className="py-8 px-6 rounded-2xl bg-zinc-900 border border-zinc-800">
               <p className="text-3xl font-black text-amber-500 mb-1">{value}</p>
-              <p className="text-zinc-400 text-sm">{label}</p>
+              <p className="text-zinc-400 text-base font-medium">{label}</p>
             </div>
           ))}
         </div>

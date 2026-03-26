@@ -4,6 +4,7 @@ import type React from "react"
 import { useState } from "react"
 import Link from "next/link"
 import { ArrowLeft } from "lucide-react"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
 
 export default function ContactPage() {
@@ -73,7 +74,7 @@ export default function ContactPage() {
             <ArrowLeft size={20} />
             <span className="text-base font-medium">Back to home</span>
           </Link>
-          <img src="/bear-media-logo.png" alt="Bear Media" className="h-10" />
+          <Image src="/bear-media-logo.png" alt="Bear Media" width={100} height={40} className="h-10 w-auto" priority />
         </div>
       </header>
 
@@ -136,7 +137,7 @@ export default function ContactPage() {
                     placeholder="Your name"
                     value={formData.name}
                     onChange={handleChange}
-                    className="w-full px-4 py-4 rounded-xl bg-[#FAF9F6]"
+                    className="w-full px-4 py-4 rounded-xl bg-[#FAF9F6] text-base"
                   />
 
                   <input
@@ -146,14 +147,14 @@ export default function ContactPage() {
                     placeholder="you@example.com"
                     value={formData.email}
                     onChange={handleChange}
-                    className="w-full px-4 py-4 rounded-xl bg-[#FAF9F6]"
+                    className="w-full px-4 py-4 rounded-xl bg-[#FAF9F6] text-base"
                   />
 
                   <select
                     name="projectType"
                     value={formData.projectType}
                     onChange={handleChange}
-                    className="w-full px-4 py-4 rounded-xl bg-[#FAF9F6]"
+                    className="w-full px-4 py-4 rounded-xl bg-[#FAF9F6] text-base"
                   >
                     <option value="">Project type (optional)</option>
                     <option value="website">Website</option>
@@ -169,7 +170,7 @@ export default function ContactPage() {
                     placeholder="Tell me about your project..."
                     value={formData.message}
                     onChange={handleChange}
-                    className="w-full px-4 py-4 rounded-xl bg-[#FAF9F6]"
+                    className="w-full px-4 py-4 rounded-xl bg-[#FAF9F6] text-base leading-relaxed"
                   />
 
                   <Button

@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
+import { motion } from "framer-motion"
 
 type SectionId = "home" | "services" | "work" | "about" | "contact"
 
@@ -79,24 +80,32 @@ export default function FloatingSectionNav() {
   }
 
   return (
-    <div className="fixed bottom-20 left-1/2 z-[60] -translate-x-1/2 md:bottom-4">
-      <div className="flex items-center border-black/10 bg-white/95 backdrop-blur-md shadow-xl dark:bg-black/90 gap-0.5 border rounded-full px-3.5 py-[15px]">
+    <div className="fixed bottom-6 left-1/2 z-50 -translate-x-1/2 md:hidden w-[95%] max-w-md pb-[env(safe-area-inset-bottom)]">
+      <div className="flex items-center justify-between bg-black/90 backdrop-blur-xl border border-white/10 rounded-2xl p-2 shadow-2xl">
         {SECTIONS.map((section) => {
           const isActive = active === section.id
           return (
             <button
               key={section.id}
               onClick={() => scrollTo(section.id)}
-              className={`relative rounded-full px-3 md:px-4 py-2 text-xs md:text-sm font-medium 
-                transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]
+              className={`flex-1 flex flex-col items-center justify-center gap-1 min-h-[48px] rounded-xl transition-all duration-300
                 ${
                   isActive
-                    ? "bg-[#FF6B35] text-black shadow-md scale-105"
-                    : "text-black/50 hover:text-black hover:bg-black/5 dark:text-white/50 dark:hover:text-white dark:hover:bg-white/10"
+                    ? "text-[#C9A227] bg-white/5"
+                    : "text-white/40 hover:text-white/70"
                 }
                 active:scale-95`}
             >
-              {section.label}
+              <span className={`text-[11px] font-bold uppercase tracking-wider ${isActive ? 'opacity-100' : 'opacity-70'}`}>
+                {section.label}
+              </span>
+              {isActive && (
+                <motion.div 
+                  layoutId="activeTab"
+                  className="w-1.5 h-1.5 rounded-full bg-[#C9A227]"
+                  transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                />
+              )}
             </button>
           )
         })}

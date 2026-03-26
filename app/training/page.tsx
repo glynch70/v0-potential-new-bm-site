@@ -77,10 +77,10 @@ export default function TrainingPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
-      
+
       {/* Hero Section */}
       <section className="px-6 py-16 md:py-24 max-w-4xl mx-auto text-center">
-        <p className="text-[#C9A227] text-sm font-semibold uppercase tracking-widest mb-4">Training Hub</p>
+        <p className="text-[#C9A227] text-base font-semibold uppercase tracking-widest mb-4">Training Hub</p>
         <h1 className="text-4xl md:text-6xl font-black tracking-tight mb-6 text-white">
           Learn the Skills That Drive Results
         </h1>
@@ -113,8 +113,8 @@ export default function TrainingPage() {
                 backTitle={course.backTitle}
                 backContent={
                   <div className="flex flex-col justify-between h-full">
-                    <p className="text-zinc-300">{course.backContent}</p>
-                    <p className="text-[#C9A227] font-bold mt-4 uppercase text-xs">£75/hr or £300/workshop</p>
+                    <p className="text-zinc-300 text-base leading-relaxed">{course.backContent}</p>
+                    <p className="text-[#C9A227] font-bold mt-4 uppercase text-sm">£75/hr or £300/workshop</p>
                   </div>
                 }
                 links={course.links}
@@ -136,24 +136,24 @@ export default function TrainingPage() {
           <h2 className="text-2xl md:text-3xl font-bold text-white mb-6 leading-relaxed">
             "I went from zero knowledge to posting highly-engaging content 3x a week. The Canva and strategy training completely changed how we operate."
           </h2>
-          <p className="text-lg font-bold text-[#C9A227]">— Managing What Matters</p>
-          <p className="text-sm text-zinc-500">Leadership Training Business</p>
+          <p className="text-xl font-bold text-[#C9A227] mb-2">— Managing What Matters</p>
+          <p className="text-base text-zinc-400 font-medium">Leadership Training Business</p>
         </div>
       </section>
 
       {/* Pricing Section */}
       <section id="pricing" className="py-24 px-6 max-w-5xl mx-auto">
         <div className="text-center mb-16">
-           <h2 className="text-3xl md:text-4xl font-black text-white mb-4">Simple, Transparent Pricing</h2>
-           <p className="text-zinc-400">Choose the format that works best for your setup.</p>
+          <h2 className="text-3xl md:text-4xl font-black text-white mb-4">Simple, Transparent Pricing</h2>
+          <p className="text-zinc-400">Choose the format that works best for your setup.</p>
         </div>
-        
+
         <div className="grid md:grid-cols-2 gap-8">
           <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 hover:border-[#C9A227] transition-colors relative overflow-hidden">
             <h3 className="text-2xl font-bold text-white mb-2">1-on-1 Sessions</h3>
             <p className="text-zinc-400 mb-6">Learn at your pace with dedicated focus.</p>
             <p className="text-5xl font-black text-[#C9A227] mb-8">£75<span className="text-lg text-zinc-500 font-medium">/hour</span></p>
-            
+
             <ul className="space-y-4 mb-8">
               {['Tailored strictly to your business', 'Hands-on guided practice', 'Flexible scheduling', 'Follow-up email support'].map((item, i) => (
                 <li key={i} className="flex gap-3 text-zinc-300 items-start">
@@ -166,13 +166,13 @@ export default function TrainingPage() {
               Book a Session
             </Link>
           </div>
-          
+
           <div className="bg-[#0f172a] border border-[#C9A227] rounded-3xl p-8 relative overflow-hidden shadow-2xl shadow-[#C9A227]/10">
-            <div className="absolute top-0 right-0 bg-[#C9A227] text-[#0f172a] font-bold text-xs uppercase tracking-wider px-4 py-1.5 rounded-bl-xl">Most Popular</div>
+            <div className="absolute top-0 right-0 bg-[#C9A227] text-[#0f172a] font-bold text-sm uppercase tracking-wider px-4 py-2 rounded-bl-xl">Most Popular</div>
             <h3 className="text-2xl font-bold text-white mb-2">Team Workshops</h3>
             <p className="text-zinc-400 mb-6">Train up to 6 people at once in a single session.</p>
             <p className="text-5xl font-black text-[#C9A227] mb-8">£300<span className="text-lg text-zinc-500 font-medium">/session</span></p>
-            
+
             <ul className="space-y-4 mb-8">
               {['2-3 hour comprehensive workshop', 'Cost-effective for small teams', 'Interactive group exercises', 'Post-workshop cheat sheets'].map((item, i) => (
                 <li key={i} className="flex gap-3 text-zinc-300 items-start">

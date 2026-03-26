@@ -42,7 +42,7 @@ export const BrandStorySection = () => {
                 <item.icon className="w-8 h-8 text-amber-500" />
               </div>
               
-              <p className="text-amber-500 text-xs font-bold uppercase tracking-[0.3em] mb-2">
+              <p className="text-amber-500 text-sm md:text-base font-bold uppercase tracking-[0.3em] mb-2">
                 {item.accent}
               </p>
               
@@ -50,7 +50,7 @@ export const BrandStorySection = () => {
                 {item.title}
               </h3>
               
-              <p className="text-zinc-400 leading-relaxed text-sm md:text-base max-w-sm">
+              <p className="text-zinc-400 leading-relaxed text-base md:text-lg max-w-sm">
                 {item.content}
               </p>
             </motion.div>

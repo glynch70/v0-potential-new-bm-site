@@ -23,61 +23,55 @@ const inter = Inter({
 export { reportWebVitals } from "@/lib/metrics";
 
 // ═══════════════════════════════════════════════════════
-// SEO METADATA — Updated 22 Feb 2026
-// Fixes: Title too long, meta desc too long, OG incomplete
+// SEO METADATA — Updated March 2026
 // ═══════════════════════════════════════════════════════
 export const metadata: Metadata = {
-  metadataBase: new URL("https://bear-media.com"),
+  metadataBase: new URL("https://www.bear-media.com"),
 
-  title: {
-    default: "Website Design Edinburgh | No Monthly Fees | Bear Media",
-    template: "%s | Bear Media Edinburgh",
-  },
+  title: "Bear Media | Websites & Social Media Content | Central Scotland",
 
   description:
-    "Bear Media builds fast, custom websites for Scottish businesses. No monthly fees, no templates — you own it outright. Based in Edinburgh. Free site review available.",
+    "Bear Media builds fast websites and scroll-stopping social media content for local businesses across Edinburgh, West Lothian, Fife, Glasgow, Falkirk and Central Scotland. No agency fees. Real results.",
 
   keywords: [
     "website design Edinburgh",
-    "social media content creation Scotland",
-    "video production Edinburgh",
-    "drone videography Scotland",
-    "content creator West Lothian",
-    "small business websites Scotland",
-    "Bear Media",
-    "web design Broxburn",
-    "digital marketing Edinburgh",
-    "photography Edinburgh",
+    "website design West Lothian",
+    "social media management Edinburgh",
+    "digital marketing Central Scotland",
+    "website design Falkirk",
+    "website design Glasgow",
+    "SEO West Lothian",
+    "Bear Media Broxburn",
   ],
 
   openGraph: {
     type: "website",
     locale: "en_GB",
-    url: "https://bear-media.com",
+    url: "https://www.bear-media.com",
     siteName: "Bear Media",
-    title: "Bear Media | Websites & Content Creation | Edinburgh",
+    title: "Bear Media | Websites & Social Media Content",
     description:
-      "Helping small businesses get seen, trusted, and contacted. Websites, social media, video & drone content across Scotland.",
+      "Helping businesses across Central Scotland get seen, trusted, and contacted online.",
     images: [
       {
-        url: "https://bear-media.com/bear-media-hero-logo.png",
+        url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Bear Media - Websites and Content Creation Edinburgh Scotland",
+        alt: "Bear Media - Websites & Social Media Content",
       },
     ],
   },
 
   twitter: {
     card: "summary_large_image",
-    title: "Bear Media | Websites & Content Creation | Edinburgh",
+    title: "Bear Media | Websites & Social Media Content",
     description:
-      "Helping small businesses get seen, trusted, and contacted across Scotland.",
-    images: ["https://bear-media.com/bear-media-hero-logo.png"],
+      "Helping businesses across Central Scotland get seen, trusted, and contacted online.",
+    images: ["/og-image.jpg"],
   },
 
   alternates: {
-    canonical: "https://bear-media.com",
+    canonical: "https://www.bear-media.com",
   },
 
   robots: {
@@ -100,47 +94,38 @@ export const metadata: Metadata = {
 const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
-  name: "Bear Media",
-  image: "https://bear-media.com/bear-media-hero-logo.png",
-  url: "https://bear-media.com",
-  telephone: "+447879011860",
-  email: "info@bear-media.com",
-  description:
-    "Websites, social media content, video production and drone services for small businesses across Edinburgh, West Lothian, Fife and Scotland.",
-  address: {
+  "name": "Bear Media",
+  "description": "Websites and social media content for local businesses across Central Scotland",
+  "url": "https://www.bear-media.com",
+  "logo": "https://www.bear-media.com/bear-media-logo.png",
+  "image": "https://www.bear-media.com/og-image.jpg",
+  "telephone": "+447879011860",
+  "email": "info@bear-media.com",
+  "priceRange": "££",
+  "address": {
     "@type": "PostalAddress",
-    addressLocality: "Broxburn",
-    addressRegion: "West Lothian",
-    addressCountry: "GB",
+    "streetAddress": "Broxburn",
+    "addressLocality": "West Lothian",
+    "addressRegion": "Scotland",
+    "postalCode": "EH52 6PH",
+    "addressCountry": "GB"
   },
-  geo: {
+  "geo": {
     "@type": "GeoCoordinates",
-    latitude: 55.9347,
-    longitude: -3.4714,
+    "latitude": 55.934,
+    "longitude": -3.471
   },
-  areaServed: [
-    { "@type": "City", name: "Edinburgh" },
-    { "@type": "AdministrativeArea", name: "West Lothian" },
-    { "@type": "AdministrativeArea", name: "Fife" },
-    { "@type": "Country", name: "Scotland" },
+  "areaServed": [
+    "Edinburgh", "West Lothian", "Fife", "Glasgow", "Falkirk", "Central Scotland", "Broxburn", "Livingston", "Linlithgow"
   ],
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue: "5.0",
-    reviewCount: "50",
-  },
-  priceRange: "$$",
-  openingHoursSpecification: {
-    "@type": "OpeningHoursSpecification",
-    dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-    opens: "09:00",
-    closes: "17:30",
-  },
-  sameAs: [
-    "https://www.instagram.com/bearmediascotland",
-    "https://www.tiktok.com/@bearmediascotland",
-    "https://www.facebook.com/bearmediascotland",
-  ],
+  "serviceType": ["Website Design", "Social Media Management", "SEO", "Drone Photography", "Google Business Management"],
+  "openingHours": "Mo-Fr 09:00-17:00",
+  "sameAs": [
+    "https://www.facebook.com/bearmediacontentservices",
+    "https://www.instagram.com/bear.media",
+    "https://www.linkedin.com/company/bear-media",
+    "https://www.tiktok.com/@bear.media"
+  ]
 };
 
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID ?? "G-RG6BZ50XZY";

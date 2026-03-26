@@ -27,26 +27,26 @@ function Nav() {
         </Link>
         <div className="hidden md:flex items-center gap-8">
           {hashLinks.map(l => (
-            <a key={l} href={`/#${l.toLowerCase()}`} className="text-zinc-300 hover:text-[#C9A227] transition-colors text-sm font-medium">{l}</a>
+            <a key={l} href={`/#${l.toLowerCase()}`} className="text-zinc-300 hover:text-[#C9A227] transition-colors text-sm font-medium min-h-[44px] flex items-center">{l}</a>
           ))}
-          <Link href="/training" className="text-zinc-300 hover:text-[#C9A227] transition-colors text-sm font-medium">Training</Link>
-          <Link href="/testimonials" className="text-zinc-300 hover:text-[#C9A227] transition-colors text-sm font-medium">Testimonials</Link>
-          <a href="https://portfolio.bear-media.com/" target="_blank" rel="noopener noreferrer" className="text-zinc-300 hover:text-[#C9A227] transition-colors text-sm font-medium">Portfolio</a>
-          <a href="/#contact" className="bg-[#C9A227] hover:bg-[#FF6B35] text-[#0f172a] font-bold px-5 py-2 rounded-full text-sm transition-colors">Book a Service</a>
+          <Link href="/training" className="text-zinc-300 hover:text-[#C9A227] transition-colors text-sm font-medium min-h-[44px] flex items-center">Training</Link>
+          <Link href="/testimonials" className="text-zinc-300 hover:text-[#C9A227] transition-colors text-sm font-medium min-h-[44px] flex items-center">Testimonials</Link>
+          <a href="https://portfolio.bear-media.com/" target="_blank" rel="noopener noreferrer" className="text-zinc-300 hover:text-[#C9A227] transition-colors text-sm font-medium min-h-[44px] flex items-center">Portfolio</a>
+          <a href="/#contact" className="bg-[#C9A227] hover:bg-[#FF6B35] text-[#0f172a] font-bold px-6 py-3 rounded-full text-base transition-colors min-h-[44px] flex items-center">Book a Service</a>
         </div>
-        <button onClick={() => setOpen(!open)} className="md:hidden text-white p-2">
+        <button onClick={() => setOpen(!open)} className="md:hidden text-white p-3 min-w-[44px] min-h-[44px] flex items-center justify-center">
           {open ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
       {open && (
-        <div className="md:hidden bg-black border-t border-white/10 px-4 py-4 flex flex-col gap-4">
+        <div className="md:hidden bg-black border-t border-white/10 px-4 py-6 flex flex-col gap-6">
           {hashLinks.map(l => (
-            <a key={l} href={`/#${l.toLowerCase()}`} onClick={() => setOpen(false)} className="text-zinc-300 text-lg font-medium">{l}</a>
+            <a key={l} href={`/#${l.toLowerCase()}`} onClick={() => setOpen(false)} className="text-zinc-300 text-xl font-medium py-3 min-h-[44px] flex items-center">{l}</a>
           ))}
-          <Link href="/training" onClick={() => setOpen(false)} className="text-zinc-300 text-lg font-medium">Training</Link>
-          <Link href="/testimonials" onClick={() => setOpen(false)} className="text-zinc-300 text-lg font-medium">Testimonials</Link>
-          <a href="https://portfolio.bear-media.com/" target="_blank" rel="noopener noreferrer" onClick={() => setOpen(false)} className="text-zinc-300 text-lg font-medium">Portfolio</a>
-          <a href="/#contact" onClick={() => setOpen(false)} className="bg-[#C9A227] hover:bg-[#FF6B35] text-[#0f172a] font-bold px-5 py-3 rounded-full text-center">Book a Service</a>
+          <Link href="/training" onClick={() => setOpen(false)} className="text-zinc-300 text-xl font-medium py-3 min-h-[44px] flex items-center">Training</Link>
+          <Link href="/testimonials" onClick={() => setOpen(false)} className="text-zinc-300 text-xl font-medium py-3 min-h-[44px] flex items-center">Testimonials</Link>
+          <a href="https://portfolio.bear-media.com/" target="_blank" rel="noopener noreferrer" onClick={() => setOpen(false)} className="text-zinc-300 text-xl font-medium py-3 min-h-[44px] flex items-center">Portfolio</a>
+          <a href="/#contact" onClick={() => setOpen(false)} className="bg-[#C9A227] hover:bg-[#FF6B35] text-[#0f172a] font-bold px-6 py-4 rounded-full text-center text-lg min-h-[48px]">Book a Service</a>
         </div>
       )}
     </nav>
@@ -65,7 +65,7 @@ function Hero() {
       </video>
       <div className="absolute inset-0 bg-black/55" />
       <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
-        <p className="text-amber-400 text-sm font-semibold uppercase tracking-widest mb-4">West Lothian · Scotland</p>
+        <p className="text-amber-400 text-base font-semibold uppercase tracking-widest mb-4">West Lothian · Scotland</p>
         <h1 className="text-5xl md:text-7xl font-black text-white leading-tight mb-6">
           Websites &<br /><span className="text-amber-400">Social Media.</span>
         </h1>
@@ -118,9 +118,9 @@ function Work() {
     <section id="work" className="py-24 px-4 bg-zinc-950">
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-12">
-          <p className="text-amber-400 text-sm font-semibold uppercase tracking-widest mb-3">Portfolio</p>
+          <p className="text-amber-400 text-base font-semibold uppercase tracking-widest mb-3">Portfolio</p>
           <h2 className="text-4xl md:text-5xl font-black text-white mb-4">Our Work</h2>
-          <p className="text-zinc-400 text-lg">Real results for real businesses across Scotland.</p>
+          <p className="text-zinc-400 text-xl leading-relaxed">Real results for real businesses across Scotland.</p>
         </div>
 
         {/* Tabs */}
@@ -129,7 +129,7 @@ function Work() {
             <button
               key={t.id}
               onClick={() => setActiveTab(t.id)}
-              className={`px-5 py-2 rounded-full font-semibold text-sm transition-all ${activeTab === t.id ? 'bg-amber-500 text-black' : 'bg-zinc-800 text-zinc-300 hover:bg-zinc-700'}`}
+              className={`px-6 py-3 rounded-full font-semibold text-base transition-all min-h-[44px] ${activeTab === t.id ? 'bg-amber-500 text-black' : 'bg-zinc-800 text-zinc-300 hover:bg-zinc-700'}`}
             >
               {t.label}
             </button>
@@ -152,7 +152,7 @@ function Work() {
                 {item.url && (
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/50 transition-all flex items-center justify-center">
                     <a href={item.url} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()}
-                      className="opacity-0 group-hover:opacity-100 transition-opacity bg-amber-500 hover:bg-amber-400 text-black font-bold px-5 py-2.5 rounded-full text-sm">
+                      className="opacity-0 group-hover:opacity-100 transition-opacity bg-amber-500 hover:bg-amber-400 text-black font-bold px-6 py-3 rounded-full text-base min-h-[44px] flex items-center">
                       View live site →
                     </a>
                   </div>
@@ -160,12 +160,12 @@ function Work() {
               </div>
               <div className="p-4 flex items-start justify-between gap-2">
                 <div>
-                  <h3 className="text-white font-bold">{item.name}</h3>
-                  <p className="text-zinc-400 text-sm mt-1">{item.desc}</p>
+                  <h3 className="text-white font-bold text-lg">{item.name}</h3>
+                  <p className="text-zinc-400 text-base mt-1 leading-relaxed">{item.desc}</p>
                 </div>
                 {item.url && (
                   <a href={item.url} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()}
-                    className="flex-shrink-0 bg-zinc-800 hover:bg-amber-500 hover:text-black text-zinc-300 text-xs font-semibold px-3 py-1.5 rounded-full transition-all mt-1">
+                    className="flex-shrink-0 bg-zinc-800 hover:bg-amber-500 hover:text-black text-zinc-300 text-sm font-semibold px-4 py-2.5 rounded-full transition-all mt-1 min-h-[36px] flex items-center">
                     Visit ↗
                   </a>
                 )}
@@ -242,9 +242,9 @@ function VideoReel() {
         rel="noopener noreferrer"
         className="block max-w-3xl mx-auto text-center group cursor-pointer transition-all duration-300 hover:opacity-90 hover:scale-[1.02]"
       >
-        <p className="text-amber-400 text-sm font-semibold uppercase tracking-widest mb-2">Content creation</p>
+        <p className="text-amber-400 text-base font-semibold uppercase tracking-widest mb-2">Content creation</p>
         <h2 className="text-4xl md:text-5xl font-black text-white mb-3">See it in action</h2>
-        <p className="text-zinc-400 text-lg mb-6">Scroll-stopping content that gets your business noticed.</p>
+        <p className="text-zinc-400 text-xl leading-relaxed mb-6">Scroll-stopping content that gets your business noticed.</p>
         <div className="relative w-full max-w-xl mx-auto aspect-video rounded-2xl overflow-hidden bg-zinc-900 border border-zinc-800 shadow-lg">
           <Image
             src="/work/content-creation-showcase.png"
@@ -254,8 +254,8 @@ function VideoReel() {
             sizes="(max-width: 768px) 100vw, 36rem"
           />
         </div>
-        <p className="text-center text-sm text-amber-400/90 mt-3 flex items-center justify-center gap-2">
-          <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+        <p className="text-center text-base text-amber-400/90 mt-3 flex items-center justify-center gap-2 font-medium min-h-[44px]">
+          <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
             <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
           </svg>
           View Channel
@@ -299,12 +299,12 @@ function Testimonials() {
     <section className="py-24 px-4 bg-zinc-950 overflow-hidden">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-12">
-          <p className="text-amber-400 text-sm font-semibold uppercase tracking-widest mb-3">Reviews</p>
+          <p className="text-amber-400 text-base font-semibold uppercase tracking-widest mb-3">Reviews</p>
           <div className="flex flex-col items-center justify-center gap-4 mb-6">
             <h2 className="text-4xl md:text-5xl font-black text-white">What clients say</h2>
             <a href="https://g.page/r/bear-media" target="_blank" rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-4 py-2 bg-zinc-900 border border-[#C9A227]/30 rounded-full hover:bg-zinc-800 transition-colors">
-              <span className="text-zinc-300 text-sm font-medium">25 reviews · <span className="text-[#C9A227] font-bold">5.0 ★</span> on Google</span>
+              className="inline-flex items-center gap-2 px-6 py-3 bg-zinc-900 border border-[#C9A227]/30 rounded-full hover:bg-zinc-800 transition-colors min-h-[44px]">
+              <span className="text-zinc-300 text-base font-medium">25 reviews · <span className="text-[#C9A227] font-bold">5.0 ★</span> on Google</span>
             </a>
           </div>
         </div>
@@ -322,8 +322,8 @@ function Testimonials() {
                 <p className="text-zinc-200 text-lg leading-relaxed mb-8">"{review.quote}"</p>
               </div>
               <div>
-                <p className="text-white font-bold">{review.name}</p>
-                <p className="text-zinc-400 text-sm">{review.business}</p>
+                <p className="text-white font-bold text-lg">{review.name}</p>
+                <p className="text-zinc-400 text-base">{review.business}</p>
               </div>
             </div>
           ))}
@@ -373,9 +373,9 @@ function HowItWorks() {
   return (
     <section className="py-24 px-4 bg-zinc-900 border-t border-zinc-800 overflow-hidden">
       <div className="max-w-4xl mx-auto text-center mb-16 px-4">
-        <p className="text-[#C9A227] text-sm font-semibold uppercase tracking-widest mb-3">The Process</p>
+        <p className="text-[#C9A227] text-base font-semibold uppercase tracking-widest mb-3">The Process</p>
         <h2 className="text-4xl md:text-5xl font-black text-white mb-4">How it works</h2>
-        <p className="text-zinc-400 text-lg max-w-2xl mx-auto italic">No jargon. No surprises. Just a clear path from first chat to live results.</p>
+        <p className="text-zinc-400 text-xl max-w-2xl mx-auto italic leading-relaxed">No jargon. No surprises. Just a clear path from first chat to live results.</p>
       </div>
 
       <div className="max-w-6xl mx-auto relative px-4">
@@ -417,7 +417,7 @@ function HowItWorks() {
                 <div className="relative z-10">
                   <step.icon size={32} className="text-[#C9A227] mb-6" />
                   <h3 className="text-xl font-bold text-white mb-3">{step.id}. {step.title}</h3>
-                  <p className="text-zinc-400 text-sm leading-relaxed">{step.body}</p>
+                  <p className="text-zinc-400 text-base leading-relaxed">{step.body}</p>
                 </div>
               </motion.div>
             </div>
@@ -443,7 +443,7 @@ function About() {
             </div>
           </div>
           <div>
-            <p className="text-zinc-500 font-semibold uppercase tracking-widest mb-3 text-sm">About the Founder</p>
+            <p className="text-zinc-500 font-semibold uppercase tracking-widest mb-3 text-base">About the Founder</p>
             <h2 className="text-4xl md:text-6xl font-black text-[#C9A227] mb-8">Hi, I'm Garry.</h2>
             
             <div className="space-y-5 mb-10 text-zinc-300 text-lg leading-relaxed">
@@ -464,17 +464,17 @@ function About() {
             <div className="grid grid-cols-3 gap-4 py-6 border-y border-zinc-800 mb-8">
               <div className="text-center">
                 <p className="text-2xl md:text-3xl font-black text-white">25+</p>
-                <p className="text-xs md:text-sm text-zinc-500 uppercase tracking-wide mt-1">Years Experience</p>
+                <p className="text-base text-zinc-500 uppercase tracking-wide mt-1">Years Experience</p>
               </div>
               <div className="text-center border-x border-zinc-800">
                 <p className="text-2xl md:text-3xl font-black text-white">25+</p>
-                <p className="text-xs md:text-sm text-zinc-500 uppercase tracking-wide mt-1">Happy Clients</p>
+                <p className="text-base text-zinc-500 uppercase tracking-wide mt-1">Happy Clients</p>
               </div>
               <div className="text-center">
                 <p className="text-2xl md:text-3xl font-black text-white flex items-center justify-center gap-1">
-                  5<Star className="w-5 h-5 fill-[#C9A227] text-[#C9A227]" />
+                   5<Star className="w-6 h-6 fill-[#C9A227] text-[#C9A227]" />
                 </p>
-                <p className="text-xs md:text-sm text-zinc-500 uppercase tracking-wide mt-1">Google Rating</p>
+                <p className="text-base text-zinc-500 uppercase tracking-wide mt-1">Google Rating</p>
               </div>
             </div>
 
@@ -493,28 +493,28 @@ function Contact() {
   return (
     <section id="contact" className="py-24 px-4 bg-zinc-950">
       <div className="max-w-2xl mx-auto text-center">
-        <p className="text-amber-400 text-sm font-semibold uppercase tracking-widest mb-3">Get in touch</p>
+        <p className="text-amber-400 text-base font-semibold uppercase tracking-widest mb-3">Get in touch</p>
         <h2 className="text-4xl md:text-5xl font-black text-white mb-4">Let's talk</h2>
-        <p className="text-zinc-400 text-lg mb-10">Tell me about your business and I'll get back to you within 24 hours.</p>
-        <div className="bg-zinc-900 rounded-3xl p-8 border border-zinc-800 text-left">
-          <div className="flex flex-col gap-4 mb-8">
-            <div className="flex items-center gap-3 text-zinc-300">
-              <Phone size={18} className="text-amber-400 flex-shrink-0" />
-              <a href="tel:+447879011860" className="hover:text-amber-400 transition-colors">+44 7879 011860</a>
+        <p className="text-zinc-400 text-xl leading-relaxed mb-10">Tell me about your business and I'll get back to you within 24 hours.</p>
+      </div>
+      <div className="max-w-2xl mx-auto bg-zinc-900 rounded-3xl p-8 border border-zinc-800 text-left">
+          <div className="flex flex-col gap-6 mb-10">
+            <div className="flex items-center gap-4 text-zinc-300 min-h-[44px]">
+              <Phone size={20} className="text-amber-400 flex-shrink-0" />
+              <a href="tel:+447879011860" className="hover:text-amber-400 transition-colors text-lg">+44 7879 011860</a>
             </div>
-            <div className="flex items-center gap-3 text-zinc-300">
-              <Mail size={18} className="text-amber-400 flex-shrink-0" />
-              <a href="mailto:info@bear-media.com" className="hover:text-amber-400 transition-colors">info@bear-media.com</a>
+            <div className="flex items-center gap-4 text-zinc-300 min-h-[44px]">
+              <Mail size={20} className="text-amber-400 flex-shrink-0" />
+              <a href="mailto:info@bear-media.com" className="hover:text-amber-400 transition-colors text-lg">info@bear-media.com</a>
             </div>
-            <div className="flex items-center gap-3 text-zinc-300">
-              <MapPin size={18} className="text-amber-400 flex-shrink-0" />
-              <span>Broxburn, West Lothian — serving clients across Scotland</span>
+            <div className="flex items-center gap-4 text-zinc-300 min-h-[44px]">
+              <MapPin size={20} className="text-amber-400 flex-shrink-0" />
+              <span className="text-lg leading-relaxed">Broxburn, West Lothian — serving clients across Scotland</span>
             </div>
           </div>
           <ContactForm />
         </div>
-      </div>
-    </section>
+      </section>
   )
 }
 
@@ -545,32 +545,32 @@ function ContactForm() {
   )
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-      <div className="grid sm:grid-cols-2 gap-4">
+    <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+      <div className="grid sm:grid-cols-2 gap-6">
         <div>
-          <label className="text-zinc-400 text-sm mb-1 block">Your name</label>
+          <label className="text-zinc-400 text-base mb-1 block">Your name</label>
           <input required value={form.name} onChange={e => setForm({...form, name: e.target.value})}
-            className="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-4 py-3 text-white placeholder-zinc-500 focus:outline-none focus:border-amber-500"
+            className="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-4 py-4 text-white placeholder-zinc-500 focus:outline-none focus:border-amber-500 text-base"
             placeholder="John Smith" />
         </div>
         <div>
-          <label className="text-zinc-400 text-sm mb-1 block">Email address</label>
+          <label className="text-zinc-400 text-base mb-1 block">Email address</label>
           <input required type="email" value={form.email} onChange={e => setForm({...form, email: e.target.value})}
-            className="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-4 py-3 text-white placeholder-zinc-500 focus:outline-none focus:border-amber-500"
+            className="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-4 py-4 text-white placeholder-zinc-500 focus:outline-none focus:border-amber-500 text-base"
             placeholder="john@example.com" />
         </div>
       </div>
       <div>
-        <label className="text-zinc-400 text-sm mb-1 block">Tell me about your project</label>
-        <textarea required rows={4} value={form.message} onChange={e => setForm({...form, message: e.target.value})}
-          className="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-4 py-3 text-white placeholder-zinc-500 focus:outline-none focus:border-amber-500 resize-none"
+        <label className="text-zinc-400 text-base mb-1 block">Tell me about your project</label>
+        <textarea required rows={5} value={form.message} onChange={e => setForm({...form, message: e.target.value})}
+          className="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-4 py-4 text-white placeholder-zinc-500 focus:outline-none focus:border-amber-500 resize-none text-base leading-relaxed"
           placeholder="What do you need help with?" />
       </div>
       <button type="submit" disabled={status === 'sending'}
-        className="bg-amber-500 hover:bg-amber-400 disabled:opacity-50 text-black font-bold px-8 py-4 rounded-xl text-lg transition-colors">
+        className="bg-amber-500 hover:bg-amber-400 disabled:opacity-50 text-black font-bold px-8 py-5 rounded-xl text-lg transition-colors min-h-[48px]">
         {status === 'sending' ? 'Sending...' : 'Send message'}
       </button>
-      {status === 'error' && <p className="text-red-400 text-sm text-center">Something went wrong. Try emailing directly.</p>}
+      {status === 'error' && <p className="text-red-400 text-base text-center mt-2">Something went wrong. Try emailing directly.</p>}
     </form>
   )
 }

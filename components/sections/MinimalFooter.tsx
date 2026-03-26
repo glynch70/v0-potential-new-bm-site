@@ -33,18 +33,18 @@ export const MinimalFooter = () => {
             className="flex flex-col gap-4"
           >
             <span className="text-2xl font-bold text-white">BearMedia</span>
-            <p className="text-gray-500 text-sm">Digital strategy and content that converts.</p>
-            <div className="space-y-2 text-sm text-zinc-400">
-              <a href={`tel:${contactInfo.phone.replace(/\s/g, '')}`} className="flex items-center gap-2 hover:text-amber-400 transition-colors">
-                <Phone size={16} /> {contactInfo.phone}
+            <p className="text-gray-400 text-base leading-relaxed">Digital strategy and content that converts.</p>
+            <div className="space-y-4 text-base text-zinc-300">
+              <a href={`tel:${contactInfo.phone.replace(/\s/g, '')}`} className="flex items-center gap-3 hover:text-amber-400 transition-colors min-h-[44px]">
+                <Phone size={18} /> {contactInfo.phone}
               </a>
-              <a href={`mailto:${contactInfo.email}`} className="flex items-center gap-2 hover:text-amber-400 transition-colors">
-                <Mail size={16} /> {contactInfo.email}
+              <a href={`mailto:${contactInfo.email}`} className="flex items-center gap-3 hover:text-amber-400 transition-colors min-h-[44px]">
+                <Mail size={18} /> {contactInfo.email}
               </a>
-              <p className="flex items-center gap-2">
-                <MapPin size={16} /> {contactInfo.location}
+              <p className="flex items-center gap-3 min-h-[44px]">
+                <MapPin size={18} /> {contactInfo.location}
               </p>
-              <p className="text-zinc-500 text-xs">{contactInfo.serviceArea}</p>
+              <p className="text-zinc-500 text-sm font-medium">{contactInfo.serviceArea}</p>
             </div>
           </motion.div>
 
@@ -56,13 +56,13 @@ export const MinimalFooter = () => {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="flex flex-col gap-4"
           >
-            <h3 className="text-white font-semibold mb-2">Navigation</h3>
-            <ul className="space-y-2">
+            <h3 className="text-white font-bold mb-4 text-lg">Navigation</h3>
+            <ul className="space-y-4">
               {['Home', 'Services', 'Work', 'About', 'Contact'].map((link) => (
                 <li key={link}>
                   <a
                     href={`/#${link.toLowerCase()}`}
-                    className="text-gray-400 hover:text-amber-400 transition-colors text-sm"
+                    className="text-gray-400 hover:text-amber-400 transition-colors text-base font-medium min-h-[44px] flex items-center"
                   >
                     {link}
                   </a>
@@ -73,7 +73,7 @@ export const MinimalFooter = () => {
                   href="https://portfolio.bear-media.com/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-amber-400 transition-colors text-sm"
+                  className="text-gray-400 hover:text-amber-400 transition-colors text-base font-medium min-h-[44px] flex items-center"
                 >
                   Portfolio
                 </a>
@@ -89,7 +89,7 @@ export const MinimalFooter = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="flex flex-col gap-4"
           >
-            <h3 className="text-white font-semibold mb-2">Connect</h3>
+            <h3 className="text-white font-bold mb-4 text-lg">Connect</h3>
             <div className="flex flex-wrap gap-4">
               {socialLinks.map(({ name, url, icon: Icon }) => (
                 <a
@@ -97,10 +97,10 @@ export const MinimalFooter = () => {
                   href={url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-amber-400 transition-colors"
+                  className="text-gray-400 hover:text-amber-400 transition-colors p-3 bg-white/5 rounded-xl border border-white/10 min-w-[44px] min-h-[44px] flex items-center justify-center"
                   title={name}
                 >
-                  <Icon className="w-5 h-5" />
+                  <Icon className="w-6 h-6" />
                 </a>
               ))}
             </div>
@@ -140,14 +140,14 @@ export const MinimalFooter = () => {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="flex flex-col md:flex-row items-center justify-between gap-4"
         >
-          <p className="text-xs md:text-sm text-gray-500 font-mono">
+          <p className="text-sm md:text-base text-gray-500 font-mono">
             © {new Date().getFullYear()} Bear Media. All rights reserved.
           </p>
-          <div className="flex gap-4 text-sm">
-            <a href="/privacy-policy" className="text-gray-500 hover:text-zinc-300">Privacy</a>
-            <a href="/terms-conditions" className="text-gray-500 hover:text-zinc-300">Terms</a>
+          <div className="flex gap-6 text-base">
+            <a href="/privacy-policy" className="text-gray-500 hover:text-zinc-300 min-h-[44px] flex items-center">Privacy</a>
+            <a href="/terms-conditions" className="text-gray-500 hover:text-zinc-300 min-h-[44px] flex items-center">Terms</a>
           </div>
-          <p className="text-xs md:text-sm text-gray-500 font-mono">
+          <p className="text-sm md:text-base text-gray-500 font-mono">
             Built by Bear Media Strategy
           </p>
         </motion.div>

@@ -91,8 +91,8 @@ export default function TestimonialsPage() {
                   <metric.icon className="w-8 h-8 text-[#C9A227]" />
                 </div>
                 <h3 className="text-4xl font-black text-white mb-2">{metric.value}</h3>
-                <p className="text-lg font-bold text-zinc-300 mb-1">{metric.label}</p>
-                <p className="text-sm text-zinc-500">{metric.timeframe}</p>
+                <p className="text-lg font-bold text-zinc-200 mb-1">{metric.label}</p>
+                <p className="text-base text-zinc-500 font-medium">{metric.timeframe}</p>
               </div>
             ))}
           </div>
@@ -102,27 +102,27 @@ export default function TestimonialsPage() {
       {/* Testimonials Grid */}
       <section className="py-24 px-6 max-w-7xl mx-auto">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">What Our Clients Say</h2>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {testimonials.map((testimonial, i) => (
-            <div 
-              key={i} 
+            <div
+              key={i}
               className="relative bg-[#0f172a] border border-zinc-800 rounded-3xl p-8 flex flex-col justify-between overflow-hidden group hover:border-[#C9A227]/50 transition-colors"
             >
               {/* Gold Accent Bar */}
               <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-gradient-to-b from-[#C9A227] to-transparent opacity-50" />
-              
+
               <div className="flex flex-col flex-grow relative z-10">
                 <div className="flex gap-1 mb-6">
                   {[...Array(5)].map((_, i) => (
                     <Star key={i} className="w-5 h-5 fill-[#C9A227] text-[#C9A227]" />
                   ))}
                 </div>
-                
+
                 <blockquote className="text-lg text-zinc-300 leading-relaxed mb-8 flex-grow">
                   &quot;{testimonial.quote}&quot;
                 </blockquote>
-                
+
                 <div className="flex items-center gap-4 mt-auto pt-6 border-t border-zinc-800/50">
                   <div className="relative w-[60px] h-[60px] rounded-full overflow-hidden border-2 border-[#C9A227]">
                     {/* Placeholder for actual images */}
@@ -131,8 +131,8 @@ export default function TestimonialsPage() {
                     </div>
                   </div>
                   <div>
-                    <h4 className="font-bold text-white">{testimonial.name}</h4>
-                    <p className="text-sm text-[#C9A227]">{testimonial.business}</p>
+                    <h4 className="font-bold text-white text-lg">{testimonial.name}</h4>
+                    <p className="text-base font-medium text-[#C9A227]">{testimonial.business}</p>
                   </div>
                 </div>
               </div>
@@ -151,7 +151,7 @@ export default function TestimonialsPage() {
           View Case Studies <ArrowRight className="w-5 h-5" />
         </Link>
       </section>
-      
+
       {/* Footer CTA */}
       <section className="py-24 text-center px-6">
         <h2 className="text-3xl font-bold mb-8">Ready to be our next success story?</h2>

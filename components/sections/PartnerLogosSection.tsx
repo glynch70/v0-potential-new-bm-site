@@ -31,7 +31,7 @@ export const PartnerLogosSection = ({ heading = "Networks & Partners" }: Partner
   return (
     <section className="py-16 px-4 bg-black border-t border-zinc-900">
       <div className="max-w-5xl mx-auto text-center mb-10">
-        <p className="text-amber-400 text-sm font-semibold uppercase tracking-widest mb-2">
+        <p className="text-amber-400 text-base font-semibold uppercase tracking-widest mb-2">
           Community
         </p>
         <h2 className="text-3xl md:text-4xl font-black text-white">
@@ -52,7 +52,7 @@ export const PartnerLogosSection = ({ heading = "Networks & Partners" }: Partner
               >
                 <div className="mx-4 flex shrink-0 items-center justify-center py-4">
                   <div className="flex h-24 w-56 items-center justify-center rounded-xl border border-white/10 bg-[#111111] px-4 text-center transition-colors hover:bg-zinc-800">
-                    <span className="text-sm font-semibold text-[#C9A227] leading-tight">
+                    <span className="text-base font-bold text-[#C9A227] leading-tight">
                       {logo.description}
                     </span>
                   </div>
