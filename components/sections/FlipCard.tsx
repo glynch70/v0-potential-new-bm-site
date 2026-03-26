@@ -64,29 +64,32 @@ export default function FlipCard({
 
         {/* Back of card */}
         <div
-          className="absolute w-full h-full bg-gradient-to-br from-[#0A0A0A] to-[#0A0A0A]/90 rounded-lg shadow-lg p-6 flex flex-col justify-between border border-white/10"
+          className="absolute w-full h-full bg-gradient-to-br from-[#0A0A0A] to-[#0A0A0A]/90 rounded-lg shadow-lg p-6 flex flex-col justify-between border border-zinc-800"
           style={{
             backfaceVisibility: 'hidden',
             transform: 'rotateY(180deg)',
           }}
         >
-          <div>
+          {/* Gold Accent Bar on left side */}
+          <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-[#C9A227] to-transparent opacity-80 rounded-l-lg" />
+          
+          <div className="relative z-10 pl-2">
             {backTitle && (
-              <h3 className="text-2xl font-bold text-amber-400 mb-4">{backTitle}</h3>
+              <h3 className="text-2xl font-bold text-[#C9A227] mb-4">{backTitle}</h3>
             )}
-            <div className="text-white text-sm space-y-2">{backContent}</div>
+            <div className="text-zinc-300 text-sm space-y-2">{backContent}</div>
           </div>
 
           {/* Links section */}
           {links && links.length > 0 && (
-            <div className="space-y-2 mt-4 pt-4 border-t border-amber-500/20">
+            <div className="space-y-2 mt-4 pt-4 border-t border-zinc-800 relative z-10 pl-2">
               {links.map((link, idx) => (
                 <a
                   key={idx}
                   href={link.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-amber-400 hover:text-amber-300 transition-colors text-sm font-medium"
+                  className="flex items-center gap-2 text-[#C9A227] hover:text-[#FF6B35] transition-colors text-sm font-bold"
                   onClick={(e) => e.stopPropagation()}
                 >
                   {link.label}
@@ -96,7 +99,7 @@ export default function FlipCard({
             </div>
           )}
 
-          <p className="text-white/60 text-xs mt-4">← Click to flip back →</p>
+          <p className="text-zinc-500 text-xs mt-4 pl-2 relative z-10">← Click to flip back →</p>
         </div>
       </div>
     </div>

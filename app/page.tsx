@@ -3,26 +3,34 @@
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Menu, X, Phone, Mail, MapPin } from 'lucide-react'
+import { Menu, X, Phone, Mail, MapPin, Star } from 'lucide-react'
 import { ServiceCardsSection } from '@/components/sections/ServiceCardsSection'
+import { BrandStorySection } from '@/components/sections/BrandStorySection'
+import { WhoIWorkWithSection } from '@/components/sections/WhoIWorkWithSection'
+import { PartnerLogosSection } from '@/components/sections/PartnerLogosSection'
 import { MinimalFooter } from '@/components/sections/MinimalFooter'
+import AnimatedButton from '@/components/ui/button-with-icon'
 
 // ─── NAV ───────────────────────────────────────────────────────────────────
 function Nav() {
   const [open, setOpen] = useState(false)
-  const links = ['Services', 'Work', 'About', 'Contact']
+  
+  const hashLinks = ['Services', 'Work', 'About', 'Contact']
+
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-md border-b border-white/10">
       <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2">
           <Image src="/bear-media-logo.png" alt="Bear Media" width={40} height={40} />
-          <span className="font-bold text-white text-lg">Bear<span className="text-amber-400">Media</span></span>
+          <span className="font-bold text-white text-lg">Bear<span className="text-[#C9A227]">Media</span></span>
         </Link>
         <div className="hidden md:flex items-center gap-8">
-          {links.map(l => (
-            <a key={l} href={`#${l.toLowerCase()}`} className="text-zinc-300 hover:text-amber-400 transition-colors text-sm font-medium">{l}</a>
+          {hashLinks.map(l => (
+            <a key={l} href={`/#${l.toLowerCase()}`} className="text-zinc-300 hover:text-[#C9A227] transition-colors text-sm font-medium">{l}</a>
           ))}
-          <a href="#contact" className="bg-amber-500 hover:bg-amber-400 text-black font-bold px-5 py-2 rounded-full text-sm transition-colors">Book a Service</a>
+          <Link href="/training" className="text-zinc-300 hover:text-[#C9A227] transition-colors text-sm font-medium">Training</Link>
+          <Link href="/testimonials" className="text-zinc-300 hover:text-[#C9A227] transition-colors text-sm font-medium">Testimonials</Link>
+          <a href="/#contact" className="bg-[#C9A227] hover:bg-[#FF6B35] text-[#0f172a] font-bold px-5 py-2 rounded-full text-sm transition-colors">Book a Service</a>
         </div>
         <button onClick={() => setOpen(!open)} className="md:hidden text-white p-2">
           {open ? <X size={24} /> : <Menu size={24} />}
@@ -30,10 +38,12 @@ function Nav() {
       </div>
       {open && (
         <div className="md:hidden bg-black border-t border-white/10 px-4 py-4 flex flex-col gap-4">
-          {links.map(l => (
-            <a key={l} href={`#${l.toLowerCase()}`} onClick={() => setOpen(false)} className="text-zinc-300 text-lg font-medium">{l}</a>
+          {hashLinks.map(l => (
+            <a key={l} href={`/#${l.toLowerCase()}`} onClick={() => setOpen(false)} className="text-zinc-300 text-lg font-medium">{l}</a>
           ))}
-          <a href="#contact" onClick={() => setOpen(false)} className="bg-amber-500 text-black font-bold px-5 py-3 rounded-full text-center">Book a Service</a>
+          <Link href="/training" onClick={() => setOpen(false)} className="text-zinc-300 text-lg font-medium">Training</Link>
+          <Link href="/testimonials" onClick={() => setOpen(false)} className="text-zinc-300 text-lg font-medium">Testimonials</Link>
+          <a href="/#contact" onClick={() => setOpen(false)} className="bg-[#C9A227] hover:bg-[#FF6B35] text-[#0f172a] font-bold px-5 py-3 rounded-full text-center">Book a Service</a>
         </div>
       )}
     </nav>
@@ -61,7 +71,7 @@ function Hero() {
           Helping businesses get seen, trusted, and contacted.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="#contact" className="bg-amber-500 hover:bg-amber-400 text-black font-bold px-8 py-4 rounded-full text-lg transition-colors">Book a Service</a>
+          <AnimatedButton label="Book a Service" href="#contact" />
           <a href="#work" className="border-2 border-white/50 hover:border-white text-white font-bold px-8 py-4 rounded-full text-lg transition-colors">See our work</a>
         </div>
       </div>
@@ -335,30 +345,54 @@ function Testimonials() {
 function About() {
   return (
     <section id="about" className="py-24 px-4 bg-black">
-      <div className="max-w-5xl mx-auto">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div className="relative">
-            <div className="rounded-3xl overflow-hidden aspect-[3/4] relative">
+      <div className="max-w-6xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
+          <div className="relative max-w-sm mx-auto w-full">
+            <div className="rounded-3xl overflow-hidden aspect-[3/4] relative border border-zinc-800">
               <Image src="/garry-lynch-portrait.png" alt="Garry Lynch - Bear Media" fill className="object-cover" />
             </div>
-            <div className="absolute -bottom-4 -right-4 bg-amber-500 text-black font-black text-sm px-4 py-2 rounded-2xl">
+            <div className="absolute -bottom-4 -right-4 bg-amber-500 text-black font-black text-sm px-4 py-2 rounded-2xl shadow-xl">
               Bear Media · Broxburn
             </div>
           </div>
           <div>
-            <p className="text-amber-400 text-sm font-semibold uppercase tracking-widest mb-3">About</p>
-            <h2 className="text-4xl md:text-5xl font-black text-white mb-6">Hi, I'm Garry.</h2>
-            <p className="text-zinc-300 text-lg leading-relaxed mb-4">
-              I started Bear Media because I got fed up watching good local businesses get ignored online — not because they weren't good at what they do, but because nobody could find them.
-            </p>
-            <p className="text-zinc-300 text-lg leading-relaxed mb-4">
-              I build clean websites and create social media content that gets businesses seen, trusted, and contacted. No fluff, no agency nonsense — just work that makes a difference.
-            </p>
-            <p className="text-zinc-300 text-lg leading-relaxed mb-8">
-              Based in Broxburn, West Lothian. Working with businesses across Edinburgh, Fife, Glasgow, and Central Scotland.
-            </p>
-            <a href="#contact" className="bg-amber-500 hover:bg-amber-400 text-black font-bold px-8 py-4 rounded-full text-lg transition-colors inline-block">
-              Let's have a chat
+            <p className="text-zinc-500 font-semibold uppercase tracking-widest mb-3 text-sm">About the Founder</p>
+            <h2 className="text-4xl md:text-6xl font-black text-[#C9A227] mb-8">Hi, I'm Garry.</h2>
+            
+            <div className="space-y-5 mb-10 text-zinc-300 text-lg leading-relaxed">
+              <p>
+                I started Bear Media because I got fed up watching good local businesses get ignored online — not because they weren't good at what they do, but because nobody could find them.
+              </p>
+              <p>
+                I've spent <span className="text-[#C9A227] font-bold">25 years in communications</span>. Drone footage, websites that actually convert, social media management, and helping businesses get their heads around AI before it became a buzzword.
+              </p>
+              <p>
+                No office. No account managers. No waffle. Just me, my kit, and 25 years of knowing what works.
+              </p>
+              <p>
+                Based in <span className="text-[#C9A227] font-bold">Broxburn, West Lothian</span> — working with businesses across Edinburgh, Fife, Glasgow, and Central Scotland.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-3 gap-4 py-6 border-y border-zinc-800 mb-8">
+              <div className="text-center">
+                <p className="text-2xl md:text-3xl font-black text-white">25+</p>
+                <p className="text-xs md:text-sm text-zinc-500 uppercase tracking-wide mt-1">Years Experience</p>
+              </div>
+              <div className="text-center border-x border-zinc-800">
+                <p className="text-2xl md:text-3xl font-black text-white">25+</p>
+                <p className="text-xs md:text-sm text-zinc-500 uppercase tracking-wide mt-1">Happy Clients</p>
+              </div>
+              <div className="text-center">
+                <p className="text-2xl md:text-3xl font-black text-white flex items-center justify-center gap-1">
+                  5<Star className="w-5 h-5 fill-[#C9A227] text-[#C9A227]" />
+                </p>
+                <p className="text-xs md:text-sm text-zinc-500 uppercase tracking-wide mt-1">Google Rating</p>
+              </div>
+            </div>
+
+            <a href="#contact" className="bg-[#C9A227] hover:bg-[#FF6B35] text-[#0f172a] hover:text-white font-bold px-8 py-4 rounded-full text-lg transition-colors inline-block">
+              Book a Service
             </a>
           </div>
         </div>
@@ -460,10 +494,13 @@ export default function Home() {
     <main>
       <Nav />
       <Hero />
+      <BrandStorySection />
       <ServiceCardsSection />
       <Work />
       <VideoReel />
       <Testimonials />
+      <WhoIWorkWithSection />
+      <PartnerLogosSection />
       <About />
       <Contact />
       <MinimalFooter />
