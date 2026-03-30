@@ -19,7 +19,7 @@ const services = [
     backContent: (
       <div className="flex flex-col h-full">
         <p className="text-white font-bold mb-4">What's included:</p>
-        <ul className="space-y-2 text-sm text-white/90 leading-relaxed mb-6">
+        <ul className="space-y-2 text-base text-white/90 leading-relaxed mb-6">
           <li>• Reels & short-form video</li>
           <li>• Branded graphics & carousels</li>
           <li>• Monthly content calendar</li>
@@ -28,7 +28,7 @@ const services = [
           <li>• Monthly performance report</li>
         </ul>
         <div className="pt-6 border-t border-white/10 mt-auto">
-          <a href="#contact" className="text-[#C9A227] text-sm font-medium hover:underline flex items-center gap-1">
+          <a href="#contact" className="text-[#C9A227] text-base font-medium hover:underline flex items-center gap-1 min-h-[44px]">
             Get started <span>→</span>
           </a>
         </div>
@@ -50,7 +50,7 @@ const services = [
     backContent: (
       <div className="flex flex-col h-full">
         <p className="text-white font-bold mb-4">What's included:</p>
-        <ul className="space-y-2 text-sm text-white/90 leading-relaxed mb-6">
+        <ul className="space-y-2 text-base text-white/90 leading-relaxed mb-6">
           <li>• Custom designed & built in Next.js</li>
           <li>• Mobile-first & fast loading</li>
           <li>• SEO foundations built in</li>
@@ -59,7 +59,7 @@ const services = [
           <li>• Handed over — you own it outright</li>
         </ul>
         <div className="pt-6 border-t border-white/10 mt-auto">
-          <a href="#contact" className="text-[#C9A227] text-sm font-medium hover:underline flex items-center gap-1">
+          <a href="#contact" className="text-[#C9A227] text-base font-medium hover:underline flex items-center gap-1 min-h-[44px]">
             Get started <span>→</span>
           </a>
         </div>
@@ -81,14 +81,14 @@ const services = [
     backContent: (
       <div className="flex flex-col h-full">
         <p className="text-white font-bold mb-4">What's included:</p>
-        <ul className="space-y-2 text-sm text-white/90 leading-relaxed mb-6">
+        <ul className="space-y-2 text-base text-white/90 leading-relaxed mb-6">
           <li>• Drone Photography & 4K Footage</li>
           <li>• Professional Headshots & Branding</li>
           <li>• Local SEO Optimization</li>
           <li>• Google Business Management</li>
         </ul>
         <div className="pt-6 border-t border-white/10 mt-auto">
-          <a href="#contact" className="text-[#C9A227] text-sm font-medium hover:underline flex items-center gap-1">
+          <a href="#contact" className="text-[#C9A227] text-base font-medium hover:underline flex items-center gap-1 min-h-[44px]">
             Get started <span>→</span>
           </a>
         </div>
@@ -103,11 +103,11 @@ export function ServiceCardsSection() {
     <section id="services" className="py-24 px-4 bg-black">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-16">
-          <p className="text-[#C9A227] text-sm font-medium uppercase tracking-widest mb-3">
+          <p className="text-[#C9A227] text-base font-medium uppercase tracking-widest mb-3">
             Websites & Social Media Content
           </p>
-          <h2 className="text-4xl md:text-5xl font-black text-white mb-4">Services</h2>
-          <p className="text-zinc-400 text-lg">Clear, practical services that get results.</p>
+          <h2 className="text-3xl md:text-5xl font-black text-white mb-4">Services</h2>
+          <p className="text-zinc-400 text-base md:text-lg">Clear, practical services that get results.</p>
         </div>
         <div className="grid gap-6 md:grid-cols-3 perspective" style={{ perspective: '1200px' }}>
           {services.map((service, index) => (

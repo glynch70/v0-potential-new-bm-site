@@ -3,7 +3,10 @@ import { LegalPageLayout } from '@/components/LegalPageLayout';
 
 export const metadata: Metadata = {
   title: 'Privacy Policy | Bear Media',
-  description: 'How Bear Media collects, uses, and protects your personal data.',
+  description: 'Learn how Bear Media collects, uses, and protects your personal data. Transparent privacy practices for our Scottish web design and digital content services.',
+  alternates: {
+    canonical: 'https://bear-media.com/privacy-policy',
+  },
 };
 
 export default function PrivacyPolicyPage() {

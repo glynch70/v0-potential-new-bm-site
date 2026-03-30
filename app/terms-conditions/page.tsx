@@ -3,7 +3,10 @@ import { LegalPageLayout } from '@/components/LegalPageLayout';
 
 export const metadata: Metadata = {
   title: 'Terms & Conditions | Bear Media',
-  description: 'Terms and conditions for Bear Media web design and social media services.',
+  description: 'Review the terms and conditions for Bear Media\'s web design, development, and social media services. Outlining our commitment to local Scottish businesses.',
+  alternates: {
+    canonical: 'https://bear-media.com/terms-conditions',
+  },
 };
 
 export default function TermsConditionsPage() {

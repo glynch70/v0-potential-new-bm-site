@@ -1,104 +1,93 @@
 import { Analytics } from "@vercel/analytics/react";
 import type { Metadata } from "next";
 import Script from "next/script";
-import { Space_Grotesk, Inter } from "next/font/google";
+import { Poppins, Figtree } from "next/font/google";
 import { LenisScrollProvider } from "@/components/LenisScrollProvider";
 import { ScrollProgress } from "@/components/ui/ScrollProgress";
 import "./globals.css";
 
-const spaceGrotesk = Space_Grotesk({
+const poppins = Poppins({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-  variable: "--font-space-grotesk",
+  weight: ["300", "400", "500", "600", "700", "800"],
+  variable: "--font-poppins",
   display: "swap",
 });
 
-const inter = Inter({
+const figtree = Figtree({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700", "800", "900"],
-  variable: "--font-inter",
+  variable: "--font-figtree",
   display: "swap",
 });
 
 export { reportWebVitals } from "@/lib/metrics";
 
 // ═══════════════════════════════════════════════════════
-// SEO METADATA — Updated March 2026
+// SEO METADATA — Redesign March 2026
 // ═══════════════════════════════════════════════════════
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.bear-media.com"),
+  metadataBase: new URL("https://bear-media.com"),
 
-  title: "Bear Media | Websites & Social Media Content | Central Scotland",
+  title: "Bear Media | Websites, Drone Video & Social Media | Edinburgh, Fife & Central Scotland",
 
   description:
-    "Bear Media builds fast websites and scroll-stopping social media content for local businesses across Edinburgh, West Lothian, Fife, Glasgow, Falkirk and Central Scotland. No agency fees. Real results.",
+    "Bear Media is a solo creative agency in West Lothian. Websites, drone video & social media for Scottish SMEs. No monthly fees — you own 100% of the code.",
 
   keywords: [
+    "web design Scotland",
+    "drone videography Edinburgh",
+    "social media management Fife",
+    "Bear Media",
+    "Broxburn",
+    "West Lothian",
+    "Glasgow content creator",
     "website design Edinburgh",
-    "website design West Lothian",
-    "social media management Edinburgh",
-    "digital marketing Central Scotland",
-    "website design Falkirk",
-    "website design Glasgow",
-    "SEO West Lothian",
-    "Bear Media Broxburn",
+    "digital marketing Scotland",
   ],
 
   openGraph: {
     type: "website",
     locale: "en_GB",
-    url: "https://www.bear-media.com",
+    url: "https://bear-media.com",
     siteName: "Bear Media",
-    title: "Bear Media | Websites & Social Media Content",
+    title: "Bear Media | Websites, Drone Video & Social Media",
     description:
-      "Helping businesses across Central Scotland get seen, trusted, and contacted online.",
+      "Solo creative agency. Websites. Drone. Video. Social Media. Built for businesses that mean business.",
     images: [
       {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Bear Media - Websites & Social Media Content",
+        alt: "Bear Media - Websites, Drone & Social Media",
       },
     ],
   },
 
   twitter: {
     card: "summary_large_image",
-    title: "Bear Media | Websites & Social Media Content",
+    title: "Bear Media | Websites, Drone Video & Social Media",
     description:
-      "Helping businesses across Central Scotland get seen, trusted, and contacted online.",
+      "Solo creative agency. Websites. Drone. Video. Social Media. Built for businesses that mean business.",
     images: ["/og-image.jpg"],
-  },
-
-  alternates: {
-    canonical: "https://www.bear-media.com",
   },
 
   robots: {
     index: true,
     follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
   },
 };
 
 // ═══════════════════════════════════════════════════════
-// LOCAL BUSINESS SCHEMA — Tells Google you're a real
-// business in Broxburn (helps with map pack rankings)
+// LOCAL BUSINESS SCHEMA — Updated March 2026
 // ═══════════════════════════════════════════════════════
 const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
   "name": "Bear Media",
-  "description": "Websites and social media content for local businesses across Central Scotland",
-  "url": "https://www.bear-media.com",
-  "logo": "https://www.bear-media.com/bear-media-logo.png",
-  "image": "https://www.bear-media.com/og-image.jpg",
+  "description": "Solo creative agency providing websites, drone video, and social media content for Scottish small businesses.",
+  "url": "https://bear-media.com",
+  "logo": "https://bear-media.com/bear-media-logo.png",
+  "image": "https://bear-media.com/og-image.jpg",
   "telephone": "+447879011860",
   "email": "info@bear-media.com",
   "priceRange": "££",
@@ -118,13 +107,57 @@ const localBusinessSchema = {
   "areaServed": [
     "Edinburgh", "West Lothian", "Fife", "Glasgow", "Falkirk", "Central Scotland", "Broxburn", "Livingston", "Linlithgow"
   ],
-  "serviceType": ["Website Design", "Social Media Management", "SEO", "Drone Photography", "Google Business Management"],
-  "openingHours": "Mo-Fr 09:00-17:00",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Bear Media Services",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Website Design"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Social Media Management"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Drone Videography"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "AI Implementation"
+        }
+      }
+    ]
+  },
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "opens": "09:00",
+    "closes": "17:00"
+  },
   "sameAs": [
     "https://www.facebook.com/bearmediacontentservices",
     "https://www.instagram.com/bear.media",
-    "https://www.linkedin.com/company/bear-media",
-    "https://www.tiktok.com/@bear.media"
+    "https://www.linkedin.com/in/garrylynch",
+    "https://www.youtube.com/@bearmedia70"
   ]
 };
 
@@ -136,16 +169,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`dark ${spaceGrotesk.variable} ${inter.variable}`} suppressHydrationWarning>
+    <html lang="en" className={`${poppins.variable} ${figtree.variable}`} suppressHydrationWarning>
       <head>
-        {/* Local Business Schema for Google */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(localBusinessSchema),
           }}
         />
-        {/* Google Analytics - moved to head to prevent hydration mismatch */}
         {GA_ID && (
           <>
             <Script
@@ -166,7 +197,7 @@ export default function RootLayout({
           </>
         )}
       </head>
-      <body className="font-sans antialiased" suppressHydrationWarning>
+      <body className="font-poppins antialiased text-[#333]" suppressHydrationWarning>
         <ScrollProgress />
         <LenisScrollProvider>
           {children}
@@ -176,3 +207,4 @@ export default function RootLayout({
     </html>
   );
 }
+

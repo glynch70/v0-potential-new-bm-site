@@ -68,14 +68,14 @@ export default function FlipCard({
               </div>
               
               <h3 className="text-2xl font-bold text-white mb-2">{frontTitle}</h3>
-              <p className="text-white/80 text-sm leading-relaxed max-w-xs mx-auto mb-8">
+              <p className="text-white/80 text-base leading-relaxed max-w-xs mx-auto mb-8">
                 {frontDescription}
               </p>
               
-              <div className="mt-auto pt-4">
-                <p className="text-white/60 text-xs tracking-widest uppercase font-bold">
+              <div className="mt-auto pt-4 pb-2 w-full flex justify-center">
+                <div className="text-white/70 text-base tracking-wide uppercase font-bold py-3 px-6 bg-white/10 rounded-xl border border-white/10 w-fit min-h-[44px] flex items-center">
                   ← Click to flip →
-                </p>
+                </div>
               </div>
             </>
           ) : (
@@ -131,7 +131,9 @@ export default function FlipCard({
             <div className="text-zinc-300 text-base space-y-3 leading-relaxed">{backContent}</div>
           </div>
 
-          <p className="text-zinc-500 text-sm mt-4 pl-2 relative z-10 uppercase font-medium">← Click to flip back →</p>
+          <p className="text-zinc-500 text-base mt-4 pl-2 relative z-10 uppercase font-medium flex items-center gap-2 min-h-[44px]">
+            ← Click to flip back →
+          </p>
         </div>
       </div>
     </div>

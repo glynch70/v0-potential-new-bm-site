@@ -44,7 +44,7 @@ export const MinimalFooter = () => {
               <p className="flex items-center gap-3 min-h-[44px]">
                 <MapPin size={18} /> {contactInfo.location}
               </p>
-              <p className="text-zinc-500 text-sm font-medium">{contactInfo.serviceArea}</p>
+              <p className="text-zinc-500 text-base font-medium">{contactInfo.serviceArea}</p>
             </div>
           </motion.div>
 

@@ -3,7 +3,10 @@ import { LegalPageLayout } from '@/components/LegalPageLayout';
 
 export const metadata: Metadata = {
   title: 'Cookie Policy | Bear Media',
-  description: 'How Bear Media uses cookies and similar technologies on our website.',
+  description: 'Find out how Bear Media uses cookies to improve your website experience and analyze traffic. Detailed information on our privacy and data tracking technology.',
+  alternates: {
+    canonical: 'https://bear-media.com/cookie-policy',
+  },
 };
 
 export default function CookiePolicyPage() {

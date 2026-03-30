@@ -1,176 +1,183 @@
-'use client';
+'use client'
 
-import { useEffect, useRef, useState } from 'react';
-import Image from 'next/image';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
-import { motion } from 'framer-motion';
+import React, { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import Image from 'next/image'
 
 const clients = [
   {
-    name: 'K Lewis Joinery',
-    type: 'Website',
-    description: 'Expert equestrian construction & bespoke joinery based in West Lothian.',
-    image: '/work/website-5-lewis-joinery.jpg',
-    url: 'https://www.klewisjoineryltd.co.uk/',
-  },
-  {
-    name: 'Robertson Transport',
-    type: 'Website',
-    description: 'Professional transport solutions across Scotland.',
-    image: '/work/robertsons-transport.png',
-    url: 'https://rt-ltd.uk/',
-  },
-  {
-    name: 'Herb & Soul',
-    type: 'Website',
-    description: 'Natural wellness & herbal remedies, bringing calming products to life online.',
-    image: '/work/website-3-herb-soul.jpg',
-    url: 'https://www.herbandsoul.uk/',
-  },
-  {
+    id: 1,
     name: 'Almond Vet Care',
-    type: 'Website',
-    description: 'Professional veterinary practice serving the local community.',
-    image: '/work/website-4-almond-vet.jpg',
-    url: 'https://almondvetcare.co.uk/',
+    category: 'Veterinary Practice',
+    image: '/work/almond_vet_care.jpg',
+    headline: "Perthshire's Newest Independent Vet Practice",
+    description: 'Professional veterinary practice serving the local community with expert care',
+    link: 'https://almondvetcare.co.uk/'
   },
   {
+    id: 2,
+    name: 'K Lewis Joinery',
+    category: 'Bespoke Joinery',
+    image: '/work/klewis.jpg',
+    headline: 'Bespoke Joinery Specialists',
+    description: 'High-quality bespoke joinery services for homes and businesses across Scotland.',
+    link: 'https://www.klewisjoineryltd.co.uk/'
+  },
+  {
+    id: 3,
+    name: 'Expert Equine Construction',
+    category: 'Equestrian Construction',
+    image: '/work/website-5-lewis-joinery-v2.jpg',
+    headline: 'Expert Equestrian Construction',
+    description: 'Specialist equestrian builds, arenas, and stable blocks built to last.',
+    link: 'https://www.klewisjoineryltd.co.uk/'
+  },
+  {
+    id: 4,
+    name: 'Robertsons Transport',
+    category: 'Transport & Logistics',
+    image: '/work/robertsons.jpg',
+    headline: 'Transport Solutions You Can Trust',
+    description: 'Professional logistics and delivery across the UK from a trusted family business.',
+    link: 'https://rt-ltd.uk/'
+  },
+  {
+    id: 5,
     name: 'Managing What Matters',
-    type: 'Website',
-    description: 'Manager training programme — lead people, not just tasks.',
-    image: '/work/website-managing.jpg',
-    url: 'https://managingwhatmatters.co.uk/',
+    category: 'Leadership Training',
+    image: '/work/mwm.jpg',
+    headline: 'Lead people, not just tasks',
+    description: 'Six practical modules to transform how you manage, inspire teams, and deliver results.',
+    link: 'https://managingwhatmatters.co.uk'
   },
   {
-    name: 'Séamus Corry',
-    type: 'Social Media',
-    description: 'Podcast & content creation strategy for Scotland\'s leading leadership coach.',
-    image: '/seamus-corry-2025.png',
-    url: null,
+    id: 6,
+    name: 'Seamus Corry',
+    category: 'Mental Health Training',
+    image: '/work/seamus_v5_final.jpg',
+    headline: 'Empowering Teams Through Wellbeing',
+    description: 'Mental health first aid and wellbeing training for teams across all sectors.',
+    link: 'https://seamuscorry.com/'
   },
-];
+  {
+    id: 7,
+    name: 'Herons\' Pole',
+    category: 'Wellness & Nature',
+    image: '/work/herb_soul.jpg',
+    headline: 'Healing Through Nature Immersion',
+    description: 'Transformative nature-based wellness experiences and herbalism workshops.',
+    link: 'https://www.herbandsoul.uk/'
+  }
+]
 
 export const WhoIWorkWithSection = () => {
-  const [current, setCurrent] = useState(0);
-  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const [currentIndex, setCurrentIndex] = useState(0)
 
-  const next = () => setCurrent((c) => (c + 1) % clients.length);
-  const prev = () => setCurrent((c) => (c - 1 + clients.length) % clients.length);
+  const next = () => setCurrentIndex((currentIndex + 1) % clients.length)
+  const prev = () => setCurrentIndex((currentIndex - 1 + clients.length) % clients.length)
 
-  // Auto-advance every 4s
-  useEffect(() => {
-    timeoutRef.current = setTimeout(next, 4000);
-    return () => { if (timeoutRef.current) clearTimeout(timeoutRef.current); };
-  }, [current]);
-
-  const client = clients[current];
+  const client = clients[currentIndex]
 
   return (
-    <section className="py-24 px-4 bg-black border-t border-zinc-900">
-      <div className="max-w-5xl mx-auto">
-        {/* Header */}
-        <div className="text-center mb-14">
-          <p className="text-amber-400 text-base font-semibold uppercase tracking-widest mb-3">
-            Who I Work With
+    <section id="who-i-work-with" className="py-24 md:py-32 bg-dark text-white overflow-hidden border-t border-white/5">
+      <div className="max-w-[1240px] mx-auto px-6">
+        {/* Section Header */}
+        <div className="text-center mb-20">
+          <p className="text-brand-yellow font-bold uppercase tracking-[0.4em] text-xs mb-8 italic">
+            WHO I WORK WITH
           </p>
-          <h2 className="text-4xl md:text-5xl font-black text-white mb-4">
-            Real Businesses. Real Results.
+          <h2 className="text-4xl md:text-7xl font-black mb-4 uppercase italic tracking-tighter leading-none">
+            Real Businesses
           </h2>
-          <p className="text-zinc-400 text-lg max-w-xl mx-auto">
-            From solo traders to growing SMEs across Scotland.
+          <h3 className="text-4xl md:text-7xl font-black text-brand-yellow mb-8 uppercase italic tracking-tighter leading-none">
+            Real Results
+          </h3>
+          <p className="text-white/60 text-lg md:text-2xl max-w-3xl mx-auto italic font-medium leading-relaxed">
+            From pharmacies to joiners, restaurants to vets. Businesses across Scotland that trusted Bear Media to get them seen, trusted, and found.
           </p>
         </div>
 
-        {/* Carousel */}
-        <div className="relative">
-          <motion.div
-            key={current}
-            initial={{ opacity: 0, x: 30 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -30 }}
-            transition={{ duration: 0.4 }}
-            className="grid md:grid-cols-2 gap-0 rounded-3xl overflow-hidden border border-zinc-800"
-          >
-            {/* Image */}
-            <div className="relative h-64 md:h-96">
-              <Image
-                src={client.image}
-                alt={client.name}
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, 50vw"
-              />
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent to-zinc-950/80 hidden md:block" />
-            </div>
+        {/* Client Carousel - Side-by-Side Early Layout (Visual Style Matched to Screenshot) */}
+        <div className="relative glass-card rounded-[2rem] overflow-hidden border-brand-yellow/10 shadow-2xl">
+          <AnimatePresence mode="wait">
+            <motion.div 
+              key={currentIndex}
+              initial={{ opacity: 0, scale: 0.98 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 1.02 }}
+              transition={{ duration: 0.5, ease: "easeOut" }}
+              className="grid md:grid-cols-2 gap-0"
+            >
+              <div className="relative h-[400px] md:h-[650px] bg-[#E5E5E5] overflow-hidden">
+                <Image 
+                  src={client.image} 
+                  alt={client.name}
+                  fill
+                  className="object-contain p-8 md:p-12"
+                  priority
+                />
+              </div>
 
-            {/* Content */}
-            <div className="bg-zinc-900 p-8 md:p-12 flex flex-col justify-center">
-              <span className="inline-block text-amber-500 text-sm font-bold uppercase tracking-widest mb-3 bg-amber-500/10 px-4 py-2 rounded-full w-fit">
-                {client.type}
-              </span>
-              <h3 className="text-3xl font-black text-white mb-4">{client.name}</h3>
-              <p className="text-zinc-400 text-lg md:text-xl leading-relaxed mb-8">{client.description}</p>
-              {client.url ? (
-                <a
-                  href={client.url}
+              {/* Content Area - Dark Background (Matched to Screenshot) */}
+              <div className="p-10 md:p-20 flex flex-col justify-center bg-[#121212]">
+                <span className="text-brand-yellow text-xs font-black uppercase tracking-widest mb-6 border border-brand-yellow/20 px-4 py-2 rounded-full w-fit italic">
+                  WEBSITE
+                </span>
+                <h4 className="text-4xl md:text-5xl lg:text-7xl font-black mb-6 italic tracking-tighter leading-[0.85] uppercase">
+                  {client.headline || client.name}
+                </h4>
+                <p className="text-white/40 text-sm font-black uppercase tracking-widest mb-10">
+                   {client.name} // {client.category}
+                </p>
+                <p className="text-white/70 text-lg md:text-xl leading-relaxed mb-12 italic font-medium">
+                  {client.description}
+                </p>
+                <a 
+                  href={client.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-400 text-black font-bold px-6 py-3 rounded-full transition-colors w-fit"
+                  className="inline-flex items-center gap-4 bg-brand-yellow text-dark font-black px-10 py-5 rounded-full hover:scale-105 hover:shadow-2xl transition-all w-fit uppercase tracking-widest text-sm shadow-xl"
                 >
-                  Visit site ↗
+                  VISIT PROJECT
+                  <span className="text-lg">→</span>
                 </a>
-              ) : (
-                <span className="inline-flex items-center gap-2 text-zinc-400 text-base font-medium px-6 py-4 rounded-full bg-zinc-800 w-fit min-h-[44px]">
-                  Social Media Client
-                </span>
-              )}
-            </div>
-          </motion.div>
+              </div>
+            </motion.div>
+          </AnimatePresence>
 
-          {/* Navigation buttons */}
-          <button
-            onClick={prev}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-6 bg-zinc-900 hover:bg-amber-500 hover:text-black border border-zinc-700 hover:border-amber-500 text-white p-3 rounded-full transition-all shadow-lg z-10"
-            aria-label="Previous client"
-          >
-            <ChevronLeft className="w-5 h-5" />
-          </button>
-          <button
-            onClick={next}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-6 bg-zinc-900 hover:bg-amber-500 hover:text-black border border-zinc-700 hover:border-amber-500 text-white p-3 rounded-full transition-all shadow-lg z-10"
-            aria-label="Next client"
-          >
-            <ChevronRight className="w-5 h-5" />
-          </button>
-        </div>
-
-        {/* Dot indicators */}
-        <div className="flex justify-center gap-2 mt-8">
-          {clients.map((_, i) => (
+          {/* Navigation Buttons */}
+          <div className="absolute inset-y-0 left-4 right-4 flex items-center justify-between pointer-events-none z-10">
             <button
-              key={i}
-              onClick={() => setCurrent(i)}
-              className="w-2 h-2 rounded-full transition-all"
-              style={{ backgroundColor: i === current ? '#F59E0B' : '#3f3f46' }}
-              aria-label={`Go to slide ${i + 1}`}
-            />
-          ))}
-        </div>
+              onClick={prev}
+              className="pointer-events-auto bg-brand-yellow text-dark rounded-full w-14 h-14 md:w-16 md:h-16 flex items-center justify-center font-black text-2xl transition-all hover:scale-110 active:scale-90 shadow-2xl"
+              aria-label="Previous client"
+            >
+              ←
+            </button>
+            <button
+              onClick={next}
+              className="pointer-events-auto bg-brand-yellow text-dark rounded-full w-14 h-14 md:w-16 md:h-16 flex items-center justify-center font-black text-2xl transition-all hover:scale-110 active:scale-90 shadow-2xl"
+              aria-label="Next client"
+            >
+              →
+            </button>
+          </div>
 
-        {/* Client count stat */}
-        <div className="grid grid-cols-3 gap-4 mt-16 text-center">
-          {[
-            { value: '20+', label: 'Clients served' },
-            { value: '5★', label: 'Google rating' },
-            { value: '72h', label: 'Avg. site delivery' },
-          ].map(({ value, label }) => (
-            <div key={label} className="py-8 px-6 rounded-2xl bg-zinc-900 border border-zinc-800">
-              <p className="text-3xl font-black text-amber-500 mb-1">{value}</p>
-              <p className="text-zinc-400 text-base font-medium">{label}</p>
-            </div>
-          ))}
+          {/* Dot Indicators */}
+          <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex gap-3 z-10">
+            {clients.map((_, idx) => (
+              <button
+                key={idx}
+                onClick={() => setCurrentIndex(idx)}
+                className={`h-2 rounded-full transition-all duration-300 ${
+                  idx === currentIndex ? 'bg-brand-yellow w-12' : 'bg-white/20 w-3 hover:bg-white/40'
+                }`}
+                aria-label={`Go to client ${idx + 1}`}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </section>
-  );
-};
+  )
+}

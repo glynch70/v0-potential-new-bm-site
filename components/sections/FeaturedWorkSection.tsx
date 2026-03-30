@@ -4,10 +4,12 @@ import { useState } from 'react'
 import Image from 'next/image'
 
 const websites = [
-  { img: '/work/website-5-lewis-joinery.jpg', name: 'K Lewis Joinery', desc: 'Expert equestrian construction & bespoke joinery', url: 'https://www.klewisjoineryltd.co.uk/' },
-  { img: '/work/robertsons-transport.png', name: 'Robertson Transport', desc: 'Transport solutions you can trust', url: 'https://rt-ltd.uk/' },
-  { img: '/work/website-3-herb-soul.jpg', name: 'Herb & Soul', desc: 'Natural wellness & herbal remedies', url: 'https://www.herbandsoul.uk/' },
-  { img: '/work/website-4-almond-vet.jpg', name: 'Almond Vet Care', desc: 'Professional veterinary care', url: 'https://almondvetcare.co.uk/' },
+  { img: '/work/seamus_v5_final.jpg', name: 'Seamus Corry', desc: 'Mental health & wellbeing training for teams', url: 'https://seamuscorry.com/' },
+  { img: '/work/mwm.jpg', name: 'Managing What Matters', desc: 'Practical leadership & management training', url: 'https://managingwhatmatters.co.uk' },
+  { img: '/work/herb_soul.jpg', name: 'Herb & Soul', desc: 'Natural wellness & herbal remedies', url: 'https://www.herbandsoul.uk/' },
+  { img: '/work/almond_vet_care.jpg', name: 'Almond Vet Care', desc: 'Professional veterinary practice care', url: 'https://almondvetcare.co.uk/' },
+  { img: '/work/klewis.jpg', name: 'K Lewis Joinery', desc: 'Expert equestrian & bespoke joinery', url: 'https://www.klewisjoineryltd.co.uk/' },
+  { img: '/work/robertsons.jpg', name: 'Robertson Transport', desc: 'UK-wide logistics & transport solutions', url: 'https://rt-ltd.uk/' },
 ]
 
 const social = [
@@ -68,7 +70,7 @@ export function FeaturedWorkSection() {
                 />
                 {item.url && (
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/50 transition-all flex items-center justify-center">
-                    
+                    <a
                       href={item.url}
                       target="_blank"
                       rel="noopener noreferrer"
@@ -85,7 +87,7 @@ export function FeaturedWorkSection() {
                   <p className="text-zinc-400 text-sm mt-1">{item.desc}</p>
                 </div>
                 {item.url && (
-                  
+                  <a
                     href={item.url}
                     target="_blank"
                     rel="noopener noreferrer"

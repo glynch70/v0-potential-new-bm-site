@@ -1,12 +1,26 @@
-import { MetadataRoute } from 'next'
- 
-export default function robots(): MetadataRoute.Robots {
+export default function robots() {
   return {
-    rules: {
-      userAgent: '*',
-      allow: '/',
-      disallow: '/api/',
-    },
-    sitemap: 'https://www.bear-media.com/sitemap.xml',
+    rules: [
+      {
+        userAgent: '*',
+        allow: '/',
+        disallow: [
+          '/wp-admin/',
+          '/wp-includes/',
+          '/wp-content/',
+          '/wp-json/',
+          '/feed/',
+          '/comments/feed/',
+          '/?p=',
+          '/?page_id=',
+          '/author/',
+          '/tag/',
+          '/category/',
+          '/api/',
+        ],
+      },
+    ],
+    sitemap: 'https://bear-media.com/sitemap.xml',
+    host: 'https://bear-media.com',
   }
 }

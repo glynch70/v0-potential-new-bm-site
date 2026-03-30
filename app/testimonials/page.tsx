@@ -5,8 +5,11 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Testimonials | Real Results for Scottish Businesses',
-  description: 'See how Bear Media helps local businesses across Scotland get seen, trusted, and contacted with faster websites and scroll-stopping content.',
+  title: 'Client Testimonials | Real Results | Bear Media',
+  description: 'Read real results from Scottish businesses that trust Bear Media for web design, drone video, and social media. See how we help local brands get seen and hired.',
+  alternates: {
+    canonical: 'https://bear-media.com/testimonials',
+  },
 };
 
 const testimonials = [
@@ -68,7 +71,7 @@ export default function TestimonialsPage() {
     <main className="min-h-screen bg-[#0f172a] text-white pt-24 pb-16">
       {/* Hero Section */}
       <section className="px-6 py-16 md:py-24 max-w-5xl mx-auto text-center">
-        <h1 className="text-4xl md:text-6xl font-black tracking-tight mb-6">
+        <h1 className="text-3xl md:text-6xl font-black tracking-tight mb-6">
           Trusted by 25+ Local Businesses Across Scotland
         </h1>
         <p className="text-lg md:text-xl text-zinc-400 max-w-3xl mx-auto leading-relaxed mb-10">
@@ -147,7 +150,7 @@ export default function TestimonialsPage() {
         <p className="text-zinc-400 mb-8 max-w-xl mx-auto">
           We let the results speak for themselves. Dive into our case studies to see the exact websites, social content, and strategies we used.
         </p>
-        <Link href="/portfolio" className="inline-flex items-center gap-2 text-[#C9A227] hover:text-[#FF6B35] font-bold transition-colors">
+        <Link href="/#work" className="inline-flex items-center gap-2 text-[#C9A227] hover:text-[#FF6B35] font-bold transition-colors">
           View Case Studies <ArrowRight className="w-5 h-5" />
         </Link>
       </section>
