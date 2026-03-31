@@ -47,7 +47,7 @@ export default function HeroSection() {
           transition={{ delay: 0.5, duration: 1 }}
           className="text-base sm:text-lg md:text-xl text-white/80 max-w-3xl mx-auto leading-relaxed italic font-medium drop-shadow-lg mb-8 md:mb-10 px-2"
         >
-          Websites that work. Content that converts. Video that sells. Everything Scottish businesses need to compete online.
+          We film, edit, post, and build stuff that actually works. Everything Scottish businesses need to get noticed and get results.
         </motion.p>
 
         {/* CTA Buttons (Exact Snippet Sizing) */}

@@ -4,7 +4,7 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
-import { GraduationCap, Camera, Monitor, Sparkles, Share2, ArrowLeft, Star } from 'lucide-react'
+import { GraduationCap, Camera, Monitor, Sparkles, Share2, ArrowLeft, Star, CheckCircle2 } from 'lucide-react'
 import Navbar from '@/components/Navbar'
 import { StickyFooter } from '@/components/ui/sticky-footer'
 
@@ -57,7 +57,7 @@ export default function TrainingPage() {
       <Navbar />
       
       {/* 🦸 HERO SECTION */}
-      <section className="relative py-32 md:py-48 px-6 bg-dark/50 overflow-hidden border-b border-white/5">
+      <section className="relative py-32 md:py-48 px-6 overflow-hidden border-b border-white/5">
          {/* Background Decor */}
          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-brand-yellow/5 blur-[120px] rounded-full pointer-events-none" />
          
@@ -76,7 +76,7 @@ export default function TrainingPage() {
               transition={{ duration: 0.8 }}
               className="text-5xl md:text-8xl font-black text-white italic tracking-tighter uppercase mb-8 leading-none"
             >
-              Training <span className="text-brand-yellow">Services</span>
+              Digital Training <span className="text-brand-yellow">Scotland</span>
             </motion.h1>
             
             <motion.p 
@@ -85,14 +85,52 @@ export default function TrainingPage() {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="text-xl md:text-3xl text-white/60 max-w-3xl mx-auto italic font-medium leading-relaxed"
             >
-              Learn the tools that matter. Master design, video, and AI. Stop outsourcing everything and start building your brand from the inside.
+              Learn Canva, CapCut, AI tools. Stuff that really gets results. Stop outsourcing everything and start building your brand from the inside.
             </motion.p>
          </div>
       </section>
 
-      {/* 🛠️ OFFERINGS GRID */}
+      {/* 📘 WHAT IS DIGITAL TRAINING? */}
       <section className="py-24 md:py-32 px-6">
+        <div className="max-w-[1240px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
+          <div>
+            <h2 className="text-4xl md:text-6xl font-black text-white uppercase italic tracking-tighter mb-8">What is <span className="text-brand-yellow">Digital Training</span>?</h2>
+            <div className="text-white/60 text-lg md:text-xl space-y-6 leading-relaxed italic">
+              <p>
+                The best person to tell your business story is you. But you need the right tools—and the skills to use them.
+              </p>
+              <p>
+                Our digital training services are designed to give you and your team the confidence to create high-quality content, design brand assets, and use AI to work faster.
+              </p>
+            </div>
+          </div>
+          <div className="glass-card p-12 border-brand-yellow/20">
+            <h3 className="text-2xl font-black text-brand-yellow uppercase italic mb-6">Why it matters</h3>
+            <ul className="space-y-4">
+              {[
+                "Reduce long-term outsourcing costs",
+                "Move faster with in-house content creation",
+                "Ensure brand consistency across all platforms",
+                "Stay ahead of the curve with AI tools"
+              ].map((item, i) => (
+                <li key={i} className="flex gap-4 items-start text-white/80 italic font-medium">
+                  <CheckCircle2 className="text-brand-yellow shrink-0" size={24} />
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      {/* 🛠️ WHAT WE ACTUALLY DO */}
+      <section className="py-24 md:py-32 px-6 bg-white/[0.02]">
         <div className="max-w-[1240px] mx-auto">
+          <div className="text-center mb-20">
+            <h2 className="text-4xl md:text-6xl font-black text-white uppercase italic tracking-tighter">What we <span className="text-brand-yellow">actually</span> do</h2>
+            <p className="text-white/40 mt-4 text-lg">Practical skills. Zero waffle.</p>
+          </div>
+          
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {offerings.map((offering, index) => (
               <motion.div
@@ -115,10 +153,10 @@ export default function TrainingPage() {
       </section>
 
       {/* 💰 PRICING SECTION */}
-      <section className="py-24 md:py-32 px-6 bg-white/[0.02]">
+      <section className="py-24 md:py-32 px-6">
         <div className="max-w-[1240px] mx-auto">
           <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-6xl font-black text-white uppercase italic tracking-tighter">Simple Pricing</h2>
+            <h2 className="text-4xl md:text-6xl font-black text-white uppercase italic tracking-tighter">Simple <span className="text-brand-yellow">Pricing</span></h2>
             <p className="text-white/40 mt-4 text-lg">No hidden costs. Just pure knowledge.</p>
           </div>
           
@@ -145,7 +183,7 @@ export default function TrainingPage() {
       </section>
 
       {/* ⭐ SOCIAL PROOF SECTION */}
-      <section className="py-24 md:py-32 px-6 overflow-hidden">
+      <section className="py-24 md:py-32 px-6 bg-white/[0.02] overflow-hidden">
         <div className="max-w-[1240px] mx-auto flex flex-col items-center">
            <motion.div
              initial={{ opacity: 0, scale: 0.9 }}

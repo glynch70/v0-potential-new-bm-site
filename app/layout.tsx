@@ -88,88 +88,149 @@ export const metadata: Metadata = {
 };
 
 // ═══════════════════════════════════════════════════════
-// LOCAL BUSINESS SCHEMA — Updated March 2026
+// STRUCTURED DATA (JSON-LD) — Enhanced March 2026
 // ═══════════════════════════════════════════════════════
-const localBusinessSchema = {
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "name": "Bear Media",
-  "description": "Solo creative agency providing websites, drone video, and social media content for Scottish small businesses.",
-  "url": "https://bear-media.com",
-  "logo": "https://bear-media.com/bear-media-logo.png",
-  "image": "https://bear-media.com/og-image.jpg",
-  "telephone": "+447879011860",
-  "email": "info@bear-media.com",
-  "priceRange": "££",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "Broxburn",
-    "addressLocality": "West Lothian",
-    "addressRegion": "Scotland",
-    "postalCode": "EH52 6PH",
-    "addressCountry": "GB"
+const structuredData = [
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Bear Media",
+    "description": "Solo creative agency providing websites, drone video, and social media content for Scottish small businesses.",
+    "url": "https://bear-media.com",
+    "logo": "https://bear-media.com/bear-media-logo.png",
+    "image": "https://bear-media.com/og-image.jpg",
+    "telephone": "+447879011860",
+    "email": "info@bear-media.com",
+    "priceRange": "££",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Broxburn",
+      "addressLocality": "West Lothian",
+      "addressRegion": "Scotland",
+      "postalCode": "EH52 6PH",
+      "addressCountry": "GB"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 55.934,
+      "longitude": -3.471
+    },
+    "areaServed": [
+      "Edinburgh", "West Lothian", "Fife", "Glasgow", "Falkirk", "Central Scotland", "Broxburn", "Livingston", "Linlithgow"
+    ],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Bear Media Services",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Website Design",
+            "description": "Fast, clean websites built to turn people into customers."
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Social Media Content",
+            "description": "Vertical video and social strategy that stops the scroll."
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Video Production",
+            "description": "Cinematic drone footage and professional video production."
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Digital Training",
+            "description": "Learn Canva, CapCut, and AI tools to own your content."
+          }
+        }
+      ]
+    },
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "opens": "09:00",
+      "closes": "17:00"
+    }
   },
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": 55.934,
-    "longitude": -3.471
-  },
-  "areaServed": [
-    "Edinburgh", "West Lothian", "Fife", "Glasgow", "Falkirk", "Central Scotland", "Broxburn", "Livingston", "Linlithgow"
-  ],
-  "hasOfferCatalog": {
-    "@type": "OfferCatalog",
-    "name": "Bear Media Services",
-    "itemListElement": [
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "Website Design"
-        }
-      },
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "Social Media Management"
-        }
-      },
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "Drone Videography"
-        }
-      },
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "AI Implementation"
-        }
-      }
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Bear Media",
+    "url": "https://bear-media.com",
+    "logo": "https://bear-media.com/bear-media-logo.png",
+    "sameAs": [
+      "https://www.facebook.com/bearmediacontentservices",
+      "https://www.instagram.com/bearmedia70/",
+      "https://www.linkedin.com/in/garrylynch",
+      "https://www.youtube.com/@bearmedia70"
     ]
   },
-  "openingHoursSpecification": {
-    "@type": "OpeningHoursSpecification",
-    "dayOfWeek": [
-      "Monday",
-      "Tuesday",
-      "Wednesday",
-      "Thursday",
-      "Friday"
-    ],
-    "opens": "09:00",
-    "closes": "17:00"
+  {
+    "@context": "https://schema.org",
+    "@type": "Review",
+    "itemReviewed": {
+      "@type": "LocalBusiness",
+      "name": "Bear Media"
+    },
+    "author": {
+      "@type": "Person",
+      "name": "Kris Lewis"
+    },
+    "reviewRating": {
+      "@type": "Rating",
+      "ratingValue": "5",
+      "bestRating": "5"
+    },
+    "reviewBody": "I have worked with Garry for a few years now. From being a client myself, he's helped me grow my business online and with social media. From website design to drone videos, Garry delivers it all."
   },
-  "sameAs": [
-    "https://www.facebook.com/bearmediacontentservices",
-    "https://www.instagram.com/bearmedia70/",
-    "https://www.linkedin.com/in/garrylynch",
-    "https://www.youtube.com/@bearmedia70"
-  ]
-};
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://bear-media.com"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Web Design",
+        "item": "https://bear-media.com/web-design"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Social Media",
+        "item": "https://bear-media.com/social-media"
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
+        "name": "Video Production",
+        "item": "https://bear-media.com/video-production"
+      },
+      {
+        "@type": "ListItem",
+        "position": 5,
+        "name": "Training",
+        "item": "https://bear-media.com/training"
+      }
+    ]
+  }
+];
 
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID ?? "G-RG6BZ50XZY";
 
@@ -184,7 +245,7 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify(localBusinessSchema),
+            __html: JSON.stringify(structuredData),
           }}
         />
         {GA_ID && (

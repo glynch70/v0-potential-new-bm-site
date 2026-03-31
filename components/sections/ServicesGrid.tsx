@@ -2,37 +2,41 @@
 
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Monitor, Camera, Share2, BrainCircuit, GraduationCap } from 'lucide-react'
+import { Monitor, Camera, Share2, BrainCircuit, GraduationCap, Video } from 'lucide-react'
 import Link from 'next/link'
 
 const services = [
   {
     title: 'Web Design',
     icon: Monitor,
-    frontText: 'Fast, clean websites built to convert visitors.',
+    frontText: 'Websites that actually turn people into customers.',
     backTitle: 'Web Design',
     color: '#FFD700', // Yellow
+    href: '/web-design'
   },
   {
-    title: 'Social Media Content',
+    title: 'Social Media',
     icon: Camera,
-    frontText: 'Reels, shorts and TikToks that stop your scroll. Master the algorithm with high-impact vertical video content.',
-    backTitle: 'Social Media Content',
+    frontText: 'Content that stops the scroll and gets you noticed. Master the algorithm with high-impact vertical video.',
+    backTitle: 'Social Media',
     color: '#FF6B35', // Orange
+    href: '/social-media'
+  },
+  {
+    title: 'Video Production',
+    icon: Video,
+    frontText: 'Cinematic drone footage and professional video that tells your story and sells your services.',
+    backTitle: 'Video Production',
+    color: '#000000', // Black
+    href: '/video-production'
   },
   {
     title: 'Digital Training',
     icon: GraduationCap,
-    frontText: 'Start making your own content. Learn how to use Canva, CapCut and AI. Tools that really get results.',
+    frontText: 'Learn Canva, CapCut, AI tools. Stuff that really gets results.',
     backTitle: 'Digital Training',
     color: '#C9A227', // Dark Gold
-  },
-  {
-    title: 'AI Solutions',
-    icon: BrainCircuit,
-    frontText: 'Use AI to do more with less. Automate workflows, boost efficiency, grow faster.',
-    backTitle: 'AI Solutions',
-    color: '#000000', // Black
+    href: '/training'
   }
 ]
 
@@ -99,11 +103,11 @@ function FlipCard({ service, index }: { service: any; index: number }) {
           </h3>
           
           <Link 
-            href="/contact" 
+            href={service.href} 
             className={`px-8 py-4 rounded-full font-black uppercase tracking-widest text-xs transition-transform hover:scale-105 active:scale-95 shadow-xl ${service.color === '#000000' ? 'bg-brand-yellow text-dark' : 'bg-dark text-white'}`}
             onClick={(e) => e.stopPropagation()}
           >
-            Click to contact
+            Explore service
           </Link>
           
           <div className={`mt-8 text-[10px] font-black uppercase tracking-[0.2em] opacity-40 ${service.color === '#000000' ? 'text-white' : 'text-dark'}`}>
