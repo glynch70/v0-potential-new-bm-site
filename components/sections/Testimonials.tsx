@@ -30,12 +30,11 @@ const testimonials = [
     social: "https://www.linkedin.com/in/seamuscorry/"
   },
   {
-    name: "Kristofor Lewis",
-    business: "K. Lewis Joinery",
+    name: "Kris Lewis",
+    business: "25 reviews on Google",
     quote: "I have worked with Garry for a few years now. From being a client myself, he's helped me grow my business online and with social media. From website design to drone videos, Garry delivers it all.",
     image: "/testimonials/Kris.jpg",
-    website: "https://www.klewisjoineryltd.co.uk/",
-    social: "https://www.facebook.com/KLewisJoinery"
+    website: "https://www.google.com/search?q=Bear+Media&stick=H4sIAAAAAAAA_-NgU1I1qDCxsDBPTks0TU4yMTO0NE6xMqiwsEg1SjFJMSozSDVMSU5KWcTK5ZSaWKTgm5qSmQgAx_SXOTYAAAA&hl=en-GB&mat=Cf8wzlm283ANElcBTVDHnkWfK1UTo9cxml4XSfVX2cx-i4DoPuoyRhN5Uwh_wrIJnY-SCetO6PNVGsmfU-3niD0FuZTXjZf8VW6St62zSRaI6DmKmRL5Hpwb1OXzzh9zMM&authuser=0#mpd=~968541884400939263/customers/reviews"
   },
   {
     name: "Steven Johnstone",

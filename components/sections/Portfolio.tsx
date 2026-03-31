@@ -10,16 +10,17 @@ interface Project {
   category: ProjectType
   image: string
   url?: string
+  comingSoon?: boolean
 }
 
 const projects: Project[] = [
-  { title: 'Seamus Corry', category: 'Websites', image: '/work/seamus_v5_final.jpg', url: 'https://seamuscorry.co.uk/' },
+  { title: 'Seamus Corry', category: 'Websites', image: '/work/seamus_v5_final.jpg', url: 'https://seamuscorry.co.uk/', comingSoon: true },
   { title: 'Managing What Matters', category: 'Websites', image: '/work/mwm.jpg', url: 'https://managingwhatmatters.co.uk/' },
-  { title: 'Herb & Soul', category: 'Websites', image: '/work/herb_soul.jpg', url: 'https://www.herbandsoul.uk/' },
+  { title: 'Herb & Soul', category: 'Websites', image: '/work/herb_soul.jpg', url: 'https://www.herbandsoul.uk/', comingSoon: true },
   { title: 'Almond Vet Care', category: 'Websites', image: '/work/almond_vet_care.jpg', url: 'https://almondvetcare.co.uk/' },
   { title: 'K Lewis Joinery', category: 'Websites', image: '/work/klewis.jpg', url: 'https://www.klewisjoineryltd.co.uk/' },
   { title: 'Robertsons Transport', category: 'Websites', image: '/work/robertsons.jpg', url: 'https://rt-ltd.uk/' },
-  { title: 'Social Media Content', category: 'Social Media', image: '/work/content-creation.png', url: 'https://www.instagram.com/bearmedia70/' }
+  { title: 'Social Media Content', category: 'Social Media', image: '/work/content-creation.png', url: 'https://www.youtube.com/@bearmedia70' }
 ]
 
 const categories: ProjectType[] = ['All', 'Websites', 'Social Media', 'Video']
@@ -118,29 +119,37 @@ export default function Portfolio() {
                            fill 
                            className="object-cover transition-transform duration-700 group-hover:scale-110 opacity-60 group-hover:opacity-100"
                          />
-                         <div className="absolute inset-0 bg-gradient-to-t from-dark/95 via-dark/10 to-transparent" />
-                      </div>
-                      
-                      <div className="absolute bottom-8 left-8 right-8 z-10 flex flex-col gap-2 transform transition-transform duration-300 group-hover:-translate-y-2">
-                        <span className="text-brand-yellow text-xs font-black uppercase tracking-widest drop-shadow-lg">
-                          {project.category}
-                        </span>
-                        <h3 className="text-2xl md:text-3xl text-white font-bold drop-shadow-lg leading-tight uppercase italic">
-                          {project.title}
-                        </h3>
-                        {project.url && (
-                          <a 
-                            href={project.url} 
-                            target="_blank" 
-                            rel="noopener noreferrer"
-                            className="mt-4 text-white font-bold text-xs uppercase tracking-widest flex items-center gap-2 group/link opacity-0 -translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 duration-300"
-                          >
-                            View Project <span className="transition-transform group-hover/link:translate-x-2 text-brand-yellow">→</span>
-                          </a>
+                          <div className="absolute inset-0 bg-gradient-to-t from-dark/95 via-dark/10 to-transparent" />
+                        </div>
+
+                        {project.comingSoon && (
+                          <div className="absolute inset-0 bg-black/60 flex items-center justify-center z-20 backdrop-blur-[2px]">
+                            <span className="text-white font-black uppercase tracking-[0.2em] text-xl md:text-2xl italic drop-shadow-2xl text-center px-4">
+                              Coming Soon
+                            </span>
+                          </div>
                         )}
+                        
+                        <div className="absolute bottom-8 left-8 right-8 z-10 flex flex-col gap-2 transform transition-transform duration-300 group-hover:-translate-y-2">
+                          <span className="text-brand-yellow text-xs font-black uppercase tracking-widest drop-shadow-lg">
+                            {project.category}
+                          </span>
+                          <h3 className="text-2xl md:text-3xl text-white font-bold drop-shadow-lg leading-tight uppercase italic">
+                            {project.title}
+                          </h3>
+                          {project.url && !project.comingSoon && (
+                            <a 
+                              href={project.url} 
+                              target="_blank" 
+                              rel="noopener noreferrer"
+                              className="mt-4 text-white font-bold text-xs uppercase tracking-widest flex items-center gap-2 group/link opacity-0 -translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 duration-300"
+                            >
+                              View Project <span className="transition-transform group-hover/link:translate-x-2 text-brand-yellow">→</span>
+                            </a>
+                          )}
+                        </div>
                       </div>
-                    </div>
-                  </motion.div>
+                    </motion.div>
                 ))}
               </AnimatePresence>
             </div>

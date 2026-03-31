@@ -24,15 +24,6 @@ const clients = [
     link: 'https://www.klewisjoineryltd.co.uk/'
   },
   {
-    id: 3,
-    name: 'Expert Equine Construction',
-    category: 'Equestrian Construction',
-    image: '/work/website-5-lewis-joinery-v2.jpg',
-    headline: 'Expert Equestrian Construction',
-    description: 'Specialist equestrian builds, arenas, and stable blocks built to last.',
-    link: 'https://www.klewisjoineryltd.co.uk/'
-  },
-  {
     id: 4,
     name: 'Robertsons Transport',
     category: 'Transport & Logistics',
@@ -57,7 +48,8 @@ const clients = [
     image: '/work/seamus_v5_final.jpg',
     headline: 'Empowering Teams Through Wellbeing',
     description: 'Mental health first aid and wellbeing training for teams across all sectors.',
-    link: 'https://seamuscorry.com/'
+    link: 'https://seamuscorry.com/',
+    comingSoon: true
   },
   {
     id: 7,
@@ -66,7 +58,8 @@ const clients = [
     image: '/work/herb_soul.jpg',
     headline: 'Healing Through Nature Immersion',
     description: 'Transformative nature-based wellness experiences and herbalism workshops.',
-    link: 'https://www.herbandsoul.uk/'
+    link: 'https://www.herbandsoul.uk/',
+    comingSoon: true
   }
 ]
 
@@ -116,6 +109,13 @@ export const WhoIWorkWithSection = () => {
                   className="object-contain p-8 md:p-12"
                   priority
                 />
+                {(client as any).comingSoon && (
+                  <div className="absolute inset-0 bg-black/60 flex items-center justify-center z-10 backdrop-blur-[2px]">
+                    <span className="text-white font-black uppercase tracking-[0.3em] text-2xl md:text-5xl italic drop-shadow-2xl text-center px-6">
+                      Coming Soon
+                    </span>
+                  </div>
+                )}
               </div>
 
               {/* Content Area - Dark Background (Matched to Screenshot) */}

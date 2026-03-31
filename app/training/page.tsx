@@ -170,7 +170,7 @@ export default function TrainingPage() {
                  </div>
                  
                  <p className="text-xl md:text-2xl font-black italic leading-relaxed mb-8 text-white">
-                   "Gary was really helpful with assisting me in designing social media and email campaign designs. Very helpful and knowledgeable. I will continue to use!"
+                   "Garry was really helpful with assisting me in designing social media and email campaign designs. Very helpful and knowledgeable. I will continue to use!"
                  </p>
                  
                  <div className="flex flex-col items-center mb-12">

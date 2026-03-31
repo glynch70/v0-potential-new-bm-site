@@ -53,20 +53,22 @@ const Card: FC<iCardProps> = ({
 					<div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent md:bg-black/20 group-hover:md:bg-black/0 transition-colors duration-500 z-10" />
 				</div>
 
-				{/* Content */}
-				<div className="relative z-20 flex flex-col items-center px-4 md:px-8">
-					<h3 
-						className="font-figtree font-black tracking-tighter text-4xl md:text-7xl uppercase italic mb-8 text-center drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)] leading-[0.9]"
-						style={{ color: textColor }}
-					>
-						{title}
-					</h3>
-					<p
-						className="font-figtree text-base md:text-xl font-bold text-center max-w-lg leading-relaxed italic drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]"
-						style={{ color: textColor }}
-					>
-						{description}
-					</p>
+				{/* Subtle Bottom-Corner Content Overlay */}
+				<div className="absolute bottom-6 right-6 z-20 flex flex-col items-end text-right max-w-[280px] md:max-w-[400px]">
+					<div className="bg-black/40 backdrop-blur-md p-4 md:p-6 rounded-xl border border-white/10">
+						<h3 
+							className="font-figtree font-black tracking-tighter text-base md:text-lg uppercase italic mb-2 leading-none"
+							style={{ color: textColor, opacity: 0.7 }}
+						>
+							{title}
+						</h3>
+						<p
+							className="font-figtree text-[13px] md:text-[14px] font-medium leading-relaxed italic"
+							style={{ color: textColor, opacity: 0.6 }}
+						>
+							{description}
+						</p>
+					</div>
 				</div>
 			</motion.div>
 		</div>
