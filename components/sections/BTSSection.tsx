@@ -44,8 +44,8 @@ const btsItems: iCardItem[] = [
 
 export default function BTSSection() {
 	return (
-		<section className="bg-dark pt-32 pb-60">
-			<div className="max-w-7xl mx-auto px-6 mb-24 text-center">
+		<section className="bg-dark pt-20 md:pt-32 pb-20 md:pb-60">
+			<div className="max-w-7xl mx-auto px-6 mb-12 md:mb-24 text-center">
 				<motion.p 
 					initial={{ opacity: 0, y: 10 }}
 					whileInView={{ opacity: 1, y: 0 }}

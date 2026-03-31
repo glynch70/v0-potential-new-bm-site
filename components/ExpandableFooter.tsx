@@ -217,7 +217,7 @@ export default function ExpandableFooter() {
                       <span className="text-sm">TT</span>
                     </a>
                     <a
-                      href="https://www.instagram.com/bearmedia70"
+                      href="https://www.instagram.com/bearmedia70/"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="w-10 h-10 rounded-full bg-white/5 hover:bg-[#C9A227] hover:scale-110 flex items-center justify-center transition-all duration-250 ease-[cubic-bezier(0.16,1,0.3,1)]"

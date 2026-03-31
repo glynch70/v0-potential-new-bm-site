@@ -28,8 +28,8 @@ interface FooterLinkGroup {
 
 const socialLinks: FooterLink[] = [
 	{ title: 'Facebook', href: 'https://www.facebook.com/bearmediacontentservices', icon: Facebook },
-	{ title: 'Instagram', href: 'https://www.instagram.com/bear.media', icon: Instagram },
-	{ title: 'YouTube', href: 'https://www.youtube.com/@bearmediacontent', icon: Youtube },
+	{ title: 'Instagram', href: 'https://www.instagram.com/bearmedia70/', icon: Instagram },
+	{ title: 'YouTube', href: 'https://www.youtube.com/@bearmedia70', icon: Youtube },
 	{ title: 'LinkedIn', href: 'https://www.linkedin.com/in/garrylynch', icon: Linkedin },
 ];
 

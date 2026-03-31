@@ -49,10 +49,12 @@ const Card: FC<iCardProps> = ({
 						fill
 						priority
 					/>
+					{/* Mobile-focused dark gradient overlay for readability */}
+					<div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent md:bg-black/20 group-hover:md:bg-black/0 transition-colors duration-500 z-10" />
 				</div>
 
 				{/* Content */}
-				<div className="relative z-10 flex flex-col items-center px-4 md:px-8">
+				<div className="relative z-20 flex flex-col items-center px-4 md:px-8">
 					<h3 
 						className="font-figtree font-black tracking-tighter text-4xl md:text-7xl uppercase italic mb-8 text-center drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)] leading-[0.9]"
 						style={{ color: textColor }}

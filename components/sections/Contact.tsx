@@ -166,7 +166,7 @@ export default function Contact() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 1, delay: 0.2 }}
-          className="w-full mt-24 rounded-3xl overflow-hidden border border-white/10 shadow-2xl relative grayscale invert contrast-[1.2] opacity-60 hover:opacity-100 hover:grayscale-0 transition-all duration-1000"
+          className="w-full mt-24 rounded-3xl overflow-hidden border border-white/10 shadow-2xl relative min-h-[300px] md:min-h-[450px]"
         >
           <iframe 
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d17911.33230894065!2d-3.4862215103681534!3d55.93883391768875!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4887db80840dc73d%3A0x67341db03d1db767!2sBroxburn!5e0!3m2!1sen!2suk!4v1711823154821!5m2!1sen!2suk" 
@@ -176,9 +176,9 @@ export default function Contact() {
             allowFullScreen={true} 
             loading="lazy" 
             referrerPolicy="no-referrer-when-downgrade"
-            className="filter brightness-75 hover:brightness-100 transition-all duration-1000"
+            className="filter brightness-100 contrast-100 grayscale-[0.5] hover:grayscale-0 transition-all duration-700"
           />
-          <div className="absolute inset-0 pointer-events-none border-[12px] border-dark rounded-[24px]" />
+          <div className="absolute inset-0 pointer-events-none border-[1px] border-white/10 rounded-3xl" />
         </motion.div>
       </div>
     </section>

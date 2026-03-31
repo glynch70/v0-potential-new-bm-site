@@ -1,8 +1,9 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
+import useEmblaCarousel from 'embla-carousel-react'
 
 const testimonials = [
   {
@@ -54,6 +55,35 @@ const testimonials = [
 ]
 
 export default function Testimonials() {
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    loop: true,
+    align: 'start',
+    breakpoints: {
+      '(min-width: 768px)': { active: false }
+    }
+  })
+
+  const [selectedIndex, setSelectedIndex] = useState(0)
+  const [scrollSnaps, setScrollSnaps] = useState<number[]>([])
+
+  const onSelect = useCallback(() => {
+    if (!emblaApi) return
+    setSelectedIndex(emblaApi.selectedScrollSnap())
+  }, [emblaApi, setSelectedIndex])
+
+  useEffect(() => {
+    if (!emblaApi) return
+    onSelect()
+    setScrollSnaps(emblaApi.scrollSnapList())
+    emblaApi.on('select', onSelect)
+    emblaApi.on('reInit', onSelect)
+  }, [emblaApi, setScrollSnaps, onSelect])
+
+  const scrollTo = useCallback(
+    (index: number) => emblaApi && emblaApi.scrollTo(index),
+    [emblaApi]
+  )
+
   return (
     <section id="testimonials" className="py-24 md:py-32 px-6 bg-dark overflow-hidden">
       <div className="max-w-[1240px] mx-auto flex flex-col items-center">
@@ -71,15 +101,36 @@ export default function Testimonials() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="text-4xl md:text-7xl text-center mb-24 font-black text-white italic tracking-tight leading-none uppercase"
+          className="text-4xl md:text-7xl text-center mb-16 md:mb-24 font-black text-white italic tracking-tight leading-none uppercase"
         >
           Don't take our word for it
         </motion.h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full">
-          {testimonials.map((testimonial, index) => (
-            <TestimonialFlipCard key={testimonial.name} testimonial={testimonial} index={index} />
-          ))}
+        {/* Desktop Grid / Mobile Carousel */}
+        <div className="w-full relative">
+          <div className="overflow-hidden" ref={emblaRef}>
+            <div className="flex md:grid md:grid-cols-2 lg:grid-cols-3 gap-8 w-full">
+              {testimonials.map((testimonial, index) => (
+                <div key={testimonial.name} className="flex-[0_0_100%] min-w-0 md:flex-none px-2 md:px-0">
+                  <TestimonialFlipCard testimonial={testimonial} index={index} />
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Mobile Dot Indicators */}
+          <div className="flex md:hidden justify-center gap-2 mt-12">
+            {scrollSnaps.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => scrollTo(index)}
+                className={`h-1.5 rounded-full transition-all duration-300 ${
+                  index === selectedIndex ? 'bg-brand-yellow w-8' : 'bg-white/20 w-3'
+                }`}
+                aria-label={`Go to slide ${index + 1}`}
+              />
+            ))}
+          </div>
         </div>
 
         <motion.div 

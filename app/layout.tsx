@@ -1,5 +1,5 @@
 import { Analytics } from "@vercel/analytics/react";
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import Script from "next/script";
 import { Poppins, Figtree } from "next/font/google";
 import { LenisScrollProvider } from "@/components/LenisScrollProvider";
@@ -25,6 +25,10 @@ export { reportWebVitals } from "@/lib/metrics";
 // ═══════════════════════════════════════════════════════
 // SEO METADATA — Redesign March 2026
 // ═══════════════════════════════════════════════════════
+export const viewport: Viewport = {
+  themeColor: "#FFD700",
+};
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://bear-media.com"),
 
@@ -75,6 +79,12 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon-16x16.png",
+    apple: "/apple-touch-icon.png",
+  },
+  manifest: "/manifest.json",
 };
 
 // ═══════════════════════════════════════════════════════
@@ -155,7 +165,7 @@ const localBusinessSchema = {
   },
   "sameAs": [
     "https://www.facebook.com/bearmediacontentservices",
-    "https://www.instagram.com/bear.media",
+    "https://www.instagram.com/bearmedia70/",
     "https://www.linkedin.com/in/garrylynch",
     "https://www.youtube.com/@bearmedia70"
   ]

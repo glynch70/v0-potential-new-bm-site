@@ -4,9 +4,9 @@ import { motion } from 'framer-motion';
 import { Mail, Instagram, Youtube, Facebook, Linkedin, MapPin, Phone, Video } from 'lucide-react';
 
 const socialLinks = [
-  { name: 'Instagram', url: 'https://www.instagram.com/bearmedia70', icon: Instagram },
+  { name: 'Instagram', url: 'https://www.instagram.com/bearmedia70/', icon: Instagram },
   { name: 'Facebook', url: 'https://www.facebook.com/share/1BhgWafSR2/', icon: Facebook },
-  { name: 'TikTok', url: 'https://www.tiktok.com/@bearmediascotland', icon: Video },
+  { name: 'TikTok', url: 'https://www.tiktok.com/@bearmedia70', icon: Video },
   { name: 'LinkedIn', url: 'https://www.linkedin.com/in/garrylynch70', icon: Linkedin },
   { name: 'YouTube', url: 'https://www.youtube.com/@bearmedia70', icon: Youtube },
 ];

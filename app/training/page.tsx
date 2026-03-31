@@ -153,8 +153,8 @@ export default function TrainingPage() {
              viewport={{ once: true }}
              className="relative max-w-2xl w-full"
            >
-              <div className="glass-card p-10 md:p-16 border-brand-yellow/30 bg-brand-yellow text-dark text-center flex flex-col items-center">
-                 <div className="relative w-32 h-32 rounded-full overflow-hidden border-4 border-dark/20 bg-dark/10 mb-8 shadow-xl">
+              <div className="glass-card p-10 md:p-16 border-brand-yellow/30 text-white text-center flex flex-col items-center">
+                 <div className="relative w-32 h-32 rounded-full overflow-hidden border-4 border-white/10 bg-white/5 mb-8 shadow-xl">
                     <Image 
                       src="/testimonials/Callie.jpg" 
                       alt="Callie" 
@@ -163,20 +163,29 @@ export default function TrainingPage() {
                     />
                  </div>
                  
-                 <div className="flex gap-1 text-dark mb-8">
+                 <div className="flex gap-1 text-brand-yellow mb-8">
                     {[...Array(5)].map((_, i) => (
                       <Star key={i} size={20} fill="currentColor" stroke="none" />
                     ))}
                  </div>
                  
-                 <p className="text-xl md:text-2xl font-black italic leading-relaxed mb-8">
+                 <p className="text-xl md:text-2xl font-black italic leading-relaxed mb-8 text-white">
                    "Gary was really helpful with assisting me in designing social media and email campaign designs. Very helpful and knowledgeable. I will continue to use!"
                  </p>
                  
-                 <div className="flex flex-col items-center">
-                    <span className="text-lg font-black uppercase tracking-tighter">Callie</span>
-                    <span className="text-dark/60 font-black uppercase tracking-widest text-[10px]">M&M Compliance and Training Services</span>
+                 <div className="flex flex-col items-center mb-12">
+                    <span className="text-lg font-black uppercase tracking-tighter text-brand-yellow">Callie</span>
+                    <span className="text-white/40 font-black uppercase tracking-widest text-[10px]">M&M Compliance and Training Services</span>
                  </div>
+
+                 <a 
+                   href="https://calendly.com/bearmedia/discovery-call" 
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   className="bg-brand-yellow text-dark px-10 py-5 rounded-full font-black uppercase tracking-widest text-sm shadow-[0_0_30px_rgba(201,162,39,0.3)] hover:scale-105 transition-all italic"
+                 >
+                   BOOK A TRAINING SESSION
+                 </a>
               </div>
            </motion.div>
         </div>
