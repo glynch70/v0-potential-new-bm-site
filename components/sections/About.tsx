@@ -7,7 +7,7 @@ const team = [
   {
     name: "Garry Lynch",
     role: "Founder",
-    photo: "/team/garry_lynch_hero.jpg",
+    photo: "/team/garry_lynch_car.jpg",
     bio: "I handle the big picture—strategy, drone work, creative direction.",
     strength: "Vision, drone cinematography, client relationships"
   },
