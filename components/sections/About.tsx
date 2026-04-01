@@ -78,10 +78,13 @@ export default function About() {
               className="text-white/60 text-lg md:text-xl space-y-6 leading-[1.7] italic"
             >
               <p>
-                We're a small team in West Lothian who actually give a damn about quality. Real people, real work, real results.
+                I started Bear Media to help businesses get found online.
               </p>
               <p>
-                I handle the big picture—strategy, drone work, and creative direction—but most importantly, I make sure we deliver exactly what Scottish businesses need to grow.
+                I go directly to my clients. To their building sites, restaurants, and shops. I film them, photograph them, build their websites, and manage their social media.
+              </p>
+              <p>
+                No account managers. No waiting around. Just real work.
               </p>
             </motion.div>
 
