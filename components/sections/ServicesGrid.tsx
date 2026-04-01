@@ -27,7 +27,7 @@ const services = [
     icon: Camera,
     frontText: 'Cinematic drone footage and professional video that tells your story and sells your services.',
     backTitle: 'Video Production',
-    color: '#000000', // Black
+    color: '#FFFFFF', // White
     href: '/video-production'
   },
   {

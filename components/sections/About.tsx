@@ -7,7 +7,7 @@ const team = [
   {
     name: "Garry Lynch",
     role: "Founder",
-    photo: "/team/garry_lynch_hero.jpg",
+    photo: "/team/garry_lynch_car.jpg",
     bio: "I handle the big picture—strategy, drone work, creative direction.",
     strength: "Vision, drone cinematography, client relationships"
   },
@@ -42,7 +42,7 @@ export default function About() {
           >
             <div className="absolute inset-0 bg-brand-yellow rounded-3xl transform rotate-3 scale-105 opacity-20 animate-pulse" />
             <Image 
-              src="/team/garry_lynch_hero.jpg" 
+              src="/team/garry_lynch_car.jpg" 
               alt="Garry Lynch"
               fill 
               className="object-cover rounded-3xl shadow-2xl z-10 border-4 border-white/5"
@@ -144,14 +144,8 @@ export default function About() {
             <h2 className="text-4xl md:text-7xl font-black text-white italic uppercase tracking-tighter">Team <span className="text-brand-yellow">Bear Media</span></h2>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-            {[...team, {
-              name: "Bear",
-              role: "Chief Happiness Officer",
-              photo: "/dog_photo.jpg",
-              bio: "I keep everyone happy and remind them when it's time for walkies.",
-              strength: "Tail wagging, treat gathering, nap specialist"
-            }].map((member, i) => (
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-12 max-w-4xl mx-auto">
+            {team.map((member, i) => (
               <motion.div
                 key={member.name}
                 initial={{ opacity: 0, y: 30 }}
