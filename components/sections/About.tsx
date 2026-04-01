@@ -7,7 +7,7 @@ const team = [
   {
     name: "Garry Lynch",
     role: "Founder",
-    photo: "/team/garry_lynch_car.jpg",
+    photo: "/team/garry_lynch_hero.jpg",
     bio: "I handle the big picture—strategy, drone work, creative direction.",
     strength: "Vision, drone cinematography, client relationships"
   },
@@ -42,7 +42,7 @@ export default function About() {
           >
             <div className="absolute inset-0 bg-brand-yellow rounded-3xl transform rotate-3 scale-105 opacity-20 animate-pulse" />
             <Image 
-              src="/team/garry_lynch_car.jpg" 
+              src="/team/garry_lynch_hero.jpg" 
               alt="Garry Lynch"
               fill 
               className="object-cover rounded-3xl shadow-2xl z-10 border-4 border-white/5"
@@ -82,13 +82,6 @@ export default function About() {
               </p>
               <p>
                 I handle the big picture—strategy, drone work, and creative direction—but most importantly, I make sure we deliver exactly what Scottish businesses need to grow.
-              </p>
-              <p className="font-bold text-brand-yellow uppercase tracking-widest text-xs pt-4 font-black not-italic">
-                That's it. That's the job.
-              </p>
-              <p className="text-xs pt-2 opacity-50 not-italic uppercase tracking-widest font-black">
-                15 years in communications. Zero waffle.<br />
-                Based in Broxburn — serving Scotland.
               </p>
             </motion.div>
 
