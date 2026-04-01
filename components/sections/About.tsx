@@ -7,21 +7,21 @@ const team = [
   {
     name: "Garry Lynch",
     role: "Founder",
-    photo: "/garry_headshot.jpg",
+    photo: "/team/garry_lynch_hero.jpg",
     bio: "I handle the big picture—strategy, drone work, creative direction.",
     strength: "Vision, drone cinematography, client relationships"
   },
   {
     name: "Rory",
     role: "Quality Control",
-    photo: "/rory_photo.jpg",
+    photo: "/team/rory_quality_control.jpg",
     bio: "I make sure everything's actually good. Quality control is my thing.",
     strength: "Attention to detail, quality assurance, problem-solving"
   },
   {
     name: "Lola",
     role: "Project Manager",
-    photo: "/lola_photo.jpg",
+    photo: "/team/lola_project_manager.jpg",
     bio: "I keep us on track and make sure projects ship on time.",
     strength: "Project management, organisation, deadline mastery"
   }
@@ -42,7 +42,7 @@ export default function About() {
           >
             <div className="absolute inset-0 bg-brand-yellow rounded-3xl transform rotate-3 scale-105 opacity-20 animate-pulse" />
             <Image 
-              src="/garry_headshot.jpg" 
+              src="/team/garry_lynch_hero.jpg" 
               alt="Garry Lynch"
               fill 
               className="object-cover rounded-3xl shadow-2xl z-10 border-4 border-white/5"
@@ -81,7 +81,7 @@ export default function About() {
                 We're a small team in West Lothian who actually give a damn about quality. Real people, real work, real results.
               </p>
               <p>
-                I go directly to my clients. To their building sites, restaurants, and shops. I film them, photograph them, build their websites, and manage their social media.
+                I handle the big picture—strategy, drone work, and creative direction—but most importantly, I make sure we deliver exactly what Scottish businesses need to grow.
               </p>
               <p className="font-bold text-brand-yellow uppercase tracking-widest text-xs pt-4 font-black not-italic">
                 That's it. That's the job.

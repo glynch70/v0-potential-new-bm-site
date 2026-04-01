@@ -49,7 +49,7 @@ export default function SocialMediaPage() {
               transition={{ duration: 0.8 }}
               className="text-5xl md:text-8xl font-black text-white italic tracking-tighter uppercase mb-8 leading-none"
             >
-              Social Media <span className="text-brand-yellow">Scotland</span>
+              Social Media <span className="text-brand-yellow">Content Creation</span> Scotland
             </motion.h1>
             
             <motion.p 

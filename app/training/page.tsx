@@ -76,7 +76,7 @@ export default function TrainingPage() {
               transition={{ duration: 0.8 }}
               className="text-5xl md:text-8xl font-black text-white italic tracking-tighter uppercase mb-8 leading-none"
             >
-              Digital Training <span className="text-brand-yellow">Scotland</span>
+              Digital Skills <span className="text-brand-yellow">Training</span> Scotland
             </motion.h1>
             
             <motion.p 
@@ -97,10 +97,13 @@ export default function TrainingPage() {
             <h2 className="text-4xl md:text-6xl font-black text-white uppercase italic tracking-tighter mb-8">What is <span className="text-brand-yellow">Digital Training</span>?</h2>
             <div className="text-white/60 text-lg md:text-xl space-y-6 leading-relaxed italic">
               <p>
-                The best person to tell your business story is you. But you need the right tools—and the skills to use them.
+                The best person to tell your business story is you. But you need the right tools—and the skills to use them properly.
               </p>
               <p>
-                Our digital training services are designed to give you and your team the confidence to create high-quality content, design brand assets, and use AI to work faster.
+                Our digital training services are designed to give you and your team the confidence to create high-quality content, design brand assets, and use AI to work 10x faster.
+              </p>
+              <p className="text-sm border-t border-white/5 pt-8">
+                Ready to put these skills into practice? We also offer <Link href="/social-media" className="text-brand-yellow hover:underline">Social Media Content Creation</Link> to handle the heavy lifting for you.
               </p>
             </div>
           </div>

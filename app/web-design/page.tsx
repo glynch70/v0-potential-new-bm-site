@@ -49,7 +49,7 @@ export default function WebDesignPage() {
               transition={{ duration: 0.8 }}
               className="text-5xl md:text-8xl font-black text-white italic tracking-tighter uppercase mb-8 leading-none"
             >
-              Web Design <span className="text-brand-yellow">Scotland</span>
+              Website Design <span className="text-brand-yellow">Scotland</span>
             </motion.h1>
             
             <motion.p 

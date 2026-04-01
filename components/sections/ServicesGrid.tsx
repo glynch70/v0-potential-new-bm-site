@@ -16,7 +16,7 @@ const services = [
   },
   {
     title: 'Social Media',
-    icon: Camera,
+    icon: Share2,
     frontText: 'Content that stops the scroll and gets you noticed. Master the algorithm with high-impact vertical video.',
     backTitle: 'Social Media',
     color: '#FF6B35', // Orange
@@ -24,7 +24,7 @@ const services = [
   },
   {
     title: 'Video Production',
-    icon: Video,
+    icon: Camera,
     frontText: 'Cinematic drone footage and professional video that tells your story and sells your services.',
     backTitle: 'Video Production',
     color: '#000000', // Black
@@ -46,7 +46,36 @@ export default function ServicesGrid() {
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {services.map((service, index) => (
-            <FlipCard key={service.title} service={service} index={index} />
+            service.title === 'Digital Training' ? (
+              <motion.div
+                key={service.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: index * 0.1 }}
+              >
+                <Link 
+                  href={service.href}
+                  className="group h-[350px] md:h-[400px] glass-card flex flex-col items-center justify-center p-8 md:p-12 border-white/10 hover:border-brand-yellow/30 transition-all text-center w-full"
+                >
+                  <div 
+                    className="w-16 h-16 rounded-2xl flex items-center justify-center mb-8 rotate-3 group-hover:rotate-6 transition-transform shadow-lg"
+                    style={{ backgroundColor: `${service.color}20`, border: `1px solid ${service.color}40` }}
+                  >
+                    <service.icon size={32} style={{ color: service.color }} />
+                  </div>
+                  <h3 className="text-2xl md:text-3xl font-black text-white uppercase italic mb-4 tracking-tighter">{service.title}</h3>
+                  <p className="text-white/60 text-base md:text-lg leading-relaxed font-bold italic">
+                    "{service.frontText}"
+                  </p>
+                  <div className="mt-8 bg-brand-yellow text-dark px-6 py-2 rounded-full text-[10px] font-black uppercase tracking-widest group-hover:scale-105 transition-transform shadow-xl">
+                    View Training Page →
+                  </div>
+                </Link>
+              </motion.div>
+            ) : (
+              <FlipCard key={service.title} service={service} index={index} />
+            )
           ))}
         </div>
       </div>

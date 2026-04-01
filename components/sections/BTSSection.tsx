@@ -7,7 +7,7 @@ const btsItems: iCardItem[] = [
 	{
 		title: "Meet Garry",
 		description: "Founder of Bear Media. Building websites and content that help Scottish businesses get seen.",
-		src: "/bts/bts_garry.jpg",
+		src: "/team/garry_lynch_hero.jpg",
 		color: "#D4A830", // Gold
 		textColor: "#FFFFFF",
 		tag: "Founder",
