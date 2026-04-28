@@ -27,35 +27,41 @@ export default function Navbar() {
   }, [isOpen])
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-[100] px-6 py-4 flex justify-between items-center bg-dark/20 backdrop-blur-md border-b border-white/5">
-      <div className="flex items-center gap-3">
-        <Link href="/" className="flex items-center gap-3 group" onClick={() => setIsOpen(false)}>
-          <div className="relative w-12 h-12 md:w-14 md:h-14">
-            <Image 
-              src="/bear-media-logo.png" 
-              alt="Bear Media Logo"
-              fill
-              className="object-contain"
-            />
-          </div>
-          <span className="text-2xl font-black text-white italic tracking-tighter group-hover:text-brand-yellow transition-colors">
-            BEAR MEDIA
-          </span>
-        </Link>
-      </div>
-
-      {/* Desktop Menu */}
-      <div className="hidden md:flex gap-10">
-        {navLinks.map((link, i) => (
-          <Link 
-            key={link.name} 
-            href={link.href}
-            className="text-white/60 text-xs uppercase tracking-[0.3em] font-black transition-all duration-300 hover:text-brand-yellow hover:scale-110"
-          >
-            {link.name}
+    <header className="sticky top-0 z-50 backdrop-blur-md border-b border-white/10 bg-neutral-950/70">
+      <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+        <div className="flex items-center gap-3">
+          <Link href="/" className="flex items-center gap-3 group" onClick={() => setIsOpen(false)}>
+            <div className="relative w-32 h-10">
+              <Image 
+                src="/bear-media-logo-horizontal-white.png" 
+                alt="Bear Media Logo"
+                fill
+                className="object-contain"
+              />
+            </div>
           </Link>
-        ))}
-      </div>
+        </div>
+
+        {/* Desktop Menu */}
+        <div className="hidden md:flex items-center gap-8">
+          <nav className="flex gap-6 text-sm font-bold uppercase tracking-widest text-white/70">
+            {navLinks.map((link) => (
+              <Link 
+                key={link.name} 
+                href={link.href}
+                className="hover:text-brand-yellow transition-colors"
+              >
+                {link.name}
+              </Link>
+            ))}
+          </nav>
+          <Link 
+            href="#contact"
+            className="px-5 py-2.5 rounded-xl bg-brand-yellow text-black font-black uppercase tracking-widest text-[10px] hover:scale-105 transition-all shadow-[0_0_20px_rgba(221,163,30,0.2)]"
+          >
+            Start Project
+          </Link>
+        </div>
 
       {/* Mobile Menu Toggle */}
       <button 
@@ -114,6 +120,7 @@ export default function Navbar() {
           </motion.div>
         )}
       </AnimatePresence>
-    </nav>
+      </div>
+    </header>
   )
 }

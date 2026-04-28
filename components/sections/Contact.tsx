@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Phone, Mail, MapPin, Send } from 'lucide-react'
 
 export default function Contact() {
-  const [form, setForm] = useState({ name: '', email: '', project: '' })
+  const [form, setForm] = useState({ name: '', businessName: '', contact: '', project: '' })
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -16,170 +16,127 @@ export default function Contact() {
     setTimeout(() => {
       console.log('Contact form submission:', form)
       setStatus('success')
-      setForm({ name: '', email: '', project: '' })
+      setForm({ name: '', businessName: '', contact: '', project: '' })
     }, 1000)
   }
 
   return (
-    <section id="contact" className="py-24 md:py-32 px-6 bg-dark">
-      <div className="max-w-[1240px] mx-auto flex flex-col items-center">
-        <motion.p 
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          className="text-brand-yellow font-bold uppercase tracking-[0.4em] text-xs mb-10"
-        >
-          GET IN TOUCH
-        </motion.p>
-        
-        <motion.h2 
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1, ease: 'easeOut' }}
-          className="text-[14vw] md:text-[16vw] leading-[0.7] font-black tracking-tighter mb-24 text-center select-none text-brand-yellow italic drop-shadow-2xl"
-        >
-          LET'S TALK
-        </motion.h2>
+    <section id="contact" className="relative max-w-6xl mx-auto px-6 pb-24 space-y-12 overflow-visible">
+      {/* Background Accent */}
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-brand-yellow/5 blur-[150px] rounded-full pointer-events-none" />
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 w-full">
-          {/* Left: Info */}
-          <div className="flex flex-col gap-12">
-            <motion.p 
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="text-2xl md:text-4xl max-w-sm font-black leading-tight text-white uppercase italic"
-            >
-              Tell me about your business
-            </motion.p>
-
-            <div className="flex flex-col gap-8">
-              <a 
-                href="tel:+447879011860" 
-                className="flex items-center gap-5 text-2xl md:text-4xl font-black hover:text-brand-yellow transition-colors group text-white italic"
-              >
-                <div className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-brand-yellow shadow-xl flex items-center justify-center text-dark group-hover:scale-110 transition-transform">
-                   <Phone size={28} />
-                </div>
-                <span>+44 7879 011860</span>
-              </a>
-              <a 
-                href="mailto:info@bear-media.com" 
-                className="flex items-center gap-5 text-2xl md:text-4xl font-black hover:text-brand-yellow transition-colors group text-white italic"
-              >
-                <div className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-brand-yellow shadow-xl flex items-center justify-center text-dark group-hover:scale-110 transition-transform">
-                   <Mail size={28} />
-                </div>
-                <span>info@bear-media.com</span>
-              </a>
-              <div className="flex items-start gap-4 text-white/40 font-bold uppercase tracking-widest mt-8 text-xs max-w-xs">
-                <MapPin size={24} className="mt-1 text-brand-yellow shrink-0" />
-                <span>Broxburn, West Lothian — serving Scotland</span>
-              </div>
-            </div>
-
+      {/* High-Contrast CTA Card */}
+      <div className="relative group">
+        <div className="absolute -inset-1 bg-brand-yellow rounded-[2.5rem] blur opacity-20 group-hover:opacity-40 transition duration-500"></div>
+        <div className="relative rounded-[2.5rem] p-12 md:p-20 bg-white text-black text-center shadow-2xl overflow-hidden">
+          <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-brand-yellow/10 to-transparent pointer-events-none" />
+          
+          <h2 className="text-5xl md:text-7xl font-black tracking-tighter uppercase italic mb-6">Need better <span className="text-brand-yellow drop-shadow-sm">content</span>?</h2>
+          <p className="mt-4 text-black/70 text-xl md:text-2xl max-w-2xl mx-auto font-medium">
+            Book a free chat and we’ll map out what moves the needle fastest.
+          </p>
+          <div className="mt-12 flex flex-wrap justify-center gap-6">
             <a 
-              href="tel:+447879011860" 
-              className="mt-8 bg-brand-yellow text-dark text-xl font-black py-6 px-12 rounded-full flex items-center justify-center gap-4 shadow-xl transition-all hover:scale-105 uppercase tracking-widest italic"
+              href="https://calendly.com/bearmedia/discovery-call"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-10 py-5 rounded-2xl bg-black text-white font-black uppercase tracking-widest text-sm shadow-xl transition-all hover:scale-105"
             >
-              <Phone size={24} /> Call Garry directly
+              Book Call
+            </a>
+            <a 
+              href="https://wa.me/447879011860"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-10 py-5 rounded-2xl border-2 border-black font-black uppercase tracking-widest text-sm hover:bg-black hover:text-white transition-all"
+            >
+              WhatsApp
             </a>
           </div>
+        </div>
+      </div>
 
-          {/* Right: Form */}
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="flex flex-col bg-white/5 border border-white/10 rounded-2xl p-10 md:p-14 shadow-2xl"
-          >
-            <form onSubmit={handleSubmit} className="flex flex-col gap-8">
-              <div className="flex flex-col gap-3">
-                <label className="text-[10px] font-black text-white/40 uppercase tracking-[0.2em] pl-2">
-                  Your name
-                </label>
-                <input 
-                  required
-                  type="text" 
-                  value={form.name}
-                  onChange={(e) => setForm({ ...form, name: e.target.value })}
-                  className="w-full bg-white/5 border border-white/10 px-6 py-5 rounded-xl text-white focus:border-brand-yellow outline-none transition-all placeholder:text-white/10 font-bold text-lg" 
-                  placeholder="Enter Name"
-                />
+      {/* Grid below */}
+      <div className="grid md:grid-cols-2 gap-8">
+        {/* Info Card */}
+        <div className="rounded-[2rem] p-10 md:p-14 bg-neutral-900/50 border border-white/5 flex flex-col justify-between group">
+          <div>
+            <h3 className="text-3xl font-black uppercase italic mb-6">Get In <span className="text-brand-yellow">Touch</span></h3>
+            <p className="text-white/60 leading-relaxed text-lg">
+              Tell me about your business, your goals and where content is currently falling short.
+            </p>
+          </div>
+          
+          <div className="mt-16 space-y-6">
+            <a href="mailto:hello@bear-media.com" className="flex items-center gap-4 text-white/80 hover:text-brand-yellow transition-colors font-bold text-lg">
+              <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center group-hover:bg-brand-yellow group-hover:text-black transition-colors">
+                <Mail size={20} />
               </div>
-
-              <div className="flex flex-col gap-3">
-                <label className="text-[10px] font-black text-white/40 uppercase tracking-[0.2em] pl-2">
-                  Email address
-                </label>
-                <input 
-                  required
-                  type="email" 
-                  value={form.email}
-                  onChange={(e) => setForm({ ...form, email: e.target.value })}
-                  className="w-full bg-white/5 border border-white/10 px-6 py-5 rounded-xl text-white focus:border-brand-yellow outline-none transition-all placeholder:text-white/10 font-bold text-lg" 
-                  placeholder="Enter Email"
-                />
+              hello@bear-media.com
+            </a>
+            <a href="tel:07879011860" className="flex items-center gap-4 text-white/80 hover:text-brand-yellow transition-colors font-bold text-lg">
+              <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center group-hover:bg-brand-yellow group-hover:text-black transition-colors">
+                <Phone size={20} />
               </div>
+              07879 011860
+            </a>
+          </div>
+        </div>
 
-              <div className="flex flex-col gap-3">
-                <label className="text-[10px] font-black text-white/40 uppercase tracking-[0.2em] pl-2">
-                  Tell me about your project
-                </label>
-                <textarea 
-                  required
-                  rows={4}
-                  value={form.project}
-                  onChange={(e) => setForm({ ...form, project: e.target.value })}
-                  className="w-full bg-white/5 border border-white/10 px-6 py-5 rounded-xl text-white focus:border-brand-yellow outline-none transition-all placeholder:text-white/10 font-bold text-lg resize-none" 
-                  placeholder="Tell me more"
-                />
-              </div>
-
-              <button 
-                type="submit"
-                disabled={status === 'loading'}
-                className="mt-6 bg-brand-yellow text-dark font-black py-6 px-12 rounded-full flex items-center justify-center gap-4 transition-all duration-300 hover:scale-105 hover:shadow-2xl disabled:opacity-50 text-xl uppercase tracking-widest italic"
-              >
-                Send Message <Send size={24} />
-              </button>
-            </form>
-
+        {/* Enquiry Form Card */}
+        <div className="rounded-[2rem] p-10 md:p-14 bg-neutral-900/50 border border-white/5 relative overflow-hidden">
+          <h3 className="text-3xl font-black uppercase italic mb-8 text-white">Quick <span className="text-brand-yellow">Enquiry</span></h3>
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <input 
+              required
+              className="w-full rounded-2xl bg-neutral-950 border border-white/5 px-6 py-5 outline-none focus:border-brand-yellow transition-colors font-medium" 
+              placeholder="Your Name" 
+              value={form.name}
+              onChange={(e) => setForm({ ...form, name: e.target.value })}
+            />
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <input 
+                className="w-full rounded-2xl bg-neutral-950 border border-white/5 px-6 py-5 outline-none focus:border-brand-yellow transition-colors font-medium" 
+                placeholder="Business" 
+                value={form.businessName}
+                onChange={(e) => setForm({ ...form, businessName: e.target.value })}
+              />
+              <input 
+                required
+                className="w-full rounded-2xl bg-neutral-950 border border-white/5 px-6 py-5 outline-none focus:border-brand-yellow transition-colors font-medium" 
+                placeholder="Email/Phone" 
+                value={form.contact}
+                onChange={(e) => setForm({ ...form, contact: e.target.value })}
+              />
+            </div>
+            <textarea 
+              required
+              className="w-full rounded-2xl bg-neutral-950 border border-white/5 px-6 py-5 min-h-32 outline-none focus:border-brand-yellow transition-colors resize-none font-medium" 
+              placeholder="How can I help?" 
+              value={form.project}
+              onChange={(e) => setForm({ ...form, project: e.target.value })}
+            />
+            <button 
+              type="submit"
+              disabled={status === 'loading'}
+              className="w-full px-8 py-5 rounded-2xl bg-brand-yellow text-black font-black uppercase tracking-widest text-sm shadow-xl transition-all hover:scale-[1.02] disabled:opacity-50"
+            >
+              {status === 'loading' ? 'Sending...' : 'Send Enquiry'}
+            </button>
+            
             <AnimatePresence>
               {status === 'success' && (
                 <motion.p 
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="mt-8 text-center text-brand-yellow font-black uppercase tracking-[0.2em] text-xs"
+                  className="text-center text-brand-yellow font-bold uppercase tracking-widest text-[10px] mt-4"
                 >
-                  Thanks — I'll be in touch within 24 hours 🐻
+                  Message sent! I'll be in touch soon.
                 </motion.p>
               )}
             </AnimatePresence>
-          </motion.div>
+          </form>
         </div>
-
-        {/* 🗺️ MAP SECTION */}
-        <motion.div 
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1, delay: 0.2 }}
-          className="w-full mt-24 rounded-3xl overflow-hidden border border-white/10 shadow-2xl relative min-h-[300px] md:min-h-[450px]"
-        >
-          <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d17911.33230894065!2d-3.4862215103681534!3d55.93883391768875!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4887db80840dc73d%3A0x67341db03d1db767!2sBroxburn!5e0!3m2!1sen!2suk!4v1711823154821!5m2!1sen!2suk" 
-            width="100%" 
-            height="450" 
-            style={{ border: 0 }} 
-            allowFullScreen={true} 
-            loading="lazy" 
-            referrerPolicy="no-referrer-when-downgrade"
-            className="filter brightness-100 contrast-100 grayscale-[0.5] hover:grayscale-0 transition-all duration-700"
-          />
-          <div className="absolute inset-0 pointer-events-none border-[1px] border-white/10 rounded-3xl" />
-        </motion.div>
       </div>
     </section>
   )

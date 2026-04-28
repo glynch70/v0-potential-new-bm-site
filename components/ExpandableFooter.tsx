@@ -42,7 +42,7 @@ export default function ExpandableFooter() {
                 <div className="mb-10 pb-8 border-b border-white/10">
                   <div className="flex items-center gap-3 mb-4">
                     <div className="relative w-10 h-10">
-                      <Image src="/bear-media-logo.png" alt="Bear Media Logo" fill className="object-contain" />
+                      <Image src="/bear-media-logo-horizontal-white.png" alt="Bear Media Logo" fill className="object-contain" />
                     </div>
                     <div>
                       <span className="text-2xl font-bold">Bear</span>

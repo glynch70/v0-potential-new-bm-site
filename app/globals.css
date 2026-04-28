@@ -3,18 +3,18 @@
 @custom-variant dark (&:is(.dark *));
 
 /* ───────────────────────────────────────────────
-   BEAR MEDIA — NEW LOGO PIVOT (OCHRE/GOLD)
+   BEAR MEDIA — NEW LOGO (MINIMALIST MONOCHROME)
    ─────────────────────────────────────────────── */
 
 @theme inline {
-  --color-brand-yellow: #DDA31E; /* New Ochre/Gold from Logo */
+  --color-brand-yellow: #DDA31E;
   --color-brand-yellow-dark: #B58416;
-  --color-dark: #121212;
-  --color-light: #F8F6F1;
-  --color-charcoal: #1E1E1E;
+  --color-dark: #0a0a0a; /* neutral-950 equivalent or close to it */
+  --color-light: #ffffff;
+  --color-charcoal: #171717;
   
-  --font-body: var(--font-poppins), sans-serif;
-  --font-display: var(--font-poppins), sans-serif;
+  --font-body: var(--font-inter), sans-serif;
+  --font-display: var(--font-inter), sans-serif;
 
   --animate-float: float 5s ease-in-out infinite;
   --animate-float-slow: float 6s ease-in-out infinite;

@@ -79,11 +79,6 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
-  icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon-16x16.png",
-    apple: "/apple-touch-icon.png",
-  },
   manifest: "/manifest.json",
 };
 
@@ -97,7 +92,7 @@ const structuredData = [
     "name": "Bear Media",
     "description": "Solo creative agency providing websites, drone video, and social media content for Scottish small businesses.",
     "url": "https://bear-media.com",
-    "logo": "https://bear-media.com/bear-media-logo.png",
+    "logo": "https://bear-media.com/bear-media-logo-horizontal-white.png",
     "image": "https://bear-media.com/og-image.jpg",
     "telephone": "+447879011860",
     "email": "info@bear-media.com",
@@ -168,7 +163,7 @@ const structuredData = [
     "@type": "Organization",
     "name": "Bear Media",
     "url": "https://bear-media.com",
-    "logo": "https://bear-media.com/bear-media-logo.png",
+    "logo": "https://bear-media.com/bear-media-logo-horizontal-white.png",
     "sameAs": [
       "https://www.facebook.com/bearmediacontentservices",
       "https://www.instagram.com/bearmedia70/",

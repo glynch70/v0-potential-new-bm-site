@@ -18,7 +18,7 @@ export function LegalPageLayout({ title, lastUpdated, children }: LegalPageLayou
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-3">
             <Image
-              src="/bear-media-logo.png"
+              src="/bear-media-logo-horizontal-white.png"
               alt="Bear Media"
               width={36}
               height={36}

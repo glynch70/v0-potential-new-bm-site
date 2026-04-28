@@ -74,7 +74,7 @@ export default function ContactPage() {
             <ArrowLeft size={20} />
             <span className="text-base font-medium">Back to home</span>
           </Link>
-          <Image src="/bear-media-logo.png" alt="Bear Media" width={100} height={40} className="h-10 w-auto" priority />
+          <Image src="/bear-media-logo-horizontal-white.png" alt="Bear Media" width={200} height={40} className="h-10 w-auto" priority />
         </div>
       </header>
 
