@@ -63,7 +63,6 @@ export default function ProblemSection() {
             ))}
           </div>
         </div>
-      </div>
     </section>
   );
 }
