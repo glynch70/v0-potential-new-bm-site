@@ -128,9 +128,8 @@ export default function BearMedia() {
               className="text-5xl md:text-7xl font-black uppercase leading-none mb-6 tracking-tight"
               style={{ fontFamily: "'Bebas Neue', sans-serif" }}
             >
-              We Come to You.<br />
-              We Film It. We Edit It.<br />
-              <span className="text-[#F5A623]">Your Channels Stay Full.</span>
+              We come to you. We film it We Edit It..<br />
+              <span className="text-[#F5A623]">Your Channels Stay Full</span>
             </motion.h1>
             <motion.p variants={fadeUp} className="text-lg text-white/70 mb-8 leading-relaxed max-w-xl">
               Bear Media visits your business, films everything you need — video, photography, and drone — then handles all the editing and channel management. You get professional content without touching a camera or spending a day briefing a team.
@@ -165,9 +164,28 @@ export default function BearMedia() {
           </motion.div>
         </div>
 
-        <a href="#pain" className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 animate-bounce">
+        <a href="#growth" className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 animate-bounce">
           <ChevronDown size={28} className="text-white/40" />
         </a>
+      </section>
+
+      {/* GROWTH SECTION */}
+      <section id="growth" className="py-20 bg-black border-y border-white/5">
+        <div className="max-w-6xl mx-auto px-6 text-center">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeUp}
+          >
+            <h2 className="text-6xl md:text-8xl font-black text-[#F5A623] mb-4 tracking-tighter" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
+              +661% Growth in 90 Days
+            </h2>
+            <p className="text-xl md:text-2xl text-white/60 font-bold uppercase tracking-widest">
+              123,000+ views generated for a local business through consistent content
+            </p>
+          </motion.div>
+        </div>
       </section>
 
       {/* PAIN SECTION */}
@@ -217,6 +235,50 @@ export default function BearMedia() {
                   </div>
                   <h3 className="text-xl font-bold mb-3 text-white">{item.title}</h3>
                   <p className="text-white/60 leading-relaxed text-sm">{item.body}</p>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* VIDEO SECTION */}
+      <section id="work" className="py-24 bg-[#0a0a0a]">
+        <div className="max-w-6xl mx-auto px-6">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={stagger}
+          >
+            <div className="grid md:grid-cols-3 gap-8">
+              {[
+                {
+                  title: "Shed Build Case Study",
+                  result: "From zero views to 45k on a single reel",
+                  poster: "https://d2xsxph8kpxj0f.cloudfront.net/107232073/eK9eiRqotQAadHPqx4yCFA/shed-build-poster.webp"
+                },
+                {
+                  title: "Property Drone Tour",
+                  result: "High-end cinematic coverage for local estate agents",
+                  poster: "https://d2xsxph8kpxj0f.cloudfront.net/107232073/eK9eiRqotQAadHPqx4yCFA/property-drone-poster.webp"
+                },
+                {
+                  title: "Construction & Trades",
+                  result: "Professional content that builds instant trust",
+                  poster: "https://d2xsxph8kpxj0f.cloudfront.net/107232073/eK9eiRqotQAadHPqx4yCFA/construction-trades-poster.webp"
+                }
+              ].map((video, i) => (
+                <motion.div key={i} variants={fadeUp} className="group cursor-pointer">
+                  <div className="aspect-[9/16] bg-[#1a1a1a] rounded-2xl overflow-hidden mb-6 border border-white/10 relative">
+                    <div className="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/0 transition-colors">
+                      <div className="w-16 h-16 bg-[#F5A623] rounded-full flex items-center justify-center scale-90 group-hover:scale-100 transition-transform shadow-xl">
+                        <Play size={24} className="text-black fill-black ml-1" />
+                      </div>
+                    </div>
+                  </div>
+                  <h3 className="text-lg font-bold text-white mb-1 uppercase tracking-tight">{video.title}</h3>
+                  <p className="text-[#F5A623] text-sm font-bold uppercase tracking-widest">{video.result}</p>
                 </motion.div>
               ))}
             </div>
@@ -523,6 +585,11 @@ export default function BearMedia() {
             variants={fadeUp}
             className="max-w-2xl mx-auto"
           >
+            <div className="text-center mb-8">
+              <p className="text-[#F5A623] text-sm font-bold uppercase tracking-[0.3em] italic">
+                Real content. Real results. No fluff.
+              </p>
+            </div>
             {submitted ? (
               <div className="bg-[#1a1a1a] border border-[#F5A623]/40 rounded-lg p-10 text-center">
                 <CheckCircle size={48} className="text-[#F5A623] mx-auto mb-4" />
