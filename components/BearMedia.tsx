@@ -1,3 +1,5 @@
+"use client";
+
 /* global Calendly */
 /**
  * Bear Media — Sales Funnel Landing Page
