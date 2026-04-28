@@ -44,8 +44,9 @@ export default function SalesHero() {
               transition={{ delay: 0.3, duration: 0.6 }}
               className="text-5xl md:text-7xl xl:text-8xl font-black uppercase leading-[0.9] tracking-tighter mb-8 font-bebas italic"
             >
-              You're not getting <span className="text-white">seen online.</span> <br />
-              <span className="text-brand-yellow">That’s costing you business.</span>
+              We come to you.<br />
+              We film it. We edit it.<br />
+              <span className="text-brand-yellow">Your channels stay full.</span>
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -53,7 +54,7 @@ export default function SalesHero() {
               transition={{ delay: 0.4, duration: 0.6 }}
               className="text-lg md:text-xl text-white/70 mb-10 max-w-xl leading-relaxed font-medium"
             >
-              We create content that gets attention and websites that turn that attention into real leads.
+              Content that keeps your business visible and brings in leads.
             </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 20 }}

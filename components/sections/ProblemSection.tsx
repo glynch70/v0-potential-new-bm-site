@@ -5,24 +5,19 @@ import { XCircle, TrendingDown, EyeOff, Globe } from 'lucide-react';
 
 const painPoints = [
   {
-    icon: <EyeOff className="text-brand-yellow" size={32} />,
-    title: "Zero Visibility",
-    description: "You're doing great work, but nobody knows it. You're invisible to the people searching for your services right now."
+    icon: <XCircle className="text-brand-yellow" size={32} />,
+    title: "No time to create content",
+    description: "Someone needs to plan it, shoot it, edit it, and post it. That's a part-time job that never gets done properly when you're busy running a business."
   },
   {
     icon: <TrendingDown className="text-brand-yellow" size={32} />,
-    title: "Inconsistent Content",
-    description: "A burst of posts followed by weeks of silence. It makes your business look inactive and unreliable to potential clients."
+    title: "Inconsistency kills visibility",
+    description: "A burst of posts followed by weeks of silence tells your audience you're not serious. Consistency is the only way to stay top-of-mind."
   },
   {
     icon: <Globe className="text-brand-yellow" size={32} />,
-    title: "Websites That Don't Sell",
-    description: "A fancy website is useless if it doesn't turn visitors into enquiries. Most sites are just expensive digital brochures."
-  },
-  {
-    icon: <XCircle className="text-brand-yellow" size={32} />,
-    title: "Losing to Competitors",
-    description: "Your competitors are winning because they look more professional and active online — even if their service isn't as good as yours."
+    title: "Hiring in-house is expensive",
+    description: "A full-time content creator runs £30k+ per year before equipment and management time. We provide agency-level output for a fraction of that cost."
   }
 ];
 
@@ -30,7 +25,7 @@ export default function ProblemSection() {
   return (
     <section className="py-24 bg-neutral-900 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="text-center mb-16">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -41,20 +36,15 @@ export default function ProblemSection() {
               Sound Familiar?
             </p>
             <h2 className="text-4xl md:text-6xl font-black uppercase leading-[1.1] mb-8 font-bebas italic">
-              Most businesses <span className="text-white">struggle to get leads</span> because they're ignored.
+              Why Most Businesses <span className="text-white">Struggle With Content</span>
             </h2>
-            <p className="text-lg text-white/60 mb-10 leading-relaxed">
+            <p className="text-lg text-white/60 mb-10 leading-relaxed max-w-2xl mx-auto">
               If your phone isn't ringing, it's usually because your online presence is either non-existent or professional enough to build trust.
             </p>
-            
-            <div className="p-8 bg-neutral-950/50 rounded-3xl border border-white/5 relative overflow-hidden group">
-               <div className="absolute top-0 right-0 w-32 h-32 bg-brand-yellow/5 blur-3xl group-hover:bg-brand-yellow/10 transition-colors duration-500" />
-               <p className="text-xl font-bold italic text-white mb-2">"We've tried social media, it just doesn't work for us."</p>
-               <p className="text-white/40 text-sm italic">— Every business that didn't have a system.</p>
-            </div>
           </motion.div>
+        </div>
 
-          <div className="grid md:grid-cols-2 gap-6">
+        <div className="grid md:grid-cols-3 gap-6">
             {painPoints.map((point, index) => (
               <motion.div
                 key={index}

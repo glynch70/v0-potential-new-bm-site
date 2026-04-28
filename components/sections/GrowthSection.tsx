@@ -1,0 +1,25 @@
+'use client';
+
+import { motion } from 'framer-motion';
+
+export default function GrowthSection() {
+  return (
+    <section className="py-20 bg-black border-y border-white/5">
+      <div className="max-w-7xl mx-auto px-6 text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <h2 className="text-6xl md:text-8xl font-black text-brand-yellow mb-4 tracking-tighter font-bebas italic">
+            +661% Growth in 90 Days
+          </h2>
+          <p className="text-xl md:text-2xl text-white/60 font-bold uppercase tracking-[0.2em]">
+            123,000+ Views Generated
+          </p>
+        </motion.div>
+      </div>
+    </section>
+  );
+}

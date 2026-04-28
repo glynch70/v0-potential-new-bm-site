@@ -3,11 +3,16 @@
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import SalesHero from '@/components/sections/SalesHero'
+import GrowthSection from '@/components/sections/GrowthSection'
 import ProblemSection from '@/components/sections/ProblemSection'
 import VisibilityLeadsSystem from '@/components/sections/VisibilityLeadsSystem'
+import VideoGrid from '@/components/sections/VideoGrid'
+import ServiceFeatures from '@/components/sections/ServiceFeatures'
 import CaseStudiesSection from '@/components/sections/CaseStudiesSection'
 import Process from '@/components/sections/Process'
+import TestimonialsSection from '@/components/sections/TestimonialsSection'
 import About from '@/components/sections/About'
+import FAQSection from '@/components/sections/FAQSection'
 import LeadForm from '@/components/sections/LeadForm'
 import { TrustedBySection } from '@/components/sections/TrustedBySection'
 
@@ -22,22 +27,37 @@ export default function Home() {
       {/* Trusted By Section (Social Proof Ticker) */}
       <TrustedBySection />
 
-      {/* 2. PROBLEM SECTION */}
+      {/* 2. GROWTH SECTION */}
+      <GrowthSection />
+
+      {/* 3. PROBLEM SECTION */}
       <ProblemSection />
 
-      {/* 3. SOLUTION (CORE OFFER) */}
+      {/* 4. SOLUTION (CORE OFFER) */}
       <VisibilityLeadsSystem />
 
-      {/* 4. CASE STUDIES */}
+      {/* 5. VIDEO GRID (PROOF IN ACTION) */}
+      <VideoGrid />
+
+      {/* 6. SERVICE FEATURES (BULLET POINTS) */}
+      <ServiceFeatures />
+
+      {/* 7. CASE STUDIES */}
       <CaseStudiesSection />
       
-      {/* 5. HOW IT WORKS */}
+      {/* 8. HOW IT WORKS */}
       <Process />
+
+      {/* 9. TESTIMONIALS */}
+      <TestimonialsSection />
       
-      {/* 6. ABOUT GARRY */}
+      {/* 10. ABOUT GARRY */}
       <About />
+
+      {/* 11. FAQ SECTION */}
+      <FAQSection />
       
-      {/* 7. STRONG CTA & 8. CONTACT FORM */}
+      {/* 12. STRONG CTA & CONTACT FORM */}
       <LeadForm />
       
       <Footer />
