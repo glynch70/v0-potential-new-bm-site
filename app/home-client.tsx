@@ -2,35 +2,43 @@
 
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
-import HeroSection from '@/components/HeroSection'
-import { TrustedBySection } from '@/components/sections/TrustedBySection'
-import ServicesGrid from '@/components/sections/ServicesGrid'
-import Portfolio from '@/components/sections/Portfolio'
+import SalesHero from '@/components/sections/SalesHero'
+import ProblemSection from '@/components/sections/ProblemSection'
+import VisibilityLeadsSystem from '@/components/sections/VisibilityLeadsSystem'
+import CaseStudiesSection from '@/components/sections/CaseStudiesSection'
+import Process from '@/components/sections/Process'
 import About from '@/components/sections/About'
-import Contact from '@/components/sections/Contact'
+import LeadForm from '@/components/sections/LeadForm'
+import { TrustedBySection } from '@/components/sections/TrustedBySection'
 
 export default function Home() {
   return (
-    <main className="bg-neutral-950 min-h-screen text-white font-sans">
+    <main className="bg-neutral-950 min-h-screen text-white font-sans selection:bg-brand-yellow selection:text-neutral-950">
       <Navbar />
       
-      {/* Hero Section */}
-      <HeroSection />
+      {/* 1. HERO SECTION */}
+      <SalesHero />
       
-      {/* Trusted By Section */}
+      {/* Trusted By Section (Social Proof Ticker) */}
       <TrustedBySection />
 
-      {/* Services Section */}
-      <ServicesGrid />
+      {/* 2. PROBLEM SECTION */}
+      <ProblemSection />
 
-      {/* Latest Content Feed (Work) */}
-      <Portfolio />
+      {/* 3. SOLUTION (CORE OFFER) */}
+      <VisibilityLeadsSystem />
+
+      {/* 4. CASE STUDIES */}
+      <CaseStudiesSection />
       
-      {/* About Garry */}
+      {/* 5. HOW IT WORKS */}
+      <Process />
+      
+      {/* 6. ABOUT GARRY */}
       <About />
       
-      {/* Contact Section */}
-      <Contact />
+      {/* 7. STRONG CTA & 8. CONTACT FORM */}
+      <LeadForm />
       
       <Footer />
     </main>

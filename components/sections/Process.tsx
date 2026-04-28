@@ -6,27 +6,21 @@ import { motion } from 'framer-motion'
 const steps = [
   {
     id: '01',
-    title: 'Discovery',
-    frontText: 'Quick call to understand your business, goals, and audience',
-    backText: 'We dig deep into what makes your business unique and who your customers really are'
+    title: 'Strategy Call',
+    frontText: 'A free 30-minute deep dive to find the gaps in your visibility and leads.',
+    backText: 'We map out exactly what you need to stop being ignored and start getting calls.'
   },
   {
     id: '02',
-    title: 'Strategy',
-    frontText: 'A clear plan for your project, content, or both',
-    backText: 'No filler, just a prioritised roadmap of what will actually move the needle for you'
+    title: 'We Create & Build',
+    frontText: 'On-site content creation and high-performance web development.',
+    backText: 'We handle everything. The filming, the editing, and the technical build.'
   },
   {
     id: '03',
-    title: 'Creation',
-    frontText: 'We build it and you see everything before it goes live',
-    backText: 'Transparent development and content creation with constant feedback loops'
-  },
-  {
-    id: '04',
-    title: 'Results',
-    frontText: 'Your site is live or your content is rolling',
-    backText: 'We monitor the performance and stay in touch to ensure long-term growth and success'
+    title: 'You Get Leads',
+    frontText: 'The system goes live and you start seeing the results in your inbox.',
+    backText: 'Continuous management and optimisation to ensure the leads keep coming.'
   }
 ]
 
@@ -48,12 +42,12 @@ export default function Process() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="text-4xl md:text-6xl text-center mb-24 leading-tight font-extrabold text-white uppercase italic tracking-tighter"
+          className="text-4xl md:text-6xl text-center mb-24 leading-tight font-black text-white uppercase font-bebas italic tracking-tight"
         >
           From first call to live results
         </motion.h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 w-full">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 w-full">
           {steps.map((step, index) => (
             <ProcessFlipCard key={step.id} step={step} index={index} />
           ))}
@@ -87,13 +81,13 @@ function ProcessFlipCard({ step, index }: { step: any; index: number }) {
           <div className="w-16 h-16 rounded-full bg-brand-yellow text-dark flex items-center justify-center text-2xl font-black mb-8 shadow-xl shadow-brand-yellow/20">
             {step.id}
           </div>
-          <h3 className="text-xl font-bold text-white mb-4 uppercase italic">{step.title}</h3>
+          <h3 className="text-2xl font-black text-white mb-4 uppercase font-bebas italic tracking-wide">{step.title}</h3>
           <p className="text-white/60 text-base leading-relaxed italic">{step.frontText}</p>
         </div>
 
         {/* Back Face */}
         <div className="absolute inset-0 w-full h-full [backface-visibility:hidden] [transform:rotateY(180deg)] bg-white/10 glass-card flex flex-col items-center justify-center p-10 border-brand-yellow/30 shadow-2xl backdrop-blur-xl">
-          <h3 className="text-2xl font-black text-brand-yellow uppercase italic mb-6">Deep Dive</h3>
+          <h3 className="text-2xl font-black text-brand-yellow uppercase font-bebas italic mb-6">Deep Dive</h3>
           <p className="text-white font-bold text-lg leading-relaxed italic">{step.backText}</p>
           
           <div className="mt-8 text-white/30 text-[10px] font-black uppercase tracking-[0.2em]">

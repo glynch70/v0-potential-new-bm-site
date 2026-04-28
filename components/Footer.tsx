@@ -13,6 +13,7 @@ import {
 	Mail,
 	MapPin,
 	ArrowUpRight,
+	MessageSquare,
 } from 'lucide-react';
 
 interface FooterLink {
@@ -37,10 +38,10 @@ const footerLinkGroups: FooterLinkGroup[] = [
 	{
 		label: 'Services',
 		links: [
-			{ title: 'Web Design', href: '/#services' },
-			{ title: 'Social Media', href: '/#services' },
+			{ title: 'Web Design', href: '/#how-it-works' },
+			{ title: 'Social Media', href: '/#how-it-works' },
 			{ title: 'Training', href: '/training' },
-			{ title: 'AI Solutions', href: '/#services' },
+			{ title: 'Visibility System', href: '/#how-it-works' },
 		],
 	},
 	{
@@ -48,8 +49,8 @@ const footerLinkGroups: FooterLinkGroup[] = [
 		links: [
 			{ title: 'Home', href: '/' },
 			{ title: 'About', href: '/#about' },
-			{ title: 'Portfolio', href: '/#work' },
-			{ title: 'YouTube', href: '/#youtube' },
+			{ title: 'Case Studies', href: '/#work' },
+			{ title: 'YouTube', href: 'https://www.youtube.com/@bearmedia70' },
 		],
 	},
 	{
@@ -58,7 +59,7 @@ const footerLinkGroups: FooterLinkGroup[] = [
 			{ title: '+44 7879 011860', href: 'tel:+447879011860', icon: Phone },
 			{ title: 'info@bear-media.com', href: 'mailto:info@bear-media.com', icon: Mail },
 			{ title: 'Discovery Call', href: 'https://calendly.com/bearmedia/discovery-call', icon: ArrowUpRight },
-			{ title: 'Broxburn, EH52 6PH', href: 'https://maps.google.com/?q=Broxburn+EH52+6PH', icon: MapPin },
+			{ title: 'WhatsApp Now', href: 'https://wa.me/447879011860', icon: MessageSquare },
 		],
 	},
 ];
@@ -82,7 +83,7 @@ export default function Footer() {
 						</div>
 						
 						<p className="text-white/50 text-sm leading-relaxed max-w-sm">
-							Websites and content that help Scottish businesses get seen, trusted, and contacted.
+							Bear Media helps local businesses get visible online and turn that visibility into real leads. Get Seen. Get Leads. Grow Your Business.
 						</p>
 
 						<div className="flex gap-4">

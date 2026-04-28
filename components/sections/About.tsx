@@ -29,58 +29,64 @@ const team = [
 
 export default function About() {
   return (
-    <section id="about" className="relative max-w-6xl mx-auto px-6 py-24 grid md:grid-cols-2 gap-16 items-center overflow-visible">
+    <section id="about" className="relative max-w-7xl mx-auto px-6 py-24 grid md:grid-cols-2 gap-16 items-center overflow-visible">
       {/* Background Accent */}
       <div className="absolute top-0 left-0 w-[400px] h-[400px] bg-brand-yellow/5 blur-[120px] rounded-full pointer-events-none" />
 
-      <div className="relative group">
+      <div className="relative group order-2 md:order-1">
         <div className="absolute -inset-1 bg-brand-yellow rounded-3xl blur opacity-10 group-hover:opacity-20 transition duration-500"></div>
-        <div className="relative aspect-square rounded-3xl bg-neutral-900 border border-white/5 overflow-hidden shadow-2xl">
+        <div className="relative aspect-[4/5] rounded-[2.5rem] bg-neutral-900 border border-white/5 overflow-hidden shadow-2xl">
           <Image 
             src="/team/garry_lynch_hero.jpg" 
             alt="Garry Lynch"
             fill 
             className="object-cover transition-transform duration-700 group-hover:scale-105"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/80 via-transparent to-transparent" />
-          <div className="absolute bottom-8 left-8">
-            <p className="text-brand-yellow font-black uppercase tracking-widest text-[10px] mb-1">FOUNDER</p>
-            <h3 className="text-2xl font-black uppercase italic">Garry Lynch</h3>
+          <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-transparent to-transparent" />
+          <div className="absolute bottom-10 left-10">
+            <p className="text-brand-yellow font-black uppercase tracking-widest text-[10px] mb-2">FOUNDER</p>
+            <h3 className="text-4xl font-black uppercase font-bebas italic tracking-wider text-white">Garry Lynch</h3>
           </div>
         </div>
       </div>
       
-      <div className="relative z-10">
-        <p className="text-brand-yellow font-black uppercase tracking-[0.3em] text-xs mb-4">THE STORY</p>
-        <h2 className="text-5xl md:text-6xl font-black tracking-tighter uppercase italic mb-8">About <span className="text-brand-yellow">Garry</span></h2>
+      <div className="relative z-10 order-1 md:order-2">
+        <p className="text-brand-yellow font-bold uppercase tracking-[0.3em] text-xs mb-6">THE VISIONARY</p>
+        <h2 className="text-5xl md:text-7xl font-black tracking-tighter uppercase font-bebas italic mb-8">
+          Results Over <span className="text-brand-yellow">Rhetoric.</span>
+        </h2>
         
-        <p className="text-white/70 leading-relaxed text-xl mb-8 font-medium">
-          I’m the freelance content creator behind <span className="text-white font-bold">Bear Media</span>. I help Scottish businesses who know they need to do more online but lack time, ideas or consistency.
-        </p>
+        <div className="space-y-6 text-lg text-white/70 leading-relaxed font-medium mb-10">
+          <p>
+            With <span className="text-white font-bold italic">over 20 years of experience</span> in content creation and digital strategy, I've seen every trend come and go.
+          </p>
+          <p>
+            I built <span className="text-white font-bold italic text-brand-yellow">Bear Media</span> because I saw too many local businesses being ignored online. They had great services, but their digital presence didn't match their expertise.
+          </p>
+          <p>
+            My goal is simple: to help real businesses grow, not just look good online. I don't care about vanity metrics. I care about how many enquiries are hitting your inbox.
+          </p>
+        </div>
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-8 mb-12">
           {[
-            'Fast turnaround',
-            'Real human service',
-            'High-end visuals',
-            'Local and reliable'
+            '20+ Years Experience',
+            'No Fluff, Just Results',
+            'Direct Access to Founder',
+            'Conversion-First Focus'
           ].map((item) => (
             <div key={item} className="flex items-center gap-3">
-              <div className="w-5 h-5 rounded-full bg-brand-yellow/10 flex items-center justify-center">
-                <div className="w-1.5 h-1.5 rounded-full bg-brand-yellow" />
-              </div>
-              <span className="text-white/80 font-bold text-sm uppercase tracking-wider">{item}</span>
+              <div className="w-2 h-2 rounded-full bg-brand-yellow shadow-[0_0_10px_rgba(221,163,30,0.5)]" />
+              <span className="text-white/80 font-black text-xs uppercase tracking-widest">{item}</span>
             </div>
           ))}
         </div>
 
         <a 
-          href="https://calendly.com/bearmedia/discovery-call"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-block px-10 py-5 rounded-2xl bg-brand-yellow text-black font-black uppercase tracking-widest text-sm shadow-[0_0_30px_rgba(221,163,30,0.2)] hover:scale-105 transition-all"
+          href="#contact"
+          className="inline-block px-12 py-5 rounded-2xl bg-brand-yellow text-black font-black uppercase tracking-widest text-sm shadow-[0_0_30px_rgba(221,163,30,0.2)] hover:scale-105 transition-all"
         >
-          Work with me
+          Let's Grow Your Business
         </a>
       </div>
     </section>
