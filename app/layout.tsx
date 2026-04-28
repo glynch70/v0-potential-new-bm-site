@@ -39,10 +39,10 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL("https://bear-media.com"),
 
-  title: "Bear Media | Websites, Drone Video & Social Media | Edinburgh, Fife & Central Scotland",
+  title: "Bear Media | Visibility & Leads System | Get Seen. Get Leads. Grow Your Business.",
 
   description:
-    "Bear Media is a solo creative agency in West Lothian. Websites, drone video & social media for Scottish SMEs. No monthly fees — you own 100% of the code.",
+    "Bear Media helps local businesses across the Scottish Central Belt get visible online and turn that visibility into real leads. Premium websites, drone video, and social content.",
 
   keywords: [
     "web design Scotland",
