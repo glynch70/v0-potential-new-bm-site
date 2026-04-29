@@ -12,11 +12,14 @@ export default function GrowthSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-6xl md:text-8xl font-black text-brand-yellow mb-4 tracking-tighter font-bebas italic">
-            +661% Growth in 90 Days
+          <h2 className="text-4xl sm:text-6xl md:text-8xl font-black text-brand-yellow mb-4 tracking-tighter font-bebas italic leading-tight">
+            +661% Growth
           </h2>
           <p className="text-xl md:text-2xl text-white/60 font-bold uppercase tracking-[0.2em]">
             123,000+ Views Generated
+          </p>
+          <p className="text-brand-yellow font-bold uppercase tracking-widest text-xs mt-4">
+            Recent client progress since Feb 26
           </p>
         </motion.div>
       </div>

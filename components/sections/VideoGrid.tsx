@@ -3,38 +3,31 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
 import { Play, X, CheckCircle2 } from 'lucide-react';
+import { TiltCard } from '@/components/ui/tilt-card';
 
 const videos = [
   {
     id: 1,
     title: "Shed Company Content",
-    action: "Filmed and edited on-site",
-    outcome: "Helped generate enquiries",
-    poster: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&q=80&w=800",
+    youtubeId: "CQNytl9SPb4",
+    type: "The Shed Company",
+    action: "On-site video production",
+    outcome: "Consistent daily visibility",
+    poster: "https://img.youtube.com/vi/CQNytl9SPb4/maxresdefault.jpg",
     caseStudy: {
-      problem: "No online presence, relying on expensive and outdated marketing.",
-      done: "Full on-site video production and social media management.",
-      result: "45k views on a single reel and a consistent flow of leads."
+      problem: "No consistent online presence. Relying on outdated marketing and not getting enough enquiries.",
+      done: "Filmed and created consistent content on-site, focused on showing real work and building trust.",
+      result: "Improved visibility online, leading to direct enquiries and sales."
     }
   },
   {
     id: 2,
-    title: "Property Drone Tour",
-    action: "Cinematic aerial coverage",
-    outcome: "Premium listing attraction",
-    poster: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&q=80&w=800",
-    caseStudy: {
-      problem: "Static images failing to convey the scale of premium properties.",
-      done: "High-end drone cinematography and vertical video tours.",
-      result: "Immediate engagement boost and faster property sales."
-    }
-  },
-  {
-    id: 3,
-    title: "Construction Project",
-    action: "Progress updates & team focus",
-    outcome: "Instant professional trust",
-    poster: "https://images.unsplash.com/photo-1541888946425-d81bb19480c5?auto=format&fit=crop&q=80&w=800",
+    title: "Work in Progress",
+    youtubeId: "Ll1AUE9Gxrg",
+    type: "Active Site Proof",
+    action: "Behind the scenes",
+    outcome: "Building client trust",
+    poster: "https://img.youtube.com/vi/Ll1AUE9Gxrg/maxresdefault.jpg",
     caseStudy: {
       problem: "Clients were unaware of the quality and scale of active projects.",
       done: "Weekly progress filming and 'behind the scenes' content.",
@@ -42,39 +35,59 @@ const videos = [
     }
   },
   {
-    id: 4,
-    title: "Business Promo",
-    action: "Brand story production",
-    outcome: "Increased local awareness",
-    poster: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=800",
+    id: 3,
+    title: "Bear Media Showreel",
+    youtubeId: "fIVELaRnAPg",
+    type: "Brand Authority",
+    action: "Cinematic drone & visuals",
+    outcome: "Premium brand image",
+    poster: "https://img.youtube.com/vi/fIVELaRnAPg/maxresdefault.jpg",
     caseStudy: {
-      problem: "Invisible in a crowded local market.",
-      done: "Professional brand story video and high-impact social clips.",
-      result: "10k+ local views and measurable increase in walk-in traffic."
+      problem: "Missing the opportunity to capture event scale and brand authority.",
+      done: "Licensed drone coverage and high-energy event editing.",
+      result: "Became a staple visual for event promotion, reaching 100k+ views."
+    }
+  },
+  {
+    id: 4,
+    title: "Engagement Content",
+    youtubeId: "iEp_s1NSNlg",
+    type: "Social Growth",
+    action: "Viral reel strategy",
+    outcome: "Increased reach & attention",
+    poster: "https://img.youtube.com/vi/iEp_s1NSNlg/maxresdefault.jpg",
+    caseStudy: {
+      problem: "Social media was inconsistent and not generating attention.",
+      done: "Created regular short-form content designed to be seen and shared.",
+      result: "Increased visibility, stronger engagement, and consistent daily reach."
     }
   },
   {
     id: 5,
-    title: "Engagement Content",
-    action: "Viral reel strategy",
-    outcome: "Tripled social reach",
-    poster: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&q=80&w=800",
+    title: "Property Drone Tour",
+    youtubeId: "Sx438Fh9FWw",
+    type: "Real Estate",
+    action: "Cinematic aerial coverage",
+    outcome: "Premium listing attraction",
+    poster: "https://img.youtube.com/vi/Sx438Fh9FWw/maxresdefault.jpg",
     caseStudy: {
-      problem: "Stagnant social media accounts with low engagement.",
-      done: "Batch-filmed short-form content optimized for platform algorithms.",
-      result: "Follower growth of 30% in 60 days and consistent daily views."
+      problem: "Static images failing to convey the scale of premium properties.",
+      done: "High-end drone cinematography and vertical video tours.",
+      result: "Immediate engagement boost and faster property sales."
     }
   },
   {
     id: 6,
-    title: "Cinematic Drone",
-    action: "Fringe festival highlight",
-    outcome: "Viral event coverage",
-    poster: "https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?auto=format&fit=crop&q=80&w=800",
+    title: "Business Promo",
+    youtubeId: "kGIPg1Rel6Q",
+    type: "Local Business",
+    action: "Brand story production",
+    outcome: "Increased local awareness",
+    poster: "https://img.youtube.com/vi/kGIPg1Rel6Q/maxresdefault.jpg",
     caseStudy: {
-      problem: "Missing the opportunity to capture event scale.",
-      done: "Licensed drone coverage and high-energy event editing.",
-      result: "Became a staple visual for event promotion, reaching 100k+ views."
+      problem: "Invisible in a crowded local market.",
+      done: "Professional brand story video and high-impact social clips.",
+      result: "10k+ local views and measurable increase in walk-in traffic."
     }
   }
 ];
@@ -83,7 +96,7 @@ export default function VideoGrid() {
   const [selectedVideo, setSelectedVideo] = useState<any>(null);
 
   return (
-    <section className="py-24 bg-neutral-950">
+    <section id="work" className="py-24 bg-neutral-950">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
           <motion.p
@@ -106,34 +119,34 @@ export default function VideoGrid() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {videos.map((video, index) => (
-            <motion.div
+            <TiltCard
               key={video.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
               className="group relative aspect-[9/16] md:aspect-square bg-neutral-900 rounded-3xl overflow-hidden cursor-pointer border border-white/5"
-              onClick={() => setSelectedVideo(video)}
             >
-              <img
-                src={video.poster}
-                alt={video.title}
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-              />
-              <div className="absolute inset-0 bg-neutral-950/40 group-hover:bg-neutral-950/80 transition-all duration-300" />
-              
-              <div className="absolute inset-0 p-8 flex flex-col justify-end opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                 <div className="w-12 h-12 bg-brand-yellow rounded-full flex items-center justify-center mb-6 shadow-2xl scale-75 group-hover:scale-100 transition-transform duration-300">
-                    <Play size={20} className="text-neutral-950 fill-neutral-950 ml-1" />
-                 </div>
-                 <h3 className="text-2xl font-black text-white uppercase font-bebas italic mb-2 tracking-wide">{video.title}</h3>
-                 <p className="text-brand-yellow font-bold text-xs uppercase tracking-widest mb-1">{video.action}</p>
-                 <p className="text-white/50 text-xs uppercase tracking-widest">{video.outcome}</p>
-              </div>
+              <div 
+                className="w-full h-full"
+                onClick={() => setSelectedVideo(video)}
+              >
+                <img
+                  src={video.poster}
+                  alt={video.title}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-neutral-950/40 group-hover:bg-neutral-950/90 transition-all duration-300" />
+                
+                <div className="absolute inset-0 p-8 flex flex-col justify-end opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                   <div className="w-12 h-12 bg-brand-yellow rounded-full flex items-center justify-center mb-6 shadow-2xl scale-75 group-hover:scale-100 transition-transform duration-300">
+                      <Play size={20} className="text-neutral-950 fill-neutral-950 ml-1" />
+                   </div>
+                   <h3 className="text-2xl font-black text-white uppercase font-bebas italic mb-2 tracking-wide">{video.type}</h3>
+                   <p className="text-brand-yellow font-bold text-xs uppercase tracking-widest mb-1">{video.action}</p>
+                   <p className="text-white/50 text-xs uppercase tracking-widest">{video.outcome}</p>
+                </div>
 
-              {/* Subtle Glow Hover Effect */}
-              <div className="absolute -inset-1 bg-brand-yellow opacity-0 group-hover:opacity-10 blur-2xl transition-opacity duration-500 rounded-3xl" />
-            </motion.div>
+                {/* Subtle Glow Hover Effect */}
+                <div className="absolute -inset-1 bg-brand-yellow opacity-0 group-hover:opacity-10 blur-2xl transition-opacity duration-500 rounded-3xl" />
+              </div>
+            </TiltCard>
           ))}
         </div>
 
@@ -143,7 +156,7 @@ export default function VideoGrid() {
           viewport={{ once: true }}
           className="mt-20 text-center"
         >
-          <p className="text-white/50 text-lg mb-8 italic">
+          <p className="text-white font-bold text-xl md:text-2xl mb-8 italic max-w-2xl mx-auto leading-relaxed">
             "If your business isn’t showing up like this, you’re missing opportunities."
           </p>
           <a
@@ -173,18 +186,27 @@ export default function VideoGrid() {
               onClick={(e) => e.stopPropagation()}
              >
                 <div className="relative aspect-video bg-black flex items-center justify-center">
-                   <div className="text-white/20 font-black uppercase font-bebas italic text-4xl">Video Player Placeholder</div>
+                   <iframe
+                    width="100%"
+                    height="100%"
+                    src={`https://www.youtube.com/embed/${selectedVideo.youtubeId}?autoplay=1&rel=0`}
+                    title={selectedVideo.title}
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowFullScreen
+                    className="w-full h-full"
+                   ></iframe>
                    <button 
                     onClick={() => setSelectedVideo(null)}
-                    className="absolute top-6 right-6 w-10 h-10 bg-black/50 backdrop-blur-md rounded-full flex items-center justify-center text-white hover:bg-brand-yellow hover:text-neutral-950 transition-colors"
+                    className="absolute top-6 right-6 w-10 h-10 bg-black/50 backdrop-blur-md rounded-full flex items-center justify-center text-white hover:bg-brand-yellow hover:text-neutral-950 transition-colors z-10"
                    >
                      <X size={20} />
                    </button>
                 </div>
-                <div className="p-8 md:p-12 grid md:grid-cols-2 gap-12">
+                <div className="p-6 md:p-12 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
                    <div>
-                      <h3 className="text-4xl font-black text-white uppercase font-bebas italic mb-6 tracking-tight">{selectedVideo.title}</h3>
-                      <div className="space-y-6">
+                      <h3 className="text-3xl md:text-4xl font-black text-white uppercase font-bebas italic mb-4 md:mb-6 tracking-tight">{selectedVideo.title}</h3>
+                      <div className="space-y-4 md:space-y-6">
                         <div>
                           <p className="text-brand-yellow font-black uppercase tracking-widest text-[10px] mb-2">The Problem</p>
                           <p className="text-white/60 text-sm leading-relaxed">{selectedVideo.caseStudy.problem}</p>
@@ -195,12 +217,12 @@ export default function VideoGrid() {
                         </div>
                       </div>
                    </div>
-                   <div className="bg-neutral-950 p-8 rounded-3xl border border-white/5 flex flex-col justify-center">
-                      <div className="flex items-center gap-3 mb-4">
-                         <CheckCircle2 className="text-brand-yellow" size={24} />
-                         <p className="text-brand-yellow font-black uppercase tracking-widest text-xs">The Result</p>
+                   <div className="bg-neutral-950 p-6 md:p-8 rounded-3xl border border-white/5 flex flex-col justify-center">
+                      <div className="flex items-center gap-3 mb-3 md:mb-4">
+                         <CheckCircle2 className="text-brand-yellow" size={20} />
+                         <p className="text-brand-yellow font-black uppercase tracking-widest text-[10px]">The Result</p>
                       </div>
-                      <p className="text-2xl font-black text-white uppercase font-bebas italic tracking-wide">{selectedVideo.caseStudy.result}</p>
+                      <p className="text-xl md:text-2xl font-black text-white uppercase font-bebas italic tracking-wide">{selectedVideo.caseStudy.result}</p>
                    </div>
                 </div>
              </motion.div>

@@ -7,11 +7,37 @@ import { useState } from 'react';
 export default function LeadForm() {
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setSubmitted(true);
-    // Add actual submission logic here if needed (e.g., fetch to /api/enquiry)
-  };
+  const [isSubmitting, setIsSubmitting] = useState(false);
+ 
+   const handleSubmit = async (e: React.FormEvent) => {
+     e.preventDefault();
+     setIsSubmitting(true);
+     
+     const formData = new FormData(e.target as HTMLFormElement);
+     const data = {
+       name: formData.get('name'),
+       company: formData.get('company'),
+       email: formData.get('email'),
+       size: 'Homepage Form',
+       message: 'Enquiry from main landing page.'
+     };
+ 
+     try {
+       const response = await fetch('/api/enquiry', {
+         method: 'POST',
+         headers: { 'Content-Type': 'application/json' },
+         body: JSON.stringify(data),
+       });
+ 
+       if (response.ok) {
+         setSubmitted(true);
+       }
+     } catch (error) {
+       console.error('Submission failed:', error);
+     } finally {
+       setIsSubmitting(false);
+     }
+   };
 
   return (
     <section id="contact" className="py-24 bg-neutral-950 relative overflow-hidden">
@@ -26,13 +52,12 @@ export default function LeadForm() {
             viewport={{ once: true }}
           >
             <p className="text-brand-yellow font-bold uppercase tracking-[0.3em] text-xs mb-6">Take Action</p>
-            <h2 className="text-5xl md:text-7xl font-black uppercase leading-tight font-bebas italic mb-8">
+            <h2 className="text-3xl sm:text-5xl md:text-7xl font-black uppercase leading-tight font-bebas italic mb-8">
               If you're not visible, <br />
-              <span className="text-brand-yellow">you're losing business.</span> <br />
-              Simple as that.
+              <span className="text-brand-yellow">you're losing business.</span>
             </h2>
             <p className="text-lg text-white/50 mb-12 max-w-lg leading-relaxed">
-              Stop letting your competitors take your leads. Let's build a system that keeps your phone ringing.
+              We handle your content so your business stays seen. Stop letting your competitors take your leads.
             </p>
 
             <div className="flex flex-wrap gap-4 mb-12">
@@ -46,7 +71,7 @@ export default function LeadForm() {
                   <Send size={20} />
                 </div>
                 <div>
-                  <div className="text-white font-bold text-sm">Book a Call</div>
+                  <div className="text-white font-bold text-sm">Book a Strategy Call</div>
                   <div className="text-white/40 text-[10px] uppercase tracking-widest mt-0.5">Free 30-min strategy</div>
                 </div>
               </a>
@@ -61,7 +86,7 @@ export default function LeadForm() {
                   <MessageSquare size={20} className="fill-white" />
                 </div>
                 <div>
-                  <div className="text-white font-bold text-sm">WhatsApp Now</div>
+                  <div className="text-white font-bold text-sm">WhatsApp</div>
                   <div className="text-white/40 text-[10px] uppercase tracking-widest mt-0.5">Fastest response</div>
                 </div>
               </a>
@@ -83,7 +108,7 @@ export default function LeadForm() {
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="bg-neutral-900 p-8 md:p-12 rounded-[3rem] border border-white/5 shadow-2xl relative"
+            className="bg-neutral-900 p-6 md:p-12 rounded-[2.5rem] md:rounded-[3rem] border border-white/5 shadow-2xl relative"
           >
             {submitted ? (
               <div className="py-20 text-center">
@@ -105,6 +130,7 @@ export default function LeadForm() {
                   <label className="block text-white/40 text-[10px] uppercase tracking-[0.2em] mb-3 ml-1">Full Name</label>
                   <input
                     type="text"
+                    name="name"
                     required
                     placeholder="John Doe"
                     className="w-full px-6 py-4 bg-neutral-950 border border-white/5 rounded-2xl text-white placeholder:text-white/20 focus:outline-none focus:border-brand-yellow/50 transition-colors"
@@ -114,25 +140,28 @@ export default function LeadForm() {
                   <label className="block text-white/40 text-[10px] uppercase tracking-[0.2em] mb-3 ml-1">Business Name</label>
                   <input
                     type="text"
+                    name="company"
                     required
                     placeholder="Acme Trades Ltd"
                     className="w-full px-6 py-4 bg-neutral-950 border border-white/5 rounded-2xl text-white placeholder:text-white/20 focus:outline-none focus:border-brand-yellow/50 transition-colors"
                   />
                 </div>
                 <div>
-                  <label className="block text-white/40 text-[10px] uppercase tracking-[0.2em] mb-3 ml-1">Phone Number</label>
+                  <label className="block text-white/40 text-[10px] uppercase tracking-[0.2em] mb-3 ml-1">Email Address</label>
                   <input
-                    type="tel"
+                    type="email"
+                    name="email"
                     required
-                    placeholder="+44 7000 000000"
+                    placeholder="john@example.com"
                     className="w-full px-6 py-4 bg-neutral-950 border border-white/5 rounded-2xl text-white placeholder:text-white/20 focus:outline-none focus:border-brand-yellow/50 transition-colors"
                   />
                 </div>
                 <button
                   type="submit"
-                  className="w-full py-5 bg-brand-yellow text-neutral-950 font-black uppercase tracking-widest text-sm rounded-2xl shadow-xl hover:scale-[1.02] transition-all duration-300 active:scale-[0.98]"
+                  disabled={isSubmitting}
+                  className="w-full py-5 bg-brand-yellow text-neutral-950 font-black uppercase tracking-widest text-sm rounded-2xl shadow-xl hover:scale-[1.02] transition-all duration-300 active:scale-[0.98] disabled:opacity-50"
                 >
-                  Get Your Free Strategy Call
+                  {isSubmitting ? 'Sending...' : 'Get Your Free Strategy Call'}
                 </button>
                 <p className="text-center text-white/20 text-[10px] uppercase tracking-widest">No obligation. 100% confidential.</p>
               </form>

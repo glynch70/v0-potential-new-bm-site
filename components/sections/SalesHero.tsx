@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { Play } from 'lucide-react';
+import Image from 'next/image';
 
 export default function SalesHero() {
   return (
@@ -14,7 +15,7 @@ export default function SalesHero() {
           loop
           playsInline
           className="w-full h-full object-cover opacity-30"
-          src="/media/NEW BM DRONE HERO.mp4"
+          src="/bm-drone-hero.mp4"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-neutral-950/80 via-neutral-950/60 to-neutral-950" />
       </div>
@@ -42,17 +43,19 @@ export default function SalesHero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.6 }}
-              className="text-5xl md:text-7xl xl:text-8xl font-black uppercase leading-[0.9] tracking-tighter mb-8 font-bebas italic"
+              className="text-[2rem] sm:text-[2.5rem] md:text-[3.5rem] xl:text-[4.2rem] font-bold leading-[1.1] tracking-tight mb-8 font-inter-tight max-w-2xl"
+              style={{ letterSpacing: '-0.04em' }}
             >
               We come to you.<br />
-              We film it. We edit it.<br />
+              We film it.<br />
+              We edit it.<br />
               <span className="text-brand-yellow">Your channels stay full.</span>
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.6 }}
-              className="text-lg md:text-xl text-white/70 mb-10 max-w-xl leading-relaxed font-medium"
+              className="text-lg md:text-xl text-white/70 mb-10 max-w-lg leading-relaxed font-medium"
             >
               Content that keeps your business visible and brings in leads.
             </motion.p>
@@ -64,16 +67,16 @@ export default function SalesHero() {
             >
               <a
                 href="#contact"
-                className="px-10 py-5 bg-brand-yellow text-neutral-950 font-black uppercase tracking-widest text-sm rounded-xl shadow-[0_0_30px_rgba(221,163,30,0.3)] hover:scale-105 hover:shadow-[0_0_50px_rgba(221,163,30,0.5)] transition-all duration-300"
+                className="px-10 py-5 bg-brand-yellow text-neutral-950 font-black uppercase tracking-widest text-sm rounded-xl hover:scale-105 transition-all duration-300"
               >
-                Get More Leads
+                Let's Grow Your Business
               </a>
               <a
-                href="#how-it-works"
+                href="#work"
                 className="px-10 py-5 border border-white/20 text-white font-bold uppercase tracking-widest text-sm rounded-xl hover:bg-white/5 transition-all duration-300 flex items-center gap-2"
               >
                 <Play size={16} className="fill-white" />
-                See How It Works
+                See Our Work
               </a>
             </motion.div>
           </motion.div>
@@ -84,28 +87,29 @@ export default function SalesHero() {
             transition={{ delay: 0.6, duration: 0.8 }}
             className="relative"
           >
-            {/* Visual Mockup - Placeholder for now, but styled to look premium */}
+            {/* Visual Mockup */}
             <div className="relative rounded-3xl overflow-hidden border border-white/10 shadow-2xl bg-neutral-900 aspect-[4/3] md:aspect-video">
-               <div className="absolute inset-0 bg-gradient-to-tr from-brand-yellow/10 to-transparent" />
+               <div className="absolute inset-0 bg-gradient-to-tr from-brand-yellow/10 to-transparent z-10 pointer-events-none" />
                <video
                 autoPlay
                 muted
                 loop
                 playsInline
                 className="w-full h-full object-cover"
-                src="/media/NEW BM DRONE HERO.mp4"
+                src="/bm-drone-hero.mp4"
               />
-              <div className="absolute inset-0 flex items-center justify-center">
-                 <div className="w-16 h-16 bg-brand-yellow rounded-full flex items-center justify-center shadow-2xl scale-110">
-                    <Play size={24} className="text-neutral-950 fill-neutral-950 ml-1" />
-                 </div>
-              </div>
-              <div className="absolute bottom-6 left-6 right-6 p-6 bg-black/40 backdrop-blur-md rounded-2xl border border-white/10">
+              <div className="absolute bottom-6 left-6 right-6 p-6 bg-black/40 backdrop-blur-md rounded-2xl border border-white/10 z-20">
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 bg-brand-yellow rounded-lg flex items-center justify-center font-black text-neutral-950">BM</div>
-                  <div>
-                    <div className="text-white font-bold text-sm">Visibility & Leads System</div>
-                    <div className="text-white/50 text-xs tracking-widest uppercase mt-0.5">Content + Conversion</div>
+                  <div className="flex flex-col">
+                    <span className="text-white font-bold text-sm leading-tight" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif' }}>
+                      Bear Media
+                    </span>
+                    <span className="text-white/60 text-[9px] font-medium uppercase tracking-[0.1em]" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif' }}>
+                      Websites & Social Media
+                    </span>
+                  </div>
+                  <div className="ml-auto">
+                    <div className="text-white/40 text-[10px] uppercase tracking-widest">Visibility System</div>
                   </div>
                 </div>
               </div>

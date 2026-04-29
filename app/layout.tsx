@@ -1,7 +1,7 @@
 import { Analytics } from "@vercel/analytics/react";
 import type { Metadata, Viewport } from "next";
 import Script from "next/script";
-import { Poppins, Figtree, Bebas_Neue } from "next/font/google";
+import { Poppins, Figtree, Bebas_Neue, Inter_Tight } from "next/font/google";
 import { LenisScrollProvider } from "@/components/LenisScrollProvider";
 import { ScrollProgress } from "@/components/ui/ScrollProgress";
 import "./globals.css";
@@ -17,6 +17,12 @@ const figtree = Figtree({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700", "800", "900"],
   variable: "--font-figtree",
+  display: "swap",
+});
+
+const interTight = Inter_Tight({
+  subsets: ["latin"],
+  variable: "--font-inter-tight",
   display: "swap",
 });
 
@@ -242,7 +248,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${poppins.variable} ${figtree.variable} ${bebasNeue.variable}`} suppressHydrationWarning>
+    <html lang="en" className={`${poppins.variable} ${figtree.variable} ${bebasNeue.variable} ${interTight.variable}`} suppressHydrationWarning>
       <head>
         <script
           type="application/ld+json"
@@ -270,7 +276,7 @@ export default function RootLayout({
           </>
         )}
       </head>
-      <body className="font-poppins antialiased text-[#333]" suppressHydrationWarning>
+      <body className="antialiased selection:bg-brand-yellow selection:text-neutral-950" suppressHydrationWarning>
         <ScrollProgress />
         <LenisScrollProvider>
           {children}

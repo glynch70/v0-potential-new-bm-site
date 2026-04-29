@@ -8,7 +8,7 @@ import ProblemSection from '@/components/sections/ProblemSection'
 import VisibilityLeadsSystem from '@/components/sections/VisibilityLeadsSystem'
 import VideoGrid from '@/components/sections/VideoGrid'
 import ServiceFeatures from '@/components/sections/ServiceFeatures'
-import CaseStudiesSection from '@/components/sections/CaseStudiesSection'
+import { FeaturedWorkSection } from '@/components/sections/FeaturedWorkSection'
 import Process from '@/components/sections/Process'
 import TestimonialsSection from '@/components/sections/TestimonialsSection'
 import About from '@/components/sections/About'
@@ -27,8 +27,6 @@ export default function Home() {
       {/* Trusted By Section (Social Proof Ticker) */}
       <TrustedBySection />
 
-      {/* 2. GROWTH SECTION */}
-      <GrowthSection />
 
       {/* 3. PROBLEM SECTION */}
       <ProblemSection />
@@ -42,8 +40,11 @@ export default function Home() {
       {/* 6. SERVICE FEATURES (BULLET POINTS) */}
       <ServiceFeatures />
 
-      {/* 7. CASE STUDIES */}
-      <CaseStudiesSection />
+      {/* 6. GROWTH SECTION */}
+      <GrowthSection />
+ 
+      {/* 7. WEBSITES SECTION (GALLERY) */}
+      <FeaturedWorkSection />
       
       {/* 8. HOW IT WORKS */}
       <Process />

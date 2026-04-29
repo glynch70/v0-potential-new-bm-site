@@ -77,6 +77,10 @@
 @theme inline {
   --font-sans: 'Geist', 'Geist Fallback';
   --font-mono: 'Geist Mono', 'Geist Mono Fallback';
+  --font-poppins: var(--font-poppins);
+  --font-figtree: var(--font-figtree);
+  --font-bebas-neue: var(--font-bebas-neue);
+  --font-inter-tight: var(--font-inter-tight);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);

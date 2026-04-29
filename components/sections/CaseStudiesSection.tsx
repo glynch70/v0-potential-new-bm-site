@@ -5,28 +5,20 @@ import { CheckCircle2, TrendingUp, Users, Target } from 'lucide-react';
 
 const cases = [
   {
-    type: "Local Trades Business",
-    problem: "Zero online presence. Relied entirely on word of mouth, resulting in inconsistent work flow.",
-    solution: "On-site video production and a new high-performance website focused on booking local jobs.",
-    result: "300% increase in monthly enquiries. Fully booked 3 months in advance within 8 weeks.",
+    type: "Shed Company Content",
+    problem: "No consistent online presence. Relying on outdated marketing and not getting enough enquiries.",
+    solution: "Filmed and created consistent content on-site, focused on showing real work and building trust.",
+    result: "Improved visibility online, leading to direct enquiries and sales.",
     image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&q=80&w=800",
     icon: <Target className="text-brand-yellow" size={20} />
   },
   {
-    type: "Estate Agency",
-    problem: "Property videos looked amateur. Failing to attract high-end sellers in a competitive market.",
-    solution: "Cinematic drone tours and professional social media content management.",
-    result: "Became the go-to agency for premium listings. Social media reach grew by 10,000+ monthly.",
-    image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&q=80&w=800",
-    icon: <Users className="text-brand-yellow" size={20} />
-  },
-  {
-    type: "High-Ticket Coach",
-    problem: "Great service but a website that looked 'cheap'. High bounce rate on sales pages.",
-    solution: "Premium dark-themed redesign with integrated lead capture and authority-building content.",
-    result: "Conversion rate tripled. Average lead value increased by 40% due to improved brand perception.",
+    type: "Engagement Content",
+    problem: "Social media was inconsistent and not generating attention.",
+    solution: "Created regular short-form content designed to be seen and shared.",
+    result: "Increased visibility, stronger engagement, and consistent daily reach.",
     image: "https://images.unsplash.com/photo-1515187029135-18ee286d815b?auto=format&fit=crop&q=80&w=800",
-    icon: <TrendingUp className="text-brand-yellow" size={20} />
+    icon: <Users className="text-brand-yellow" size={20} />
   }
 ];
 
@@ -45,7 +37,7 @@ export default function CaseStudiesSection() {
               Proven Results
             </p>
             <h2 className="text-4xl md:text-6xl font-black uppercase leading-tight font-bebas italic">
-              Real Impact for <span className="text-white">Real Businesses.</span>
+              Real Results for <span className="text-white">Local Businesses.</span>
             </h2>
           </motion.div>
           <motion.p
@@ -54,7 +46,7 @@ export default function CaseStudiesSection() {
             viewport={{ once: true }}
             className="text-white/50 text-lg max-w-sm italic"
           >
-            "We don't just create content. We create business growth."
+            "Content that gets your business seen and brings in real enquiries."
           </motion.p>
         </div>
 

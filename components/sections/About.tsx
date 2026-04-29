@@ -58,22 +58,25 @@ export default function About() {
         
         <div className="space-y-6 text-lg text-white/70 leading-relaxed font-medium mb-10">
           <p>
-            With <span className="text-white font-bold italic">over 20 years of experience</span> in content creation and digital strategy, I've seen every trend come and go.
+            I built Bear Media to help businesses get seen online and improve the quality of their ads and promotional content.
           </p>
           <p>
-            I built <span className="text-white font-bold italic text-brand-yellow">Bear Media</span> because I saw too many local businesses being ignored online. They had great services, but their digital presence didn't match their expertise.
+            Too many good businesses are invisible. Not because they lack skill, but because their content doesn’t reflect the quality of what they do.
           </p>
           <p>
-            My goal is simple: to help real businesses grow, not just look good online. I don't care about vanity metrics. I care about how many enquiries are hitting your inbox.
+            I focus on creating content that actually works — not just looks good. Content that builds trust, gets attention, and brings in enquiries.
+          </p>
+          <p>
+            No fluff. No overcomplicated marketing. Just clear, consistent content that helps your business grow.
           </p>
         </div>
         
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-8 mb-12">
           {[
-            '20+ Years Experience',
-            'No Fluff, Just Results',
-            'Direct Access to Founder',
-            'Conversion-First Focus'
+            '20+ years experience',
+            'Real business focus',
+            'No fluff, just results',
+            'Content built to convert'
           ].map((item) => (
             <div key={item} className="flex items-center gap-3">
               <div className="w-2 h-2 rounded-full bg-brand-yellow shadow-[0_0_10px_rgba(221,163,30,0.5)]" />

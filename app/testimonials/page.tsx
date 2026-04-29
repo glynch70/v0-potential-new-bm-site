@@ -75,7 +75,7 @@ export default function TestimonialsPage() {
           Trusted by 25+ Local Businesses Across Scotland
         </h1>
         <p className="text-lg md:text-xl text-zinc-400 max-w-3xl mx-auto leading-relaxed mb-10">
-          We don't do corporate waffle or vanity metrics. We build fast websites and create scroll-stopping content that actually moves the needle. Here's what happens when local businesses choose Bear Media to help them get found, trusted, and contacted.
+          We don't do corporate waffle or vanity metrics. We build fast websites and create scroll-stopping content that actually brings in enquiries. Here's what happens when local businesses choose Bear Media to help them get found, trusted, and contacted.
         </p>
         <Link href="/contact">
           <Button className="bg-[#C9A227] text-[#0f172a] hover:bg-[#FF6B35] hover:text-white rounded-full px-8 py-6 text-lg font-bold transition-colors">

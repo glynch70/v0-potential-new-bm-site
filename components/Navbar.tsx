@@ -1,20 +1,76 @@
 'use client'
 
 import Link from 'next/link'
-import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X } from 'lucide-react'
 import { useState, useEffect } from 'react'
+import { MenuBar } from '@/components/ui/glow-menu'
+import { LayoutGrid, Play, Info, Phone, Menu, X } from 'lucide-react'
 
-const navLinks = [
-  { name: 'Services', href: '/#services' },
-  { name: 'Work', href: '/#work' },
-  { name: 'About', href: '/#about' },
-  { name: 'Contact', href: '/#contact' },
+const menuItems = [
+  {
+    icon: LayoutGrid,
+    label: "Services",
+    href: "/#services",
+    gradient: "radial-gradient(circle, rgba(245,166,35,0.15) 0%, rgba(245,166,35,0.06) 50%, rgba(245,166,35,0) 100%)",
+    iconColor: "text-brand-yellow",
+  },
+  {
+    icon: Play,
+    label: "Work",
+    href: "/#work",
+    gradient: "radial-gradient(circle, rgba(59,130,246,0.15) 0%, rgba(37,99,235,0.06) 50%, rgba(29,78,216,0) 100%)",
+    iconColor: "text-blue-500",
+  },
+  {
+    icon: Info,
+    label: "About",
+    href: "/#about",
+    gradient: "radial-gradient(circle, rgba(34,197,94,0.15) 0%, rgba(22,163,74,0.06) 50%, rgba(21,128,61,0) 100%)",
+    iconColor: "text-green-500",
+  },
+  {
+    icon: Phone,
+    label: "Contact",
+    href: "/#contact",
+    gradient: "radial-gradient(circle, rgba(239,68,68,0.15) 0%, rgba(220,38,38,0.06) 50%, rgba(185,28,28,0) 100%)",
+    iconColor: "text-red-500",
+  },
 ]
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
+  const [activeItem, setActiveItem] = useState<string>("")
+
+  // Update active section on scroll
+  useEffect(() => {
+    const observerOptions = {
+      root: null,
+      rootMargin: '-20% 0px -70% 0px',
+      threshold: 0
+    };
+
+    const observerCallback = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const sectionId = entry.target.id;
+          const matchingItem = menuItems.find(item => item.href === `/#${sectionId}` || item.href === `/${sectionId}`);
+          if (matchingItem) {
+            setActiveItem(matchingItem.label);
+          }
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+    
+    // Sections to observe
+    ['services', 'work', 'about', 'contact'].forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, []);
 
   // Prevent scroll when menu is open
   useEffect(() => {
@@ -27,39 +83,32 @@ export default function Navbar() {
   }, [isOpen])
 
   return (
-    <header className="sticky top-0 z-50 backdrop-blur-md border-b border-white/10 bg-neutral-950/70">
-      <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+    <header className="sticky top-0 z-50 backdrop-blur-md border-b border-white/10 bg-neutral-950/80 transition-all duration-300">
+      <div className="max-w-6xl mx-auto px-6 py-3 flex justify-between items-center">
         <div className="flex items-center gap-3">
-          <Link href="/" className="flex items-center gap-3 group" onClick={() => setIsOpen(false)}>
-            <div className="relative w-32 h-10">
-              <Image 
-                src="/bear-media-logo-horizontal-white.png" 
-                alt="Bear Media Logo"
-                fill
-                className="object-contain"
-              />
+            <div className="flex flex-col">
+              <span className="text-white font-bold text-lg leading-tight" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif' }}>
+                Bear Media
+              </span>
+              <span className="text-white/60 text-[10px] font-medium uppercase tracking-[0.2em]" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif' }}>
+                Websites & Social Media
+              </span>
             </div>
-          </Link>
         </div>
 
         {/* Desktop Menu */}
-        <div className="hidden md:flex items-center gap-8">
-          <nav className="flex gap-6 text-sm font-bold uppercase tracking-widest text-white/70">
-            {navLinks.map((link) => (
-              <Link 
-                key={link.name} 
-                href={link.href}
-                className="hover:text-brand-yellow transition-colors"
-              >
-                {link.name}
-              </Link>
-            ))}
-          </nav>
+        <div className="hidden md:flex items-center gap-6">
+          <MenuBar 
+            items={menuItems} 
+            activeItem={activeItem} 
+            onItemClick={setActiveItem}
+            className="bg-transparent border-none shadow-none p-0"
+          />
           <Link 
             href="#contact"
-            className="px-5 py-2.5 rounded-xl bg-brand-yellow text-black font-black uppercase tracking-widest text-[10px] hover:scale-105 transition-all shadow-[0_0_20px_rgba(221,163,30,0.2)]"
+            className="px-6 py-2.5 rounded-xl bg-brand-yellow text-neutral-950 font-black uppercase tracking-widest text-[10px] hover:scale-105 transition-all shadow-lg active:scale-95"
           >
-            Start Project
+            Book a Call
           </Link>
         </div>
 
@@ -86,9 +135,9 @@ export default function Navbar() {
             <div className="absolute top-[-10%] right-[-10%] w-[50%] h-[50%] bg-brand-yellow/10 blur-[120px] rounded-full pointer-events-none" />
             <div className="absolute bottom-[-10%] left-[-10%] w-[50%] h-[50%] bg-white/5 blur-[120px] rounded-full pointer-events-none" />
 
-            {navLinks.map((link, i) => (
+            {menuItems.map((link, i) => (
               <motion.div
-                key={link.name}
+                key={link.label}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 + i * 0.1 }}
@@ -98,7 +147,7 @@ export default function Navbar() {
                   onClick={() => setIsOpen(false)}
                   className="text-4xl font-black text-white uppercase italic tracking-tighter hover:text-brand-yellow transition-colors"
                 >
-                  {link.name}
+                  {link.label}
                 </Link>
               </motion.div>
             ))}

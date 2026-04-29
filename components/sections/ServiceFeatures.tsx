@@ -8,7 +8,7 @@ const features = [
   "Video reels and short-form content, filmed and edited to platform spec",
   "Photography for social posts, websites, and ads",
   "Drone footage for aerial coverage and standout visuals",
-  "AI-enhanced editing using the latest production tools",
+  "Professional editing focused on social media growth",
   "Monthly content calendar planned and approved in advance",
   "Captions, scheduling, and posting — fully managed",
   "Monthly performance report so you can see what's working"

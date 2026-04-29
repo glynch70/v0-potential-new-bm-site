@@ -7,9 +7,11 @@
  * Goal: Book a free 30-minute discovery call
  */
 
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
-import { CheckCircle, Star, Play, ChevronDown, Phone, Mail, MapPin } from "lucide-react";
+import { CheckCircle, Star, Play, ChevronDown, Phone, Mail, MapPin, X } from "lucide-react";
+import Image from "next/image";
+import { TiltCard } from "@/components/ui/tilt-card";
 
 const HERO_IMAGE = "https://d2xsxph8kpxj0f.cloudfront.net/107232073/eK9eiRqotQAadHPqx4yCFA/bear-media-hero-AvMTP7XyG5S8DvhpwqvRmg.webp";
 
@@ -32,6 +34,7 @@ export default function BearMedia() {
   });
   const [submitted, setSubmitted] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [selectedVideo, setSelectedVideo] = useState<any>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -83,11 +86,15 @@ export default function BearMedia() {
       {/* NAV */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0a0a0a]/90 backdrop-blur-sm border-b border-white/10">
         <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-[#F5A623] rounded flex items-center justify-center">
-              <span className="text-black font-black text-xs tracking-wider">BM</span>
+          <div className="flex items-center gap-3">
+            <div className="relative w-12 h-12">
+              <Image 
+                src="/logos/bear media logo white on black.png" 
+                alt="Bear Media Logo"
+                fill
+                className="object-contain"
+              />
             </div>
-            <span className="font-bold text-white tracking-wide text-sm uppercase">Bear Media</span>
           </div>
           
             href="#book"
@@ -125,10 +132,12 @@ export default function BearMedia() {
             </motion.p>
             <motion.h1
               variants={fadeUp}
-              className="text-5xl md:text-7xl font-black uppercase leading-none mb-6 tracking-tight"
-              style={{ fontFamily: "'Bebas Neue', sans-serif" }}
+              className="text-[2.2rem] sm:text-[2.5rem] md:text-[3.5rem] xl:text-[4.2rem] font-bold leading-[1.1] tracking-tight mb-8 font-inter-tight max-w-2xl"
+              style={{ letterSpacing: '-0.04em' }}
             >
-              We come to you. We film it We Edit It..<br />
+              We come to you.<br />
+              We film it.<br />
+              We edit it.<br />
               <span className="text-[#F5A623]">Your Channels Stay Full</span>
             </motion.h1>
             <motion.p variants={fadeUp} className="text-lg text-white/70 mb-8 leading-relaxed max-w-xl">
@@ -139,7 +148,7 @@ export default function BearMedia() {
                 href="#book"
                 className="bg-[#F5A623] text-black font-bold px-8 py-4 rounded text-base hover:bg-[#e09510] transition-colors"
               >
-                Book a Free 30-Min Call
+                Let's Grow Your Business
               </a>
               
                 href="#work"
@@ -178,11 +187,14 @@ export default function BearMedia() {
             viewport={{ once: true }}
             variants={fadeUp}
           >
-            <h2 className="text-6xl md:text-8xl font-black text-[#F5A623] mb-4 tracking-tighter" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
-              +661% Growth in 90 Days
+            <h2 className="text-4xl sm:text-6xl md:text-8xl font-black text-[#F5A623] mb-4 tracking-tighter leading-tight" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
+              +661% Growth
             </h2>
-            <p className="text-xl md:text-2xl text-white/60 font-bold uppercase tracking-widest">
-              123,000+ views generated for a local business through consistent content
+            <p className="text-xl md:text-2xl text-white/60 font-bold uppercase tracking-widest mb-4">
+              123,000+ views generated
+            </p>
+            <p className="text-[#F5A623] font-bold uppercase tracking-widest text-xs">
+              Recent client progress since Feb 26
             </p>
           </motion.div>
         </div>
@@ -228,7 +240,7 @@ export default function BearMedia() {
                 <motion.div
                   key={item.number}
                   variants={fadeUp}
-                  className="bg-[#1a1a1a] border border-white/10 rounded-lg p-8 hover:border-[#F5A623]/40 transition-colors"
+                  className="bg-[#1a1a1a] border border-white/10 rounded-lg p-8 hover:border-[#F5A623]/40 transition-colors h-full"
                 >
                   <div className="text-[#F5A623]/30 text-5xl font-black mb-4" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
                     {item.number}
@@ -254,36 +266,90 @@ export default function BearMedia() {
             <div className="grid md:grid-cols-3 gap-8">
               {[
                 {
-                  title: "Shed Build Case Study",
+                  title: "The Shed Company",
+                  youtubeId: "CQNytl9SPb4",
                   result: "From zero views to 45k on a single reel",
-                  poster: "https://d2xsxph8kpxj0f.cloudfront.net/107232073/eK9eiRqotQAadHPqx4yCFA/shed-build-poster.webp"
+                  poster: "https://img.youtube.com/vi/CQNytl9SPb4/maxresdefault.jpg"
                 },
                 {
-                  title: "Property Drone Tour",
-                  result: "High-end cinematic coverage for local estate agents",
-                  poster: "https://d2xsxph8kpxj0f.cloudfront.net/107232073/eK9eiRqotQAadHPqx4yCFA/property-drone-poster.webp"
+                  title: "Work in Progress",
+                  youtubeId: "Ll1AUE9Gxrg",
+                  result: "Building client trust with active site proof",
+                  poster: "https://img.youtube.com/vi/Ll1AUE9Gxrg/maxresdefault.jpg"
                 },
                 {
-                  title: "Construction & Trades",
-                  result: "Professional content that builds instant trust",
-                  poster: "https://d2xsxph8kpxj0f.cloudfront.net/107232073/eK9eiRqotQAadHPqx4yCFA/construction-trades-poster.webp"
+                  title: "Bear Media Showreel",
+                  youtubeId: "fIVELaRnAPg",
+                  result: "Cinematic brand authority & drone visuals",
+                  poster: "https://img.youtube.com/vi/fIVELaRnAPg/maxresdefault.jpg"
                 }
               ].map((video, i) => (
-                <motion.div key={i} variants={fadeUp} className="group cursor-pointer">
-                  <div className="aspect-[9/16] bg-[#1a1a1a] rounded-2xl overflow-hidden mb-6 border border-white/10 relative">
-                    <div className="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/0 transition-colors">
+                <TiltCard 
+                  key={i} 
+                  className="group cursor-pointer rounded-2xl overflow-hidden"
+                  onClick={() => setSelectedVideo(video)}
+                >
+                  <div className="aspect-[9/16] bg-[#1a1a1a] rounded-2xl overflow-hidden mb-0 border border-white/10 relative">
+                    <img src={video.poster} className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt={video.title} />
+                    <div className="absolute inset-0 flex items-center justify-center bg-black/40 group-hover:bg-black/20 transition-colors">
                       <div className="w-16 h-16 bg-[#F5A623] rounded-full flex items-center justify-center scale-90 group-hover:scale-100 transition-transform shadow-xl">
                         <Play size={24} className="text-black fill-black ml-1" />
                       </div>
                     </div>
                   </div>
-                  <h3 className="text-lg font-bold text-white mb-1 uppercase tracking-tight">{video.title}</h3>
-                  <p className="text-[#F5A623] text-sm font-bold uppercase tracking-widest">{video.result}</p>
-                </motion.div>
+                  <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                    <h3 className="text-lg font-bold text-white mb-1 uppercase tracking-tight">{video.title}</h3>
+                    <p className="text-[#F5A623] text-sm font-bold uppercase tracking-widest">{video.result}</p>
+                  </div>
+                </TiltCard>
               ))}
             </div>
           </motion.div>
         </div>
+
+        {/* Modal */}
+        <AnimatePresence>
+          {selectedVideo && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 z-[100] flex items-center justify-center p-6 bg-black/90 backdrop-blur-md"
+              onClick={() => setSelectedVideo(null)}
+            >
+               <motion.div
+                initial={{ scale: 0.9, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.9, opacity: 0 }}
+                className="bg-neutral-900 w-full max-w-4xl rounded-[2.5rem] border border-white/10 overflow-hidden shadow-2xl"
+                onClick={(e) => e.stopPropagation()}
+               >
+                  <div className="relative aspect-video bg-black flex items-center justify-center">
+                     <iframe
+                      width="100%"
+                      height="100%"
+                      src={`https://www.youtube.com/embed/${selectedVideo.youtubeId}?autoplay=1&rel=0`}
+                      title={selectedVideo.title}
+                      frameBorder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      allowFullScreen
+                      className="w-full h-full"
+                     ></iframe>
+                     <button 
+                      onClick={() => setSelectedVideo(null)}
+                      className="absolute top-6 right-6 w-10 h-10 bg-black/50 backdrop-blur-md rounded-full flex items-center justify-center text-white hover:bg-[#F5A623] hover:text-black transition-colors z-10"
+                     >
+                       <X size={20} />
+                     </button>
+                  </div>
+                  <div className="p-8 md:p-12">
+                      <h3 className="text-4xl font-black text-white uppercase mb-6 tracking-tight" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>{selectedVideo.title}</h3>
+                      <p className="text-[#F5A623] text-xl font-bold uppercase tracking-widest">{selectedVideo.result}</p>
+                  </div>
+               </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </section>
 
       {/* WHAT YOU GET */}
@@ -317,7 +383,7 @@ export default function BearMedia() {
                     "Video reels and short-form content, filmed and edited to platform spec",
                     "Photography for social posts, websites, and ads",
                     "Drone footage for aerial coverage and standout visuals",
-                    "AI-enhanced editing using the latest production tools",
+                    "Professional editing focused on social media growth",
                     "Monthly content calendar planned and approved in advance",
                     "Captions, scheduling, and posting — fully managed",
                     "Monthly performance report so you can see what's working",
@@ -601,9 +667,9 @@ export default function BearMedia() {
             ) : (
               <form
                 onSubmit={handleSubmit}
-                className="bg-[#1a1a1a] border border-white/10 rounded-lg p-8 space-y-4"
+                className="bg-[#1a1a1a] border border-white/10 rounded-lg p-6 md:p-8 space-y-4"
               >
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-white/50 text-xs uppercase tracking-widest mb-2">Your Name</label>
                     <input
@@ -677,13 +743,44 @@ export default function BearMedia() {
 
         </div>
       </section>
+      <section className="py-20 bg-black overflow-hidden px-6">
+        <div className="max-w-6xl mx-auto">
+          <div className="rounded-3xl overflow-hidden border border-white/10 h-80 relative group shadow-2xl">
+            <iframe 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d35808.64125868846!2d-3.48347895!3d55.9332214!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4887c10b788647cf%3A0x8848417937a06c8b!2sBroxburn!5e0!3m2!1sen!2suk!4v1714432134567!5m2!1sen!2suk" 
+              className="w-full h-full transition-opacity duration-700"
+              style={{ border: 0 }} 
+              allowFullScreen 
+              loading="lazy" 
+              referrerPolicy="no-referrer-when-downgrade"
+            />
+            <div className="absolute top-6 left-6 z-10 bg-black/60 backdrop-blur-md px-5 py-3 rounded-2xl border border-white/10 pointer-events-none">
+              <div className="flex items-center gap-3">
+                <div className="w-8 h-8 rounded-full bg-[#F5A623] flex items-center justify-center text-black">
+                  <MapPin size={16} />
+                </div>
+                <div>
+                  <p className="text-[10px] font-bold uppercase tracking-widest text-white/50">Our Location</p>
+                  <p className="text-sm font-bold text-white">Broxburn, West Lothian</p>
+                </div>
+              </div>
+            </div>
+            <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-black via-transparent to-transparent opacity-60" />
+          </div>
+        </div>
+      </section>
 
       {/* FOOTER */}
       <footer className="py-8 bg-[#050505] border-t border-white/10">
         <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2">
-            <div className="w-6 h-6 bg-[#F5A623] rounded flex items-center justify-center">
-              <span className="text-black font-black text-[10px]">BM</span>
+            <div className="relative h-6 w-32">
+              <Image 
+                src="/bear-media-logo-horizontal-white.png" 
+                alt="Bear Media" 
+                fill 
+                className="object-contain object-left"
+              />
             </div>
             <span className="text-white/40 text-sm">Bear Media · Broxburn, West Lothian</span>
           </div>

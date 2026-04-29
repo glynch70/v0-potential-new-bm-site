@@ -4,9 +4,9 @@ import { useState } from 'react'
 import Image from 'next/image'
 
 const websites = [
-  { img: '/work/seamus_v5_final.jpg', name: 'Seamus Corry', desc: 'Mental health & wellbeing training for teams', url: 'https://seamuscorry.com/' },
+  { img: '/work/seamus_v5_final.jpg', name: 'Seamus Corry', desc: 'Coming Soon', url: null },
   { img: '/work/mwm.jpg', name: 'Managing What Matters', desc: 'Practical leadership & management training', url: 'https://managingwhatmatters.co.uk' },
-  { img: '/work/herb_soul.jpg', name: 'Herb & Soul', desc: 'Natural wellness & herbal remedies', url: 'https://www.herbandsoul.uk/' },
+  { img: '/work/herb_soul.jpg', name: 'Herb & Soul', desc: 'Coming Soon', url: null },
   { img: '/work/almond_vet_care.jpg', name: 'Almond Vet Care', desc: 'Professional veterinary practice care', url: 'https://almondvetcare.co.uk/' },
   { img: '/work/klewis.jpg', name: 'K Lewis Joinery', desc: 'Expert equestrian & bespoke joinery', url: 'https://www.klewisjoineryltd.co.uk/' },
   { img: '/work/robertsons.jpg', name: 'Robertson Transport', desc: 'UK-wide logistics & transport solutions', url: 'https://rt-ltd.uk/' },
@@ -36,10 +36,10 @@ export function FeaturedWorkSection() {
   return (
     <section id="work" className="py-24 px-4 bg-zinc-950">
       <div className="max-w-5xl mx-auto">
-        <div className="text-center mb-12">
-          <p className="text-amber-400 text-sm font-semibold uppercase tracking-widest mb-3">Portfolio</p>
-          <h2 className="text-4xl md:text-5xl font-black text-white mb-4">Our Work</h2>
-          <p className="text-zinc-400 text-lg">Real results for real businesses across Scotland.</p>
+        <div className="text-center mb-10 md:mb-12">
+          <p className="text-brand-yellow text-[10px] md:text-sm font-semibold uppercase tracking-widest mb-3">Portfolio</p>
+          <h2 className="text-3xl md:text-5xl font-black text-white mb-4 uppercase font-bebas italic leading-tight">Bear Media <span className="text-brand-yellow">Websites</span></h2>
+          <p className="text-zinc-400 text-sm md:text-lg max-w-2xl mx-auto">High-performance sites designed to turn attention into enquiries.</p>
         </div>
 
         <div className="flex justify-center gap-2 mb-10 flex-wrap">

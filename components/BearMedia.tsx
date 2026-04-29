@@ -9,9 +9,10 @@
  * Goal: Book a free 30-minute discovery call
  */
 
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
-import { CheckCircle, Star, Play, ChevronDown, Phone, Mail, MapPin } from "lucide-react";
+import { CheckCircle, Star, Play, ChevronDown, Phone, Mail, MapPin, X } from "lucide-react";
+import Image from "next/image";
 
 const HERO_IMAGE = "https://d2xsxph8kpxj0f.cloudfront.net/107232073/eK9eiRqotQAadHPqx4yCFA/bear-media-hero-AvMTP7XyG5S8DvhpwqvRmg.webp";
 
@@ -34,6 +35,7 @@ export default function BearMedia() {
   });
   const [submitted, setSubmitted] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [selectedVideo, setSelectedVideo] = useState<any>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -86,11 +88,13 @@ export default function BearMedia() {
       {/* NAV */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0a0a0a]/90 backdrop-blur-sm border-b border-white/10">
         <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-[#F5A623] rounded flex items-center justify-center">
-              <span className="text-black font-black text-xs tracking-wider">BM</span>
-            </div>
-            <span className="font-bold text-white tracking-wide text-sm uppercase">Bear Media</span>
+          <div className="flex flex-col">
+            <span className="text-white font-bold text-base leading-tight" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif' }}>
+              Bear Media
+            </span>
+            <span className="text-white/50 text-[9px] font-medium uppercase tracking-[0.15em]" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif' }}>
+              Websites & Social Media
+            </span>
           </div>
           <a
             href="#book"
@@ -128,10 +132,12 @@ export default function BearMedia() {
             </motion.p>
             <motion.h1
               variants={fadeUp}
-              className="text-5xl md:text-7xl font-black uppercase leading-none mb-6 tracking-tight"
-              style={{ fontFamily: "'Bebas Neue', sans-serif" }}
+              className="text-[2.5rem] md:text-[3.5rem] xl:text-[4.2rem] font-bold leading-[1.1] tracking-tight mb-8 font-inter-tight max-w-2xl"
+              style={{ letterSpacing: '-0.04em' }}
             >
-              We come to you. We film it We Edit It..<br />
+              We come to you.<br />
+              We film it.<br />
+              We edit it.<br />
               <span className="text-[#F5A623]">Your Channels Stay Full</span>
             </motion.h1>
             <motion.p variants={fadeUp} className="text-lg text-white/70 mb-8 leading-relaxed max-w-xl">
@@ -142,7 +148,7 @@ export default function BearMedia() {
                 href="#book"
                 className="bg-[#F5A623] text-black font-bold px-8 py-4 rounded text-base hover:bg-[#e09510] transition-colors"
               >
-                Book a Free 30-Min Call
+                Let's Grow Your Business
               </a>
               <a
                 href="#work"
@@ -258,23 +264,32 @@ export default function BearMedia() {
               {[
                 {
                   title: "Shed Build Case Study",
+                  youtubeId: "CQNytl9SPb4",
                   result: "From zero views to 45k on a single reel",
-                  poster: "https://d2xsxph8kpxj0f.cloudfront.net/107232073/eK9eiRqotQAadHPqx4yCFA/shed-build-poster.webp"
+                  poster: "https://img.youtube.com/vi/CQNytl9SPb4/maxresdefault.jpg"
                 },
                 {
                   title: "Property Drone Tour",
+                  youtubeId: "Sx438Fh9FWw",
                   result: "High-end cinematic coverage for local estate agents",
-                  poster: "https://d2xsxph8kpxj0f.cloudfront.net/107232073/eK9eiRqotQAadHPqx4yCFA/property-drone-poster.webp"
+                  poster: "https://img.youtube.com/vi/Sx438Fh9FWw/maxresdefault.jpg"
                 },
                 {
                   title: "Construction & Trades",
+                  youtubeId: "Ll1AUE9Gxrg",
                   result: "Professional content that builds instant trust",
-                  poster: "https://d2xsxph8kpxj0f.cloudfront.net/107232073/eK9eiRqotQAadHPqx4yCFA/construction-trades-poster.webp"
+                  poster: "https://img.youtube.com/vi/Ll1AUE9Gxrg/maxresdefault.jpg"
                 }
               ].map((video, i) => (
-                <motion.div key={i} variants={fadeUp} className="group cursor-pointer">
+                <motion.div 
+                  key={i} 
+                  variants={fadeUp} 
+                  className="group cursor-pointer"
+                  onClick={() => setSelectedVideo(video)}
+                >
                   <div className="aspect-[9/16] bg-[#1a1a1a] rounded-2xl overflow-hidden mb-6 border border-white/10 relative">
-                    <div className="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/0 transition-colors">
+                    <img src={video.poster} className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt={video.title} />
+                    <div className="absolute inset-0 flex items-center justify-center bg-black/40 group-hover:bg-black/20 transition-colors">
                       <div className="w-16 h-16 bg-[#F5A623] rounded-full flex items-center justify-center scale-90 group-hover:scale-100 transition-transform shadow-xl">
                         <Play size={24} className="text-black fill-black ml-1" />
                       </div>
@@ -287,6 +302,50 @@ export default function BearMedia() {
             </div>
           </motion.div>
         </div>
+
+        {/* Modal */}
+        <AnimatePresence>
+          {selectedVideo && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 z-[100] flex items-center justify-center p-6 bg-black/90 backdrop-blur-md"
+              onClick={() => setSelectedVideo(null)}
+            >
+               <motion.div
+                initial={{ scale: 0.9, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.9, opacity: 0 }}
+                className="bg-neutral-900 w-full max-w-4xl rounded-[2.5rem] border border-white/10 overflow-hidden shadow-2xl"
+                onClick={(e) => e.stopPropagation()}
+               >
+                  <div className="relative aspect-video bg-black flex items-center justify-center">
+                     <iframe
+                      width="100%"
+                      height="100%"
+                      src={`https://www.youtube.com/embed/${selectedVideo.youtubeId}?autoplay=1&rel=0`}
+                      title={selectedVideo.title}
+                      frameBorder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      allowFullScreen
+                      className="w-full h-full"
+                     ></iframe>
+                     <button 
+                      onClick={() => setSelectedVideo(null)}
+                      className="absolute top-6 right-6 w-10 h-10 bg-black/50 backdrop-blur-md rounded-full flex items-center justify-center text-white hover:bg-[#F5A623] hover:text-black transition-colors z-10"
+                     >
+                       <X size={20} />
+                     </button>
+                  </div>
+                  <div className="p-8 md:p-12">
+                      <h3 className="text-4xl font-black text-white uppercase mb-6 tracking-tight" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>{selectedVideo.title}</h3>
+                      <p className="text-[#F5A623] text-xl font-bold uppercase tracking-widest">{selectedVideo.result}</p>
+                  </div>
+               </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </section>
 
       {/* WHAT YOU GET */}
@@ -320,7 +379,7 @@ export default function BearMedia() {
                     "Video reels and short-form content, filmed and edited to platform spec",
                     "Photography for social posts, websites, and ads",
                     "Drone footage for aerial coverage and standout visuals",
-                    "AI-enhanced editing using the latest production tools",
+                    "Professional editing focused on social media growth",
                     "Monthly content calendar planned and approved in advance",
                     "Captions, scheduling, and posting — fully managed",
                     "Monthly performance report so you can see what's working",
@@ -684,11 +743,13 @@ export default function BearMedia() {
       {/* FOOTER */}
       <footer className="py-8 bg-[#050505] border-t border-white/10">
         <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-2">
-            <div className="w-6 h-6 bg-[#F5A623] rounded flex items-center justify-center">
-              <span className="text-black font-black text-[10px]">BM</span>
-            </div>
-            <span className="text-white/40 text-sm">Bear Media · Broxburn, West Lothian</span>
+          <div className="flex flex-col">
+            <span className="text-white font-bold text-sm leading-tight" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif' }}>
+              Bear Media
+            </span>
+            <span className="text-white/40 text-[9px] font-medium uppercase tracking-[0.1em]" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif' }}>
+              Websites & Social Media
+            </span>
           </div>
           <p className="text-white/30 text-xs">© 2026 Bear Media. All rights reserved.</p>
           <a href="#book" className="text-[#F5A623] text-sm font-semibold hover:underline">

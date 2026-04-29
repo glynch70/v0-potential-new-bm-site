@@ -58,30 +58,31 @@ export default function VisibilityLeadsSystem() {
 
         <div className="grid md:grid-cols-3 gap-8">
           {steps.map((step, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="relative p-10 bg-neutral-900 rounded-[2.5rem] border border-white/5 hover:border-brand-yellow/20 transition-all duration-500 group"
-            >
-              <div className="absolute -top-6 left-1/2 -translate-x-1/2 w-16 h-16 bg-brand-yellow rounded-2xl flex items-center justify-center text-neutral-950 shadow-2xl group-hover:scale-110 transition-transform duration-300">
-                {step.icon}
-              </div>
-              
-              <div className="mt-8 text-center">
-                <p className="text-brand-yellow font-black uppercase tracking-widest text-[10px] mb-2">{step.subtitle}</p>
-                <h3 className="text-2xl font-black text-white uppercase mb-6 font-bebas italic tracking-wide">{step.title}</h3>
-                <p className="text-white/50 text-sm leading-relaxed mb-8">{step.description}</p>
-              </div>
+            <div key={index} className="relative">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="p-10 bg-neutral-900 rounded-[2.5rem] border border-white/5 hover:border-brand-yellow/20 transition-all duration-500 group h-full relative"
+              >
+                <div className="absolute -top-6 left-1/2 -translate-x-1/2 w-16 h-16 bg-brand-yellow rounded-2xl flex items-center justify-center text-neutral-950 shadow-2xl group-hover:scale-110 transition-transform duration-300">
+                  {step.icon}
+                </div>
+                
+                <div className="mt-8 text-center">
+                  <p className="text-brand-yellow font-black uppercase tracking-widest text-[10px] mb-2">{step.subtitle}</p>
+                  <h3 className="text-2xl font-black text-white uppercase mb-6 font-bebas italic tracking-wide">{step.title}</h3>
+                  <p className="text-white/50 text-sm leading-relaxed mb-8">{step.description}</p>
+                </div>
+              </motion.div>
 
               {index < steps.length - 1 && (
                 <div className="hidden md:block absolute top-1/2 -right-4 translate-y-[-50%] z-10 text-brand-yellow/20">
                   <ArrowRight size={32} />
                 </div>
               )}
-            </motion.div>
+            </div>
           ))}
         </div>
         
@@ -89,15 +90,15 @@ export default function VisibilityLeadsSystem() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mt-20 p-10 rounded-[3rem] bg-gradient-to-r from-neutral-900 to-neutral-800 border border-white/5 flex flex-col md:flex-row items-center justify-between gap-8"
+          className="mt-16 md:mt-20 p-8 md:p-10 rounded-[2rem] md:rounded-[3rem] bg-gradient-to-r from-neutral-900 to-neutral-800 border border-white/5 flex flex-col md:flex-row items-center justify-between gap-8"
         >
-          <div className="max-w-xl">
-             <h3 className="text-3xl font-black text-white uppercase font-bebas italic mb-4">Ready to stop being ignored?</h3>
-             <p className="text-white/60">Let's build your Visibility & Leads System and start growing your business properly.</p>
+          <div className="max-w-xl text-center md:text-left">
+             <h3 className="text-2xl md:text-3xl font-black text-white uppercase font-bebas italic mb-4">Ready to stop being ignored?</h3>
+             <p className="text-white/60 text-sm md:text-base">Let's build your Visibility & Leads System and start growing your business properly.</p>
           </div>
           <a
             href="#contact"
-            className="px-12 py-5 bg-brand-yellow text-neutral-950 font-black uppercase tracking-widest text-sm rounded-2xl hover:scale-105 transition-all duration-300 whitespace-nowrap"
+            className="w-full md:w-auto px-12 py-5 bg-brand-yellow text-neutral-950 font-black uppercase tracking-widest text-sm rounded-2xl hover:scale-105 transition-all duration-300 whitespace-nowrap text-center"
           >
             Start Your System
           </a>

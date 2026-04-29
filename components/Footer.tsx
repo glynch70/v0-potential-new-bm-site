@@ -71,15 +71,13 @@ export default function Footer() {
 				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 lg:gap-24">
 					{/* Brand Column */}
 					<div className="space-y-8 col-span-1 lg:col-span-1">
-						<div className="flex items-center gap-4 group">
-							<div className="relative w-24 h-24 transition-transform duration-500 group-hover:rotate-12">
-								<Image 
-									src="/bear-media-logo-stacked-white.png" 
-									alt="Bear Media Logo"
-									fill
-									className="object-contain"
-								/>
-							</div>
+						<div className="flex flex-col">
+							<span className="text-white font-bold text-lg leading-tight" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif' }}>
+								Bear Media
+							</span>
+							<span className="text-white/50 text-[10px] font-medium uppercase tracking-[0.2em]" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif' }}>
+								Websites & Social Media
+							</span>
 						</div>
 						
 						<p className="text-white/50 text-sm leading-relaxed max-w-sm">
@@ -127,6 +125,35 @@ export default function Footer() {
 						</div>
 					))}
 				</div>
+ 
+				{/* Map Section */}
+				<motion.div 
+					initial={{ opacity: 0, y: 20 }}
+					whileInView={{ opacity: 1, y: 0 }}
+					viewport={{ once: true }}
+					className="mt-24 rounded-3xl overflow-hidden border border-white/10 h-80 relative group"
+				>
+					<iframe 
+						src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d35808.64125868846!2d-3.48347895!3d55.9332214!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4887c10b788647cf%3A0x8848417937a06c8b!2sBroxburn!5e0!3m2!1sen!2suk!4v1714432134567!5m2!1sen!2suk" 
+						className="w-full h-full transition-opacity duration-700"
+						style={{ border: 0 }} 
+						allowFullScreen 
+						loading="lazy" 
+						referrerPolicy="no-referrer-when-downgrade"
+					/>
+					<div className="absolute top-6 left-6 z-10 bg-black/60 backdrop-blur-md px-5 py-3 rounded-2xl border border-white/10 pointer-events-none">
+						<div className="flex items-center gap-3">
+							<div className="w-8 h-8 rounded-full bg-brand-yellow flex items-center justify-center text-neutral-950">
+								<MapPin size={16} />
+							</div>
+							<div>
+								<p className="text-[10px] font-bold uppercase tracking-widest text-white/50">Our Location</p>
+								<p className="text-sm font-bold text-white">Broxburn, West Lothian</p>
+							</div>
+						</div>
+					</div>
+					<div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-neutral-950 via-transparent to-transparent opacity-60" />
+				</motion.div>
 
 				{/* Bottom Bar */}
 				<div className="mt-24 pt-12 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6">
