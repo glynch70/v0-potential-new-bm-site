@@ -1,6 +1,7 @@
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import VideoProof from '@/components/VideoProof';
+import Link from 'next/link';
 import { TrendingUp, Users, Star, MapPin } from 'lucide-react';
 
 export default function TradesIndustryPage() {

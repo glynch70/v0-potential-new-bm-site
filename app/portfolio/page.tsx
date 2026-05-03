@@ -1,15 +1,13 @@
+'use client'
+
 import React from 'react';
-import { Metadata } from 'next';
+import { motion } from 'framer-motion';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { CheckCircle2, ArrowRight, Video, TrendingUp, Users, MapPin, Star, Play, MousePointer2 } from 'lucide-react';
 import Link from 'next/link';
 import VideoProof from '@/components/VideoProof';
 
-export const metadata: Metadata = {
-  title: 'Real Results & Case Studies | Bear Media West Lothian',
-  description: 'See the real-world results we deliver for local businesses in West Lothian, Edinburgh, and Fife. Case studies on social media growth, lead generation, and videography.',
-};
 
 export default function PortfolioPage() {
   return (

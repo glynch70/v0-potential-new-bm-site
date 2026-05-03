@@ -1,15 +1,14 @@
+'use client'
+
 import React from 'react';
-import { Metadata } from 'next';
+import { motion } from 'framer-motion';
+
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { CheckCircle2, XCircle, ArrowRight, Layout, PenTool, Rocket, Headphones, ShieldCheck, Globe, Zap, MousePointer2, TrendingUp, Users, Star, MapPin } from 'lucide-react';
 import Link from 'next/link';
 import VideoProof from '@/components/VideoProof';
 
-export const metadata: Metadata = {
-  title: 'Website Design & Lead Generation West Lothian | Bear Media',
-  description: 'Professional website design for local businesses in West Lothian, Edinburgh, and Fife. We build high-converting lead generation systems for trades and estate agents.',
-};
 
 export default function WebsiteDesignServicePage() {
   return (

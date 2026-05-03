@@ -1,6 +1,8 @@
 import React from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import Link from 'next/link';
+import { ArrowRight } from 'lucide-react';
 
 export default function IndustriesPage() {
   return (

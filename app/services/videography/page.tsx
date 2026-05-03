@@ -1,15 +1,14 @@
+'use client'
+
 import React from 'react';
-import { Metadata } from 'next';
+import { motion } from 'framer-motion';
+
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { CheckCircle2, ArrowRight, Video, Camera, Play, Users, MapPin, BarChart3, HelpCircle, TrendingUp, Star } from 'lucide-react';
 import Link from 'next/link';
 import VideoProof from '@/components/VideoProof';
 
-export const metadata: Metadata = {
-  title: 'Videography & Video Marketing West Lothian & Edinburgh | Bear Media',
-  description: 'Professional videography and video marketing for local businesses in West Lothian, Edinburgh, and Fife. Cinematic property tours, brand films, and social content.',
-};
 
 export default function VideographyServicePage() {
   return (

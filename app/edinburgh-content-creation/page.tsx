@@ -2,7 +2,7 @@ import React from 'react';
 import { Metadata } from 'next';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import { CheckCircle2, ArrowRight, Video, Camera, TrendingUp, Users, MapPin, Star, HelpCircle } from 'lucide-react';
+import { CheckCircle2, ArrowRight, Video, Camera, TrendingUp, Users, MapPin, Star, HelpCircle, Layout } from 'lucide-react';
 import Link from 'next/link';
 import VideoProof from '@/components/VideoProof';
 

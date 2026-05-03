@@ -1,14 +1,13 @@
+'use client'
+
 import React from 'react';
-import { Metadata } from 'next';
+import { motion } from 'framer-motion';
+
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { CheckCircle2, ArrowRight, ShieldCheck, Zap, BarChart3, HelpCircle } from 'lucide-react';
 import Link from 'next/link';
 
-export const metadata: Metadata = {
-  title: 'Investment & ROI | Bear Media Scotland',
-  description: 'View our transparent investment packages for content creation, videography, and web design in West Lothian, Edinburgh, and Fife. Built to generate leads, not just costs.',
-};
 
 const packages = [
   {

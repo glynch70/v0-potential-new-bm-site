@@ -1,15 +1,14 @@
+'use client'
+
 import React from 'react';
-import { Metadata } from 'next';
+import { motion } from 'framer-motion';
+
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { CheckCircle2, XCircle, ArrowRight, Camera, Video, BarChart3, Users, TrendingUp, Star, MapPin } from 'lucide-react';
 import Link from 'next/link';
 import VideoProof from '@/components/VideoProof';
 
-export const metadata: Metadata = {
-  title: 'Social Media Content Creation West Lothian | Bear Media',
-  description: 'Professional social media content for local businesses in West Lothian, Edinburgh and Fife. Photo, video and strategy that turns views into enquiries.',
-};
 
 export default function SocialMediaServicePage() {
   return (
