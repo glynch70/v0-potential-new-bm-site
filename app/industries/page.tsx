@@ -37,6 +37,7 @@ export default function IndustriesPage() {
                         <p className="text-neutral-500 text-sm">We visit your site to capture the real story of your work.</p>
                       </div>
                    </div>
+                   <div className="flex items-start gap-4 p-6 glass-card border-white/5">
                       <div className="text-brand-yellow font-bold text-2xl">02</div>
                       <div>
                         <h4 className="font-bold text-white mb-1">High-Performance Web</h4>

@@ -139,26 +139,27 @@ export default function VideographyServicePage() {
                     <p className="text-white/40 text-sm leading-relaxed">We don't just film houses or vans—we build a lead-generation system that turns views into high-value enquiries.</p>
                  </div>
               </div>
-           </div>
-        </section>
-              <p className="text-white/30 text-xs font-bold uppercase tracking-widest mb-20">Trusted by estate agents and trades across the Central Belt.</p>
               
-              <div className="grid md:grid-cols-3 gap-8 text-left">
-                 <div className="p-8 glass-card border-white/5 bg-white/[0.01]">
-                    <h4 className="text-white font-bold text-lg mb-4 uppercase italic font-bebas tracking-widest">Example: The Agent's Win</h4>
-                    <p className="text-white/40 text-sm leading-relaxed mb-4">An Edinburgh agent used our cinematic tours to win 4 new listings in 30 days, outperforming national competitors.</p>
-                    <p className="text-brand-yellow font-black text-xs uppercase tracking-widest italic">Result: 4 New Listings</p>
-                 </div>
-                 <div className="p-8 glass-card border-white/5 bg-white/[0.01]">
-                    <h4 className="text-white font-bold text-lg mb-4 uppercase italic font-bebas tracking-widest">Case Study: West Lothian Builder</h4>
-                    <p className="text-white/40 text-sm leading-relaxed mb-4">A West Lothian builder saw a 3x increase in high-value enquiries after showing the real work on video.</p>
-                    <p className="text-brand-yellow font-black text-xs uppercase tracking-widest italic">Result: 3x High-Value Leads</p>
-                 </div>
-                 <div className="p-8 glass-card border-white/5 bg-white/[0.01]">
-                    <h4 className="text-white font-bold text-lg mb-4 uppercase italic font-bebas tracking-widest">Case Study: Fife Service SME</h4>
-                    <p className="text-white/40 text-sm leading-relaxed mb-4">A Fife-based service business saved 12 hours a month on content creation while doubling local reach.</p>
-                    <p className="text-brand-yellow font-black text-xs uppercase tracking-widest italic">Result: 2x Reach + Time Saved</p>
-                 </div>
+              <div className="mt-20">
+                <p className="text-white/30 text-xs font-bold uppercase tracking-widest mb-20">Trusted by estate agents and trades across the Central Belt.</p>
+                
+                <div className="grid md:grid-cols-3 gap-8 text-left">
+                   <div className="p-8 glass-card border-white/5 bg-white/[0.01]">
+                      <h4 className="text-white font-bold text-lg mb-4 uppercase italic font-bebas tracking-widest">Case Study: Edinburgh Estate Agent</h4>
+                      <p className="text-white/40 text-sm leading-relaxed mb-4">An Edinburgh agent used our cinematic tours to win 4 new listings in 30 days, outperforming national competitors.</p>
+                      <p className="text-brand-yellow font-black text-xs uppercase tracking-widest italic">Result: 4 New Listings</p>
+                   </div>
+                   <div className="p-8 glass-card border-white/5 bg-white/[0.01]">
+                      <h4 className="text-white font-bold text-lg mb-4 uppercase italic font-bebas tracking-widest">Case Study: West Lothian Builder</h4>
+                      <p className="text-white/40 text-sm leading-relaxed mb-4">A West Lothian builder saw a 3x increase in high-value enquiries after showing the real work on video.</p>
+                      <p className="text-brand-yellow font-black text-xs uppercase tracking-widest italic">Result: 3x High-Value Leads</p>
+                   </div>
+                   <div className="p-8 glass-card border-white/5 bg-white/[0.01]">
+                      <h4 className="text-white font-bold text-lg mb-4 uppercase italic font-bebas tracking-widest">Case Study: Fife Service SME</h4>
+                      <p className="text-white/40 text-sm leading-relaxed mb-4">A Fife-based service business saved 12 hours a month on content creation while doubling local reach.</p>
+                      <p className="text-brand-yellow font-black text-xs uppercase tracking-widest italic">Result: 2x Reach + Time Saved</p>
+                   </div>
+                </div>
               </div>
            </div>
         </section>
