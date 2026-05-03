@@ -126,7 +126,7 @@ export default function PricingPage() {
         </section>
 
         {/* PRICING GRID */}
-        <section className="py-24 px-6 max-w-7xl mx-auto">
+        <section className="py-16 md:py-24 px-6 max-w-7xl mx-auto">
            <div className="grid md:grid-cols-3 gap-8">
               {packages.map((pkg, i) => (
                  <div key={i} className={`p-10 rounded-[2.5rem] bg-neutral-900 border flex flex-col transition-all duration-500 hover:scale-[1.02] ${pkg.popular ? 'border-brand-yellow/50 shadow-[0_0_60px_rgba(245,166,35,0.1)]' : 'border-white/5'}`}>
@@ -157,7 +157,7 @@ export default function PricingPage() {
         </section>
 
         {/* INVESTMENT VS COST */}
-        <section className="py-24 px-6 bg-white/[0.02] border-y border-white/5">
+        <section className="py-16 md:py-24 px-6 bg-white/[0.02] border-y border-white/5">
            <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-16 items-center">
               <div>
                  <h2 className="text-4xl md:text-6xl font-black mb-8 uppercase italic font-bebas tracking-tight text-white leading-none">
@@ -193,7 +193,7 @@ export default function PricingPage() {
         </section>
 
         {/* FAQ SECTION */}
-        <section className="py-24 px-6 max-w-4xl mx-auto">
+        <section className="py-16 md:py-24 px-6 max-w-4xl mx-auto">
            <h2 className="text-3xl md:text-5xl font-black mb-16 text-center uppercase italic font-bebas tracking-tight text-white leading-none">
               Pricing <span className="text-brand-yellow">FAQs.</span>
            </h2>
@@ -215,7 +215,7 @@ export default function PricingPage() {
         </section>
 
         {/* FINAL CTA */}
-        <section className="py-24 px-6 bg-brand-yellow text-neutral-950 text-center">
+        <section className="py-16 md:py-24 px-6 bg-brand-yellow text-neutral-950 text-center">
            <div className="max-w-3xl mx-auto">
               <h2 className="text-4xl md:text-7xl font-black mb-8 uppercase italic font-bebas tracking-tight leading-none">
                  Ready to <br /><span className="underline decoration-neutral-950/20 underline-offset-8">Invest in Growth?</span>

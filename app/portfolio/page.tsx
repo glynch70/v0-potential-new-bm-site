@@ -93,7 +93,7 @@ export default function PortfolioPage() {
         {/* 2. TRUST BAR - REMOVED AS IT IS IN HERO */}
 
         {/* 3. FEATURED CASE STUDY */}
-        <section className="py-24 px-6 max-w-7xl mx-auto">
+        <section className="py-16 md:py-24 px-6 max-w-7xl mx-auto">
            <h2 className="text-4xl md:text-6xl font-black mb-16 uppercase italic font-bebas tracking-tight text-white leading-none">
               Featured <span className="text-brand-yellow">Case Study.</span>
            </h2>
@@ -138,7 +138,7 @@ export default function PortfolioPage() {
         </section>
 
         {/* 4. MINI CASE STUDIES */}
-        <section className="py-24 px-6 bg-white/[0.02] border-y border-white/5">
+        <section className="py-16 md:py-24 px-6 bg-white/[0.02] border-y border-white/5">
            <div className="max-w-7xl mx-auto">
               <h2 className="text-3xl md:text-5xl font-black mb-16 uppercase italic font-bebas tracking-tight text-white leading-none">
                  Mini <span className="text-brand-yellow">Case Studies.</span>
@@ -186,7 +186,7 @@ export default function PortfolioPage() {
         </section>
 
         {/* 5. THE RESULTS GRID */}
-        <section className="py-24 px-6 max-w-7xl mx-auto">
+        <section className="py-16 md:py-24 px-6 max-w-7xl mx-auto">
            <h2 className="text-3xl md:text-5xl font-black mb-16 text-center uppercase italic font-bebas tracking-tight text-white leading-none">
               The <span className="text-brand-yellow">Results Grid.</span>
            </h2>
@@ -220,7 +220,7 @@ export default function PortfolioPage() {
         </section>
 
         {/* 6. SOUND FAMILIAR? */}
-        <section className="py-24 px-6 max-w-4xl mx-auto text-center border-t border-white/5">
+        <section className="py-16 md:py-24 px-6 max-w-4xl mx-auto text-center border-t border-white/5">
            <h2 className="text-3xl md:text-5xl font-black mb-12 uppercase italic font-bebas tracking-tight text-white leading-none">
               Sound <span className="text-brand-yellow">Familiar?</span>
            </h2>
@@ -239,7 +239,7 @@ export default function PortfolioPage() {
         </section>
 
         {/* 6. WHAT THIS MEANS FOR YOU */}
-        <section className="py-24 px-6 bg-brand-yellow text-neutral-950">
+        <section className="py-16 md:py-24 px-6 bg-brand-yellow text-neutral-950">
            <div className="max-w-5xl mx-auto">
               <h2 className="text-4xl md:text-6xl font-black mb-12 text-center uppercase italic font-bebas tracking-tight leading-none">
                  What This Means <br /><span className="underline decoration-neutral-950/20 underline-offset-8">For Your Business.</span>

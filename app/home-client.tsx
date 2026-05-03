@@ -126,7 +126,7 @@ export default function HomeContent() {
       />
 
               {/* WHAT THIS LOOKS LIKE IN REAL LIFE */}
-              <section className="py-24 px-6 bg-neutral-950 relative overflow-hidden">
+              <section className="py-16 md:py-24 px-6 bg-neutral-950 relative overflow-hidden">
                 <div className="max-w-7xl mx-auto">
                    <h2 className="text-3xl md:text-5xl font-black mb-16 text-center uppercase italic font-bebas tracking-tight leading-none text-white">
                       See the Work. <span className="text-brand-yellow text-stroke-sm">See the Results.</span>
@@ -168,7 +168,7 @@ export default function HomeContent() {
               </section>
 
               {/* NEW: SEEN OUR WORK? HERE'S HOW IT TURNS INTO RESULTS */}
-              <section className="py-24 px-6 bg-white/[0.02] border-y border-white/5">
+              <section className="py-16 md:py-24 px-6 bg-white/[0.02] border-y border-white/5">
                  <div className="max-w-7xl mx-auto">
                     <div className="text-center mb-16">
                        <h2 className="text-3xl md:text-5xl font-black mb-6 uppercase italic font-bebas tracking-tight text-white leading-none">
@@ -216,7 +216,7 @@ export default function HomeContent() {
       {/* 2. TRUST BAR - REMOVED AS IT IS NOW IN HERO */}
 
       {/* 3. PROBLEM SECTION */}
-      <section className="py-24 px-6 bg-neutral-900/30">
+      <section className="py-16 md:py-24 px-6 bg-neutral-900/30">
          <div className="max-w-5xl mx-auto">
             <h2 className="text-3xl md:text-5xl font-black mb-16 text-center uppercase italic font-bebas tracking-tight leading-none">
                Why Local Businesses <span className="text-brand-yellow text-stroke-sm">Stay Small.</span>
@@ -253,7 +253,7 @@ export default function HomeContent() {
       </section>
 
       {/* 4. SYSTEM SECTION */}
-      <section className="py-24 px-6 max-w-7xl mx-auto">
+      <section className="py-16 md:py-24 px-6 max-w-7xl mx-auto">
          <div className="text-center mb-20">
              <h2 className="text-4xl md:text-7xl font-black mb-6 uppercase italic font-bebas tracking-tight text-white leading-none">
                 THE <span className="text-brand-yellow underline decoration-brand-yellow/20 underline-offset-8 text-stroke-sm">CONTENT & ENQUIRY</span> SYSTEM
@@ -280,7 +280,7 @@ export default function HomeContent() {
       </section>
 
       {/* 5. SERVICES SECTION */}
-      <section className="py-24 px-6 bg-white/[0.02] border-y border-white/5">
+      <section className="py-16 md:py-24 px-6 bg-white/[0.02] border-y border-white/5">
          <div className="max-w-7xl mx-auto">
             <h2 className="text-3xl md:text-6xl font-black mb-16 text-center uppercase italic font-bebas tracking-tight text-white leading-none">
                Outcome-Focused <span className="text-brand-yellow">Services.</span>
@@ -305,7 +305,7 @@ export default function HomeContent() {
       </section>
 
       {/* 6. RESULTS SECTION */}
-      <section className="py-24 px-6 max-w-7xl mx-auto text-center">
+      <section className="py-16 md:py-24 px-6 max-w-7xl mx-auto text-center">
          <h2 className="text-4xl md:text-7xl font-black mb-16 uppercase italic font-bebas tracking-tight text-white leading-none">
             Proven <span className="text-brand-yellow">Outcomes.</span>
          </h2>
@@ -329,7 +329,7 @@ export default function HomeContent() {
       </section>
 
       {/* 7. MINI CASE STUDIES */}
-      <section className="py-24 px-6 bg-neutral-900/50">
+      <section className="py-16 md:py-24 px-6 bg-neutral-900/50">
          <div className="max-w-7xl mx-auto">
             <h2 className="text-3xl md:text-5xl font-black mb-16 text-center uppercase italic font-bebas tracking-tight text-white leading-none">
                Real Work. <span className="text-brand-yellow">Real Outcomes.</span>
@@ -382,66 +382,77 @@ export default function HomeContent() {
          </div>
       </section>
 
-      {/* 8. WHO THIS IS FOR */}
-      <section className="py-24 px-6 max-w-5xl mx-auto">
-         <h2 className="text-3xl md:text-5xl font-black mb-12 text-center uppercase italic font-bebas tracking-tight text-white leading-none">
-            Perfect For <span className="text-brand-yellow text-stroke-sm">Central Belt Leaders.</span>
-         </h2>
-         <div className="grid md:grid-cols-3 gap-8">
-            <div className="p-8 glass-card border-white/5 text-center">
-               <Users size={32} className="mx-auto mb-6 text-brand-yellow" />
-               <h4 className="text-2xl font-black uppercase italic font-bebas text-white mb-2">Trades</h4>
-               <p className="text-white/40 text-xs font-bold uppercase tracking-widest leading-relaxed">Builders, Roofers, Joiners, Electricians.</p>
-            </div>
-            <div className="p-8 glass-card border-white/5 text-center">
-               <TrendingUp size={32} className="mx-auto mb-6 text-brand-yellow" />
-               <h4 className="text-2xl font-black uppercase italic font-bebas text-white mb-2">Estate Agents</h4>
-               <p className="text-white/40 text-xs font-bold uppercase tracking-widest leading-relaxed">Independent agents winning more local listings.</p>
-            </div>
-            <div className="p-8 glass-card border-white/5 text-center">
-               <MapPin size={32} className="mx-auto mb-6 text-brand-yellow" />
-               <h4 className="text-2xl font-black uppercase italic font-bebas text-white mb-2">Service SMEs</h4>
-               <p className="text-white/40 text-xs font-bold uppercase tracking-widest leading-relaxed">Local businesses scaling their visibility.</p>
+      {/* 8. WHO WE WORK WITH (UPGRADED) */}
+      <section className="py-16 md:py-24 px-6 bg-neutral-900/30">
+         <div className="max-w-7xl mx-auto">
+            <h2 className="text-3xl md:text-6xl font-black mb-16 text-center uppercase italic font-bebas tracking-tight text-white leading-none">
+               Who We <span className="text-brand-yellow">Partner With.</span>
+            </h2>
+            <div className="grid md:grid-cols-3 gap-8">
+               <div className="p-12 rounded-[3rem] bg-neutral-950 border border-white/5 hover:border-brand-yellow/30 transition-all group relative overflow-hidden">
+                  <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity">
+                     <Users size={120} />
+                  </div>
+                  <h4 className="text-3xl font-black uppercase italic font-bebas text-white mb-4 tracking-wider">Local Trades</h4>
+                  <p className="text-brand-yellow font-black uppercase italic font-bebas tracking-widest text-sm mb-6">Builders • Joiners • Roofers</p>
+                  <p className="text-white/40 leading-relaxed text-sm font-medium">You do the work, we show the world. We visit your sites across West Lothian and Edinburgh to capture the quality your competitors are hiding.</p>
+               </div>
+               <div className="p-12 rounded-[3rem] bg-neutral-950 border border-white/5 hover:border-brand-yellow/30 transition-all group relative overflow-hidden">
+                  <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity">
+                     <TrendingUp size={120} />
+                  </div>
+                  <h4 className="text-3xl font-black uppercase italic font-bebas text-white mb-4 tracking-wider">Estate Agents</h4>
+                  <p className="text-brand-yellow font-black uppercase italic font-bebas tracking-widest text-sm mb-6">Independents • High-Growth Teams</p>
+                  <p className="text-white/40 leading-relaxed text-sm font-medium">Win more listings. We provide cinematic drone tours and social reels that make national chains look like amateurs in the local market.</p>
+               </div>
+               <div className="p-12 rounded-[3rem] bg-neutral-950 border border-white/5 hover:border-brand-yellow/30 transition-all group relative overflow-hidden">
+                  <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity">
+                     <MapPin size={120} />
+                  </div>
+                  <h4 className="text-3xl font-black uppercase italic font-bebas text-white mb-4 tracking-wider">Service SMEs</h4>
+                  <p className="text-brand-yellow font-black uppercase italic font-bebas tracking-widest text-sm mb-6">Lawyers • Coaches • Retail</p>
+                  <p className="text-white/40 leading-relaxed text-sm font-medium">Build authority fast. We turn your expertise into high-performance short-form content that keeps your local customers engaged and buying.</p>
+               </div>
             </div>
          </div>
       </section>
 
-      {/* 9. WHY BEAR MEDIA */}
-      <section className="py-24 px-6 bg-brand-yellow text-neutral-950">
+      {/* 9. WHY BEAR MEDIA (DIRECT MESSAGING) */}
+      <section className="py-16 md:py-24 px-6 bg-brand-yellow text-neutral-950">
          <div className="max-w-5xl mx-auto">
-            <h2 className="text-4xl md:text-6xl font-black mb-12 text-center uppercase italic font-bebas tracking-tight leading-none">
-               Why Businesses Choose <br /><span className="underline decoration-neutral-950/20 underline-offset-8">Bear Media.</span>
+            <h2 className="text-4xl md:text-7xl font-black mb-12 text-center uppercase italic font-bebas tracking-tight leading-none">
+               No Jargon. <br /><span className="underline decoration-neutral-950/20 underline-offset-8">Just Enquiries.</span>
             </h2>
             <div className="grid md:grid-cols-2 gap-12">
                  <div className="space-y-8">
-                    <div className="flex gap-4">
-                       <CheckCircle2 size={24} className="shrink-0" />
+                    <div className="flex gap-6">
+                       <div className="w-12 h-12 rounded-full bg-neutral-950 text-brand-yellow flex items-center justify-center shrink-0 font-black italic">01</div>
                        <div>
-                          <p className="font-black text-xl uppercase italic font-bebas leading-none mb-2">On-Site Local Service</p>
-                          <p className="font-medium text-neutral-950/70 text-sm">We are based in West Lothian. We come to your site, film your work, and understand your local customers better than any remote agency.</p>
+                          <p className="font-black text-2xl uppercase italic font-bebas leading-none mb-2 tracking-wide">We Are Local</p>
+                          <p className="font-bold text-neutral-950/70 text-sm leading-relaxed">Based in West Lothian, serving the Central Belt. We don't use stock footage—we film your real business, on-site, every time.</p>
                        </div>
                     </div>
-                    <div className="flex gap-4">
-                       <CheckCircle2 size={24} className="shrink-0" />
+                    <div className="flex gap-6">
+                       <div className="w-12 h-12 rounded-full bg-neutral-950 text-brand-yellow flex items-center justify-center shrink-0 font-black italic">02</div>
                        <div>
-                          <p className="font-black text-xl uppercase italic font-bebas leading-none mb-2">All-In-One Growth Engine</p>
-                          <p className="font-medium text-neutral-950/70 text-sm">We handle everything: video, photo, and web design. No more chasing multiple freelancers who don't talk to each other.</p>
+                          <p className="font-black text-2xl uppercase italic font-bebas leading-none mb-2 tracking-wide">Built for ROI</p>
+                          <p className="font-bold text-neutral-950/70 text-sm leading-relaxed">We don't care about "likes." We care about your phone ringing. Every piece of content is engineered to generate enquiries.</p>
                        </div>
                     </div>
                  </div>
                  <div className="space-y-8">
-                    <div className="flex gap-4">
-                       <CheckCircle2 size={24} className="shrink-0" />
+                    <div className="flex gap-6">
+                       <div className="w-12 h-12 rounded-full bg-neutral-950 text-brand-yellow flex items-center justify-center shrink-0 font-black italic">03</div>
                        <div>
-                          <p className="font-black text-xl uppercase italic font-bebas leading-none mb-2">Zero Jargon. Pure Results.</p>
-                          <p className="font-medium text-neutral-950/70 text-sm">We don't care about "vanity metrics." we care about your phone ringing and your calendar filling up with new jobs.</p>
+                          <p className="font-black text-2xl uppercase italic font-bebas leading-none mb-2 tracking-wide">All-In-One Partner</p>
+                          <p className="font-bold text-neutral-950/70 text-sm leading-relaxed">Video, Photo, and Web. One partner who knows your brand and actually delivers on their promises.</p>
                        </div>
                     </div>
-                    <div className="flex gap-4">
-                       <CheckCircle2 size={24} className="shrink-0" />
+                    <div className="flex gap-6">
+                       <div className="w-12 h-12 rounded-full bg-neutral-950 text-brand-yellow flex items-center justify-center shrink-0 font-black italic">04</div>
                        <div>
-                          <p className="font-black text-xl uppercase italic font-bebas leading-none mb-2">Reliable Partners</p>
-                          <p className="font-medium text-neutral-950/70 text-sm">We build long-term relationships with local leaders. When you need us, we're there—supporting your growth every step of the way.</p>
+                          <p className="font-black text-2xl uppercase italic font-bebas leading-none mb-2 tracking-wide">Straight Talking</p>
+                          <p className="font-bold text-neutral-950/70 text-sm leading-relaxed">No fluff. No complex agency talk. Just clear updates, fast turnarounds, and a focus on growing your business.</p>
                        </div>
                     </div>
                  </div>
@@ -450,7 +461,7 @@ export default function HomeContent() {
       </section>
 
       {/* FAQ SECTION (CRITICAL FOR AI SEARCH) */}
-      <section className="py-24 px-6 bg-neutral-900/30">
+      <section className="py-16 md:py-24 px-6 bg-neutral-900/30">
          <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl md:text-5xl font-black mb-16 text-center uppercase italic font-bebas tracking-tight text-white leading-none">
                Common <span className="text-brand-yellow">Questions.</span>
