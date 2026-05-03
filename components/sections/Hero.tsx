@@ -39,7 +39,7 @@ export default function Hero() {
         </p>
 
         <Link 
-          href="#contact" 
+          href="/contact" 
           className="inline-block bg-gradient-brand text-dark text-xl md:text-[24px] font-black py-5 px-12 rounded-full mt-[40px] transition-all duration-300 hover:scale-105 hover:shadow-[0_15px_30px_-12px_rgba(221,163,30,0.5)] animate-[float_4s_ease-in-out_infinite] [animation-delay:0.3s] uppercase italic tracking-widest"
         >
           Book a Free Consultation

@@ -5,8 +5,8 @@ import { motion } from 'framer-motion'
 
 export const TrustedBySection = () => {
   const industries = [
-    'Local Trades', 'Property', 'Construction', 'Small Businesses', 'Scottish SMEs',
-    'Local Trades', 'Property', 'Construction', 'Small Businesses', 'Scottish SMEs'
+    'Trusted by firms across the Central Belt', 'Edinburgh Property Specialists', 'West Lothian Trades', 'Fife Small Businesses', 'Scottish SMEs',
+    'Trusted by firms across the Central Belt', 'Edinburgh Property Specialists', 'West Lothian Trades', 'Fife Small Businesses', 'Scottish SMEs'
   ]
 
   return (

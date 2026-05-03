@@ -10,30 +10,30 @@ const menuItems = [
   {
     icon: LayoutGrid,
     label: "Services",
-    href: "/#services",
+    href: "/services",
     gradient: "radial-gradient(circle, rgba(245,166,35,0.15) 0%, rgba(245,166,35,0.06) 50%, rgba(245,166,35,0) 100%)",
     iconColor: "text-brand-yellow",
   },
   {
     icon: Play,
-    label: "Work",
-    href: "/#work",
+    label: "Portfolio",
+    href: "/portfolio",
     gradient: "radial-gradient(circle, rgba(59,130,246,0.15) 0%, rgba(37,99,235,0.06) 50%, rgba(29,78,216,0) 100%)",
     iconColor: "text-blue-500",
   },
   {
     icon: Info,
-    label: "About",
-    href: "/#about",
+    label: "Insights",
+    href: "/insights",
     gradient: "radial-gradient(circle, rgba(34,197,94,0.15) 0%, rgba(22,163,74,0.06) 50%, rgba(21,128,61,0) 100%)",
     iconColor: "text-green-500",
   },
   {
     icon: Phone,
-    label: "Contact",
-    href: "/#contact",
-    gradient: "radial-gradient(circle, rgba(239,68,68,0.15) 0%, rgba(220,38,38,0.06) 50%, rgba(185,28,28,0) 100%)",
-    iconColor: "text-red-500",
+    label: "Book a Call",
+    href: "/contact",
+    gradient: "radial-gradient(circle, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.06) 50%, rgba(255,255,255,0) 100%)",
+    iconColor: "text-white",
   },
 ]
 
@@ -105,10 +105,10 @@ export default function Navbar() {
             className="bg-transparent border-none shadow-none p-0"
           />
           <Link 
-            href="#contact"
+            href="/contact"
             className="px-6 py-2.5 rounded-xl bg-brand-yellow text-neutral-950 font-black uppercase tracking-widest text-[10px] hover:scale-105 transition-all shadow-lg active:scale-95"
           >
-            Book a Call
+            Book a Discovery Call
           </Link>
         </div>
 
@@ -159,11 +159,11 @@ export default function Navbar() {
               className="mt-12"
             >
               <Link 
-                href="/#contact"
+                href="/contact"
                 onClick={() => setIsOpen(false)}
                 className="bg-brand-yellow text-dark px-10 py-5 rounded-full font-black uppercase tracking-widest text-sm shadow-[0_0_50px_rgba(201,162,39,0.3)] hover:scale-105 transition-all italic"
               >
-                Start Project
+                Book Your Discovery Call
               </Link>
             </motion.div>
           </motion.div>

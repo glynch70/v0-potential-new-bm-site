@@ -28,13 +28,13 @@ const services = [
           <li>• Monthly performance report</li>
         </ul>
         <div className="pt-6 border-t border-white/10 mt-auto">
-          <a href="#contact" className="text-[#C9A227] text-base font-medium hover:underline flex items-center gap-1 min-h-[44px]">
+          <a href="/contact" className="text-[#C9A227] text-base font-medium hover:underline flex items-center gap-1 min-h-[44px]">
             Get started <span>→</span>
           </a>
         </div>
       </div>
     ),
-    mobileCta: { label: 'Get started', url: '#contact' },
+    mobileCta: { label: 'Get started', url: '/contact' },
   },
   {
     id: 'websites',
@@ -59,13 +59,13 @@ const services = [
           <li>• Handed over — you own it outright</li>
         </ul>
         <div className="pt-6 border-t border-white/10 mt-auto">
-          <a href="#contact" className="text-[#C9A227] text-base font-medium hover:underline flex items-center gap-1 min-h-[44px]">
+          <a href="/contact" className="text-[#C9A227] text-base font-medium hover:underline flex items-center gap-1 min-h-[44px]">
             Get started <span>→</span>
           </a>
         </div>
       </div>
     ),
-    mobileCta: { label: 'Get started', url: '#contact' },
+    mobileCta: { label: 'Get started', url: '/contact' },
   },
   {
     id: 'extras',
@@ -88,13 +88,13 @@ const services = [
           <li>• Google Business Management</li>
         </ul>
         <div className="pt-6 border-t border-white/10 mt-auto">
-          <a href="#contact" className="text-[#C9A227] text-base font-medium hover:underline flex items-center gap-1 min-h-[44px]">
+          <a href="/contact" className="text-[#C9A227] text-base font-medium hover:underline flex items-center gap-1 min-h-[44px]">
             Get started <span>→</span>
           </a>
         </div>
       </div>
     ),
-    mobileCta: { label: 'Get started', url: '#contact' },
+    mobileCta: { label: 'Get started', url: '/contact' },
   },
 ];
 

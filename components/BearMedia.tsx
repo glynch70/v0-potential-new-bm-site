@@ -132,21 +132,21 @@ export default function BearMedia() {
             </motion.p>
             <motion.h1
               variants={fadeUp}
-              className="text-[2.5rem] md:text-[3.5rem] xl:text-[4.2rem] font-bold leading-[1.1] tracking-tight mb-8 font-inter-tight max-w-2xl"
-              style={{ letterSpacing: '-0.04em' }}
+              className="text-4xl md:text-8xl font-black leading-[0.9] tracking-tighter italic uppercase font-bebas mb-8"
             >
-              We come to you.<br />
-              We film it.<br />
-              We edit it.<br />
-              <span className="text-[#F5A623]">Your Channels Stay Full</span>
+              Let's Fix Your Visibility & <br />
+              <span className="text-[#F5A623]">Start Generating Enquiries.</span>
             </motion.h1>
-            <motion.p variants={fadeUp} className="text-lg text-white/70 mb-8 leading-relaxed max-w-xl">
-              Bear Media visits your business, films everything you need — video, photography, and drone — then handles all the editing and channel management. You get professional content without touching a camera or spending a day briefing a team.
+            <motion.p variants={fadeUp} className="text-xl md:text-2xl text-white/70 mb-10 md:mb-12 font-medium leading-relaxed italic max-w-xl">
+              We come to you. We film it. We turn it into leads.
+            </motion.p>
+            <motion.p variants={fadeUp} className="text-lg text-white/60 mb-8 leading-relaxed max-w-xl">
+              Professional on-site content that gets your business seen and brings in real enquiries across the Scottish Central Belt.
             </motion.p>
             <motion.div variants={fadeUp} className="flex flex-wrap gap-4 mb-12">
               <a
                 href="#book"
-                className="bg-[#F5A623] text-black font-bold px-8 py-4 rounded text-base hover:bg-[#e09510] transition-colors"
+                className="bg-[#F5A623] text-black font-black uppercase tracking-widest text-sm px-10 py-5 md:px-12 md:py-6 rounded-2xl hover:scale-105 active:scale-95 transition-all duration-300 shadow-[0_0_40px_rgba(245,166,35,0.2)]"
               >
                 Let's Grow Your Business
               </a>
@@ -596,19 +596,56 @@ export default function BearMedia() {
                 <span className="text-[#F5A623]">To You.</span>
               </motion.h2>
               <motion.p variants={fadeUp} className="text-white/60 leading-relaxed mb-8">
-                A free 30-minute call. No pitch, no pressure. We'll find out what your business needs, show you what we've created for similar companies, and tell you exactly what we'd do for you.
+                A free 15-minute Discovery Call. No pitch, no pressure. We'll find out what your business needs and map out a path to more enquiries.
               </motion.p>
+              
+              {/* WHAT HAPPENS ON THE CALL */}
+              <motion.div variants={fadeUp} className="mb-12 p-8 rounded-2xl bg-white/5 border border-white/10">
+                 <h3 className="text-sm font-black uppercase tracking-widest text-[#F5A623] mb-6">What happens on the call?</h3>
+                 <ul className="space-y-4">
+                    {[
+                      "A quick 15-minute focused chat about your goals.",
+                      "An audit of your current visibility and where you're losing leads.",
+                      "A custom 'Visibility & Leads' roadmap for your business.",
+                      "Zero pressure. If we aren't a fit, we'll tell you."
+                    ].map((item, i) => (
+                      <li key={i} className="flex gap-3 items-start text-sm text-white/80">
+                         <div className="w-1.5 h-1.5 rounded-full bg-[#F5A623] mt-2 shrink-0" />
+                         {item}
+                      </li>
+                    ))}
+                 </ul>
+              </motion.div>
+
               <motion.div variants={fadeUp} className="space-y-4">
                 {[
                   { icon: <Phone size={16} />, text: "+44 7879 011860" },
                   { icon: <Mail size={16} />, text: "info@bear-media.com" },
-                  { icon: <MapPin size={16} />, text: "Broxburn, West Lothian — filming across the Scottish Central Belt" },
+                  { icon: <MapPin size={16} />, text: "Broxburn, West Lothian — filming across Scotland" },
                 ].map((item) => (
                   <div key={item.text} className="flex items-start gap-3 text-white/50 text-sm">
                     <span className="text-[#F5A623] mt-0.5">{item.icon}</span>
                     {item.text}
                   </div>
                 ))}
+              </motion.div>
+
+              {/* QUICK PROOF POINTS */}
+              <motion.div variants={fadeUp} className="mt-12 flex items-center gap-6">
+                 <div className="flex flex-col">
+                    <span className="text-2xl font-black text-white italic font-bebas tracking-tight">5.0★</span>
+                    <span className="text-[10px] font-bold uppercase tracking-widest text-white/30">Google Rating</span>
+                 </div>
+                 <div className="w-px h-10 bg-white/10" />
+                 <div className="flex flex-col">
+                    <span className="text-2xl font-black text-white italic font-bebas tracking-tight">50+</span>
+                    <span className="text-[10px] font-bold uppercase tracking-widest text-white/30">Local Clients</span>
+                 </div>
+                 <div className="w-px h-10 bg-white/10" />
+                 <div className="flex flex-col">
+                    <span className="text-2xl font-black text-white italic font-bebas tracking-tight">1M+</span>
+                    <span className="text-[10px] font-bold uppercase tracking-widest text-white/30">Local Views</span>
+                 </div>
               </motion.div>
             </motion.div>
 

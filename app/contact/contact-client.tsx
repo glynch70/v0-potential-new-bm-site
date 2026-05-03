@@ -66,80 +66,84 @@ export default function ContactPage() {
   }
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-neutral-950 text-white font-sans selection:bg-brand-yellow selection:text-neutral-950">
       {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md shadow-sm">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-neutral-950/95 backdrop-blur-md border-b border-white/10 shadow-sm">
         <div className="max-w-5xl mx-auto px-6 py-5 flex justify-between items-center">
-          <Link href="/" className="flex items-center gap-3 text-black/60 hover:text-black min-h-[44px]">
-            <ArrowLeft size={20} />
-            <span className="text-base font-medium">Back to home</span>
+          <Link href="/" className="flex items-center gap-3 text-white/40 hover:text-white min-h-[44px] group">
+            <ArrowLeft size={20} className="group-hover:-translate-x-1 transition-transform" />
+            <span className="text-base font-bold uppercase italic font-bebas tracking-widest">Back to home</span>
           </Link>
-          <Image src="/bear-media-logo-horizontal-white.png" alt="Bear Media" width={200} height={40} className="h-10 w-auto" priority />
+          <div className="flex flex-col text-right">
+            <span className="text-white font-black text-lg leading-tight uppercase italic font-bebas tracking-wider">Bear Media</span>
+            <span className="text-brand-yellow/60 text-[9px] font-black uppercase tracking-[0.2em]">Visibility & Leads</span>
+          </div>
         </div>
       </header>
 
-      {/* Hero */}
-      <section className="pt-40 pb-20 px-6 text-center">
-        <h1 className="text-5xl md:text-6xl font-bold mb-5">Ready to start?</h1>
-        <p className="text-black/50 text-lg max-w-xl mx-auto">
-          No pressure. No hard sell. Just a conversation.
+      {/* 1. Header */}
+      <section className="pt-48 pb-20 px-6 text-center">
+        <p className="text-brand-yellow font-black uppercase tracking-[0.3em] mb-4 text-sm animate-pulse italic">Stop being the best kept secret.</p>
+        <h1 className="text-5xl md:text-8xl font-black mb-8 leading-[0.9] tracking-tighter italic uppercase font-bebas">
+          Let's Fix Your Visibility & <br />
+          <span className="text-brand-yellow underline decoration-brand-yellow/20 underline-offset-8 text-stroke-sm">Generate Enquiries.</span>
+        </h1>
+        <div className="flex flex-wrap justify-center gap-6 mb-12 border-y border-white/5 py-8">
+           <div className="flex flex-col items-center">
+              <span className="text-2xl font-black text-white font-bebas italic">5.0 ★</span>
+              <span className="text-[10px] font-bold text-white/40 uppercase tracking-widest">Google Rating</span>
+           </div>
+           <div className="w-[1px] h-10 bg-white/10 hidden sm:block" />
+           <div className="flex flex-col items-center">
+              <span className="text-2xl font-black text-white font-bebas italic">50+</span>
+              <span className="text-[10px] font-bold text-white/40 uppercase tracking-widest">Local Clients</span>
+           </div>
+           <div className="w-[1px] h-10 bg-white/10 hidden sm:block" />
+           <div className="flex flex-col items-center">
+              <span className="text-2xl font-black text-white font-bebas italic">1M+</span>
+              <span className="text-[10px] font-bold text-white/40 uppercase tracking-widest">Local Reach</span>
+           </div>
+        </div>
+        <p className="text-xl text-white/50 max-w-xl mx-auto font-medium leading-relaxed italic">
+          Book a 15-minute Discovery Call below. We'll look at your current content, find the gaps, and map out a plan to get you more enquiries.
         </p>
       </section>
 
-      {/* Content */}
+      {/* Content Grid */}
       <section className="pb-32 px-6">
-        <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-20">
-          {/* Copy */}
-          <div>
-            <h2 className="text-2xl font-bold mb-6">Let’s have a chat</h2>
-            <p className="text-black/60 leading-[1.7] text-lg mb-6">
-              Every message comes directly to me. No bots. No sales scripts.
-            </p>
-            <a
-              href="mailto:info@bear-media.com"
-              className="text-black/40 hover:text-black min-h-[44px] inline-block"
-            >
-              info@bear-media.com
-            </a>
+        <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-16">
+          
+          {/* 2. Primary Action: Embedded Calendar */}
+          <div className="glass-card p-1 overflow-hidden min-h-[600px] border-brand-yellow/20">
+             <div className="w-full h-full bg-neutral-900/50 flex items-center justify-center text-neutral-600 italic">
+                Calendly / Booking System Integration
+             </div>
           </div>
 
-          {/* Form */}
-          <div>
-            {submitStatus === "success" ? (
-              <div className="bg-[#FAF9F6] p-10 rounded-2xl text-center shadow">
-                <h3 className="text-2xl font-bold mb-2">Message sent</h3>
-                <p className="text-black/50">I’ll reply within 24 hours.</p>
-              </div>
-            ) : (
-              <>
-                {submitStatus === "error" && (
-                  <div className="mb-6 bg-red-50 border border-red-200 p-4 rounded-xl">
-                    <p className="text-red-800">{errorMessage}</p>
-                  </div>
-                )}
-
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  {/* Honeypot (bots only) */}
-                  <input
-                    type="text"
-                    name="company"
-                    value={formData.company}
-                    onChange={handleChange}
-                    tabIndex={-1}
-                    autoComplete="off"
-                    className="hidden"
-                  />
-
-                  <input
+          {/* 3. Secondary Action: Simple Form */}
+          <div className="flex flex-col">
+            <div className="mb-12">
+              <h2 className="text-2xl font-bold mb-6 text-brand-yellow">Prefer to message first?</h2>
+              <p className="text-white/60 mb-8">
+                Send a quick enquiry and I'll get back to you within 24 hours.
+              </p>
+              
+              {submitStatus === "success" ? (
+                <div className="glass-card p-10 text-center">
+                  <h3 className="text-2xl font-bold mb-2 text-brand-yellow">Message sent</h3>
+                  <p className="text-white/50">I’ll reply within 24 hours.</p>
+                </div>
+              ) : (
+                <form onSubmit={handleSubmit} className="space-y-4">
+                   <input
                     type="text"
                     name="name"
                     required
                     placeholder="Your name"
                     value={formData.name}
                     onChange={handleChange}
-                    className="w-full px-4 py-4 rounded-xl bg-[#FAF9F6] text-base"
+                    className="w-full px-4 py-4 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-white/20 text-base focus:border-brand-yellow outline-none transition-colors"
                   />
-
                   <input
                     type="email"
                     name="email"
@@ -147,42 +151,42 @@ export default function ContactPage() {
                     placeholder="you@example.com"
                     value={formData.email}
                     onChange={handleChange}
-                    className="w-full px-4 py-4 rounded-xl bg-[#FAF9F6] text-base"
+                    className="w-full px-4 py-4 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-white/20 text-base focus:border-brand-yellow outline-none transition-colors"
                   />
-
-                  <select
-                    name="projectType"
-                    value={formData.projectType}
-                    onChange={handleChange}
-                    className="w-full px-4 py-4 rounded-xl bg-[#FAF9F6] text-base"
-                  >
-                    <option value="">Project type (optional)</option>
-                    <option value="website">Website</option>
-                    <option value="social">Social content</option>
-                    <option value="branding">Branding</option>
-                    <option value="other">Other</option>
-                  </select>
-
                   <textarea
                     name="message"
                     required
-                    rows={5}
-                    placeholder="Tell me about your project..."
+                    rows={4}
+                    placeholder="Tell me about your business..."
                     value={formData.message}
                     onChange={handleChange}
-                    className="w-full px-4 py-4 rounded-xl bg-[#FAF9F6] text-base leading-relaxed"
+                    className="w-full px-4 py-4 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-white/20 text-base leading-relaxed focus:border-brand-yellow outline-none transition-colors"
                   />
-
-                  <Button
+                  <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full bg-[#C9A227] text-black py-7 rounded-xl font-bold"
+                    className="w-full bg-brand-yellow text-neutral-950 py-4 rounded-xl font-bold hover:scale-[1.02] active:scale-[0.98] transition-all disabled:opacity-50"
                   >
-                    {isSubmitting ? "Sending..." : "Send message"}
-                  </Button>
+                    {isSubmitting ? "Sending..." : "Send enquiry"}
+                  </button>
                 </form>
-              </>
-            )}
+              )}
+            </div>
+
+            {/* 4. Direct Contact Details */}
+            <div className="mt-auto pt-12 border-t border-white/5">
+               <h3 className="text-sm font-black uppercase tracking-widest text-white/30 mb-6">Direct Contact</h3>
+               <div className="grid grid-cols-2 gap-8">
+                  <div>
+                    <p className="text-xs text-white/40 uppercase mb-2">Email</p>
+                    <a href="mailto:info@bear-media.com" className="text-white hover:text-brand-yellow transition-colors">info@bear-media.com</a>
+                  </div>
+                  <div>
+                    <p className="text-xs text-white/40 uppercase mb-2">Location</p>
+                    <p className="text-white">Broxburn, West Lothian</p>
+                  </div>
+               </div>
+            </div>
           </div>
         </div>
       </section>

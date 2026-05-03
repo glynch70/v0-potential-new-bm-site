@@ -14,6 +14,7 @@ import {
 	MapPin,
 	ArrowUpRight,
 	MessageSquare,
+	Info,
 } from 'lucide-react';
 
 interface FooterLink {
@@ -36,30 +37,39 @@ const socialLinks: FooterLink[] = [
 
 const footerLinkGroups: FooterLinkGroup[] = [
 	{
-		label: 'Services',
+		label: 'Solutions',
 		links: [
-			{ title: 'Web Design', href: '/#how-it-works' },
-			{ title: 'Social Media', href: '/#how-it-works' },
-			{ title: 'Training', href: '/training' },
-			{ title: 'Visibility System', href: '/#how-it-works' },
+			{ title: 'Social Content', href: '/services/social-media-content' },
+			{ title: 'Videography', href: '/services/videography' },
+			{ title: 'Web Design', href: '/services/website-design' },
+			{ title: 'Portfolio', href: '/portfolio' },
 		],
 	},
 	{
-		label: 'Company',
+		label: 'Industries',
 		links: [
-			{ title: 'Home', href: '/' },
-			{ title: 'About', href: '/#about' },
-			{ title: 'Case Studies', href: '/#work' },
-			{ title: 'YouTube', href: 'https://www.youtube.com/@bearmedia70' },
+			{ title: 'Trades', href: '/industries/trades' },
+			{ title: 'Estate Agents', href: '/industries/estate-agents' },
+			{ title: 'Local SMEs', href: '/industries' },
+			{ title: 'About Bear Media', href: '/about' },
 		],
 	},
 	{
-		label: 'Contact',
+		label: 'Locations',
 		links: [
-			{ title: '+44 7879 011860', href: 'tel:+447879011860', icon: Phone },
-			{ title: 'info@bear-media.com', href: 'mailto:info@bear-media.com', icon: Mail },
-			{ title: 'Discovery Call', href: 'https://calendly.com/bearmedia/discovery-call', icon: ArrowUpRight },
-			{ title: 'WhatsApp Now', href: 'https://wa.me/447879011860', icon: MessageSquare },
+			{ title: 'West Lothian', href: '/west-lothian-content-creation' },
+			{ title: 'Edinburgh', href: '/edinburgh-content-creation' },
+			{ title: 'Fife', href: '/fife-content-creation' },
+			{ title: 'Central Belt', href: '/locations/content-creation-scotland' },
+		],
+	},
+	{
+		label: 'Growth',
+		links: [
+			{ title: 'Insights Blog', href: '/insights' },
+			{ title: 'Pricing Guide', href: '/pricing' },
+			{ title: 'Book a Call', href: '/contact', icon: ArrowUpRight },
+			{ title: '07879 011860', href: 'tel:+447879011860', icon: Phone },
 		],
 	},
 ];

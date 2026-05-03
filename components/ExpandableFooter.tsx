@@ -95,7 +95,7 @@ export default function ExpandableFooter() {
                       </li>
                       <li>
                         <a
-                          href="#contact"
+                          href="/contact"
                           className="text-white/70 hover:text-[#C9A227] hover:translate-x-1 inline-block transition-all duration-250 ease-[cubic-bezier(0.16,1,0.3,1)]"
                         >
                           Contact

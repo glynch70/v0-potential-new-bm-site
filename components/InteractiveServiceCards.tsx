@@ -167,7 +167,7 @@ function ServiceFlipCard({ service, index }: { service: typeof MAIN_SERVICES[0];
 
             <div className="mt-auto pt-6 border-t border-white/10">
               <a 
-                href="#contact" 
+                href="/contact" 
                 className="text-[#C9A227] text-sm font-medium hover:underline flex items-center gap-1"
                 onClick={(e) => e.stopPropagation()}
               >
@@ -250,7 +250,7 @@ export default function InteractiveServiceCards() {
         </motion.div>
 
         <a
-          href="#contact"
+          href="/contact"
           className="mt-12 inline-flex items-center gap-2 text-xs font-medium uppercase tracking-[0.2em] text-[#D4A830] transition-colors hover:text-[#D4A830]"
         >
           Get a quote for any service

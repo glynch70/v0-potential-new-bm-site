@@ -43,13 +43,11 @@ export default function SalesHero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.6 }}
-              className="text-[2rem] sm:text-[2.5rem] md:text-[3.5rem] xl:text-[4.2rem] font-bold leading-[1.1] tracking-tight mb-8 font-inter-tight max-w-2xl"
+              className="text-[2rem] sm:text-[2.5rem] md:text-[3.5rem] xl:text-[4.2rem] font-bold leading-[1.1] tracking-tight mb-8 font-inter-tight max-w-2xl text-white"
               style={{ letterSpacing: '-0.04em' }}
             >
-              We come to you.<br />
-              We film it.<br />
-              We edit it.<br />
-              <span className="text-brand-yellow">Your channels stay full.</span>
+              Doing great work but <br />
+              <span className="text-brand-yellow underline decoration-brand-yellow/30 underline-offset-8">nobody knows you exist?</span>
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -57,7 +55,7 @@ export default function SalesHero() {
               transition={{ delay: 0.4, duration: 0.6 }}
               className="text-lg md:text-xl text-white/70 mb-10 max-w-lg leading-relaxed font-medium"
             >
-              Content that keeps your business visible and brings in leads.
+              We bring the cameras and the strategy to your door. You focus on your trade; we focus on your growth. Serving Edinburgh, Fife, and West Lothian.
             </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -66,10 +64,10 @@ export default function SalesHero() {
               className="flex flex-wrap gap-5"
             >
               <a
-                href="#contact"
+                href="/contact"
                 className="px-10 py-5 bg-brand-yellow text-neutral-950 font-black uppercase tracking-widest text-sm rounded-xl hover:scale-105 transition-all duration-300"
               >
-                Let's Grow Your Business
+                Book a Discovery Call
               </a>
               <a
                 href="#work"

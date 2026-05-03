@@ -6,21 +6,21 @@ import { motion } from 'framer-motion'
 const steps = [
   {
     id: '01',
-    title: 'Strategy Call',
-    frontText: 'A free 30-minute deep dive to find the gaps in your visibility and leads.',
-    backText: 'We map out exactly what you need to stop being ignored and start getting calls.'
+    title: 'Strategy & Audit',
+    frontText: 'A free 15-minute call to find the gaps in your online presence and lead flow.',
+    backText: 'We map out the exact content and systems you need to turn attention into enquiries.'
   },
   {
     id: '02',
-    title: 'We Create & Build',
-    frontText: 'On-site content creation and high-performance web development.',
-    backText: 'We handle everything. The filming, the editing, and the technical build.'
+    title: 'The Build Phase',
+    frontText: 'We visit your business to capture high-end content and build your lead systems.',
+    backText: 'We handle everything: cinematography, drone tours, and high-converting web design.'
   },
   {
     id: '03',
-    title: 'You Get Leads',
-    frontText: 'The system goes live and you start seeing the results in your inbox.',
-    backText: 'Continuous management and optimisation to ensure the leads keep coming.'
+    title: 'Live Growth',
+    frontText: 'Your system goes live. You stop chasing work and start choosing it.',
+    backText: 'Continuous optimisation to ensure you remain the #1 choice in your local area.'
   }
 ]
 

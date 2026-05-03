@@ -86,7 +86,7 @@ export default function About() {
         </div>
 
         <a 
-          href="#contact"
+          href="/contact"
           className="inline-block px-12 py-5 rounded-2xl bg-brand-yellow text-black font-black uppercase tracking-widest text-sm shadow-[0_0_30px_rgba(221,163,30,0.2)] hover:scale-105 transition-all"
         >
           Let's Grow Your Business

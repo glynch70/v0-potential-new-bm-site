@@ -160,7 +160,7 @@ export default function VideoGrid() {
             "If your business isn’t showing up like this, you’re missing opportunities."
           </p>
           <a
-            href="#contact"
+            href="/contact"
             className="px-12 py-5 bg-brand-yellow text-neutral-950 font-black uppercase tracking-widest text-sm rounded-2xl hover:scale-105 transition-all shadow-2xl"
           >
             Get More Leads

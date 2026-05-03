@@ -43,16 +43,16 @@ export default function StatementSection() {
           transition={{ duration: 0.8 }}
           className="text-5xl md:text-8xl font-black text-white mb-10 uppercase italic tracking-tighter leading-none"
         >
-          Websites and social media content
+          We come to your door
         </motion.h2>
         
         <p className="text-xl md:text-3xl text-white/60 mb-12 max-w-3xl mx-auto italic font-medium leading-relaxed">
-          Helping businesses get seen, trusted, and contacted.
+          No faceless remote agencies. We visit you in Edinburgh, Fife, or West Lothian to capture the real story of your business.
         </p>
         
         <div className="flex gap-6 justify-center flex-wrap">
           <a 
-            href="#contact" 
+            href="/contact" 
             className="px-10 py-5 bg-brand-yellow text-dark font-black rounded-full hover:scale-105 hover:shadow-2xl transition-all uppercase italic tracking-widest text-lg"
           >
             Book a call

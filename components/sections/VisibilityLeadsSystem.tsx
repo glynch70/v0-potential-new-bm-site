@@ -6,21 +6,21 @@ import { Camera, Monitor, Zap, ArrowRight } from 'lucide-react';
 const steps = [
   {
     icon: <Camera size={40} />,
-    title: "Content Creation",
-    subtitle: "Get Attention",
-    description: "Cinematic drone video, vertical reels, and professional photography that stops the scroll and builds instant authority."
+    title: "High-Impact Media",
+    subtitle: "Get Seen",
+    description: "Cinematic drone video, vertical social content, and professional brand photography that stops the scroll and stays top-of-mind."
   },
   {
     icon: <Monitor size={40} />,
-    title: "Online Presence",
-    subtitle: "Professional Credibility",
-    description: "High-performance websites designed specifically to convert that attention into trust. Fast, mobile-first, and premium."
+    title: "Lead-Gen Websites",
+    subtitle: "Get Found",
+    description: "High-performance digital infrastructure designed to turn local attention into trust. Fast, mobile-first, and premium."
   },
   {
     icon: <Zap size={40} />,
-    title: "Conversion",
-    subtitle: "Turn Views Into Leads",
-    description: "Integrated sales funnels and automated lead capture that ensures you never miss a potential customer again."
+    title: "AI Automation",
+    subtitle: "Reclaim Time",
+    description: "Time-recovery systems that handle your enquiries and email sorting, letting you focus on the work while the leads flow in."
   }
 ];
 
@@ -97,10 +97,10 @@ export default function VisibilityLeadsSystem() {
              <p className="text-white/60 text-sm md:text-base">Let's build your Visibility & Leads System and start growing your business properly.</p>
           </div>
           <a
-            href="#contact"
+            href="/contact"
             className="w-full md:w-auto px-12 py-5 bg-brand-yellow text-neutral-950 font-black uppercase tracking-widest text-sm rounded-2xl hover:scale-105 transition-all duration-300 whitespace-nowrap text-center"
           >
-            Start Your System
+            Book Your Discovery Call
           </a>
         </motion.div>
       </div>
