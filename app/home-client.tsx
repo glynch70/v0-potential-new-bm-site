@@ -8,6 +8,7 @@ import { CheckCircle2, XCircle, ArrowRight, Video, Camera, Layout, Play, Users, 
 import Link from 'next/link';
 import HorizontalVideoScroll from '@/components/HorizontalVideoScroll';
 import VideoProof from '@/components/VideoProof';
+import YouTubeEmbed from '@/components/YouTubeEmbed';
 
 export default function HomeContent() {
   return (
@@ -125,47 +126,61 @@ export default function HomeContent() {
         ]}
       />
 
-              {/* WHAT THIS LOOKS LIKE IN REAL LIFE */}
-              <section className="py-16 md:py-24 px-6 bg-neutral-950 relative overflow-hidden">
-                <div className="max-w-7xl mx-auto">
-                   <h2 className="text-3xl md:text-5xl font-black mb-16 text-center uppercase italic font-bebas tracking-tight leading-none text-white">
-                      See the Work. <span className="text-brand-yellow text-stroke-sm">See the Results.</span>
-                   </h2>
-                   <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
-                      {[
-                        { label: "Joinery | West Lothian", result: "15+ Enquiries in Week 1", type: "Video", context: "20 years of craftsmanship with zero online proof.", action: "On-site cinematic capture + lead-gen site.", outcome: "15+ qualified enquiries in first 7 days." },
-                        { label: "Estate Agent | Edinburgh", result: "4 New Listings Signed", type: "Video", context: "Struggling to stand out against national chains.", action: "Drone property tours + social teasers.", outcome: "4 high-value listings signed in month one." },
-                        { label: "Landscaping | Central Belt", result: "25k+ Local Reach", type: "Video", context: "Wasting hours on low-quality tyre-kicker leads.", action: "Process-driven brand film + lead filtering.", outcome: "50% increase in high-value job conversion." },
-                        { label: "Roofing | Fife", result: "3x Quote Approval Rate", type: "Visual", context: "Hard to prove quality of work from the ground.", action: "Drone inspection clips + project proof videos.", outcome: "Instant trust and 3x more quotes approved." },
-                        { label: "Service SME | West Lothian", result: "100% Brand Visibility", type: "Video", context: "Invisible on social media, high street only.", action: "3x weekly short-form authority reels.", outcome: "25k+ local residents reached every month." },
-                        { label: "Property Group | Stirling", result: "Zero Jargon Authority", type: "Visual", context: "Needed to showcase scale and reliability.", action: "High-end brand story + site visit capture.", outcome: "Established as the local market leader." }
-                      ].map((item, i) => (
-                        <motion.div 
-                          key={i}
-                          initial={{ opacity: 0, y: 20 }}
-                          whileInView={{ opacity: 1, y: 0 }}
-                          viewport={{ once: true }}
-                          transition={{ delay: i * 0.1 }}
-                          className="aspect-square bg-neutral-900 rounded-3xl border border-white/5 overflow-hidden group relative"
-                        >
-                           <div className="absolute inset-0 flex items-center justify-center text-white/[0.03] text-[8px] px-8 text-center font-black uppercase italic tracking-widest">
-                              {item.context}
-                           </div>
-                           <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity" />
-                           <div className="absolute bottom-6 left-6 right-6">
-                              <p className="text-brand-yellow font-black uppercase italic font-bebas tracking-widest text-xs mb-1">{item.label}</p>
-                              <p className="text-white font-bold text-[10px] uppercase tracking-widest opacity-60">{item.result}</p>
-                           </div>
-                           {item.type === "Video" && (
-                             <div className="absolute top-6 right-6 w-8 h-8 rounded-full bg-brand-yellow flex items-center justify-center text-neutral-950 opacity-0 group-hover:opacity-100 transition-opacity">
-                                <Play size={12} className="fill-current" />
-                             </div>
-                           )}
-                        </motion.div>
-                      ))}
+      {/* WHAT THIS LOOKS LIKE IN REAL LIFE */}
+      <section className="py-16 md:py-24 px-6 bg-neutral-950 relative overflow-hidden">
+        <div className="max-w-7xl mx-auto">
+           <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-6xl font-black mb-6 uppercase italic font-bebas tracking-tight leading-none text-white">
+                 See How This Works <br />
+                 <span className="text-brand-yellow text-stroke-sm">In Real Life.</span>
+              </h2>
+              <p className="text-lg text-white/50 max-w-2xl mx-auto italic font-medium">
+                 Real clients. Real projects. Real outcomes captured across Scotland.
+              </p>
+           </div>
+           
+           <div className="grid md:grid-cols-2 gap-12">
+              <YouTubeEmbed 
+                videoId="qrQK-maE3sA" 
+                title="30 Years of Custom Sheds | Simply Sheds Scotland"
+                description="Showcasing three decades of craftsmanship for a local Scottish family business. Built to prove quality and win trust from the first click."
+                result="15+ qualified leads in first 14 days."
+              />
+              <YouTubeEmbed 
+                videoId="VlyX1CueJCc" 
+                title="Seafood Restaurant Refurb | St Andrews"
+                description="Cinematic walkthrough of a high-end restaurant refurb. Positioned to build immediate hype before the grand reopening."
+                result="Full booking calendar for opening week."
+              />
+           </div>
+
+           <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mt-16">
+              {[
+                { label: "Joinery | West Lothian", result: "15+ Enquiries in Week 1", type: "Video", context: "20 years of craftsmanship with zero online proof.", action: "On-site cinematic capture + lead-gen site.", outcome: "15+ qualified enquiries in first 7 days." },
+                { label: "Estate Agent | Edinburgh", result: "4 New Listings Signed", type: "Video", context: "Struggling to stand out against national chains.", action: "Drone property tours + social teasers.", outcome: "4 high-value listings signed in month one." },
+                { label: "Landscaping | Central Belt", result: "25k+ Local Reach", type: "Video", context: "Wasting hours on low-quality tyre-kicker leads.", action: "Process-driven brand film + lead filtering.", outcome: "50% increase in high-value job conversion." },
+              ].map((item, i) => (
+                <motion.div 
+                  key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1 }}
+                  className="aspect-square bg-neutral-900 rounded-3xl border border-white/5 overflow-hidden group relative"
+                >
+                   <div className="absolute inset-0 flex items-center justify-center text-white/[0.03] text-[8px] px-8 text-center font-black uppercase italic tracking-widest">
+                      {item.context}
                    </div>
-                </div>
-              </section>
+                   <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity" />
+                   <div className="absolute bottom-6 left-6 right-6">
+                      <p className="text-brand-yellow font-black uppercase italic font-bebas tracking-widest text-xs mb-1">{item.label}</p>
+                      <p className="text-white font-bold text-[10px] uppercase tracking-widest opacity-60">{item.result}</p>
+                   </div>
+                </motion.div>
+              ))}
+           </div>
+        </div>
+      </section>
 
               {/* NEW: SEEN OUR WORK? HERE'S HOW IT TURNS INTO RESULTS */}
               <section className="py-16 md:py-24 px-6 bg-white/[0.02] border-y border-white/5">

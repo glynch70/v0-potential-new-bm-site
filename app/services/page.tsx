@@ -7,6 +7,7 @@ import Process from '@/components/sections/Process';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { ArrowRight, XCircle, CheckCircle2, Video, Camera, Layout, Zap, TrendingUp, Users } from 'lucide-react';
+import YouTubeEmbed from '@/components/YouTubeEmbed';
 
 export default function ServicesPage() {
   return (
@@ -125,9 +126,12 @@ export default function ServicesPage() {
                    </Link>
                 </div>
               </div>
-              <div className="aspect-video bg-neutral-900 rounded-[2.5rem] border border-white/5 flex items-center justify-center text-white/[0.03] text-xs uppercase font-black italic tracking-widest p-12 text-center">
-                 Real Content Example: West Lothian Joinery Reel - 25k+ Views
-              </div>
+              <YouTubeEmbed 
+                videoId="e-oJMNu7b6k" 
+                title="Behind-the-Scenes Content Capture"
+                description="How we capture authentic, high-impact content without getting in your way."
+                result="Consistent, professional presence that drives local enquiries."
+              />
             </div>
 
             {/* 2. Videography & Photography */}
@@ -160,9 +164,12 @@ export default function ServicesPage() {
                    </Link>
                 </div>
               </div>
-              <div className="aspect-video bg-neutral-900 rounded-[2.5rem] border border-white/5 flex items-center justify-center text-white/[0.03] text-xs uppercase font-black italic tracking-widest p-12 text-center md:order-1">
-                 Real Content Example: Edinburgh Estate Agent Drone Tour
-              </div>
+              <YouTubeEmbed 
+                videoId="jC2_w7PSiGI" 
+                title="Cinematic Drone Perspective"
+                description="Professional aerial capture that showcases scale, location, and craftsmanship."
+                result="Instantly elevated brand perception and listing authority."
+              />
             </div>
 
             {/* 3. Website Design */}
@@ -195,9 +202,12 @@ export default function ServicesPage() {
                    </Link>
                 </div>
               </div>
-              <div className="aspect-video bg-neutral-900 rounded-[2.5rem] border border-white/5 flex items-center justify-center text-white/[0.03] text-xs uppercase font-black italic tracking-widest p-12 text-center">
-                 Real Work Example: Lead-Gen Site for Central Belt Contractor
-              </div>
+              <YouTubeEmbed 
+                videoId="_5ez-K2wvxw" 
+                title="Business Showcase: Forth Coast Veterinary"
+                description="Integrating high-end video into a custom lead-generation website build."
+                result="A seamless conversion path from video viewer to customer."
+              />
             </div>
 
           </div>

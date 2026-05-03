@@ -2,8 +2,9 @@ import React from 'react';
 import { Metadata } from 'next';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import { ArrowRight, BookOpen, Clock, Tag } from 'lucide-react';
+import { ArrowRight, BookOpen, Clock, Tag, Play } from 'lucide-react';
 import Link from 'next/link';
+import YouTubeEmbed from '@/components/YouTubeEmbed';
 
 export const metadata: Metadata = {
   title: 'Insights & Growth Blog | Bear Media',
@@ -46,10 +47,10 @@ export default function InsightsPage() {
           <div className="max-w-7xl mx-auto relative z-10 text-center">
             <p className="text-brand-yellow font-black uppercase tracking-[0.3em] mb-6 text-sm">Real Talk. Real Strategy.</p>
             <h1 className="text-5xl md:text-9xl font-black mb-8 leading-[0.9] tracking-tighter italic uppercase font-bebas">
-               Bear <span className="text-brand-yellow underline decoration-brand-yellow/20 underline-offset-8">Insights.</span>
+                Bear <span className="text-brand-yellow underline decoration-brand-yellow/20 underline-offset-8">Insights.</span>
             </h1>
             <p className="text-xl text-white/50 max-w-2xl mx-auto font-medium leading-relaxed italic">
-               Helping local businesses in Scotland dominate their market through better content and smarter strategy.
+                Helping local businesses in Scotland dominate their market through better content and smarter strategy.
             </p>
           </div>
         </section>
@@ -80,6 +81,39 @@ export default function InsightsPage() {
                     </div>
                  </Link>
               ))}
+           </div>
+        </section>
+
+        {/* WATCH INSTEAD SECTION */}
+        <section className="py-24 px-6 bg-white/[0.02] border-y border-white/5">
+           <div className="max-w-7xl mx-auto">
+              <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8 text-center md:text-left">
+                 <div>
+                    <span className="text-brand-yellow font-black uppercase tracking-[0.3em] mb-4 text-xs block italic">Prefer Video?</span>
+                    <h2 className="text-3xl md:text-6xl font-black uppercase italic font-bebas tracking-tight text-white leading-none">
+                       Watch the <span className="text-brand-yellow text-stroke-sm">Breakdowns.</span>
+                    </h2>
+                 </div>
+                 <div className="flex items-center gap-4 text-white/40 font-bold uppercase tracking-widest text-[10px]">
+                    <Play size={16} className="text-brand-yellow" />
+                    Real project walkthroughs
+                 </div>
+              </div>
+              
+              <div className="grid md:grid-cols-2 gap-12">
+                 <YouTubeEmbed 
+                    videoId="VlyX1CueJCc" 
+                    title="Case Study: How to Market a Restaurant Refurb"
+                    description="Watch how we used cinematic video to build hype for a high-end St Andrews restaurant."
+                    result="Full bookings for opening week."
+                 />
+                 <YouTubeEmbed 
+                    videoId="qrQK-maE3sA" 
+                    title="Case Study: Shedding stock imagery for real proof"
+                    description="Why this local shed builder stopped using stock photos and started using real video."
+                    result="15+ qualified leads in week one."
+                 />
+              </div>
            </div>
         </section>
 

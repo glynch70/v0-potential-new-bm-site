@@ -3,9 +3,10 @@
 import type React from "react"
 import { useState } from "react"
 import Link from "next/link"
-import { ArrowLeft } from "lucide-react"
+import { ArrowLeft, Star, TrendingUp, Users } from "lucide-react"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
+import YouTubeEmbed from '@/components/YouTubeEmbed'
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -82,12 +83,22 @@ export default function ContactPage() {
       </header>
 
       {/* 1. Header */}
-      <section className="pt-48 pb-20 px-6 text-center">
+      <section className="pt-48 pb-10 px-6 text-center">
         <p className="text-brand-yellow font-black uppercase tracking-[0.3em] mb-4 text-sm animate-pulse italic">Stop being the best kept secret.</p>
         <h1 className="text-5xl md:text-8xl font-black mb-8 leading-[0.9] tracking-tighter italic uppercase font-bebas">
           Let's Fix Your Visibility & <br />
           <span className="text-brand-yellow underline decoration-brand-yellow/20 underline-offset-8 text-stroke-sm">Generate Enquiries.</span>
         </h1>
+        
+        {/* PERSONAL VIDEO MESSAGE */}
+        <div className="max-w-4xl mx-auto mb-20 px-6">
+           <YouTubeEmbed 
+              videoId="jC2_w7PSiGI" 
+              title="A Message From Garry | Founder of Bear Media"
+              description="A quick word on how we help local businesses grow through authentic content."
+           />
+        </div>
+
         <div className="flex flex-wrap justify-center gap-6 mb-12 border-y border-white/5 py-8">
            <div className="flex flex-col items-center">
               <span className="text-2xl font-black text-white font-bebas italic">5.0 ★</span>
