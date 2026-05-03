@@ -6,6 +6,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { CheckCircle2, XCircle, ArrowRight, Video, Camera, Layout, Play, Users, MapPin, Star, TrendingUp, MousePointer2, HelpCircle } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 import HorizontalVideoScroll from '@/components/HorizontalVideoScroll';
 import VideoProof from '@/components/VideoProof';
 import YouTubeEmbed from '@/components/YouTubeEmbed';
@@ -24,105 +25,97 @@ export default function HomeContent() {
             muted
             loop
             playsInline
-            className="w-full h-full object-cover opacity-20 md:opacity-30 scale-105"
-            src="/media/NEW BM DRONE HERO.mp4"
-            poster="/media/hero-poster.jpg"
-          />
-          <div className="absolute inset-0 bg-neutral-950/40 backdrop-blur-[1px]" />
-          <div className="absolute inset-0 bg-gradient-to-b from-neutral-950/60 via-transparent to-neutral-950" />
-          
-          <div className="absolute bottom-12 right-12 text-right hidden lg:block">
-            <p className="text-white/20 text-[10px] font-black uppercase tracking-[0.4em] italic mb-1">Filmed on-site across Scotland</p>
-            <p className="text-white/10 text-[8px] font-black uppercase tracking-[0.4em] italic">Real client work</p>
-          </div>
+            className="w-full h-full object-cover opacity-40 grayscale"
+          >
+            <source src="/media/NEW BM DRONE HERO.mp4" type="video/mp4" />
+          </video>
+          <div className="absolute inset-0 bg-neutral-950/60" />
         </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto w-full text-center">
-          <motion.p
+        <div className="max-w-7xl mx-auto relative z-10 w-full">
+          <motion.p 
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-brand-yellow font-black uppercase tracking-[0.3em] mb-4 text-xs md:text-sm animate-pulse italic"
+            className="text-brand-yellow font-black uppercase tracking-[0.3em] mb-4 text-[10px] md:text-sm animate-pulse italic"
           >
-             Doing good work but not getting enough enquiries?
+            West Lothian • Edinburgh • Fife
           </motion.p>
-
-          <motion.h1
+          <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-4xl md:text-8xl lg:text-9xl font-black mb-6 md:mb-8 leading-[0.9] tracking-tighter italic uppercase font-bebas max-w-6xl mx-auto"
+            className="text-4xl md:text-[7rem] font-black mb-6 md:mb-8 leading-[0.85] tracking-tighter italic uppercase font-bebas max-w-4xl"
           >
-            Content Creation & Videography in <br />
-            <span className="text-brand-yellow text-stroke-sm">West Lothian, Edinburgh & Fife</span>
+            We come to you. <br />
+            We film it. <br />
+            <span className="text-brand-yellow text-stroke-sm">We get you leads.</span>
           </motion.h1>
-
-          <motion.p
+          <motion.p 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-lg md:text-2xl text-white/70 max-w-2xl mx-auto mb-10 md:mb-12 font-medium leading-relaxed italic"
+            className="text-lg md:text-2xl text-white/70 max-w-2xl mb-10 md:mb-12 font-medium leading-relaxed italic"
           >
-            We come to you. We film it. We turn it into leads.
+            Premium videography and lead-generation systems for local businesses that mean business. No fluff. Just enquiries.
           </motion.p>
-
-          <motion.div
+          <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
-            className="flex flex-col sm:flex-row justify-center gap-4 md:gap-6"
+            className="flex flex-col sm:flex-row gap-4 md:gap-6"
           >
             <Link
               href="/contact"
-              className="px-10 py-5 md:px-12 md:py-6 bg-brand-yellow text-neutral-950 font-black uppercase tracking-widest text-sm rounded-2xl hover:scale-105 active:scale-95 transition-all duration-300 shadow-[0_0_60px_rgba(245,166,35,0.4)] group"
+              className="px-10 py-5 md:px-12 md:py-6 bg-brand-yellow text-neutral-950 font-black uppercase tracking-widest text-sm rounded-2xl hover:scale-105 active:scale-95 transition-all duration-300 shadow-[0_0_40px_rgba(245,166,35,0.2)]"
             >
-              Book Your 15-Min Strategy Call
+              Book Your Growth Roadmap
             </Link>
             <Link
               href="/portfolio"
-              className="px-10 py-5 md:px-12 md:py-6 border border-white/20 text-white font-bold uppercase tracking-widest text-sm rounded-2xl hover:bg-white/5 active:scale-95 transition-all duration-300 flex items-center justify-center gap-2 backdrop-blur-md"
+              className="px-10 py-5 md:px-12 md:py-6 bg-white/5 text-white border border-white/10 font-black uppercase tracking-widest text-sm rounded-2xl hover:bg-white/10 transition-all duration-300"
             >
-              <Play size={16} className="fill-white" />
-              See Real Outcomes
+              See Our Work
             </Link>
           </motion.div>
 
-          {/* TRUST BAR IMMEDIATELY UNDER HERO CONTENT */}
-          <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.5 }}
-            className="mt-16 pt-8 border-t border-white/5 flex flex-wrap justify-center gap-8 md:gap-16"
-          >
-             <div className="flex flex-col items-center md:items-start">
-                <div className="flex gap-1 text-brand-yellow mb-1">
-                   {[1,2,3,4,5].map(i => <Star key={i} size={12} fill="currentColor" />)}
-                </div>
-                <p className="text-white/60 text-[10px] font-black uppercase tracking-widest">5.0 Google Rating</p>
-             </div>
-             <div className="flex flex-col items-center md:items-start">
-                <p className="text-white font-black font-bebas italic text-xl leading-none mb-1">50+ LOCAL BUSINESSES</p>
-                <p className="text-white/40 text-[9px] font-bold uppercase tracking-widest">Trusted Content Partner</p>
-             </div>
-             <div className="flex flex-col items-center md:items-start">
-                <p className="text-white font-black font-bebas italic text-xl leading-none mb-1">CENTRAL BELT COVERAGE</p>
-                <p className="text-white/40 text-[9px] font-bold uppercase tracking-widest">West Lothian • Edinburgh • Fife</p>
-             </div>
-          </motion.div>
+          {/* Video Overlay Text */}
+          <div className="absolute bottom-0 right-0 hidden lg:block opacity-20 hover:opacity-40 transition-opacity">
+             <p className="text-[10px] font-black uppercase tracking-[0.5em] italic rotate-90 origin-right translate-x-full">Filmed on-site across Scotland</p>
+          </div>
         </div>
       </section>
 
-      {/* 1.1 HORIZONTAL VIDEO SCROLL */}
-      <HorizontalVideoScroll />
+      {/* 2. TRUST BAR */}
+      <section className="py-8 bg-neutral-900/50 border-y border-white/5">
+        <div className="max-w-7xl mx-auto px-6 flex flex-wrap justify-center md:justify-between items-center gap-8 md:gap-4 opacity-50 grayscale hover:grayscale-0 transition-all">
+          <div className="flex flex-col items-center md:items-start">
+             <div className="flex gap-1 text-brand-yellow mb-1">
+                {[1,2,3,4,5].map(i => <Star key={i} size={10} fill="currentColor" />)}
+             </div>
+             <p className="text-white font-black text-[10px] uppercase tracking-widest leading-none">5.0 Google Rating</p>
+          </div>
+          <div className="h-8 w-px bg-white/10 hidden md:block" />
+          <div className="text-center md:text-left">
+             <p className="text-white font-black font-bebas italic text-xl leading-none mb-1">50+ LOCAL BUSINESSES</p>
+             <p className="text-white/40 text-[9px] font-bold uppercase tracking-widest leading-none">Trust Bear Media</p>
+          </div>
+          <div className="h-8 w-px bg-white/10 hidden md:block" />
+          <div className="text-center md:text-left">
+             <p className="text-white font-black font-bebas italic text-xl leading-none mb-1">1M+ LOCAL VIEWS</p>
+             <p className="text-white/40 text-[9px] font-bold uppercase tracking-widest leading-none">Generated for Clients</p>
+          </div>
+        </div>
+      </section>
 
-      {/* 1.2 VIDEO PROOF */}
+      {/* 3. VIDEO PROOF SECTION */}
       <VideoProof 
-        videoSrc="/work/promo-video.mp4"
-        title="15+ Enquiries in Week 1"
+        videoSrc="/media/NEW BM DRONE HERO.mp4"
+        title="On-Site Coverage Mastery"
         stats={[
-           { label: "Reach Generated", value: "45k+", icon: <TrendingUp size={24} /> },
-           { label: "New Leads", value: "15+", icon: <Users size={24} /> },
-           { label: "Customer Rating", value: "5.0★", icon: <Star size={24} /> },
-           { label: "Local Focus", value: "100%", icon: <MapPin size={24} /> }
+          { label: "Reach Generated", value: "1M+", icon: <TrendingUp size={24} /> },
+          { label: "Local Clients", value: "50+", icon: <Users size={24} /> },
+          { label: "Success Rate", value: "100%", icon: <CheckCircle2 size={24} /> },
+          { label: "Google Rating", value: "5.0★", icon: <Star size={24} /> }
         ]}
       />
 
@@ -182,218 +175,78 @@ export default function HomeContent() {
         </div>
       </section>
 
-              {/* NEW: SEEN OUR WORK? HERE'S HOW IT TURNS INTO RESULTS */}
-              <section className="py-16 md:py-24 px-6 bg-white/[0.02] border-y border-white/5">
-                 <div className="max-w-7xl mx-auto">
-                    <div className="text-center mb-16">
-                       <h2 className="text-3xl md:text-5xl font-black mb-6 uppercase italic font-bebas tracking-tight text-white leading-none">
-                          Seen our work? <br />
-                          <span className="text-brand-yellow text-stroke-sm">Here's how it turns into results.</span>
-                       </h2>
-                       <p className="text-lg text-white/50 max-w-2xl mx-auto italic font-medium">
-                          We don't just "make videos." We build a content-to-enquiry engine for your business.
-                       </p>
-                    </div>
-                    <div className="grid md:grid-cols-3 gap-12">
-                       {[
-                         { 
-                           step: "Step 01: Capture", 
-                           title: "High-Intent Filming", 
-                           desc: "We visit your site/office and film the real work, the real team, and the real results. No generic stock footage.",
-                           icon: <Camera size={32} />
-                         },
-                         { 
-                           step: "Step 02: Content", 
-                           title: "Cinematic Systems", 
-                           desc: "We edit that raw footage into high-performance reels, brand films, and property tours designed for social growth.",
-                           icon: <Video size={32} />
-                         },
-                         { 
-                           step: "Step 03: Results", 
-                           title: "Enquiry Generation", 
-                           desc: "We deploy that content through targeted systems and lead-gen sites to fill your calendar with enquiries.",
-                           icon: <TrendingUp size={32} />
-                         }
-                       ].map((step, i) => (
-                         <div key={i} className="relative p-10 rounded-[2.5rem] bg-neutral-900 border border-white/5 group hover:border-brand-yellow/30 transition-all duration-500">
-                            <div className="w-16 h-16 rounded-2xl bg-brand-yellow/10 text-brand-yellow flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
-                               {step.icon}
-                            </div>
-                            <p className="text-brand-yellow font-black uppercase tracking-[0.2em] text-[10px] mb-2 italic">{step.step}</p>
-                            <h3 className="text-2xl font-black mb-4 uppercase italic font-bebas tracking-wide text-white">{step.title}</h3>
-                            <p className="text-white/40 leading-relaxed text-sm">{step.desc}</p>
-                         </div>
-                       ))}
-                    </div>
-                 </div>
-              </section>
+      {/* 4. HORIZONTAL VIDEO SCROLL */}
+      <HorizontalVideoScroll />
 
-      {/* 2. TRUST BAR - REMOVED AS IT IS NOW IN HERO */}
-
-      {/* 3. PROBLEM SECTION */}
-      <section className="py-16 md:py-24 px-6 bg-neutral-900/30">
-         <div className="max-w-5xl mx-auto">
-            <h2 className="text-3xl md:text-5xl font-black mb-16 text-center uppercase italic font-bebas tracking-tight leading-none">
-               Why Local Businesses <span className="text-brand-yellow text-stroke-sm">Stay Small.</span>
-            </h2>
-            <div className="grid md:grid-cols-2 gap-12">
-                 <div className="space-y-8">
-                    {[
-                      "Your phone isn't ringing despite your top-tier work.",
-                      "Competitors with half your skill are winning the best jobs.",
-                      "You're invisible online while the Central Belt searches for you.",
-                      "You're tired of being the 'best kept secret' in your industry."
-                    ].map((pain, i) => (
-                      <motion.div 
-                        key={i} 
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: i * 0.1 }}
-                        className="flex gap-4 items-start group"
-                      >
-                         <XCircle className="text-red-500 shrink-0 mt-1" size={24} />
-                         <p className="text-xl text-white/60 font-black italic uppercase font-bebas tracking-wide leading-tight">{pain}</p>
-                      </motion.div>
-                    ))}
-                 </div>
-                 <div className="p-12 glass-card border-red-500/20 bg-red-500/[0.02] flex flex-col justify-center">
-                    <p className="text-4xl font-black italic mb-4 text-red-500 uppercase font-bebas">The Cost?</p>
-                    <p className="text-xl text-white/80 leading-relaxed font-bold italic">
-                       "Every day you stay invisible is another high-value enquiry going straight to your competitor's inbox instead of yours."
-                    </p>
-                 </div>
-            </div>
-         </div>
-      </section>
-
-      {/* 4. SYSTEM SECTION */}
+      {/* 5. THE PROBLEM SECTION */}
       <section className="py-16 md:py-24 px-6 max-w-7xl mx-auto">
-         <div className="text-center mb-20">
-             <h2 className="text-4xl md:text-7xl font-black mb-6 uppercase italic font-bebas tracking-tight text-white leading-none">
-                THE <span className="text-brand-yellow underline decoration-brand-yellow/20 underline-offset-8 text-stroke-sm">CONTENT & ENQUIRY</span> SYSTEM
-             </h2>
-             <p className="text-xl text-white/50 max-w-2xl mx-auto font-medium italic">Content → Trust → Enquiries</p>
-         </div>
-         <div className="grid md:grid-cols-3 gap-8">
-            {[
-              { step: "01", icon: <Camera size={40} />, title: "Content", sub: "Get Seen", desc: "Cinematic video and high-end photo that stops the scroll and shows off your work." },
-              { step: "02", icon: <Star size={40} />, title: "Trust", sub: "Build Authority", desc: "Positioning you as the local leader so customers pick you over anyone else." },
-              { icon: <MousePointer2 size={40} />, title: "Conversion", sub: "Get Enquiries", desc: "Lead-gen websites and strategy that turns attention into paying customers." }
-            ].map((step, i) => (
-              <div key={i} className="p-10 rounded-[2.5rem] bg-neutral-900 border border-white/5 group hover:border-brand-yellow/30 transition-all duration-500 relative overflow-hidden">
-                 <div className="absolute -top-4 -right-4 text-8xl font-black text-white/[0.03] italic font-bebas group-hover:text-brand-yellow/[0.05] transition-colors">{i+1}</div>
-                 <div className="w-16 h-16 rounded-2xl bg-brand-yellow/10 text-brand-yellow flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
-                    {step.icon}
-                 </div>
-                 <p className="text-brand-yellow font-black uppercase tracking-[0.2em] text-[10px] mb-2 italic">{step.sub}</p>
-                 <h3 className="text-3xl font-black mb-4 uppercase italic font-bebas tracking-wide text-white">{step.title}</h3>
-                 <p className="text-white/40 leading-relaxed text-sm font-medium">{step.desc}</p>
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
+           <div>
+              <h2 className="text-4xl md:text-7xl font-black mb-8 uppercase italic font-bebas tracking-tight text-white leading-none">
+                 Doing Good Work But <br />
+                 <span className="text-brand-yellow text-stroke-sm">Still Invisible?</span>
+              </h2>
+              <p className="text-xl text-white/50 mb-10 leading-relaxed font-medium italic">
+                 Most local businesses in Scotland are the best kept secret in their town. Word of mouth is great, but it’s not a growth system.
+              </p>
+              <div className="space-y-6">
+                 {[
+                   "Your social media looks amateur compared to your work.",
+                   "National corporate chains are stealing your local leads.",
+                   "People find you online but don't trust you yet."
+                 ].map((point, i) => (
+                   <div key={i} className="flex gap-4 items-center">
+                      <XCircle className="text-red-500 shrink-0" size={24} />
+                      <p className="text-white font-black uppercase italic font-bebas tracking-widest text-lg">{point}</p>
+                   </div>
+                 ))}
               </div>
-            ))}
-         </div>
+           </div>
+           <div className="aspect-square bg-neutral-900 rounded-[3rem] border border-white/5 flex items-center justify-center text-white/[0.02] text-xs font-black uppercase tracking-[0.5em] italic p-12 text-center">
+              Systematic visibility for trades and local experts
+           </div>
+        </div>
       </section>
 
-      {/* 5. SERVICES SECTION */}
-      <section className="py-16 md:py-24 px-6 bg-white/[0.02] border-y border-white/5">
-         <div className="max-w-7xl mx-auto">
-            <h2 className="text-3xl md:text-6xl font-black mb-16 text-center uppercase italic font-bebas tracking-tight text-white leading-none">
-               Outcome-Focused <span className="text-brand-yellow">Services.</span>
-            </h2>
-            <div className="grid md:grid-cols-3 gap-8">
-               {[
-                 { title: "Social Media Management", outcome: "Dominate Local Newsfeeds", desc: "Consistent, professional presence on FB and Instagram that keeps you top-of-mind.", link: "/services/social-media-content" },
-                 { title: "Videography & Video Marketing", outcome: "Look Like The Expert", desc: "Cinematic drone shots, property tours, and brand stories that build instant trust.", link: "/services/videography" },
-                 { title: "Lead-Gen Website Design", outcome: "Enquiries On Autopilot", desc: "High-performance websites designed to convert visitors into local leads.", link: "/services/website-design" }
-               ].map((service, i) => (
-                  <div key={i} className="p-10 glass-card border-white/5 hover:border-brand-yellow/30 transition-all group">
-                     <h3 className="text-xl font-bold text-white mb-2">{service.title}</h3>
-                     <p className="text-brand-yellow font-black uppercase italic font-bebas tracking-widest text-lg mb-6">{service.outcome}</p>
-                     <p className="text-white/40 text-sm mb-8 leading-relaxed">{service.desc}</p>
-                     <Link href={service.link} className="inline-flex items-center gap-2 text-white font-black uppercase italic font-bebas tracking-widest hover:text-brand-yellow transition-colors">
-                        Learn More <ArrowRight size={16} />
-                     </Link>
-                  </div>
-               ))}
-            </div>
-         </div>
+      {/* 6. THE SOLUTION / 3-STEP SYSTEM */}
+      <section className="py-16 md:py-24 px-6 bg-neutral-900/50">
+        <div className="max-w-5xl mx-auto text-center">
+           <h2 className="text-3xl md:text-5xl font-black mb-16 uppercase italic font-bebas tracking-tight text-white leading-none">
+              How We Turn Work <span className="text-brand-yellow">Into Enquiries.</span>
+           </h2>
+           <div className="grid md:grid-cols-3 gap-12 text-left">
+              {[
+                { step: "01", title: "We Capture", desc: "We come to your site or office and film cinematic content that proves your authority." },
+                { step: "02", title: "We Content", desc: "We turn that footage into high-performance social reels and lead-gen websites." },
+                { step: "03", title: "We Convert", desc: "We deploy the system to rank locally and turn viewers into qualified enquiries." }
+              ].map((item, i) => (
+                <div key={i} className="relative group">
+                   <span className="text-8xl font-black text-white/[0.03] absolute -top-12 -left-4 italic font-bebas group-hover:text-brand-yellow/10 transition-colors">{item.step}</span>
+                   <h4 className="text-2xl font-black uppercase italic font-bebas tracking-widest text-white mb-4 relative z-10">{item.title}</h4>
+                   <p className="text-white/40 leading-relaxed text-sm relative z-10">{item.desc}</p>
+                </div>
+              ))}
+           </div>
+        </div>
       </section>
 
-      {/* 6. RESULTS SECTION */}
+      {/* 7. CORE SERVICES PREVIEW */}
       <section className="py-16 md:py-24 px-6 max-w-7xl mx-auto text-center">
          <h2 className="text-4xl md:text-7xl font-black mb-16 uppercase italic font-bebas tracking-tight text-white leading-none">
-            Proven <span className="text-brand-yellow">Outcomes.</span>
+            The Growth <span className="text-brand-yellow text-stroke-sm">Toolkit.</span>
          </h2>
-         <div className="grid md:grid-cols-3 gap-12">
-            <div className="p-8 rounded-[2rem] bg-neutral-900 border border-white/5">
-               <p className="text-brand-yellow text-7xl font-black font-bebas italic leading-none mb-4">15+</p>
-               <p className="text-white font-black uppercase italic font-bebas tracking-widest text-xl mb-2">Enquiries in Week 1</p>
-               <p className="text-white/30 text-xs font-bold uppercase tracking-widest leading-relaxed">Generated for a West Lothian Joinery firm after launching their new lead-gen site and project videos.</p>
-            </div>
-            <div className="p-8 rounded-[2rem] bg-neutral-900 border border-white/5">
-               <p className="text-brand-yellow text-7xl font-black font-bebas italic leading-none mb-4">4 Listings</p>
-               <p className="text-white font-black uppercase italic font-bebas tracking-widest text-xl mb-2">Signed in 30 Days</p>
-               <p className="text-white/30 text-xs font-bold uppercase tracking-widest leading-relaxed">Secured by an Edinburgh Estate Agent through targeted cinematic video tours and social authority building.</p>
-            </div>
-            <div className="p-8 rounded-[2rem] bg-neutral-900 border border-white/5">
-               <p className="text-brand-yellow text-7xl font-black font-bebas italic leading-none mb-4">25,000+</p>
-               <p className="text-white font-black uppercase italic font-bebas tracking-widest text-xl mb-2">Local Residents Reached</p>
-               <p className="text-white/30 text-xs font-bold uppercase tracking-widest leading-relaxed">Monthly organic reach generated for a Fife service business, keeping them top-of-mind for every local customer.</p>
-            </div>
-         </div>
-      </section>
-
-      {/* 7. MINI CASE STUDIES */}
-      <section className="py-16 md:py-24 px-6 bg-neutral-900/50">
-         <div className="max-w-7xl mx-auto">
-            <h2 className="text-3xl md:text-5xl font-black mb-16 text-center uppercase italic font-bebas tracking-tight text-white leading-none">
-               Real Work. <span className="text-brand-yellow">Real Outcomes.</span>
-            </h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-               {[
-                 { 
-                   client: "Central Joinery", 
-                   problem: "Invisible online despite 20 years of work.", 
-                   solution: "New lead-gen site + on-site project videos.", 
-                   result: "15+ High-value enquiries in first week." 
-                 },
-                 { 
-                   client: "Lothian Estates", 
-                   problem: "Static photos weren't winning listings.", 
-                   solution: "Cinematic drone tours & social video reels.", 
-                   result: "4 New listings signed in 30 days." 
-                 },
-                 { 
-                   client: "Apex Fitness", 
-                   problem: "High churn and low local awareness.", 
-                   solution: "Monthly social content system & member stories.", 
-                   result: "25k+ Local residents reached monthly." 
-                 }
-               ].map((study, i) => (
-                  <div key={i} className="p-10 rounded-[2.5rem] bg-neutral-950 border border-white/5 group hover:border-brand-yellow/30 transition-all duration-500">
-                     <p className="text-brand-yellow font-black uppercase tracking-[0.2em] text-[10px] mb-4 italic">{study.client}</p>
-                     <div className="space-y-6">
-                        <div>
-                           <p className="text-red-500 font-black uppercase text-[10px] tracking-widest mb-1 italic">The Problem</p>
-                           <p className="text-white font-medium text-sm italic">"{study.problem}"</p>
-                        </div>
-                        <div>
-                           <p className="text-blue-400 font-black uppercase text-[10px] tracking-widest mb-1 italic">The Solution</p>
-                           <p className="text-white font-medium text-sm italic">{study.solution}</p>
-                        </div>
-                        <div className="pt-4 border-t border-white/5">
-                           <p className="text-brand-yellow font-black uppercase text-[10px] tracking-widest mb-1 italic">The Result</p>
-                           <p className="text-xl font-black text-white uppercase italic font-bebas tracking-wide">{study.result}</p>
-                        </div>
-                     </div>
-                  </div>
-               ))}
-            </div>
-            <div className="text-center mt-12">
-               <Link href="/portfolio" className="text-brand-yellow font-black uppercase italic font-bebas tracking-widest text-xl hover:underline flex items-center justify-center gap-2">
-                  View More Case Studies <ArrowRight size={20} />
+         <div className="grid md:grid-cols-3 gap-8">
+            {[
+              { title: "Social Content", desc: "Cinematic reels and vertical video that stop the scroll.", icon: <Video /> },
+              { title: "Lead-Gen Sites", desc: "Fast, premium websites built to convert local traffic.", icon: <MousePointer2 /> },
+              { title: "Drone & Photo", desc: "Professional aerials and stills that prove your quality.", icon: <Camera /> }
+            ].map((service, i) => (
+               <Link key={i} href="/services" className="p-12 rounded-[3rem] bg-neutral-900 border border-white/5 hover:border-brand-yellow/30 transition-all group">
+                  <div className="text-brand-yellow mb-6 group-hover:scale-110 transition-transform">{service.icon}</div>
+                  <h4 className="text-2xl font-black uppercase italic font-bebas text-white mb-4 tracking-wide">{service.title}</h4>
+                  <p className="text-white/40 text-sm italic">{service.desc}</p>
                </Link>
-            </div>
+            ))}
          </div>
       </section>
 
@@ -495,6 +348,95 @@ export default function HomeContent() {
                      <p className="text-white/50 leading-relaxed text-sm">{faq.a}</p>
                   </div>
                ))}
+            </div>
+         </div>
+      </section>
+
+      {/* MEET TEAM BEAR MEDIA */}
+      <section className="py-16 md:py-24 px-6">
+         <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-16 md:mb-24">
+               <h2 className="text-4xl md:text-7xl font-black mb-6 uppercase italic font-bebas tracking-tight text-white leading-none">
+                  Real People. Real Work. <br />
+                  <span className="text-brand-yellow text-stroke-sm">No Agency Nonsense.</span>
+               </h2>
+               <p className="text-lg md:text-2xl text-white/50 max-w-2xl mx-auto italic font-medium leading-relaxed">
+                  You’re not dealing with a big agency. You’re working directly with someone who cares about the result. And a couple of part-time assistants.
+               </p>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-8 md:gap-12">
+               {/* GARRY */}
+               <motion.div 
+                 initial={{ opacity: 0, y: 20 }}
+                 whileInView={{ opacity: 1, y: 0 }}
+                 viewport={{ once: true }}
+                 className="group"
+               >
+                  <div className="aspect-[4/5] rounded-[3rem] overflow-hidden border border-white/5 bg-neutral-900 mb-8 relative">
+                     <Image 
+                        src="/team/garry_lynch_car.jpg" 
+                        alt="Garry - Founder" 
+                        fill 
+                        className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
+                     />
+                     <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-transparent to-transparent opacity-60" />
+                  </div>
+                  <h4 className="text-3xl font-black uppercase italic font-bebas text-white mb-2 tracking-wide">Garry</h4>
+                  <p className="text-brand-yellow font-black uppercase italic font-bebas tracking-widest text-sm mb-4">Founder / Content & Strategy</p>
+                  <p className="text-white/40 text-sm leading-relaxed italic">Keeps things simple. Focused on results, not fluff.</p>
+               </motion.div>
+
+               {/* LOLA */}
+               <motion.div 
+                 initial={{ opacity: 0, y: 20 }}
+                 whileInView={{ opacity: 1, y: 0 }}
+                 viewport={{ once: true }}
+                 transition={{ delay: 0.1 }}
+                 className="group"
+               >
+                  <div className="aspect-[4/5] rounded-[3rem] overflow-hidden border border-white/5 bg-neutral-900 mb-8 relative">
+                     <Image 
+                        src="/team/lola_project_manager.jpg" 
+                        alt="Lola - Head of Morale" 
+                        fill 
+                        className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
+                     />
+                     <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-transparent to-transparent opacity-60" />
+                  </div>
+                  <h4 className="text-3xl font-black uppercase italic font-bebas text-white mb-2 tracking-wide">Lola</h4>
+                  <p className="text-brand-yellow font-black uppercase italic font-bebas tracking-widest text-sm mb-4">Head of Morale</p>
+                  <p className="text-white/40 text-sm leading-relaxed italic">Ensures long editing sessions stay on track.</p>
+               </motion.div>
+
+               {/* RORY */}
+               <motion.div 
+                 initial={{ opacity: 0, y: 20 }}
+                 whileInView={{ opacity: 1, y: 0 }}
+                 viewport={{ once: true }}
+                 transition={{ delay: 0.2 }}
+                 className="group"
+               >
+                  <div className="aspect-[4/5] rounded-[3rem] overflow-hidden border border-white/5 bg-neutral-900 mb-8 relative">
+                     <Image 
+                        src="/team/rory_quality_control.jpg" 
+                        alt="Rory - Security & Snack Supervisor" 
+                        fill 
+                        className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
+                     />
+                     <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-transparent to-transparent opacity-60" />
+                  </div>
+                  <h4 className="text-3xl font-black uppercase italic font-bebas text-white mb-2 tracking-wide">Rory</h4>
+                  <p className="text-brand-yellow font-black uppercase italic font-bebas tracking-widest text-sm mb-4">Security & Snack Supervisor</p>
+                  <p className="text-white/40 text-sm leading-relaxed italic">Keeps an eye on everything. Especially food.</p>
+               </motion.div>
+            </div>
+
+            <div className="mt-20 pt-12 border-t border-white/5 text-center">
+               <p className="text-white/40 font-black uppercase italic font-bebas tracking-[0.3em] text-lg md:text-2xl leading-relaxed">
+                  No account managers. No handoffs. <br />
+                  <span className="text-white text-stroke-xs">Just direct work, done properly.</span>
+               </p>
             </div>
          </div>
       </section>
