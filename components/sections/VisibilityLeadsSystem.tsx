@@ -50,7 +50,7 @@ export default function VisibilityLeadsSystem() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-lg text-white/50 max-w-2xl mx-auto leading-relaxed"
+            className="text-lg text-white max-w-2xl mx-auto leading-relaxed"
           >
             We don't just 'do social media' or 'build websites'. We implement a complete system that turns strangers into customers.
           </motion.p>
@@ -73,7 +73,7 @@ export default function VisibilityLeadsSystem() {
                 <div className="mt-8 text-center">
                   <p className="text-brand-yellow font-black uppercase tracking-widest text-[10px] mb-2">{step.subtitle}</p>
                   <h3 className="text-2xl font-black text-white uppercase mb-6 font-bebas italic tracking-wide">{step.title}</h3>
-                  <p className="text-white/50 text-sm leading-relaxed mb-8">{step.description}</p>
+                  <p className="text-white text-sm leading-relaxed mb-8">{step.description}</p>
                 </div>
               </motion.div>
 
@@ -94,7 +94,7 @@ export default function VisibilityLeadsSystem() {
         >
           <div className="max-w-xl text-center md:text-left">
              <h3 className="text-2xl md:text-3xl font-black text-white uppercase font-bebas italic mb-4">Ready to stop being ignored?</h3>
-             <p className="text-white/60 text-sm md:text-base">Let's build your Visibility & Leads System and start growing your business properly.</p>
+             <p className="text-white text-sm md:text-base">Let's build your Visibility & Leads System and start growing your business properly.</p>
           </div>
           <a
             href="/contact"

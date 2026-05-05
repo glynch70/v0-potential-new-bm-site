@@ -28,13 +28,6 @@ const menuItems = [
     gradient: "radial-gradient(circle, rgba(34,197,94,0.15) 0%, rgba(22,163,74,0.06) 50%, rgba(21,128,61,0) 100%)",
     iconColor: "text-green-500",
   },
-  {
-    icon: Phone,
-    label: "Book a Call",
-    href: "/contact",
-    gradient: "radial-gradient(circle, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.06) 50%, rgba(255,255,255,0) 100%)",
-    iconColor: "text-white",
-  },
 ]
 
 export default function Navbar() {
@@ -85,16 +78,16 @@ export default function Navbar() {
   return (
     <header className="sticky top-0 z-50 backdrop-blur-md border-b border-white/10 bg-neutral-950/80 transition-all duration-300">
       <div className="max-w-6xl mx-auto px-6 py-3 flex justify-between items-center">
-        <div className="flex items-center gap-3">
+        <Link href="/" className="flex items-center gap-3 group">
             <div className="flex flex-col">
-              <span className="text-white font-bold text-lg leading-tight" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif' }}>
+              <span className="text-white font-bold text-lg leading-tight group-hover:text-brand-yellow transition-colors" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif' }}>
                 Bear Media
               </span>
-              <span className="text-white/60 text-[10px] font-medium uppercase tracking-[0.2em]" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif' }}>
+              <span className="text-white text-[10px] font-medium uppercase tracking-[0.2em]" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif' }}>
                 Websites & Social Media
               </span>
             </div>
-        </div>
+        </Link>
 
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center gap-6">
@@ -129,11 +122,11 @@ export default function Navbar() {
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
             transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-            className="fixed inset-0 bg-dark z-[105] flex flex-col items-center justify-center gap-12 px-6 overflow-hidden md:hidden"
+            className="fixed inset-0 bg-neutral-950 z-[105] flex flex-col items-center justify-center gap-10 px-6 overflow-hidden md:hidden"
           >
             {/* Background Accents */}
-            <div className="absolute top-[-10%] right-[-10%] w-[50%] h-[50%] bg-brand-yellow/10 blur-[120px] rounded-full pointer-events-none" />
-            <div className="absolute bottom-[-10%] left-[-10%] w-[50%] h-[50%] bg-white/5 blur-[120px] rounded-full pointer-events-none" />
+            <div className="absolute top-[-10%] right-[-10%] w-[60%] h-[60%] bg-brand-yellow/10 blur-[120px] rounded-full pointer-events-none" />
+            <div className="absolute bottom-[-10%] left-[-10%] w-[60%] h-[60%] bg-brand-yellow/5 blur-[120px] rounded-full pointer-events-none" />
 
             {menuItems.map((link, i) => (
               <motion.div
@@ -141,14 +134,19 @@ export default function Navbar() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 + i * 0.1 }}
+                className="w-full max-w-xs"
               >
                 <Link 
                   href={link.href}
                   onClick={() => setIsOpen(false)}
-                  className="text-4xl font-black text-white uppercase italic tracking-tighter hover:text-brand-yellow transition-colors"
+                  className="flex items-center justify-between group"
                 >
-                  {link.label}
+                  <span className="text-4xl font-black text-white uppercase italic tracking-tighter group-hover:text-brand-yellow transition-colors">
+                    {link.label}
+                  </span>
+                  <link.icon className="text-brand-yellow group-hover:scale-110 transition-transform" size={28} />
                 </Link>
+                <div className="h-[1px] w-full bg-white/10 mt-4" />
               </motion.div>
             ))}
 
@@ -156,14 +154,14 @@ export default function Navbar() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 }}
-              className="mt-12"
+              className="mt-8 w-full max-w-xs"
             >
               <Link 
                 href="/contact"
                 onClick={() => setIsOpen(false)}
-                className="bg-brand-yellow text-dark px-10 py-5 rounded-full font-black uppercase tracking-widest text-sm shadow-[0_0_50px_rgba(201,162,39,0.3)] hover:scale-105 transition-all italic"
+                className="block w-full bg-brand-yellow text-neutral-950 px-8 py-5 rounded-2xl font-black uppercase tracking-widest text-sm shadow-[0_0_50px_rgba(201,162,39,0.3)] hover:scale-105 transition-all italic text-center"
               >
-                Book Your Discovery Call
+                Book Discovery Call
               </Link>
             </motion.div>
           </motion.div>

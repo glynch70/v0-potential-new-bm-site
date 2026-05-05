@@ -159,14 +159,14 @@ const GalleryModal = ({
                 <h3 className="text-lg font-bold uppercase tracking-tight text-white md:text-xl">
                   {selectedItem.title}
                 </h3>
-                <p className="mt-1 text-xs text-white/50 md:text-sm">{selectedItem.desc}</p>
+                <p className="mt-1 text-xs text-white md:text-sm">{selectedItem.desc}</p>
               </div>
             </motion.div>
           </AnimatePresence>
 
           {/* Close */}
           <motion.button
-            className="absolute right-4 top-4 border border-white/10 bg-[#0A0A0A] p-2 text-white/60 transition-colors hover:bg-white/10 hover:text-white md:right-6 md:top-6"
+            className="absolute right-4 top-4 border border-white/10 bg-[#0A0A0A] p-2 text-white transition-colors hover:bg-white/10 hover:text-white md:right-6 md:top-6"
             onClick={onClose}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
@@ -331,7 +331,7 @@ export default function InteractiveBentoGallery({
               <h3 className="relative text-xs font-bold uppercase tracking-tight text-white md:text-sm">
                 {item.title}
               </h3>
-              <p className="relative mt-0.5 text-[10px] text-white/50 md:text-xs">{item.desc}</p>
+              <p className="relative mt-0.5 text-[10px] text-white md:text-xs">{item.desc}</p>
             </motion.div>
           </motion.div>
         ))}

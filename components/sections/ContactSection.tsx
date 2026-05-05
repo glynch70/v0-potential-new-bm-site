@@ -55,7 +55,7 @@ export default function ContactSection() {
           <h2 className="mb-4 text-center text-4xl font-bold text-white uppercase tracking-tighter md:text-5xl">
             Elevate Your <span className="text-primary italic">Presence.</span>
           </h2>
-          <p className="mb-12 text-center text-white/60 text-sm uppercase tracking-widest font-medium">
+          <p className="mb-12 text-center text-white text-sm uppercase tracking-widest font-medium">
             Let's build something weightless.
           </p>
 

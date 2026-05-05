@@ -92,7 +92,7 @@ export default function BearMedia() {
             <span className="text-white font-bold text-base leading-tight" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif' }}>
               Bear Media
             </span>
-            <span className="text-white/50 text-[9px] font-medium uppercase tracking-[0.15em]" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif' }}>
+            <span className="text-white text-[9px] font-medium uppercase tracking-[0.15em]" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif' }}>
               Websites & Social Media
             </span>
           </div>
@@ -137,10 +137,10 @@ export default function BearMedia() {
               Let's Fix Your Visibility & <br />
               <span className="text-[#F5A623]">Start Generating Enquiries.</span>
             </motion.h1>
-            <motion.p variants={fadeUp} className="text-xl md:text-2xl text-white/70 mb-10 md:mb-12 font-medium leading-relaxed italic max-w-xl">
+            <motion.p variants={fadeUp} className="text-xl md:text-2xl text-white mb-10 md:mb-12 font-medium leading-relaxed italic max-w-xl">
               We come to you. We film it. We turn it into leads.
             </motion.p>
-            <motion.p variants={fadeUp} className="text-lg text-white/60 mb-8 leading-relaxed max-w-xl">
+            <motion.p variants={fadeUp} className="text-lg text-white mb-8 leading-relaxed max-w-xl">
               Professional on-site content that gets your business seen and brings in real enquiries across the Scottish Central Belt.
             </motion.p>
             <motion.div variants={fadeUp} className="flex flex-wrap gap-4 mb-12">
@@ -166,7 +166,7 @@ export default function BearMedia() {
               ].map((item) => (
                 <div key={item.label}>
                   <div className="text-2xl font-black text-[#F5A623]">{item.stat}</div>
-                  <div className="text-white/50 text-sm">{item.label}</div>
+                  <div className="text-white text-sm">{item.label}</div>
                 </div>
               ))}
             </motion.div>
@@ -174,7 +174,7 @@ export default function BearMedia() {
         </div>
 
         <a href="#growth" className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 animate-bounce">
-          <ChevronDown size={28} className="text-white/40" />
+          <ChevronDown size={28} className="text-white" />
         </a>
       </section>
 
@@ -190,7 +190,7 @@ export default function BearMedia() {
             <h2 className="text-6xl md:text-8xl font-black text-[#F5A623] mb-4 tracking-tighter" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
               +661% Growth in 90 Days
             </h2>
-            <p className="text-xl md:text-2xl text-white/60 font-bold uppercase tracking-widest">
+            <p className="text-xl md:text-2xl text-white font-bold uppercase tracking-widest">
               123,000+ views generated for a local business through consistent content
             </p>
           </motion.div>
@@ -243,7 +243,7 @@ export default function BearMedia() {
                     {item.number}
                   </div>
                   <h3 className="text-xl font-bold mb-3 text-white">{item.title}</h3>
-                  <p className="text-white/60 leading-relaxed text-sm">{item.body}</p>
+                  <p className="text-white leading-relaxed text-sm">{item.body}</p>
                 </motion.div>
               ))}
             </div>
@@ -368,7 +368,7 @@ export default function BearMedia() {
               We Do It All.<br />
               <span className="text-[#F5A623]">On-Site and Online.</span>
             </motion.h2>
-            <motion.p variants={fadeUp} className="text-white/50 text-base mb-12">
+            <motion.p variants={fadeUp} className="text-white text-base mb-12">
               We show up, we create, you get results.
             </motion.p>
             <div className="grid md:grid-cols-2 gap-12 items-start">
@@ -386,7 +386,7 @@ export default function BearMedia() {
                   ].map((item) => (
                     <div key={item} className="flex items-start gap-3">
                       <CheckCircle size={18} className="text-[#F5A623] mt-0.5 shrink-0" />
-                      <span className="text-white/80 text-sm">{item}</span>
+                      <span className="text-white text-sm">{item}</span>
                     </div>
                   ))}
                 </div>
@@ -399,7 +399,7 @@ export default function BearMedia() {
               </motion.div>
               <motion.div variants={fadeUp} className="bg-[#1a1a1a] border border-white/10 rounded-lg p-8">
                 <h3 className="text-xl font-bold mb-2 text-white">Who This Is For</h3>
-                <p className="text-white/50 text-sm mb-6">Bear Media works with businesses across the Scottish Central Belt who are serious about their brand online.</p>
+                <p className="text-white text-sm mb-6">Bear Media works with businesses across the Scottish Central Belt who are serious about their brand online.</p>
                 <div className="space-y-3">
                   {[
                     "Businesses that want a real person on-site, not a brief sent to a stranger",
@@ -410,15 +410,15 @@ export default function BearMedia() {
                   ].map((item) => (
                     <div key={item} className="flex items-start gap-3">
                       <div className="w-1.5 h-1.5 rounded-full bg-[#F5A623] mt-2 shrink-0" />
-                      <span className="text-white/70 text-sm">{item}</span>
+                      <span className="text-white text-sm">{item}</span>
                     </div>
                   ))}
                 </div>
                 <div className="mt-8 pt-6 border-t border-white/10">
-                  <p className="text-white/40 text-xs uppercase tracking-widest mb-1">Starting from</p>
-                  <p className="text-white/50 text-xs mb-2">Full-service content creation, on-site and managed. No hidden fees.</p>
-                  <p className="text-3xl font-black text-white">£750 <span className="text-white/40 text-base font-normal">/ month</span></p>
-                  <p className="text-white/40 text-xs mt-1">Minimum 3-month engagement</p>
+                  <p className="text-white text-xs uppercase tracking-widest mb-1">Starting from</p>
+                  <p className="text-white text-xs mb-2">Full-service content creation, on-site and managed. No hidden fees.</p>
+                  <p className="text-3xl font-black text-white">£750 <span className="text-white text-base font-normal">/ month</span></p>
+                  <p className="text-white text-xs mt-1">Minimum 3-month engagement</p>
                 </div>
               </motion.div>
             </div>
@@ -476,16 +476,16 @@ export default function BearMedia() {
                       <Star key={i} size={14} className="text-[#F5A623] fill-[#F5A623]" />
                     ))}
                   </div>
-                  <p className="text-white/70 text-sm leading-relaxed mb-6 italic">"{t.quote}"</p>
+                  <p className="text-white text-sm leading-relaxed mb-6 italic">"{t.quote}"</p>
                   <div>
                     <p className="font-bold text-white text-sm">{t.name}</p>
-                    <p className="text-white/40 text-xs">{t.company}</p>
+                    <p className="text-white text-xs">{t.company}</p>
                   </div>
                 </motion.div>
               ))}
             </div>
             <motion.div variants={fadeUp} className="mt-8 text-center">
-              <p className="text-white/40 text-sm">25 reviews · 5.0 ★ on Google</p>
+              <p className="text-white text-sm">25 reviews · 5.0 ★ on Google</p>
             </motion.div>
           </motion.div>
         </div>
@@ -561,7 +561,7 @@ export default function BearMedia() {
                     />
                   </button>
                   {openFaq === i && (
-                    <div className="px-6 pb-5 text-white/60 leading-relaxed border-t border-white/10 pt-4">
+                    <div className="px-6 pb-5 text-white leading-relaxed border-t border-white/10 pt-4">
                       {item.a}
                     </div>
                   )}
@@ -595,7 +595,7 @@ export default function BearMedia() {
                 Let's Come<br />
                 <span className="text-[#F5A623]">To You.</span>
               </motion.h2>
-              <motion.p variants={fadeUp} className="text-white/60 leading-relaxed mb-8">
+              <motion.p variants={fadeUp} className="text-white leading-relaxed mb-8">
                 A free 15-minute Discovery Call. No pitch, no pressure. We'll find out what your business needs and map out a path to more enquiries.
               </motion.p>
               
@@ -609,7 +609,7 @@ export default function BearMedia() {
                       "A custom 'Visibility & Leads' roadmap for your business.",
                       "Zero pressure. If we aren't a fit, we'll tell you."
                     ].map((item, i) => (
-                      <li key={i} className="flex gap-3 items-start text-sm text-white/80">
+                      <li key={i} className="flex gap-3 items-start text-sm text-white">
                          <div className="w-1.5 h-1.5 rounded-full bg-[#F5A623] mt-2 shrink-0" />
                          {item}
                       </li>
@@ -623,7 +623,7 @@ export default function BearMedia() {
                   { icon: <Mail size={16} />, text: "info@bear-media.com" },
                   { icon: <MapPin size={16} />, text: "Broxburn, West Lothian — filming across Scotland" },
                 ].map((item) => (
-                  <div key={item.text} className="flex items-start gap-3 text-white/50 text-sm">
+                  <div key={item.text} className="flex items-start gap-3 text-white text-sm">
                     <span className="text-[#F5A623] mt-0.5">{item.icon}</span>
                     {item.text}
                   </div>
@@ -634,17 +634,17 @@ export default function BearMedia() {
               <motion.div variants={fadeUp} className="mt-12 flex items-center gap-6">
                  <div className="flex flex-col">
                     <span className="text-2xl font-black text-white italic font-bebas tracking-tight">5.0★</span>
-                    <span className="text-[10px] font-bold uppercase tracking-widest text-white/30">Google Rating</span>
+                    <span className="text-[10px] font-bold uppercase tracking-widest text-white">Google Rating</span>
                  </div>
                  <div className="w-px h-10 bg-white/10" />
                  <div className="flex flex-col">
                     <span className="text-2xl font-black text-white italic font-bebas tracking-tight">50+</span>
-                    <span className="text-[10px] font-bold uppercase tracking-widest text-white/30">Local Clients</span>
+                    <span className="text-[10px] font-bold uppercase tracking-widest text-white">Local Clients</span>
                  </div>
                  <div className="w-px h-10 bg-white/10" />
                  <div className="flex flex-col">
                     <span className="text-2xl font-black text-white italic font-bebas tracking-tight">1M+</span>
-                    <span className="text-[10px] font-bold uppercase tracking-widest text-white/30">Local Views</span>
+                    <span className="text-[10px] font-bold uppercase tracking-widest text-white">Local Views</span>
                  </div>
               </motion.div>
             </motion.div>
@@ -672,7 +672,7 @@ export default function BearMedia() {
             className="flex items-center gap-6 mb-12"
           >
             <div className="flex-1 h-px bg-white/10" />
-            <p className="text-white/30 text-sm uppercase tracking-widest whitespace-nowrap">Or send us a message</p>
+            <p className="text-white text-sm uppercase tracking-widest whitespace-nowrap">Or send us a message</p>
             <div className="flex-1 h-px bg-white/10" />
           </motion.div>
 
@@ -695,7 +695,7 @@ export default function BearMedia() {
                 <h3 className="text-2xl font-black uppercase mb-2" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
                   Message Sent
                 </h3>
-                <p className="text-white/60 text-sm">Garry will be in touch within 2 hours during business hours.</p>
+                <p className="text-white text-sm">Garry will be in touch within 2 hours during business hours.</p>
               </div>
             ) : (
               <form
@@ -704,7 +704,7 @@ export default function BearMedia() {
               >
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-white/50 text-xs uppercase tracking-widest mb-2">Your Name</label>
+                    <label className="block text-white text-xs uppercase tracking-widest mb-2">Your Name</label>
                     <input
                       type="text"
                       required
@@ -715,7 +715,7 @@ export default function BearMedia() {
                     />
                   </div>
                   <div>
-                    <label className="block text-white/50 text-xs uppercase tracking-widest mb-2">Email</label>
+                    <label className="block text-white text-xs uppercase tracking-widest mb-2">Email</label>
                     <input
                       type="email"
                       required
@@ -727,7 +727,7 @@ export default function BearMedia() {
                   </div>
                 </div>
                 <div>
-                  <label className="block text-white/50 text-xs uppercase tracking-widest mb-2">Company Name</label>
+                  <label className="block text-white text-xs uppercase tracking-widest mb-2">Company Name</label>
                   <input
                     type="text"
                     required
@@ -738,7 +738,7 @@ export default function BearMedia() {
                   />
                 </div>
                 <div>
-                  <label className="block text-white/50 text-xs uppercase tracking-widest mb-2">Company Size</label>
+                  <label className="block text-white text-xs uppercase tracking-widest mb-2">Company Size</label>
                   <select
                     required
                     value={formState.size}
@@ -754,7 +754,7 @@ export default function BearMedia() {
                   </select>
                 </div>
                 <div>
-                  <label className="block text-white/50 text-xs uppercase tracking-widest mb-2">Tell Us About Your Business</label>
+                  <label className="block text-white text-xs uppercase tracking-widest mb-2">Tell Us About Your Business</label>
                   <textarea
                     rows={4}
                     value={formState.message}
@@ -769,7 +769,7 @@ export default function BearMedia() {
                 >
                   Send My Enquiry
                 </button>
-                <p className="text-white/30 text-xs text-center">No obligation. Garry responds within 2 hours during business hours.</p>
+                <p className="text-white text-xs text-center">No obligation. Garry responds within 2 hours during business hours.</p>
               </form>
             )}
           </motion.div>
@@ -784,11 +784,11 @@ export default function BearMedia() {
             <span className="text-white font-bold text-sm leading-tight" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif' }}>
               Bear Media
             </span>
-            <span className="text-white/40 text-[9px] font-medium uppercase tracking-[0.1em]" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif' }}>
+            <span className="text-white text-[9px] font-medium uppercase tracking-[0.1em]" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif' }}>
               Websites & Social Media
             </span>
           </div>
-          <p className="text-white/30 text-xs">© 2026 Bear Media. All rights reserved.</p>
+          <p className="text-white text-xs">© 2026 Bear Media. All rights reserved.</p>
           <a href="#book" className="text-[#F5A623] text-sm font-semibold hover:underline">
             Book a Call
           </a>

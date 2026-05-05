@@ -61,7 +61,7 @@ export const GallerySection = () => {
 
                   {/* Floating Number Overlay */}
                   <div className="absolute top-8 left-8">
-                    <span className="text-white/10 text-8xl font-bold leading-none select-none">
+                    <span className="text-white text-8xl font-bold leading-none select-none">
                       0{item.id}
                     </span>
                   </div>

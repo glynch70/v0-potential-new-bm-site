@@ -23,10 +23,10 @@ export default function CostArticle() {
             <Link href="/insights" className="text-brand-yellow font-black uppercase tracking-widest text-[10px] mb-8 inline-block hover:underline italic">← Back to Insights</Link>
             <h1 className="text-4xl md:text-7xl font-black mb-8 leading-[0.9] tracking-tighter italic uppercase font-bebas">
               How Much Does <br />
-              <span className="text-brand-yellow text-stroke-sm">Social Media Content Cost</span> <br />
+              <span className="text-brand-yellow">Social Media Content Cost</span> <br />
               in Scotland?
             </h1>
-            <p className="text-lg md:text-xl text-white/50 font-medium leading-relaxed italic max-w-2xl">
+            <p className="text-lg md:text-xl text-white font-medium leading-relaxed italic max-w-2xl">
               Transparent pricing, ROI expectations, and why the "cheapest" option usually costs you the most in the long run.
             </p>
           </div>
@@ -36,19 +36,19 @@ export default function CostArticle() {
         <article className="py-24 px-6 max-w-4xl mx-auto border-t border-white/5">
            <div className="prose prose-invert prose-brand max-w-none">
               <h2 className="text-2xl md:text-4xl font-black uppercase italic font-bebas tracking-wide text-white mb-8">The Short Answer</h2>
-              <p className="text-white/70 text-lg leading-relaxed mb-12">
+              <p className="text-white text-lg leading-relaxed mb-12">
                  In Scotland, professional content creation systems typically range from <span className="text-brand-yellow font-bold">£500 to £2,500+ per month</span> depending on frequency, quality, and management. While DIY costs "zero," it often costs businesses thousands in missed enquiries and poor perception.
               </p>
 
               <div className="grid md:grid-cols-2 gap-8 mb-16">
                  <div className="p-10 rounded-[2rem] bg-neutral-900 border border-white/5">
                     <h3 className="text-white font-black uppercase italic font-bebas tracking-widest text-lg mb-4">DIY / Internal</h3>
-                    <p className="text-white/40 text-sm mb-6">"Free" but takes hours of your time. Usually low quality, inconsistent, and builds zero authority.</p>
+                    <p className="text-white text-sm mb-6">"Free" but takes hours of your time. Usually low quality, inconsistent, and builds zero authority.</p>
                     <p className="text-brand-yellow font-black uppercase italic font-bebas text-xl">£0 + Your Sanity</p>
                  </div>
                  <div className="p-10 rounded-[2rem] bg-brand-yellow/10 border border-brand-yellow/30">
                     <h3 className="text-white font-black uppercase italic font-bebas tracking-widest text-lg mb-4">Professional System</h3>
-                    <p className="text-white/60 text-sm mb-6">On-site filming, cinematic editing, managed posting, and a clear lead-gen strategy.</p>
+                    <p className="text-white text-sm mb-6">On-site filming, cinematic editing, managed posting, and a clear lead-gen strategy.</p>
                     <p className="text-brand-yellow font-black uppercase italic font-bebas text-xl">£500 - £2,500 /mo</p>
                  </div>
               </div>
@@ -59,28 +59,28 @@ export default function CostArticle() {
                     <Zap className="text-brand-yellow shrink-0" />
                     <div>
                        <strong className="text-white uppercase italic font-bebas tracking-widest block text-lg">1. Filming Frequency</strong>
-                       <p className="text-white/40 text-sm">On-site visits are the most valuable part of the service. Capturing real work in West Lothian or Edinburgh takes time and skill.</p>
+                       <p className="text-white text-sm">On-site visits are the most valuable part of the service. Capturing real work in West Lothian or Edinburgh takes time and skill.</p>
                     </div>
                  </li>
                  <li className="flex gap-4">
                     <TrendingUp className="text-brand-yellow shrink-0" />
                     <div>
                        <strong className="text-white uppercase italic font-bebas tracking-widest block text-lg">2. Editing Intensity</strong>
-                       <p className="text-white/40 text-sm">Cinematic reels with captions, sound design, and color grading take hours of professional work to do right.</p>
+                       <p className="text-white text-sm">Cinematic reels with captions, sound design, and color grading take hours of professional work to do right.</p>
                     </div>
                  </li>
                  <li className="flex gap-4">
                     <Users className="text-brand-yellow shrink-0" />
                     <div>
                        <strong className="text-white uppercase italic font-bebas tracking-widest block text-lg">3. Management & Strategy</strong>
-                       <p className="text-white/40 text-sm">Posting is easy. Knowing *what* to post to get enquiries is the hard part. You pay for the brain, not just the hands.</p>
+                       <p className="text-white text-sm">Posting is easy. Knowing *what* to post to get enquiries is the hard part. You pay for the brain, not just the hands.</p>
                     </div>
                  </li>
               </ul>
 
               <div className="p-12 rounded-[2.5rem] bg-neutral-900 border border-brand-yellow/10 mb-16">
                  <h2 className="text-2xl font-black uppercase italic font-bebas tracking-wide text-white mb-6">The "Best Kept Secret" Tax</h2>
-                 <p className="text-white/60 text-lg leading-relaxed italic mb-8">
+                 <p className="text-white text-lg leading-relaxed italic mb-8">
                     "If you spend £1,000 on content but it wins you a £10,000 job, it didn't cost you anything. It made you £9,000. If you spend £0 and win zero jobs, that's where the real cost is."
                  </p>
                  <Link href="/pricing" className="text-brand-yellow font-black uppercase italic font-bebas tracking-widest text-lg hover:underline flex items-center gap-2">
@@ -89,7 +89,7 @@ export default function CostArticle() {
               </div>
 
               <h2 className="text-2xl md:text-4xl font-black uppercase italic font-bebas tracking-wide text-white mb-8">Why Scotland-Based Businesses Should Go Local</h2>
-              <p className="text-white/70 text-lg leading-relaxed mb-8">
+              <p className="text-white text-lg leading-relaxed mb-8">
                  Remote agencies will sell you generic posts using stock footage. Your customers aren't stupid. They want to see the real work on the ground in the Central Belt. Choosing a local partner means on-site filming, real team faces, and content that actually builds local trust.
               </p>
            </div>

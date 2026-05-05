@@ -62,19 +62,19 @@ export default function Contact() {
         <div className="rounded-[2rem] p-10 md:p-14 bg-neutral-900/50 border border-white/5 flex flex-col justify-between group">
           <div>
             <h3 className="text-3xl font-black uppercase italic mb-6">Get In <span className="text-brand-yellow">Touch</span></h3>
-            <p className="text-white/60 leading-relaxed text-lg">
+            <p className="text-white leading-relaxed text-lg">
               Tell me about your business, your goals and where content is currently falling short.
             </p>
           </div>
           
           <div className="mt-16 space-y-6">
-            <a href="mailto:hello@bear-media.com" className="flex items-center gap-4 text-white/80 hover:text-brand-yellow transition-colors font-bold text-lg">
+            <a href="mailto:hello@bear-media.com" className="flex items-center gap-4 text-white hover:text-brand-yellow transition-colors font-bold text-lg">
               <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center group-hover:bg-brand-yellow group-hover:text-black transition-colors">
                 <Mail size={20} />
               </div>
               hello@bear-media.com
             </a>
-            <a href="tel:07879011860" className="flex items-center gap-4 text-white/80 hover:text-brand-yellow transition-colors font-bold text-lg">
+            <a href="tel:07879011860" className="flex items-center gap-4 text-white hover:text-brand-yellow transition-colors font-bold text-lg">
               <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center group-hover:bg-brand-yellow group-hover:text-black transition-colors">
                 <Phone size={20} />
               </div>

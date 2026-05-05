@@ -48,7 +48,7 @@ export default function Packages() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-white/60 text-lg md:text-xl max-w-2xl leading-relaxed mb-16 italic font-medium"
+          className="text-white text-lg md:text-xl max-w-2xl leading-relaxed mb-16 italic font-medium"
         >
           Every business is different — so every package is different.
           Get in touch and I'll put something together that fits your goals and budget.
@@ -71,7 +71,7 @@ export default function Packages() {
               placeholder="Your email address" 
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="flex-grow bg-white/5 border border-white/10 px-8 py-5 text-white font-bold text-lg rounded-full focus:border-brand-yellow outline-none transition-all placeholder:text-white/20"
+              className="flex-grow bg-white/5 border border-white/10 px-8 py-5 text-white font-bold text-lg rounded-full focus:border-brand-yellow outline-none transition-all placeholder:text-white"
             />
             <button 
               type="submit"

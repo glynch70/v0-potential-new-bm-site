@@ -29,15 +29,15 @@ export default function ServiceFeatures() {
               We Do It All.<br />
               <span className="text-brand-yellow">On-Site and Online.</span>
             </h2>
-            <p className="text-lg text-white/50 leading-relaxed mb-10">
+            <p className="text-lg text-white leading-relaxed mb-10">
               We don't just send you a file and wish you luck. We handle the entire process from capture to conversion.
             </p>
             
             <div className="bg-neutral-950 p-8 rounded-3xl border border-white/5 relative group overflow-hidden">
                <div className="absolute top-0 right-0 w-32 h-32 bg-brand-yellow/5 blur-3xl group-hover:bg-brand-yellow/10 transition-colors duration-500" />
-               <p className="text-white/40 text-[10px] uppercase tracking-widest mb-2 font-bold">Starting From</p>
-               <p className="text-4xl font-black text-white font-bebas italic tracking-wider mb-2">£750 <span className="text-white/30 text-xl font-normal">/ month</span></p>
-               <p className="text-white/40 text-xs italic">Full-service content creation, on-site and managed.</p>
+               <p className="text-white text-[10px] uppercase tracking-widest mb-2 font-bold">Starting From</p>
+               <p className="text-4xl font-black text-white font-bebas italic tracking-wider mb-2">£750 <span className="text-white text-xl font-normal">/ month</span></p>
+               <p className="text-white text-xs italic">Full-service content creation, on-site and managed.</p>
             </div>
           </motion.div>
 
@@ -54,7 +54,7 @@ export default function ServiceFeatures() {
                 <div className="w-6 h-6 rounded-full bg-brand-yellow/10 flex items-center justify-center shrink-0">
                   <CheckCircle2 className="text-brand-yellow" size={14} />
                 </div>
-                <span className="text-white/80 text-sm font-medium">{feature}</span>
+                <span className="text-white text-sm font-medium">{feature}</span>
               </motion.div>
             ))}
           </div>

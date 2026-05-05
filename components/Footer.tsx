@@ -59,8 +59,11 @@ const footerLinkGroups: FooterLinkGroup[] = [
 		links: [
 			{ title: 'West Lothian', href: '/west-lothian-content-creation' },
 			{ title: 'Edinburgh', href: '/edinburgh-content-creation' },
-			{ title: 'Fife', href: '/fife-content-creation' },
-			{ title: 'Central Belt', href: '/locations/content-creation-scotland' },
+			{ title: 'Web Design W. Lothian', href: '/web-design-west-lothian' },
+			{ title: 'Social Media W. Lothian', href: '/social-media-west-lothian' },
+			{ title: 'Videography W. Lothian', href: '/videography-west-lothian' },
+			{ title: 'Web Design Edinburgh', href: '/web-design-edinburgh' },
+			{ title: 'Social Media Edinburgh', href: '/social-media-edinburgh' },
 		],
 	},
 	{
@@ -85,12 +88,12 @@ export default function Footer() {
 							<span className="text-white font-bold text-lg leading-tight" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif' }}>
 								Bear Media
 							</span>
-							<span className="text-white/50 text-[10px] font-medium uppercase tracking-[0.2em]" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif' }}>
+							<span className="text-white text-[10px] font-medium uppercase tracking-[0.2em]" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif' }}>
 								Websites & Social Media
 							</span>
 						</div>
 						
-						<p className="text-white/50 text-sm leading-relaxed max-w-sm">
+						<p className="text-white text-sm leading-relaxed max-w-sm">
 							Bear Media helps local businesses get visible online and turn that visibility into real leads. Get Seen. Get Leads. Grow Your Business.
 						</p>
 
@@ -103,7 +106,7 @@ export default function Footer() {
 										href={link.href}
 										target="_blank"
 										rel="noopener noreferrer"
-										className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white/40 hover:bg-white hover:text-black transition-all duration-300"
+										className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-white hover:text-black transition-all duration-300"
 									>
 										{Icon && <Icon className="w-5 h-5" />}
 									</a>
@@ -123,9 +126,9 @@ export default function Footer() {
 										<li key={link.title}>
 											<a
 												href={link.href}
-												className="text-white/40 hover:text-white text-sm transition-colors flex items-center gap-2 group"
+												className="text-white hover:text-white text-sm transition-colors flex items-center gap-2 group"
 											>
-												{Icon && <Icon className="w-4 h-4 text-white/20 group-hover:text-white transition-colors" />}
+												{Icon && <Icon className="w-4 h-4 text-white group-hover:text-white transition-colors" />}
 												{link.title}
 											</a>
 										</li>
@@ -157,7 +160,7 @@ export default function Footer() {
 								<MapPin size={16} />
 							</div>
 							<div>
-								<p className="text-[10px] font-bold uppercase tracking-widest text-white/50">Our Location</p>
+								<p className="text-[10px] font-bold uppercase tracking-widest text-white">Our Location</p>
 								<p className="text-sm font-bold text-white">Broxburn, West Lothian</p>
 							</div>
 						</div>
@@ -167,11 +170,11 @@ export default function Footer() {
 
 				{/* Bottom Bar */}
 				<div className="mt-24 pt-12 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6">
-					<p className="text-[10px] font-bold uppercase tracking-widest text-white/20">
+					<p className="text-[10px] font-bold uppercase tracking-widest text-white">
 						© 2026 Bear Media. ALL RIGHTS RESERVED.
 					</p>
-					<div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-white/20">
-						<MapPin className="w-3 h-3 text-white/20" />
+					<div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-white">
+						<MapPin className="w-3 h-3 text-white" />
 						BASED IN BROXBURN — SERVING SCOTLAND
 					</div>
 				</div>

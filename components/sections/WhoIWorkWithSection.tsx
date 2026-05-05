@@ -85,7 +85,7 @@ export const WhoIWorkWithSection = () => {
           <h3 className="text-4xl md:text-7xl font-black text-brand-yellow mb-8 uppercase italic tracking-tighter leading-none">
             Real Results
           </h3>
-          <p className="text-white/60 text-lg md:text-2xl max-w-3xl mx-auto italic font-medium leading-relaxed">
+          <p className="text-white text-lg md:text-2xl max-w-3xl mx-auto italic font-medium leading-relaxed">
             From pharmacies to joiners, restaurants to vets. Businesses across Scotland that trusted Bear Media to get them seen, trusted, and found.
           </p>
         </div>
@@ -126,10 +126,10 @@ export const WhoIWorkWithSection = () => {
                 <h4 className="text-4xl md:text-5xl lg:text-7xl font-black mb-6 italic tracking-tighter leading-[0.85] uppercase">
                   {client.headline || client.name}
                 </h4>
-                <p className="text-white/40 text-sm font-black uppercase tracking-widest mb-10">
+                <p className="text-white text-sm font-black uppercase tracking-widest mb-10">
                    {client.name} // {client.category}
                 </p>
-                <p className="text-white/70 text-lg md:text-xl leading-relaxed mb-12 italic font-medium">
+                <p className="text-white text-lg md:text-xl leading-relaxed mb-12 italic font-medium">
                   {client.description}
                 </p>
                 <a 

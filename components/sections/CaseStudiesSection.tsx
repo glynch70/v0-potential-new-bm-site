@@ -44,7 +44,7 @@ export default function CaseStudiesSection() {
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="text-white/50 text-lg max-w-sm italic"
+            className="text-white text-lg max-w-sm italic"
           >
             "Content that gets your business seen and brings in real enquiries."
           </motion.p>
@@ -74,13 +74,13 @@ export default function CaseStudiesSection() {
 
               <div className="p-8 flex-1 flex flex-col">
                 <div className="mb-6">
-                  <p className="text-white/40 text-[10px] uppercase tracking-widest mb-2">The Problem</p>
-                  <p className="text-white/80 text-sm leading-relaxed">{study.problem}</p>
+                  <p className="text-white text-[10px] uppercase tracking-widest mb-2">The Problem</p>
+                  <p className="text-white text-sm leading-relaxed">{study.problem}</p>
                 </div>
                 
                 <div className="mb-6">
-                  <p className="text-white/40 text-[10px] uppercase tracking-widest mb-2">The Solution</p>
-                  <p className="text-white/80 text-sm leading-relaxed">{study.solution}</p>
+                  <p className="text-white text-[10px] uppercase tracking-widest mb-2">The Solution</p>
+                  <p className="text-white text-sm leading-relaxed">{study.solution}</p>
                 </div>
 
                 <div className="mt-auto pt-6 border-t border-white/5">

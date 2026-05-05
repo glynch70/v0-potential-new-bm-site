@@ -53,7 +53,7 @@ export default function SalesHero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.6 }}
-              className="text-lg md:text-xl text-white/70 mb-10 max-w-lg leading-relaxed font-medium"
+              className="text-lg md:text-xl text-white mb-10 max-w-lg leading-relaxed font-medium"
             >
               We bring the cameras and the strategy to your door. You focus on your trade; we focus on your growth. Serving Edinburgh, Fife, and West Lothian.
             </motion.p>
@@ -102,12 +102,12 @@ export default function SalesHero() {
                     <span className="text-white font-bold text-sm leading-tight" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif' }}>
                       Bear Media
                     </span>
-                    <span className="text-white/60 text-[9px] font-medium uppercase tracking-[0.1em]" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif' }}>
+                    <span className="text-white text-[9px] font-medium uppercase tracking-[0.1em]" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif' }}>
                       Websites & Social Media
                     </span>
                   </div>
                   <div className="ml-auto">
-                    <div className="text-white/40 text-[10px] uppercase tracking-widest">Visibility System</div>
+                    <div className="text-white text-[10px] uppercase tracking-widest">Visibility System</div>
                   </div>
                 </div>
               </div>
@@ -128,7 +128,7 @@ export default function SalesHero() {
         className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
       >
         <div className="w-px h-12 bg-gradient-to-b from-brand-yellow/50 to-transparent" />
-        <span className="text-[10px] uppercase tracking-[0.5em] text-white/30 rotate-180 [writing-mode:vertical-lr]">Scroll</span>
+        <span className="text-[10px] uppercase tracking-[0.5em] text-white rotate-180 [writing-mode:vertical-lr]">Scroll</span>
       </motion.div>
     </section>
   );

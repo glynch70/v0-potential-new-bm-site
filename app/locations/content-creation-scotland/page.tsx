@@ -18,9 +18,9 @@ export default function LocationPage() {
             </p>
             <h1 className="text-4xl md:text-8xl font-black mb-6 md:mb-8 leading-[0.9] tracking-tighter italic uppercase font-bebas">
               Get Seen. Build Trust. <br />
-              <span className="text-brand-yellow text-stroke-sm">Get Enquiries.</span>
+              <span className="text-brand-yellow">Get Enquiries.</span>
             </h1>
-            <p className="text-lg md:text-2xl text-white/70 max-w-2xl mx-auto mb-10 md:mb-12 font-medium leading-relaxed italic">
+            <p className="text-lg md:text-2xl text-white max-w-2xl mx-auto mb-10 md:mb-12 font-medium leading-relaxed italic">
               High-impact media for businesses in Edinburgh, Fife, and West Lothian.
             </p>
             <Link
@@ -36,11 +36,11 @@ export default function LocationPage() {
                   <div className="flex gap-1 text-brand-yellow mb-1">
                      {[1,2,3,4,5].map(i => <Star key={i} size={12} fill="currentColor" />)}
                   </div>
-                  <p className="text-white/60 text-[10px] font-black uppercase tracking-widest">5.0 Google Rating</p>
+                  <p className="text-white text-[10px] font-black uppercase tracking-widest">5.0 Google Rating</p>
                </div>
                <div className="flex flex-col items-center md:items-start text-center md:text-left">
                   <p className="text-white font-black font-bebas italic text-xl leading-none mb-1">100% LOCAL</p>
-                  <p className="text-white/40 text-[9px] font-bold uppercase tracking-widest">On-Site Filming Guarantee</p>
+                  <p className="text-white text-[9px] font-bold uppercase tracking-widest">On-Site Filming Guarantee</p>
                </div>
             </div>
           </div>
@@ -51,7 +51,7 @@ export default function LocationPage() {
           videoSrc="/media/NEW BM DRONE HERO.mp4"
           title="Central Belt Coverage"
           stats={[
-             { label: "Local Reach", value: "1M+", icon: <TrendingUp size={24} /> },
+             { label: "Consistent Enquiries", value: "Daily", icon: <TrendingUp size={24} /> },
              { label: "Active Clients", value: "50+", icon: <Users size={24} /> },
              { label: "Client Rating", value: "5.0★", icon: <Star size={24} /> },
              { label: "Central Belt Focus", value: "100%", icon: <MapPin size={24} /> }
@@ -62,7 +62,7 @@ export default function LocationPage() {
         <section className="py-20 px-6">
           <div className="max-w-7xl mx-auto glass-card p-12 text-center border-brand-yellow/10">
             <h2 className="text-3xl font-bold mb-6 text-brand-yellow uppercase italic font-bebas tracking-wide">The 30-Mile Promise</h2>
-            <p className="text-neutral-400 text-lg max-w-3xl mx-auto leading-relaxed">
+            <p className="text-white0 text-lg max-w-3xl mx-auto leading-relaxed">
               Based in West Lothian, we're perfectly positioned to serve the heart of Scotland. We aren't a remote agency that hides behind a screen. We visit your site, capture the real story of your business, and build your digital systems on the ground.
             </p>
           </div>
@@ -76,42 +76,42 @@ export default function LocationPage() {
             <div className="grid md:grid-cols-2 gap-16 items-center">
                <div>
                  <h3 className="text-3xl font-bold mb-6 text-brand-yellow italic uppercase font-bebas tracking-wide">West Lothian (Livingston, Bathgate, Broxburn)</h3>
-                 <p className="text-neutral-400 text-lg mb-6">Our home base. We specialize in helping local West Lothian trades and small businesses build professional authority through on-site video and fast lead-gen websites.</p>
-                 <ul className="space-y-4 text-white/70">
+                 <p className="text-white0 text-lg mb-6">Our home base. We specialize in helping local West Lothian trades and small businesses build professional authority through on-site video and fast lead-gen websites.</p>
+                 <ul className="space-y-4 text-white">
                    <li>📍 On-site shoots in under 24 hours notice.</li>
                    <li>📍 Deep understanding of the local competitive landscape.</li>
                    <li>📍 Preferred partner for Livingston-based firms.</li>
                  </ul>
                </div>
-               <div className="aspect-video bg-neutral-900 rounded-2xl border border-white/5 flex items-center justify-center text-neutral-700">Cinematic On-Site Capture for a Livingston-based Trade Business</div>
+               <div className="aspect-video bg-neutral-900 rounded-2xl border border-white/5 flex items-center justify-center text-white0">Cinematic On-Site Capture for a Livingston-based Trade Business</div>
             </div>
 
             {/* Edinburgh */}
             <div className="grid md:grid-cols-2 gap-16 items-center md:flex-row-reverse">
                <div className="md:order-2">
                  <h3 className="text-3xl font-bold mb-6 text-brand-yellow italic uppercase font-bebas tracking-wide">Edinburgh & Lothians</h3>
-                 <p className="text-neutral-400 text-lg mb-6">Premium property content and social media systems for the capital. We help Edinburgh-based estate agents and professional coaches win the attention their work deserves.</p>
-                 <ul className="space-y-4 text-white/70">
+                 <p className="text-white0 text-lg mb-6">Premium property content and social media systems for the capital. We help Edinburgh-based estate agents and professional coaches win the attention their work deserves.</p>
+                 <ul className="space-y-4 text-white">
                    <li>📍 High-end cinematic property tours.</li>
                    <li>📍 Authority content for professional coaches.</li>
                    <li>📍 Modern social media retainers for the city.</li>
                  </ul>
                </div>
-               <div className="aspect-video bg-neutral-900 rounded-2xl border border-white/5 flex items-center justify-center text-neutral-700 md:order-1">Premium Property Walkthrough for an Edinburgh Estate Agent</div>
+               <div className="aspect-video bg-neutral-900 rounded-2xl border border-white/5 flex items-center justify-center text-white0 md:order-1">Premium Property Walkthrough for an Edinburgh Estate Agent</div>
             </div>
 
             {/* Fife */}
             <div className="grid md:grid-cols-2 gap-16 items-center">
                <div>
                  <h3 className="text-3xl font-bold mb-6 text-brand-yellow italic uppercase font-bebas tracking-wide">Fife & Surrounding Areas</h3>
-                 <p className="text-neutral-400 text-lg mb-6">Supporting the diverse business landscape of Fife. From construction firms in Dunfermline to independent brands across the coast, we provide the digital tools for growth.</p>
-                 <ul className="space-y-4 text-white/70">
+                 <p className="text-white0 text-lg mb-6">Supporting the diverse business landscape of Fife. From construction firms in Dunfermline to independent brands across the coast, we provide the digital tools for growth.</p>
+                 <ul className="space-y-4 text-white">
                    <li>📍 Industrial and construction showcases.</li>
                    <li>📍 Lead systems for local service providers.</li>
                    <li>📍 Cinematic drone work for Fife businesses.</li>
                  </ul>
                </div>
-               <div className="aspect-video bg-neutral-900 rounded-2xl border border-white/5 flex items-center justify-center text-neutral-700">Drone Inspection and Project Showcase for a Fife Contractor</div>
+               <div className="aspect-video bg-neutral-900 rounded-2xl border border-white/5 flex items-center justify-center text-white0">Drone Inspection and Project Showcase for a Fife Contractor</div>
             </div>
 
           </div>
@@ -121,9 +121,9 @@ export default function LocationPage() {
         <section className="py-24 px-6 max-w-7xl mx-auto">
           <div className="glass-card p-12 text-center border-brand-yellow/30">
             <h2 className="text-3xl font-bold mb-6">Where We Work</h2>
-            <p className="text-neutral-400 text-lg mb-10">We regularly serve clients within a 30-mile radius of West Lothian.</p>
+            <p className="text-white0 text-lg mb-10">We regularly serve clients within a 30-mile radius of West Lothian.</p>
             <div className="aspect-[21/9] bg-neutral-900 rounded-xl relative border border-white/10 flex items-center justify-center">
-               <div className="text-neutral-600 italic">Coverage: Serving Broxburn, Livingston, Edinburgh, Fife & The Central Belt</div>
+               <div className="text-white0 italic">Coverage: Serving Broxburn, Livingston, Edinburgh, Fife & The Central Belt</div>
             </div>
           </div>
         </section>
@@ -136,7 +136,7 @@ export default function LocationPage() {
                  Ready to dominate your <br />
                  <span className="text-brand-yellow underline decoration-brand-yellow/30 underline-offset-8">local market?</span>
               </h2>
-              <p className="text-white/50 text-xl mb-12 max-w-2xl mx-auto italic font-medium leading-relaxed">
+              <p className="text-white text-xl mb-12 max-w-2xl mx-auto italic font-medium leading-relaxed">
                  Let's build a system that makes your business the obvious choice in West Lothian, Edinburgh, or Fife.
               </p>
               <Link

@@ -140,7 +140,7 @@ export default function VideoGrid() {
                    </div>
                    <h3 className="text-2xl font-black text-white uppercase font-bebas italic mb-2 tracking-wide">{video.type}</h3>
                    <p className="text-brand-yellow font-bold text-xs uppercase tracking-widest mb-1">{video.action}</p>
-                   <p className="text-white/50 text-xs uppercase tracking-widest">{video.outcome}</p>
+                   <p className="text-white text-xs uppercase tracking-widest">{video.outcome}</p>
                 </div>
 
                 {/* Subtle Glow Hover Effect */}
@@ -209,11 +209,11 @@ export default function VideoGrid() {
                       <div className="space-y-4 md:space-y-6">
                         <div>
                           <p className="text-brand-yellow font-black uppercase tracking-widest text-[10px] mb-2">The Problem</p>
-                          <p className="text-white/60 text-sm leading-relaxed">{selectedVideo.caseStudy.problem}</p>
+                          <p className="text-white text-sm leading-relaxed">{selectedVideo.caseStudy.problem}</p>
                         </div>
                         <div>
                           <p className="text-brand-yellow font-black uppercase tracking-widest text-[10px] mb-2">What Was Done</p>
-                          <p className="text-white/60 text-sm leading-relaxed">{selectedVideo.caseStudy.done}</p>
+                          <p className="text-white text-sm leading-relaxed">{selectedVideo.caseStudy.done}</p>
                         </div>
                       </div>
                    </div>

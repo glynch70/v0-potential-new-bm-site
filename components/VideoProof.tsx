@@ -32,13 +32,13 @@ export default function VideoProof({ videoSrc, title, stats }: VideoProofProps) 
               playsInline
               className="w-full h-full object-cover opacity-60"
             />
-            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+            <div className="absolute inset-0 hidden md:flex items-center justify-center pointer-events-none">
                <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-brand-yellow text-neutral-950 flex items-center justify-center shadow-[0_0_50px_rgba(245,166,35,0.4)] group-hover:scale-110 transition-transform duration-500">
                   <Play size={28} className="md:size-32 fill-current ml-1" />
                </div>
             </div>
             <div className="absolute bottom-6 left-6 md:bottom-8 md:left-8 right-6 md:right-8">
-               <p className="text-white/40 text-[9px] md:text-[10px] font-black uppercase tracking-[0.4em] italic mb-1 md:mb-2">Evidence of impact</p>
+               <p className="text-white text-[9px] md:text-[10px] font-black uppercase tracking-[0.4em] italic mb-1 md:mb-2">Evidence of impact</p>
                <h3 className="text-xl md:text-2xl font-black uppercase italic font-bebas tracking-wide text-white">{title}</h3>
             </div>
           </motion.div>
@@ -49,7 +49,7 @@ export default function VideoProof({ videoSrc, title, stats }: VideoProofProps) 
               Real Work. <br />
               <span className="text-brand-yellow">Proven Results.</span>
             </h2>
-            <p className="text-base md:text-lg text-white/50 mb-10 md:mb-12 leading-relaxed italic max-w-xl mx-auto lg:mx-0">
+            <p className="text-base md:text-lg text-white mb-10 md:mb-12 leading-relaxed italic max-w-xl mx-auto lg:mx-0">
               We don't just show you pretty pictures. We show you systems that generate visibility and leads for real businesses in the Central Belt.
             </p>
             
@@ -60,7 +60,7 @@ export default function VideoProof({ videoSrc, title, stats }: VideoProofProps) 
                       {stat.icon}
                    </div>
                    <p className="text-2xl md:text-3xl font-black text-white italic font-bebas tracking-tight mb-1">{stat.value}</p>
-                   <p className="text-white/40 text-[9px] md:text-[10px] font-bold uppercase tracking-[0.2em]">{stat.label}</p>
+                   <p className="text-white text-[9px] md:text-[10px] font-bold uppercase tracking-[0.2em]">{stat.label}</p>
                 </div>
               ))}
             </div>

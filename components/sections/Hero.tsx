@@ -33,7 +33,7 @@ export default function Hero() {
         </h1>
         
         <p 
-          className="text-xl md:text-[28px] max-w-[800px] mx-auto my-8 leading-[1.7] text-white/80 animate-[float_5s_ease-in-out_infinite] [animation-delay:0.5s] font-medium italic"
+          className="text-xl md:text-[28px] max-w-[800px] mx-auto my-8 leading-[1.7] text-white animate-[float_5s_ease-in-out_infinite] [animation-delay:0.5s] font-medium italic"
         >
           Websites, drone videography, social media, and AI solutions built for businesses that mean business. Your vision, brought to life
         </p>

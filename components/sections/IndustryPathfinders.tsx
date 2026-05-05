@@ -64,7 +64,7 @@ export default function IndustryPathfinders() {
                   {industry.title}
                 </h3>
                 
-                <p className="text-white/50 leading-relaxed mb-10 text-lg">
+                <p className="text-white leading-relaxed mb-10 text-lg">
                   {industry.description}
                 </p>
                 

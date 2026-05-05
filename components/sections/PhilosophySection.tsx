@@ -22,7 +22,7 @@ export const PhilosophySection = () => {
         </h2>
 
         {/* Body Text */}
-        <p className="text-xl md:text-3xl text-white/70 leading-relaxed font-light max-w-2xl mx-auto">
+        <p className="text-xl md:text-3xl text-white leading-relaxed font-light max-w-2xl mx-auto">
           We don't just "make videos." We build <span className="text-white font-medium italic">digital ecosystems</span> that turn silent views into active revenue.
         </p>
 

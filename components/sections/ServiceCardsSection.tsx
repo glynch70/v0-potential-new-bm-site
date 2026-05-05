@@ -19,7 +19,7 @@ const services = [
     backContent: (
       <div className="flex flex-col h-full">
         <p className="text-white font-bold mb-4">What's included:</p>
-        <ul className="space-y-2 text-base text-white/90 leading-relaxed mb-6">
+        <ul className="space-y-2 text-base text-white leading-relaxed mb-6">
           <li>• Reels & short-form video</li>
           <li>• Branded graphics & carousels</li>
           <li>• Monthly content calendar</li>
@@ -50,7 +50,7 @@ const services = [
     backContent: (
       <div className="flex flex-col h-full">
         <p className="text-white font-bold mb-4">What's included:</p>
-        <ul className="space-y-2 text-base text-white/90 leading-relaxed mb-6">
+        <ul className="space-y-2 text-base text-white leading-relaxed mb-6">
           <li>• Custom designed & built in Next.js</li>
           <li>• Mobile-first & fast loading</li>
           <li>• SEO foundations built in</li>
@@ -81,7 +81,7 @@ const services = [
     backContent: (
       <div className="flex flex-col h-full">
         <p className="text-white font-bold mb-4">What's included:</p>
-        <ul className="space-y-2 text-base text-white/90 leading-relaxed mb-6">
+        <ul className="space-y-2 text-base text-white leading-relaxed mb-6">
           <li>• Drone Photography & 4K Footage</li>
           <li>• Professional Headshots & Branding</li>
           <li>• Local SEO Optimization</li>

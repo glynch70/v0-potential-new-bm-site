@@ -42,7 +42,7 @@ export default function ClientMarquee() {
                   href={client.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-white/5 border border-white/10 rounded-full px-5 py-2 text-white/80 text-sm font-medium whitespace-nowrap hover:bg-white/10 hover:border-[#C9A227]/50 hover:text-[#C9A227] transition-all duration-300 hover:scale-105"
+                  className="bg-white/5 border border-white/10 rounded-full px-5 py-2 text-white text-sm font-medium whitespace-nowrap hover:bg-white/10 hover:border-[#C9A227]/50 hover:text-[#C9A227] transition-all duration-300 hover:scale-105"
                 >
                   {client.name}
                 </a>
@@ -61,7 +61,7 @@ export default function ClientMarquee() {
                   href={client.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-white/5 border border-white/10 rounded-full px-5 py-2 text-white/80 text-sm font-medium whitespace-nowrap hover:bg-white/10 hover:border-[#C9A227]/50 hover:text-[#C9A227] transition-all duration-300 hover:scale-105"
+                  className="bg-white/5 border border-white/10 rounded-full px-5 py-2 text-white text-sm font-medium whitespace-nowrap hover:bg-white/10 hover:border-[#C9A227]/50 hover:text-[#C9A227] transition-all duration-300 hover:scale-105"
                 >
                   {client.name}
                 </a>

@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 const articles = [
   {
     title: "How Much Does Social Media Content Cost in Scotland?",
-    desc: "A transparent guide to content pricing, budget expectations, and the ROI of professional videography in the Central Belt.",
+    desc: "A transparent guide to content pricing, budget expectations, and the ROI of professional videography.",
     link: "/answers/how-much-does-social-media-content-cost-scotland",
     tag: "Pricing",
     readTime: "5 min"
@@ -25,6 +25,20 @@ const articles = [
     link: "/answers/why-your-business-isnt-getting-enquiries",
     tag: "Strategy",
     readTime: "4 min"
+  },
+  {
+    title: "Is Social Media Worth It for Small Businesses?",
+    desc: "The hard truth about organic reach and why strategy beats 'posting' every single time.",
+    link: "/answers/is-social-media-worth-it",
+    tag: "ROI",
+    readTime: "6 min"
+  },
+  {
+    title: "What Does a Content Creator Actually Do?",
+    desc: "It's more than just taking photos. How a growth partner transforms your business authority.",
+    link: "/answers/what-does-a-content-creator-do",
+    tag: "Guide",
+    readTime: "5 min"
   },
   {
     title: "Do Estate Agents Need Video Content?",
@@ -42,41 +56,41 @@ export default function InsightsPage() {
       <main className="min-h-screen bg-neutral-950 text-white font-sans selection:bg-brand-yellow selection:text-neutral-950">
         
         {/* HERO SECTION */}
-        <section className="relative pt-32 pb-20 md:pt-48 md:pb-32 px-6 overflow-hidden border-b border-white/5">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(245,166,35,0.05)_0%,transparent_70%)] pointer-events-none" />
-          <div className="max-w-7xl mx-auto relative z-10 text-center">
-            <p className="text-brand-yellow font-black uppercase tracking-[0.3em] mb-6 text-sm">Real Talk. Real Strategy.</p>
-            <h1 className="text-5xl md:text-9xl font-black mb-8 leading-[0.9] tracking-tighter italic uppercase font-bebas">
-                Bear <span className="text-brand-yellow underline decoration-brand-yellow/20 underline-offset-8">Insights.</span>
+        <section className="relative pt-20 pb-12 md:pt-32 md:pb-20 px-6 overflow-hidden flex flex-col items-center justify-center text-center">
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(245,166,35,0.04)_0%,transparent_70%)] pointer-events-none" />
+          <div className="max-w-7xl mx-auto relative z-10">
+            <p className="text-brand-yellow font-black uppercase tracking-[0.3em] mb-4 text-[10px] md:text-sm animate-pulse italic">Real Talk. No Fluff.</p>
+            <h1 className="mb-6 md:mb-8">
+                Bear <span className="text-brand-yellow">Insights.</span>
             </h1>
-            <p className="text-xl text-white/50 max-w-2xl mx-auto font-medium leading-relaxed italic">
+            <p className="text-white max-w-xl mx-auto font-medium italic text-sm">
                 Helping local businesses in Scotland dominate their market through better content and smarter strategy.
             </p>
           </div>
         </section>
 
         {/* ARTICLES GRID */}
-        <section className="py-24 px-6 max-w-7xl mx-auto">
-           <div className="grid md:grid-cols-3 gap-8">
+        <section className="py-12 md:py-20 px-6 max-w-7xl mx-auto">
+           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {articles.map((article, i) => (
                  <Link key={i} href={article.link} className="group">
-                    <div className="p-10 rounded-[2.5rem] bg-neutral-900 border border-white/5 group-hover:border-brand-yellow/30 transition-all duration-500 h-full flex flex-col">
-                       <div className="flex justify-between items-center mb-8">
-                          <span className="px-4 py-1.5 rounded-full bg-brand-yellow/10 text-brand-yellow text-[10px] font-black uppercase tracking-widest border border-brand-yellow/20">
+                    <div className="p-8 rounded-[2rem] bg-neutral-900 border border-white/5 group-hover:border-brand-yellow/30 transition-all duration-500 h-full flex flex-col">
+                       <div className="flex justify-between items-center mb-6">
+                          <span className="px-3 py-1 rounded-full bg-brand-yellow/10 text-brand-yellow text-[8px] font-black uppercase tracking-widest border border-brand-yellow/20">
                              {article.tag}
                           </span>
-                          <div className="flex items-center gap-2 text-white/20 text-[10px] font-bold uppercase tracking-widest">
-                             <Clock size={12} /> {article.readTime}
+                          <div className="flex items-center gap-2 text-white text-[9px] font-bold uppercase tracking-widest">
+                             <Clock size={10} /> {article.readTime}
                           </div>
                        </div>
-                       <h3 className="text-2xl font-black mb-6 uppercase italic font-bebas tracking-wide text-white group-hover:text-brand-yellow transition-colors leading-tight">
+                       <h3 className="text-xl font-black mb-4 uppercase italic font-bebas tracking-wide text-white group-hover:text-brand-yellow transition-colors leading-tight">
                           {article.title}
                        </h3>
-                       <p className="text-white/40 text-sm leading-relaxed mb-12 flex-grow italic">
+                       <p className="text-white text-xs leading-relaxed mb-8 flex-grow italic">
                           "{article.desc}"
                        </p>
-                       <div className="flex items-center gap-2 text-white font-black uppercase italic font-bebas tracking-widest text-lg group-hover:gap-4 transition-all">
-                          Read Article <ArrowRight size={20} className="text-brand-yellow" />
+                       <div className="flex items-center gap-2 text-white font-black uppercase italic font-bebas tracking-widest text-[10px] group-hover:gap-3 transition-all">
+                          Read Article <ArrowRight size={12} className="text-brand-yellow" />
                        </div>
                     </div>
                  </Link>
@@ -85,53 +99,50 @@ export default function InsightsPage() {
         </section>
 
         {/* WATCH INSTEAD SECTION */}
-        <section className="py-24 px-6 bg-white/[0.02] border-y border-white/5">
+        <section className="py-12 md:py-20 px-6 bg-white/[0.01] border-y border-white/5">
            <div className="max-w-7xl mx-auto">
-              <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8 text-center md:text-left">
+              <div className="flex flex-col md:flex-row justify-between items-center mb-12 gap-6 text-center md:text-left">
                  <div>
-                    <span className="text-brand-yellow font-black uppercase tracking-[0.3em] mb-4 text-xs block italic">Prefer Video?</span>
-                    <h2 className="text-3xl md:text-6xl font-black uppercase italic font-bebas tracking-tight text-white leading-none">
-                       Watch the <span className="text-brand-yellow text-stroke-sm">Breakdowns.</span>
+                    <span className="text-brand-yellow font-black uppercase tracking-[0.3em] mb-3 text-[10px] block italic">Prefer Video?</span>
+                    <h2 className="text-white uppercase italic font-bebas tracking-tight">
+                       Watch the <span className="text-brand-yellow">Breakdowns.</span>
                     </h2>
                  </div>
-                 <div className="flex items-center gap-4 text-white/40 font-bold uppercase tracking-widest text-[10px]">
-                    <Play size={16} className="text-brand-yellow" />
+                 <div className="flex items-center gap-3 text-white font-bold uppercase tracking-widest text-[8px]">
+                    <Play size={14} className="text-brand-yellow" />
                     Real project walkthroughs
                  </div>
               </div>
               
-              <div className="grid md:grid-cols-2 gap-12">
+              <div className="grid md:grid-cols-2 gap-8">
                  <YouTubeEmbed 
                     videoId="VlyX1CueJCc" 
-                    title="Case Study: How to Market a Restaurant Refurb"
-                    description="Watch how we used cinematic video to build hype for a high-end St Andrews restaurant."
+                    title="Marketing a Restaurant Refurb"
+                    description="Cinematic hype for a high-end St Andrews restaurant."
                     result="Full bookings for opening week."
                  />
                  <YouTubeEmbed 
                     videoId="qrQK-maE3sA" 
-                    title="Case Study: Shedding stock imagery for real proof"
-                    description="Why this local shed builder stopped using stock photos and started using real video."
+                    title="Real Proof vs Stock Imagery"
+                    description="Why this builder stopped using stock photos."
                     result="15+ qualified leads in week one."
                  />
               </div>
            </div>
         </section>
 
-        {/* NEWSLETTER / CTA */}
-        <section className="py-24 px-6 bg-brand-yellow text-neutral-950 text-center">
-           <div className="max-w-3xl mx-auto">
-              <h2 className="text-4xl md:text-7xl font-black mb-8 uppercase italic font-bebas tracking-tight leading-none">
-                 Get Growth <br /><span className="underline decoration-neutral-950/20 underline-offset-8">Sent to Your Inbox.</span>
+        {/* FINAL CTA */}
+        <section className="py-20 px-6 bg-brand-yellow text-neutral-950 text-center relative overflow-hidden">
+           <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,0,0,0.05)_0%,transparent_70%)] pointer-events-none" />
+           <div className="max-w-3xl mx-auto relative z-10">
+              <h2 className="mb-8 text-neutral-950 leading-tight">
+                 Ready to <br /><span className="underline decoration-neutral-950/20 underline-offset-8 italic">scale your authority?</span>
               </h2>
-              <p className="text-lg font-medium mb-12 text-neutral-950/70">
-                 Join 200+ local business owners who get our no-fluff growth tips every month.
-              </p>
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-4 px-12 py-6 bg-neutral-950 text-white font-black uppercase tracking-[0.2em] text-sm rounded-2xl hover:scale-105 transition-all duration-300"
+                className="inline-flex items-center gap-3 px-10 py-5 bg-neutral-950 text-white font-black uppercase tracking-widest text-[10px] rounded-xl hover:scale-105 transition-all shadow-2xl group"
               >
                 Book Your Discovery Call
-                <ArrowRight size={16} />
               </Link>
            </div>
         </section>

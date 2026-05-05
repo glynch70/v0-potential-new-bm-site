@@ -28,7 +28,7 @@ export function LegalPageLayout({ title, lastUpdated, children }: LegalPageLayou
           </Link>
           <Link
             href="/"
-            className="text-xs uppercase tracking-wider text-white/50 hover:text-[#D4A830] transition-colors"
+            className="text-xs uppercase tracking-wider text-white hover:text-[#D4A830] transition-colors"
           >
             Back to Home
           </Link>
@@ -47,11 +47,11 @@ export function LegalPageLayout({ title, lastUpdated, children }: LegalPageLayou
             <h1 className="text-4xl md:text-5xl font-bold uppercase tracking-tight leading-[0.9]">
               {title}
             </h1>
-            <p className="mt-4 text-sm text-white/40">Last updated: {lastUpdated}</p>
+            <p className="mt-4 text-sm text-white">Last updated: {lastUpdated}</p>
           </div>
 
           {/* Body */}
-          <div className="space-y-8 text-sm text-white/60 leading-relaxed [&_h2]:text-white [&_h2]:text-lg [&_h2]:font-bold [&_h2]:uppercase [&_h2]:tracking-wide [&_h2]:mt-12 [&_h2]:mb-4 [&_h3]:text-white/80 [&_h3]:text-base [&_h3]:font-semibold [&_h3]:mt-8 [&_h3]:mb-3 [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:space-y-2 [&_a]:text-[#D4A830] [&_a]:underline [&_a]:underline-offset-2 hover:[&_a]:text-[#E4BF4A]">
+          <div className="space-y-8 text-sm text-white leading-relaxed [&_h2]:text-white [&_h2]:text-lg [&_h2]:font-bold [&_h2]:uppercase [&_h2]:tracking-wide [&_h2]:mt-12 [&_h2]:mb-4 [&_h3]:text-white [&_h3]:text-base [&_h3]:font-semibold [&_h3]:mt-8 [&_h3]:mb-3 [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:space-y-2 [&_a]:text-[#D4A830] [&_a]:underline [&_a]:underline-offset-2 hover:[&_a]:text-[#E4BF4A]">
             {children}
           </div>
         </div>
@@ -59,16 +59,16 @@ export function LegalPageLayout({ title, lastUpdated, children }: LegalPageLayou
 
       {/* Footer */}
       <footer className="border-t border-white/[0.06] py-8 px-6">
-        <div className="max-w-3xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/30">
+        <div className="max-w-3xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white">
           <p>&copy; {new Date().getFullYear()} Bear Media. All rights reserved.</p>
           <div className="flex gap-6">
-            <Link href="/terms-conditions" className="hover:text-white/60 transition-colors">
+            <Link href="/terms-conditions" className="hover:text-white transition-colors">
               Terms
             </Link>
-            <Link href="/privacy-policy" className="hover:text-white/60 transition-colors">
+            <Link href="/privacy-policy" className="hover:text-white transition-colors">
               Privacy
             </Link>
-            <Link href="/cookie-policy" className="hover:text-white/60 transition-colors">
+            <Link href="/cookie-policy" className="hover:text-white transition-colors">
               Cookies
             </Link>
           </div>

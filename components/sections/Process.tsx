@@ -82,7 +82,7 @@ function ProcessFlipCard({ step, index }: { step: any; index: number }) {
             {step.id}
           </div>
           <h3 className="text-2xl font-black text-white mb-4 uppercase font-bebas italic tracking-wide">{step.title}</h3>
-          <p className="text-white/60 text-base leading-relaxed italic">{step.frontText}</p>
+          <p className="text-white text-base leading-relaxed italic">{step.frontText}</p>
         </div>
 
         {/* Back Face */}
@@ -90,7 +90,7 @@ function ProcessFlipCard({ step, index }: { step: any; index: number }) {
           <h3 className="text-2xl font-black text-brand-yellow uppercase font-bebas italic mb-6">Deep Dive</h3>
           <p className="text-white font-bold text-lg leading-relaxed italic">{step.backText}</p>
           
-          <div className="mt-8 text-white/30 text-[10px] font-black uppercase tracking-[0.2em]">
+          <div className="mt-8 text-white text-[10px] font-black uppercase tracking-[0.2em]">
             Tap to flip back.
           </div>
         </div>

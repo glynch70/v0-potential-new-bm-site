@@ -56,7 +56,7 @@ export default function About() {
           Results Over <span className="text-brand-yellow">Rhetoric.</span>
         </h2>
         
-        <div className="space-y-6 text-lg text-white/70 leading-relaxed font-medium mb-10">
+        <div className="space-y-6 text-lg text-white leading-relaxed font-medium mb-10">
           <p>
             I built Bear Media to help businesses get seen online and improve the quality of their ads and promotional content.
           </p>
@@ -80,7 +80,7 @@ export default function About() {
           ].map((item) => (
             <div key={item} className="flex items-center gap-3">
               <div className="w-2 h-2 rounded-full bg-brand-yellow shadow-[0_0_10px_rgba(221,163,30,0.5)]" />
-              <span className="text-white/80 font-black text-xs uppercase tracking-widest">{item}</span>
+              <span className="text-white font-black text-xs uppercase tracking-widest">{item}</span>
             </div>
           ))}
         </div>

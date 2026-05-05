@@ -56,7 +56,7 @@ export default function LeadForm() {
               If you're not visible, <br />
               <span className="text-brand-yellow">you're losing business.</span>
             </h2>
-            <p className="text-lg text-white/50 mb-12 max-w-lg leading-relaxed">
+            <p className="text-lg text-white mb-12 max-w-lg leading-relaxed">
               We handle your content so your business stays seen. Stop letting your competitors take your leads.
             </p>
 
@@ -72,7 +72,7 @@ export default function LeadForm() {
                 </div>
                 <div>
                   <div className="text-white font-bold text-sm">Book a Strategy Call</div>
-                  <div className="text-white/40 text-[10px] uppercase tracking-widest mt-0.5">Free 30-min strategy</div>
+                  <div className="text-white text-[10px] uppercase tracking-widest mt-0.5">Free 30-min strategy</div>
                 </div>
               </a>
 
@@ -87,7 +87,7 @@ export default function LeadForm() {
                 </div>
                 <div>
                   <div className="text-white font-bold text-sm">WhatsApp</div>
-                  <div className="text-white/40 text-[10px] uppercase tracking-widest mt-0.5">Fastest response</div>
+                  <div className="text-white text-[10px] uppercase tracking-widest mt-0.5">Fastest response</div>
                 </div>
               </a>
             </div>
@@ -100,7 +100,7 @@ export default function LeadForm() {
                     </div>
                   ))}
                </div>
-               <p className="text-white/40 text-sm font-medium">Joined by <span className="text-white font-bold italic">25+ local businesses</span> this month.</p>
+               <p className="text-white text-sm font-medium">Joined by <span className="text-white font-bold italic">25+ local businesses</span> this month.</p>
             </div>
           </motion.div>
 
@@ -116,7 +116,7 @@ export default function LeadForm() {
                     <CheckCircle className="text-brand-yellow" size={40} />
                  </div>
                  <h3 className="text-3xl font-black text-white uppercase font-bebas italic mb-4">Message Sent</h3>
-                 <p className="text-white/50 leading-relaxed">Garry will get back to you personally within 2 hours.</p>
+                 <p className="text-white leading-relaxed">Garry will get back to you personally within 2 hours.</p>
                  <button 
                   onClick={() => setSubmitted(false)}
                   className="mt-8 text-brand-yellow font-bold uppercase tracking-widest text-xs hover:underline"
@@ -127,33 +127,33 @@ export default function LeadForm() {
             ) : (
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
-                  <label className="block text-white/40 text-[10px] uppercase tracking-[0.2em] mb-3 ml-1">Full Name</label>
+                  <label className="block text-white text-[10px] uppercase tracking-[0.2em] mb-3 ml-1">Full Name</label>
                   <input
                     type="text"
                     name="name"
                     required
                     placeholder="John Doe"
-                    className="w-full px-6 py-4 bg-neutral-950 border border-white/5 rounded-2xl text-white placeholder:text-white/20 focus:outline-none focus:border-brand-yellow/50 transition-colors"
+                    className="w-full px-6 py-4 bg-neutral-950 border border-white/5 rounded-2xl text-white placeholder:text-white focus:outline-none focus:border-brand-yellow/50 transition-colors"
                   />
                 </div>
                 <div>
-                  <label className="block text-white/40 text-[10px] uppercase tracking-[0.2em] mb-3 ml-1">Business Name</label>
+                  <label className="block text-white text-[10px] uppercase tracking-[0.2em] mb-3 ml-1">Business Name</label>
                   <input
                     type="text"
                     name="company"
                     required
                     placeholder="Acme Trades Ltd"
-                    className="w-full px-6 py-4 bg-neutral-950 border border-white/5 rounded-2xl text-white placeholder:text-white/20 focus:outline-none focus:border-brand-yellow/50 transition-colors"
+                    className="w-full px-6 py-4 bg-neutral-950 border border-white/5 rounded-2xl text-white placeholder:text-white focus:outline-none focus:border-brand-yellow/50 transition-colors"
                   />
                 </div>
                 <div>
-                  <label className="block text-white/40 text-[10px] uppercase tracking-[0.2em] mb-3 ml-1">Email Address</label>
+                  <label className="block text-white text-[10px] uppercase tracking-[0.2em] mb-3 ml-1">Email Address</label>
                   <input
                     type="email"
                     name="email"
                     required
                     placeholder="john@example.com"
-                    className="w-full px-6 py-4 bg-neutral-950 border border-white/5 rounded-2xl text-white placeholder:text-white/20 focus:outline-none focus:border-brand-yellow/50 transition-colors"
+                    className="w-full px-6 py-4 bg-neutral-950 border border-white/5 rounded-2xl text-white placeholder:text-white focus:outline-none focus:border-brand-yellow/50 transition-colors"
                   />
                 </div>
                 <button
@@ -163,7 +163,7 @@ export default function LeadForm() {
                 >
                   {isSubmitting ? 'Sending...' : 'Get Your Free Strategy Call'}
                 </button>
-                <p className="text-center text-white/20 text-[10px] uppercase tracking-widest">No obligation. 100% confidential.</p>
+                <p className="text-center text-white text-[10px] uppercase tracking-widest">No obligation. 100% confidential.</p>
               </form>
             )}
           </motion.div>

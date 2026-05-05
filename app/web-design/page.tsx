@@ -6,6 +6,7 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { Monitor, ArrowLeft, CheckCircle2, Layout, Zap, Search, MousePointer2 } from 'lucide-react'
+import Image from 'next/image'
 import Navbar from '@/components/Navbar'
 import { StickyFooter } from '@/components/ui/sticky-footer'
 
@@ -58,7 +59,7 @@ export default function WebDesignPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-xl md:text-3xl text-white/60 max-w-3xl mx-auto italic font-medium leading-relaxed"
+              className="text-xl md:text-3xl text-white max-w-3xl mx-auto italic font-medium leading-relaxed"
             >
               Websites that actually turn people into customers. We build fast, clean, and practical sites for Scottish businesses that mean business.
             </motion.p>
@@ -70,7 +71,7 @@ export default function WebDesignPage() {
         <div className="max-w-[1240px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
           <div>
             <h2 className="text-4xl md:text-6xl font-black text-white uppercase italic tracking-tighter mb-8">What is <span className="text-brand-yellow">Web Design</span>?</h2>
-            <div className="text-white/60 text-lg md:text-xl space-y-6 leading-relaxed italic">
+            <div className="text-white text-lg md:text-xl space-y-6 leading-relaxed italic">
               <p>
                 In 2026, your website isn't just a digital business card. It's your most important salesperson.
               </p>
@@ -88,7 +89,7 @@ export default function WebDesignPage() {
                 "Mobile users are 5x more likely to abandon a site if it's not optimized",
                 "Clean design builds instant trust and credibility"
               ].map((item, i) => (
-                <li key={i} className="flex gap-4 items-start text-white/80 italic font-medium">
+                <li key={i} className="flex gap-4 items-start text-white italic font-medium">
                   <CheckCircle2 className="text-brand-yellow shrink-0" size={24} />
                   {item}
                 </li>
@@ -103,7 +104,7 @@ export default function WebDesignPage() {
         <div className="max-w-[1240px] mx-auto">
           <div className="text-center mb-20">
             <h2 className="text-4xl md:text-6xl font-black text-white uppercase italic tracking-tighter">What we <span className="text-brand-yellow">actually</span> do</h2>
-            <p className="text-white/40 mt-4 text-lg">No jargon. Just results.</p>
+            <p className="text-white mt-4 text-lg">No jargon. Just results.</p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -120,7 +121,7 @@ export default function WebDesignPage() {
                   <feature.icon size={30} className="text-brand-yellow" />
                 </div>
                 <h3 className="text-2xl font-black text-brand-yellow uppercase italic mb-4">{feature.title}</h3>
-                <p className="text-white/60 text-base leading-relaxed font-medium italic">{feature.description}</p>
+                <p className="text-white text-base leading-relaxed font-medium italic">{feature.description}</p>
               </motion.div>
             ))}
           </div>
@@ -131,23 +132,28 @@ export default function WebDesignPage() {
       <section className="py-24 md:py-32 px-6">
         <div className="max-w-[1240px] mx-auto">
           <h2 className="text-4xl md:text-6xl font-black text-white uppercase italic tracking-tighter mb-16 text-center">Real <span className="text-brand-yellow">Examples</span></h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            <div className="group relative aspect-video rounded-3xl overflow-hidden border-2 border-white/5">
-               <div className="absolute inset-0 bg-dark/60 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity z-10 p-8 text-center">
-                  <h4 className="text-2xl font-black text-white uppercase italic mb-2">Modern Trades Site</h4>
-                  <p className="text-white/60 mb-6 italic">Built for conversion and local SEO.</p>
-                  <Link href="/#work" className="bg-brand-yellow text-dark px-6 py-3 rounded-full font-black uppercase tracking-widest text-xs italic">View Portfolio</Link>
-               </div>
-               <div className="bg-white/5 w-full h-full flex items-center justify-center text-white/10 uppercase font-black text-4xl italic">Example Case Study</div>
-            </div>
-            <div className="group relative aspect-video rounded-3xl overflow-hidden border-2 border-white/5">
-               <div className="absolute inset-0 bg-dark/60 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity z-10 p-8 text-center">
-                  <h4 className="text-2xl font-black text-white uppercase italic mb-2">E-commerce Refresh</h4>
-                  <p className="text-white/60 mb-6 italic">Clean, fast, and mobile-ready.</p>
-                  <Link href="/#work" className="bg-brand-yellow text-dark px-6 py-3 rounded-full font-black uppercase tracking-widest text-xs italic">View Portfolio</Link>
-               </div>
-               <div className="bg-white/5 w-full h-full flex items-center justify-center text-white/10 uppercase font-black text-4xl italic">Example Case Study</div>
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              { title: "Almond Vet Care", desc: "Lead generation system that builds trust and captures local pet owners.", img: "/work/almond_vet_care.jpg" },
+              { title: "Lewis Joinery", desc: "Designed to showcase high-end craftsmanship and generate project enquiries.", img: "/work/website-5-lewis-joinery-v2.jpg" },
+              { title: "Herb Soul", desc: "Clean, fast e-commerce experience built to drive online orders.", img: "/work/website-3-herb-soul-v2.jpg" },
+              { title: "Robertsons Transport", desc: "Streamlined enquiry system for a heavy transport company.", img: "/work/rt-ltd.uk-v2.jpg" },
+              { title: "Managing Property", desc: "High-trust platform built to convert landlords into clients.", img: "/work/website-managing-v2.jpg" },
+              { title: "MWM Professional", desc: "Authority-building site for professional consulting services.", img: "/work/mwm.jpg" }
+            ].map((item, i) => (
+              <div key={i} className="group relative aspect-[4/3] rounded-3xl overflow-hidden border-2 border-white/5 bg-neutral-900">
+                 <Image 
+                   src={item.img} 
+                   alt={item.title} 
+                   fill 
+                   className="object-cover group-hover:scale-105 transition-transform duration-700"
+                 />
+                 <div className="absolute inset-0 bg-neutral-950/80 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity z-10 p-8 text-center backdrop-blur-sm">
+                    <h4 className="text-xl font-black text-brand-yellow uppercase italic mb-2">{item.title}</h4>
+                    <p className="text-white text-sm italic mb-6">{item.desc}</p>
+                 </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -156,7 +162,7 @@ export default function WebDesignPage() {
       <section className="py-24 md:py-32 px-6 bg-white/[0.02]">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-4xl md:text-6xl font-black text-white uppercase italic tracking-tighter mb-8">Who <span className="text-brand-yellow">it's for</span></h2>
-          <div className="text-white/60 text-lg md:text-xl space-y-6 leading-relaxed italic mb-12">
+          <div className="text-white text-lg md:text-xl space-y-6 leading-relaxed italic mb-12">
             <p>
               We work with Scottish SMEs who are tired of over-complicated agencies and monthly fees. If you want a site that you actually own, that actually works, and that actually brings in customers — we're for you.
             </p>
@@ -191,7 +197,7 @@ export default function WebDesignPage() {
           <div className="mt-24">
             <Link 
               href="/" 
-              className="inline-flex items-center gap-4 text-white/40 hover:text-brand-yellow transition-colors font-black uppercase tracking-[0.4em] text-xs"
+              className="inline-flex items-center gap-4 text-white hover:text-brand-yellow transition-colors font-black uppercase tracking-[0.4em] text-xs"
             >
               <ArrowLeft size={16} /> Back to Home
             </Link>

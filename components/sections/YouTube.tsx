@@ -31,7 +31,7 @@ export default function YouTube() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-white/60 text-xl md:text-2xl max-w-3xl leading-relaxed mb-20 italic font-medium"
+          className="text-white text-xl md:text-2xl max-w-3xl leading-relaxed mb-20 italic font-medium"
         >
           We don&apos;t just tell you we get results — we show you the hard work, the strategy, and the wins. Follow the journey of Scottish businesses leveling up.
         </motion.p>

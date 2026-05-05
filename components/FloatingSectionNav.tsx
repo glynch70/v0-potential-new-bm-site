@@ -92,7 +92,7 @@ export default function FloatingSectionNav() {
                 ${
                   isActive
                     ? "text-[#C9A227] bg-white/5"
-                    : "text-white/40 hover:text-white/70"
+                    : "text-white hover:text-white"
                 }
                 active:scale-95`}
             >

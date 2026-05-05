@@ -101,7 +101,7 @@ function ServiceFlipCard({ service, index }: { service: typeof MAIN_SERVICES[0];
           </div>
 
           <h2 className="mb-3 text-2xl font-extrabold text-white">{service.title}</h2>
-          <p className="mb-6 text-base leading-relaxed text-white/80 md:mb-8">{service.description}</p>
+          <p className="mb-6 text-base leading-relaxed text-white md:mb-8">{service.description}</p>
 
           {/* Feature pills */}
           <div className="flex flex-wrap gap-2">
@@ -120,7 +120,7 @@ function ServiceFlipCard({ service, index }: { service: typeof MAIN_SERVICES[0];
             ))}
           </div>
 
-          <p className="text-[9px] uppercase tracking-[0.2em] text-white/50 mt-6">Tap to see examples</p>
+          <p className="text-[9px] uppercase tracking-[0.2em] text-white mt-6">Tap to see examples</p>
         </div>
 
         {/* Back: service details */}
@@ -134,7 +134,7 @@ function ServiceFlipCard({ service, index }: { service: typeof MAIN_SERVICES[0];
             <h3 className="text-2xl font-bold text-[#C9A227] mb-4">{service.title}</h3>
             <p className="text-white font-bold mb-4">What's included:</p>
             
-            <ul className="space-y-3 text-sm text-white/90 leading-relaxed mb-8">
+            <ul className="space-y-3 text-sm text-white leading-relaxed mb-8">
               {service.title === 'Social Media Content' ? (
                 <>
                   <li>• Reels & short-form video</li>
@@ -173,7 +173,7 @@ function ServiceFlipCard({ service, index }: { service: typeof MAIN_SERVICES[0];
               >
                 Get started <span>→</span>
               </a>
-              <p className="text-[10px] uppercase tracking-[0.2em] text-white/40 mt-6">
+              <p className="text-[10px] uppercase tracking-[0.2em] text-white mt-6">
                 ← CLICK TO FLIP BACK →
               </p>
             </div>
@@ -207,7 +207,7 @@ export default function InteractiveServiceCards() {
           <h2 className="mb-3 text-5xl font-bold uppercase leading-[1.1] tracking-tight text-white md:text-6xl">
             Everything your business needs
           </h2>
-          <p className="text-base text-white/80 md:text-lg">Websites, content, and creative — all done by one person who actually gives a damn.</p>
+          <p className="text-base text-white md:text-lg">Websites, content, and creative — all done by one person who actually gives a damn.</p>
         </motion.div>
 
         {/* 3 Main Service Flip Cards */}
@@ -242,7 +242,7 @@ export default function InteractiveServiceCards() {
                   className="group flex items-center gap-3 border border-white/[0.06] bg-[#111] px-4 py-3 transition-all hover:border-[#D4A830]/30 hover:bg-[#1a1a1a]"
                 >
                   <Icon className="h-4 w-4 text-[#D4A830]" strokeWidth={2} />
-                  <span className="text-xs font-medium text-white/80 transition-colors group-hover:text-white">{item.label}</span>
+                  <span className="text-xs font-medium text-white transition-colors group-hover:text-white">{item.label}</span>
                 </motion.div>
               )
             })}

@@ -123,7 +123,7 @@ export const MinimalFooter = () => {
             >
               <span>⭐ See Our 25 Google Reviews</span>
             </a>
-            <p className="text-white/70 text-sm">
+            <p className="text-white text-sm">
               We&apos;re proud of the trust our clients have placed in us. Read reviews and testimonials on Google.
             </p>
           </div>

@@ -48,7 +48,7 @@ export default function ProblemSection() {
             <h2 className="text-4xl md:text-6xl font-black uppercase leading-[1.1] mb-8 font-bebas italic max-w-3xl mx-auto">
               Most businesses <span className="text-white">aren’t posting properly.</span>
             </h2>
-            <p className="text-xl text-white/70 mb-10 leading-relaxed max-w-2xl mx-auto italic">
+            <p className="text-xl text-white mb-10 leading-relaxed max-w-2xl mx-auto italic">
               "Not because they don’t want to. Because they don’t have the time."
             </p>
           </motion.div>
@@ -68,7 +68,7 @@ export default function ProblemSection() {
                   {point.icon}
                 </div>
                 <h3 className="text-2xl font-black mb-4 text-white uppercase font-bebas tracking-wide italic">{point.title}</h3>
-                <p className="text-white/50 text-sm leading-relaxed">{point.description}</p>
+                <p className="text-white text-sm leading-relaxed">{point.description}</p>
               </motion.div>
             ))}
           </div>

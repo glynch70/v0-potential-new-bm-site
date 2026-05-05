@@ -49,7 +49,7 @@ export default function ServicesGrid() {
           <p className="text-brand-yellow font-black uppercase tracking-[0.3em] text-xs mb-4">WHAT WE DO</p>
           <h2 className="text-5xl md:text-6xl font-black tracking-tighter uppercase italic">Services</h2>
         </div>
-        <p className="text-white/50 max-w-md text-right hidden md:block">
+        <p className="text-white max-w-md text-right hidden md:block">
           Everything your business needs to dominate the digital space in Scotland. No fluff, just results.
         </p>
       </div>
@@ -64,7 +64,7 @@ export default function ServicesGrid() {
             </div>
             
             <h3 className="text-xl font-bold mb-3 group-hover:text-brand-yellow transition-colors">{service.title}</h3>
-            <p className="text-white/60 text-sm leading-relaxed">
+            <p className="text-white text-sm leading-relaxed">
               {service.description}
             </p>
           </div>

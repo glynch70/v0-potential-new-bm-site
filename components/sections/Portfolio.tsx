@@ -16,7 +16,7 @@ export default function Portfolio() {
           <div key={i} className="group relative">
             <div className="absolute -inset-0.5 bg-brand-yellow rounded-[2rem] blur opacity-0 group-hover:opacity-20 transition duration-500"></div>
             <div className="relative rounded-[2rem] border border-white/5 bg-neutral-900 p-2 transition-all group-hover:border-white/10">
-              <div className="aspect-[9/16] rounded-[1.6rem] bg-neutral-950 flex items-center justify-center text-white/10 font-black uppercase tracking-widest text-[10px] relative overflow-hidden">
+              <div className="aspect-[9/16] rounded-[1.6rem] bg-neutral-950 flex items-center justify-center text-white font-black uppercase tracking-widest text-[10px] relative overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-50" />
                 <div className="relative z-10">Reel {i + 1}</div>
               </div>
@@ -25,7 +25,7 @@ export default function Portfolio() {
         ))}
       </div>
       
-      <p className="mt-10 text-center text-xs text-white/30 font-black uppercase tracking-[0.3em]">
+      <p className="mt-10 text-center text-xs text-white font-black uppercase tracking-[0.3em]">
         Instagram • TikTok • YouTube • LinkedIn
       </p>
     </section>

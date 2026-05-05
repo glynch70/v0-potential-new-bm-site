@@ -49,7 +49,7 @@ export function StickyFooter({ className, ...props }: StickyFooterProps) {
 									<span className="text-3xl font-black italic tracking-tighter text-white uppercase">Bear</span>
 									<span className="text-3xl font-black italic tracking-tighter text-brand-yellow uppercase">Media</span>
 								</div>
-								<p className="text-white/60 mt-8 text-lg italic font-medium leading-relaxed">
+								<p className="text-white mt-8 text-lg italic font-medium leading-relaxed">
 									Websites and social media content that help Scottish businesses get seen, trusted, and contacted.
 								</p>
 								<div className="flex gap-4">
@@ -77,7 +77,7 @@ export function StickyFooter({ className, ...props }: StickyFooterProps) {
 									>
 										<div className="mb-10 md:mb-0">
 											<h3 className="text-xs font-black uppercase tracking-[0.3em] text-brand-yellow mb-6 italic">{group.label}</h3>
-											<ul className="text-white/40 space-y-4 text-sm font-bold italic">
+											<ul className="text-white space-y-4 text-sm font-bold italic">
 												{group.links.map((link) => (
 													<li key={link.title}>
 														<a
@@ -95,7 +95,7 @@ export function StickyFooter({ className, ...props }: StickyFooterProps) {
 								))}
 							</div>
 						</div>
-						<div className="text-white/20 flex flex-col items-center justify-between gap-4 border-t border-white/5 pt-8 pb-4 text-xs font-black uppercase tracking-widest md:flex-row relative z-10">
+						<div className="text-white flex flex-col items-center justify-between gap-4 border-t border-white/5 pt-8 pb-4 text-xs font-black uppercase tracking-widest md:flex-row relative z-10">
 							<p>© 2026 Bear Media. All rights reserved.</p>
 							<p>Broxburn, West Lothian, Scotland</p>
 						</div>

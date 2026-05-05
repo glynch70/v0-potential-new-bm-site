@@ -46,7 +46,7 @@ export default function StatementSection() {
           We come to your door
         </motion.h2>
         
-        <p className="text-xl md:text-3xl text-white/60 mb-12 max-w-3xl mx-auto italic font-medium leading-relaxed">
+        <p className="text-xl md:text-3xl text-white mb-12 max-w-3xl mx-auto italic font-medium leading-relaxed">
           No faceless remote agencies. We visit you in Edinburgh, Fife, or West Lothian to capture the real story of your business.
         </p>
         

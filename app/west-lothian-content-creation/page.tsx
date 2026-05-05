@@ -26,9 +26,9 @@ export default function WestLothianPage() {
             </p>
             <h1 className="text-4xl md:text-8xl font-black mb-6 md:mb-8 leading-[0.9] tracking-tighter italic uppercase font-bebas max-w-5xl mx-auto">
               Content Creation & <br />
-              <span className="text-brand-yellow text-stroke-sm">Videography West Lothian</span>
+              <span className="text-brand-yellow">Videography West Lothian</span>
             </h1>
-            <p className="text-lg md:text-2xl text-white/70 max-w-2xl mx-auto mb-10 md:mb-12 font-medium leading-relaxed italic">
+            <p className="text-lg md:text-2xl text-white max-w-2xl mx-auto mb-10 md:mb-12 font-medium leading-relaxed italic">
               We come to you. We film it. We turn it into enquiries for businesses in Broxburn, Livingston, and Bathgate.
             </p>
             <Link
@@ -44,11 +44,11 @@ export default function WestLothianPage() {
                   <div className="flex gap-1 text-brand-yellow mb-1">
                      {[1,2,3,4,5].map(i => <Star key={i} size={12} fill="currentColor" />)}
                   </div>
-                  <p className="text-white/60 text-[10px] font-black uppercase tracking-widest">5.0 Google Rating</p>
+                  <p className="text-white text-[10px] font-black uppercase tracking-widest">5.0 Google Rating</p>
                </div>
                <div className="flex flex-col items-center md:items-start">
                   <p className="text-white font-black font-bebas italic text-xl leading-none mb-1">25+ LOCAL BUSINESSES</p>
-                  <p className="text-white/40 text-[9px] font-bold uppercase tracking-widest">West Lothian Partner</p>
+                  <p className="text-white text-[9px] font-bold uppercase tracking-widest">West Lothian Partner</p>
                </div>
             </div>
           </div>
@@ -73,16 +73,16 @@ export default function WestLothianPage() {
            </h2>
            <div className="grid md:grid-cols-2 gap-12">
               <div className="space-y-6">
-                 <p className="text-lg text-white/70 italic leading-relaxed">
+                 <p className="text-lg text-white italic leading-relaxed">
                     "You're the best kept secret in Broxburn or Livingston. You do great work, but your social media is a ghost town and your website isn't bringing in leads."
                  </p>
-                 <p className="text-white/40 text-sm">
+                 <p className="text-white text-sm">
                     Inconsistent content and poor visibility mean your potential customers are going to competitors who look more professional online, even if their work isn't as good as yours.
                  </p>
               </div>
               <div className="p-10 rounded-[2.5rem] bg-neutral-900 border border-brand-yellow/10">
                  <h4 className="text-brand-yellow font-black uppercase italic font-bebas tracking-widest text-lg mb-4">The Solution</h4>
-                 <p className="text-white/60 text-sm leading-relaxed mb-6">
+                 <p className="text-white text-sm leading-relaxed mb-6">
                     Our "While You Work" capture system ensures we get real, authentic footage of your team in action across West Lothian, turning that proof into a lead-generation machine.
                  </p>
                  <Link href="/services/social-media-content" className="text-white font-black uppercase italic font-bebas tracking-widest text-sm hover:text-brand-yellow transition-colors flex items-center gap-2">
@@ -96,7 +96,7 @@ export default function WestLothianPage() {
         <section className="py-24 px-6 bg-white/[0.02] border-y border-white/5">
            <div className="max-w-7xl mx-auto text-center">
               <h2 className="text-3xl md:text-5xl font-black mb-16 uppercase italic font-bebas tracking-tight text-white leading-none">
-                 Everything You Need to <span className="text-brand-yellow text-stroke-sm">Get Busy.</span>
+                 Everything You Need to <span className="text-brand-yellow">Get Busy.</span>
               </h2>
               <div className="grid md:grid-cols-3 gap-8 text-left">
                  {[
@@ -107,7 +107,7 @@ export default function WestLothianPage() {
                     <div key={i} className="p-10 glass-card border-white/5 group hover:border-brand-yellow/30 transition-all">
                        <div className="text-brand-yellow mb-6">{s.icon}</div>
                        <h3 className="text-xl font-bold text-white mb-4 uppercase italic font-bebas tracking-widest">{s.title}</h3>
-                       <p className="text-white/40 text-sm leading-relaxed">{s.desc}</p>
+                       <p className="text-white text-sm leading-relaxed">{s.desc}</p>
                     </div>
                  ))}
               </div>
@@ -117,7 +117,7 @@ export default function WestLothianPage() {
         {/* 5. FAQ SECTION */}
         <section className="py-24 px-6 max-w-4xl mx-auto">
            <h2 className="text-3xl md:text-5xl font-black mb-16 text-center uppercase italic font-bebas tracking-tight text-white leading-none">
-              West Lothian <span className="text-brand-yellow text-stroke-sm">FAQs.</span>
+              West Lothian <span className="text-brand-yellow">FAQs.</span>
            </h2>
            <div className="space-y-6">
               {[
@@ -130,7 +130,7 @@ export default function WestLothianPage() {
                     <h4 className="text-xl font-black uppercase italic font-bebas tracking-widest text-brand-yellow mb-4 flex items-center gap-3">
                        <HelpCircle size={20} /> {faq.q}
                     </h4>
-                    <p className="text-white/50 leading-relaxed text-sm">{faq.a}</p>
+                    <p className="text-white leading-relaxed text-sm">{faq.a}</p>
                  </div>
               ))}
            </div>

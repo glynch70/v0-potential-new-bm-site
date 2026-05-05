@@ -75,7 +75,7 @@ export default function FAQSection() {
                     exit={{ height: 0, opacity: 0 }}
                     className="overflow-hidden"
                   >
-                    <div className="px-8 pb-8 text-white/50 leading-relaxed text-sm">
+                    <div className="px-8 pb-8 text-white leading-relaxed text-sm">
                       {faq.a}
                     </div>
                   </motion.div>

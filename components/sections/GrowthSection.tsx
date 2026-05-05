@@ -15,7 +15,7 @@ export default function GrowthSection() {
           <h2 className="text-4xl sm:text-6xl md:text-8xl font-black text-brand-yellow mb-4 tracking-tighter font-bebas italic leading-tight">
             +661% Growth
           </h2>
-          <p className="text-xl md:text-2xl text-white/60 font-bold uppercase tracking-[0.2em]">
+          <p className="text-xl md:text-2xl text-white font-bold uppercase tracking-[0.2em]">
             123,000+ Views Generated
           </p>
           <p className="text-brand-yellow font-bold uppercase tracking-widest text-xs mt-4">

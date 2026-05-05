@@ -18,7 +18,7 @@ export default function HeroSection() {
           <span className="text-brand-yellow">businesses</span> <br />
           get seen online.
         </h1>
-        <p className="mt-8 text-xl text-white/70 max-w-xl font-medium leading-relaxed">
+        <p className="mt-8 text-xl text-white max-w-xl font-medium leading-relaxed">
           Video content, reels, social media management, drone visuals and websites that make brands look <span className="text-white">credible</span> and <span className="text-white">active</span>.
         </p>
         <div className="mt-10 flex flex-wrap gap-5">

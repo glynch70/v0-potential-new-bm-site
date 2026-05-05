@@ -85,7 +85,7 @@ export default function TrainingPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-xl md:text-3xl text-white/60 max-w-3xl mx-auto italic font-medium leading-relaxed"
+              className="text-xl md:text-3xl text-white max-w-3xl mx-auto italic font-medium leading-relaxed"
             >
               Learn Canva, CapCut, AI tools. Stuff that really gets results. Stop outsourcing everything and start building your brand from the inside.
             </motion.p>
@@ -97,7 +97,7 @@ export default function TrainingPage() {
         <div className="max-w-[1240px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
           <div>
             <h2 className="text-4xl md:text-6xl font-black text-white uppercase italic tracking-tighter mb-8">What is <span className="text-brand-yellow">Digital Training</span>?</h2>
-            <div className="text-white/60 text-lg md:text-xl space-y-6 leading-relaxed italic">
+            <div className="text-white text-lg md:text-xl space-y-6 leading-relaxed italic">
               <p>
                 The best person to tell your business story is you. But you need the right tools—and the skills to use them properly.
               </p>
@@ -118,7 +118,7 @@ export default function TrainingPage() {
                 "Ensure brand consistency across all platforms",
                 "Stay ahead of the curve with AI tools"
               ].map((item, i) => (
-                <li key={i} className="flex gap-4 items-start text-white/80 italic font-medium">
+                <li key={i} className="flex gap-4 items-start text-white italic font-medium">
                   <CheckCircle2 className="text-brand-yellow shrink-0" size={24} />
                   {item}
                 </li>
@@ -133,7 +133,7 @@ export default function TrainingPage() {
         <div className="max-w-[1240px] mx-auto">
           <div className="text-center mb-20">
             <h2 className="text-4xl md:text-6xl font-black text-white uppercase italic tracking-tighter">What we <span className="text-brand-yellow">actually</span> do</h2>
-            <p className="text-white/40 mt-4 text-lg">Practical skills. Zero waffle.</p>
+            <p className="text-white mt-4 text-lg">Practical skills. Zero waffle.</p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -150,7 +150,7 @@ export default function TrainingPage() {
                   <offering.icon size={30} className="text-brand-yellow" />
                 </div>
                 <h3 className="text-2xl font-black text-brand-yellow uppercase italic mb-4">{offering.title}</h3>
-                <p className="text-white/60 text-base leading-relaxed font-medium italic">{offering.description}</p>
+                <p className="text-white text-base leading-relaxed font-medium italic">{offering.description}</p>
               </motion.div>
             ))}
           </div>
@@ -162,7 +162,7 @@ export default function TrainingPage() {
         <div className="max-w-[1240px] mx-auto">
           <div className="text-center mb-20">
             <h2 className="text-4xl md:text-6xl font-black text-white uppercase italic tracking-tighter">Simple <span className="text-brand-yellow">Pricing</span></h2>
-            <p className="text-white/40 mt-4 text-lg">No hidden costs. Just pure knowledge.</p>
+            <p className="text-white mt-4 text-lg">No hidden costs. Just pure knowledge.</p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-4xl mx-auto">
@@ -218,7 +218,7 @@ export default function TrainingPage() {
                  
                  <div className="flex flex-col items-center mb-12">
                     <span className="text-lg font-black uppercase tracking-tighter text-brand-yellow">Callie</span>
-                    <span className="text-white/40 font-black uppercase tracking-widest text-[10px]">M&M Compliance and Training Services</span>
+                    <span className="text-white font-black uppercase tracking-widest text-[10px]">M&M Compliance and Training Services</span>
                  </div>
 
                  <a 
@@ -253,7 +253,7 @@ export default function TrainingPage() {
           <div className="mt-24">
             <Link 
               href="/" 
-              className="inline-flex items-center gap-4 text-white/40 hover:text-brand-yellow transition-colors font-black uppercase tracking-[0.4em] text-xs"
+              className="inline-flex items-center gap-4 text-white hover:text-brand-yellow transition-colors font-black uppercase tracking-[0.4em] text-xs"
             >
               <ArrowLeft size={16} /> Back to Home
             </Link>

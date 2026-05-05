@@ -5,7 +5,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { Camera, ArrowLeft, CheckCircle2, Share2, Zap, Smartphone, Users } from 'lucide-react'
+import { Camera, ArrowLeft, CheckCircle2, Share2, Zap, Smartphone, Users, Play } from 'lucide-react'
 import Navbar from '@/components/Navbar'
 import { StickyFooter } from '@/components/ui/sticky-footer'
 
@@ -58,7 +58,7 @@ export default function SocialMediaPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-xl md:text-3xl text-white/60 max-w-3xl mx-auto italic font-medium leading-relaxed"
+              className="text-xl md:text-3xl text-white max-w-3xl mx-auto italic font-medium leading-relaxed"
             >
               Content that stops the scroll and gets you noticed. Master the algorithm with high-impact vertical video and smart strategy.
             </motion.p>
@@ -70,7 +70,7 @@ export default function SocialMediaPage() {
         <div className="max-w-[1240px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
           <div>
             <h2 className="text-4xl md:text-6xl font-black text-white uppercase italic tracking-tighter mb-8">What is <span className="text-brand-yellow">Social Content</span>?</h2>
-            <div className="text-white/60 text-lg md:text-xl space-y-6 leading-relaxed italic">
+            <div className="text-white text-lg md:text-xl space-y-6 leading-relaxed italic">
               <p>
                 Social media isn't just about "being online." It's about being present, being relevant, and being authentic.
               </p>
@@ -88,7 +88,7 @@ export default function SocialMediaPage() {
                 "Consistent posting builds massive trust",
                 "Your competitors are already doing it"
               ].map((item, i) => (
-                <li key={i} className="flex gap-4 items-start text-white/80 italic font-medium">
+                <li key={i} className="flex gap-4 items-start text-white italic font-medium">
                   <CheckCircle2 className="text-brand-yellow shrink-0" size={24} />
                   {item}
                 </li>
@@ -103,7 +103,7 @@ export default function SocialMediaPage() {
         <div className="max-w-[1240px] mx-auto">
           <div className="text-center mb-20">
             <h2 className="text-4xl md:text-6xl font-black text-white uppercase italic tracking-tighter">What we <span className="text-brand-yellow">actually</span> do</h2>
-            <p className="text-white/40 mt-4 text-lg">Real content for real results.</p>
+            <p className="text-white mt-4 text-lg">Real content for real results.</p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -120,7 +120,7 @@ export default function SocialMediaPage() {
                   <type.icon size={30} className="text-brand-yellow" />
                 </div>
                 <h3 className="text-2xl font-black text-brand-yellow uppercase italic mb-4">{type.title}</h3>
-                <p className="text-white/60 text-base leading-relaxed font-medium italic">{type.description}</p>
+                <p className="text-white text-base leading-relaxed font-medium italic">{type.description}</p>
               </motion.div>
             ))}
           </div>
@@ -129,26 +129,33 @@ export default function SocialMediaPage() {
 
       {/* 🚀 REAL EXAMPLES */}
       <section className="py-24 md:py-32 px-6">
-        <div className="max-w-[1240px] mx-auto">
-          <h2 className="text-4xl md:text-6xl font-black text-white uppercase italic tracking-tighter mb-16 text-center">Real <span className="text-brand-yellow">Examples</span></h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            <div className="group relative aspect-[9/16] max-w-sm mx-auto rounded-3xl overflow-hidden border-2 border-white/5">
-               <div className="absolute inset-0 bg-dark/60 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity z-10 p-8 text-center">
-                  <h4 className="text-2xl font-black text-white uppercase italic mb-2">Viral Trade Reel</h4>
-                  <p className="text-white/60 mb-6 italic">Built for engagement and reach.</p>
-                  <Link href="/#work" className="bg-brand-yellow text-dark px-6 py-3 rounded-full font-black uppercase tracking-widest text-xs italic">View Portfolio</Link>
-               </div>
-               <div className="bg-white/5 w-full h-full flex items-center justify-center text-white/10 uppercase font-black text-4xl italic [writing-mode:vertical-rl] rotate-180">Vertical Video Example</div>
-            </div>
-            <div className="group relative aspect-[9/16] max-w-sm mx-auto rounded-3xl overflow-hidden border-2 border-white/5">
-               <div className="absolute inset-0 bg-dark/60 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity z-10 p-8 text-center">
-                  <h4 className="text-2xl font-black text-white uppercase italic mb-2">Service Highlight</h4>
-                  <p className="text-white/60 mb-6 italic">Clean, fast, and on-brand.</p>
-                  <Link href="/#work" className="bg-brand-yellow text-dark px-6 py-3 rounded-full font-black uppercase tracking-widest text-xs italic">View Portfolio</Link>
-               </div>
-               <div className="bg-white/5 w-full h-full flex items-center justify-center text-white/10 uppercase font-black text-4xl italic [writing-mode:vertical-rl] rotate-180">Vertical Video Example</div>
-            </div>
+        <div className="max-w-[1240px] mx-auto text-center">
+          <h2 className="text-4xl md:text-6xl font-black text-white uppercase italic tracking-tighter mb-16">Real <span className="text-brand-yellow">Work</span></h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+            {[
+              { id: "Ll1AUE9Gxrg", title: "Veterinary Service" },
+              { id: "CQNytl9SPb4", title: "Trade Promo" },
+              { id: "9EMz1OjGuZo", title: "Event Coverage" }
+            ].map((video, i) => (
+              <div key={i} className="aspect-[9/16] rounded-3xl overflow-hidden border-2 border-white/5 bg-neutral-900 shadow-2xl">
+                 <iframe
+                    src={`https://www.youtube.com/embed/${video.id}`}
+                    title={video.title}
+                    className="w-full h-full border-0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  ></iframe>
+              </div>
+            ))}
           </div>
+          <a 
+            href="https://www.youtube.com/@bearmedia" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-3 px-8 py-4 bg-red-600 text-white font-black uppercase tracking-widest text-xs rounded-xl hover:bg-red-700 transition-colors"
+          >
+            <Play size={16} fill="currentColor" /> Subscribe on YouTube
+          </a>
         </div>
       </section>
 
@@ -156,7 +163,7 @@ export default function SocialMediaPage() {
       <section className="py-24 md:py-32 px-6 bg-white/[0.02]">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-4xl md:text-6xl font-black text-white uppercase italic tracking-tighter mb-8">Who <span className="text-brand-yellow">it's for</span></h2>
-          <div className="text-white/60 text-lg md:text-xl space-y-6 leading-relaxed italic mb-12">
+          <div className="text-white text-lg md:text-xl space-y-6 leading-relaxed italic mb-12">
             <p>
               We work with local Scottish businesses who want to stop being "that business that never posts" and start being the one that everyone recognizes in their feed.
             </p>
@@ -191,7 +198,7 @@ export default function SocialMediaPage() {
           <div className="mt-24">
             <Link 
               href="/" 
-              className="inline-flex items-center gap-4 text-white/40 hover:text-brand-yellow transition-colors font-black uppercase tracking-[0.4em] text-xs"
+              className="inline-flex items-center gap-4 text-white hover:text-brand-yellow transition-colors font-black uppercase tracking-[0.4em] text-xs"
             >
               <ArrowLeft size={16} /> Back to Home
             </Link>

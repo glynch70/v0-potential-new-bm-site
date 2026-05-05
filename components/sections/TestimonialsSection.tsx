@@ -62,10 +62,10 @@ export default function TestimonialsSection() {
                   <Star key={i} size={14} className="text-brand-yellow fill-brand-yellow" />
                 ))}
               </div>
-              <p className="text-white/70 text-lg leading-relaxed mb-8 italic">"{t.quote}"</p>
+              <p className="text-white text-lg leading-relaxed mb-8 italic">"{t.quote}"</p>
               <div>
                 <p className="font-black text-white uppercase font-bebas italic tracking-wide">{t.name}</p>
-                <p className="text-white/40 text-[10px] uppercase tracking-widest">{t.company}</p>
+                <p className="text-white text-[10px] uppercase tracking-widest">{t.company}</p>
               </div>
             </motion.div>
           ))}
@@ -77,7 +77,7 @@ export default function TestimonialsSection() {
           viewport={{ once: true }}
           className="mt-12 text-center"
         >
-           <p className="text-white/30 text-[10px] uppercase tracking-widest font-bold">25 reviews · 5.0 ★ on Google</p>
+           <p className="text-white text-[10px] uppercase tracking-widest font-bold">25 reviews · 5.0 ★ on Google</p>
         </motion.div>
       </div>
     </section>

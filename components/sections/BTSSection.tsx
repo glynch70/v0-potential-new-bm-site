@@ -70,7 +70,7 @@ export default function BTSSection() {
 					whileInView={{ opacity: 1, y: 0 }}
 					viewport={{ once: true }}
 					transition={{ duration: 0.8, delay: 0.2 }}
-					className="text-xl md:text-3xl text-white/60 max-w-3xl mx-auto italic font-medium leading-relaxed"
+					className="text-xl md:text-3xl text-white max-w-3xl mx-auto italic font-medium leading-relaxed"
 				>
 					Real work, real results. We don't just sit behind desks. We're on the ground with our clients, capturing the stories that matter.
 				</motion.p>
