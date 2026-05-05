@@ -76,98 +76,100 @@ export default function Navbar() {
   }, [isOpen])
 
   return (
-    <header className="sticky top-0 z-50 backdrop-blur-md border-b border-white/10 bg-neutral-950/80 transition-all duration-300">
-      <div className="max-w-6xl mx-auto px-6 py-3 flex justify-between items-center">
-        <Link href="/" className="flex items-center gap-3 group">
-            <div className="flex flex-col">
-              <span className="text-white font-bold text-lg leading-tight group-hover:text-brand-yellow transition-colors" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif' }}>
-                Bear Media
-              </span>
-              <span className="text-white text-[10px] font-medium uppercase tracking-[0.2em]" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif' }}>
-                Websites & Social Media
-              </span>
-            </div>
-        </Link>
-
-        {/* Desktop Menu */}
-        <div className="hidden md:flex items-center gap-6">
-          <MenuBar 
-            items={menuItems} 
-            activeItem={activeItem} 
-            onItemClick={setActiveItem}
-            className="bg-transparent border-none shadow-none p-0"
-          />
-          <Link 
-            href="/contact"
-            className="px-6 py-2.5 rounded-xl bg-brand-yellow text-neutral-950 font-black uppercase tracking-widest text-[10px] hover:scale-105 transition-all shadow-lg active:scale-95"
-          >
-            Book a Discovery Call
+    <>
+      <header className={`sticky top-0 z-50 transition-colors duration-300 ${isOpen ? 'bg-transparent border-transparent' : 'backdrop-blur-md border-b border-white/10 bg-neutral-950/80'}`}>
+        <div className="max-w-6xl mx-auto px-6 py-3 flex justify-between items-center relative z-[110]">
+          <Link href="/" onClick={() => setIsOpen(false)} className="flex items-center gap-3 group">
+              <div className="flex flex-col">
+                <span className="text-white font-bold text-lg leading-tight group-hover:text-brand-yellow transition-colors" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif' }}>
+                  Bear Media
+                </span>
+                <span className="text-white text-[10px] font-medium uppercase tracking-[0.2em]" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif' }}>
+                  Websites & Social Media
+                </span>
+              </div>
           </Link>
-        </div>
 
-      {/* Mobile Menu Toggle */}
-      <button 
-        className="md:hidden text-white p-2 z-[110] relative"
-        onClick={() => setIsOpen(!isOpen)}
-        aria-label="Toggle menu"
-      >
-        {isOpen ? <X size={32} /> : <Menu size={32} />}
-      </button>
+          {/* Desktop Menu */}
+          <div className="hidden md:flex items-center gap-6">
+            <MenuBar 
+              items={menuItems} 
+              activeItem={activeItem} 
+              onItemClick={setActiveItem}
+              className="bg-transparent border-none shadow-none p-0"
+            />
+            <Link 
+              href="/contact"
+              className="px-6 py-2.5 rounded-xl bg-brand-yellow text-neutral-950 font-black uppercase tracking-widest text-[10px] hover:scale-105 transition-all shadow-lg active:scale-95"
+            >
+              Book a Discovery Call
+            </Link>
+          </div>
+
+          {/* Mobile Menu Toggle */}
+          <button 
+            className="md:hidden text-white p-2 -mr-2 relative z-[110]"
+            onClick={() => setIsOpen(!isOpen)}
+            aria-label="Toggle menu"
+          >
+            {isOpen ? <X size={32} /> : <Menu size={32} />}
+          </button>
+        </div>
+      </header>
 
       {/* Mobile Menu Overlay */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ x: '100%' }}
-            animate={{ x: 0 }}
-            exit={{ x: '100%' }}
-            transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-            className="fixed inset-0 bg-neutral-950 z-[105] flex flex-col items-center justify-center gap-10 px-6 overflow-hidden md:hidden"
+            initial={{ opacity: 0, x: '100%' }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: '100%' }}
+            transition={{ duration: 0.3, ease: 'easeInOut' }}
+            className="fixed inset-0 bg-neutral-950 z-[100] flex flex-col pt-24 pb-12 px-6 overflow-y-auto md:hidden"
           >
             {/* Background Accents */}
             <div className="absolute top-[-10%] right-[-10%] w-[60%] h-[60%] bg-brand-yellow/10 blur-[120px] rounded-full pointer-events-none" />
             <div className="absolute bottom-[-10%] left-[-10%] w-[60%] h-[60%] bg-brand-yellow/5 blur-[120px] rounded-full pointer-events-none" />
 
-            {menuItems.map((link, i) => (
+            <div className="flex flex-col gap-2 mt-8 relative z-10 w-full max-w-sm mx-auto flex-grow">
+              {menuItems.map((link, i) => (
+                <motion.div
+                  key={link.label}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.1 + i * 0.1 }}
+                >
+                  <Link 
+                    href={link.href}
+                    onClick={() => setIsOpen(false)}
+                    className="flex items-center justify-between group py-5 border-b border-white/10"
+                  >
+                    <span className="text-3xl font-black text-white uppercase italic tracking-tighter group-hover:text-brand-yellow transition-colors">
+                      {link.label}
+                    </span>
+                    <link.icon className="text-brand-yellow group-hover:scale-110 transition-transform" size={28} />
+                  </Link>
+                </motion.div>
+              ))}
+
               <motion.div
-                key={link.label}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1 + i * 0.1 }}
-                className="w-full max-w-xs"
+                transition={{ delay: 0.4 }}
+                className="mt-12"
               >
                 <Link 
-                  href={link.href}
+                  href="/contact"
                   onClick={() => setIsOpen(false)}
-                  className="flex items-center justify-between group"
+                  className="flex items-center justify-center w-full bg-brand-yellow text-neutral-950 px-8 py-5 rounded-2xl font-black uppercase tracking-widest text-sm hover:scale-105 transition-all text-center min-h-[44px]"
                 >
-                  <span className="text-4xl font-black text-white uppercase italic tracking-tighter group-hover:text-brand-yellow transition-colors">
-                    {link.label}
-                  </span>
-                  <link.icon className="text-brand-yellow group-hover:scale-110 transition-transform" size={28} />
+                  Book a Discovery Call
                 </Link>
-                <div className="h-[1px] w-full bg-white/10 mt-4" />
               </motion.div>
-            ))}
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5 }}
-              className="mt-8 w-full max-w-xs"
-            >
-              <Link 
-                href="/contact"
-                onClick={() => setIsOpen(false)}
-                className="block w-full bg-brand-yellow text-neutral-950 px-8 py-5 rounded-2xl font-black uppercase tracking-widest text-sm shadow-[0_0_50px_rgba(201,162,39,0.3)] hover:scale-105 transition-all italic text-center"
-              >
-                Book Discovery Call
-              </Link>
-            </motion.div>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
-      </div>
-    </header>
+    </>
   )
 }
