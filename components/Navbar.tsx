@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useState, useEffect } from 'react'
 import { MenuBar } from '@/components/ui/glow-menu'
-import { LayoutGrid, Play, Info, Phone, Menu, X } from 'lucide-react'
+import { LayoutGrid, Play, Info, Phone, Menu, X, Home } from 'lucide-react'
 
 const menuItems = [
   {
@@ -132,12 +132,29 @@ export default function Navbar() {
             <div className="absolute bottom-[-10%] left-[-10%] w-[60%] h-[60%] bg-brand-yellow/5 blur-[120px] rounded-full pointer-events-none" />
 
             <div className="flex flex-col gap-2 mt-8 relative z-10 w-full max-w-sm mx-auto flex-grow">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1 }}
+              >
+                <Link 
+                  href="/"
+                  onClick={() => setIsOpen(false)}
+                  className="flex items-center justify-between group py-5 border-b-2 border-white/10"
+                >
+                  <span className="text-3xl font-black text-white uppercase italic tracking-tighter group-hover:text-brand-yellow transition-colors">
+                    Home
+                  </span>
+                  <Home className="text-brand-yellow group-hover:scale-110 transition-transform" size={28} />
+                </Link>
+              </motion.div>
+
               {menuItems.map((link, i) => (
                 <motion.div
                   key={link.label}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.1 + i * 0.1 }}
+                  transition={{ delay: 0.2 + i * 0.1 }}
                 >
                   <Link 
                     href={link.href}
