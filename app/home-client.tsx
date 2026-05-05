@@ -17,7 +17,7 @@ export default function HomeContent() {
       <Navbar />
 
       {/* 1. HERO SECTION */}
-      <section className="relative min-h-[70vh] flex items-center pt-24 pb-16 md:pt-32 md:pb-24 px-6 overflow-hidden">
+      <section className="relative min-h-[60vh] flex items-center pt-24 pb-16 md:pt-32 md:pb-24 px-6 overflow-hidden">
         {/* Background Visual */}
         <div className="absolute inset-0 z-0">
           <video
@@ -25,14 +25,14 @@ export default function HomeContent() {
             muted
             loop
             playsInline
-            className="w-full h-full object-cover opacity-50 grayscale-0 contrast-[1.1] brightness-[1.1]"
+            className="w-full h-full object-cover opacity-80 grayscale-0 contrast-[1.1] brightness-[1.1]"
           >
             <source src="/media/NEW BM DRONE HERO.mp4" type="video/mp4" />
           </video>
           {/* subtle cinematic overlay */}
-          <div className="absolute inset-0 bg-black/35" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/30 to-black/10" />
           {/* subtle gradient to ensure text readability */}
-          <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/60 via-transparent to-neutral-950/40" />
+          <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/50 via-transparent to-neutral-950/20" />
         </div>
 
         <div className="max-w-7xl mx-auto relative z-10 w-full">
@@ -47,7 +47,7 @@ export default function HomeContent() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="mb-8 md:mb-10 max-w-4xl text-4xl md:text-7xl lg:text-8xl font-black italic uppercase font-bebas leading-[0.95] tracking-tight"
+            className="mb-8 md:mb-10 max-w-4xl text-4xl md:text-6xl lg:text-7xl font-black italic uppercase font-bebas leading-[1.1] tracking-tight"
           >
             Web Design, Video & Social Media <br className="hidden md:block" />
             <span className="text-brand-yellow">That Brings You More Enquiries.</span>
@@ -78,7 +78,7 @@ export default function HomeContent() {
             <div className="flex flex-col gap-3">
               <Link
                 href="/portfolio"
-                className="px-8 md:px-10 py-5 bg-white/10 backdrop-blur-sm text-white border border-white/20 font-black uppercase tracking-widest text-[11px] rounded-xl hover:bg-white/20 transition-all text-center md:w-max"
+                className="px-8 md:px-10 py-5 bg-white/5 backdrop-blur-sm text-white/80 border border-white/10 font-black uppercase tracking-widest text-[11px] rounded-xl hover:bg-white/10 hover:text-white transition-all text-center md:w-max"
               >
                 👉 See Our Work
               </Link>
