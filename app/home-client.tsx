@@ -35,54 +35,67 @@ export default function HomeContent() {
           <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/50 via-transparent to-neutral-950/20" />
         </div>
 
-        <div className="max-w-7xl mx-auto relative z-10 w-full">
-          <motion.p 
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-brand-yellow font-black uppercase tracking-[0.2em] mb-6 text-[10px] md:text-sm animate-pulse italic"
-          >
-             Working with businesses across West Lothian, Livingston, Edinburgh & surrounding areas
-          </motion.p>
-          <motion.h1 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="mb-8 md:mb-10 max-w-4xl text-4xl md:text-6xl lg:text-7xl font-black italic uppercase font-bebas leading-[1.1] tracking-tight"
-          >
-            Web Design, Video & Social Media <br className="hidden md:block" />
-            <span className="text-brand-yellow">That Brings You More Enquiries.</span>
-          </motion.h1>
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="text-white max-w-2xl mb-12 md:mb-14 font-medium leading-relaxed italic text-lg md:text-xl opacity-90"
-          >
-            We help businesses across West Lothian, Edinburgh and the Central Belt turn content and websites into consistent leads.
-          </motion.p>
+        <div className="max-w-7xl mx-auto relative z-10 w-full flex flex-col gap-8 md:gap-12">
+          <div className="flex flex-col">
+            <motion.p 
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="text-brand-yellow font-black uppercase tracking-[0.2em] mb-4 text-[10px] md:text-sm animate-pulse italic"
+            >
+               Working with businesses across West Lothian, Livingston, Edinburgh & surrounding areas
+            </motion.p>
+            <motion.h1 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1 }}
+              className="mb-6 max-w-4xl text-4xl md:text-6xl lg:text-7xl font-black italic uppercase font-bebas leading-[1.1] tracking-tight"
+            >
+              Turn Your Content Into <br className="hidden md:block" />
+              <span className="text-brand-yellow">Consistent Local Enquiries.</span>
+            </motion.h1>
+            
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+              className="text-white max-w-2xl mb-4 font-medium leading-relaxed italic text-lg md:text-xl opacity-90"
+            >
+              We help businesses across West Lothian and Edinburgh turn content, video and websites into a steady flow of real leads.
+            </motion.p>
+            
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.25 }}
+              className="text-white/70 max-w-2xl font-medium italic text-sm md:text-base"
+            >
+              No fluff. No guesswork. Just a system designed to bring you enquiries.
+            </motion.p>
+          </div>
+
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
-            className="flex flex-col sm:flex-row gap-6 sm:items-end"
+            className="flex flex-col gap-4"
           >
-            <div className="flex flex-col gap-3">
-              <p className="text-white/70 text-[10px] font-black uppercase tracking-widest italic ml-1">Let’s look at your business and show you exactly how to generate more enquiries.</p>
+            <div className="flex flex-col sm:flex-row gap-4 sm:items-center">
               <Link
                 href="/contact"
                 className="px-8 md:px-10 py-5 bg-brand-yellow text-neutral-950 font-black uppercase tracking-widest text-[11px] rounded-xl hover:scale-105 transition-all shadow-xl text-center md:w-max"
               >
-                👉 Book a Discovery Call
+                Book a Discovery Call
               </Link>
-            </div>
-            <div className="flex flex-col gap-3">
               <Link
                 href="/portfolio"
                 className="px-8 md:px-10 py-5 bg-white/5 backdrop-blur-sm text-white/80 border border-white/10 font-black uppercase tracking-widest text-[11px] rounded-xl hover:bg-white/10 hover:text-white transition-all text-center md:w-max"
               >
-                👉 See Our Work
+                See Real Results
               </Link>
             </div>
+            <p className="text-white/60 text-[10px] font-black uppercase tracking-widest italic ml-1 max-w-lg">
+              Trusted by 50+ local businesses across West Lothian, Edinburgh and the Central Belt.
+            </p>
           </motion.div>
         </div>
       </section>
