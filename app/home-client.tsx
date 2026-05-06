@@ -6,6 +6,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { ArrowRight, Video, MousePointer2, Settings, Star } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 import YouTubeEmbed from '@/components/YouTubeEmbed';
 
 export default function HomeContent() {
@@ -111,32 +112,45 @@ export default function HomeContent() {
             </h2>
           </div>
           
-          <div className="grid md:grid-cols-3 gap-8">
-            {/* Card 1 */}
-            <div className="bg-neutral-950 border border-white/10 rounded-[2rem] p-10 hover:border-brand-yellow/30 transition-all group flex flex-col h-full relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-brand-yellow/5 rounded-bl-full pointer-events-none group-hover:bg-brand-yellow/10 transition-colors" />
-              <h3 className="text-2xl font-black italic uppercase font-bebas text-white mb-6">C&G Developments</h3>
-              <div className="space-y-4 mb-8">
-                <div className="flex justify-between items-center border-b border-white/5 pb-2">
-                  <span className="text-white/60 text-xs font-bold uppercase tracking-widest">Views</span>
-                  <span className="text-brand-yellow font-black">129,000+</span>
+          {/* Featured Case Study - Full Width */}
+          <div className="mb-8 relative rounded-[2rem] overflow-hidden group border border-white/10 hover:border-brand-yellow/50 transition-all">
+             <Image src="/work/C&G Work In Progress-Cover.jpg" alt="C&G Developments Work" fill className="object-cover opacity-30 group-hover:opacity-40 transition-all duration-700 group-hover:scale-105" />
+             <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/80 to-neutral-950/40" />
+             <div className="absolute inset-0 bg-gradient-to-r from-neutral-950/90 to-transparent" />
+             
+             <div className="relative z-10 p-10 md:p-16 flex flex-col md:flex-row gap-12 items-center">
+                <div className="flex-1">
+                   <div className="inline-flex items-center gap-2 px-4 py-2 bg-brand-yellow/10 border border-brand-yellow/20 rounded-full mb-6">
+                      <Star className="text-brand-yellow w-4 h-4 fill-brand-yellow" />
+                      <span className="text-brand-yellow font-black uppercase tracking-widest text-[10px]">Generated in 90 days</span>
+                   </div>
+                   <h3 className="text-4xl md:text-6xl font-black italic uppercase font-bebas text-white mb-6 leading-tight">C&G Developments</h3>
+                   <p className="text-white/80 text-lg italic mb-8 max-w-lg">
+                     Consistent video content increasing visibility and building a powerful local presence, leading to a massive spike in real enquiries.
+                   </p>
+                   <Link href="/portfolio" className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-brand-yellow text-neutral-950 font-black uppercase tracking-widest text-[11px] rounded-xl hover:scale-105 transition-all shadow-xl">
+                     View Content <ArrowRight size={14} />
+                   </Link>
                 </div>
-                <div className="flex justify-between items-center border-b border-white/5 pb-2">
-                  <span className="text-white/60 text-xs font-bold uppercase tracking-widest">Engagements</span>
-                  <span className="text-brand-yellow font-black">9,900+</span>
+                
+                <div className="flex-1 w-full grid grid-cols-2 gap-6">
+                   <div className="bg-neutral-950/50 backdrop-blur-md border border-white/10 rounded-2xl p-6">
+                      <p className="text-white/60 text-xs font-bold uppercase tracking-widest mb-2">Views</p>
+                      <p className="text-brand-yellow font-black text-4xl md:text-5xl">129,000+</p>
+                   </div>
+                   <div className="bg-neutral-950/50 backdrop-blur-md border border-white/10 rounded-2xl p-6">
+                      <p className="text-white/60 text-xs font-bold uppercase tracking-widest mb-2">Engagements</p>
+                      <p className="text-brand-yellow font-black text-4xl md:text-5xl">9,900+</p>
+                   </div>
+                   <div className="col-span-2 bg-neutral-950/50 backdrop-blur-md border border-white/10 rounded-2xl p-6 flex justify-between items-center">
+                      <p className="text-white/60 text-xs font-bold uppercase tracking-widest">Audience Growth</p>
+                      <p className="text-brand-yellow font-black text-2xl">+728%</p>
+                   </div>
                 </div>
-                <div className="flex justify-between items-center border-b border-white/5 pb-2">
-                  <span className="text-white/60 text-xs font-bold uppercase tracking-widest">Growth</span>
-                  <span className="text-brand-yellow font-black">+728%</span>
-                </div>
-              </div>
-              <p className="text-white/80 text-sm italic mb-8 flex-grow">
-                Consistent video content increasing visibility and enquiries.
-              </p>
-              <Link href="/portfolio" className="inline-flex items-center gap-2 text-brand-yellow font-black uppercase tracking-widest text-[10px] hover:translate-x-1 transition-transform mt-auto">
-                View Content <ArrowRight size={14} />
-              </Link>
-            </div>
+             </div>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8">
 
             {/* Card 2 */}
             <div className="bg-neutral-950 border border-white/10 rounded-[2rem] p-10 hover:border-brand-yellow/30 transition-all group flex flex-col h-full relative overflow-hidden">
@@ -184,42 +198,48 @@ export default function HomeContent() {
         </div>
       </section>
 
-      {/* 4. FEATURED WORK (VIDEO FIRST) */}
+      {/* 4. FEATURED VIDEO WORK */}
       <section className="py-32 px-6 bg-neutral-950 border-t border-white/5">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-5xl font-black uppercase italic font-bebas tracking-tight text-white mb-4">
-              See The Work. <span className="text-brand-yellow">See The Results.</span>
+              Real Work. Real Content. <span className="text-brand-yellow">Real Results.</span>
             </h2>
             <p className="text-white/60 max-w-2xl mx-auto italic font-medium">
-              We specialise in high-converting content for construction and real local businesses.
+              A selection of recent video content created for real businesses and projects.
             </p>
           </div>
           
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             <YouTubeEmbed 
-              videoId="qrQK-maE3sA" 
-              title="Simply Sheds Scotland"
-              description="Consistent content for a local Scottish family business."
-              result="15+ qualified leads in first 14 days."
+              videoId="mqkQzHs984k" 
+              title="Apprentice Joiner"
+              label="Construction"
             />
             <YouTubeEmbed 
-              videoId="VlyX1CueJCc" 
-              title="St Andrews Refurb"
-              description="High-quality video walkthrough of a restaurant refurb."
-              result="Full booking calendar for opening week."
+              videoId="TVxtsn0IP6U" 
+              title="Extension Build"
+              label="Construction"
             />
             <YouTubeEmbed 
-              videoId="qMms2m8oWd4" 
-              title="Construction Site Update"
-              description="On-site video documenting progress and building trust."
-              result="Increased engagement and brand authority."
+              videoId="39h-dtci7LU" 
+              title="Planning Reel"
+              label="Construction"
             />
             <YouTubeEmbed 
-              videoId="OawT8r13H-8" 
-              title="Local Business Promo"
-              description="Fast-paced promotional content for social media."
-              result="Higher local visibility and reach."
+              videoId="ZzotfyCIwfA" 
+              title="Forth Bridges"
+              label="Drone"
+            />
+            <YouTubeEmbed 
+              videoId="kGIPg1Rel6Q" 
+              title="Harley Bike Follow"
+              label="Drone"
+            />
+            <YouTubeEmbed 
+              videoId="OnrHX6udiqg" 
+              title="Bear Media Promo Reel"
+              label="Client Work"
             />
           </div>
         </div>
@@ -233,33 +253,33 @@ export default function HomeContent() {
           </h2>
           
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="p-10 rounded-[2rem] bg-neutral-950 border border-white/10 hover:border-brand-yellow/30 transition-all group">
+            <div className="p-10 rounded-[2rem] bg-neutral-950 border border-white/10 hover:border-brand-yellow/30 transition-all group flex flex-col">
               <div className="w-14 h-14 rounded-2xl bg-brand-yellow/10 text-brand-yellow flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
                 <Video size={28} />
               </div>
-              <h4 className="text-xl font-black uppercase italic font-bebas text-white mb-4 tracking-wide">Content Creation</h4>
+              <h4 className="text-xl font-black uppercase italic font-bebas text-white mb-4 tracking-wide">Increase Visibility</h4>
               <p className="text-white/80 text-sm italic leading-relaxed">
-                Video and social content designed to increase visibility and build local authority.
+                High-impact video content that puts your business in front of the right local customers.
               </p>
             </div>
             
-            <div className="p-10 rounded-[2rem] bg-neutral-950 border border-white/10 hover:border-brand-yellow/30 transition-all group">
+            <div className="p-10 rounded-[2rem] bg-neutral-950 border border-white/10 hover:border-brand-yellow/30 transition-all group flex flex-col">
               <div className="w-14 h-14 rounded-2xl bg-brand-yellow/10 text-brand-yellow flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
                 <MousePointer2 size={28} />
               </div>
-              <h4 className="text-xl font-black uppercase italic font-bebas text-white mb-4 tracking-wide">Website Design</h4>
+              <h4 className="text-xl font-black uppercase italic font-bebas text-white mb-4 tracking-wide">Generate Enquiries</h4>
               <p className="text-white/80 text-sm italic leading-relaxed">
-                Websites built to convert visitors into enquiries, tailored for trades and local businesses.
+                High-performance websites built specifically to convert traffic into qualified leads.
               </p>
             </div>
             
-            <div className="p-10 rounded-[2rem] bg-neutral-950 border border-white/10 hover:border-brand-yellow/30 transition-all group">
+            <div className="p-10 rounded-[2rem] bg-neutral-950 border border-white/10 hover:border-brand-yellow/30 transition-all group flex flex-col">
               <div className="w-14 h-14 rounded-2xl bg-brand-yellow/10 text-brand-yellow flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
                 <Settings size={28} />
               </div>
-              <h4 className="text-xl font-black uppercase italic font-bebas text-white mb-4 tracking-wide">Strategy & Support</h4>
+              <h4 className="text-xl font-black uppercase italic font-bebas text-white mb-4 tracking-wide">Save Time & Scale</h4>
               <p className="text-white/80 text-sm italic leading-relaxed">
-                We plan, create and manage content so you don’t have to. A completely done-for-you system.
+                A completely done-for-you system that drives growth while you focus on the actual work.
               </p>
             </div>
           </div>

@@ -8,9 +8,10 @@ interface YouTubeEmbedProps {
   title: string;
   description?: string;
   result?: string;
+  label?: string;
 }
 
-export default function YouTubeEmbed({ videoId, title, description, result }: YouTubeEmbedProps) {
+export default function YouTubeEmbed({ videoId, title, description, result, label }: YouTubeEmbedProps) {
   const [isPlaying, setIsPlaying] = useState(false);
 
   return (
@@ -30,15 +31,26 @@ export default function YouTubeEmbed({ videoId, title, description, result }: Yo
                 }
               }}
               alt={title}
-              className="w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-700"
+              className="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-700"
             />
-            <div className="absolute inset-0 hidden md:flex items-center justify-center">
+            {/* Subtle overlay gradient for readability */}
+            <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/90 via-neutral-950/20 to-neutral-950/40 pointer-events-none" />
+            
+            {label && (
+              <div className="absolute top-4 left-4 z-10 pointer-events-none">
+                <span className="px-3 py-1 bg-brand-yellow text-neutral-950 font-black uppercase tracking-widest text-[10px] rounded-full shadow-lg">
+                  {label}
+                </span>
+              </div>
+            )}
+
+            <div className="absolute inset-0 hidden md:flex items-center justify-center pointer-events-none">
               <div className="w-12 h-12 md:w-14 md:h-14 rounded-full bg-brand-yellow text-neutral-950 flex items-center justify-center shadow-[0_0_30px_rgba(245,166,35,0.3)] group-hover:scale-110 transition-transform duration-500">
                 <Play size={24} className="fill-current ml-1" />
               </div>
             </div>
-            <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 bg-gradient-to-t from-neutral-950 to-transparent">
-               <p className="text-white font-black uppercase italic font-bebas tracking-widest text-lg md:text-xl">{title}</p>
+            <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 pointer-events-none">
+               <p className="text-white font-black uppercase italic font-bebas tracking-widest text-lg md:text-xl drop-shadow-md">{title}</p>
             </div>
           </>
         ) : (
