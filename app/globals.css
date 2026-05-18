@@ -17,8 +17,6 @@
   --font-body: var(--font-inter-tight), sans-serif;
   --font-display: var(--font-bebas-neue), sans-serif;
   --font-accent: var(--font-figtree), sans-serif;
-  --font-bebas: var(--font-bebas-neue), sans-serif;
-  --font-inter-tight: var(--font-inter-tight), sans-serif;
 
   --animate-float: float 5s ease-in-out infinite;
   --animate-float-slow: float 6s ease-in-out infinite;
@@ -40,15 +38,18 @@
   }
 
   h1 {
-    @apply text-4xl md:text-6xl font-normal tracking-tighter leading-[0.9] uppercase font-bebas;
+    @apply text-4xl md:text-6xl font-normal tracking-tighter leading-[0.9] uppercase;
+    font-family: var(--font-bebas-neue), sans-serif;
   }
 
   h2 {
-    @apply text-3xl md:text-5xl font-normal tracking-tight leading-[1.1] uppercase font-bebas;
+    @apply text-3xl md:text-5xl font-normal tracking-tight leading-[1.1] uppercase;
+    font-family: var(--font-bebas-neue), sans-serif;
   }
 
   h3 {
-    @apply text-2xl md:text-4xl font-normal tracking-wide leading-tight uppercase font-bebas;
+    @apply text-2xl md:text-4xl font-normal tracking-wide leading-tight uppercase;
+    font-family: var(--font-bebas-neue), sans-serif;
   }
 
   p {
@@ -62,6 +63,14 @@
 }
 
 @layer utilities {
+  .font-bebas {
+    font-family: var(--font-bebas-neue), sans-serif;
+  }
+  
+  .font-inter-tight {
+    font-family: var(--font-inter-tight), sans-serif;
+  }
+
   .text-gradient {
     @apply bg-clip-text text-transparent bg-gradient-to-r from-[#D9A05B] to-[#A6733B];
   }
