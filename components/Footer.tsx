@@ -79,16 +79,16 @@ const footerLinkGroups: FooterLinkGroup[] = [
 
 export default function Footer() {
 	return (
-		<footer className="relative bg-neutral-950 border-t border-white/10 py-24 px-6 md:px-12 overflow-hidden">
+		<footer className="relative bg-[#171513] border-t border-white/5 py-24 px-6 md:px-12 overflow-hidden">
 			<div className="max-w-6xl mx-auto relative z-10">
 				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 lg:gap-24">
 					{/* Brand Column */}
 					<div className="space-y-8 col-span-1 lg:col-span-1">
 						<div className="flex flex-col">
-							<span className="text-white font-bold text-lg leading-tight" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif' }}>
+							<span className="text-white font-bold text-lg leading-tight font-inter-tight">
 								Bear Media
 							</span>
-							<span className="text-white text-[10px] font-medium uppercase tracking-[0.2em]" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif' }}>
+							<span className="text-[#E8E0D5]/70 text-[10px] font-medium uppercase tracking-[0.2em] font-inter-tight">
 								Websites & Social Media
 							</span>
 						</div>
@@ -156,7 +156,7 @@ export default function Footer() {
 					/>
 					<div className="absolute top-6 left-6 z-10 bg-black/60 backdrop-blur-md px-5 py-3 rounded-2xl border border-white/10 pointer-events-none">
 						<div className="flex items-center gap-3">
-							<div className="w-8 h-8 rounded-full bg-brand-yellow flex items-center justify-center text-neutral-950">
+							<div className="w-8 h-8 rounded-full bg-[#D9A05B] flex items-center justify-center text-[#0f0e0c]">
 								<MapPin size={16} />
 							</div>
 							<div>
@@ -165,7 +165,7 @@ export default function Footer() {
 							</div>
 						</div>
 					</div>
-					<div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-neutral-950 via-transparent to-transparent opacity-60" />
+					<div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-[#171513] via-transparent to-transparent opacity-60" />
 				</motion.div>
 
 				{/* Bottom Bar */}

@@ -16,8 +16,8 @@ const menuItems = [
   },
   {
     icon: Play,
-    label: "Portfolio",
-    href: "/portfolio",
+    label: "Case Studies",
+    href: "/case-studies",
     gradient: "radial-gradient(circle, rgba(59,130,246,0.15) 0%, rgba(37,99,235,0.06) 50%, rgba(29,78,216,0) 100%)",
     iconColor: "text-blue-500",
   },
@@ -77,14 +77,14 @@ export default function Navbar() {
 
   return (
     <>
-      <header className={`sticky top-0 z-50 transition-colors duration-300 ${isOpen ? 'bg-transparent border-transparent' : 'backdrop-blur-md border-b border-white/10 bg-neutral-950/80'}`}>
+      <header className={`sticky top-0 z-50 transition-colors duration-300 ${isOpen ? 'bg-transparent border-transparent' : 'backdrop-blur-md border-b border-white/5 bg-[#0f0e0c]/80'}`}>
         <div className="max-w-6xl mx-auto px-6 py-3 flex justify-between items-center relative z-[110]">
           <Link href="/" onClick={() => setIsOpen(false)} className="flex items-center gap-3 group">
               <div className="flex flex-col">
-                <span className="text-white font-bold text-lg leading-tight group-hover:text-brand-yellow transition-colors" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif' }}>
+                <span className="text-white font-bold text-lg leading-tight group-hover:text-[#D9A05B] transition-colors font-inter-tight">
                   Bear Media
                 </span>
-                <span className="text-white text-[10px] font-medium uppercase tracking-[0.2em]" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif' }}>
+                <span className="text-[#E8E0D5]/70 text-[10px] font-medium uppercase tracking-[0.2em] font-inter-tight">
                   Websites & Social Media
                 </span>
               </div>
@@ -100,7 +100,7 @@ export default function Navbar() {
             />
             <Link 
               href="/contact"
-              className="px-6 py-2.5 rounded-xl bg-brand-yellow text-neutral-950 font-black uppercase tracking-widest text-[10px] hover:scale-105 transition-all shadow-lg active:scale-95"
+              className="px-6 py-2.5 rounded-sm bg-[#D9A05B] text-[#0f0e0c] font-black uppercase tracking-widest text-[10px] hover:scale-105 transition-all shadow-lg active:scale-95 font-inter-tight"
             >
               Book a Discovery Call
             </Link>
@@ -125,7 +125,7 @@ export default function Navbar() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: '100%' }}
             transition={{ duration: 0.3, ease: 'easeInOut' }}
-            className="fixed inset-0 bg-neutral-950 z-[100] flex flex-col pt-24 pb-12 px-6 overflow-y-auto md:hidden"
+            className="fixed inset-0 bg-[#0f0e0c] z-[100] flex flex-col pt-24 pb-12 px-6 overflow-y-auto md:hidden"
           >
             {/* Background Accents */}
             <div className="absolute top-[-10%] right-[-10%] w-[60%] h-[60%] bg-brand-yellow/10 blur-[120px] rounded-full pointer-events-none" />
@@ -178,7 +178,7 @@ export default function Navbar() {
                 <Link 
                   href="/contact"
                   onClick={() => setIsOpen(false)}
-                  className="flex items-center justify-center w-full bg-brand-yellow text-neutral-950 px-8 py-5 rounded-2xl font-black uppercase tracking-widest text-sm hover:scale-105 transition-all text-center min-h-[44px]"
+                  className="flex items-center justify-center w-full bg-[#D9A05B] text-[#0f0e0c] px-8 py-5 rounded-sm font-black uppercase tracking-widest text-sm hover:scale-105 transition-all text-center min-h-[44px] font-inter-tight"
                 >
                   Book a Discovery Call
                 </Link>

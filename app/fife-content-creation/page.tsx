@@ -8,7 +8,7 @@ import VideoProof from '@/components/VideoProof';
 
 export const metadata: Metadata = {
   title: 'Content Creation & Videography Fife | Bear Media',
-  description: 'Professional on-site content creation, cinematic videography and lead-gen systems for businesses across Fife, Dunfermline, and Kirkcaldy.',
+  description: 'Professional on-site content creation, cinematic videography and lead-gen systems for construction companies, trades businesses and local SMEs across Fife, Dunfermline, and Kirkcaldy.',
 };
 
 export default function FifePage() {

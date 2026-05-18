@@ -15,6 +15,15 @@ export default function ServicesPage() {
       <Navbar />
       <main className="min-h-screen bg-neutral-950 text-white font-sans selection:bg-brand-yellow selection:text-neutral-950">
         
+        {/* AEO SUMMARY BLOCK */}
+        <div className="pt-24 pb-8 bg-neutral-950 border-b border-white/5">
+           <div className="max-w-4xl mx-auto px-6 text-center">
+              <p className="text-white/80 text-sm md:text-base font-medium leading-relaxed italic">
+                 Bear Media provides web design, social media content, video production and training for construction firms, trades businesses and local companies across Edinburgh, West Lothian and Scotland.
+              </p>
+           </div>
+        </div>
+
         {/* 1. HERO / HEADER SECTION */}
         <section className="relative pt-20 pb-12 md:pt-32 md:pb-20 px-6 overflow-hidden flex flex-col items-center justify-center text-center">
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(245,166,35,0.04)_0%,transparent_70%)] pointer-events-none" />
@@ -118,7 +127,7 @@ export default function ServicesPage() {
                    ))}
                 </div>
                 <div className="mt-8">
-                   <Link href="/services/social-media-content" className="inline-flex items-center gap-2 text-brand-yellow font-black uppercase italic font-bebas tracking-widest hover:translate-x-1 transition-transform">
+                   <Link href="/social-media-for-construction" className="inline-flex items-center gap-2 text-brand-yellow font-black uppercase italic font-bebas tracking-widest hover:translate-x-1 transition-transform">
                       See the Social System <ArrowRight size={16} />
                    </Link>
                 </div>
@@ -154,7 +163,7 @@ export default function ServicesPage() {
                    ))}
                 </div>
                 <div className="mt-8">
-                   <Link href="/services/videography" className="inline-flex items-center gap-2 text-brand-yellow font-black uppercase italic font-bebas tracking-widest hover:translate-x-1 transition-transform">
+                   <Link href="/video-production-edinburgh" className="inline-flex items-center gap-2 text-brand-yellow font-black uppercase italic font-bebas tracking-widest hover:translate-x-1 transition-transform">
                       See the Video System <ArrowRight size={16} />
                    </Link>
                 </div>
@@ -190,7 +199,7 @@ export default function ServicesPage() {
                    ))}
                 </div>
                 <div className="mt-8">
-                   <Link href="/services/website-design" className="inline-flex items-center gap-2 text-brand-yellow font-black uppercase italic font-bebas tracking-widest hover:translate-x-1 transition-transform">
+                   <Link href="/web-design-for-trades-scotland" className="inline-flex items-center gap-2 text-brand-yellow font-black uppercase italic font-bebas tracking-widest hover:translate-x-1 transition-transform">
                       See the Web System <ArrowRight size={16} />
                    </Link>
                 </div>

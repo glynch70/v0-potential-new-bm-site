@@ -29,7 +29,7 @@ const packages = [
     name: "Growth",
     price: "£1,200",
     period: "/mo",
-    desc: "For businesses ready to dominate their local market.",
+    desc: "For construction companies and local SMEs ready to dominate their local market.",
     features: [
       "2–3 On-Site Shoots per Month",
       "Google Business Optimisation",

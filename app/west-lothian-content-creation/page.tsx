@@ -8,28 +8,38 @@ import VideoProof from '@/components/VideoProof';
 
 export const metadata: Metadata = {
   title: 'Content Creation & Videography West Lothian | Bear Media',
-  description: 'Professional on-site content creation, videography and social media management for businesses in West Lothian, Broxburn, Livingston, and Bathgate.',
+  description: 'Professional on-site content creation, videography and social media management for construction companies, trades businesses and local SMEs in West Lothian, Broxburn, Livingston, and Bathgate.',
+  openGraph: {
+    title: 'Content Creation & Videography West Lothian | Bear Media',
+    description: 'Professional on-site content creation, videography and social media management for construction companies, trades businesses and local SMEs in West Lothian, Broxburn, Livingston, and Bathgate.',
+    url: 'https://bear-media.com/west-lothian-content-creation',
+    siteName: 'Bear Media',
+    images: [
+      {
+        url: 'https://bear-media.com/work/mwm.jpg', // Standard open graph image
+        width: 1200,
+        height: 630,
+        alt: 'Bear Media Content Creation in West Lothian',
+      },
+    ],
+    locale: 'en_GB',
+    type: 'website',
+  },
 };
 
-export default function WestLothianPage() {
+export default function WestLothianContentCreationPage() {
   return (
     <>
       <Navbar />
-      <main className="min-h-screen bg-neutral-950 text-white font-sans selection:bg-brand-yellow selection:text-neutral-950">
-        
-        {/* 1. HERO SECTION */}
-        <section className="relative pt-24 pb-16 md:pt-48 md:pb-40 px-6 overflow-hidden flex flex-col items-center justify-center">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(245,166,35,0.06)_0%,transparent_70%)] pointer-events-none" />
-          <div className="max-w-7xl mx-auto text-center relative z-10">
-            <p className="text-brand-yellow font-black uppercase tracking-[0.3em] mb-4 text-xs animate-pulse italic">
-               Doing good work but not getting enough enquiries?
-            </p>
-            <h1 className="text-4xl md:text-8xl font-black mb-6 md:mb-8 leading-[0.9] tracking-tighter italic uppercase font-bebas max-w-5xl mx-auto">
-              Content Creation & <br />
-              <span className="text-brand-yellow">Videography West Lothian</span>
+      <main className="min-h-screen bg-neutral-950 text-white font-sans pt-24 pb-20 px-6">
+        <article className="max-w-4xl mx-auto">
+          
+          <header className="mb-16 text-center">
+            <h1 className="text-4xl md:text-6xl font-black italic uppercase font-bebas leading-[0.9] text-white mb-6">
+              Content Creation <span className="text-brand-yellow">West Lothian</span>
             </h1>
-            <p className="text-lg md:text-2xl text-white max-w-2xl mx-auto mb-10 md:mb-12 font-medium leading-relaxed italic">
-              We come to you. We film it. We turn it into enquiries for businesses in Broxburn, Livingston, and Bathgate.
+            <p className="text-white/70 italic text-lg max-w-2xl mx-auto leading-relaxed">
+              We come to you. We film it. We turn it into enquiries for construction companies, trades businesses and local SMEs in Broxburn, Livingston, and Bathgate.
             </p>
             <Link
               href="/contact"
@@ -51,8 +61,8 @@ export default function WestLothianPage() {
                   <p className="text-white text-[9px] font-bold uppercase tracking-widest">West Lothian Partner</p>
                </div>
             </div>
-          </div>
-        </section>
+          </header>
+        </article>
 
         {/* 2. VIDEO PROOF */}
         <VideoProof 

@@ -32,7 +32,7 @@ export default function StickyCTA() {
         >
           <Link
             href="/contact"
-            className="flex items-center justify-between w-full bg-brand-yellow text-neutral-950 px-6 py-4 rounded-2xl font-black uppercase tracking-widest text-sm shadow-[0_0_40px_rgba(245,166,35,0.4)] border border-white/20 active:scale-95 transition-transform"
+            className="flex items-center justify-between w-full bg-[#D9A05B] text-[#0f0e0c] px-6 py-4 rounded-sm font-black uppercase tracking-widest text-sm shadow-[0_0_40px_rgba(217,160,91,0.4)] border border-white/20 active:scale-95 transition-transform font-inter-tight"
           >
             Book Discovery Call
             <ArrowRight size={18} />

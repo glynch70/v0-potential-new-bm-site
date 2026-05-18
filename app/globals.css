@@ -3,18 +3,20 @@
 @custom-variant dark (&:is(.dark *));
 
 /* ───────────────────────────────────────────────
-   BEAR MEDIA — NEW LOGO (MINIMALIST MONOCHROME)
+   BEAR MEDIA — CINEMATIC VISUAL IDENTITY
    ─────────────────────────────────────────────── */
 
 @theme inline {
-  --color-brand-yellow: #DDA31E;
-  --color-brand-yellow-dark: #B58416;
-  --color-dark: #0a0a0a; /* neutral-950 equivalent or close to it */
-  --color-light: #ffffff;
-  --color-charcoal: #171717;
+  --color-brand-yellow: #D9A05B; /* Soft warm gold/amber */
+  --color-brand-yellow-dark: #A6733B;
+  --color-brand-sand: #E8E0D5;
+  --color-dark: #0f0e0c; /* Very dark warm gray/brown */
+  --color-light: #F4F1ED; /* Warm off-white */
+  --color-charcoal: #171513; /* Warm charcoal */
   
-  --font-body: var(--font-inter), sans-serif;
-  --font-display: var(--font-inter), sans-serif;
+  --font-body: var(--font-inter-tight), sans-serif;
+  --font-display: var(--font-bebas-neue), sans-serif;
+  --font-accent: var(--font-figtree), sans-serif;
 
   --animate-float: float 5s ease-in-out infinite;
   --animate-float-slow: float 6s ease-in-out infinite;
@@ -25,29 +27,30 @@
   html {
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   body {
     background: var(--color-dark);
-    color: var(--color-light);
+    color: var(--color-brand-sand);
     font-family: var(--font-body);
     overflow-x: hidden;
   }
 
   h1 {
-@apply text-3xl md:text-5xl font-black tracking-tighter leading-[0.9] italic uppercase;
+    @apply text-4xl md:text-6xl font-normal tracking-tighter leading-[0.9] uppercase font-bebas;
   }
 
   h2 {
-    @apply text-2xl md:text-3xl font-black tracking-tight leading-[1.1] italic uppercase;
+    @apply text-3xl md:text-5xl font-normal tracking-tight leading-[1.1] uppercase font-bebas;
   }
 
   h3 {
-    @apply text-2xl md:text-4xl font-black tracking-wide leading-tight italic uppercase;
+    @apply text-2xl md:text-4xl font-normal tracking-wide leading-tight uppercase font-bebas;
   }
 
   p {
-    @apply text-base md:text-lg leading-relaxed text-white/80;
+    @apply text-base md:text-lg leading-relaxed text-white/70 font-light;
   }
 
   ::selection {
@@ -58,19 +61,15 @@
 
 @layer utilities {
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-[#DDA31E] to-[#B58416];
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-[#D9A05B] to-[#A6733B];
   }
   
   .bg-gradient-brand {
-    @apply bg-gradient-to-r from-[#DDA31E] to-[#B58416];
+    @apply bg-gradient-to-r from-[#D9A05B] to-[#A6733B];
   }
 
   .glass-card {
-    @apply bg-white/5 backdrop-blur-lg border border-white/10 shadow-[0_30px_50px_-20px_rgba(0,0,0,0.3)] rounded-2xl;
-  }
-  
-  .glass-card-light {
-    @apply bg-white/10 backdrop-blur-md border border-white/20 shadow-xl rounded-2xl;
+    @apply bg-[#171513]/60 backdrop-blur-xl border border-white/5 shadow-2xl;
   }
   
   /* 3D Flip Card Support */
@@ -89,8 +88,15 @@
   .rotate-y-180 {
     transform: rotateY(180deg);
   }
-
-
+  
+  /* Cinematic utilities */
+  .cinematic-overlay {
+    @apply absolute inset-0 bg-gradient-to-t from-[#0f0e0c] via-[#0f0e0c]/40 to-transparent;
+  }
+  
+  .cinematic-vignette {
+    @apply absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_40%,rgba(15,14,12,0.8)_100%)];
+  }
 }
 
 @keyframes float {
@@ -105,5 +111,5 @@
 }
 
 .animate-marquee {
-  animation: marquee 50s linear infinite; /* Slowed down from 30s as requested */
+  animation: marquee 50s linear infinite;
 }

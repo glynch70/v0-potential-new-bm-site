@@ -69,8 +69,7 @@ export const metadata: Metadata = {
     url: "https://bear-media.com",
     siteName: "Bear Media",
     title: "Bear Media | Websites, Drone Video & Social Media",
-    description:
-      "Solo creative agency. Websites. Drone. Video. Social Media. Built for businesses that mean business.",
+    description: "Solo creative agency. Websites. Drone. Video. Social Media. Built for construction companies, trades businesses and local SMEs.",
     images: [
       {
         url: "/og-image.jpg",
@@ -84,8 +83,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Bear Media | Websites, Drone Video & Social Media",
-    description:
-      "Solo creative agency. Websites. Drone. Video. Social Media. Built for businesses that mean business.",
+    description: "Solo creative agency. Websites. Drone. Video. Social Media. Built for construction companies, trades businesses and local SMEs.",
     images: ["/og-image.jpg"],
   },
 

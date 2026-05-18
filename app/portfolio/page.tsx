@@ -43,7 +43,7 @@ export default function PortfolioPage() {
               transition={{ delay: 0.2 }}
               className="text-white max-w-2xl mx-auto mb-10 md:mb-12 font-medium italic text-lg"
             >
-              Real outcomes from local businesses in West Lothian, Edinburgh, and the Central Belt.
+              We work with construction companies, trades businesses and SMEs that want to grow, not just post content. We focus on generating real enquiries, not vanity metrics.
             </motion.p>
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
@@ -74,121 +74,158 @@ export default function PortfolioPage() {
           ]}
         />
 
-        {/* 3. FEATURED VIDEO CASE STUDY */}
-        <section className="py-12 md:py-20 px-6 max-w-7xl mx-auto">
-           <div className="text-center mb-12">
-              <h2 className="text-white uppercase italic font-bebas tracking-tight">
-                 Video-First <span className="text-brand-yellow">Proof.</span>
+        {/* LOGO MARQUEE */}
+        <style dangerouslySetInnerHTML={{__html: `
+          @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+          }
+          .animate-marquee {
+            animation: marquee 30s linear infinite;
+          }
+        `}} />
+        <div className="py-8 border-y border-white/5 bg-neutral-900/30 overflow-hidden relative flex items-center">
+          <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-neutral-950 to-transparent z-10" />
+          <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-neutral-950 to-transparent z-10" />
+          <div className="flex whitespace-nowrap animate-marquee items-center gap-16 px-8 text-white/20 font-black uppercase italic font-bebas tracking-widest text-xl md:text-2xl w-[200%]">
+             <span>Almond Vet Care</span><span className="text-brand-yellow/40">•</span>
+             <span>Robertsons Transport</span><span className="text-brand-yellow/40">•</span>
+             <span>K Lewis Joinery</span><span className="text-brand-yellow/40">•</span>
+             <span>Managing What Matters</span><span className="text-brand-yellow/40">•</span>
+             <span>Herb & Soul</span><span className="text-brand-yellow/40">•</span>
+             <span>The Free Spirit</span><span className="text-brand-yellow/40">•</span>
+             <span>Seamus Corry</span><span className="text-brand-yellow/40">•</span>
+             <span>Voice2Lead</span><span className="text-brand-yellow/40">•</span>
+             {/* Duplicate for infinite effect */}
+             <span>Almond Vet Care</span><span className="text-brand-yellow/40">•</span>
+             <span>Robertsons Transport</span><span className="text-brand-yellow/40">•</span>
+             <span>K Lewis Joinery</span><span className="text-brand-yellow/40">•</span>
+             <span>Managing What Matters</span><span className="text-brand-yellow/40">•</span>
+             <span>Herb & Soul</span><span className="text-brand-yellow/40">•</span>
+             <span>The Free Spirit</span><span className="text-brand-yellow/40">•</span>
+             <span>Seamus Corry</span><span className="text-brand-yellow/40">•</span>
+             <span>Voice2Lead</span><span className="text-brand-yellow/40">•</span>
+          </div>
+        </div>
+
+        {/* MAIN PORTFOLIO GRID */}
+        <section className="py-32 px-6 max-w-7xl mx-auto">
+           <div className="text-center mb-20">
+              <h2 className="mb-6 text-white text-4xl md:text-6xl uppercase italic font-bebas tracking-tight">
+                 Trusted By Businesses <br/><span className="text-brand-yellow">Across Scotland</span>
               </h2>
+              <p className="text-white/60 font-medium italic text-lg max-w-2xl mx-auto">
+                 Real client projects across web design, content creation, branding, social media and digital marketing.
+              </p>
            </div>
            
-           <div className="grid lg:grid-cols-2 gap-8 items-start">
-              <YouTubeEmbed 
-                videoId="qrQK-maE3sA" 
-                title="Simply Sheds Scotland | Brand Showcase"
-                description="30 years of craftsmanship captured in a high-impact cinematic film."
-                result="15+ qualified enquiries in week 1."
-              />
-              <div className="space-y-4">
-                 <div className="p-8 rounded-[1.5rem] bg-neutral-900 border border-white/5">
-                    <h3 className="text-lg font-black uppercase italic font-bebas tracking-widest text-brand-yellow mb-2">The Challenge</h3>
-                    <p className="text-white text-[11px] italic leading-relaxed">"Losing jobs to inferior competitors with better social media."</p>
-                 </div>
-                 <div className="p-8 rounded-[1.5rem] bg-brand-yellow/10 border border-brand-yellow/20">
-                    <h3 className="text-lg font-black uppercase italic font-bebas tracking-widest text-white mb-2">The Outcome</h3>
-                    <p className="text-white text-sm font-bold italic leading-relaxed">"The phone hasn't stopped ringing since the video went live."</p>
-                 </div>
-              </div>
-           </div>
-        </section>
-
-        {/* 4. MORE VIDEO OUTCOMES */}
-        <section className="py-32 px-6 bg-white/[0.01] border-y border-white/5">
-           <div className="max-w-7xl mx-auto">
-              <h2 className="mb-12 text-white uppercase italic font-bebas tracking-tight text-center">
-                 More Project <span className="text-brand-yellow">Breakdowns.</span>
-              </h2>
-              <div className="grid md:grid-cols-2 gap-8">
-                 <YouTubeEmbed 
-                    videoId="VlyX1CueJCc" 
-                    title="Seafood Restaurant Refurb | St Andrews"
-                    description="Highlighting the transformation and craft of a high-end restaurant refurbishment."
-                    result="Generated massive opening-week hype and bookings."
-                 />
-                 <YouTubeEmbed 
-                    videoId="_5ez-K2wvxw" 
-                    title="Forth Coast Veterinary | Service Proof"
-                    description="Professional showcase for a new veterinary practice in the Central Belt."
-                    result="Established instant trust for a new local practice."
-                 />
-              </div>
-           </div>
-        </section>
-
-        {/* 5. THE RESULTS GRID */}
-        <section className="py-32 px-6 max-w-7xl mx-auto">
-           <h2 className="mb-12 text-center text-white uppercase italic font-bebas tracking-tight">
-              The <span className="text-brand-yellow">Results Grid.</span>
-           </h2>
-           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {[
-                { type: "Joinery | W. Lothian", action: "Cinematic Capture", result: "15+ Enquiries" },
-                { type: "Agent | Edinburgh", action: "Drone Tour", result: "4 Listings Won" },
-                { type: "Roofing | Fife", action: "Drone Proof", result: "Instant Trust" },
-                { type: "Garden | Edinburgh", action: "Project Story", result: "High-Value Lead" },
-                { type: "Service | Central Belt", action: "Authority Reel", result: "25k Reach" },
-                { type: "Kitchens | Stirling", action: "Walkthrough", result: "Enquiry Boost" },
-                { type: "Builder | Livingston", action: "Project Proof", result: "Closed Job" },
-                { type: "Architect | Glasgow", action: "Brand Story", result: "Authority Win" }
+                {
+                  name: "Almond Vet Care",
+                  category: "Healthcare / Veterinary",
+                  image: "/work/almond_vet_care.jpg",
+                  slug: "/portfolio/almond-vet-care",
+                  services: ["Website Design", "SEO", "Content Creation", "Branding"],
+                  comingSoon: false
+                },
+                {
+                  name: "Robertsons Transport",
+                  category: "Haulage and Transport Logistics",
+                  image: "/work/rt-ltd.uk-v2.jpg",
+                  slug: "/portfolio/robertsons-transport",
+                  services: ["Website Design", "Branding", "Digital Presence", "SEO"],
+                  comingSoon: false
+                },
+                {
+                  name: "K Lewis Joinery",
+                  category: "Joinery / Trades",
+                  image: "/work/website-5-lewis-joinery-v2.jpg",
+                  slug: "/portfolio/k-lewis-joinery",
+                  services: ["Website Design", "SEO", "Content Creation"],
+                  comingSoon: false
+                },
+                {
+                  name: "Managing What Matters",
+                  category: "Coaching / Leadership",
+                  image: "/work/website-managing-v2.jpg",
+                  slug: "/portfolio/managing-what-matters",
+                  services: ["Website Design", "Branding", "Digital Presence"],
+                  comingSoon: false
+                },
+                {
+                  name: "Herb & Soul",
+                  category: "Wellness / Lifestyle",
+                  image: "/work/website-3-herb-soul-v2.jpg",
+                  slug: "/portfolio/herb-and-soul",
+                  services: ["Website Design", "Brand Identity", "Creative Direction"],
+                  comingSoon: true
+                },
+                {
+                  name: "The Free Spirit",
+                  category: "Lifestyle / Creative Brand",
+                  image: "/work/content-creation.png",
+                  slug: "/portfolio/the-free-spirit",
+                  services: ["Website Design", "Creative Branding", "Content Creation"],
+                  comingSoon: false
+                },
+                {
+                  name: "Seamus Corry",
+                  category: "Personal Brand / Coaching",
+                  image: "/work/seamus_v5_final.jpg",
+                  slug: "/portfolio/seamus-corry",
+                  services: ["Website Redesign", "Personal Branding", "Content Strategy"],
+                  comingSoon: true
+                },
+                {
+                  name: "Voice2Lead",
+                  category: "Leadership / Coaching",
+                  image: "/work/mwm.jpg",
+                  slug: "/portfolio/voice2lead",
+                  services: ["Website Design", "Professional Branding", "Digital Presence"],
+                  comingSoon: false
+                }
               ].map((item, i) => (
-                 <div key={i} className="aspect-[9/16] bg-neutral-900 rounded-[1.5rem] border border-white/5 overflow-hidden group relative">
-                    <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center opacity-0 group-hover:opacity-100 transition-opacity z-20 bg-neutral-950/90 backdrop-blur-sm">
-                       <p className="text-brand-yellow font-black uppercase italic font-bebas tracking-widest text-[10px] mb-2">{item.type}</p>
-                       <div className="h-[1px] w-6 bg-brand-yellow/30 mb-3" />
-                       <p className="text-white font-black uppercase italic font-bebas tracking-widest text-lg leading-tight">{item.result}</p>
+                 <Link key={i} href={item.comingSoon ? "#" : item.slug} className={`group relative block aspect-[4/5] bg-neutral-900 rounded-[2rem] border border-white/5 overflow-hidden shadow-2xl transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(245,166,35,0.1)] hover:border-brand-yellow/30 ${item.comingSoon ? "cursor-default" : "cursor-pointer"}`}>
+                    <Image src={item.image} alt={item.name} fill className={`object-cover transition-transform duration-700 ${item.comingSoon ? "opacity-40 grayscale" : "opacity-60 group-hover:opacity-80 group-hover:scale-105"}`} />
+                    <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/60 to-transparent" />
+                    
+                    <div className="absolute inset-0 p-8 flex flex-col justify-end z-10">
+                       <div className="mb-4">
+                          <span className="inline-block px-3 py-1 bg-brand-yellow/10 border border-brand-yellow/20 text-brand-yellow font-black uppercase tracking-widest text-[10px] rounded-full mb-4">
+                             {item.category}
+                          </span>
+                          <h3 className="text-3xl font-black uppercase italic font-bebas text-white mb-2 leading-tight">
+                             {item.name}
+                          </h3>
+                       </div>
+                       
+                       <div className="space-y-2 mb-6">
+                          {item.services.map((service, idx) => (
+                             <div key={idx} className="flex items-center gap-2">
+                                <CheckCircle2 size={12} className="text-brand-yellow flex-shrink-0" />
+                                <span className="text-white/80 text-xs italic font-medium">{service}</span>
+                             </div>
+                          ))}
+                       </div>
+                       
+                       {item.comingSoon ? (
+                          <div className="mt-auto pt-4 border-t border-white/10">
+                             <span className="inline-flex items-center justify-center w-full py-3 bg-white/5 text-white/50 font-black uppercase tracking-widest text-[10px] rounded-xl">
+                                Coming Soon
+                             </span>
+                          </div>
+                       ) : (
+                          <div className="mt-auto pt-4 border-t border-white/10">
+                             <span className="inline-flex items-center justify-between w-full py-3 text-brand-yellow font-black uppercase tracking-widest text-[10px] group-hover:translate-x-2 transition-transform">
+                                View Case Study <ArrowRight size={14} />
+                             </span>
+                          </div>
+                       )}
                     </div>
-                    <div className="absolute inset-0 flex items-center justify-center text-white/[0.03] text-[5px] px-8 text-center font-black uppercase italic tracking-[0.5em]">
-                       {item.action}
-                    </div>
-                 </div>
+                 </Link>
               ))}
            </div>
-        </section>
-
-        {/* Websites Section – Outcome focused thumbnails */}
-        <section className="py-32 px-6 bg-neutral-900/50 border-y border-white/5">
-          <div className="max-w-6xl mx-auto text-center">
-            <h2 className="text-white text-4xl md:text-6xl font-black uppercase italic font-bebas tracking-tight mb-4">Websites</h2>
-            <p className="text-white font-medium italic text-lg mb-16">High-performance lead generation systems.</p>
-            <div className="grid md:grid-cols-3 gap-8">
-              <div className="bg-neutral-950 p-6 rounded-3xl border border-white/10 shadow-2xl hover:border-brand-yellow/30 transition-all group text-left">
-                <div className="aspect-[4/3] relative rounded-2xl overflow-hidden mb-6">
-                  <Image src="/work/almond_vet_care.jpg" alt="Web Design West Lothian - Almond Vet Care" fill className="object-cover group-hover:scale-105 transition-transform duration-700" />
-                </div>
-                <h3 className="text-brand-yellow font-black uppercase italic font-bebas tracking-widest text-xl mb-3">Lead Generation Site</h3>
-                <p className="text-white text-sm italic">Built to convert traffic into enquiries</p>
-              </div>
-              <div className="bg-neutral-950 p-6 rounded-3xl border border-white/10 shadow-2xl hover:border-brand-yellow/30 transition-all group text-left">
-                <div className="aspect-[4/3] relative rounded-2xl overflow-hidden mb-6">
-                  <Image src="/work/website-3-herb-soul-v2.jpg" alt="Web Design Edinburgh - Herb Soul" fill className="object-cover group-hover:scale-105 transition-transform duration-700" />
-                </div>
-                <h3 className="text-brand-yellow font-black uppercase italic font-bebas tracking-widest text-xl mb-3">Service Business Website</h3>
-                <p className="text-white text-sm italic">Clear messaging and strong call-to-actions</p>
-              </div>
-              <div className="bg-neutral-950 p-6 rounded-3xl border border-white/10 shadow-2xl hover:border-brand-yellow/30 transition-all group text-left">
-                <div className="aspect-[4/3] relative rounded-2xl overflow-hidden mb-6">
-                  <Image src="/work/rt-ltd.uk-v2.jpg" alt="Transport Logistics Website - Robertsons Transport" fill className="object-cover group-hover:scale-105 transition-transform duration-700" />
-                </div>
-                <h3 className="text-brand-yellow font-black uppercase italic font-bebas tracking-widest text-xl mb-3">Transport Logistics Site</h3>
-                <p className="text-white text-sm italic">Designed for visibility and trust</p>
-              </div>
-            </div>
-            <div className="mt-16">
-              <Link href="/web-design" className="inline-flex items-center gap-3 text-brand-yellow font-black uppercase italic font-bebas tracking-widest text-lg hover:translate-x-1 transition-transform">
-                See All Web Projects <ArrowRight size={20} />
-              </Link>
-            </div>
-          </div>
         </section>
 
         {/* 9. FINAL CTA */}

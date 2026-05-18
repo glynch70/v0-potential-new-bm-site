@@ -7,8 +7,8 @@ import Link from 'next/link';
 import VideoProof from '@/components/VideoProof';
 
 export const metadata: Metadata = {
-  title: 'Content Creation & Videography Edinburgh | Bear Media',
-  description: 'Professional on-site content creation, cinematic videography and lead-gen systems for businesses across Edinburgh and the Lothians.',
+  title: 'Content Creation Edinburgh | Professional Videography | Bear Media',
+  description: 'Professional on-site content creation, cinematic videography and lead-gen systems for construction companies, trades businesses and local SMEs across Edinburgh and the Lothians.',
 };
 
 export default function EdinburghPage() {
