@@ -55,6 +55,42 @@ const CinematicCarousel = ({ items }: { items: { src: string, label: string, cat
   )
 }
 
+// Premium Touch-Friendly Snap Carousel for Landscape Digital Previews
+const DigitalPlatformsCarousel = ({ items }: { items: { src: string, label: string, category?: string }[] }) => {
+  return (
+    <div className="w-full relative mt-12 md:mt-0">
+      <div 
+        className="flex gap-8 overflow-x-auto snap-x snap-mandatory pl-6 md:pl-0 pr-6 pb-12 cursor-grab active:cursor-grabbing hide-scrollbar" 
+        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', WebkitOverflowScrolling: 'touch' }}
+      >
+        {items.map((item, idx) => (
+          <div key={idx} className="snap-start shrink-0 w-[85vw] md:w-[50vw] lg:w-[38vw] aspect-[16/10] relative overflow-hidden bg-[#171513] group border border-white/5">
+             <Image 
+               src={item.src} 
+               fill 
+               alt={item.label} 
+               sizes="(max-width: 768px) 85vw, (max-width: 1200px) 50vw, 38vw"
+               className="object-cover opacity-75 filter grayscale-[10%] contrast-[1.05] group-hover:scale-102 group-hover:opacity-90 transition-all duration-[2.5s] ease-out" 
+             />
+             <div className="absolute inset-0 bg-gradient-to-t from-[#0f0e0c]/90 via-[#0f0e0c]/15 to-transparent opacity-85" />
+             
+             <div className="absolute bottom-6 left-6 right-6 z-10 flex flex-col gap-1">
+               {item.category && (
+                 <span className="text-[#D9A05B] font-inter-tight uppercase tracking-[0.25em] text-[9px] font-bold">
+                   {item.category}
+                 </span>
+               )}
+               <p className="text-[#E8E0D5] font-inter-tight uppercase tracking-wider text-xs font-bold leading-tight">
+                 {item.label}
+               </p>
+             </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
+
 export default function HomeContent() {
   const containerRef = useRef(null);
   const { scrollYProgress } = useScroll({
@@ -210,48 +246,54 @@ export default function HomeContent() {
         </div>
       </section>
 
-      {/* 4. ASYMMETRICAL STORY 2: DIGITAL PLATFORMS */}
+      {/* 4. ASYMMETRICAL STORY 2: DIGITAL PLATFORMS (HORIZONTAL CAROUSEL) */}
       <section className="py-36 px-6 bg-[#0f0e0c] overflow-hidden border-b border-white/5">
-        <div className="max-w-screen-2xl mx-auto flex flex-col-reverse lg:flex-row items-center gap-16 lg:gap-32">
-          
-          <motion.div 
-            initial={{ opacity: 0, x: -40 }}
+        <div className="max-w-screen-2xl mx-auto">
+          <div className="flex flex-col lg:flex-row items-end justify-between max-w-7xl mx-auto mb-20 gap-10">
+             <motion.div 
+               initial={{ opacity: 0, y: 35 }}
+               whileInView={{ opacity: 1, y: 0 }}
+               viewport={{ once: true, margin: "-100px" }}
+               transition={{ duration: 1.6, ease: cinematicEase }}
+               className="max-w-2xl"
+             >
+               <p className="text-[#D9A05B] font-inter-tight uppercase tracking-[0.3em] text-[9px] font-bold mb-6 flex items-center gap-4">
+                 <span className="w-8 h-[1px] bg-[#D9A05B]/30" /> Execution
+               </p>
+               <h3 className="text-5xl md:text-7xl font-bebas text-[#E8E0D5] leading-[0.95]">
+                 Digital <br/> <span className="text-[#E8E0D5]/30">Platforms.</span>
+               </h3>
+             </motion.div>
+             
+             <motion.div 
+               initial={{ opacity: 0, y: 35 }}
+               whileInView={{ opacity: 1, y: 0 }}
+               viewport={{ once: true, margin: "-100px" }}
+               transition={{ duration: 1.6, delay: 0.15, ease: cinematicEase }}
+               className="max-w-sm lg:pb-2"
+             >
+               <p className="text-[#E8E0D5]/50 font-inter-tight font-light leading-relaxed text-sm tracking-wide">
+                 We design high-performance websites that function as digital gallery spaces. Clean, fast, and built to transform visibility into high-value relationships.
+               </p>
+             </motion.div>
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, x: 40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 1.8, ease: cinematicEase }}
-            className="w-full lg:w-5/12 flex flex-col justify-center lg:items-end lg:text-right"
+            className="w-full md:pl-[10vw]"
           >
-            <p className="text-[#D9A05B] font-inter-tight uppercase tracking-[0.3em] text-[9px] font-bold mb-6 flex items-center gap-4 justify-end">
-              Execution <span className="w-8 h-[1px] bg-[#D9A05B]/30 hidden lg:block" />
-            </p>
-            <h3 className="text-5xl md:text-7xl font-bebas text-[#E8E0D5] leading-[0.95] mb-10">
-              Digital <br/> <span className="text-[#E8E0D5]/30">Platforms.</span>
-            </h3>
-            <p className="text-[#E8E0D5]/50 font-inter-tight font-light leading-relaxed text-sm max-w-sm tracking-wide lg:justify-self-end">
-              We design websites that function as editorial experiences. We remove the clutter, allowing high-end visual storytelling to convert visibility into high-value relationships.
-            </p>
+             <DigitalPlatformsCarousel items={[
+               { src: "/BEST FINAL CLIENT WORK/simply sheds review by bm.png", label: "Simply Sheds E-Commerce Portal", category: "Web Design" },
+               { src: "/BEST FINAL CLIENT WORK/Almond Vet Care Website.jpg", label: "Almond Vet Care Clinic Site", category: "Local Brand Web" },
+               { src: "/BEST FINAL CLIENT WORK/website-3-herb-soul-v2.jpg", label: "Herb & Soul Digital Shop", category: "E-Commerce" },
+               { src: "/BEST FINAL CLIENT WORK/website-5-lewis-joinery-v2.jpg", label: "K Lewis Joinery Client Dashboard", category: "Web Platform" },
+               { src: "/BEST FINAL CLIENT WORK/rt-ltd.uk-v2.jpg", label: "Robertson Transport Logistics Portal", category: "Corporate Web" },
+               { src: "/BEST FINAL CLIENT WORK/seamus_v5_final.jpg", label: "Séamus Corry Creative Studio Portfolio", category: "Branding Visuals" },
+             ]} />
           </motion.div>
-
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.98 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 2.2, ease: cinematicEase }}
-            className="w-full lg:w-7/12"
-          >
-            <div className="relative aspect-[16/10] w-full overflow-hidden bg-[#171513] group border border-white/5">
-              <Image 
-                src="/BEST FINAL CLIENT WORK/simply sheds review by bm.png" 
-                alt="Web Design Example" 
-                fill 
-                className="object-cover opacity-70 filter contrast-[1.05] group-hover:scale-[1.01] transition-transform duration-[3s] ease-out" 
-              />
-              <div className="absolute inset-0 bg-[#0f0e0c]/10 mix-blend-overlay pointer-events-none" />
-              {/* Subtle gold radial glow accent */}
-              <div className="absolute -inset-4 bg-[radial-gradient(ellipse_at_center,rgba(217,160,91,0.03)_0%,transparent_75%)] opacity-0 group-hover:opacity-100 transition-opacity duration-[2s] pointer-events-none" />
-            </div>
-          </motion.div>
-          
         </div>
       </section>
 
@@ -344,6 +386,145 @@ export default function HomeContent() {
               </Link>
             </div>
           </motion.div>
+        </div>
+      </section>
+
+      {/* 6.3 CLIENT TESTIMONIALS - HIGH-END EDITORIAL PROOF */}
+      <section className="py-36 px-6 bg-[#0f0e0c] border-t border-white/5 relative overflow-hidden">
+        {/* Subtle background glow */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,rgba(217,160,91,0.02)_0%,transparent_80%)] pointer-events-none" />
+
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col lg:flex-row items-end justify-between mb-24 gap-10">
+             <motion.div 
+               initial={{ opacity: 0, y: 35 }}
+               whileInView={{ opacity: 1, y: 0 }}
+               viewport={{ once: true, margin: "-100px" }}
+               transition={{ duration: 1.6, ease: cinematicEase }}
+               className="max-w-2xl"
+             >
+               <p className="text-[#D9A05B] font-inter-tight uppercase tracking-[0.3em] text-[9px] font-bold mb-6 flex items-center gap-4">
+                 <span className="w-8 h-[1px] bg-[#D9A05B]/30" /> Client Proof
+               </p>
+               <h3 className="text-5xl md:text-7xl font-bebas text-[#E8E0D5] leading-[0.95]">
+                 Trusted <br/> <span className="text-[#E8E0D5]/30">Relationships.</span>
+               </h3>
+             </motion.div>
+
+             <motion.div 
+               initial={{ opacity: 0, y: 35 }}
+               whileInView={{ opacity: 1, y: 0 }}
+               viewport={{ once: true, margin: "-100px" }}
+               transition={{ duration: 1.6, delay: 0.15, ease: cinematicEase }}
+               className="max-w-sm lg:pb-2"
+             >
+               <p className="text-[#E8E0D5]/50 font-inter-tight font-light leading-relaxed text-sm tracking-wide">
+                 Real outcomes for ambitious Scottish businesses. We don't deal in vanity metrics—we document real growth and construct high-performance digital platforms.
+               </p>
+             </motion.div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+             {/* Gary Young */}
+             <motion.div 
+               initial={{ opacity: 0, y: 30 }}
+               whileInView={{ opacity: 1, y: 0 }}
+               viewport={{ once: true }}
+               transition={{ duration: 1.6, delay: 0.1, ease: cinematicEase }}
+               className="bg-[#12110f] border border-white/5 p-10 flex flex-col justify-between group hover:border-[#D9A05B]/30 transition-all duration-700"
+             >
+               <div className="space-y-6">
+                 <div className="flex gap-1">
+                   {[...Array(5)].map((_, i) => (
+                     <span key={i} className="text-[#D9A05B] text-xs">★</span>
+                   ))}
+                 </div>
+                 <p className="text-[#E8E0D5]/70 font-inter-tight font-light text-sm leading-relaxed tracking-wide italic">
+                   "Garry stripped away all the usual agency nonsense. Our new site is fast, looks exactly how we wanted, and we started getting quote requests within the first week."
+                 </p>
+               </div>
+               <div className="mt-10 pt-6 border-t border-white/5 flex items-center gap-4">
+                 <div className="relative w-10 h-10 rounded-full overflow-hidden bg-neutral-900 border border-white/10">
+                   <Image src="/testimonials/gary.png" fill alt="Gary Young" className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700" />
+                 </div>
+                 <div>
+                   <h4 className="text-xs font-inter-tight font-bold uppercase tracking-wider text-[#E8E0D5]">Gary Young</h4>
+                   <p className="text-[10px] font-inter-tight uppercase tracking-widest text-[#D9A05B] mt-0.5">K Lewis Joinery</p>
+                 </div>
+               </div>
+             </motion.div>
+
+             {/* Seamus Corry */}
+             <motion.div 
+               initial={{ opacity: 0, y: 30 }}
+               whileInView={{ opacity: 1, y: 0 }}
+               viewport={{ once: true }}
+               transition={{ duration: 1.6, delay: 0.2, ease: cinematicEase }}
+               className="bg-[#12110f] border border-white/5 p-10 flex flex-col justify-between group hover:border-[#D9A05B]/30 transition-all duration-700"
+             >
+               <div className="space-y-6">
+                 <div className="flex gap-1">
+                   {[...Array(5)].map((_, i) => (
+                     <span key={i} className="text-[#D9A05B] text-xs">★</span>
+                   ))}
+                 </div>
+                 <p className="text-[#E8E0D5]/70 font-inter-tight font-light text-sm leading-relaxed tracking-wide italic">
+                   "The ecommerce site looks stunning and the social media growth has been mental. We've seen a massive jump in online orders since Garry took over our content."
+                 </p>
+               </div>
+               <div className="mt-10 pt-6 border-t border-white/5 flex items-center gap-4">
+                 <div className="relative w-10 h-10 rounded-full overflow-hidden bg-neutral-900 border border-white/10">
+                   <Image src="/testimonials/seamus.png" fill alt="Seamus Corry" className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700" />
+                 </div>
+                 <div>
+                   <h4 className="text-xs font-inter-tight font-bold uppercase tracking-wider text-[#E8E0D5]">Seamus Corry</h4>
+                   <p className="text-[10px] font-inter-tight uppercase tracking-widest text-[#D9A05B] mt-0.5">Herb & Soul</p>
+                 </div>
+               </div>
+             </motion.div>
+
+             {/* Stephen Johnstone */}
+             <motion.div 
+               initial={{ opacity: 0, y: 30 }}
+               whileInView={{ opacity: 1, y: 0 }}
+               viewport={{ once: true }}
+               transition={{ duration: 1.6, delay: 0.3, ease: cinematicEase }}
+               className="bg-[#12110f] border border-white/5 p-10 flex flex-col justify-between group hover:border-[#D9A05B]/30 transition-all duration-700"
+             >
+               <div className="space-y-6">
+                 <div className="flex gap-1">
+                   {[...Array(5)].map((_, i) => (
+                     <span key={i} className="text-[#D9A05B] text-xs">★</span>
+                   ))}
+                 </div>
+                 <p className="text-[#E8E0D5]/70 font-inter-tight font-light text-sm leading-relaxed tracking-wide italic">
+                   "Our old site was impossible to update. The new website is clean, easy for pet owners to navigate, and the whole process was completely painless. Highly recommend Garry."
+                 </p>
+               </div>
+               <div className="mt-10 pt-6 border-t border-white/5 flex items-center gap-4">
+                 <div className="relative w-10 h-10 rounded-full overflow-hidden bg-neutral-900 border border-white/10">
+                   <Image src="/testimonials/stephen.png" fill alt="Stephen Johnstone" className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700" />
+                 </div>
+                 <div>
+                   <h4 className="text-xs font-inter-tight font-bold uppercase tracking-wider text-[#E8E0D5]">Stephen Johnstone</h4>
+                   <p className="text-[10px] font-inter-tight uppercase tracking-widest text-[#D9A05B] mt-0.5">Almond Vet Care</p>
+                 </div>
+               </div>
+             </motion.div>
+          </div>
+
+          <div className="text-center mt-20">
+             <Link
+               href="https://g.page/r/YOUR_GOOGLE_BUSINESS_ID/review" 
+               target="_blank"
+               className="relative px-10 py-5 bg-transparent border border-[#E8E0D5]/15 text-[#E8E0D5] font-inter-tight uppercase tracking-[0.25em] text-[9px] font-bold rounded-sm overflow-hidden group/btn hover:border-[#D9A05B] transition-colors duration-500 inline-block"
+             >
+               <div className="absolute inset-0 bg-[#D9A05B] translate-y-[100%] group-hover/btn:translate-y-0 transition-transform duration-500 ease-out" />
+               <span className="relative z-10 group-hover/btn:text-[#0f0e0c] transition-colors duration-500">
+                 View More Google Reviews
+               </span>
+             </Link>
+          </div>
         </div>
       </section>
 
