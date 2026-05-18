@@ -347,6 +347,103 @@ export default function HomeContent() {
         </div>
       </section>
 
+      {/* 6.5 TEAM BEAR MEDIA - PLAYFUL, HUMAN, PREMIUM */}
+      <section className="py-36 px-6 bg-[#0f0e0c] border-t border-white/5 overflow-hidden">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-24">
+             <motion.p 
+               initial={{ opacity: 0, y: 15 }}
+               whileInView={{ opacity: 1, y: 0 }}
+               viewport={{ once: true }}
+               transition={{ duration: 1.2, ease: cinematicEase }}
+               className="text-[#D9A05B] font-inter-tight uppercase tracking-[0.3em] text-[9px] font-bold mb-4"
+             >
+               The real crew behind the scenes.
+             </motion.p>
+             <motion.h3 
+               initial={{ opacity: 0, y: 25 }}
+               whileInView={{ opacity: 1, y: 0 }}
+               viewport={{ once: true }}
+               transition={{ duration: 1.4, ease: cinematicEase }}
+               className="text-5xl md:text-7xl font-bebas text-[#E8E0D5] tracking-wide"
+             >
+               TEAM BEAR MEDIA
+             </motion.h3>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-5xl mx-auto">
+            {/* Garry */}
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1.6, delay: 0.1, ease: cinematicEase }}
+              className="flex flex-col items-center text-center group"
+            >
+              <div className="relative aspect-[3/4] w-full max-w-sm overflow-hidden bg-[#171513] border border-white/5 mb-6">
+                <Image 
+                  src="/team/garry.may26.JPG" 
+                  alt="Garry Lynch" 
+                  fill 
+                  className="object-cover opacity-85 filter grayscale-[20%] contrast-[1.05] group-hover:scale-102 group-hover:opacity-95 transition-all duration-[2.5s] ease-out"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0f0e0c]/90 via-transparent to-transparent opacity-85" />
+              </div>
+              <h4 className="text-2xl font-bebas text-[#E8E0D5] tracking-wide mb-1">Garry Lynch</h4>
+              <p className="text-[#D9A05B] font-inter-tight uppercase tracking-wider text-[9px] font-bold">
+                Founder / Creative Director / Camera Carrier
+              </p>
+            </motion.div>
+
+            {/* Lola */}
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1.6, delay: 0.2, ease: cinematicEase }}
+              className="flex flex-col items-center text-center group"
+            >
+              <div className="relative aspect-[3/4] w-full max-w-sm overflow-hidden bg-[#171513] border border-white/5 mb-6">
+                <Image 
+                  src="/team/lola_project_manager.jpg" 
+                  alt="Lola" 
+                  fill 
+                  className="object-cover opacity-85 filter grayscale-[20%] contrast-[1.05] group-hover:scale-102 group-hover:opacity-95 transition-all duration-[2.5s] ease-out"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0f0e0c]/90 via-transparent to-transparent opacity-85" />
+              </div>
+              <h4 className="text-2xl font-bebas text-[#E8E0D5] tracking-wide mb-1">Lola</h4>
+              <p className="text-[#D9A05B] font-inter-tight uppercase tracking-wider text-[9px] font-bold">
+                Project Manager / Snack Supervisor
+              </p>
+            </motion.div>
+
+            {/* Rory */}
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1.6, delay: 0.3, ease: cinematicEase }}
+              className="flex flex-col items-center text-center group"
+            >
+              <div className="relative aspect-[3/4] w-full max-w-sm overflow-hidden bg-[#171513] border border-white/5 mb-6">
+                <Image 
+                  src="/team/rory_quality_control.jpg" 
+                  alt="Rory" 
+                  fill 
+                  className="object-cover opacity-85 filter grayscale-[20%] contrast-[1.05] group-hover:scale-102 group-hover:opacity-95 transition-all duration-[2.5s] ease-out"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0f0e0c]/90 via-transparent to-transparent opacity-85" />
+              </div>
+              <h4 className="text-2xl font-bebas text-[#E8E0D5] tracking-wide mb-1">Rory</h4>
+              <p className="text-[#D9A05B] font-inter-tight uppercase tracking-wider text-[9px] font-bold">
+                Quality Control / Barketing Executive
+              </p>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
       {/* 7. FINAL CTA - SLOW FADE WITH RESTRAINED ACCENT */}
       <section className="py-64 px-6 bg-[#0f0e0c] relative overflow-hidden flex items-center justify-center group border-t border-white/5">
         <div className="absolute inset-0 bg-[#0a0908]">
