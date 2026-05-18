@@ -17,6 +17,8 @@
   --font-body: var(--font-inter-tight), sans-serif;
   --font-display: var(--font-bebas-neue), sans-serif;
   --font-accent: var(--font-figtree), sans-serif;
+  --font-bebas: var(--font-bebas-neue), sans-serif;
+  --font-inter-tight: var(--font-inter-tight), sans-serif;
 
   --animate-float: float 5s ease-in-out infinite;
   --animate-float-slow: float 6s ease-in-out infinite;
