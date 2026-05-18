@@ -1,259 +1,277 @@
 'use client'
 
-import React from 'react';
-import { motion } from 'framer-motion';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
-import { CheckCircle2, ArrowRight, Video, TrendingUp, Users, MapPin, Star, Play, MousePointer2 } from 'lucide-react';
-import Link from 'next/link';
-import Image from 'next/image';
-import VideoProof from '@/components/VideoProof';
-import YouTubeEmbed from '@/components/YouTubeEmbed';
+import React from 'react'
+import { motion } from 'framer-motion'
+import Navbar from '@/components/Navbar'
+import Footer from '@/components/Footer'
+import { CheckCircle2, ArrowRight, Star, ExternalLink, ShieldCheck } from 'lucide-react'
+import Link from 'next/link'
+import Image from 'next/image'
 
+const cinematicEase = [0.16, 1, 0.3, 1]
+
+const items = [
+  {
+    name: "Séamus Corry",
+    category: "Personal Brand & Luxury Coaching",
+    image: "/BEST FINAL CLIENT WORK/seamus rebrand.jpg",
+    slug: "https://seamus-corry-rebrand.vercel.app/",
+    services: ["Bespoke Web Design", "Personal Branding", "High-Speed React Code"],
+    live: true,
+    isExternal: true
+  },
+  {
+    name: "Almond Vet Care",
+    category: "Strategic Veterinary Platform",
+    image: "/BEST FINAL CLIENT WORK/Almond Vet Care Website.jpg",
+    slug: "/portfolio/almond-vet-care",
+    services: ["Web Design & Architecture", "Local SEO Engineering", "Content Strategy"],
+    live: true,
+    isExternal: false
+  },
+  {
+    name: "C&G Quality Builds",
+    category: "High-End Construction Showcase",
+    image: "/BEST FINAL CLIENT WORK/C&G Quality Builds.reel.cover.png",
+    slug: "/portfolio",
+    services: ["Drone Videography", "Social Media Content", "Showroom Strategy"],
+    live: true,
+    isExternal: false
+  },
+  {
+    name: "K Lewis Joinery",
+    category: "Premium Bespoke Woodwork",
+    image: "/BEST FINAL CLIENT WORK/klewis.jpg",
+    slug: "/portfolio/k-lewis-joinery",
+    services: ["Web Design Showcase", "Lead Generation Flow", "SEO Optimization"],
+    live: true,
+    isExternal: false
+  },
+  {
+    name: "Robertsons Transport",
+    category: "UK-Wide Heavy Logistics Hub",
+    image: "/BEST FINAL CLIENT WORK/robertsons.jpg",
+    slug: "/portfolio/robertsons-transport",
+    services: ["Corporate Web Platform", "Brand Guidelines", "Logistics SEO"],
+    live: true,
+    isExternal: false
+  },
+  {
+    name: "Simply Sheds",
+    category: "Local Campaign System",
+    image: "/BEST FINAL CLIENT WORK/SIMPLY SHEDS.open sat & sun-Cover.jpg",
+    slug: "/case-studies/simply-sheds",
+    services: ["High-Conversion Landing System", "Paid Traffic Integration", "Copywriting"],
+    live: true,
+    isExternal: false
+  }
+]
 
 export default function PortfolioPage() {
   return (
     <>
       <Navbar />
-      <main className="min-h-screen bg-neutral-950 text-white font-sans selection:bg-brand-yellow selection:text-neutral-950">
+      <main className="min-h-screen bg-[#0f0e0c] text-[#E8E0D5] font-inter-tight selection:bg-[#D2A214] selection:text-[#0f0e0c] overflow-hidden">
         
-        {/* 1. HERO SECTION */}
-        <section className="relative pt-20 pb-12 md:pt-32 md:pb-20 px-6 overflow-hidden flex flex-col items-center justify-center text-center">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(245,166,35,0.04)_0%,transparent_70%)] pointer-events-none" />
-          <div className="max-w-7xl mx-auto relative z-10">
+        {/* 1. HERO SECTION (DARK CINEMATIC) */}
+        <section className="relative min-h-[85vh] flex items-center justify-center px-6 overflow-hidden py-32 border-b border-white/5">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[#D2A214]/5 blur-[120px] rounded-full pointer-events-none" />
+          
+          <div className="absolute inset-y-0 left-[10%] w-[1px] bg-white/5 pointer-events-none z-0" />
+          <div className="absolute inset-y-0 right-[10%] w-[1px] bg-white/5 pointer-events-none z-0" />
+
+          <div className="max-w-6xl mx-auto text-center relative z-10">
             <motion.p 
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="text-brand-yellow font-black uppercase tracking-[0.3em] mb-4 text-[10px] md:text-sm animate-pulse italic"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1.8 }}
+              className="text-[#D2A214] font-bold uppercase tracking-[0.4em] text-[9px] mb-8"
             >
-               Proof Beats Promises. No Fluff.
+              Proof Beats Promises. Zero Fluff.
             </motion.p>
+            
             <motion.h1 
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 35 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 }}
-              className="mb-6 md:mb-8 text-4xl md:text-8xl font-black italic uppercase font-bebas leading-[0.9]"
+              transition={{ duration: 1.8, delay: 0.2, ease: cinematicEase }}
+              className="text-6xl md:text-8xl lg:text-[7.5rem] font-bebas text-white tracking-wide mb-12 leading-[0.95] uppercase"
             >
-              Real Results That <br />
-              <span className="text-brand-yellow">Fill Business Calendars.</span>
+              DIGITAL GALLERY & <br/>
+              <span className="text-white/20">REAL CLIENT CASE STUDIES.</span>
             </motion.h1>
+
             <motion.p 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className="text-white max-w-2xl mx-auto mb-10 md:mb-12 font-medium italic text-lg"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 2, delay: 0.4 }}
+              className="max-w-3xl mx-auto text-[#E8E0D5]/60 font-light text-lg md:text-xl leading-relaxed tracking-wide"
             >
-              We work with construction companies, trades businesses and SMEs that want to grow, not just post content. We focus on generating real enquiries, not vanity metrics.
+              We partner with local construction groups, trades operations, and ambitious Scottish SMEs to design fast showrooms, capture raw high-end footage, and secure high-value client bookings.
             </motion.p>
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
-              className="flex flex-col items-center gap-4"
-            >
-              <p className="text-white/50 text-[10px] font-black uppercase tracking-widest italic">Let’s look at your business and show you exactly how to generate more enquiries.</p>
-              <Link
-                href="/contact"
-                className="px-10 py-5 bg-brand-yellow text-neutral-950 font-black uppercase tracking-widest text-[11px] rounded-xl hover:scale-105 transition-all shadow-xl text-center"
-              >
-                👉 Book a Discovery Call
-              </Link>
-            </motion.div>
           </div>
         </section>
 
-        {/* 1.1 VIDEO PROOF SECTION */}
-        <VideoProof 
-          videoSrc="/media/NEW BM DRONE HERO.mp4"
-          title="On-Site Coverage Mastery"
-          stats={[
-            { label: "Consistent Enquiries", value: "Daily", icon: <TrendingUp size={20} /> },
-            { label: "Local Clients", value: "50+", icon: <Users size={20} /> },
-            { label: "Success Rate", value: "100%", icon: <CheckCircle2 size={20} /> },
-            { label: "Google Rating", value: "5.0★", icon: <Star size={20} /> }
-          ]}
-        />
-
-        {/* LOGO MARQUEE */}
-        <style dangerouslySetInnerHTML={{__html: `
-          @keyframes marquee {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-          }
-          .animate-marquee {
-            animation: marquee 30s linear infinite;
-          }
-        `}} />
-        <div className="py-8 border-y border-white/5 bg-neutral-900/30 overflow-hidden relative flex items-center">
-          <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-neutral-950 to-transparent z-10" />
-          <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-neutral-950 to-transparent z-10" />
-          <div className="flex whitespace-nowrap animate-marquee items-center gap-16 px-8 text-white/20 font-black uppercase italic font-bebas tracking-widest text-xl md:text-2xl w-[200%]">
-             <span>Almond Vet Care</span><span className="text-brand-yellow/40">•</span>
-             <span>Robertsons Transport</span><span className="text-brand-yellow/40">•</span>
-             <span>K Lewis Joinery</span><span className="text-brand-yellow/40">•</span>
-             <span>Managing What Matters</span><span className="text-brand-yellow/40">•</span>
-             <span>Herb & Soul</span><span className="text-brand-yellow/40">•</span>
-             <span>The Free Spirit</span><span className="text-brand-yellow/40">•</span>
-             <span>Seamus Corry</span><span className="text-brand-yellow/40">•</span>
-             <span>Voice2Lead</span><span className="text-brand-yellow/40">•</span>
-             {/* Duplicate for infinite effect */}
-             <span>Almond Vet Care</span><span className="text-brand-yellow/40">•</span>
-             <span>Robertsons Transport</span><span className="text-brand-yellow/40">•</span>
-             <span>K Lewis Joinery</span><span className="text-brand-yellow/40">•</span>
-             <span>Managing What Matters</span><span className="text-brand-yellow/40">•</span>
-             <span>Herb & Soul</span><span className="text-brand-yellow/40">•</span>
-             <span>The Free Spirit</span><span className="text-brand-yellow/40">•</span>
-             <span>Seamus Corry</span><span className="text-brand-yellow/40">•</span>
-             <span>Voice2Lead</span><span className="text-brand-yellow/40">•</span>
+        {/* 2. LOGO MARQUEE */}
+        <section className="py-12 border-y border-white/5 bg-[#171513]/40 overflow-hidden relative flex items-center z-10">
+          <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-[#0f0e0c] to-transparent z-10" />
+          <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-[#0f0e0c] to-transparent z-10" />
+          <div className="flex whitespace-nowrap animate-marquee items-center gap-16 px-8 text-white/10 font-bold uppercase font-bebas tracking-[0.2em] text-xl md:text-2xl w-[200%] select-none">
+             <span>Almond Vet Care</span><span className="text-[#D2A214]/20">•</span>
+             <span>Robertsons Transport</span><span className="text-[#D2A214]/20">•</span>
+             <span>K Lewis Joinery</span><span className="text-[#D2A214]/20">•</span>
+             <span>Managing What Matters</span><span className="text-[#D2A214]/20">•</span>
+             <span>Herb & Soul</span><span className="text-[#D2A214]/20">•</span>
+             <span>The Free Spirit</span><span className="text-[#D2A214]/20">•</span>
+             <span>Séamus Corry</span><span className="text-[#D2A214]/20">•</span>
+             <span>Simply Sheds</span><span className="text-[#D2A214]/20">•</span>
+             {/* Duplicate */}
+             <span>Almond Vet Care</span><span className="text-[#D2A214]/20">•</span>
+             <span>Robertsons Transport</span><span className="text-[#D2A214]/20">•</span>
+             <span>K Lewis Joinery</span><span className="text-[#D2A214]/20">•</span>
+             <span>Managing What Matters</span><span className="text-[#D2A214]/20">•</span>
+             <span>Herb & Soul</span><span className="text-[#D2A214]/20">•</span>
+             <span>The Free Spirit</span><span className="text-[#D2A214]/20">•</span>
+             <span>Séamus Corry</span><span className="text-[#D2A214]/20">•</span>
+             <span>Simply Sheds</span><span className="text-[#D2A214]/20">•</span>
           </div>
-        </div>
+        </section>
 
-        {/* MAIN PORTFOLIO GRID */}
-        <section className="py-32 px-6 max-w-7xl mx-auto">
-           <div className="text-center mb-20">
-              <h2 className="mb-6 text-white text-4xl md:text-6xl uppercase italic font-bebas tracking-tight">
-                 Trusted By Businesses <br/><span className="text-brand-yellow">Across Scotland</span>
-              </h2>
-              <p className="text-white/60 font-medium italic text-lg max-w-2xl mx-auto">
-                 Real client projects across web design, content creation, branding, social media and digital marketing.
-              </p>
-           </div>
-           
-           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {[
-                {
-                  name: "Almond Vet Care",
-                  category: "Healthcare / Veterinary",
-                  image: "/work/almond_vet_care.jpg",
-                  slug: "/portfolio/almond-vet-care",
-                  services: ["Website Design", "SEO", "Content Creation", "Branding"],
-                  comingSoon: false
-                },
-                {
-                  name: "Robertsons Transport",
-                  category: "Haulage and Transport Logistics",
-                  image: "/work/rt-ltd.uk-v2.jpg",
-                  slug: "/portfolio/robertsons-transport",
-                  services: ["Website Design", "Branding", "Digital Presence", "SEO"],
-                  comingSoon: false
-                },
-                {
-                  name: "K Lewis Joinery",
-                  category: "Joinery / Trades",
-                  image: "/work/website-5-lewis-joinery-v2.jpg",
-                  slug: "/portfolio/k-lewis-joinery",
-                  services: ["Website Design", "SEO", "Content Creation"],
-                  comingSoon: false
-                },
-                {
-                  name: "Managing What Matters",
-                  category: "Coaching / Leadership",
-                  image: "/work/website-managing-v2.jpg",
-                  slug: "/portfolio/managing-what-matters",
-                  services: ["Website Design", "Branding", "Digital Presence"],
-                  comingSoon: false
-                },
-                {
-                  name: "Herb & Soul",
-                  category: "Wellness / Lifestyle",
-                  image: "/work/website-3-herb-soul-v2.jpg",
-                  slug: "/portfolio/herb-and-soul",
-                  services: ["Website Design", "Brand Identity", "Creative Direction"],
-                  comingSoon: true
-                },
-                {
-                  name: "The Free Spirit",
-                  category: "Lifestyle / Creative Brand",
-                  image: "/work/content-creation.png",
-                  slug: "/portfolio/the-free-spirit",
-                  services: ["Website Design", "Creative Branding", "Content Creation"],
-                  comingSoon: false
-                },
-                {
-                  name: "Seamus Corry",
-                  category: "Personal Brand / Coaching",
-                  image: "/work/seamus_v5_final.jpg",
-                  slug: "/portfolio/seamus-corry",
-                  services: ["Website Redesign", "Personal Branding", "Content Strategy"],
-                  comingSoon: true
-                },
-                {
-                  name: "Voice2Lead",
-                  category: "Leadership / Coaching",
-                  image: "/work/mwm.jpg",
-                  slug: "/portfolio/voice2lead",
-                  services: ["Website Design", "Professional Branding", "Digital Presence"],
-                  comingSoon: false
-                }
-              ].map((item, i) => (
-                 <Link key={i} href={item.comingSoon ? "#" : item.slug} className={`group relative block aspect-[4/5] bg-neutral-900 rounded-[2rem] border border-white/5 overflow-hidden shadow-2xl transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(245,166,35,0.1)] hover:border-brand-yellow/30 ${item.comingSoon ? "cursor-default" : "cursor-pointer"}`}>
-                    <Image src={item.image} alt={item.name} fill className={`object-cover transition-transform duration-700 ${item.comingSoon ? "opacity-40 grayscale" : "opacity-60 group-hover:opacity-80 group-hover:scale-105"}`} />
-                    <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/60 to-transparent" />
-                    
-                    <div className="absolute inset-0 p-8 flex flex-col justify-end z-10">
-                       <div className="mb-4">
-                          <span className="inline-block px-3 py-1 bg-brand-yellow/10 border border-brand-yellow/20 text-brand-yellow font-black uppercase tracking-widest text-[10px] rounded-full mb-4">
-                             {item.category}
-                          </span>
-                          <h3 className="text-3xl font-black uppercase italic font-bebas text-white mb-2 leading-tight">
-                             {item.name}
-                          </h3>
-                       </div>
-                       
-                       <div className="space-y-2 mb-6">
-                          {item.services.map((service, idx) => (
-                             <div key={idx} className="flex items-center gap-2">
-                                <CheckCircle2 size={12} className="text-brand-yellow flex-shrink-0" />
-                                <span className="text-white/80 text-xs italic font-medium">{service}</span>
-                             </div>
-                          ))}
-                       </div>
-                       
-                       {item.comingSoon ? (
-                          <div className="mt-auto pt-4 border-t border-white/10">
-                             <span className="inline-flex items-center justify-center w-full py-3 bg-white/5 text-white/50 font-black uppercase tracking-widest text-[10px] rounded-xl">
-                                Coming Soon
-                             </span>
-                          </div>
-                       ) : (
-                          <div className="mt-auto pt-4 border-t border-white/10">
-                             <span className="inline-flex items-center justify-between w-full py-3 text-brand-yellow font-black uppercase tracking-widest text-[10px] group-hover:translate-x-2 transition-transform">
-                                View Case Study <ArrowRight size={14} />
-                             </span>
-                          </div>
-                       )}
+        {/* 3. SHOWCASE GRID (BRIGHT EDITORIAL - OFF-WHITE) */}
+        <section className="py-40 px-6 bg-[#F5F4F0] text-[#1A1917] relative z-10 border-b border-[#1A1917]/10">
+          <div className="absolute inset-y-0 left-[10%] w-[1px] bg-[#1A1917]/5 pointer-events-none z-0" />
+          <div className="absolute inset-y-0 right-[10%] w-[1px] bg-[#1A1917]/5 pointer-events-none z-0" />
+
+          <div className="max-w-7xl mx-auto relative z-10">
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {items.map((item, idx) => (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 1.6, delay: idx * 0.1, ease: cinematicEase }}
+                  className="bg-white border border-[#1A1917]/5 p-8 rounded-sm shadow-sm flex flex-col justify-between group hover:shadow-md transition-all duration-500"
+                >
+                  <div>
+                    {/* Visual Aspect Container */}
+                    <div className="relative aspect-[16/11] bg-[#EFECE8] border border-[#1A1917]/5 rounded-sm overflow-hidden mb-8">
+                      <Image 
+                        src={item.image} 
+                        alt={item.name} 
+                        fill 
+                        className="object-cover opacity-90 filter contrast-[1.05] group-hover:scale-[1.02] transition-transform duration-[2.5s] ease-out"
+                        sizes="(max-width: 768px) 90vw, (max-width: 1200px) 45vw, 28vw"
+                      />
+                      <div className="absolute inset-0 bg-[#0f0e0c]/5 group-hover:bg-transparent transition-colors duration-500" />
                     </div>
-                 </Link>
+
+                    <span className="inline-block px-2.5 py-0.5 bg-[#D2A214]/10 border border-[#D2A214]/20 text-[#D2A214] font-bold uppercase tracking-widest text-[8px] rounded-sm mb-3">
+                      {item.category}
+                    </span>
+
+                    <h3 className="text-3xl font-bebas text-[#1A1917] tracking-wider uppercase mb-4 leading-none">{item.name}</h3>
+                    
+                    <ul className="space-y-3 mb-10 border-t border-[#1A1917]/5 pt-6">
+                      {item.services.map((srv, k) => (
+                        <li key={k} className="flex gap-3 items-start">
+                          <CheckCircle2 size={13} className="text-[#D2A214] shrink-0 mt-0.5" />
+                          <span className="text-xs text-[#1A1917]/60 leading-relaxed font-light">{srv}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <a 
+                    href={item.slug}
+                    target={item.isExternal ? "_blank" : "_self"}
+                    rel="noopener noreferrer"
+                    className="w-full py-4 rounded-sm bg-[#F5F4F0] text-[#1A1917] font-bold uppercase tracking-widest text-[8px] transition-all text-center border border-[#1A1917]/10 flex items-center justify-center gap-2 hover:bg-[#EFECE8]"
+                  >
+                    Explore Case Study {item.isExternal ? <ExternalLink size={10} /> : <ArrowRight size={10} />}
+                  </a>
+
+                </motion.div>
               ))}
-           </div>
+            </div>
+
+          </div>
         </section>
 
-        {/* 9. FINAL CTA */}
-        <section className="py-20 px-6 text-center relative overflow-hidden bg-brand-yellow text-neutral-950">
-           <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,0,0,0.05)_0%,transparent_70%)] pointer-events-none" />
-           <div className="max-w-3xl mx-auto relative z-10">
-              <h2 className="mb-8 text-neutral-950 text-4xl md:text-6xl font-black italic uppercase font-bebas leading-tight">
-                 Want More Enquiries From <br />
-                 <span className="underline decoration-neutral-950/20 underline-offset-8">Your Website and Content?</span>
-              </h2>
-              <p className="text-neutral-950/70 font-bold italic mb-10 max-w-lg mx-auto">
-                 We’ll show you exactly what’s working, what’s not, and how to fix it. Let’s look at your business and show you exactly how to generate more enquiries.
-              </p>
-              <Link
-                href="/contact"
-                className="inline-flex items-center gap-3 px-10 py-5 bg-neutral-950 text-white font-black uppercase tracking-widest text-[11px] rounded-xl hover:scale-105 transition-all shadow-2xl group"
-              >
-                👉 Book a Discovery Call
-                <ArrowRight className="group-hover:translate-x-1 transition-transform" size={14} />
-              </Link>
-              <p className="mt-8 text-neutral-950/50 text-[10px] font-black uppercase tracking-widest italic">
-                 No fluff. No pressure. Spots are limited due to on-site work.
-              </p>
-           </div>
+        {/* 4. THE SCOT ADVANTAGE: VALUE PROOF (DARK CINEMATIC) */}
+        <section className="py-40 px-6 bg-[#0f0e0c] relative z-10 border-b border-white/5">
+          <div className="absolute inset-y-0 left-[10%] w-[1px] bg-white/5 pointer-events-none z-0" />
+          <div className="absolute inset-y-0 right-[10%] w-[1px] bg-white/5 pointer-events-none z-0" />
+
+          <div className="max-w-7xl mx-auto relative z-10">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+              <div>
+                <p className="text-[#D2A214] font-bold uppercase tracking-[0.3em] text-[9px] mb-4">Authority & Impact</p>
+                <h2 className="text-5xl md:text-7xl font-bebas text-white tracking-wide uppercase leading-none mb-8">
+                  REAL OUTCOMES. <br/><span className="text-white/20">NO FLUFF.</span>
+                </h2>
+                <p className="text-white/60 font-light text-base md:text-lg leading-relaxed max-w-lg mb-8">
+                  We don't count vanity page clicks; we track cold phone calls, quote form submissions, and direct digital trust building. If the system fails to bring back its cost in signed contracts, we consider it a failure.
+                </p>
+
+                <div className="grid grid-cols-2 gap-6">
+                  <div className="p-8 bg-[#171513]/40 border border-white/5 rounded-sm">
+                    <Star className="text-[#D2A214] mb-4" size={20} />
+                    <h4 className="text-sm font-bold uppercase tracking-wider text-white mb-2">5.0★ Google Rank</h4>
+                    <p className="text-[10px] text-white/50 leading-relaxed font-light">100% verified local Scottish business testimonials confirming raw visual results.</p>
+                  </div>
+                  <div className="p-8 bg-[#171513]/40 border border-white/5 rounded-sm">
+                    <ShieldCheck className="text-[#D2A214] mb-4" size={20} />
+                    <h4 className="text-sm font-bold uppercase tracking-wider text-white mb-2">CAA Licensed Drone</h4>
+                    <p className="text-[10px] text-white/50 leading-relaxed font-light">Full commercial aerial permissions for safe high-end filming across the Central Belt.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="p-12 bg-[#171513]/60 border border-white/5 rounded-sm text-left">
+                <h3 className="text-3xl font-bebas tracking-wide text-white mb-6 uppercase">Verified Case Results</h3>
+                <div className="space-y-6">
+                  {[
+                    { label: "K Lewis Joinery", stat: "1st Week Bookings", desc: "Redesigned digital platform triggered booked woodwork quote requests within 5 days of launch." },
+                    { label: "Almond Vet Care", stat: "Strategic Booking Setup", desc: "Designed Perthshire clinic web architecture to streamline onboarding for independent pet owners." },
+                    { label: "Simply Sheds", stat: "Active Weekend Campaign", desc: "Designed product showcase landing funnels to support local weekend popups and clear retail catalog margins." }
+                  ].map((res, i) => (
+                    <div key={i} className="border-b border-white/5 pb-4 last:border-b-0 last:pb-0">
+                      <div className="flex justify-between items-baseline mb-1">
+                        <h4 className="text-xs font-bold uppercase tracking-wider text-white">{res.label}</h4>
+                        <span className="text-[10px] font-bold text-[#D2A214] uppercase tracking-wider">{res.stat}</span>
+                      </div>
+                      <p className="text-[10px] text-white/45 leading-relaxed font-light">{res.desc}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
         </section>
 
-        <Footer />
+        {/* 5. CALL TO ACTION (BRIGHT EDITORIAL - OFF-WHITE) */}
+        <section className="py-48 px-6 bg-[#F5F4F0] text-[#1A1917] relative z-10 border-t border-[#1A1917]/10 text-center flex items-center justify-center overflow-hidden">
+          <div className="absolute inset-y-0 left-[10%] w-[1px] bg-[#1A1917]/5 pointer-events-none z-0" />
+          <div className="absolute inset-y-0 right-[10%] w-[1px] bg-[#1A1917]/5 pointer-events-none z-0" />
+
+          <div className="max-w-4xl mx-auto relative z-10 flex flex-col items-center">
+            <p className="text-[#D2A214] font-bold uppercase tracking-[0.4em] text-[9px] mb-8">Begin The Road</p>
+            <h2 className="text-6xl md:text-8xl font-bebas text-[#1A1917] leading-none mb-12">
+              READY TO COMMENCE <br/><span className="text-[#1A1917]/25">YOUR SYSTEM SCALE?</span>
+            </h2>
+            <Link
+              href="/contact"
+              className="relative px-12 py-6 bg-transparent border border-[#1A1917]/20 text-[#1A1917] font-bold uppercase tracking-[0.25em] text-[9px] rounded-sm overflow-hidden group/btn hover:border-[#D2A214] transition-colors duration-500 inline-block font-inter-tight"
+            >
+              <div className="absolute inset-0 bg-[#D2A214] translate-y-[100%] group-hover/btn:translate-y-0 transition-transform duration-500 ease-out" />
+              <span className="relative z-10 group-hover/btn:text-[#0f0e0c] transition-colors duration-500">Book Your Discovery Call</span>
+            </Link>
+          </div>
+        </section>
+
       </main>
+      <Footer />
     </>
-  );
+  )
 }

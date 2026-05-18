@@ -1,211 +1,236 @@
 'use client'
 
-'use client'
-
 import React from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { Video, ArrowLeft, CheckCircle2, Camera, Plane, Zap, Target, Play } from 'lucide-react'
+import { Camera, Plane, Target, Play, ArrowRight, CheckCircle2 } from 'lucide-react'
+import Image from 'next/image'
 import Navbar from '@/components/Navbar'
-import { StickyFooter } from '@/components/ui/sticky-footer'
+import Footer from '@/components/Footer'
+
+const cinematicEase = [0.16, 1, 0.3, 1]
 
 const videoServices = [
   {
     title: "Cinematic Drone Footage",
-    description: "Licensed drone pilots capturing stunning aerial views of your premises, projects, or events.",
+    description: "Fully licensed CAA drone operations capturing the scale, majesty, and grandeur of your premises, projects, or estates.",
     icon: Plane
   },
   {
-    title: "Commercial Shoots",
-    description: "High-quality video production for websites, TV, and cinema advertising.",
+    title: "Commercial Brand Shoots",
+    description: "High-end commercial films structured to convey trust, craft, and value to prospective clients on websites or channels.",
     icon: Camera
   },
   {
     title: "Project Walkthroughs",
-    description: "Perfect for construction, real estate, and renovation projects to show progress and quality.",
+    description: "Perfect for high-end architects, construction groups, and developers to showcase the meticulous details of their projects.",
     icon: Target
   }
 ]
 
+const campaigns = [
+  { id: "qrQK-maE3sA", title: "Simply Sheds Scotland", desc: "A cinematic documentary narrative capturing workshop craftsmanship and customer trust." },
+  { id: "VlyX1CueJCc", title: "St Andrews Refurbishment", desc: "A detailed commercial walkthrough highlighting renovation scale and meticulous finishes." }
+]
+
 export default function VideoProductionPage() {
   return (
-    <main className="bg-dark min-h-screen text-white font-figtree">
+    <>
       <Navbar />
-      
-      {/* 🦸 HERO SECTION */}
-      <section className="relative py-32 md:py-48 px-6 overflow-hidden border-b border-white/5">
-         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-brand-yellow/5 blur-[120px] rounded-full pointer-events-none" />
-         
-         <div className="max-w-[1240px] mx-auto text-center relative z-10">
+      <main className="min-h-screen bg-[#0f0e0c] text-[#E8E0D5] font-inter-tight selection:bg-[#D2A214] selection:text-[#0f0e0c] overflow-hidden">
+        
+        {/* 1. HERO SECTION (DARK CINEMATIC) */}
+        <section className="relative min-h-[90vh] flex items-center justify-center px-6 overflow-hidden py-32 border-b border-white/5">
+          <div className="absolute inset-0 bg-[#0a0908] z-0">
+            <Image 
+              src="/ATMOSPHERIC SCOTLAND IMAGES/Edinburgh Sunset.jpg" 
+              alt="Edinburgh Sunset Drone" 
+              fill 
+              priority
+              className="object-cover opacity-[0.2] filter grayscale contrast-[1.1] pointer-events-none"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0f0e0c] via-[#0f0e0c]/40 to-[#0f0e0c]" />
+          </div>
+
+          <div className="absolute inset-y-0 left-[10%] w-[1px] bg-white/5 pointer-events-none z-0" />
+          <div className="absolute inset-y-0 right-[10%] w-[1px] bg-white/5 pointer-events-none z-0" />
+
+          <div className="max-w-6xl mx-auto text-center relative z-10">
             <motion.p 
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="text-brand-yellow font-black uppercase tracking-[0.4em] text-xs mb-8 italic"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1.8 }}
+              className="text-[#D2A214] font-bold uppercase tracking-[0.4em] text-[9px] mb-8"
             >
-              TELL YOUR STORY. SELL YOUR SERVICES.
+              Cinematic Film & Aerial Production
             </motion.p>
             
             <motion.h1 
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 35 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="text-5xl md:text-8xl font-black text-white italic tracking-tighter uppercase mb-8 leading-none"
+              transition={{ duration: 1.8, delay: 0.2, ease: cinematicEase }}
+              className="text-6xl md:text-8xl lg:text-[7.5rem] font-bebas text-white tracking-wide mb-12 leading-[0.95] uppercase"
             >
-              Video Production <span className="text-brand-yellow">Scotland</span>
+              STORIES FILMED <br/>
+              <span className="text-white/20">WITH INTENTION.</span>
             </motion.h1>
-            
-            <motion.p 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-xl md:text-3xl text-white max-w-3xl mx-auto italic font-medium leading-relaxed"
-            >
-              Cinematic drone footage and professional video that tells your story and sells your services. We capture the essence of your business.
-            </motion.p>
-         </div>
-      </section>
 
-      {/* 📘 WHAT IS VIDEO PRODUCTION? */}
-      <section className="py-24 md:py-32 px-6">
-        <div className="max-w-[1240px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
-          <div>
-            <h2 className="text-4xl md:text-6xl font-black text-white uppercase italic tracking-tighter mb-8">What is <span className="text-brand-yellow">Video Production</span>?</h2>
-            <div className="text-white text-lg md:text-xl space-y-6 leading-relaxed italic">
-              <p>
-                Video is the most powerful medium for communication. It captures attention, builds trust, and allows you to show rather than tell.
-              </p>
-              <p>
-                At Bear Media, we specialize in cinematic drone work and professional ground-based video for Scottish businesses.
-              </p>
+            <motion.p 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 2, delay: 0.4 }}
+              className="max-w-3xl mx-auto text-[#E8E0D5]/60 font-light text-lg md:text-xl leading-relaxed tracking-wide"
+            >
+              We produce breathtaking 4K films, licensed aerial drone cinematography, and high-trust walkthrough campaigns. Built to connect with local Scottish customers on an emotional level.
+            </motion.p>
+          </div>
+        </section>
+
+        {/* 2. THE ETHOS (BRIGHT EDITORIAL - OFF-WHITE) */}
+        <section className="py-40 px-6 bg-[#F5F4F0] text-[#1A1917] relative z-10 border-b border-[#1A1917]/10">
+          <div className="absolute inset-y-0 left-[10%] w-[1px] bg-[#1A1917]/5 pointer-events-none z-0" />
+          <div className="absolute inset-y-0 right-[10%] w-[1px] bg-[#1A1917]/5 pointer-events-none z-0" />
+
+          <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-24 items-center relative z-10">
+            <div>
+              <p className="text-[#D2A214] font-bold uppercase tracking-[0.3em] text-[9px] mb-4">Cinematic Narrative</p>
+              <h2 className="text-5xl md:text-6xl lg:text-7xl font-bebas text-[#1A1917] leading-[0.95] tracking-tight uppercase mb-8">
+                Show the Grit. <br/><span className="text-[#1A1917]/35">Sell the Value.</span>
+              </h2>
+              <div className="space-y-6 text-[#1A1917]/70 font-light text-base md:text-lg leading-relaxed max-w-xl">
+                <p>
+                  A premium video does not just look beautiful. It communicates scale, expertise, and precision within seconds.
+                </p>
+                <p>
+                  At Bear Media, we strip away superficial agency templates. We spend the day on location, documenting the physical reality of your work, your team, and your craftsmanship, formatting it to build instant credibility.
+                </p>
+              </div>
+            </div>
+
+            <div className="bg-white p-12 border border-[#1A1917]/5 shadow-md rounded-sm">
+              <h3 className="text-2xl font-bebas tracking-wide text-[#1A1917] mb-8 uppercase">Production Standards</h3>
+              <ul className="space-y-6">
+                {[
+                  "Licensed CAA drone operations (Balmoral, Howies, Saughton Park)",
+                  "Pro-grade 4K ground capture with dynamic lighting setups",
+                  "Sound design and authentic voiceover scripting",
+                  "Strategic formats tailored for desktop websites & social reels"
+                ].map((item, i) => (
+                  <li key={i} className="flex gap-4 items-start text-sm text-[#1A1917]/70 leading-relaxed font-light">
+                    <CheckCircle2 className="text-[#D2A214] shrink-0" size={18} />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
-          <div className="glass-card p-12 border-brand-yellow/20">
-            <h3 className="text-2xl font-black text-brand-yellow uppercase italic mb-6">Why it matters</h3>
-            <ul className="space-y-4">
-              {[
-                "Video increases landing page conversion by 80%",
-                "80% of users recall a video ad they saw in the past 30 days",
-                "Drone footage provides a premium, high-end feel",
-                "Video is 53x more likely to reach the front page of Google"
-              ].map((item, i) => (
-                <li key={i} className="flex gap-4 items-start text-white italic font-medium">
-                  <CheckCircle2 className="text-brand-yellow shrink-0" size={24} />
-                  {item}
-                </li>
+        </section>
+
+        {/* 3. SHOWCASE SHOWROOM (DARK CINEMATIC) */}
+        <section className="py-40 px-6 bg-[#0f0e0c] relative z-10 border-b border-white/5">
+          <div className="absolute inset-y-0 left-[10%] w-[1px] bg-white/5 pointer-events-none z-0" />
+          <div className="absolute inset-y-0 right-[10%] w-[1px] bg-white/5 pointer-events-none z-0" />
+
+          <div className="max-w-7xl mx-auto relative z-10">
+            <div className="text-center mb-24">
+              <p className="text-[#D2A214] font-bold uppercase tracking-[0.3em] text-[9px] mb-4">Featured Work</p>
+              <h2 className="text-5xl md:text-7xl font-bebas text-white tracking-wide leading-none uppercase">CINEMATIC SHOWCASES</h2>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-5xl mx-auto">
+              {campaigns.map((video, idx) => (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 1.8, delay: idx * 0.15, ease: cinematicEase }}
+                  className="space-y-6"
+                >
+                  <div className="aspect-video rounded-sm overflow-hidden border border-white/5 bg-[#171513] shadow-xl relative group">
+                    <iframe
+                      src={`https://www.youtube.com/embed/${video.id}`}
+                      title={video.title}
+                      className="w-full h-full border-0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <h4 className="text-2xl font-bebas text-white tracking-wider uppercase">{video.title}</h4>
+                    <p className="text-xs text-white/50 leading-relaxed font-light">{video.desc}</p>
+                  </div>
+                </motion.div>
               ))}
-            </ul>
-          </div>
-        </div>
-      </section>
+            </div>
 
-      {/* ⚙️ WHAT WE ACTUALLY DO */}
-      <section className="py-24 md:py-32 px-6 bg-white/[0.02]">
-        <div className="max-w-[1240px] mx-auto">
-          <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-6xl font-black text-white uppercase italic tracking-tighter">What we <span className="text-brand-yellow">actually</span> do</h2>
-            <p className="text-white mt-4 text-lg">Cinematic quality for every project.</p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {videoServices.map((service, index) => (
-              <motion.div
-                key={service.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="glass-card p-10 border-brand-yellow/10 hover:border-brand-yellow/30 transition-all group"
+            <div className="mt-20 text-center">
+              <a 
+                href="https://www.youtube.com/@bearmedia70" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-3 px-8 py-4 bg-red-600 text-white font-bold uppercase tracking-widest text-[9px] rounded-sm hover:bg-red-700 transition-colors font-inter-tight"
               >
-                <div className="w-16 h-16 rounded-full bg-brand-yellow/10 flex items-center justify-center mb-8 border border-brand-yellow/20">
-                  <service.icon size={30} className="text-brand-yellow" />
-                </div>
-                <h3 className="text-2xl font-black text-brand-yellow uppercase italic mb-4">{service.title}</h3>
-                <p className="text-white text-base leading-relaxed font-medium italic">{service.description}</p>
-              </motion.div>
-            ))}
+                <Play size={12} fill="currentColor" /> Subscribe on YouTube
+              </a>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* 🚀 REAL EXAMPLES */}
-      <section className="py-24 md:py-32 px-6">
-        <div className="max-w-[1240px] mx-auto text-center">
-          <h2 className="text-4xl md:text-6xl font-black text-white uppercase italic tracking-tighter mb-16">Real <span className="text-brand-yellow">Work</span></h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
-            {[
-              { id: "qrQK-maE3sA", title: "Simply Sheds Scotland", desc: "Cinematic Brand Story" },
-              { id: "VlyX1CueJCc", title: "St Andrews Refurb", desc: "Project Walkthrough" }
-            ].map((video, i) => (
-              <div key={i} className="aspect-video rounded-3xl overflow-hidden border-2 border-white/5 bg-neutral-900 shadow-2xl">
-                 <iframe
-                    src={`https://www.youtube.com/embed/${video.id}`}
-                    title={video.title}
-                    className="w-full h-full border-0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                  ></iframe>
-              </div>
-            ))}
-          </div>
-          <a 
-            href="https://www.youtube.com/@bearmedia" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 px-8 py-4 bg-red-600 text-white font-black uppercase tracking-widest text-xs rounded-xl hover:bg-red-700 transition-colors"
-          >
-            <Play size={16} fill="currentColor" /> Subscribe on YouTube
-          </a>
-        </div>
-      </section>
+        {/* 4. PILLARS OF PRODUCTION (BRIGHT EDITORIAL - OFF-WHITE) */}
+        <section className="py-40 px-6 bg-[#F5F4F0] text-[#1A1917] relative z-10 border-b border-[#1A1917]/10">
+          <div className="absolute inset-y-0 left-[10%] w-[1px] bg-[#1A1917]/5 pointer-events-none z-0" />
+          <div className="absolute inset-y-0 right-[10%] w-[1px] bg-[#1A1917]/5 pointer-events-none z-0" />
 
-      {/* 👥 WHO IT'S FOR */}
-      <section className="py-24 md:py-32 px-6 bg-white/[0.02]">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl md:text-6xl font-black text-white uppercase italic tracking-tighter mb-8">Who <span className="text-brand-yellow">it's for</span></h2>
-          <div className="text-white text-lg md:text-xl space-y-6 leading-relaxed italic mb-12">
-            <p>
-              We work with Scottish businesses who understand that a high-quality video is the best way to show their value to the world.
-            </p>
-            <p className="text-sm border-t border-white/5 pt-8">
-              Need to get your new video seen? Check out our <Link href="/social-media" className="text-brand-yellow hover:underline">Social Media</Link> services.
-            </p>
-          </div>
-          <div className="flex flex-wrap justify-center gap-4">
-            {["Real Estate & Architects", "Leisure & Hospitality", "Construction & Engineering", "Event Organizers"].map((tag) => (
-              <span key={tag} className="px-6 py-2 rounded-full border border-brand-yellow/30 text-brand-yellow font-bold uppercase tracking-widest text-xs">{tag}</span>
-            ))}
-          </div>
-        </div>
-      </section>
+          <div className="max-w-7xl mx-auto relative z-10">
+            <div className="text-center mb-24">
+              <p className="text-[#D2A214] font-bold uppercase tracking-[0.3em] text-[9px] mb-4">Creative Capabilities</p>
+              <h2 className="text-5xl md:text-7xl font-bebas text-[#1A1917] tracking-wide leading-none uppercase">WHAT WE CAPTURE.</h2>
+            </div>
 
-      {/* 🚀 CALL-TO-ACTION SECTION */}
-      <section className="py-32 md:py-48 px-6 text-center border-t border-white/5">
-        <div className="max-w-[1240px] mx-auto">
-          <h2 className="text-5xl md:text-8xl font-black text-white italic tracking-tighter uppercase mb-12 leading-none">
-            Ready to <span className="text-brand-yellow">Show</span><br />your business in 4K?
-          </h2>
-          
-          <a 
-            href="https://calendly.com/bearmedia/discovery-call" 
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block bg-brand-yellow text-dark text-xl md:text-3xl font-black py-8 px-16 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-[0_20px_40px_-15px_rgba(221,163,30,0.4)] animate-[float_4s_ease-in-out_infinite] uppercase italic tracking-widest"
-          >
-            Start Your Video Project
-          </a>
-          
-          <div className="mt-24">
-            <Link 
-              href="/" 
-              className="inline-flex items-center gap-4 text-white hover:text-brand-yellow transition-colors font-black uppercase tracking-[0.4em] text-xs"
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+              {videoServices.map((service, idx) => (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 1.5, delay: idx * 0.15, ease: cinematicEase }}
+                  className="bg-white p-12 border border-[#1A1917]/5 shadow-sm rounded-sm hover:shadow-md transition-all group"
+                >
+                  <div className="w-12 h-12 rounded-full bg-[#F5F4F0] flex items-center justify-center mb-8 border border-[#1A1917]/5">
+                    <service.icon size={20} className="text-[#D2A214]" />
+                  </div>
+                  <h3 className="text-xl font-bebas text-[#1A1917] tracking-wider uppercase mb-4">{service.title}</h3>
+                  <p className="text-xs text-[#1A1917]/60 leading-relaxed font-light">{service.description}</p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* 5. CALL TO ACTION (BRIGHT EDITORIAL) */}
+        <section className="py-48 px-6 bg-[#F5F4F0] text-[#1A1917] relative z-10 border-t border-[#1A1917]/10 text-center flex items-center justify-center overflow-hidden">
+          <div className="absolute inset-y-0 left-[10%] w-[1px] bg-[#1A1917]/5 pointer-events-none z-0" />
+          <div className="absolute inset-y-0 right-[10%] w-[1px] bg-[#1A1917]/5 pointer-events-none z-0" />
+
+          <div className="max-w-4xl mx-auto relative z-10 flex flex-col items-center">
+            <p className="text-[#D2A214] font-bold uppercase tracking-[0.4em] text-[9px] mb-8">Document Your Craft</p>
+            <h2 className="text-6xl md:text-8xl font-bebas text-[#1A1917] leading-none mb-12">
+              READY TO FILM <br/><span className="text-[#1A1917]/25">IN MAJESTIC 4K?</span>
+            </h2>
+            <Link
+              href="/contact"
+              className="relative px-12 py-6 bg-transparent border border-[#1A1917]/20 text-[#1A1917] font-bold uppercase tracking-[0.25em] text-[9px] rounded-sm overflow-hidden group/btn hover:border-[#D2A214] transition-colors duration-500 inline-block font-inter-tight"
             >
-              <ArrowLeft size={16} /> Back to Home
+              <div className="absolute inset-0 bg-[#D2A214] translate-y-[100%] group-hover/btn:translate-y-0 transition-transform duration-500 ease-out" />
+              <span className="relative z-10 group-hover/btn:text-[#0f0e0c] transition-colors duration-500">Book Your Discovery Call</span>
             </Link>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <StickyFooter />
-    </main>
+      </main>
+      <Footer />
+    </>
   )
 }

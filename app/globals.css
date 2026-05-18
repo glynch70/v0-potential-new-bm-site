@@ -7,11 +7,11 @@
    ─────────────────────────────────────────────── */
 
 @theme inline {
-  --color-brand-yellow: #D9A05B; /* Soft warm gold/amber */
-  --color-brand-yellow-dark: #A6733B;
+  --color-brand-yellow: #D2A214; /* Authentically extracted warm mustard gold */
+  --color-brand-yellow-dark: #8A640F; /* Exact darker shadow gold from logo */
   --color-brand-sand: #E8E0D5;
   --color-dark: #0f0e0c; /* Very dark warm gray/brown */
-  --color-light: #F4F1ED; /* Warm off-white */
+  --color-light: #F5F4F0; /* Clean editorial off-white */
   --color-charcoal: #171513; /* Warm charcoal */
   
   --font-body: var(--font-inter-tight), sans-serif;
@@ -72,11 +72,11 @@
   }
 
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-[#D9A05B] to-[#A6733B];
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-[#D2A214] to-[#8A640F];
   }
   
   .bg-gradient-brand {
-    @apply bg-gradient-to-r from-[#D9A05B] to-[#A6733B];
+    @apply bg-gradient-to-r from-[#D2A214] to-[#8A640F];
   }
 
   .glass-card {

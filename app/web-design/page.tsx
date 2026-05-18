@@ -1,211 +1,276 @@
 'use client'
 
-'use client'
-
 import React from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { Monitor, ArrowLeft, CheckCircle2, Layout, Zap, Search, MousePointer2 } from 'lucide-react'
+import { Monitor, ArrowRight, CheckCircle2, Zap, Search, LayoutGrid } from 'lucide-react'
 import Image from 'next/image'
 import Navbar from '@/components/Navbar'
-import { StickyFooter } from '@/components/ui/sticky-footer'
+import Footer from '@/components/Footer'
 
-const features = [
+const cinematicEase = [0.16, 1, 0.3, 1]
+
+const pillars = [
   {
     title: "High-Speed Performance",
-    description: "Nobody waits for slow sites. We build for speed to keep your bounce rate low and your conversions high.",
+    description: "In 2026, speed is authority. We build websites that load in milliseconds, minimizing bounce rates and keeping visitors engaged.",
     icon: Zap
   },
   {
-    title: "Mobile-First Design",
-    description: "Most of your customers are on their phones. Your site will look stunning and work perfectly on every screen.",
+    title: "Mobile-First Architecture",
+    description: "Over 80% of local trades and service traffic is mobile. Your site will work flawlessly and look stunning on every screen size.",
     icon: Monitor
   },
   {
-    title: "SEO Foundation",
-    description: "We don't just build sites; we build sites that Google loves. On-page SEO is baked into every project.",
+    title: "Search Engine Optimization",
+    description: "A gorgeous website is useless if no one can find it. On-page SEO is structured natively from day one, not as an afterthought.",
     icon: Search
+  }
+]
+
+const projects = [
+  {
+    title: "Seamus Corry Rebrand",
+    category: "Branding & Web Design",
+    desc: "A premium digital home for high-end mental health & workplace wellbeing coaching.",
+    img: "/BEST FINAL CLIENT WORK/seamus rebrand.jpg",
+    link: "/portfolio/seamus-corry"
+  },
+  {
+    title: "Almond Vet Care",
+    category: "Strategic Web Design",
+    desc: "A frictionless, high-trust booking platform for Perthshire's newest independent vet clinic.",
+    img: "/BEST FINAL CLIENT WORK/website-4-almond-vet-v2.jpg",
+    link: "/portfolio/almond-vet-care"
+  },
+  {
+    title: "C&G Quality Builds",
+    category: "High-End Showcase",
+    desc: "Capturing massive construction projects and converting them into high-value contract leads.",
+    img: "/BEST FINAL CLIENT WORK/C&G Quality Builds.reel.cover.png",
+    link: "/portfolio/managing-what-matters"
+  },
+  {
+    title: "K Lewis Joinery",
+    category: "Trades Showcase",
+    desc: "Polished, clean showcase designed to present high-end woodwork and gather direct local leads.",
+    img: "/BEST FINAL CLIENT WORK/website-5-lewis-joinery-v2.jpg",
+    link: "/portfolio/k-lewis-joinery"
+  },
+  {
+    title: "Robertsons Transport",
+    category: "Industrial Branding",
+    desc: "Sleek, robust platform built for heavy transport logistics across the UK.",
+    img: "/BEST FINAL CLIENT WORK/rt-ltd.uk-v2.jpg",
+    link: "/portfolio/robertsons-transport"
+  },
+  {
+    title: "Simply Sheds",
+    category: "Local Campaign System",
+    desc: "High-conversion product showcases and weekend open-day landing campaigns.",
+    img: "/BEST FINAL CLIENT WORK/SIMPLY SHEDS.open sat & sun-Cover.jpg",
+    link: "/case-studies/simply-sheds"
   }
 ]
 
 export default function WebDesignPage() {
   return (
-    <main className="bg-dark min-h-screen text-white font-figtree">
+    <>
       <Navbar />
-      
-      {/* 🦸 HERO SECTION */}
-      <section className="relative py-32 md:py-48 px-6 overflow-hidden border-b border-white/5">
-         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-brand-yellow/5 blur-[120px] rounded-full pointer-events-none" />
-         
-         <div className="max-w-[1240px] mx-auto text-center relative z-10">
+      <main className="min-h-screen bg-[#0f0e0c] text-[#E8E0D5] font-inter-tight selection:bg-[#D2A214] selection:text-[#0f0e0c] overflow-hidden">
+        
+        {/* 1. HERO SECTION (DARK CINEMATIC) */}
+        <section className="relative min-h-[80vh] flex items-center justify-center px-6 overflow-hidden py-32 border-b border-white/5">
+          <div className="absolute inset-0 bg-[#0a0908] z-0">
+            <Image 
+              src="/ATMOSPHERIC SCOTLAND IMAGES/Balmoral Hotel.jpg" 
+              alt="Balmoral Hotel Edinburgh" 
+              fill 
+              priority
+              className="object-cover opacity-[0.15] filter grayscale contrast-[1.1] pointer-events-none"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0f0e0c] via-[#0f0e0c]/40 to-[#0f0e0c]" />
+          </div>
+
+          <div className="absolute inset-y-0 left-[10%] w-[1px] bg-white/5 pointer-events-none z-0" />
+          <div className="absolute inset-y-0 right-[10%] w-[1px] bg-white/5 pointer-events-none z-0" />
+
+          <div className="max-w-6xl mx-auto text-center relative z-10">
             <motion.p 
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="text-brand-yellow font-black uppercase tracking-[0.4em] text-xs mb-8 italic"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1.8 }}
+              className="text-[#D2A214] font-bold uppercase tracking-[0.4em] text-[9px] mb-8"
             >
-              CONVERT VISITORS INTO CUSTOMERS
+              High-Performance Digital Platforms
             </motion.p>
             
             <motion.h1 
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 35 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="text-5xl md:text-8xl font-black text-white italic tracking-tighter uppercase mb-8 leading-none"
+              transition={{ duration: 1.8, delay: 0.2, ease: cinematicEase }}
+              className="text-6xl md:text-8xl lg:text-[7.5rem] font-bebas text-white tracking-wide mb-12 leading-[0.95] uppercase"
             >
-              Website Design <span className="text-brand-yellow">Scotland</span>
+              WEBSITE DESIGN <br/>
+              <span className="text-white/20">THAT CONVERTS.</span>
             </motion.h1>
-            
-            <motion.p 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-xl md:text-3xl text-white max-w-3xl mx-auto italic font-medium leading-relaxed"
-            >
-              Websites that actually turn people into customers. We build fast, clean, and practical sites for Scottish businesses that mean business.
-            </motion.p>
-         </div>
-      </section>
 
-      {/* 📘 WHAT IS WEB DESIGN? */}
-      <section className="py-24 md:py-32 px-6">
-        <div className="max-w-[1240px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
-          <div>
-            <h2 className="text-4xl md:text-6xl font-black text-white uppercase italic tracking-tighter mb-8">What is <span className="text-brand-yellow">Web Design</span>?</h2>
-            <div className="text-white text-lg md:text-xl space-y-6 leading-relaxed italic">
-              <p>
-                In 2026, your website isn't just a digital business card. It's your most important salesperson.
-              </p>
-              <p>
-                Web design is the process of creating a digital experience that reflects your brand, communicates your value, and most importantly, drives action.
-              </p>
+            <motion.p 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 2, delay: 0.4 }}
+              className="max-w-3xl mx-auto text-[#E8E0D5]/60 font-light text-lg md:text-xl leading-relaxed tracking-wide"
+            >
+              We design and custom-code stunning digital galleries built for local businesses, trades, and ambitious companies across Scotland. No templates, no jargon, no monthly handcuffs.
+            </motion.p>
+          </div>
+        </section>
+
+        {/* 2. THE STRATEGY (BRIGHT EDITORIAL - OFF-WHITE) */}
+        <section className="py-40 px-6 bg-[#F5F4F0] text-[#1A1917] relative z-10 border-b border-[#1A1917]/10">
+          <div className="absolute inset-y-0 left-[10%] w-[1px] bg-[#1A1917]/5 pointer-events-none z-0" />
+          <div className="absolute inset-y-0 right-[10%] w-[1px] bg-[#1A1917]/5 pointer-events-none z-0" />
+
+          <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-24 items-center relative z-10">
+            <div>
+              <p className="text-[#D2A214] font-bold uppercase tracking-[0.3em] text-[9px] mb-4">The Strategy</p>
+              <h2 className="text-5xl md:text-6xl lg:text-7xl font-bebas text-[#1A1917] leading-[0.95] tracking-tight uppercase mb-8">
+                Your Digital <br/><span className="text-[#1A1917]/35">Front Door.</span>
+              </h2>
+              <div className="space-y-6 text-[#1A1917]/70 font-light text-base md:text-lg leading-relaxed max-w-xl">
+                <p>
+                  Most local business websites fail for three reasons: they use stock templates that look generic, they load incredibly slow, and they make it difficult for customers to get in touch.
+                </p>
+                <p>
+                  We treat websites as interactive showrooms. By integrating high-end video proof, clean layouts, and friction-free inquiry triggers, we turn random visitors into loyal clients.
+                </p>
+              </div>
+            </div>
+
+            <div className="bg-white p-12 border border-[#1A1917]/5 shadow-md rounded-sm">
+              <h3 className="text-2xl font-bebas tracking-wide text-[#1A1917] mb-8 uppercase">Key Conversion Standards</h3>
+              <ul className="space-y-6">
+                {[
+                  "Friction-free booking & call booking flows",
+                  "Native optimization for 100% mobile accessibility",
+                  "High-end custom-coded visual systems (no slow drag-and-drop builders)",
+                  "Fully verified Google Schema markup & organic SEO structure"
+                ].map((item, i) => (
+                  <li key={i} className="flex gap-4 items-start text-sm text-[#1A1917]/70 leading-relaxed font-light">
+                    <CheckCircle2 className="text-[#D2A214] shrink-0" size={18} />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
-          <div className="glass-card p-12 border-brand-yellow/20">
-            <h3 className="text-2xl font-black text-brand-yellow uppercase italic mb-6">Why it matters</h3>
-            <ul className="space-y-4">
-              {[
-                "First impressions happen in 0.05 seconds",
-                "88% of users won't return after a bad experience",
-                "Mobile users are 5x more likely to abandon a site if it's not optimized",
-                "Clean design builds instant trust and credibility"
-              ].map((item, i) => (
-                <li key={i} className="flex gap-4 items-start text-white italic font-medium">
-                  <CheckCircle2 className="text-brand-yellow shrink-0" size={24} />
-                  {item}
-                </li>
+        </section>
+
+        {/* 3. SHOWCASE GALLERY (DARK CINEMATIC) */}
+        <section className="py-40 px-6 bg-[#0f0e0c] relative z-10 border-b border-white/5">
+          <div className="absolute inset-y-0 left-[10%] w-[1px] bg-white/5 pointer-events-none z-0" />
+          <div className="absolute inset-y-0 right-[10%] w-[1px] bg-white/5 pointer-events-none z-0" />
+
+          <div className="max-w-7xl mx-auto relative z-10">
+            <div className="text-center mb-24">
+              <p className="text-[#D2A214] font-bold uppercase tracking-[0.3em] text-[9px] mb-4">Our Work</p>
+              <h2 className="text-5xl md:text-7xl font-bebas text-white tracking-wide leading-none uppercase">PORTFOLIO SHOWCASE</h2>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {projects.map((project, idx) => (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 1.5, delay: idx * 0.1, ease: cinematicEase }}
+                  className="group relative flex flex-col justify-between bg-[#171513] border border-white/5 rounded-sm overflow-hidden"
+                >
+                  <Link href={project.link} className="block relative aspect-[4/3] overflow-hidden">
+                    <Image 
+                      src={project.img} 
+                      alt={project.title} 
+                      fill 
+                      className="object-cover filter contrast-[1.05] group-hover:scale-[1.02] transition-transform duration-[2.5s] ease-out"
+                    />
+                    <div className="absolute inset-0 bg-[#0f0e0c]/40 group-hover:bg-[#0f0e0c]/10 transition-colors duration-500" />
+                  </Link>
+
+                  <div className="p-8 space-y-4">
+                    <p className="text-[#D2A214] font-bold uppercase tracking-[0.2em] text-[8px]">{project.category}</p>
+                    <h3 className="text-2xl font-bebas text-white tracking-wider uppercase">{project.title}</h3>
+                    <p className="text-xs text-white/50 leading-relaxed font-light">{project.desc}</p>
+                    
+                    <div className="pt-4">
+                      <Link 
+                        href={project.link} 
+                        className="inline-flex items-center gap-3 text-[9px] font-bold uppercase tracking-[0.25em] text-white/80 hover:text-[#D2A214] transition-colors"
+                      >
+                        Explore Case Study <ArrowRight size={10} />
+                      </Link>
+                    </div>
+                  </div>
+                </motion.div>
               ))}
-            </ul>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* ⚙️ WHAT WE ACTUALLY DO */}
-      <section className="py-24 md:py-32 px-6 bg-white/[0.02]">
-        <div className="max-w-[1240px] mx-auto">
-          <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-6xl font-black text-white uppercase italic tracking-tighter">What we <span className="text-brand-yellow">actually</span> do</h2>
-            <p className="text-white mt-4 text-lg">No jargon. Just results.</p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {features.map((feature, index) => (
-              <motion.div
-                key={feature.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="glass-card p-10 border-brand-yellow/10 hover:border-brand-yellow/30 transition-all group"
-              >
-                <div className="w-16 h-16 rounded-full bg-brand-yellow/10 flex items-center justify-center mb-8 border border-brand-yellow/20">
-                  <feature.icon size={30} className="text-brand-yellow" />
-                </div>
-                <h3 className="text-2xl font-black text-brand-yellow uppercase italic mb-4">{feature.title}</h3>
-                <p className="text-white text-base leading-relaxed font-medium italic">{feature.description}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+        {/* 4. PILLARS & FEATURES (BRIGHT EDITORIAL - OFF-WHITE) */}
+        <section className="py-40 px-6 bg-[#F5F4F0] text-[#1A1917] relative z-10 border-b border-[#1A1917]/10">
+          <div className="absolute inset-y-0 left-[10%] w-[1px] bg-[#1A1917]/5 pointer-events-none z-0" />
+          <div className="absolute inset-y-0 right-[10%] w-[1px] bg-[#1A1917]/5 pointer-events-none z-0" />
 
-      {/* 🚀 REAL EXAMPLES */}
-      <section className="py-24 md:py-32 px-6">
-        <div className="max-w-[1240px] mx-auto">
-          <h2 className="text-4xl md:text-6xl font-black text-white uppercase italic tracking-tighter mb-16 text-center">Real <span className="text-brand-yellow">Examples</span></h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              { title: "Almond Vet Care", desc: "Lead generation system that builds trust and captures local pet owners.", img: "/work/almond_vet_care.jpg" },
-              { title: "Lewis Joinery", desc: "Designed to showcase high-end craftsmanship and generate project enquiries.", img: "/work/website-5-lewis-joinery-v2.jpg" },
-              { title: "Herb Soul", desc: "Clean, fast e-commerce experience built to drive online orders.", img: "/work/website-3-herb-soul-v2.jpg" },
-              { title: "Robertsons Transport", desc: "Streamlined enquiry system for a heavy transport company.", img: "/work/rt-ltd.uk-v2.jpg" },
-              { title: "Managing Property", desc: "High-trust platform built to convert landlords into clients.", img: "/work/website-managing-v2.jpg" },
-              { title: "MWM Professional", desc: "Authority-building site for professional consulting services.", img: "/work/mwm.jpg" }
-            ].map((item, i) => (
-              <div key={i} className="group relative aspect-[4/3] rounded-3xl overflow-hidden border-2 border-white/5 bg-neutral-900">
-                 <Image 
-                   src={item.img} 
-                   alt={item.title} 
-                   fill 
-                   className="object-cover group-hover:scale-105 transition-transform duration-700"
-                 />
-                 <div className="absolute inset-0 bg-neutral-950/80 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity z-10 p-8 text-center backdrop-blur-sm">
-                    <h4 className="text-xl font-black text-brand-yellow uppercase italic mb-2">{item.title}</h4>
-                    <p className="text-white text-sm italic mb-6">{item.desc}</p>
-                 </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+          <div className="max-w-7xl mx-auto relative z-10">
+            <div className="text-center mb-24">
+              <p className="text-[#D2A214] font-bold uppercase tracking-[0.3em] text-[9px] mb-4">Technical Pillars</p>
+              <h2 className="text-5xl md:text-7xl font-bebas text-[#1A1917] tracking-wide leading-none uppercase">WHAT WE ACTUALLY BUILD.</h2>
+            </div>
 
-      {/* 👥 WHO IT'S FOR */}
-      <section className="py-24 md:py-32 px-6 bg-white/[0.02]">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl md:text-6xl font-black text-white uppercase italic tracking-tighter mb-8">Who <span className="text-brand-yellow">it's for</span></h2>
-          <div className="text-white text-lg md:text-xl space-y-6 leading-relaxed italic mb-12">
-            <p>
-              We work with Scottish SMEs who are tired of over-complicated agencies and monthly fees. If you want a site that you actually own, that actually works, and that actually brings in customers — we're for you.
-            </p>
-            <p className="text-sm border-t border-white/5 pt-8">
-              Want to add cinematic drone footage to your site? Check out our <Link href="/video-production" className="text-brand-yellow hover:underline">Video Production</Link> services.
-            </p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+              {pillars.map((pillar, idx) => (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 1.5, delay: idx * 0.15, ease: cinematicEase }}
+                  className="bg-white p-12 border border-[#1A1917]/5 shadow-sm rounded-sm hover:shadow-md transition-all group"
+                >
+                  <div className="w-12 h-12 rounded-full bg-[#F5F4F0] flex items-center justify-center mb-8 border border-[#1A1917]/5">
+                    <pillar.icon size={20} className="text-[#D2A214]" />
+                  </div>
+                  <h3 className="text-xl font-bebas text-[#1A1917] tracking-wider uppercase mb-4">{pillar.title}</h3>
+                  <p className="text-xs text-[#1A1917]/60 leading-relaxed font-light">{pillar.description}</p>
+                </motion.div>
+              ))}
+            </div>
           </div>
-          <div className="flex flex-wrap justify-center gap-4">
-            {["Trades & Construction", "Local Services", "Small E-commerce", "Professional Services"].map((tag) => (
-              <span key={tag} className="px-6 py-2 rounded-full border border-brand-yellow/30 text-brand-yellow font-bold uppercase tracking-widest text-xs">{tag}</span>
-            ))}
-          </div>
-        </div>
-      </section>
+        </section>
 
-      {/* 🚀 CALL-TO-ACTION SECTION */}
-      <section className="py-32 md:py-48 px-6 text-center border-t border-white/5">
-        <div className="max-w-[1240px] mx-auto">
-          <h2 className="text-5xl md:text-8xl font-black text-white italic tracking-tighter uppercase mb-12 leading-none">
-            Ready to <span className="text-brand-yellow">Build</span><br />something that works?
-          </h2>
-          
-          <a 
-            href="https://calendly.com/bearmedia/discovery-call" 
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block bg-brand-yellow text-dark text-xl md:text-3xl font-black py-8 px-16 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-[0_20px_40px_-15px_rgba(221,163,30,0.4)] animate-[float_4s_ease-in-out_infinite] uppercase italic tracking-widest"
-          >
-            Start Your Project
-          </a>
-          
-          <div className="mt-24">
-            <Link 
-              href="/" 
-              className="inline-flex items-center gap-4 text-white hover:text-brand-yellow transition-colors font-black uppercase tracking-[0.4em] text-xs"
+        {/* 5. CALL TO ACTION (BRIGHT EDITORIAL) */}
+        <section className="py-48 px-6 bg-[#F5F4F0] text-[#1A1917] relative z-10 border-t border-[#1A1917]/10 text-center flex items-center justify-center overflow-hidden">
+          <div className="absolute inset-y-0 left-[10%] w-[1px] bg-[#1A1917]/5 pointer-events-none z-0" />
+          <div className="absolute inset-y-0 right-[10%] w-[1px] bg-[#1A1917]/5 pointer-events-none z-0" />
+
+          <div className="max-w-4xl mx-auto relative z-10 flex flex-col items-center">
+            <p className="text-[#D2A214] font-bold uppercase tracking-[0.4em] text-[9px] mb-8">Launch Your Showroom</p>
+            <h2 className="text-6xl md:text-8xl font-bebas text-[#1A1917] leading-none mb-12">
+              READY TO BUILD <br/><span className="text-[#1A1917]/25">SOMETHING THAT WORKS?</span>
+            </h2>
+            <Link
+              href="/contact"
+              className="relative px-12 py-6 bg-transparent border border-[#1A1917]/20 text-[#1A1917] font-bold uppercase tracking-[0.25em] text-[9px] rounded-sm overflow-hidden group/btn hover:border-[#D2A214] transition-colors duration-500 inline-block font-inter-tight"
             >
-              <ArrowLeft size={16} /> Back to Home
+              <div className="absolute inset-0 bg-[#D2A214] translate-y-[100%] group-hover/btn:translate-y-0 transition-transform duration-500 ease-out" />
+              <span className="relative z-10 group-hover/btn:text-[#0f0e0c] transition-colors duration-500">Book Your Discovery Call</span>
             </Link>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <StickyFooter />
-    </main>
+      </main>
+      <Footer />
+    </>
   )
 }

@@ -1,97 +1,345 @@
-import React from 'react';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
-import Link from 'next/link';
+'use client'
+
+import React from 'react'
+import Navbar from '@/components/Navbar'
+import Footer from '@/components/Footer'
+import Image from 'next/image'
+import Link from 'next/link'
+import { motion } from 'framer-motion'
+
+const cinematicEase = [0.16, 1, 0.3, 1]
 
 export default function AboutPage() {
   return (
     <>
       <Navbar />
-      <main className="min-h-screen bg-neutral-950 text-white font-sans selection:bg-brand-yellow selection:text-neutral-950">
-        {/* 1. HERO SECTION */}
-        <section className="relative pt-20 pb-12 md:pt-32 md:pb-20 px-6 overflow-hidden flex flex-col items-center justify-center text-center">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(245,166,35,0.04)_0%,transparent_70%)] pointer-events-none" />
-          <div className="max-w-7xl mx-auto relative z-10">
-            <p className="text-brand-yellow font-black uppercase tracking-[0.3em] mb-4 text-[10px] md:text-sm animate-pulse italic">
-               No Agency Nonsense. Just Results.
-            </p>
-            <h1 className="mb-6 md:mb-8">
-              Why <span className="text-brand-yellow">Bear Media?</span>
-            </h1>
-            <p className="text-white max-w-xl mx-auto mb-10 md:mb-12 font-medium italic">
-              Founded in West Lothian to help local businesses look as good as they work. We don't sell "content"—we sell growth systems.
-            </p>
+      <main className="min-h-screen bg-[#0f0e0c] text-[#E8E0D5] font-inter-tight selection:bg-[#D2A214] selection:text-[#0f0e0c] overflow-hidden">
+        
+        {/* 1. HERO SECTION (DARK CINEMATIC) */}
+        <section className="relative min-h-[85vh] flex items-center justify-center px-6 overflow-hidden py-32 border-b border-white/5">
+          <div className="absolute inset-0 bg-[#0a0908] z-0">
+            <Image 
+              src="/PERSONAL BRAND IMAGES/garry at kelpies.jpeg" 
+              alt="Garry Lynch at Kelpies" 
+              fill 
+              priority
+              className="object-cover opacity-[0.22] filter grayscale contrast-[1.1] scale-105 pointer-events-none"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0f0e0c] via-[#0f0e0c]/40 to-[#0f0e0c]" />
+          </div>
+
+          {/* Grid lines */}
+          <div className="absolute inset-y-0 left-[10%] w-[1px] bg-white/5 pointer-events-none z-0" />
+          <div className="absolute inset-y-0 right-[10%] w-[1px] bg-white/5 pointer-events-none z-0" />
+
+          <div className="max-w-6xl mx-auto text-center relative z-10">
+            <motion.p 
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1.8 }}
+              className="text-[#D2A214] font-bold uppercase tracking-[0.4em] text-[9px] mb-8"
+            >
+              The Story Behind The Lens
+            </motion.p>
+            
+            <motion.h1 
+              initial={{ opacity: 0, y: 35 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1.8, delay: 0.2, ease: cinematicEase }}
+              className="text-6xl md:text-8xl lg:text-[7rem] font-bebas text-white tracking-wide mb-12 leading-[0.95]"
+            >
+              REAL STORIES.<br/>
+              <span className="text-white/20">DOCUMENTED PROPERLY.</span>
+            </motion.h1>
+
+            <motion.p 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 2, delay: 0.4 }}
+              className="max-w-2xl mx-auto text-[#E8E0D5]/60 font-light text-lg md:text-xl leading-relaxed tracking-wide"
+            >
+              We don't deal in fancy marketing templates. We document the grit, scale, and authenticity of ambitious local businesses across Scotland's Central Belt.
+            </motion.p>
           </div>
         </section>
 
-        <section className="py-12 md:py-20 px-6 border-y border-white/5 bg-neutral-900/30">
-          <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center text-left">
-            <div className="aspect-square bg-neutral-900 rounded-[2rem] border border-white/5 flex items-center justify-center text-white text-xs font-black uppercase tracking-widest p-12 text-center italic">
-              "We visit your site, capture the work, and turn it into enquiries."
-            </div>
-            <div>
-              <h2 className="text-3xl md:text-5xl font-black mb-6 text-white uppercase italic font-bebas tracking-tight">Rooted in the <br /><span className="text-brand-yellow">Central Belt.</span></h2>
-              <p className="text-white mb-6 text-sm leading-relaxed italic">
-                We started Bear Media with a simple mission: to give local Scottish businesses access to the same high-end content and conversion systems used by big national brands—without the corporate fluff and overhead.
-              </p>
-              <p className="text-white mb-8 text-sm leading-relaxed italic font-bold">
-                Based in Broxburn, we're your local partner. We don't hide behind a screen—we visit your site in Edinburgh, Fife, or West Lothian, capture your story, and build your systems properly.
-              </p>
-              <div className="flex gap-6">
-                 <div>
-                    <p className="text-2xl font-black text-white font-bebas italic leading-none mb-1 text-brand-yellow">50+</p>
-                    <p className="text-[8px] font-bold text-white uppercase tracking-widest">Local Clients</p>
-                 </div>
-                 <div>
-                    <p className="text-2xl font-black text-white font-bebas italic leading-none mb-1 text-brand-yellow">Daily</p>
-                    <p className="text-[8px] font-bold text-white uppercase tracking-widest">Local Enquiries</p>
-                 </div>
-              </div>
-            </div>
-          </div>
-        </section>
+        {/* 2. THE OPERATOR (BRIGHT EDITORIAL SECTION) */}
+        <section className="py-40 px-6 bg-[#F5F4F0] text-[#1A1917] relative z-10 border-b border-[#1A1917]/10">
+          <div className="absolute inset-y-0 left-[10%] w-[1px] bg-[#1A1917]/5 pointer-events-none z-0" />
+          <div className="absolute inset-y-0 right-[10%] w-[1px] bg-[#1A1917]/5 pointer-events-none z-0" />
 
-        {/* 2. THE MANIFESTO */}
-        <section className="py-12 md:py-20 px-6">
-          <div className="max-w-7xl mx-auto text-center">
-            <h2 className="mb-12 text-white">
-              The <span className="text-brand-yellow">No-Nonsense</span> Manifesto.
-            </h2>
-            <div className="grid md:grid-cols-3 gap-6 text-left">
-              {[
-                { title: "Straight Talking", desc: "No marketing jargon. No vanity metrics. We speak plain English and focus entirely on your business growth." },
-                { title: "Local Partners", desc: "We aren't a faceless remote agency. We're on the ground, visiting your business to capture the real story." },
-                { title: "Results Only", desc: "If it doesn't bring in a lead or build your authority, we don't do it. Everything we build has a purpose." }
-              ].map((item, i) => (
-                <div key={i} className="glass-card p-8 border-white/5 hover:border-brand-yellow/20 transition-all">
-                  <h3 className="text-lg font-black mb-3 uppercase italic font-bebas tracking-widest text-brand-yellow">{item.title}</h3>
-                  <p className="text-white text-xs leading-relaxed italic">"{item.desc}"</p>
+          <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-24 lg:gap-32 relative z-10">
+            
+            {/* Image Block */}
+            <motion.div 
+              initial={{ opacity: 0, x: -40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 1.8, ease: cinematicEase }}
+              className="flex-1 w-full"
+            >
+              <div className="relative aspect-[3/4] w-full max-w-md mx-auto overflow-hidden bg-[#EFECE8] border border-[#1A1917]/10 rounded-sm group">
+                <Image 
+                  src="/PERSONAL BRAND IMAGES/owner garry lynch.jpeg" 
+                  alt="Garry Lynch - Founder of Bear Media" 
+                  fill 
+                  className="object-cover filter grayscale-[10%] contrast-[1.05] group-hover:scale-[1.02] transition-transform duration-[4s] ease-out"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#1A1917]/25 to-transparent" />
+                <div className="absolute bottom-8 left-8 text-white">
+                  <p className="text-[#D2A214] font-bold uppercase tracking-[0.3em] text-[8px] mb-1">Founder & Lead Creator</p>
+                  <h4 className="text-3xl font-bebas tracking-wide text-white">Garry Lynch</h4>
                 </div>
+              </div>
+            </motion.div>
+
+            {/* Narrative Block */}
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 1.8, delay: 0.2, ease: cinematicEase }}
+              className="flex-1 space-y-12"
+            >
+              <p className="text-[#D2A214] font-bold uppercase tracking-[0.3em] text-[9px] mb-2">The Mission</p>
+              
+              <h2 className="text-5xl md:text-6xl lg:text-7xl font-bebas text-[#1A1917] leading-[0.95] tracking-tight uppercase">
+                Grounded in <br/><span className="text-[#1A1917]/35">Scotland's Grit.</span>
+              </h2>
+
+              <div className="space-y-8 text-[#1A1917]/70 font-light text-base md:text-lg leading-relaxed max-w-xl">
+                <p>
+                  I'm not an agency executive hiding behind slides and buzzwords. I'm a camera operator, website strategist, and editor who is on the ground, visiting your site, capturing the scale of your craftsmanship, and presenting it to your customers.
+                </p>
+                <p>
+                  Based in Broxburn, West Lothian, we work directly with local trades, construction firms, and ambitious service businesses across Edinburgh, Glasgow, and Fife. We capture the true story behind your work and channel it into websites and campaigns that bring high-value enquiries.
+                </p>
+              </div>
+
+              <div className="flex gap-12 pt-6 border-t border-[#1A1917]/10">
+                <div>
+                  <p className="text-4xl font-bebas text-[#D2A214] leading-none mb-2">50+</p>
+                  <p className="text-[9px] font-bold text-[#1A1917]/60 uppercase tracking-widest">SMEs Grown</p>
+                </div>
+                <div>
+                  <p className="text-4xl font-bebas text-[#D2A214] leading-none mb-2">100%</p>
+                  <p className="text-[9px] font-bold text-[#1A1917]/60 uppercase tracking-widest">Real Outcomes</p>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* 3. BTS PROCESS GALLERY (DARK CINEMATIC) */}
+        <section className="py-40 px-6 bg-[#0f0e0c] relative z-10">
+          <div className="absolute inset-y-0 left-[10%] w-[1px] bg-white/5 pointer-events-none z-0" />
+          <div className="absolute inset-y-0 right-[10%] w-[1px] bg-white/5 pointer-events-none z-0" />
+
+          <div className="max-w-7xl mx-auto relative z-10">
+            <div className="text-center mb-24">
+              <p className="text-[#D2A214] font-bold uppercase tracking-[0.3em] text-[9px] mb-4">Behind The Scenes</p>
+              <h2 className="text-5xl md:text-7xl font-bebas text-white tracking-wide leading-none">THE GRIT. THE GEAR. THE CRAFT.</h2>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {[
+                {
+                  src: "/BTS : PROCESS IMAGES/Harley Biker Drone Shoot.jpg",
+                  title: "Drone Videography",
+                  desc: "Precision flying over Scottish landscapes to capture massive scale."
+                },
+                {
+                  src: "/BTS : PROCESS IMAGES/bts corporate photo shoot.jpg",
+                  title: "BTS Storytelling",
+                  desc: "Documenting the real people behind high-performing brands."
+                },
+                {
+                  src: "/BTS : PROCESS IMAGES/bts_drone.jpg",
+                  title: "Action Workflow",
+                  desc: "Capturing details and operations, directly on location."
+                }
+              ].map((item, idx) => (
+                <motion.div 
+                  key={idx}
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 1.5, delay: idx * 0.2, ease: cinematicEase }}
+                  className="group relative aspect-[3/4] overflow-hidden bg-[#171513] border border-white/5 rounded-sm"
+                >
+                  <Image 
+                    src={item.src} 
+                    alt={item.title} 
+                    fill
+                    className="object-cover opacity-75 filter grayscale group-hover:grayscale-0 group-hover:scale-[1.03] transition-all duration-[2s] ease-out"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0f0e0c]/90 via-transparent to-transparent opacity-95" />
+                  <div className="absolute bottom-6 left-6 right-6">
+                    <h4 className="text-xl font-bebas text-white tracking-wider mb-2">{item.title}</h4>
+                    <p className="text-xs text-white/50 leading-relaxed font-light">{item.desc}</p>
+                  </div>
+                </motion.div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* 3. FINAL CTA */}
-        <section className="py-20 px-6 text-center relative overflow-hidden bg-brand-yellow text-neutral-950">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,0,0,0.05)_0%,transparent_70%)] pointer-events-none" />
-          <div className="max-w-3xl mx-auto relative z-10">
-            <h2 className="mb-8 text-neutral-950">
-              Ready to Get Started?
+        {/* 4. TEAM BEAR MEDIA - PLAYFUL BUT LUXURY (BRIGHT EDITORIAL SECTION) */}
+        <section className="py-40 px-6 bg-[#F5F4F0] text-[#1A1917] relative z-10 border-t border-b border-[#1A1917]/10">
+          <div className="absolute inset-y-0 left-[10%] w-[1px] bg-[#1A1917]/5 pointer-events-none z-0" />
+          <div className="absolute inset-y-0 right-[10%] w-[1px] bg-[#1A1917]/5 pointer-events-none z-0" />
+
+          <div className="max-w-7xl mx-auto relative z-10">
+            <div className="text-center mb-24 max-w-xl mx-auto">
+              <p className="text-[#D2A214] font-bold uppercase tracking-[0.3em] text-[9px] mb-4">Team Bear Media</p>
+              <h2 className="text-5xl md:text-7xl font-bebas text-[#1A1917] tracking-wide mb-6">MEET THE OPERATIONS TEAM.</h2>
+              <p className="text-sm text-[#1A1917]/60 font-light leading-relaxed">
+                Behind every high-performance project are the loyal companions who supervise treated snacks, oversee nap schedules, and keep the team grounded.
+              </p>
+            </div>
+
+            {/* Central Dog & Garry Image */}
+            <div className="mb-24 flex justify-center">
+              <motion.div 
+                initial={{ opacity: 0, scale: 0.98 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 2, ease: cinematicEase }}
+                className="relative w-full max-w-3xl aspect-[16/9] overflow-hidden rounded-sm border border-[#1A1917]/10 bg-[#EFECE8]"
+              >
+                <Image 
+                  src="/PERSONAL BRAND IMAGES/gaz n rory in the park.jpeg" 
+                  alt="Garry and Rory in the park" 
+                  fill 
+                  className="object-cover filter contrast-[1.03] group-hover:scale-105 transition-transform duration-[3s]"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#1A1917]/35 via-transparent to-transparent" />
+                <div className="absolute bottom-6 left-6 text-white">
+                  <p className="text-[#D2A214] font-bold uppercase tracking-[0.3em] text-[8px]">On Patrol</p>
+                  <h4 className="text-xl font-bebas">Garry & Rory — Mid-Day Team Strategy Meeting</h4>
+                </div>
+              </motion.div>
+            </div>
+
+            {/* Dogs Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-4xl mx-auto">
+              
+              {/* Dog 1: Lola */}
+              <motion.div 
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 1.8 }}
+                className="bg-white p-8 border border-[#1A1917]/5 shadow-md flex items-center gap-6 rounded-sm hover:shadow-lg transition-all"
+              >
+                <div className="relative w-24 h-24 rounded-full overflow-hidden flex-shrink-0 bg-[#F5F4F0] border border-[#1A1917]/10">
+                  <Image 
+                    src="/team/lola_project_manager.jpg" 
+                    alt="Lola - Project Manager" 
+                    fill 
+                    className="object-cover"
+                  />
+                </div>
+                <div>
+                  <h4 className="text-2xl font-bebas text-[#1A1917] tracking-wider mb-1">Lola</h4>
+                  <p className="text-[#D2A214] text-[9px] font-bold uppercase tracking-[0.25em] mb-3">Director of Treat Optimization & Client Welcoming</p>
+                  <p className="text-xs text-[#1A1917]/60 leading-relaxed font-light">
+                    "Lola keeps moral at a record high and ensures no snack box goes uninspected."
+                  </p>
+                </div>
+              </motion.div>
+
+              {/* Dog 2: Rory */}
+              <motion.div 
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 1.8 }}
+                className="bg-white p-8 border border-[#1A1917]/5 shadow-md flex items-center gap-6 rounded-sm hover:shadow-lg transition-all"
+              >
+                <div className="relative w-24 h-24 rounded-full overflow-hidden flex-shrink-0 bg-[#F5F4F0] border border-[#1A1917]/10">
+                  <Image 
+                    src="/team/rory_quality_control.jpg" 
+                    alt="Rory - Quality Control" 
+                    fill 
+                    className="object-cover"
+                  />
+                </div>
+                <div>
+                  <h4 className="text-2xl font-bebas text-[#1A1917] tracking-wider mb-1">Rory</h4>
+                  <p className="text-[#D2A214] text-[9px] font-bold uppercase tracking-[0.25em] mb-3">Head of Barketing & Office Comfort Assurance</p>
+                  <p className="text-xs text-[#1A1917]/60 leading-relaxed font-light">
+                    "Rory excels in deep testing comfortable spots and providing structural feedback on office layouts."
+                  </p>
+                </div>
+              </motion.div>
+
+            </div>
+          </div>
+        </section>
+
+        {/* 5. THE MANIFESTO (DARK CINEMATIC) */}
+        <section className="py-40 px-6 bg-[#0f0e0c] relative z-10">
+          <div className="absolute inset-y-0 left-[10%] w-[1px] bg-white/5 pointer-events-none z-0" />
+          <div className="absolute inset-y-0 right-[10%] w-[1px] bg-white/5 pointer-events-none z-0" />
+
+          <div className="max-w-7xl mx-auto relative z-10 text-center">
+            <p className="text-[#D2A214] font-bold uppercase tracking-[0.3em] text-[9px] mb-4">Our DNA</p>
+            <h2 className="mb-20 text-white text-5xl md:text-7xl font-bebas tracking-wide">THE NO-NONSENSE CODE.</h2>
+            
+            <div className="grid md:grid-cols-3 gap-8">
+              {[
+                { 
+                  title: "01 / Straight-Talking Partners", 
+                  desc: "We speak absolute plain English. No corporate agencies jargon, no slides showing vanity views. We track conversions and real telephone calls." 
+                },
+                { 
+                  title: "02 / Hands-On Craftsmanship", 
+                  desc: "We don't use remote contractors or templates. Every website layout is custom coded, and every piece of footage is captured by us, on-site." 
+                },
+                { 
+                  title: "03 / Absolute Outcome Focus", 
+                  desc: "If an element doesn't serve a specific purpose to build your brand trust or drive an enquiry, we ruthlessly strip it away." 
+                }
+              ].map((item, idx) => (
+                <motion.div 
+                  key={idx} 
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 1.8, delay: idx * 0.15, ease: cinematicEase }}
+                  className="bg-[#171513]/40 backdrop-blur-xl border border-white/5 p-12 hover:border-[#D2A214]/20 transition-all rounded-sm text-left group"
+                >
+                  <h3 className="text-xl font-bebas mb-6 uppercase tracking-wider text-[#D2A214]">{item.title}</h3>
+                  <p className="text-white/60 text-sm leading-relaxed font-light">{item.desc}</p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* 6. CALL TO ACTION (BRIGHT EDITORIAL SECTION) */}
+        <section className="py-48 px-6 bg-[#F5F4F0] text-[#1A1917] relative z-10 border-t border-[#1A1917]/10 text-center flex items-center justify-center overflow-hidden">
+          <div className="absolute inset-y-0 left-[10%] w-[1px] bg-[#1A1917]/5 pointer-events-none z-0" />
+          <div className="absolute inset-y-0 right-[10%] w-[1px] bg-[#1A1917]/5 pointer-events-none z-0" />
+
+          <div className="max-w-4xl mx-auto relative z-10 flex flex-col items-center">
+            <p className="text-[#D2A214] font-bold uppercase tracking-[0.4em] text-[9px] mb-8">Start Your Growth Journey</p>
+            <h2 className="text-6xl md:text-8xl font-bebas text-[#1A1917] leading-none mb-12">
+              BUILD SOMETHING <br/><span className="text-[#1A1917]/25">WORTH WATCHING.</span>
             </h2>
             <Link
               href="/contact"
-              className="inline-flex items-center gap-3 px-10 py-5 bg-neutral-950 text-white font-black uppercase tracking-widest text-[10px] rounded-xl hover:scale-105 transition-all shadow-2xl group"
+              className="relative px-12 py-6 bg-transparent border border-[#1A1917]/20 text-[#1A1917] font-bold uppercase tracking-[0.25em] text-[9px] rounded-sm overflow-hidden group/btn hover:border-[#D2A214] transition-colors duration-500 inline-block font-inter-tight"
             >
-              Book Your 15-Min Discovery Call
+              <div className="absolute inset-0 bg-[#D2A214] translate-y-[100%] group-hover/btn:translate-y-0 transition-transform duration-500 ease-out" />
+              <span className="relative z-10 group-hover/btn:text-[#0f0e0c] transition-colors duration-500">Book Your Discovery Call</span>
             </Link>
-            <p className="mt-8 text-neutral-950/50 text-[9px] font-black uppercase tracking-widest italic">
-              No pressure. No jargon. Just results.
-            </p>
           </div>
         </section>
+
       </main>
       <Footer />
     </>
-  );
+  )
 }

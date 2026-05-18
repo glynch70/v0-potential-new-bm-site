@@ -1,216 +1,226 @@
 'use client'
 
-import React from 'react';
-import { motion } from 'framer-motion';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
-import { CheckCircle2, ArrowRight, Video, TrendingUp, Users, MapPin, Star, Play, MousePointer2 } from 'lucide-react';
-import Link from 'next/link';
-import Image from 'next/image';
-import VideoProof from '@/components/VideoProof';
+import React from 'react'
+import { motion } from 'framer-motion'
+import Navbar from '@/components/Navbar'
+import Footer from '@/components/Footer'
+import { CheckCircle2, ArrowRight } from 'lucide-react'
+import Link from 'next/link'
+import Image from 'next/image'
+
+const cinematicEase = [0.16, 1, 0.3, 1]
+
+const caseStudies = [
+  {
+    name: "C&G Developments",
+    category: "Construction & Engineering",
+    image: "/BEST FINAL CLIENT WORK/C&G Work In Progress-Cover.jpg",
+    slug: "/case-studies/cg-developments",
+    services: ["Cinematic Drone", "Reels Strategy", "High-Converting Page"]
+  },
+  {
+    name: "Seamus Corry",
+    category: "Coaching & Personal Brand",
+    image: "/BEST FINAL CLIENT WORK/seamus rebrand.jpg",
+    slug: "/case-studies/seamus-corry",
+    services: ["Premium Website Redesign", "Brand System", "Hook Pacing"]
+  },
+  {
+    name: "Simply Sheds",
+    category: "Retail / Joinery",
+    image: "/BEST FINAL CLIENT WORK/SIMPLY SHEDS.open sat & sun-Cover.jpg",
+    slug: "/case-studies/simply-sheds",
+    services: ["Short-Form Video Campaigns", "Operational Shoots"]
+  },
+  {
+    name: "Almond Vet Care",
+    category: "Veterinary Medicine",
+    image: "/BEST FINAL CLIENT WORK/website-4-almond-vet-v2.jpg",
+    slug: "/case-studies/almond-vet-care",
+    services: ["Custom React Website", "Local SEO Hub", "Frictionless Booking"]
+  },
+  {
+    name: "Robertsons Transport",
+    category: "Heavy Logistics",
+    image: "/BEST FINAL CLIENT WORK/rt-ltd.uk-v2.jpg",
+    slug: "/portfolio/robertsons-transport",
+    services: ["Corporate Redesign", "Authority Positioning"]
+  },
+  {
+    name: "K Lewis Joinery",
+    category: "Luxury Woodwork",
+    image: "/BEST FINAL CLIENT WORK/website-5-lewis-joinery-v2.jpg",
+    slug: "/portfolio/k-lewis-joinery",
+    services: ["High-Resolution Showroom", "Inbound Call Capture"]
+  }
+]
 
 export default function CaseStudiesPage() {
   return (
     <>
       <Navbar />
-      <main className="min-h-screen bg-neutral-950 text-white font-sans selection:bg-brand-yellow selection:text-neutral-950">
+      <main className="min-h-screen bg-[#0f0e0c] text-[#E8E0D5] font-inter-tight selection:bg-[#D2A214] selection:text-[#0f0e0c] overflow-hidden">
         
-        {/* AEO SUMMARY BLOCK */}
-        <div className="pt-24 pb-8 bg-neutral-950 border-b border-white/5">
-           <div className="max-w-4xl mx-auto px-6 text-center">
-              <p className="text-white/80 text-sm md:text-base font-medium leading-relaxed italic">
-                 Bear Media provides web design, social media content, video production and training for construction firms, trades businesses and local companies across Edinburgh, West Lothian and Scotland. Below are proven case studies of our recent work.
-              </p>
-           </div>
-        </div>
+        {/* 1. HERO SECTION (DARK CINEMATIC) */}
+        <section className="relative min-h-[80vh] flex items-center justify-center px-6 overflow-hidden py-32 border-b border-white/5">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[#D2A214]/5 blur-[120px] rounded-full pointer-events-none" />
+          
+          <div className="absolute inset-y-0 left-[10%] w-[1px] bg-white/5 pointer-events-none z-0" />
+          <div className="absolute inset-y-0 right-[10%] w-[1px] bg-white/5 pointer-events-none z-0" />
 
-        {/* 1. HERO SECTION */}
-        <section className="relative pt-12 pb-12 md:pt-20 md:pb-20 px-6 overflow-hidden flex flex-col items-center justify-center text-center">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(245,166,35,0.04)_0%,transparent_70%)] pointer-events-none" />
-          <div className="max-w-7xl mx-auto relative z-10">
+          <div className="max-w-6xl mx-auto text-center relative z-10">
             <motion.p 
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="text-brand-yellow font-black uppercase tracking-[0.3em] mb-4 text-[10px] md:text-sm animate-pulse italic"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1.8 }}
+              className="text-[#D2A214] font-bold uppercase tracking-[0.4em] text-[9px] mb-8"
             >
-               Proof Beats Promises. No Fluff.
+              Measurable Local Outcomes
             </motion.p>
+            
             <motion.h1 
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 35 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 }}
-              className="mb-6 md:mb-8 text-4xl md:text-8xl font-black italic uppercase font-bebas leading-[0.9]"
+              transition={{ duration: 1.8, delay: 0.2, ease: cinematicEase }}
+              className="text-6xl md:text-8xl lg:text-[7.5rem] font-bebas text-white tracking-wide mb-12 leading-[0.95] uppercase"
             >
-              Real Results That <br />
-              <span className="text-brand-yellow">Fill Business Calendars.</span>
+              PROOF OVER PROMISES.<br/>
+              <span className="text-white/20">NO AGENCY FLUFF.</span>
             </motion.h1>
+
             <motion.p 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className="text-white max-w-2xl mx-auto mb-10 md:mb-12 font-medium italic text-lg"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 2, delay: 0.4 }}
+              className="max-w-2xl mx-auto text-[#E8E0D5]/60 font-light text-lg md:text-xl leading-relaxed tracking-wide"
             >
-              We work with construction companies, trades businesses and SMEs that want to grow, not just post content. We focus on generating real enquiries, not vanity metrics.
+              We measure performance in phone calls, signed contracts, and local visibility. Explore case studies of Scottish SMEs who transformed their digital positioning.
             </motion.p>
           </div>
         </section>
+
+        {styleBlock}
 
         {/* LOGO MARQUEE */}
-        <style dangerouslySetInnerHTML={{__html: `
-          @keyframes marquee {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-          }
-          .animate-marquee {
-            animation: marquee 30s linear infinite;
-          }
-        `}} />
-        <div className="py-8 border-y border-white/5 bg-neutral-900/30 overflow-hidden relative flex items-center">
-          <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-neutral-950 to-transparent z-10" />
-          <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-neutral-950 to-transparent z-10" />
-          <div className="flex whitespace-nowrap animate-marquee items-center gap-16 px-8 text-white/20 font-black uppercase italic font-bebas tracking-widest text-xl md:text-2xl w-[200%]">
-             <span>C&G Developments</span><span className="text-brand-yellow/40">•</span>
-             <span>Simply Sheds</span><span className="text-brand-yellow/40">•</span>
-             <span>Seamus Corry</span><span className="text-brand-yellow/40">•</span>
-             <span>Muirhouse Housing</span><span className="text-brand-yellow/40">•</span>
-             <span>Dirty Martinis</span><span className="text-brand-yellow/40">•</span>
-             <span>Almond Vet Care</span><span className="text-brand-yellow/40">•</span>
-             {/* Duplicate for infinite effect */}
-             <span>C&G Developments</span><span className="text-brand-yellow/40">•</span>
-             <span>Simply Sheds</span><span className="text-brand-yellow/40">•</span>
-             <span>Seamus Corry</span><span className="text-brand-yellow/40">•</span>
-             <span>Muirhouse Housing</span><span className="text-brand-yellow/40">•</span>
-             <span>Dirty Martinis</span><span className="text-brand-yellow/40">•</span>
-             <span>Almond Vet Care</span><span className="text-brand-yellow/40">•</span>
+        <div className="py-12 border-b border-white/5 bg-[#171513]/20 overflow-hidden relative flex items-center">
+          <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-[#0f0e0c] to-transparent z-10" />
+          <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-[#0f0e0c] to-transparent z-10" />
+          <div className="flex whitespace-nowrap animate-marquee items-center gap-20 text-white/10 font-bebas tracking-[0.15em] text-xl md:text-2xl w-[200%] uppercase">
+             <span>C&G Developments</span><span className="text-[#D2A214]/30">•</span>
+             <span>Simply Sheds</span><span className="text-[#D2A214]/30">•</span>
+             <span>Seamus Corry</span><span className="text-[#D2A214]/30">•</span>
+             <span>Almond Vet Care</span><span className="text-[#D2A214]/30">•</span>
+             <span>K Lewis Joinery</span><span className="text-[#D2A214]/30">•</span>
+             <span>Robertsons Transport</span><span className="text-[#D2A214]/30">•</span>
+             
+             <span>C&G Developments</span><span className="text-[#D2A214]/30">•</span>
+             <span>Simply Sheds</span><span className="text-[#D2A214]/30">•</span>
+             <span>Seamus Corry</span><span className="text-[#D2A214]/30">•</span>
+             <span>Almond Vet Care</span><span className="text-[#D2A214]/30">•</span>
+             <span>K Lewis Joinery</span><span className="text-[#D2A214]/30">•</span>
+             <span>Robertsons Transport</span><span className="text-[#D2A214]/30">•</span>
           </div>
         </div>
 
-        {/* MAIN PORTFOLIO GRID */}
-        <section className="py-32 px-6 max-w-7xl mx-auto">
-           <div className="text-center mb-20">
-              <h2 className="mb-6 text-white text-4xl md:text-6xl uppercase italic font-bebas tracking-tight">
-                 Case Studies & <br/><span className="text-brand-yellow">Proof Pages</span>
-              </h2>
-           </div>
-           
-           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {[
-                {
-                  name: "C&G Developments",
-                  category: "Construction",
-                  image: "/work/C&G Work In Progress-Cover.jpg",
-                  slug: "/case-studies/cg-developments",
-                  services: ["Video Production", "Social Media", "Lead Gen"],
-                  comingSoon: false
-                },
-                {
-                  name: "Seamus Corry",
-                  category: "Personal Brand / Coaching",
-                  image: "/work/seamus_v5_final.jpg",
-                  slug: "/case-studies/seamus-corry",
-                  services: ["Website Redesign", "Personal Branding", "Content Strategy"],
-                  comingSoon: false
-                },
-                {
-                  name: "Simply Sheds",
-                  category: "Construction / Joinery",
-                  image: "/work/website-5-lewis-joinery-v2.jpg", // Using available public image as placeholder
-                  slug: "/case-studies/simply-sheds",
-                  services: ["Social Media Content", "Video Production"],
-                  comingSoon: false
-                },
-                {
-                  name: "Dirty Martinis",
-                  category: "Events / Entertainment",
-                  image: "/work/mwm.jpg", // Using available public image as placeholder
-                  slug: "/case-studies/dirty-martinis",
-                  services: ["Event Coverage", "Promo Video"],
-                  comingSoon: false
-                },
-                {
-                  name: "Muirhouse Housing",
-                  category: "Housing Association",
-                  image: "/work/content-creation.png", // Using available public image as placeholder
-                  slug: "/case-studies/muirhouse-housing",
-                  services: ["Video Production", "Community Content"],
-                  comingSoon: false
-                },
-                {
-                  name: "Almond Vet Care",
-                  category: "Veterinary / Healthcare",
-                  image: "/work/almond_vet_care.jpg",
-                  slug: "/case-studies/almond-vet-care",
-                  services: ["Website Design", "SEO", "Branding"],
-                  comingSoon: false
-                }
-              ].map((item, i) => (
-                 <Link key={i} href={item.comingSoon ? "#" : item.slug} className={`group relative block aspect-[4/5] bg-neutral-900 rounded-[2rem] border border-white/5 overflow-hidden shadow-2xl transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(245,166,35,0.1)] hover:border-brand-yellow/30 ${item.comingSoon ? "cursor-default" : "cursor-pointer"}`}>
-                    <Image src={item.image} alt={item.name} fill className={`object-cover transition-transform duration-700 ${item.comingSoon ? "opacity-40 grayscale" : "opacity-60 group-hover:opacity-80 group-hover:scale-105"}`} />
-                    <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/60 to-transparent" />
-                    
-                    <div className="absolute inset-0 p-8 flex flex-col justify-end z-10">
-                       <div className="mb-4">
-                          <span className="inline-block px-3 py-1 bg-brand-yellow/10 border border-brand-yellow/20 text-brand-yellow font-black uppercase tracking-widest text-[10px] rounded-full mb-4">
-                             {item.category}
-                          </span>
-                          <h3 className="text-3xl font-black uppercase italic font-bebas text-white mb-2 leading-tight">
-                             {item.name}
-                          </h3>
-                       </div>
-                       
-                       <div className="space-y-2 mb-6">
-                          {item.services.map((service, idx) => (
-                             <div key={idx} className="flex items-center gap-2">
-                                <CheckCircle2 size={12} className="text-brand-yellow flex-shrink-0" />
-                                <span className="text-white/80 text-xs italic font-medium">{service}</span>
-                             </div>
-                          ))}
-                       </div>
-                       
-                       {item.comingSoon ? (
-                          <div className="mt-auto pt-4 border-t border-white/10">
-                             <span className="inline-flex items-center justify-center w-full py-3 bg-white/5 text-white/50 font-black uppercase tracking-widest text-[10px] rounded-xl">
-                                Coming Soon
-                             </span>
+        {/* MAIN PORTFOLIO GRID (BRIGHT EDITORIAL - OFF-WHITE) */}
+        <section className="py-40 px-6 bg-[#F5F4F0] text-[#1A1917] relative z-10 border-b border-[#1A1917]/10">
+          <div className="absolute inset-y-0 left-[10%] w-[1px] bg-[#1A1917]/5 pointer-events-none z-0" />
+          <div className="absolute inset-y-0 right-[10%] w-[1px] bg-[#1A1917]/5 pointer-events-none z-0" />
+
+          <div className="max-w-7xl mx-auto relative z-10">
+            <div className="text-center mb-24 max-w-xl mx-auto">
+               <p className="text-[#D2A214] font-bold uppercase tracking-[0.3em] text-[9px] mb-4 font-inter-tight">The Showcase</p>
+               <h2 className="text-5xl md:text-7xl font-bebas text-[#1A1917] tracking-wide mb-6 uppercase">REAL CASE STUDIES</h2>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {caseStudies.map((item, idx) => (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 1.8, delay: idx * 0.1, ease: cinematicEase }}
+                  className="bg-white border border-[#1A1917]/5 shadow-sm rounded-sm overflow-hidden flex flex-col justify-between group hover:shadow-md transition-all"
+                >
+                  <Link href={item.slug} className="block relative aspect-[4/3] overflow-hidden bg-[#EFECE8]">
+                    <Image 
+                      src={item.image} 
+                      alt={item.name} 
+                      fill 
+                      className="object-cover filter contrast-[1.05] group-hover:scale-[1.02] transition-transform duration-[2.5s] ease-out"
+                    />
+                    <div className="absolute inset-0 bg-[#0f0e0c]/10 group-hover:bg-transparent transition-colors duration-500" />
+                  </Link>
+
+                  <div className="p-8 flex flex-col justify-between flex-grow">
+                    <div>
+                      <span className="text-[#D2A214] font-bold uppercase tracking-[0.2em] text-[8px] mb-3 block">
+                        {item.category}
+                      </span>
+                      <h3 className="text-3xl font-bebas text-[#1A1917] mb-4 tracking-wider uppercase leading-none">
+                        {item.name}
+                      </h3>
+                      
+                      <div className="space-y-2 mb-8">
+                        {item.services.map((service, i) => (
+                          <div key={i} className="flex items-center gap-3">
+                            <CheckCircle2 size={12} className="text-[#D2A214] flex-shrink-0" />
+                            <span className="text-[#1A1917]/60 text-xs font-light">{service}</span>
                           </div>
-                       ) : (
-                          <div className="mt-auto pt-4 border-t border-white/10">
-                             <span className="inline-flex items-center justify-between w-full py-3 text-brand-yellow font-black uppercase tracking-widest text-[10px] group-hover:translate-x-2 transition-transform">
-                                View Case Study <ArrowRight size={14} />
-                             </span>
-                          </div>
-                       )}
+                        ))}
+                      </div>
                     </div>
-                 </Link>
+
+                    <div className="pt-6 border-t border-[#1A1917]/5">
+                      <Link 
+                        href={item.slug} 
+                        className="inline-flex items-center justify-between w-full text-[9px] font-bold uppercase tracking-[0.25em] text-[#1A1917] hover:text-[#D2A214] transition-colors"
+                      >
+                        Explore Case Study <ArrowRight size={12} />
+                      </Link>
+                    </div>
+                  </div>
+                </motion.div>
               ))}
-           </div>
+            </div>
+          </div>
         </section>
 
-        {/* 9. FINAL CTA */}
-        <section className="py-20 px-6 text-center relative overflow-hidden bg-brand-yellow text-neutral-950">
-           <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,0,0,0.05)_0%,transparent_70%)] pointer-events-none" />
-           <div className="max-w-3xl mx-auto relative z-10">
-              <h2 className="mb-8 text-neutral-950 text-4xl md:text-6xl font-black italic uppercase font-bebas leading-tight">
-                 Want More Enquiries From <br />
-                 <span className="underline decoration-neutral-950/20 underline-offset-8">Your Website and Content?</span>
-              </h2>
-              <p className="text-neutral-950/70 font-bold italic mb-10 max-w-lg mx-auto">
-                 We’ll show you exactly what’s working, what’s not, and how to fix it. Let’s look at your business and show you exactly how to generate more enquiries.
-              </p>
-              <Link
-                href="/contact"
-                className="inline-flex items-center gap-3 px-10 py-5 bg-neutral-950 text-white font-black uppercase tracking-widest text-[11px] rounded-xl hover:scale-105 transition-all shadow-2xl group"
-              >
-                👉 Book a Discovery Call
-                <ArrowRight className="group-hover:translate-x-1 transition-transform" size={14} />
-              </Link>
-              <p className="mt-8 text-neutral-950/50 text-[10px] font-black uppercase tracking-widest italic">
-                 No fluff. No pressure. Spots are limited due to on-site work.
-              </p>
-           </div>
+        {/* 4. CALL TO ACTION (BRIGHT EDITORIAL) */}
+        <section className="py-48 px-6 bg-[#F5F4F0] text-[#1A1917] relative z-10 border-t border-[#1A1917]/10 text-center flex items-center justify-center overflow-hidden">
+          <div className="absolute inset-y-0 left-[10%] w-[1px] bg-[#1A1917]/5 pointer-events-none z-0" />
+          <div className="absolute inset-y-0 right-[10%] w-[1px] bg-[#1A1917]/5 pointer-events-none z-0" />
+
+          <div className="max-w-4xl mx-auto relative z-10 flex flex-col items-center">
+            <p className="text-[#D2A214] font-bold uppercase tracking-[0.4em] text-[9px] mb-8 font-inter-tight">Scale Your Inbound Leads</p>
+            <h2 className="text-6xl md:text-8xl font-bebas text-[#1A1917] leading-none mb-12">
+              READY TO BUILD <br/><span className="text-[#1A1917]/25">YOUR OWN RESULTS HUB?</span>
+            </h2>
+            <Link
+              href="/contact"
+              className="relative px-12 py-6 bg-transparent border border-[#1A1917]/20 text-[#1A1917] font-bold uppercase tracking-[0.25em] text-[9px] rounded-sm overflow-hidden group/btn hover:border-[#D2A214] transition-colors duration-500 inline-block font-inter-tight"
+            >
+              <div className="absolute inset-0 bg-[#D2A214] translate-y-[100%] group-hover/btn:translate-y-0 transition-transform duration-500 ease-out" />
+              <span className="relative z-10 group-hover/btn:text-[#0f0e0c] transition-colors duration-500">Book Your Discovery Call</span>
+            </Link>
+          </div>
         </section>
+
       </main>
       <Footer />
     </>
-  );
+  )
 }
+
+const styleBlock = (
+  <style dangerouslySetInnerHTML={{__html: `
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .animate-marquee {
+      animation: marquee 30s linear infinite;
+    }
+  `}} />
+)

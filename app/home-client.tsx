@@ -41,7 +41,7 @@ const CinematicCarousel = ({ items }: { items: { src: string, label: string, cat
                
                <div className="absolute bottom-6 left-6 right-6 z-10 flex flex-col gap-1">
                  {item.category && (
-                   <span className="text-[#D9A05B] font-inter-tight uppercase tracking-[0.25em] text-[9px] font-bold">
+                   <span className="text-[#D2A214] font-inter-tight uppercase tracking-[0.25em] text-[9px] font-bold">
                      {item.category}
                    </span>
                  )}
@@ -96,7 +96,7 @@ const DigitalPlatformsCarousel = ({ items }: { items: { src: string, label: stri
                
                <div className="absolute bottom-6 left-6 right-6 z-10 flex flex-col gap-1">
                  {item.category && (
-                   <span className="text-[#D9A05B] font-inter-tight uppercase tracking-[0.25em] text-[9px] font-bold">
+                   <span className="text-[#D2A214] font-inter-tight uppercase tracking-[0.25em] text-[9px] font-bold">
                      {item.category}
                    </span>
                  )}
@@ -141,7 +141,7 @@ export default function HomeContent() {
   const heroScale = useTransform(scrollYProgress, [0, 0.2], [1, 1.02]);
 
   return (
-    <main ref={containerRef} className="bg-[#0f0e0c] min-h-screen text-[#E8E0D5] font-sans overflow-x-hidden selection:bg-[#D9A05B] selection:text-[#0f0e0c] relative">
+    <main ref={containerRef} className="bg-[#0f0e0c] min-h-screen text-[#E8E0D5] font-sans overflow-x-hidden selection:bg-[#D2A214] selection:text-[#0f0e0c] relative">
       {/* Editorial Fine Lines Grid overlay */}
       <div className="absolute inset-y-0 left-[10%] w-[1px] bg-white/[0.02] pointer-events-none z-0" />
       <div className="absolute inset-y-0 right-[10%] w-[1px] bg-white/[0.02] pointer-events-none z-0" />
@@ -157,13 +157,14 @@ export default function HomeContent() {
               muted
               loop
               playsInline
-              className="w-full h-full object-cover scale-105 opacity-35 filter contrast-[1.1] saturate-[0.7]"
+              className="w-full h-full object-cover scale-105 opacity-85 filter contrast-[1.05] saturate-[0.8]"
             >
               <source src="/media/NEW BM DRONE HERO.mp4" type="video/mp4" />
             </video>
           </motion.div>
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0f0e0c] via-[#0f0e0c]/40 to-transparent" />
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_20%,rgba(15,14,12,0.95)_100%)] pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0f0e0c]/90 via-[#0f0e0c]/10 to-transparent z-1" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_40%,rgba(15,14,12,0.45)_100%)] pointer-events-none z-1" />
+          <div className="absolute inset-0 bg-gradient-to-tr from-[#D2A214]/15 via-transparent to-[#D2A214]/8 mix-blend-color-dodge pointer-events-none z-2" />
         </div>
 
         <motion.div 
@@ -185,7 +186,7 @@ export default function HomeContent() {
             >
               REAL STORIES.<br />
               REAL BUSINESSES.<br />
-              <span className="text-[#D9A05B]">REAL SCOTLAND.</span>
+              <span className="text-[#D2A214]">REAL SCOTLAND.</span>
             </motion.h1>
 
             <motion.p 
@@ -198,9 +199,9 @@ export default function HomeContent() {
             <motion.div variants={slowFadeUp} className="pt-4">
               <Link
                 href="/contact"
-                className="relative px-10 py-5 bg-transparent border border-[#E8E0D5]/15 text-[#E8E0D5] font-inter-tight uppercase tracking-[0.25em] text-[9px] font-bold rounded-sm overflow-hidden group/btn hover:border-[#D9A05B] transition-colors duration-500 inline-block"
+                className="relative px-10 py-5 bg-transparent border border-[#E8E0D5]/15 text-[#E8E0D5] font-inter-tight uppercase tracking-[0.25em] text-[9px] font-bold rounded-sm overflow-hidden group/btn hover:border-[#D2A214] transition-colors duration-500 inline-block"
               >
-                <div className="absolute inset-0 bg-[#D9A05B] translate-y-[100%] group-hover/btn:translate-y-0 transition-transform duration-500 ease-out" />
+                <div className="absolute inset-0 bg-[#D2A214] translate-y-[100%] group-hover/btn:translate-y-0 transition-transform duration-500 ease-out" />
                 <span className="relative z-10 group-hover/btn:text-[#0f0e0c] transition-colors duration-500">
                   Let’s Create Something Worth Watching
                 </span>
@@ -222,7 +223,7 @@ export default function HomeContent() {
               visible: { opacity: 1, transition: { staggerChildren: 0.3 } }
             }}
           >
-            <motion.p variants={slowFadeUp} className="text-[#D9A05B] font-inter-tight uppercase tracking-[0.3em] text-[9px] font-bold mb-12">
+            <motion.p variants={slowFadeUp} className="text-[#D2A214] font-inter-tight uppercase tracking-[0.3em] text-[9px] font-bold mb-12">
               The Standard
             </motion.p>
             <motion.h2 variants={slowFadeUp} className="text-4xl md:text-5xl lg:text-7xl font-bebas leading-[1.05] tracking-wide text-[#E8E0D5]">
@@ -247,8 +248,8 @@ export default function HomeContent() {
                transition={{ duration: 1.6, ease: cinematicEase }}
                className="max-w-2xl"
              >
-               <p className="text-[#D9A05B] font-inter-tight uppercase tracking-[0.3em] text-[9px] font-bold mb-6 flex items-center gap-4">
-                 <span className="w-8 h-[1px] bg-[#D9A05B]/30" /> Visual Direction
+               <p className="text-[#D2A214] font-inter-tight uppercase tracking-[0.3em] text-[9px] font-bold mb-6 flex items-center gap-4">
+                 <span className="w-8 h-[1px] bg-[#D2A214]/30" /> Visual Direction
                </p>
                <h3 className="text-5xl md:text-7xl font-bebas text-[#E8E0D5] leading-[0.95]">
                  Cinematic <br/> <span className="text-[#E8E0D5]/30">Motion.</span>
@@ -285,8 +286,12 @@ export default function HomeContent() {
       </section>
 
       {/* 4. ASYMMETRICAL STORY 2: DIGITAL PLATFORMS (HORIZONTAL CAROUSEL) */}
-      <section className="py-36 px-6 bg-[#0f0e0c] overflow-hidden border-b border-white/5">
-        <div className="max-w-screen-2xl mx-auto">
+      <section className="py-36 px-6 bg-[#F5F4F0] overflow-hidden border-b border-[#1A1917]/10 relative z-10">
+        {/* Editorial Fine Lines Grid overlay matching light section */}
+        <div className="absolute inset-y-0 left-[10%] w-[1px] bg-[#1A1917]/5 pointer-events-none z-0" />
+        <div className="absolute inset-y-0 right-[10%] w-[1px] bg-[#1A1917]/5 pointer-events-none z-0" />
+        
+        <div className="max-w-screen-2xl mx-auto relative z-10">
           <div className="flex flex-col lg:flex-row items-end justify-between max-w-7xl mx-auto mb-20 gap-10">
              <motion.div 
                initial={{ opacity: 0, y: 35 }}
@@ -295,11 +300,11 @@ export default function HomeContent() {
                transition={{ duration: 1.6, ease: cinematicEase }}
                className="max-w-2xl"
              >
-               <p className="text-[#D9A05B] font-inter-tight uppercase tracking-[0.3em] text-[9px] font-bold mb-6 flex items-center gap-4">
-                 <span className="w-8 h-[1px] bg-[#D9A05B]/30" /> Execution
+               <p className="text-[#D2A214] font-inter-tight uppercase tracking-[0.3em] text-[9px] font-bold mb-6 flex items-center gap-4">
+                 <span className="w-8 h-[1px] bg-[#D2A214]" /> Execution
                </p>
-               <h3 className="text-5xl md:text-7xl font-bebas text-[#E8E0D5] leading-[0.95]">
-                 Digital <br/> <span className="text-[#E8E0D5]/30">Platforms.</span>
+               <h3 className="text-5xl md:text-7xl font-bebas text-[#1A1917] leading-[0.95]">
+                 Digital <br/> <span className="text-[#1A1917]/30">Platforms.</span>
                </h3>
              </motion.div>
              
@@ -310,7 +315,7 @@ export default function HomeContent() {
                transition={{ duration: 1.6, delay: 0.15, ease: cinematicEase }}
                className="max-w-sm lg:pb-2"
              >
-               <p className="text-[#E8E0D5]/50 font-inter-tight font-light leading-relaxed text-sm tracking-wide">
+               <p className="text-[#1A1917]/70 font-inter-tight font-light leading-relaxed text-sm tracking-wide">
                  We design high-performance websites that function as digital gallery spaces. Clean, fast, and built to transform visibility into high-value relationships.
                </p>
              </motion.div>
@@ -324,7 +329,7 @@ export default function HomeContent() {
             className="w-full md:pl-[10vw]"
           >
              <DigitalPlatformsCarousel items={[
-               { src: "/BEST FINAL CLIENT WORK/seamus rebrand.jpg", label: "Séamus Corry Editorial Brand Identity", category: "Branding Visuals", link: "/portfolio/seamus-corry" },
+               { src: "/BEST FINAL CLIENT WORK/seamus rebrand.jpg", label: "Séamus Corry Editorial Brand Identity", category: "Branding Visuals", link: "https://seamus-corry-rebrand.vercel.app/" },
                { src: "/BEST FINAL CLIENT WORK/Almond Vet Care Website.jpg", label: "Almond Vet Care Clinic Platform", category: "Web Design", link: "/portfolio/almond-vet-care" },
                { src: "/BEST FINAL CLIENT WORK/C&G Quality Builds.reel.cover.png", label: "C&G Quality Builds Drone Integration", category: "Social Content", link: "/portfolio" },
                { src: "/BEST FINAL CLIENT WORK/klewis.jpg", label: "K Lewis Joinery Client Dashboard", category: "Web Platform", link: "/portfolio/k-lewis-joinery" },
@@ -388,7 +393,7 @@ export default function HomeContent() {
               <div className="absolute inset-0 bg-gradient-to-t from-[#0f0e0c] via-[#0f0e0c]/10 to-transparent opacity-90" />
               
               <div className="absolute bottom-10 left-10">
-                <p className="text-[#D9A05B] font-inter-tight uppercase tracking-[0.4em] text-[8px] font-bold mb-2 opacity-80">The Operator</p>
+                <p className="text-[#D2A214] font-inter-tight uppercase tracking-[0.4em] text-[8px] font-bold mb-2 opacity-80">The Operator</p>
                 <h4 className="text-4xl font-bebas text-[#E8E0D5] tracking-wide">Garry Lynch</h4>
               </div>
             </div>
@@ -417,9 +422,9 @@ export default function HomeContent() {
             <div className="pt-4">
               <Link
                 href="/about"
-                className="inline-flex items-center gap-6 text-[10px] font-inter-tight font-bold tracking-[0.3em] uppercase text-[#E8E0D5]/80 hover:text-[#D9A05B] transition-colors group"
+                className="inline-flex items-center gap-6 text-[10px] font-inter-tight font-bold tracking-[0.3em] uppercase text-[#E8E0D5]/80 hover:text-[#D2A214] transition-colors group"
               >
-                <span className="w-12 h-[1px] bg-[#E8E0D5]/20 group-hover:bg-[#D9A05B] transition-colors" />
+                <span className="w-12 h-[1px] bg-[#E8E0D5]/20 group-hover:bg-[#D2A214] transition-colors" />
                 Read The Background 
               </Link>
             </div>
@@ -427,12 +432,13 @@ export default function HomeContent() {
         </div>
       </section>
 
-      {/* 6.3 CLIENT TESTIMONIALS - HIGH-END EDITORIAL PROOF */}
-      <section className="py-36 px-6 bg-[#0f0e0c] border-t border-white/5 relative overflow-hidden">
-        {/* Subtle background glow */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,rgba(217,160,91,0.02)_0%,transparent_80%)] pointer-events-none" />
+      {/* 6.3 CLIENT TESTIMONIALS - HIGH-END EDITORIAL PROOF (LIGHT STYLISH BACKDROP) */}
+      <section className="py-36 px-6 bg-[#F5F4F0] border-t border-[#1A1917]/10 relative overflow-hidden z-10">
+        {/* Editorial Fine Lines Grid overlay matching light section */}
+        <div className="absolute inset-y-0 left-[10%] w-[1px] bg-[#1A1917]/5 pointer-events-none z-0" />
+        <div className="absolute inset-y-0 right-[10%] w-[1px] bg-[#1A1917]/5 pointer-events-none z-0" />
 
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-7xl mx-auto relative z-10">
           <div className="flex flex-col lg:flex-row items-end justify-between mb-24 gap-10">
              <motion.div 
                initial={{ opacity: 0, y: 35 }}
@@ -441,11 +447,11 @@ export default function HomeContent() {
                transition={{ duration: 1.6, ease: cinematicEase }}
                className="max-w-2xl"
              >
-               <p className="text-[#D9A05B] font-inter-tight uppercase tracking-[0.3em] text-[9px] font-bold mb-6 flex items-center gap-4">
-                 <span className="w-8 h-[1px] bg-[#D9A05B]/30" /> Client Proof
+               <p className="text-[#D2A214] font-inter-tight uppercase tracking-[0.3em] text-[9px] font-bold mb-6 flex items-center gap-4">
+                 <span className="w-8 h-[1px] bg-[#D2A214]" /> Client Proof
                </p>
-               <h3 className="text-5xl md:text-7xl font-bebas text-[#E8E0D5] leading-[0.95]">
-                 Trusted <br/> <span className="text-[#E8E0D5]/30">Relationships.</span>
+               <h3 className="text-5xl md:text-7xl font-bebas text-[#1A1917] leading-[0.95]">
+                 Trusted <br/> <span className="text-[#1A1917]/30">Relationships.</span>
                </h3>
              </motion.div>
 
@@ -456,7 +462,7 @@ export default function HomeContent() {
                transition={{ duration: 1.6, delay: 0.15, ease: cinematicEase }}
                className="max-w-sm lg:pb-2"
              >
-               <p className="text-[#E8E0D5]/50 font-inter-tight font-light leading-relaxed text-sm tracking-wide">
+               <p className="text-[#1A1917]/70 font-inter-tight font-light leading-relaxed text-sm tracking-wide">
                  Real outcomes for ambitious Scottish businesses. We don't deal in vanity metrics—we document real growth and construct high-performance digital platforms.
                </p>
              </motion.div>
@@ -469,25 +475,25 @@ export default function HomeContent() {
                whileInView={{ opacity: 1, y: 0 }}
                viewport={{ once: true }}
                transition={{ duration: 1.6, delay: 0.1, ease: cinematicEase }}
-               className="bg-[#12110f] border border-white/5 p-10 flex flex-col justify-between group hover:border-[#D9A05B]/30 transition-all duration-700"
+               className="bg-white border border-[#1A1917]/5 p-10 flex flex-col justify-between group hover:border-[#D2A214]/30 shadow-md hover:shadow-xl transition-all duration-700"
              >
                <div className="space-y-6">
                  <div className="flex gap-1">
                    {[...Array(5)].map((_, i) => (
-                     <span key={i} className="text-[#D9A05B] text-xs">★</span>
+                     <span key={i} className="text-[#D2A214] text-xs">★</span>
                    ))}
                  </div>
-                 <p className="text-[#E8E0D5]/70 font-inter-tight font-light text-sm leading-relaxed tracking-wide italic">
+                 <p className="text-[#1A1917]/80 font-inter-tight font-light text-sm leading-relaxed tracking-wide italic">
                    "Garry stripped away all the usual agency nonsense. Our new site is fast, looks exactly how we wanted, and we started getting quote requests within the first week."
                  </p>
                </div>
-               <div className="mt-10 pt-6 border-t border-white/5 flex items-center gap-4">
-                 <div className="relative w-10 h-10 rounded-full overflow-hidden bg-neutral-900 border border-white/10">
+               <div className="mt-10 pt-6 border-t border-[#1A1917]/10 flex items-center gap-4">
+                 <div className="relative w-10 h-10 rounded-full overflow-hidden bg-neutral-900 border border-[#1A1917]/10">
                    <Image src="/testimonials/gary.png" fill alt="Gary Young" className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700" />
                  </div>
                  <div>
-                   <h4 className="text-xs font-inter-tight font-bold uppercase tracking-wider text-[#E8E0D5]">Gary Young</h4>
-                   <p className="text-[10px] font-inter-tight uppercase tracking-widest text-[#D9A05B] mt-0.5">K Lewis Joinery</p>
+                   <h4 className="text-xs font-inter-tight font-bold uppercase tracking-wider text-[#1A1917]">Gary Young</h4>
+                   <p className="text-[10px] font-inter-tight uppercase tracking-widest text-[#D2A214] mt-0.5">K Lewis Joinery</p>
                  </div>
                </div>
              </motion.div>
@@ -498,25 +504,25 @@ export default function HomeContent() {
                whileInView={{ opacity: 1, y: 0 }}
                viewport={{ once: true }}
                transition={{ duration: 1.6, delay: 0.2, ease: cinematicEase }}
-               className="bg-[#12110f] border border-white/5 p-10 flex flex-col justify-between group hover:border-[#D9A05B]/30 transition-all duration-700"
+               className="bg-white border border-[#1A1917]/5 p-10 flex flex-col justify-between group hover:border-[#D2A214]/30 shadow-md hover:shadow-xl transition-all duration-700"
              >
                <div className="space-y-6">
                  <div className="flex gap-1">
                    {[...Array(5)].map((_, i) => (
-                     <span key={i} className="text-[#D9A05B] text-xs">★</span>
+                     <span key={i} className="text-[#D2A214] text-xs">★</span>
                    ))}
                  </div>
-                 <p className="text-[#E8E0D5]/70 font-inter-tight font-light text-sm leading-relaxed tracking-wide italic">
+                 <p className="text-[#1A1917]/80 font-inter-tight font-light text-sm leading-relaxed tracking-wide italic">
                    "The ecommerce site looks stunning and the social media growth has been mental. We've seen a massive jump in online orders since Garry took over our content."
                  </p>
                </div>
-               <div className="mt-10 pt-6 border-t border-white/5 flex items-center gap-4">
-                 <div className="relative w-10 h-10 rounded-full overflow-hidden bg-neutral-900 border border-white/10">
+               <div className="mt-10 pt-6 border-t border-[#1A1917]/10 flex items-center gap-4">
+                 <div className="relative w-10 h-10 rounded-full overflow-hidden bg-neutral-900 border border-[#1A1917]/10">
                    <Image src="/testimonials/seamus.png" fill alt="Seamus Corry" className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700" />
                  </div>
                  <div>
-                   <h4 className="text-xs font-inter-tight font-bold uppercase tracking-wider text-[#E8E0D5]">Seamus Corry</h4>
-                   <p className="text-[10px] font-inter-tight uppercase tracking-widest text-[#D9A05B] mt-0.5">Herb & Soul</p>
+                   <h4 className="text-xs font-inter-tight font-bold uppercase tracking-wider text-[#1A1917]">Seamus Corry</h4>
+                   <p className="text-[10px] font-inter-tight uppercase tracking-widest text-[#D2A214] mt-0.5">Herb & Soul</p>
                  </div>
                </div>
              </motion.div>
@@ -527,25 +533,25 @@ export default function HomeContent() {
                whileInView={{ opacity: 1, y: 0 }}
                viewport={{ once: true }}
                transition={{ duration: 1.6, delay: 0.3, ease: cinematicEase }}
-               className="bg-[#12110f] border border-white/5 p-10 flex flex-col justify-between group hover:border-[#D9A05B]/30 transition-all duration-700"
+               className="bg-white border border-[#1A1917]/5 p-10 flex flex-col justify-between group hover:border-[#D2A214]/30 shadow-md hover:shadow-xl transition-all duration-700"
              >
                <div className="space-y-6">
                  <div className="flex gap-1">
                    {[...Array(5)].map((_, i) => (
-                     <span key={i} className="text-[#D9A05B] text-xs">★</span>
+                     <span key={i} className="text-[#D2A214] text-xs">★</span>
                    ))}
                  </div>
-                 <p className="text-[#E8E0D5]/70 font-inter-tight font-light text-sm leading-relaxed tracking-wide italic">
+                 <p className="text-[#1A1917]/80 font-inter-tight font-light text-sm leading-relaxed tracking-wide italic">
                    "Our old site was impossible to update. The new website is clean, easy for pet owners to navigate, and the whole process was completely painless. Highly recommend Garry."
                  </p>
                </div>
-               <div className="mt-10 pt-6 border-t border-white/5 flex items-center gap-4">
-                 <div className="relative w-10 h-10 rounded-full overflow-hidden bg-neutral-900 border border-white/10">
+               <div className="mt-10 pt-6 border-t border-[#1A1917]/10 flex items-center gap-4">
+                 <div className="relative w-10 h-10 rounded-full overflow-hidden bg-neutral-900 border border-[#1A1917]/10">
                    <Image src="/testimonials/stephen.png" fill alt="Stephen Johnstone" className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700" />
                  </div>
                  <div>
-                   <h4 className="text-xs font-inter-tight font-bold uppercase tracking-wider text-[#E8E0D5]">Stephen Johnstone</h4>
-                   <p className="text-[10px] font-inter-tight uppercase tracking-widest text-[#D9A05B] mt-0.5">Almond Vet Care</p>
+                   <h4 className="text-xs font-inter-tight font-bold uppercase tracking-wider text-[#1A1917]">Stephen Johnstone</h4>
+                   <p className="text-[10px] font-inter-tight uppercase tracking-widest text-[#D2A214] mt-0.5">Almond Vet Care</p>
                  </div>
                </div>
              </motion.div>
@@ -555,9 +561,9 @@ export default function HomeContent() {
              <Link
                href="https://g.page/r/YOUR_GOOGLE_BUSINESS_ID/review" 
                target="_blank"
-               className="relative px-10 py-5 bg-transparent border border-[#E8E0D5]/15 text-[#E8E0D5] font-inter-tight uppercase tracking-[0.25em] text-[9px] font-bold rounded-sm overflow-hidden group/btn hover:border-[#D9A05B] transition-colors duration-500 inline-block"
+               className="relative px-10 py-5 bg-transparent border border-[#1A1917]/20 text-[#1A1917] font-inter-tight uppercase tracking-[0.25em] text-[9px] font-bold rounded-sm overflow-hidden group/btn hover:border-[#D2A214] hover:text-[#0f0e0c] transition-colors duration-500 inline-block"
              >
-               <div className="absolute inset-0 bg-[#D9A05B] translate-y-[100%] group-hover/btn:translate-y-0 transition-transform duration-500 ease-out" />
+               <div className="absolute inset-0 bg-[#D2A214] translate-y-[100%] group-hover/btn:translate-y-0 transition-transform duration-500 ease-out" />
                <span className="relative z-10 group-hover/btn:text-[#0f0e0c] transition-colors duration-500">
                  View More Google Reviews
                </span>
@@ -575,7 +581,7 @@ export default function HomeContent() {
                whileInView={{ opacity: 1, y: 0 }}
                viewport={{ once: true }}
                transition={{ duration: 1.2, ease: cinematicEase }}
-               className="text-[#D9A05B] font-inter-tight uppercase tracking-[0.3em] text-[9px] font-bold mb-4"
+               className="text-[#D2A214] font-inter-tight uppercase tracking-[0.3em] text-[9px] font-bold mb-4"
              >
                The real crew behind the scenes.
              </motion.p>
@@ -609,7 +615,7 @@ export default function HomeContent() {
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0f0e0c]/90 via-transparent to-transparent opacity-85" />
               </div>
               <h4 className="text-2xl font-bebas text-[#E8E0D5] tracking-wide mb-1">Garry Lynch</h4>
-              <p className="text-[#D9A05B] font-inter-tight uppercase tracking-wider text-[9px] font-bold">
+              <p className="text-[#D2A214] font-inter-tight uppercase tracking-wider text-[9px] font-bold">
                 Founder / Creative Director / Camera Carrier
               </p>
             </motion.div>
@@ -632,7 +638,7 @@ export default function HomeContent() {
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0f0e0c]/90 via-transparent to-transparent opacity-85" />
               </div>
               <h4 className="text-2xl font-bebas text-[#E8E0D5] tracking-wide mb-1">Lola</h4>
-              <p className="text-[#D9A05B] font-inter-tight uppercase tracking-wider text-[9px] font-bold">
+              <p className="text-[#D2A214] font-inter-tight uppercase tracking-wider text-[9px] font-bold">
                 Project Manager / Snack Supervisor
               </p>
             </motion.div>
@@ -655,7 +661,7 @@ export default function HomeContent() {
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0f0e0c]/90 via-transparent to-transparent opacity-85" />
               </div>
               <h4 className="text-2xl font-bebas text-[#E8E0D5] tracking-wide mb-1">Rory</h4>
-              <p className="text-[#D9A05B] font-inter-tight uppercase tracking-wider text-[9px] font-bold">
+              <p className="text-[#D2A214] font-inter-tight uppercase tracking-wider text-[9px] font-bold">
                 Quality Control / Barketing Executive
               </p>
             </motion.div>
@@ -663,16 +669,20 @@ export default function HomeContent() {
         </div>
       </section>
 
-      {/* 7. FINAL CTA - SLOW FADE WITH RESTRAINED ACCENT */}
-      <section className="py-64 px-6 bg-[#0f0e0c] relative overflow-hidden flex items-center justify-center group border-t border-white/5">
-        <div className="absolute inset-0 bg-[#0a0908]">
+      {/* 7. FINAL CTA - SLOW FADE WITH RESTRAINED ACCENT (LIGHT STYLISH SECTION) */}
+      <section className="py-64 px-6 bg-[#F5F4F0] relative overflow-hidden flex items-center justify-center group border-t border-[#1A1917]/10 z-10">
+        {/* Editorial Fine Lines Grid overlay matching light section */}
+        <div className="absolute inset-y-0 left-[10%] w-[1px] bg-[#1A1917]/5 pointer-events-none z-0" />
+        <div className="absolute inset-y-0 right-[10%] w-[1px] bg-[#1A1917]/5 pointer-events-none z-0" />
+
+        <div className="absolute inset-0 bg-[#EFECE8] z-0">
           <Image 
             src="/BEST FINAL CLIENT WORK/WE’RE HIRING.png" 
             alt="Narrative Final Work" 
             fill 
-            className="object-cover opacity-[0.05] filter grayscale contrast-[1.3] group-hover:scale-[1.03] transition-transform duration-[8s] ease-out"
+            className="object-cover opacity-[0.03] filter grayscale contrast-[1.3] group-hover:scale-[1.03] transition-transform duration-[8s] ease-out"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0f0e0c] via-[#0f0e0c]/50 to-[#0f0e0c]" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#F5F4F0] via-[#F5F4F0]/65 to-[#F5F4F0]" />
         </div>
         
         <div className="max-w-4xl mx-auto text-center relative z-10 flex flex-col items-center">
@@ -681,7 +691,7 @@ export default function HomeContent() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 1.8 }}
-            className="text-[#D9A05B] font-inter-tight uppercase tracking-[0.4em] text-[9px] font-bold mb-12"
+            className="text-[#D2A214] font-inter-tight uppercase tracking-[0.4em] text-[9px] font-bold mb-12"
           >
             Start The Process
           </motion.p>
@@ -691,9 +701,9 @@ export default function HomeContent() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1.8, delay: 0.2, ease: cinematicEase }}
-            className="text-7xl md:text-[9rem] font-bebas text-[#E8E0D5] mb-20 leading-[0.8]"
+            className="text-7xl md:text-[9rem] font-bebas text-[#1A1917] mb-20 leading-[0.8]"
           >
-            LET'S <br/> <span className="text-[#E8E0D5]/20">BEGIN.</span>
+            LET'S <br/> <span className="text-[#1A1917]/20">BEGIN.</span>
           </motion.h2>
           
           <motion.div
@@ -704,9 +714,9 @@ export default function HomeContent() {
           >
             <Link
               href="/contact"
-              className="relative px-12 py-6 bg-transparent border border-[#E8E0D5]/15 text-[#E8E0D5] font-inter-tight uppercase tracking-[0.25em] text-[9px] font-bold rounded-sm overflow-hidden group/btn hover:border-[#D9A05B] transition-colors duration-500 inline-block"
+              className="relative px-12 py-6 bg-transparent border border-[#1A1917]/20 text-[#1A1917] font-inter-tight uppercase tracking-[0.25em] text-[9px] font-bold rounded-sm overflow-hidden group/btn hover:border-[#D2A214] hover:text-[#0f0e0c] transition-colors duration-500 inline-block"
             >
-              <div className="absolute inset-0 bg-[#D9A05B] translate-y-[100%] group-hover/btn:translate-y-0 transition-transform duration-500 ease-out" />
+              <div className="absolute inset-0 bg-[#D2A214] translate-y-[100%] group-hover/btn:translate-y-0 transition-transform duration-500 ease-out" />
               <span className="relative z-10 group-hover/btn:text-[#0f0e0c] transition-colors duration-500">Contact Bear Media</span>
             </Link>
           </motion.div>

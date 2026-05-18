@@ -1,245 +1,231 @@
 'use client'
 
-import React from 'react';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
-import Process from '@/components/sections/Process';
-import Link from 'next/link';
-import { motion } from 'framer-motion';
-import { ArrowRight, XCircle, CheckCircle2, Video, Camera, Layout, Zap, TrendingUp, Users } from 'lucide-react';
-import YouTubeEmbed from '@/components/YouTubeEmbed';
+import React from 'react'
+import Navbar from '@/components/Navbar'
+import Footer from '@/components/Footer'
+import Process from '@/components/sections/Process'
+import Link from 'next/link'
+import { motion } from 'framer-motion'
+import { ArrowRight, CheckCircle2, Video, Camera, LayoutGrid, Zap, Play, XCircle } from 'lucide-react'
+import WebsiteShowcaseCarousel from '@/components/WebsiteShowcaseCarousel'
+
+const cinematicEase = [0.16, 1, 0.3, 1]
 
 export default function ServicesPage() {
   return (
     <>
       <Navbar />
-      <main className="min-h-screen bg-neutral-950 text-white font-sans selection:bg-brand-yellow selection:text-neutral-950">
+      <main className="min-h-screen bg-[#0f0e0c] text-[#E8E0D5] font-inter-tight selection:bg-[#D2A214] selection:text-[#0f0e0c] overflow-hidden">
         
-        {/* AEO SUMMARY BLOCK */}
-        <div className="pt-24 pb-8 bg-neutral-950 border-b border-white/5">
-           <div className="max-w-4xl mx-auto px-6 text-center">
-              <p className="text-white/80 text-sm md:text-base font-medium leading-relaxed italic">
-                 Bear Media provides web design, social media content, video production and training for construction firms, trades businesses and local companies across Edinburgh, West Lothian and Scotland.
-              </p>
-           </div>
-        </div>
+        {/* 1. HERO SECTION (DARK CINEMATIC) */}
+        <section className="relative min-h-[80vh] flex items-center justify-center px-6 overflow-hidden py-32 border-b border-white/5">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[#D2A214]/5 blur-[120px] rounded-full pointer-events-none" />
+          
+          <div className="absolute inset-y-0 left-[10%] w-[1px] bg-white/5 pointer-events-none z-0" />
+          <div className="absolute inset-y-0 right-[10%] w-[1px] bg-white/5 pointer-events-none z-0" />
 
-        {/* 1. HERO / HEADER SECTION */}
-        <section className="relative pt-20 pb-12 md:pt-32 md:pb-20 px-6 overflow-hidden flex flex-col items-center justify-center text-center">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(245,166,35,0.04)_0%,transparent_70%)] pointer-events-none" />
-          <div className="max-w-7xl mx-auto relative z-10">
+          <div className="max-w-6xl mx-auto text-center relative z-10">
             <motion.p 
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="text-brand-yellow font-black uppercase tracking-[0.3em] mb-4 text-[10px] md:text-sm animate-pulse italic"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1.8 }}
+              className="text-[#D2A214] font-bold uppercase tracking-[0.4em] text-[9px] mb-8"
             >
-               Growth Systems for the Central Belt
+              The Local Growth Toolkit
             </motion.p>
-            <motion.h1 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 }}
-              className="mb-6 md:mb-8"
-            >
-              Fill Your Calendar with <br />
-              <span className="text-brand-yellow">The Growth Toolkit.</span>
-            </motion.h1>
-            <motion.p 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className="text-white max-w-xl mx-auto mb-10 md:mb-12 font-medium italic"
-            >
-              We don't sell "content." We sell visibility, trust, and inbound enquiries for local businesses that want to grow.
-            </motion.p>
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
-            >
-              <Link
-                href="/contact"
-                className="px-10 py-5 bg-brand-yellow text-neutral-950 font-black uppercase tracking-widest text-[10px] rounded-xl hover:scale-105 transition-all shadow-xl"
-              >
-                Book Your 15-Min Strategy Call
-              </Link>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* 2. THE COST OF INACTION */}
-        <section className="py-12 md:py-20 px-6 bg-neutral-900/30 border-y border-white/5">
-          <div className="max-w-5xl mx-auto">
-            <h2 className="mb-12 text-center text-white">
-               The Cost of <span className="text-red-500/70">Doing Nothing.</span>
-            </h2>
-            <div className="grid md:grid-cols-2 gap-10 text-left">
-                 <div className="space-y-6">
-                    <p className="text-base text-white italic leading-relaxed">
-                       "Staying invisible isn't just a missed opportunity—it's an active loss of revenue to competitors who show up where your customers are looking."
-                    </p>
-                    <div className="space-y-3">
-                       {[
-                         "Lost trust from amateur visuals",
-                         "Invisible on local Google searches",
-                         "Wasted time on tyre-kickers"
-                       ].map((item, i) => (
-                         <div key={i} className="flex gap-3 items-center text-white font-black uppercase tracking-widest text-[9px]">
-                           <XCircle className="text-red-500/40" size={14} /> {item}
-                         </div>
-                       ))}
-                    </div>
-                 </div>
-                 <div className="p-8 rounded-[2rem] border border-red-500/10 bg-red-500/[0.01] flex flex-col justify-center">
-                    <p className="text-xl font-black italic mb-3 text-red-500/60 uppercase font-bebas tracking-widest">The Outcome?</p>
-                    <p className="text-sm text-white leading-relaxed font-bold italic">
-                       "Your competitors sign the high-value jobs while you remain the Central Belt's best-kept secret."
-                    </p>
-                 </div>
-            </div>
-          </div>
-        </section>
-
-        {/* 3. CORE SOLUTIONS GRID */}
-        <section className="py-12 md:py-20 px-6">
-          <div className="max-w-7xl mx-auto space-y-24 text-left">
             
-            {/* 1. Social Media Content Creation */}
-            <div className="grid md:grid-cols-2 gap-12 items-center">
+            <motion.h1 
+              initial={{ opacity: 0, y: 35 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1.8, delay: 0.2, ease: cinematicEase }}
+              className="text-6xl md:text-8xl lg:text-[7.5rem] font-bebas text-white tracking-wide mb-12 leading-[0.95] uppercase"
+            >
+              FILL YOUR CALENDAR <br/>
+              <span className="text-white/20">WITH HIGH-VALUE ENQUIRIES.</span>
+            </motion.h1>
+
+            <motion.p 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 2, delay: 0.4 }}
+              className="max-w-2xl mx-auto text-[#E8E0D5]/60 font-light text-lg md:text-xl leading-relaxed tracking-wide"
+            >
+              We don't deal in empty metrics or vanity likes. We construct high-converting web showrooms, cinematic content campaigns, and licensed aerial systems to drive paying clients.
+            </motion.p>
+          </div>
+        </section>
+
+        {/* 2. THE COST OF INACTION (BRIGHT EDITORIAL - OFF-WHITE) */}
+        <section className="py-40 px-6 bg-[#F5F4F0] text-[#1A1917] relative z-10 border-b border-[#1A1917]/10">
+          <div className="absolute inset-y-0 left-[10%] w-[1px] bg-[#1A1917]/5 pointer-events-none z-0" />
+          <div className="absolute inset-y-0 right-[10%] w-[1px] bg-[#1A1917]/5 pointer-events-none z-0" />
+
+          <div className="max-w-7xl mx-auto relative z-10">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
               <div>
-                <span className="text-brand-yellow font-black uppercase tracking-[0.2em] text-[10px] mb-4 block italic">Get Seen</span>
-                <h2 className="text-3xl md:text-5xl font-black mb-6 text-white uppercase italic font-bebas tracking-tight">Social Media <br /><span className="text-brand-yellow">Dominance.</span></h2>
-                <p className="text-white mb-8 leading-relaxed italic text-sm">
-                  Stop the scroll and own the local feed. We visit your site in West Lothian or Edinburgh to capture real content that turns attention into trust.
+                <p className="text-[#D2A214] font-bold uppercase tracking-[0.3em] text-[9px] mb-4">The Reality</p>
+                <h2 className="text-5xl md:text-7xl font-bebas text-[#1A1917] tracking-wide uppercase leading-none mb-8">
+                  THE COST OF <br/><span className="text-[#1A1917]/35">STAYING INVISIBLE.</span>
+                </h2>
+                <p className="text-[#1A1917]/70 font-light text-base md:text-lg leading-relaxed max-w-lg mb-8">
+                  Failing to present your physical scale, craftsmanship, and local authority isn't just passive. It means actively losing high-value tenders and clients to competitors who show up properly.
                 </p>
-                <div className="space-y-4">
-                   {[
-                     { icon: <Zap size={20} />, title: "High-Impact Reels", desc: "Cinematic vertical video for local residents." },
-                     { icon: <Users size={20} />, title: "Managed Strategy", desc: "We handle the posting and engagement." }
-                   ].map((item, i) => (
-                      <div key={i} className="flex gap-4 p-6 glass-card border-white/5">
-                         <div className="text-brand-yellow">{item.icon}</div>
-                         <div>
-                            <h4 className="font-black text-white mb-1 uppercase italic font-bebas tracking-widest text-xs">{item.title}</h4>
-                            <p className="text-white text-[11px] italic">{item.desc}</p>
-                         </div>
-                      </div>
-                   ))}
-                </div>
-                <div className="mt-8">
-                   <Link href="/social-media-for-construction" className="inline-flex items-center gap-2 text-brand-yellow font-black uppercase italic font-bebas tracking-widest hover:translate-x-1 transition-transform">
-                      See the Social System <ArrowRight size={16} />
-                   </Link>
-                </div>
               </div>
-              <YouTubeEmbed 
-                videoId="e-oJMNu7b6k" 
-                title="Behind-the-Scenes"
-                description="How we capture authentic, high-impact content without getting in your way."
-                result="Consistent, professional presence."
-              />
+
+              <div className="bg-white p-12 border border-[#1A1917]/5 shadow-md rounded-sm">
+                <h3 className="text-xl font-bebas tracking-wide text-red-600 mb-8 uppercase">Primary Conversion Drains</h3>
+                <ul className="space-y-6">
+                  {[
+                    "Unprofessional mobile layouts that drive prospects away",
+                    "A complete lack of high-resolution visual proof of past builds",
+                    "Relying on generic agency graphics rather than real footage",
+                    "Invisible presence on local Scottish organic searches"
+                  ].map((item, i) => (
+                    <li key={i} className="flex gap-4 items-start text-xs text-[#1A1917]/70 leading-relaxed font-light">
+                      <XCircle className="text-red-500 shrink-0" size={16} />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* 3. CORE SERVICES GRID (DARK CINEMATIC / LIGHT Rhythm) */}
+        <section className="py-40 px-6 bg-[#0f0e0c] relative z-10 border-b border-white/5">
+          <div className="absolute inset-y-0 left-[10%] w-[1px] bg-white/5 pointer-events-none z-0" />
+          <div className="absolute inset-y-0 right-[10%] w-[1px] bg-white/5 pointer-events-none z-0" />
+
+          <div className="max-w-7xl mx-auto relative z-10 space-y-48">
+            
+            {/* 1. Social Media Dominance (Dark Cinematic) */}
+            <div className="grid md:grid-cols-2 gap-24 items-center">
+              <div>
+                <p className="text-[#D2A214] font-bold uppercase tracking-[0.3em] text-[9px] mb-4">Command Feeds</p>
+                <h3 className="text-4xl md:text-6xl font-bebas text-white uppercase tracking-wider mb-6">SOCIAL MEDIA DOMINANCE</h3>
+                <p className="text-white/60 font-light text-sm md:text-base leading-relaxed mb-8">
+                  We capture authentic, high-impact vertical video (Reels, TikTok, Shorts) at your location, ensuring you become the most recognized local provider in your region.
+                </p>
+                <div className="space-y-4 mb-8">
+                  {[
+                    "Strategic hook models designed to stop scrolling feeds",
+                    "Full management: scripting, filming, and platform scheduling"
+                  ].map((item, idx) => (
+                    <div key={idx} className="flex gap-3 items-center text-xs text-white/80 font-light">
+                      <Zap size={14} className="text-[#D2A214]" />
+                      <span>{item}</span>
+                    </div>
+                  ))}
+                </div>
+                <Link href="/social-media" className="inline-flex items-center gap-3 text-[10px] font-bold uppercase tracking-[0.25em] text-[#D2A214] hover:text-white transition-colors">
+                  Explore Social System <ArrowRight size={12} />
+                </Link>
+              </div>
+
+              <div className="aspect-video rounded-sm overflow-hidden border border-white/5 bg-[#171513] relative group shadow-xl">
+                <iframe
+                  src="https://www.youtube.com/embed/e-oJMNu7b6k"
+                  title="Social Showcase"
+                  className="w-full h-full border-0"
+                  allowFullScreen
+                />
+              </div>
             </div>
 
-            {/* 2. Videography & Photography */}
-            <div className="grid md:grid-cols-2 gap-12 items-center">
+            {/* 2. Videography & Photography (Bright Editorial - Off-white inside) */}
+            <div className="grid md:grid-cols-2 gap-24 items-center">
               <div className="md:order-2">
-                <span className="text-brand-yellow font-black uppercase tracking-[0.2em] text-[10px] mb-4 block italic">Build Trust</span>
-                <h2 className="text-3xl md:text-5xl font-black mb-6 text-white uppercase italic font-bebas tracking-tight">Cinematic <br /><span className="text-brand-yellow">Authority Proof.</span></h2>
-                <p className="text-white mb-8 leading-relaxed italic text-sm">
-                  Look like the obvious choice. From drone tours in Edinburgh to site progress in Fife, we prove your quality before they even call.
+                <p className="text-[#D2A214] font-bold uppercase tracking-[0.3em] text-[9px] mb-4">Win Big Tenders</p>
+                <h3 className="text-4xl md:text-6xl font-bebas text-white uppercase tracking-wider mb-6">CINEMATIC LANDSCAPE PROOF</h3>
+                <p className="text-white/60 font-light text-sm md:text-base leading-relaxed mb-8">
+                  Highlight precision, scale, and craftsmanship using professional ground equipment and licensed drone fleets.
                 </p>
-                <div className="space-y-4">
-                   {[
-                     { icon: <Video size={20} />, title: "Drone Tours", desc: "Win more listings through cinematic perspective." },
-                     { icon: <Camera size={20} />, title: "Project Mastery", desc: "Professional brand stills and site photography." }
-                   ].map((item, i) => (
-                      <div key={i} className="flex gap-4 p-6 glass-card border-white/5">
-                         <div className="text-brand-yellow">{item.icon}</div>
-                         <div>
-                            <h4 className="font-black text-white mb-1 uppercase italic font-bebas tracking-widest text-xs">{item.title}</h4>
-                            <p className="text-white text-[11px] italic">{item.desc}</p>
-                         </div>
-                      </div>
-                   ))}
+                <div className="space-y-4 mb-8">
+                  {[
+                    "High-resolution aerial tours (Edinburgh, Fife, Central Belt)",
+                    "Meticulous behind-the-scenes photography for branding"
+                  ].map((item, idx) => (
+                    <div key={idx} className="flex gap-3 items-center text-xs text-white/80 font-light">
+                      <Zap size={14} className="text-[#D2A214]" />
+                      <span>{item}</span>
+                    </div>
+                  ))}
                 </div>
-                <div className="mt-8">
-                   <Link href="/video-production-edinburgh" className="inline-flex items-center gap-2 text-brand-yellow font-black uppercase italic font-bebas tracking-widest hover:translate-x-1 transition-transform">
-                      See the Video System <ArrowRight size={16} />
-                   </Link>
-                </div>
+                <Link href="/video-production" className="inline-flex items-center gap-3 text-[10px] font-bold uppercase tracking-[0.25em] text-[#D2A214] hover:text-white transition-colors">
+                  Explore Video System <ArrowRight size={12} />
+                </Link>
               </div>
-              <YouTubeEmbed 
-                videoId="jC2_w7PSiGI" 
-                title="Drone Perspective"
-                description="Professional aerial capture that showcases scale and craftsmanship."
-                result="Instantly elevated brand perception."
-              />
+
+              <div className="aspect-video rounded-sm overflow-hidden border border-white/5 bg-[#171513] relative group shadow-xl md:order-1">
+                <iframe
+                  src="https://www.youtube.com/embed/jC2_w7PSiGI"
+                  title="Drone Showcase"
+                  className="w-full h-full border-0"
+                  allowFullScreen
+                />
+              </div>
             </div>
 
-            {/* 3. Website Design */}
-            <div className="grid md:grid-cols-2 gap-12 items-center">
+            {/* 3. Website Design (Dark Cinematic) */}
+            <div className="grid md:grid-cols-2 gap-24 items-center">
               <div>
-                <span className="text-brand-yellow font-black uppercase tracking-[0.2em] text-[10px] mb-4 block italic">Get Enquiries</span>
-                <h2 className="text-3xl md:text-5xl font-black mb-6 text-white uppercase italic font-bebas tracking-tight">High-Converting <br /><span className="text-brand-yellow">Lead Engines.</span></h2>
-                <p className="text-white mb-8 leading-relaxed italic text-sm">
-                  Your 24/7 lead-generation system. We build fast, premium websites that turn local interest into signed contracts.
+                <p className="text-[#D2A214] font-bold uppercase tracking-[0.3em] text-[9px] mb-4">Capture Revenue</p>
+                <h3 className="text-4xl md:text-6xl font-bebas text-white uppercase tracking-wider mb-6">CONVERTING SHOWROOMS</h3>
+                <p className="text-white/60 font-light text-sm md:text-base leading-relaxed mb-8">
+                  We custom code stunning digital showrooms built for speed, clean luxury typography, and friction-free lead pathways.
                 </p>
-                <div className="space-y-4">
-                   {[
-                     { icon: <Layout size={20} />, title: "Conversion First", desc: "Built specifically to turn visitors into enquiries." },
-                     { icon: <TrendingUp size={20} />, title: "Local SEO Hubs", desc: "Optimised for West Lothian, Edinburgh, and Fife." }
-                   ].map((item, i) => (
-                      <div key={i} className="flex gap-4 p-6 glass-card border-white/5">
-                         <div className="text-brand-yellow">{item.icon}</div>
-                         <div>
-                            <h4 className="font-black text-white mb-1 uppercase italic font-bebas tracking-widest text-xs">{item.title}</h4>
-                            <p className="text-white text-[11px] italic">{item.desc}</p>
-                         </div>
-                      </div>
-                   ))}
+                <div className="space-y-4 mb-8">
+                  {[
+                    "Custom React architecture built natively for local SEO performance",
+                    "Direct booking integration and seamless contact funnels"
+                  ].map((item, idx) => (
+                    <div key={idx} className="flex gap-3 items-center text-xs text-white/80 font-light">
+                      <Zap size={14} className="text-[#D2A214]" />
+                      <span>{item}</span>
+                    </div>
+                  ))}
                 </div>
-                <div className="mt-8">
-                   <Link href="/web-design-for-trades-scotland" className="inline-flex items-center gap-2 text-brand-yellow font-black uppercase italic font-bebas tracking-widest hover:translate-x-1 transition-transform">
-                      See the Web System <ArrowRight size={16} />
-                   </Link>
-                </div>
+                <Link href="/web-design" className="inline-flex items-center gap-3 text-[10px] font-bold uppercase tracking-[0.25em] text-[#D2A214] hover:text-white transition-colors">
+                  Explore Website System <ArrowRight size={12} />
+                </Link>
               </div>
-              <YouTubeEmbed 
-                videoId="_5ez-K2wvxw" 
-                title="Business Showcase"
-                description="Integrating high-end video into a custom lead-generation website build."
-                result="A seamless conversion path."
-              />
+
+              <div className="text-white/50 text-xs font-light leading-relaxed max-w-sm">
+                Explore our fully responsive showroom installations built natively for high loading speed, structural authority, and direct enquiry conversion.
+              </div>
+            </div>
+
+            {/* Website Showcase Carousel */}
+            <div className="w-full pt-12">
+              <WebsiteShowcaseCarousel />
             </div>
 
           </div>
         </section>
 
-        <section className="py-12 md:py-20 bg-neutral-900/30">
-          <Process />
-        </section>
+        {/* 4. CALL TO ACTION (BRIGHT EDITORIAL) */}
+        <section className="py-48 px-6 bg-[#F5F4F0] text-[#1A1917] relative z-10 border-t border-[#1A1917]/10 text-center flex items-center justify-center overflow-hidden">
+          <div className="absolute inset-y-0 left-[10%] w-[1px] bg-[#1A1917]/5 pointer-events-none z-0" />
+          <div className="absolute inset-y-0 right-[10%] w-[1px] bg-[#1A1917]/5 pointer-events-none z-0" />
 
-        {/* Final CTA */}
-        <section className="py-20 px-6 text-center relative overflow-hidden bg-brand-yellow text-neutral-950">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,0,0,0.05)_0%,transparent_70%)] pointer-events-none" />
-          <div className="max-w-3xl mx-auto relative z-10">
-            <h2 className="mb-8 text-neutral-950">
-              Ready to Get Real Results?
+          <div className="max-w-4xl mx-auto relative z-10 flex flex-col items-center">
+            <p className="text-[#D2A214] font-bold uppercase tracking-[0.4em] text-[9px] mb-8">Build Your Growth Engine</p>
+            <h2 className="text-6xl md:text-8xl font-bebas text-[#1A1917] leading-none mb-12">
+              READY TO COMMENCE <br/><span className="text-[#1A1917]/25">YOUR SYSTEM SCALE?</span>
             </h2>
             <Link
               href="/contact"
-              className="inline-flex items-center gap-3 px-10 py-5 bg-neutral-950 text-white font-black uppercase tracking-widest text-[10px] rounded-xl hover:scale-105 transition-all shadow-2xl group"
+              className="relative px-12 py-6 bg-transparent border border-[#1A1917]/20 text-[#1A1917] font-bold uppercase tracking-[0.25em] text-[9px] rounded-sm overflow-hidden group/btn hover:border-[#D2A214] transition-colors duration-500 inline-block font-inter-tight"
             >
-              Book Your 15-Min Strategy Call
-              <ArrowRight className="group-hover:translate-x-1 transition-transform" size={14} />
+              <div className="absolute inset-0 bg-[#D2A214] translate-y-[100%] group-hover/btn:translate-y-0 transition-transform duration-500 ease-out" />
+              <span className="relative z-10 group-hover/btn:text-[#0f0e0c] transition-colors duration-500">Book Your Discovery Call</span>
             </Link>
-            <p className="mt-8 text-neutral-950/50 text-[9px] font-black uppercase tracking-widest italic">
-              No pressure. No jargon. Just results.
-            </p>
           </div>
         </section>
+
       </main>
       <Footer />
     </>
-  );
+  )
 }

@@ -1,154 +1,229 @@
-import React from 'react';
-import { Metadata } from 'next';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
-import { ArrowRight, BookOpen, Clock, Tag, Play } from 'lucide-react';
-import Link from 'next/link';
-import YouTubeEmbed from '@/components/YouTubeEmbed';
+'use client'
 
-export const metadata: Metadata = {
-  title: 'Insights & Growth Blog | Bear Media',
-  description: 'Expert advice on content creation, social media strategy, and lead generation for local businesses in Scotland. Read our latest insights and growth guides.',
-};
+import React from 'react'
+import { motion } from 'framer-motion'
+import Navbar from '@/components/Navbar'
+import Footer from '@/components/Footer'
+import { ArrowRight, Clock, BookOpen, Film } from 'lucide-react'
+import Link from 'next/link'
+import Image from 'next/image'
+
+const cinematicEase = [0.16, 1, 0.3, 1]
 
 const articles = [
   {
     title: "How Much Does Social Media Content Cost in Scotland?",
-    desc: "A transparent guide to content pricing, budget expectations, and the ROI of professional videography.",
-    link: "/answers/how-much-does-social-media-content-cost-scotland",
-    tag: "Pricing",
-    readTime: "5 min"
+    desc: "A transparent guide to production retainers, drone licensing fees, shoot day rates, and the true commercial returns of professional storytelling for local trades and SMEs.",
+    link: "/insights/social-media-content-cost-scotland",
+    tag: "Finance & ROI",
+    readTime: "5 min",
+    image: "/BEST FINAL CLIENT WORK/Almond Vet Care Website.jpg"
   },
   {
     title: "Why Your Business Isn’t Getting Enquiries Online",
-    desc: "We break down the 3 most common reasons why local websites fail to convert visitors into paying customers.",
-    link: "/answers/why-your-business-isnt-getting-enquiries",
-    tag: "Strategy",
-    readTime: "4 min"
-  },
-  {
-    title: "Is Social Media Worth It for Small Businesses?",
-    desc: "The hard truth about organic reach and why strategy beats 'posting' every single time.",
-    link: "/answers/is-social-media-worth-it",
-    tag: "ROI",
-    readTime: "6 min"
-  },
-  {
-    title: "What Does a Content Creator Actually Do?",
-    desc: "It's more than just taking photos. How a growth partner transforms your business authority.",
-    link: "/answers/what-does-a-content-creator-do",
-    tag: "Guide",
-    readTime: "5 min"
+    desc: "We dissect the three critical errors trades operations make with their websites: stock photography reliance, loading speeds, and complex friction-filled contact routes.",
+    link: "/insights/why-business-not-getting-enquiries",
+    tag: "Conversion",
+    readTime: "4 min",
+    image: "/BEST FINAL CLIENT WORK/klewis.jpg"
   },
   {
     title: "Do Estate Agents Need Video Content?",
-    desc: "How independent estate agents in Edinburgh and West Lothian are using cinematic video to win more listings.",
-    link: "/answers/do-estate-agents-need-video",
+    desc: "How boutique independent agency firms across West Lothian and Edinburgh are utilizing premium walk-through narratives and twilight drone sweeps to out-compete corporate aggregators.",
+    link: "/insights/do-estate-agents-need-video-content",
     tag: "Real Estate",
-    readTime: "6 min"
+    readTime: "6 min",
+    image: "/ATMOSPHERIC SCOTLAND IMAGES/Balmoral Hotel.jpg"
   }
-];
+]
 
 export default function InsightsPage() {
+  const featured = articles[0]
+
   return (
     <>
       <Navbar />
-      <main className="min-h-screen bg-neutral-950 text-white font-sans selection:bg-brand-yellow selection:text-neutral-950">
+      <main className="min-h-screen bg-[#0f0e0c] text-[#E8E0D5] font-inter-tight selection:bg-[#D2A214] selection:text-[#0f0e0c] overflow-hidden">
         
-        {/* HERO SECTION */}
-        <section className="relative pt-20 pb-12 md:pt-32 md:pb-20 px-6 overflow-hidden flex flex-col items-center justify-center text-center">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(245,166,35,0.04)_0%,transparent_70%)] pointer-events-none" />
-          <div className="max-w-7xl mx-auto relative z-10">
-            <p className="text-brand-yellow font-black uppercase tracking-[0.3em] mb-4 text-[10px] md:text-sm animate-pulse italic">Real Talk. No Fluff.</p>
-            <h1 className="mb-6 md:mb-8">
-                Bear <span className="text-brand-yellow">Insights.</span>
-            </h1>
-            <p className="text-white max-w-xl mx-auto font-medium italic text-sm">
-                Helping local businesses in Scotland dominate their market through better content and smarter strategy.
-            </p>
+        {/* 1. HERO SECTION (DARK CINEMATIC) */}
+        <section className="relative min-h-[75vh] flex items-center justify-center px-6 overflow-hidden py-32 border-b border-white/5">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[#D2A214]/5 blur-[120px] rounded-full pointer-events-none" />
+          
+          <div className="absolute inset-y-0 left-[10%] w-[1px] bg-white/5 pointer-events-none z-0" />
+          <div className="absolute inset-y-0 right-[10%] w-[1px] bg-white/5 pointer-events-none z-0" />
+
+          <div className="max-w-6xl mx-auto text-center relative z-10">
+            <motion.p 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1.8 }}
+              className="text-[#D2A214] font-bold uppercase tracking-[0.4em] text-[9px] mb-8"
+            >
+              The Bear Media Journal
+            </motion.p>
+            
+            <motion.h1 
+              initial={{ opacity: 0, y: 35 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1.8, delay: 0.2, ease: cinematicEase }}
+              className="text-6xl md:text-8xl lg:text-[7.5rem] font-bebas text-white tracking-wide mb-12 leading-[0.95] uppercase"
+            >
+              EDITORIAL <br/>
+              <span className="text-white/20">GROWTH JOURNAL.</span>
+            </motion.h1>
+
+            <motion.p 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 2, delay: 0.4 }}
+              className="max-w-2xl mx-auto text-[#E8E0D5]/60 font-light text-lg md:text-xl leading-relaxed tracking-wide"
+            >
+              Straightforward digital guidance for trade businesses, regional construction groups, and premium service firms in Scotland. No jargon, just results.
+            </motion.p>
           </div>
         </section>
 
-        {/* ARTICLES GRID */}
-        <section className="py-12 md:py-20 px-6 max-w-7xl mx-auto">
-           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {articles.map((article, i) => (
-                 <Link key={i} href={article.link} className="group">
-                    <div className="p-8 rounded-[2rem] bg-neutral-900 border border-white/5 group-hover:border-brand-yellow/30 transition-all duration-500 h-full flex flex-col">
-                       <div className="flex justify-between items-center mb-6">
-                          <span className="px-3 py-1 rounded-full bg-brand-yellow/10 text-brand-yellow text-[8px] font-black uppercase tracking-widest border border-brand-yellow/20">
-                             {article.tag}
-                          </span>
-                          <div className="flex items-center gap-2 text-white text-[9px] font-bold uppercase tracking-widest">
-                             <Clock size={10} /> {article.readTime}
-                          </div>
-                       </div>
-                       <h3 className="text-xl font-black mb-4 uppercase italic font-bebas tracking-wide text-white group-hover:text-brand-yellow transition-colors leading-tight">
-                          {article.title}
-                       </h3>
-                       <p className="text-white text-xs leading-relaxed mb-8 flex-grow italic">
-                          "{article.desc}"
-                       </p>
-                       <div className="flex items-center gap-2 text-white font-black uppercase italic font-bebas tracking-widest text-[10px] group-hover:gap-3 transition-all">
-                          Read Article <ArrowRight size={12} className="text-brand-yellow" />
-                       </div>
+        {/* 2. FEATURED ARTICLE (BRIGHT EDITORIAL - OFF-WHITE) */}
+        <section className="py-40 px-6 bg-[#F5F4F0] text-[#1A1917] relative z-10 border-b border-[#1A1917]/10">
+          <div className="absolute inset-y-0 left-[10%] w-[1px] bg-[#1A1917]/5 pointer-events-none z-0" />
+          <div className="absolute inset-y-0 right-[10%] w-[1px] bg-[#1A1917]/5 pointer-events-none z-0" />
+
+          <div className="max-w-6xl mx-auto relative z-10">
+            <p className="text-[#D2A214] font-bold uppercase tracking-[0.3em] text-[9px] mb-12 text-center lg:text-left">Featured Journal</p>
+            
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1.8, ease: cinematicEase }}
+              className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center"
+            >
+              <div className="relative aspect-[16/10] bg-[#EFECE8] border border-[#1A1917]/5 rounded-sm overflow-hidden shadow-sm group">
+                <Image 
+                  src={featured.image} 
+                  alt={featured.title} 
+                  fill 
+                  className="object-cover opacity-90 filter contrast-[1.05] group-hover:scale-[1.01] transition-transform duration-[2.5s] ease-out"
+                  sizes="(max-width: 768px) 90vw, 45vw"
+                />
+                <div className="absolute inset-0 bg-[#0f0e0c]/5" />
+              </div>
+
+              <div className="space-y-6">
+                <div className="flex items-center gap-6">
+                  <span className="inline-block px-2.5 py-0.5 bg-[#D2A214]/10 border border-[#D2A214]/20 text-[#D2A214] font-bold uppercase tracking-widest text-[8px] rounded-sm">
+                    {featured.tag}
+                  </span>
+                  <span className="text-[10px] text-[#1A1917]/40 uppercase tracking-widest font-bold flex items-center gap-1.5">
+                    <Clock size={11} /> {featured.readTime}
+                  </span>
+                </div>
+
+                <h3 className="text-4xl md:text-5xl font-bebas text-[#1A1917] tracking-wider leading-[0.95] uppercase">
+                  {featured.title}
+                </h3>
+
+                <p className="text-sm text-[#1A1917]/70 font-light leading-relaxed max-w-lg">
+                  {featured.desc}
+                </p>
+
+                <div className="pt-4">
+                  <Link 
+                    href={featured.link}
+                    className="inline-flex items-center gap-4 px-8 py-4 bg-[#D2A214] text-[#0f0e0c] font-bold uppercase tracking-widest text-[8px] rounded-sm hover:scale-102 transition-transform shadow-sm font-inter-tight"
+                  >
+                    Read Detailed Journal <ArrowRight size={10} />
+                  </Link>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* 3. RECENT INSIGHTS GRID (DARK CINEMATIC) */}
+        <section className="py-40 px-6 bg-[#0f0e0c] relative z-10 border-b border-white/5">
+          <div className="absolute inset-y-0 left-[10%] w-[1px] bg-white/5 pointer-events-none z-0" />
+          <div className="absolute inset-y-0 right-[10%] w-[1px] bg-white/5 pointer-events-none z-0" />
+
+          <div className="max-w-6xl mx-auto relative z-10">
+            <h3 className="text-center font-bebas text-white text-5xl md:text-7xl mb-24 tracking-wider uppercase">LATEST CONTRIBUTIONS</h3>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {articles.slice(1).map((art, idx) => (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 1.8, delay: idx * 0.1, ease: cinematicEase }}
+                  className="bg-[#171513]/40 border border-white/5 p-10 rounded-sm flex flex-col justify-between group hover:border-[#D2A214]/20 transition-all duration-500"
+                >
+                  <div className="space-y-6">
+                    <div className="relative aspect-[16/10] bg-[#171513] rounded-sm overflow-hidden border border-white/5 mb-6">
+                      <Image 
+                        src={art.image} 
+                        alt={art.title} 
+                        fill 
+                        className="object-cover opacity-80 filter contrast-[1.05] group-hover:scale-[1.01] transition-transform duration-[2.5s] ease-out"
+                        sizes="(max-width: 768px) 90vw, 30vw"
+                      />
+                      <div className="absolute inset-0 bg-[#0f0e0c]/10" />
                     </div>
-                 </Link>
+
+                    <div className="flex justify-between items-center">
+                      <span className="text-[#D2A214] font-bold uppercase tracking-[0.2em] text-[8px]">
+                        {art.tag}
+                      </span>
+                      <span className="text-[9px] text-white/40 uppercase tracking-widest font-bold flex items-center gap-1.5">
+                        <Clock size={10} /> {art.readTime}
+                      </span>
+                    </div>
+
+                    <h4 className="text-2xl md:text-3xl font-bebas text-white tracking-wider uppercase leading-none">
+                      {art.title}
+                    </h4>
+
+                    <p className="text-xs text-white/55 leading-relaxed font-light">
+                      {art.desc}
+                    </p>
+                  </div>
+
+                  <div className="pt-8 mt-8 border-t border-white/5">
+                    <Link 
+                      href={art.link}
+                      className="inline-flex items-center gap-3 text-[9px] font-bold uppercase tracking-[0.25em] text-[#D2A214] group-hover:text-white transition-colors"
+                    >
+                      Explore Discussion <ArrowRight size={10} />
+                    </Link>
+                  </div>
+                </motion.div>
               ))}
-           </div>
+            </div>
+          </div>
         </section>
 
-        {/* WATCH INSTEAD SECTION */}
-        <section className="py-12 md:py-20 px-6 bg-white/[0.01] border-y border-white/5">
-           <div className="max-w-7xl mx-auto">
-              <div className="flex flex-col md:flex-row justify-between items-center mb-12 gap-6 text-center md:text-left">
-                 <div>
-                    <span className="text-brand-yellow font-black uppercase tracking-[0.3em] mb-3 text-[10px] block italic">Prefer Video?</span>
-                    <h2 className="text-white uppercase italic font-bebas tracking-tight">
-                       Watch the <span className="text-brand-yellow">Breakdowns.</span>
-                    </h2>
-                 </div>
-                 <div className="flex items-center gap-3 text-white font-bold uppercase tracking-widest text-[8px]">
-                    <Play size={14} className="text-brand-yellow" />
-                    Real project walkthroughs
-                 </div>
-              </div>
-              
-              <div className="grid md:grid-cols-2 gap-8">
-                 <YouTubeEmbed 
-                    videoId="VlyX1CueJCc" 
-                    title="Marketing a Restaurant Refurb"
-                    description="Cinematic hype for a high-end St Andrews restaurant."
-                    result="Full bookings for opening week."
-                 />
-                 <YouTubeEmbed 
-                    videoId="qrQK-maE3sA" 
-                    title="Real Proof vs Stock Imagery"
-                    description="Why this builder stopped using stock photos."
-                    result="15+ qualified leads in week one."
-                 />
-              </div>
-           </div>
+        {/* 4. CALL TO ACTION (BRIGHT EDITORIAL - OFF-WHITE) */}
+        <section className="py-48 px-6 bg-[#F5F4F0] text-[#1A1917] relative z-10 border-t border-[#1A1917]/10 text-center flex items-center justify-center overflow-hidden">
+          <div className="absolute inset-y-0 left-[10%] w-[1px] bg-[#1A1917]/5 pointer-events-none z-0" />
+          <div className="absolute inset-y-0 right-[10%] w-[1px] bg-[#1A1917]/5 pointer-events-none z-0" />
+
+          <div className="max-w-4xl mx-auto relative z-10 flex flex-col items-center">
+            <p className="text-[#D2A214] font-bold uppercase tracking-[0.4em] text-[9px] mb-8 font-inter-tight">Construct Your Blueprint</p>
+            <h2 className="text-6xl md:text-8xl font-bebas text-[#1A1917] leading-none mb-12">
+              READY TO ACCELERATE <br/><span className="text-[#1A1917]/25">YOUR DIGITAL POSITIONING?</span>
+            </h2>
+            <Link
+              href="/contact"
+              className="relative px-12 py-6 bg-transparent border border-[#1A1917]/20 text-[#1A1917] font-bold uppercase tracking-[0.25em] text-[9px] rounded-sm overflow-hidden group/btn hover:border-[#D2A214] transition-colors duration-500 inline-block font-inter-tight"
+            >
+              <div className="absolute inset-0 bg-[#D2A214] translate-y-[100%] group-hover/btn:translate-y-0 transition-transform duration-500 ease-out" />
+              <span className="relative z-10 group-hover/btn:text-[#0f0e0c] transition-colors duration-500">Book A Growth Discovery Call</span>
+            </Link>
+          </div>
         </section>
 
-        {/* FINAL CTA */}
-        <section className="py-20 px-6 bg-brand-yellow text-neutral-950 text-center relative overflow-hidden">
-           <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,0,0,0.05)_0%,transparent_70%)] pointer-events-none" />
-           <div className="max-w-3xl mx-auto relative z-10">
-              <h2 className="mb-8 text-neutral-950 leading-tight">
-                 Ready to <br /><span className="underline decoration-neutral-950/20 underline-offset-8 italic">scale your authority?</span>
-              </h2>
-              <Link
-                href="/contact"
-                className="inline-flex items-center gap-3 px-10 py-5 bg-neutral-950 text-white font-black uppercase tracking-widest text-[10px] rounded-xl hover:scale-105 transition-all shadow-2xl group"
-              >
-                Book Your Discovery Call
-              </Link>
-           </div>
-        </section>
-
-        <Footer />
       </main>
+      <Footer />
     </>
-  );
+  )
 }
