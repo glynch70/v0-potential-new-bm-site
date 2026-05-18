@@ -20,72 +20,110 @@ const slowFade = {
 };
 
 // Premium Touch-Friendly Snap Carousel
-const CinematicCarousel = ({ items }: { items: { src: string, label: string, category?: string }[] }) => {
+const CinematicCarousel = ({ items }: { items: { src: string, label: string, category?: string, link?: string }[] }) => {
   return (
     <div className="w-full relative mt-12 md:mt-0">
       <div 
         className="flex gap-8 overflow-x-auto snap-x snap-mandatory pl-6 md:pl-0 pr-6 pb-12 cursor-grab active:cursor-grabbing hide-scrollbar" 
         style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', WebkitOverflowScrolling: 'touch' }}
       >
-        {items.map((item, idx) => (
-          <div key={idx} className="snap-start shrink-0 w-[80vw] md:w-[40vw] lg:w-[28vw] aspect-[3/4] relative overflow-hidden bg-[#171513] group border border-white/5">
-             <Image 
-               src={item.src} 
-               fill 
-               alt={item.label} 
-               sizes="(max-width: 768px) 80vw, (max-width: 1200px) 40vw, 28vw"
-               className="object-cover opacity-75 filter grayscale-[10%] contrast-[1.05] group-hover:scale-102 group-hover:opacity-90 transition-all duration-[2.5s] ease-out" 
-             />
-             <div className="absolute inset-0 bg-gradient-to-t from-[#0f0e0c]/90 via-[#0f0e0c]/30 to-transparent opacity-85" />
-             
-             <div className="absolute bottom-6 left-6 right-6 z-10 flex flex-col gap-1">
-               {item.category && (
-                 <span className="text-[#D9A05B] font-inter-tight uppercase tracking-[0.25em] text-[9px] font-bold">
-                   {item.category}
-                 </span>
-               )}
-               <p className="text-[#E8E0D5] font-inter-tight uppercase tracking-wider text-xs font-bold leading-tight">
-                 {item.label}
-               </p>
-             </div>
-          </div>
-        ))}
+        {items.map((item, idx) => {
+          const CardContent = (
+            <div className="relative w-full h-full">
+               <Image 
+                 src={item.src} 
+                 fill 
+                 alt={item.label} 
+                 sizes="(max-width: 768px) 80vw, (max-width: 1200px) 40vw, 28vw"
+                 className="object-cover opacity-75 filter grayscale-[10%] contrast-[1.05] group-hover:scale-102 group-hover:opacity-90 transition-all duration-[2.5s] ease-out" 
+               />
+               <div className="absolute inset-0 bg-gradient-to-t from-[#0f0e0c]/90 via-[#0f0e0c]/30 to-transparent opacity-85" />
+               
+               <div className="absolute bottom-6 left-6 right-6 z-10 flex flex-col gap-1">
+                 {item.category && (
+                   <span className="text-[#D9A05B] font-inter-tight uppercase tracking-[0.25em] text-[9px] font-bold">
+                     {item.category}
+                   </span>
+                 )}
+                 <p className="text-[#E8E0D5] font-inter-tight uppercase tracking-wider text-xs font-bold leading-tight">
+                   {item.label}
+                 </p>
+               </div>
+            </div>
+          );
+
+          return item.link ? (
+            <Link 
+              href={item.link} 
+              key={idx} 
+              className="snap-start shrink-0 w-[80vw] md:w-[40vw] lg:w-[28vw] aspect-[3/4] block border border-white/5 relative overflow-hidden bg-[#171513] group"
+            >
+              {CardContent}
+            </Link>
+          ) : (
+            <div 
+              key={idx} 
+              className="snap-start shrink-0 w-[80vw] md:w-[40vw] lg:w-[28vw] aspect-[3/4] relative overflow-hidden bg-[#171513] group border border-white/5"
+            >
+              {CardContent}
+            </div>
+          );
+        })}
       </div>
     </div>
   )
 }
 
 // Premium Touch-Friendly Snap Carousel for Landscape Digital Previews
-const DigitalPlatformsCarousel = ({ items }: { items: { src: string, label: string, category?: string }[] }) => {
+const DigitalPlatformsCarousel = ({ items }: { items: { src: string, label: string, category?: string, link?: string }[] }) => {
   return (
     <div className="w-full relative mt-12 md:mt-0">
       <div 
         className="flex gap-8 overflow-x-auto snap-x snap-mandatory pl-6 md:pl-0 pr-6 pb-12 cursor-grab active:cursor-grabbing hide-scrollbar" 
         style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', WebkitOverflowScrolling: 'touch' }}
       >
-        {items.map((item, idx) => (
-          <div key={idx} className="snap-start shrink-0 w-[85vw] md:w-[50vw] lg:w-[38vw] aspect-[16/10] relative overflow-hidden bg-[#171513] group border border-white/5">
-             <Image 
-               src={item.src} 
-               fill 
-               alt={item.label} 
-               sizes="(max-width: 768px) 85vw, (max-width: 1200px) 50vw, 38vw"
-               className="object-cover opacity-75 filter grayscale-[10%] contrast-[1.05] group-hover:scale-102 group-hover:opacity-90 transition-all duration-[2.5s] ease-out" 
-             />
-             <div className="absolute inset-0 bg-gradient-to-t from-[#0f0e0c]/90 via-[#0f0e0c]/15 to-transparent opacity-85" />
-             
-             <div className="absolute bottom-6 left-6 right-6 z-10 flex flex-col gap-1">
-               {item.category && (
-                 <span className="text-[#D9A05B] font-inter-tight uppercase tracking-[0.25em] text-[9px] font-bold">
-                   {item.category}
-                 </span>
-               )}
-               <p className="text-[#E8E0D5] font-inter-tight uppercase tracking-wider text-xs font-bold leading-tight">
-                 {item.label}
-               </p>
-             </div>
-          </div>
-        ))}
+        {items.map((item, idx) => {
+          const CardContent = (
+            <div className="relative w-full h-full">
+               <Image 
+                 src={item.src} 
+                 fill 
+                 alt={item.label} 
+                 sizes="(max-width: 768px) 85vw, (max-width: 1200px) 50vw, 38vw"
+                 className="object-cover opacity-75 filter grayscale-[10%] contrast-[1.05] group-hover:scale-102 group-hover:opacity-90 transition-all duration-[2.5s] ease-out" 
+               />
+               <div className="absolute inset-0 bg-gradient-to-t from-[#0f0e0c]/90 via-[#0f0e0c]/15 to-transparent opacity-85" />
+               
+               <div className="absolute bottom-6 left-6 right-6 z-10 flex flex-col gap-1">
+                 {item.category && (
+                   <span className="text-[#D9A05B] font-inter-tight uppercase tracking-[0.25em] text-[9px] font-bold">
+                     {item.category}
+                   </span>
+                 )}
+                 <p className="text-[#E8E0D5] font-inter-tight uppercase tracking-wider text-xs font-bold leading-tight">
+                   {item.label}
+                 </p>
+               </div>
+            </div>
+          );
+
+          return item.link ? (
+            <Link 
+              href={item.link} 
+              key={idx} 
+              className="snap-start shrink-0 w-[85vw] md:w-[50vw] lg:w-[38vw] aspect-[16/10] block border border-white/5 relative overflow-hidden bg-[#171513] group"
+            >
+              {CardContent}
+            </Link>
+          ) : (
+            <div 
+              key={idx} 
+              className="snap-start shrink-0 w-[85vw] md:w-[50vw] lg:w-[38vw] aspect-[16/10] relative overflow-hidden bg-[#171513] group border border-white/5"
+            >
+              {CardContent}
+            </div>
+          );
+        })}
       </div>
     </div>
   )
@@ -238,9 +276,9 @@ export default function HomeContent() {
             className="w-full md:pl-[10vw]"
           >
              <CinematicCarousel items={[
-               { src: "/ATMOSPHERIC SCOTLAND IMAGES/Edinburgh Sunset.jpg", label: "Edinburgh Sunset Scale", category: "Atmosphere" },
-               { src: "/BTS : PROCESS IMAGES/Harley Biker Drone Shoot.jpg", label: "Behind The Scenes: Biker Capture", category: "The Process" },
-               { src: "/ATMOSPHERIC SCOTLAND IMAGES/Balmoral Hotel.jpg", label: "Balmoral Hotel Drone Focus", category: "Drone Videography" },
+               { src: "/ATMOSPHERIC SCOTLAND IMAGES/Balmoral Hotel.jpg", label: "Balmoral Hotel Landmark Perspective", category: "Drone Videography", link: "/portfolio" },
+               { src: "/ATMOSPHERIC SCOTLAND IMAGES/Howies Edinburgh.jpg", label: "Howies Edinburgh Interior Atmosphere", category: "Interior Design", link: "/portfolio" },
+               { src: "/ATMOSPHERIC SCOTLAND IMAGES/saughton park.jpeg", label: "Saughton Park Botanical Detail", category: "Landscape Documentaries", link: "/portfolio" },
              ]} />
           </motion.div>
         </div>
@@ -286,12 +324,12 @@ export default function HomeContent() {
             className="w-full md:pl-[10vw]"
           >
              <DigitalPlatformsCarousel items={[
-               { src: "/BEST FINAL CLIENT WORK/simply sheds review by bm.png", label: "Simply Sheds E-Commerce Portal", category: "Web Design" },
-               { src: "/BEST FINAL CLIENT WORK/Almond Vet Care Website.jpg", label: "Almond Vet Care Clinic Site", category: "Local Brand Web" },
-               { src: "/BEST FINAL CLIENT WORK/website-3-herb-soul-v2.jpg", label: "Herb & Soul Digital Shop", category: "E-Commerce" },
-               { src: "/BEST FINAL CLIENT WORK/website-5-lewis-joinery-v2.jpg", label: "K Lewis Joinery Client Dashboard", category: "Web Platform" },
-               { src: "/BEST FINAL CLIENT WORK/rt-ltd.uk-v2.jpg", label: "Robertson Transport Logistics Portal", category: "Corporate Web" },
-               { src: "/BEST FINAL CLIENT WORK/seamus_v5_final.jpg", label: "Séamus Corry Creative Studio Portfolio", category: "Branding Visuals" },
+               { src: "/BEST FINAL CLIENT WORK/seamus rebrand.jpg", label: "Séamus Corry Editorial Brand Identity", category: "Branding Visuals", link: "/portfolio/seamus-corry" },
+               { src: "/BEST FINAL CLIENT WORK/Almond Vet Care Website.jpg", label: "Almond Vet Care Clinic Platform", category: "Web Design", link: "/portfolio/almond-vet-care" },
+               { src: "/BEST FINAL CLIENT WORK/C&G Quality Builds.reel.cover.png", label: "C&G Quality Builds Drone Integration", category: "Social Content", link: "/portfolio" },
+               { src: "/BEST FINAL CLIENT WORK/klewis.jpg", label: "K Lewis Joinery Client Dashboard", category: "Web Platform", link: "/portfolio/k-lewis-joinery" },
+               { src: "/BEST FINAL CLIENT WORK/robertsons.jpg", label: "Robertson Transport Logistics Hub", category: "Corporate Web", link: "/portfolio/robertsons-transport" },
+               { src: "/BEST FINAL CLIENT WORK/SIMPLY SHEDS.open sat & sun-Cover.jpg", label: "Simply Sheds High-Conversion E-Commerce", category: "Digital Campaigns", link: "/portfolio" },
              ]} />
           </motion.div>
         </div>

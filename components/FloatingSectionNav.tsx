@@ -91,7 +91,7 @@ export default function FloatingSectionNav() {
               className={`flex-1 flex flex-col items-center justify-center gap-1 min-h-[48px] rounded-xl transition-all duration-300
                 ${
                   isActive
-                    ? "text-[#C9A227] bg-white/5"
+                    ? "text-[#D9A05B] bg-white/5"
                     : "text-white hover:text-white"
                 }
                 active:scale-95`}
@@ -102,7 +102,7 @@ export default function FloatingSectionNav() {
               {isActive && (
                 <motion.div 
                   layoutId="activeTab"
-                  className="w-1.5 h-1.5 rounded-full bg-[#C9A227]"
+                  className="w-1.5 h-1.5 rounded-full bg-[#D9A05B]"
                   transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                 />
               )}

@@ -78,7 +78,7 @@ export default function TestimonialsPage() {
           We don't do corporate waffle or vanity metrics. We build fast websites and create scroll-stopping content that actually brings in enquiries. Here's what happens when local businesses choose Bear Media to help them get found, trusted, and contacted.
         </p>
         <Link href="/contact">
-          <Button className="bg-[#C9A227] text-[#0f172a] hover:bg-[#FF6B35] hover:text-white rounded-full px-8 py-6 text-lg font-bold transition-colors">
+          <Button className="bg-[#D9A05B] text-[#0f172a] hover:bg-[#FF6B35] hover:text-white rounded-full px-8 py-6 text-lg font-bold transition-colors">
             Book a Service
           </Button>
         </Link>
@@ -90,8 +90,8 @@ export default function TestimonialsPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
             {metrics.map((metric, i) => (
               <div key={i} className="flex flex-col items-center">
-                <div className="w-16 h-16 rounded-2xl bg-[#C9A227]/10 flex items-center justify-center mb-6">
-                  <metric.icon className="w-8 h-8 text-[#C9A227]" />
+                <div className="w-16 h-16 rounded-2xl bg-[#D9A05B]/10 flex items-center justify-center mb-6">
+                  <metric.icon className="w-8 h-8 text-[#D9A05B]" />
                 </div>
                 <h3 className="text-4xl font-black text-white mb-2">{metric.value}</h3>
                 <p className="text-lg font-bold text-zinc-200 mb-1">{metric.label}</p>
@@ -110,15 +110,15 @@ export default function TestimonialsPage() {
           {testimonials.map((testimonial, i) => (
             <div
               key={i}
-              className="relative bg-[#0f172a] border border-zinc-800 rounded-3xl p-8 flex flex-col justify-between overflow-hidden group hover:border-[#C9A227]/50 transition-colors"
+              className="relative bg-[#0f172a] border border-zinc-800 rounded-3xl p-8 flex flex-col justify-between overflow-hidden group hover:border-[#D9A05B]/50 transition-colors"
             >
               {/* Gold Accent Bar */}
-              <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-gradient-to-b from-[#C9A227] to-transparent opacity-50" />
+              <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-gradient-to-b from-[#D9A05B] to-transparent opacity-50" />
 
               <div className="flex flex-col flex-grow relative z-10">
                 <div className="flex gap-1 mb-6">
                   {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 fill-[#C9A227] text-[#C9A227]" />
+                    <Star key={i} className="w-5 h-5 fill-[#D9A05B] text-[#D9A05B]" />
                   ))}
                 </div>
 
@@ -127,7 +127,7 @@ export default function TestimonialsPage() {
                 </blockquote>
 
                 <div className="flex items-center gap-4 mt-auto pt-6 border-t border-zinc-800/50">
-                  <div className="relative w-[60px] h-[60px] rounded-full overflow-hidden border-2 border-[#C9A227]">
+                  <div className="relative w-[60px] h-[60px] rounded-full overflow-hidden border-2 border-[#D9A05B]">
                     {/* Placeholder for actual images */}
                     <div className="w-full h-full bg-zinc-800 flex items-center justify-center text-xl font-bold text-zinc-500">
                       {testimonial.name.charAt(0)}
@@ -135,7 +135,7 @@ export default function TestimonialsPage() {
                   </div>
                   <div>
                     <h4 className="font-bold text-white text-lg">{testimonial.name}</h4>
-                    <p className="text-base font-medium text-[#C9A227]">{testimonial.business}</p>
+                    <p className="text-base font-medium text-[#D9A05B]">{testimonial.business}</p>
                   </div>
                 </div>
               </div>
@@ -150,7 +150,7 @@ export default function TestimonialsPage() {
         <p className="text-zinc-400 mb-8 max-w-xl mx-auto">
           We let the results speak for themselves. Dive into our case studies to see the exact websites, social content, and strategies we used.
         </p>
-        <Link href="/#work" className="inline-flex items-center gap-2 text-[#C9A227] hover:text-[#FF6B35] font-bold transition-colors">
+        <Link href="/#work" className="inline-flex items-center gap-2 text-[#D9A05B] hover:text-[#FF6B35] font-bold transition-colors">
           View Case Studies <ArrowRight className="w-5 h-5" />
         </Link>
       </section>
@@ -159,7 +159,7 @@ export default function TestimonialsPage() {
       <section className="py-24 text-center px-6">
         <h2 className="text-3xl font-bold mb-8">Ready to be our next success story?</h2>
         <Link href="/contact">
-          <Button className="bg-[#C9A227] text-[#0f172a] hover:bg-[#FF6B35] hover:text-white rounded-full px-8 py-6 text-lg font-bold transition-colors">
+          <Button className="bg-[#D9A05B] text-[#0f172a] hover:bg-[#FF6B35] hover:text-white rounded-full px-8 py-6 text-lg font-bold transition-colors">
             Book a Service
           </Button>
         </Link>

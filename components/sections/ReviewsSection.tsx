@@ -48,7 +48,7 @@ export default function ReviewsSection() {
 function ReviewCard({ layout }: { layout: "desktop" | "mobile" }) {
   return (
     <div className="rounded-2xl bg-card p-6 shadow-xl md:p-10 md:shadow-[0_4px_20px_rgba(0,0,0,0.15)] md:transition-all md:duration-300 md:hover:-translate-y-1 md:hover:shadow-2xl">
-      <p className="mb-4 text-base font-medium text-[#C9A227] md:mb-6">
+      <p className="mb-4 text-base font-medium text-[#D9A05B] md:mb-6">
         ★★★★★ 5.0 from 18 Google reviews
       </p>
       <blockquote className={`mb-4 text-foreground leading-[1.7] ${layout === "desktop" ? "text-lg md:text-xl" : "text-base"}`}>

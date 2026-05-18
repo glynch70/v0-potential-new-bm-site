@@ -13,7 +13,7 @@ interface ColorShiftTextProps {
 export function ColorShiftText({
   text,
   className = '',
-  colors = ['#ffffff', '#C9A227', '#ffffff'],
+  colors = ['#ffffff', '#D9A05B', '#ffffff'],
   as: Component = 'h2',
 }: ColorShiftTextProps) {
   const { ref, isInView } = useScrollAnimation({ threshold: 0.3 });

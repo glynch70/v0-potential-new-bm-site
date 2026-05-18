@@ -120,7 +120,7 @@ function FormControl({
         {cloneElement(children, {
           id,
           className:
-            "w-full rounded-xl border border-border bg-background px-4 py-4 text-base text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-[#C9A227]",
+            "w-full rounded-xl border border-border bg-background px-4 py-4 text-base text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-[#D9A05B]",
         })}
       </div>
     </label>

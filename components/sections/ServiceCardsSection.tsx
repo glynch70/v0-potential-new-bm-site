@@ -28,7 +28,7 @@ const services = [
           <li>• Monthly performance report</li>
         </ul>
         <div className="pt-6 border-t border-white/10 mt-auto">
-          <a href="/contact" className="text-[#C9A227] text-base font-medium hover:underline flex items-center gap-1 min-h-[44px]">
+          <a href="/contact" className="text-[#D9A05B] text-base font-medium hover:underline flex items-center gap-1 min-h-[44px]">
             Get started <span>→</span>
           </a>
         </div>
@@ -59,7 +59,7 @@ const services = [
           <li>• Handed over — you own it outright</li>
         </ul>
         <div className="pt-6 border-t border-white/10 mt-auto">
-          <a href="/contact" className="text-[#C9A227] text-base font-medium hover:underline flex items-center gap-1 min-h-[44px]">
+          <a href="/contact" className="text-[#D9A05B] text-base font-medium hover:underline flex items-center gap-1 min-h-[44px]">
             Get started <span>→</span>
           </a>
         </div>
@@ -88,7 +88,7 @@ const services = [
           <li>• Google Business Management</li>
         </ul>
         <div className="pt-6 border-t border-white/10 mt-auto">
-          <a href="/contact" className="text-[#C9A227] text-base font-medium hover:underline flex items-center gap-1 min-h-[44px]">
+          <a href="/contact" className="text-[#D9A05B] text-base font-medium hover:underline flex items-center gap-1 min-h-[44px]">
             Get started <span>→</span>
           </a>
         </div>
@@ -103,7 +103,7 @@ export function ServiceCardsSection() {
     <section id="services" className="py-24 px-4 bg-black">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-16">
-          <p className="text-[#C9A227] text-base font-medium uppercase tracking-widest mb-3">
+          <p className="text-[#D9A05B] text-base font-medium uppercase tracking-widest mb-3">
             Websites & Social Media Content
           </p>
           <h2 className="text-3xl md:text-5xl font-black text-white mb-4">Services</h2>

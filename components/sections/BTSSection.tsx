@@ -26,7 +26,7 @@ const btsItems: iCardItem[] = [
 		title: "Event Coverage",
 		description: "Capturing the energy and stories of businesses across Scotland on stage and location.",
 		src: "/bts/bts_event.jpg",
-		color: "#C9A227", // Dark Gold
+		color: "#D9A05B", // Dark Gold
 		textColor: "#FFFFFF",
 		tag: "On-Location",
 		link: "/#work"
