@@ -28,3 +28,6 @@ next-env.d.ts
 .env*.local
 public/work/*.mp4
 public/work/*.mov
+
+# local agent artifacts
+/artifacts

@@ -26,7 +26,7 @@ export const TrustedBySection = () => {
           {industries.map((text, index) => (
             <span 
               key={index} 
-              className="text-[10px] md:text-xs font-black uppercase tracking-[0.5em] text-white whitespace-nowrap italic"
+              className="text-[13px] md:text-sm md:text-xs font-black uppercase tracking-[0.5em] text-white whitespace-nowrap italic"
             >
               {text} •
             </span>

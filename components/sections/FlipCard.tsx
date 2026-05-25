@@ -105,7 +105,7 @@ export default function FlipCard({
               <div className="absolute bottom-0 left-0 right-0 p-6 z-20">
                 <h3 className="text-xl font-bold text-white mb-1">{frontTitle}</h3>
                 <p className="text-white text-base mt-2 leading-relaxed">{frontDescription}</p>
-                <div className="text-[#D9A05B] text-base mt-4 tracking-wide uppercase font-bold flex items-center justify-center py-3 px-4 bg-white/5 rounded-xl border border-white/10 w-fit">
+                <div className="text-[#F1B92D] text-base mt-4 tracking-wide uppercase font-bold flex items-center justify-center py-3 px-4 bg-white/5 rounded-xl border border-white/10 w-fit">
                   ← Click to flip →
                 </div>
               </div>
@@ -122,11 +122,11 @@ export default function FlipCard({
           }}
         >
           {/* Gold Accent Bar on left side */}
-          <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-[#D9A05B] to-transparent opacity-80 rounded-l-lg" />
+          <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-[#F1B92D] to-transparent opacity-80 rounded-l-lg" />
           
           <div className="relative z-10 pl-2">
             {backTitle && (
-              <h3 className="text-2xl font-bold text-[#D9A05B] mb-4">{backTitle}</h3>
+              <h3 className="text-2xl font-bold text-[#F1B92D] mb-4">{backTitle}</h3>
             )}
             <div className="text-zinc-300 text-base space-y-3 leading-relaxed">{backContent}</div>
           </div>

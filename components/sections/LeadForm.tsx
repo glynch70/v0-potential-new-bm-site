@@ -42,7 +42,7 @@ export default function LeadForm() {
   return (
     <section id="contact" className="py-24 bg-neutral-950 relative overflow-hidden">
        {/* Background Elements */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full max-w-4xl max-h-4xl bg-brand-yellow/5 blur-[120px] rounded-full pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full max-w-4xl max-h-4xl bg-gold/5 blur-[120px] rounded-full pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 items-start">
@@ -51,10 +51,10 @@ export default function LeadForm() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
           >
-            <p className="text-brand-yellow font-bold uppercase tracking-[0.3em] text-xs mb-6">Take Action</p>
+            <p className="text-gold font-bold uppercase tracking-[0.3em] text-xs mb-6">Take Action</p>
             <h2 className="text-3xl sm:text-5xl md:text-7xl font-black uppercase leading-tight font-bebas italic mb-8">
               If you're not visible, <br />
-              <span className="text-brand-yellow">you're losing business.</span>
+              <span className="text-gold">you're losing business.</span>
             </h2>
             <p className="text-lg text-white mb-12 max-w-lg leading-relaxed">
               We handle your content so your business stays seen. Stop letting your competitors take your leads.
@@ -67,12 +67,12 @@ export default function LeadForm() {
                 rel="noopener noreferrer"
                 className="flex items-center gap-3 px-8 py-5 bg-white/5 border border-white/10 rounded-2xl hover:bg-white/10 transition-all group"
               >
-                <div className="p-3 bg-brand-yellow rounded-xl text-neutral-950 group-hover:scale-110 transition-transform">
+                <div className="p-3 bg-gold rounded-xl text-neutral-950 group-hover:scale-110 transition-transform">
                   <Send size={20} />
                 </div>
                 <div>
                   <div className="text-white font-bold text-sm">Book a Strategy Call</div>
-                  <div className="text-white text-[10px] uppercase tracking-widest mt-0.5">Free 30-min strategy</div>
+                  <div className="text-white text-[13px] md:text-sm uppercase tracking-widest mt-0.5">Free 30-min strategy</div>
                 </div>
               </a>
 
@@ -87,7 +87,7 @@ export default function LeadForm() {
                 </div>
                 <div>
                   <div className="text-white font-bold text-sm">WhatsApp</div>
-                  <div className="text-white text-[10px] uppercase tracking-widest mt-0.5">Fastest response</div>
+                  <div className="text-white text-[13px] md:text-sm uppercase tracking-widest mt-0.5">Fastest response</div>
                 </div>
               </a>
             </div>
@@ -112,14 +112,14 @@ export default function LeadForm() {
           >
             {submitted ? (
               <div className="py-20 text-center">
-                 <div className="w-20 h-20 bg-brand-yellow/10 rounded-full flex items-center justify-center mx-auto mb-8">
-                    <CheckCircle className="text-brand-yellow" size={40} />
+                 <div className="w-20 h-20 bg-gold/10 rounded-full flex items-center justify-center mx-auto mb-8">
+                    <CheckCircle className="text-gold" size={40} />
                  </div>
                  <h3 className="text-3xl font-black text-white uppercase font-bebas italic mb-4">Message Sent</h3>
                  <p className="text-white leading-relaxed">Garry will get back to you personally within 2 hours.</p>
                  <button 
                   onClick={() => setSubmitted(false)}
-                  className="mt-8 text-brand-yellow font-bold uppercase tracking-widest text-xs hover:underline"
+                  className="mt-8 text-gold font-bold uppercase tracking-widest text-xs hover:underline"
                  >
                    Send another message
                  </button>
@@ -127,43 +127,43 @@ export default function LeadForm() {
             ) : (
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
-                  <label className="block text-white text-[10px] uppercase tracking-[0.2em] mb-3 ml-1">Full Name</label>
+                  <label className="block text-white text-[13px] md:text-sm uppercase tracking-[0.2em] mb-3 ml-1">Full Name</label>
                   <input
                     type="text"
                     name="name"
                     required
                     placeholder="John Doe"
-                    className="w-full px-6 py-4 bg-neutral-950 border border-white/5 rounded-2xl text-white placeholder:text-white focus:outline-none focus:border-brand-yellow/50 transition-colors"
+                    className="w-full px-6 py-4 bg-neutral-950 border border-white/5 rounded-2xl text-white placeholder:text-white focus:outline-none focus:border-gold/50 transition-colors"
                   />
                 </div>
                 <div>
-                  <label className="block text-white text-[10px] uppercase tracking-[0.2em] mb-3 ml-1">Business Name</label>
+                  <label className="block text-white text-[13px] md:text-sm uppercase tracking-[0.2em] mb-3 ml-1">Business Name</label>
                   <input
                     type="text"
                     name="company"
                     required
                     placeholder="Acme Trades Ltd"
-                    className="w-full px-6 py-4 bg-neutral-950 border border-white/5 rounded-2xl text-white placeholder:text-white focus:outline-none focus:border-brand-yellow/50 transition-colors"
+                    className="w-full px-6 py-4 bg-neutral-950 border border-white/5 rounded-2xl text-white placeholder:text-white focus:outline-none focus:border-gold/50 transition-colors"
                   />
                 </div>
                 <div>
-                  <label className="block text-white text-[10px] uppercase tracking-[0.2em] mb-3 ml-1">Email Address</label>
+                  <label className="block text-white text-[13px] md:text-sm uppercase tracking-[0.2em] mb-3 ml-1">Email Address</label>
                   <input
                     type="email"
                     name="email"
                     required
                     placeholder="john@example.com"
-                    className="w-full px-6 py-4 bg-neutral-950 border border-white/5 rounded-2xl text-white placeholder:text-white focus:outline-none focus:border-brand-yellow/50 transition-colors"
+                    className="w-full px-6 py-4 bg-neutral-950 border border-white/5 rounded-2xl text-white placeholder:text-white focus:outline-none focus:border-gold/50 transition-colors"
                   />
                 </div>
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full py-5 bg-brand-yellow text-neutral-950 font-black uppercase tracking-widest text-sm rounded-2xl shadow-xl hover:scale-[1.02] transition-all duration-300 active:scale-[0.98] disabled:opacity-50"
+                  className="w-full py-5 bg-gold text-neutral-950 font-black uppercase tracking-widest text-sm rounded-2xl shadow-xl hover:scale-[1.02] transition-all duration-300 active:scale-[0.98] disabled:opacity-50"
                 >
                   {isSubmitting ? 'Sending...' : 'Get Your Free Strategy Call'}
                 </button>
-                <p className="text-center text-white text-[10px] uppercase tracking-widest">No obligation. 100% confidential.</p>
+                <p className="text-center text-white text-[13px] md:text-sm uppercase tracking-widest">No obligation. 100% confidential.</p>
               </form>
             )}
           </motion.div>

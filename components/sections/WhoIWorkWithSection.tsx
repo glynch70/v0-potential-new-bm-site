@@ -76,13 +76,13 @@ export const WhoIWorkWithSection = () => {
       <div className="max-w-[1240px] mx-auto px-6">
         {/* Section Header */}
         <div className="text-center mb-20">
-          <p className="text-brand-yellow font-bold uppercase tracking-[0.4em] text-xs mb-8 italic">
+          <p className="text-gold font-bold uppercase tracking-[0.4em] text-xs mb-8 italic">
             WHO I WORK WITH
           </p>
           <h2 className="text-4xl md:text-7xl font-black mb-4 uppercase italic tracking-tighter leading-none">
             Real Businesses
           </h2>
-          <h3 className="text-4xl md:text-7xl font-black text-brand-yellow mb-8 uppercase italic tracking-tighter leading-none">
+          <h3 className="text-4xl md:text-7xl font-black text-gold mb-8 uppercase italic tracking-tighter leading-none">
             Real Results
           </h3>
           <p className="text-white text-lg md:text-2xl max-w-3xl mx-auto italic font-medium leading-relaxed">
@@ -91,7 +91,7 @@ export const WhoIWorkWithSection = () => {
         </div>
 
         {/* Client Carousel - Side-by-Side Early Layout (Visual Style Matched to Screenshot) */}
-        <div className="relative glass-card rounded-[2rem] overflow-hidden border-brand-yellow/10 shadow-2xl">
+        <div className="relative glass-card rounded-[2rem] overflow-hidden border-gold/10 shadow-2xl">
           <AnimatePresence mode="wait">
             <motion.div 
               key={currentIndex}
@@ -120,7 +120,7 @@ export const WhoIWorkWithSection = () => {
 
               {/* Content Area - Dark Background (Matched to Screenshot) */}
               <div className="p-10 md:p-20 flex flex-col justify-center bg-[#121212]">
-                <span className="text-brand-yellow text-xs font-black uppercase tracking-widest mb-6 border border-brand-yellow/20 px-4 py-2 rounded-full w-fit italic">
+                <span className="text-gold text-xs font-black uppercase tracking-widest mb-6 border border-gold/20 px-4 py-2 rounded-full w-fit italic">
                   WEBSITE
                 </span>
                 <h4 className="text-4xl md:text-5xl lg:text-7xl font-black mb-6 italic tracking-tighter leading-[0.85] uppercase">
@@ -136,7 +136,7 @@ export const WhoIWorkWithSection = () => {
                   href={client.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-4 bg-brand-yellow text-dark font-black px-10 py-5 rounded-full hover:scale-105 hover:shadow-2xl transition-all w-fit uppercase tracking-widest text-sm shadow-xl"
+                  className="inline-flex items-center gap-4 bg-gold text-dark font-black px-10 py-5 rounded-full hover:scale-105 hover:shadow-2xl transition-all w-fit uppercase tracking-widest text-sm shadow-xl"
                 >
                   VISIT PROJECT
                   <span className="text-lg">→</span>
@@ -149,14 +149,14 @@ export const WhoIWorkWithSection = () => {
           <div className="absolute inset-y-0 left-4 right-4 flex items-center justify-between pointer-events-none z-10">
             <button
               onClick={prev}
-              className="pointer-events-auto bg-brand-yellow text-dark rounded-full w-14 h-14 md:w-16 md:h-16 flex items-center justify-center font-black text-2xl transition-all hover:scale-110 active:scale-90 shadow-2xl"
+              className="pointer-events-auto bg-gold text-dark rounded-full w-14 h-14 md:w-16 md:h-16 flex items-center justify-center font-black text-2xl transition-all hover:scale-110 active:scale-90 shadow-2xl"
               aria-label="Previous client"
             >
               ←
             </button>
             <button
               onClick={next}
-              className="pointer-events-auto bg-brand-yellow text-dark rounded-full w-14 h-14 md:w-16 md:h-16 flex items-center justify-center font-black text-2xl transition-all hover:scale-110 active:scale-90 shadow-2xl"
+              className="pointer-events-auto bg-gold text-dark rounded-full w-14 h-14 md:w-16 md:h-16 flex items-center justify-center font-black text-2xl transition-all hover:scale-110 active:scale-90 shadow-2xl"
               aria-label="Next client"
             >
               →
@@ -170,7 +170,7 @@ export const WhoIWorkWithSection = () => {
                 key={idx}
                 onClick={() => setCurrentIndex(idx)}
                 className={`h-2 rounded-full transition-all duration-300 ${
-                  idx === currentIndex ? 'bg-brand-yellow w-12' : 'bg-white/20 w-3 hover:bg-white/40'
+                  idx === currentIndex ? 'bg-gold w-12' : 'bg-white/20 w-3 hover:bg-white/40'
                 }`}
                 aria-label={`Go to client ${idx + 1}`}
               />

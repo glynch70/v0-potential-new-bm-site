@@ -15,28 +15,28 @@ export default function RobertsonsTransportCaseStudy() {
   return (
     <>
       <Navbar />
-      <main className="min-h-screen bg-neutral-950 text-white font-sans selection:bg-brand-yellow selection:text-neutral-950 pt-24 md:pt-32">
+      <main className="min-h-screen bg-neutral-950 text-white font-sans selection:bg-gold selection:text-neutral-950 pt-24 md:pt-32">
         <article className="max-w-5xl mx-auto px-6 pb-24">
           
           <header className="mb-12 border-b border-white/10 pb-8">
-            <Link href="/portfolio" className="inline-flex items-center gap-2 text-white/50 hover:text-brand-yellow transition-colors text-sm font-bold uppercase tracking-widest mb-8">
+            <Link href="/portfolio" className="inline-flex items-center gap-2 text-white/85 hover:text-gold transition-colors text-sm font-bold uppercase tracking-widest mb-8">
               <ArrowLeft size={16} /> Back to Portfolio
             </Link>
             
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
               <div>
-                <span className="inline-block px-3 py-1 bg-white/10 border border-white/20 text-white font-black uppercase tracking-widest text-[10px] rounded-full mb-4">
+                <span className="inline-block px-3 py-1 bg-white/10 border border-white/20 text-white font-black uppercase tracking-widest text-[13px] md:text-sm rounded-full mb-4">
                   Haulage and Transport Logistics
                 </span>
                 <h1 className="text-4xl md:text-7xl font-black italic uppercase font-bebas leading-[0.9] text-white">
-                  Robertsons <span className="text-brand-yellow">Transport Ltd</span>
+                  Robertsons <span className="text-gold">Transport Ltd</span>
                 </h1>
               </div>
               <a 
                 href="https://rt-ltd.uk/" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-brand-yellow text-neutral-950 font-black uppercase tracking-widest text-[11px] rounded-xl hover:scale-105 transition-transform shadow-xl"
+                className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-gold text-neutral-950 font-black uppercase tracking-widest text-[13px] md:text-sm rounded-xl hover:scale-105 transition-transform shadow-xl"
               >
                 Visit Website <ExternalLink size={14} />
               </a>
@@ -49,7 +49,7 @@ export default function RobertsonsTransportCaseStudy() {
               src="/work/rt-ltd.uk-v2.jpg" 
               alt="Logistics Website Design Mockup" 
               fill 
-              className="object-cover opacity-70 grayscale group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700" 
+              className="object-cover opacity-70 filter-none group-hover:opacity-100 group-hover:scale-105 transition-all duration-700" 
             />
             <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/20 to-transparent pointer-events-none" />
             <div className="absolute bottom-6 left-6 md:bottom-10 md:left-10 z-10">
@@ -61,27 +61,27 @@ export default function RobertsonsTransportCaseStudy() {
             <div className="md:col-span-2 space-y-8">
               <section>
                 <h2 className="text-2xl md:text-3xl font-black italic uppercase font-bebas text-white mb-4">The Transport Solution</h2>
-                <p className="text-white/70 italic leading-relaxed text-lg mb-4">
-                  Robertsons Transport Ltd is a premier <strong>haulage company in the UK</strong> delivering highly reliable transport solutions across the nation. They needed a <Link href="/web-design" className="text-brand-yellow hover:underline">transport company website</Link> that matched the scale and professionalism of their actual fleet operations.
+                <p className="text-white/90 italic leading-relaxed text-lg mb-4">
+                  Robertsons Transport Ltd is a premier <strong>haulage company in the UK</strong> delivering highly reliable transport solutions across the nation. They needed a <Link href="/web-design" className="text-gold hover:underline">transport company website</Link> that matched the scale and professionalism of their actual fleet operations.
                 </p>
-                <p className="text-white/70 italic leading-relaxed text-lg">
+                <p className="text-white/90 italic leading-relaxed text-lg">
                   We focused heavily on <strong>haulage branding</strong> and <strong>logistics website design</strong> to position the business as an authority in heavy goods logistics.
                 </p>
               </section>
               <section>
                 <h2 className="text-2xl md:text-3xl font-black italic uppercase font-bebas text-white mb-4">The Impact</h2>
-                <p className="text-white/70 italic leading-relaxed text-lg">
+                <p className="text-white/90 italic leading-relaxed text-lg">
                   With robust SEO foundations focused on "transport logistics" and "haulage company UK", the new digital presence acts as a powerful commercial asset. The clean, modern, and premium industrial layout builds immediate trust with large-scale corporate clients seeking nationwide delivery services.
                 </p>
               </section>
             </div>
 
             <div className="bg-neutral-900/80 rounded-[1rem] p-8 border border-white/10 h-fit shadow-inner">
-              <h3 className="text-xl font-black italic uppercase font-bebas text-brand-yellow mb-6">Services Provided</h3>
+              <h3 className="text-xl font-black italic uppercase font-bebas text-gold mb-6">Services Provided</h3>
               <ul className="space-y-4">
                 {["Website Design", "Branding", "Digital Presence", "SEO Foundations", "Content Structure"].map((service, i) => (
                   <li key={i} className="flex items-center gap-3">
-                    <CheckCircle2 size={16} className="text-brand-yellow" />
+                    <CheckCircle2 size={16} className="text-gold" />
                     <span className="text-white/90 font-bold text-sm tracking-wide uppercase">{service}</span>
                   </li>
                 ))}
@@ -91,7 +91,7 @@ export default function RobertsonsTransportCaseStudy() {
 
         </article>
 
-        <section className="py-20 px-6 text-center relative overflow-hidden bg-brand-yellow text-neutral-950 mt-12">
+        <section className="py-20 px-6 text-center relative overflow-hidden bg-gold text-neutral-950 mt-12">
            <div className="max-w-3xl mx-auto relative z-10">
               <h2 className="mb-6 text-neutral-950 text-4xl md:text-5xl font-black italic uppercase font-bebas leading-tight">
                  Scale Your Logistics Business
@@ -101,7 +101,7 @@ export default function RobertsonsTransportCaseStudy() {
               </p>
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-3 px-10 py-5 bg-neutral-950 text-white font-black uppercase tracking-widest text-[11px] rounded-xl hover:scale-105 transition-all shadow-2xl"
+                className="inline-flex items-center gap-3 px-10 py-5 bg-neutral-950 text-white font-black uppercase tracking-widest text-[13px] md:text-sm rounded-xl hover:scale-105 transition-all shadow-2xl"
               >
                 Start Your Project <ArrowRight size={14} />
               </Link>

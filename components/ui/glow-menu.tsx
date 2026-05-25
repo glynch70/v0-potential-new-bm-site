@@ -121,8 +121,8 @@ export const MenuBar = React.forwardRef<HTMLDivElement, MenuBarProps>(
                       className={cn(
                         "flex items-center gap-2 px-4 py-2 relative z-10 bg-transparent transition-colors rounded-xl",
                         isActive
-                          ? "text-brand-yellow font-bold"
-                          : "text-white group-hover:text-brand-yellow font-medium",
+                          ? "text-gold font-bold"
+                          : "text-white group-hover:text-gold font-medium",
                       )}
                       variants={itemVariants}
                       transition={sharedTransition}
@@ -134,8 +134,8 @@ export const MenuBar = React.forwardRef<HTMLDivElement, MenuBarProps>(
                       <span
                         className={cn(
                           "transition-colors duration-300",
-                          isActive ? "text-brand-yellow" : "text-white",
-                          `group-hover:text-brand-yellow`,
+                          isActive ? "text-gold" : "text-white",
+                          `group-hover:text-gold`,
                         )}
                       >
                         <Icon className="h-5 w-5" />
@@ -146,8 +146,8 @@ export const MenuBar = React.forwardRef<HTMLDivElement, MenuBarProps>(
                       className={cn(
                         "flex items-center gap-2 px-4 py-2 absolute inset-0 z-10 bg-transparent transition-colors rounded-xl",
                         isActive
-                          ? "text-brand-yellow font-bold"
-                          : "text-white group-hover:text-brand-yellow font-medium",
+                          ? "text-gold font-bold"
+                          : "text-white group-hover:text-gold font-medium",
                       )}
                       variants={backVariants}
                       transition={sharedTransition}
@@ -160,8 +160,8 @@ export const MenuBar = React.forwardRef<HTMLDivElement, MenuBarProps>(
                       <span
                         className={cn(
                           "transition-colors duration-300",
-                          isActive ? "text-brand-yellow" : "text-white",
-                          `group-hover:text-brand-yellow`,
+                          isActive ? "text-gold" : "text-white",
+                          `group-hover:text-gold`,
                         )}
                       >
                         <Icon className="h-5 w-5" />

@@ -37,8 +37,8 @@ export function FeaturedWorkSection() {
     <section id="work" className="py-24 px-4 bg-zinc-950">
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-10 md:mb-12">
-          <p className="text-brand-yellow text-[10px] md:text-sm font-semibold uppercase tracking-widest mb-3">Portfolio</p>
-          <h2 className="text-3xl md:text-5xl font-black text-white mb-4 uppercase font-bebas italic leading-tight">Bear Media <span className="text-brand-yellow">Websites</span></h2>
+          <p className="text-gold text-[13px] md:text-sm md:text-sm font-semibold uppercase tracking-widest mb-3">Portfolio</p>
+          <h2 className="text-3xl md:text-5xl font-black text-white mb-4 uppercase font-bebas italic leading-tight">Bear Media <span className="text-gold">Websites</span></h2>
           <p className="text-zinc-400 text-sm md:text-lg max-w-2xl mx-auto">High-performance sites designed to turn attention into enquiries.</p>
         </div>
 

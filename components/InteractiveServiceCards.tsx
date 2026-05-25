@@ -120,7 +120,7 @@ function ServiceFlipCard({ service, index }: { service: typeof MAIN_SERVICES[0];
             ))}
           </div>
 
-          <p className="text-[9px] uppercase tracking-[0.2em] text-white mt-6">Tap to see examples</p>
+          <p className="text-[12px] md:text-[13px] uppercase tracking-[0.2em] text-white mt-6">Tap to see examples</p>
         </div>
 
         {/* Back: service details */}
@@ -128,10 +128,10 @@ function ServiceFlipCard({ service, index }: { service: typeof MAIN_SERVICES[0];
           className="absolute inset-0 bg-[#1a1a1a] p-8 md:p-12 border border-zinc-800 rounded-2xl"
           style={{ backfaceVisibility: 'hidden', transform: 'rotateY(180deg)' }}
         >
-          <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-[#D9A05B] to-transparent opacity-80" />
+          <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-[#F1B92D] to-transparent opacity-80" />
           
           <div className="flex flex-col h-full">
-            <h3 className="text-2xl font-bold text-[#D9A05B] mb-4">{service.title}</h3>
+            <h3 className="text-2xl font-bold text-[#F1B92D] mb-4">{service.title}</h3>
             <p className="text-white font-bold mb-4">What's included:</p>
             
             <ul className="space-y-3 text-sm text-white leading-relaxed mb-8">
@@ -168,12 +168,12 @@ function ServiceFlipCard({ service, index }: { service: typeof MAIN_SERVICES[0];
             <div className="mt-auto pt-6 border-t border-white/10">
               <a 
                 href="/contact" 
-                className="text-[#D9A05B] text-sm font-medium hover:underline flex items-center gap-1"
+                className="text-[#F1B92D] text-sm font-medium hover:underline flex items-center gap-1"
                 onClick={(e) => e.stopPropagation()}
               >
                 Get started <span>→</span>
               </a>
-              <p className="text-[10px] uppercase tracking-[0.2em] text-white mt-6">
+              <p className="text-[13px] md:text-sm uppercase tracking-[0.2em] text-white mt-6">
                 ← CLICK TO FLIP BACK →
               </p>
             </div>
@@ -200,7 +200,7 @@ export default function InteractiveServiceCards() {
         >
           <div className="mb-4 flex items-center gap-3">
             <div className="h-px w-12 bg-[#D4A830]" />
-            <span className="text-[11px] font-medium uppercase tracking-[0.3em] text-[#D4A830]">
+            <span className="text-[13px] md:text-sm font-medium uppercase tracking-[0.3em] text-[#D4A830]">
               Services
             </span>
           </div>
@@ -226,7 +226,7 @@ export default function InteractiveServiceCards() {
         >
           <div className="mb-6 flex items-center gap-3">
             <div className="h-px w-8 bg-[#D4A830]" />
-            <span className="text-[11px] font-medium uppercase tracking-[0.3em] text-[#D4A830]">
+            <span className="text-[13px] md:text-sm font-medium uppercase tracking-[0.3em] text-[#D4A830]">
               Also available
             </span>
           </div>

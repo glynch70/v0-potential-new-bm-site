@@ -1,7 +1,7 @@
 /* global Calendly */
 /**
  * Bear Media — Sales Funnel Landing Page
- * Design: Dark Authority — cinematic black/charcoal base, amber (#F5A623) CTA, white text
+ * Design: Dark Authority — cinematic black/charcoal base, amber (#F1B92D) CTA, white text
  * Typography: Bebas Neue (headlines), Inter (body)
  * Target: Businesses across the Scottish Central Belt serious about their brand online
  * Goal: Book a free 30-minute discovery call
@@ -98,7 +98,7 @@ export default function BearMedia() {
           </div>
           
             href="#book"
-            className="bg-[#F5A623] text-black text-sm font-bold px-5 py-2 rounded hover:bg-[#e09510] transition-colors"
+            className="bg-[#F1B92D] text-black text-sm font-bold px-5 py-2 rounded hover:bg-[#e09510] transition-colors"
           >
             Book a Call
           </a>
@@ -127,7 +127,7 @@ export default function BearMedia() {
             variants={stagger}
             className="max-w-2xl"
           >
-            <motion.p variants={fadeUp} className="text-[#F5A623] text-sm font-bold uppercase tracking-[0.2em] mb-4">
+            <motion.p variants={fadeUp} className="text-[#F1B92D] text-sm font-bold uppercase tracking-[0.2em] mb-4">
               On-Site Content Creation Across the Scottish Central Belt
             </motion.p>
             <motion.h1
@@ -138,7 +138,7 @@ export default function BearMedia() {
               We come to you.<br />
               We film it.<br />
               We edit it.<br />
-              <span className="text-[#F5A623]">Your Channels Stay Full</span>
+              <span className="text-[#F1B92D]">Your Channels Stay Full</span>
             </motion.h1>
             <motion.p variants={fadeUp} className="text-lg text-white mb-8 leading-relaxed max-w-xl">
               Bear Media visits your business, films everything you need — video, photography, and drone — then handles all the editing and channel management. You get professional content without touching a camera or spending a day briefing a team.
@@ -146,7 +146,7 @@ export default function BearMedia() {
             <motion.div variants={fadeUp} className="flex flex-wrap gap-4 mb-12">
               
                 href="#book"
-                className="bg-[#F5A623] text-black font-bold px-8 py-4 rounded text-base hover:bg-[#e09510] transition-colors"
+                className="bg-[#F1B92D] text-black font-bold px-8 py-4 rounded text-base hover:bg-[#e09510] transition-colors"
               >
                 Let's Grow Your Business
               </a>
@@ -165,7 +165,7 @@ export default function BearMedia() {
                 { stat: "25+", label: "Happy Clients" },
               ].map((item) => (
                 <div key={item.label}>
-                  <div className="text-2xl font-black text-[#F5A623]">{item.stat}</div>
+                  <div className="text-2xl font-black text-[#F1B92D]">{item.stat}</div>
                   <div className="text-white text-sm">{item.label}</div>
                 </div>
               ))}
@@ -187,13 +187,13 @@ export default function BearMedia() {
             viewport={{ once: true }}
             variants={fadeUp}
           >
-            <h2 className="text-4xl sm:text-6xl md:text-8xl font-black text-[#F5A623] mb-4 tracking-tighter leading-tight" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
+            <h2 className="text-4xl sm:text-6xl md:text-8xl font-black text-[#F1B92D] mb-4 tracking-tighter leading-tight" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
               +661% Growth
             </h2>
             <p className="text-xl md:text-2xl text-white font-bold uppercase tracking-widest mb-4">
               123,000+ views generated
             </p>
-            <p className="text-[#F5A623] font-bold uppercase tracking-widest text-xs">
+            <p className="text-[#F1B92D] font-bold uppercase tracking-widest text-xs">
               Recent client progress since Feb 26
             </p>
           </motion.div>
@@ -209,7 +209,7 @@ export default function BearMedia() {
             viewport={{ once: true }}
             variants={stagger}
           >
-            <motion.p variants={fadeUp} className="text-[#F5A623] text-sm font-bold uppercase tracking-[0.2em] mb-3 text-center">
+            <motion.p variants={fadeUp} className="text-[#F1B92D] text-sm font-bold uppercase tracking-[0.2em] mb-3 text-center">
               Sound Familiar?
             </motion.p>
             <motion.h2
@@ -240,9 +240,9 @@ export default function BearMedia() {
                 <motion.div
                   key={item.number}
                   variants={fadeUp}
-                  className="bg-[#1a1a1a] border border-white/10 rounded-lg p-8 hover:border-[#F5A623]/40 transition-colors h-full"
+                  className="bg-[#1a1a1a] border border-white/10 rounded-lg p-8 hover:border-[#F1B92D]/40 transition-colors h-full"
                 >
-                  <div className="text-[#F5A623]/30 text-5xl font-black mb-4" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
+                  <div className="text-[#F1B92D]/30 text-5xl font-black mb-4" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
                     {item.number}
                   </div>
                   <h3 className="text-xl font-bold mb-3 text-white">{item.title}</h3>
@@ -292,14 +292,14 @@ export default function BearMedia() {
                   <div className="aspect-[9/16] bg-[#1a1a1a] rounded-2xl overflow-hidden mb-0 border border-white/10 relative">
                     <img src={video.poster} className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt={video.title} />
                     <div className="absolute inset-0 flex items-center justify-center bg-black/40 group-hover:bg-black/20 transition-colors">
-                      <div className="w-16 h-16 bg-[#F5A623] rounded-full flex items-center justify-center scale-90 group-hover:scale-100 transition-transform shadow-xl">
+                      <div className="w-16 h-16 bg-[#F1B92D] rounded-full flex items-center justify-center scale-90 group-hover:scale-100 transition-transform shadow-xl">
                         <Play size={24} className="text-black fill-black ml-1" />
                       </div>
                     </div>
                   </div>
                   <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
                     <h3 className="text-lg font-bold text-white mb-1 uppercase tracking-tight">{video.title}</h3>
-                    <p className="text-[#F5A623] text-sm font-bold uppercase tracking-widest">{video.result}</p>
+                    <p className="text-[#F1B92D] text-sm font-bold uppercase tracking-widest">{video.result}</p>
                   </div>
                 </TiltCard>
               ))}
@@ -337,14 +337,14 @@ export default function BearMedia() {
                      ></iframe>
                      <button 
                       onClick={() => setSelectedVideo(null)}
-                      className="absolute top-6 right-6 w-10 h-10 bg-black/50 backdrop-blur-md rounded-full flex items-center justify-center text-white hover:bg-[#F5A623] hover:text-black transition-colors z-10"
+                      className="absolute top-6 right-6 w-10 h-10 bg-black/50 backdrop-blur-md rounded-full flex items-center justify-center text-white hover:bg-[#F1B92D] hover:text-black transition-colors z-10"
                      >
                        <X size={20} />
                      </button>
                   </div>
                   <div className="p-8 md:p-12">
                       <h3 className="text-4xl font-black text-white uppercase mb-6 tracking-tight" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>{selectedVideo.title}</h3>
-                      <p className="text-[#F5A623] text-xl font-bold uppercase tracking-widest">{selectedVideo.result}</p>
+                      <p className="text-[#F1B92D] text-xl font-bold uppercase tracking-widest">{selectedVideo.result}</p>
                   </div>
                </motion.div>
             </motion.div>
@@ -361,7 +361,7 @@ export default function BearMedia() {
             viewport={{ once: true }}
             variants={stagger}
           >
-            <motion.p variants={fadeUp} className="text-[#F5A623] text-sm font-bold uppercase tracking-[0.2em] mb-3">
+            <motion.p variants={fadeUp} className="text-[#F1B92D] text-sm font-bold uppercase tracking-[0.2em] mb-3">
               The Service
             </motion.p>
             <motion.h2
@@ -370,7 +370,7 @@ export default function BearMedia() {
               style={{ fontFamily: "'Bebas Neue', sans-serif" }}
             >
               We Do It All.<br />
-              <span className="text-[#F5A623]">On-Site and Online.</span>
+              <span className="text-[#F1B92D]">On-Site and Online.</span>
             </motion.h2>
             <motion.p variants={fadeUp} className="text-white text-base mb-12">
               We show up, we create, you get results.
@@ -389,14 +389,14 @@ export default function BearMedia() {
                     "Monthly performance report so you can see what's working",
                   ].map((item) => (
                     <div key={item} className="flex items-start gap-3">
-                      <CheckCircle size={18} className="text-[#F5A623] mt-0.5 shrink-0" />
+                      <CheckCircle size={18} className="text-[#F1B92D] mt-0.5 shrink-0" />
                       <span className="text-white text-sm">{item}</span>
                     </div>
                   ))}
                 </div>
                 
                   href="#book"
-                  className="inline-block bg-[#F5A623] text-black font-bold px-8 py-4 rounded hover:bg-[#e09510] transition-colors"
+                  className="inline-block bg-[#F1B92D] text-black font-bold px-8 py-4 rounded hover:bg-[#e09510] transition-colors"
                 >
                   Book a Free Call
                 </a>
@@ -413,7 +413,7 @@ export default function BearMedia() {
                     "Businesses ready for professional video, photography, and drone",
                   ].map((item) => (
                     <div key={item} className="flex items-start gap-3">
-                      <div className="w-1.5 h-1.5 rounded-full bg-[#F5A623] mt-2 shrink-0" />
+                      <div className="w-1.5 h-1.5 rounded-full bg-[#F1B92D] mt-2 shrink-0" />
                       <span className="text-white text-sm">{item}</span>
                     </div>
                   ))}
@@ -439,7 +439,7 @@ export default function BearMedia() {
             viewport={{ once: true }}
             variants={stagger}
           >
-            <motion.p variants={fadeUp} className="text-[#F5A623] text-sm font-bold uppercase tracking-[0.2em] mb-3 text-center">
+            <motion.p variants={fadeUp} className="text-[#F1B92D] text-sm font-bold uppercase tracking-[0.2em] mb-3 text-center">
               Client Results
             </motion.p>
             <motion.h2
@@ -473,11 +473,11 @@ export default function BearMedia() {
                 <motion.div
                   key={t.name}
                   variants={fadeUp}
-                  className="bg-[#1a1a1a] border-l-4 border-[#F5A623] rounded-lg p-8"
+                  className="bg-[#1a1a1a] border-l-4 border-[#F1B92D] rounded-lg p-8"
                 >
                   <div className="flex gap-1 mb-4">
                     {Array.from({ length: t.stars }).map((_, i) => (
-                      <Star key={i} size={14} className="text-[#F5A623] fill-[#F5A623]" />
+                      <Star key={i} size={14} className="text-[#F1B92D] fill-[#F1B92D]" />
                     ))}
                   </div>
                   <p className="text-white text-sm leading-relaxed mb-6 italic">"{t.quote}"</p>
@@ -504,7 +504,7 @@ export default function BearMedia() {
             viewport={{ once: true }}
             variants={stagger}
           >
-            <motion.p variants={fadeUp} className="text-[#F5A623] text-sm font-bold uppercase tracking-[0.2em] mb-3 text-center">
+            <motion.p variants={fadeUp} className="text-[#F1B92D] text-sm font-bold uppercase tracking-[0.2em] mb-3 text-center">
               Got Questions?
             </motion.p>
             <motion.h2
@@ -561,7 +561,7 @@ export default function BearMedia() {
                     <span className="font-semibold text-white pr-4">{item.q}</span>
                     <ChevronDown
                       size={18}
-                      className={`text-[#F5A623] flex-shrink-0 transition-transform duration-300 ${openFaq === i ? "rotate-180" : ""}`}
+                      className={`text-[#F1B92D] flex-shrink-0 transition-transform duration-300 ${openFaq === i ? "rotate-180" : ""}`}
                     />
                   </button>
                   {openFaq === i && (
@@ -588,7 +588,7 @@ export default function BearMedia() {
               viewport={{ once: true }}
               variants={stagger}
             >
-              <motion.p variants={fadeUp} className="text-[#F5A623] text-sm font-bold uppercase tracking-[0.2em] mb-3">
+              <motion.p variants={fadeUp} className="text-[#F1B92D] text-sm font-bold uppercase tracking-[0.2em] mb-3">
                 Book a Call
               </motion.p>
               <motion.h2
@@ -597,7 +597,7 @@ export default function BearMedia() {
                 style={{ fontFamily: "'Bebas Neue', sans-serif" }}
               >
                 Let's Come<br />
-                <span className="text-[#F5A623]">To You.</span>
+                <span className="text-[#F1B92D]">To You.</span>
               </motion.h2>
               <motion.p variants={fadeUp} className="text-white leading-relaxed mb-8">
                 A free 30-minute call. No pitch, no pressure. We'll find out what your business needs, show you what we've created for similar companies, and tell you exactly what we'd do for you.
@@ -609,7 +609,7 @@ export default function BearMedia() {
                   { icon: <MapPin size={16} />, text: "Broxburn, West Lothian — filming across the Scottish Central Belt" },
                 ].map((item) => (
                   <div key={item.text} className="flex items-start gap-3 text-white text-sm">
-                    <span className="text-[#F5A623] mt-0.5">{item.icon}</span>
+                    <span className="text-[#F1B92D] mt-0.5">{item.icon}</span>
                     {item.text}
                   </div>
                 ))}
@@ -652,13 +652,13 @@ export default function BearMedia() {
             className="max-w-2xl mx-auto"
           >
             <div className="text-center mb-8">
-              <p className="text-[#F5A623] text-sm font-bold uppercase tracking-[0.3em] italic">
+              <p className="text-[#F1B92D] text-sm font-bold uppercase tracking-[0.3em] italic">
                 Real content. Real results. No fluff.
               </p>
             </div>
             {submitted ? (
-              <div className="bg-[#1a1a1a] border border-[#F5A623]/40 rounded-lg p-10 text-center">
-                <CheckCircle size={48} className="text-[#F5A623] mx-auto mb-4" />
+              <div className="bg-[#1a1a1a] border border-[#F1B92D]/40 rounded-lg p-10 text-center">
+                <CheckCircle size={48} className="text-[#F1B92D] mx-auto mb-4" />
                 <h3 className="text-2xl font-black uppercase mb-2" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
                   Message Sent
                 </h3>
@@ -677,7 +677,7 @@ export default function BearMedia() {
                       required
                       value={formState.name}
                       onChange={(e) => setFormState({ ...formState, name: e.target.value })}
-                      className="w-full bg-[#0a0a0a] border border-white/20 rounded px-4 py-3 text-white text-sm focus:outline-none focus:border-[#F5A623] transition-colors"
+                      className="w-full bg-[#0a0a0a] border border-white/20 rounded px-4 py-3 text-white text-sm focus:outline-none focus:border-[#F1B92D] transition-colors"
                       placeholder="Jane Smith"
                     />
                   </div>
@@ -688,7 +688,7 @@ export default function BearMedia() {
                       required
                       value={formState.email}
                       onChange={(e) => setFormState({ ...formState, email: e.target.value })}
-                      className="w-full bg-[#0a0a0a] border border-white/20 rounded px-4 py-3 text-white text-sm focus:outline-none focus:border-[#F5A623] transition-colors"
+                      className="w-full bg-[#0a0a0a] border border-white/20 rounded px-4 py-3 text-white text-sm focus:outline-none focus:border-[#F1B92D] transition-colors"
                       placeholder="jane@company.com"
                     />
                   </div>
@@ -700,7 +700,7 @@ export default function BearMedia() {
                     required
                     value={formState.company}
                     onChange={(e) => setFormState({ ...formState, company: e.target.value })}
-                    className="w-full bg-[#0a0a0a] border border-white/20 rounded px-4 py-3 text-white text-sm focus:outline-none focus:border-[#F5A623] transition-colors"
+                    className="w-full bg-[#0a0a0a] border border-white/20 rounded px-4 py-3 text-white text-sm focus:outline-none focus:border-[#F1B92D] transition-colors"
                     placeholder="Acme Ltd"
                   />
                 </div>
@@ -710,7 +710,7 @@ export default function BearMedia() {
                     required
                     value={formState.size}
                     onChange={(e) => setFormState({ ...formState, size: e.target.value })}
-                    className="w-full bg-[#0a0a0a] border border-white/20 rounded px-4 py-3 text-white text-sm focus:outline-none focus:border-[#F5A623] transition-colors"
+                    className="w-full bg-[#0a0a0a] border border-white/20 rounded px-4 py-3 text-white text-sm focus:outline-none focus:border-[#F1B92D] transition-colors"
                   >
                     <option value="">Select size</option>
                     <option value="1-10">1 to 10 employees</option>
@@ -726,13 +726,13 @@ export default function BearMedia() {
                     rows={4}
                     value={formState.message}
                     onChange={(e) => setFormState({ ...formState, message: e.target.value })}
-                    className="w-full bg-[#0a0a0a] border border-white/20 rounded px-4 py-3 text-white text-sm focus:outline-none focus:border-[#F5A623] transition-colors resize-none"
+                    className="w-full bg-[#0a0a0a] border border-white/20 rounded px-4 py-3 text-white text-sm focus:outline-none focus:border-[#F1B92D] transition-colors resize-none"
                     placeholder="What do you need content for? What platforms are you on? What's not working right now?"
                   />
                 </div>
                 <button
                   type="submit"
-                  className="w-full bg-[#F5A623] text-black font-bold py-4 rounded text-base hover:bg-[#e09510] transition-colors"
+                  className="w-full bg-[#F1B92D] text-black font-bold py-4 rounded text-base hover:bg-[#e09510] transition-colors"
                 >
                   Send My Enquiry
                 </button>
@@ -756,11 +756,11 @@ export default function BearMedia() {
             />
             <div className="absolute top-6 left-6 z-10 bg-black/60 backdrop-blur-md px-5 py-3 rounded-2xl border border-white/10 pointer-events-none">
               <div className="flex items-center gap-3">
-                <div className="w-8 h-8 rounded-full bg-[#F5A623] flex items-center justify-center text-black">
+                <div className="w-8 h-8 rounded-full bg-[#F1B92D] flex items-center justify-center text-black">
                   <MapPin size={16} />
                 </div>
                 <div>
-                  <p className="text-[10px] font-bold uppercase tracking-widest text-white">Our Location</p>
+                  <p className="text-[13px] md:text-sm font-bold uppercase tracking-widest text-white">Our Location</p>
                   <p className="text-sm font-bold text-white">Broxburn, West Lothian</p>
                 </div>
               </div>
@@ -785,7 +785,7 @@ export default function BearMedia() {
             <span className="text-white text-sm">Bear Media · Broxburn, West Lothian</span>
           </div>
           <p className="text-white text-xs">© 2026 Bear Media. All rights reserved.</p>
-          <a href="#book" className="text-[#F5A623] text-sm font-semibold hover:underline">
+          <a href="#book" className="text-[#F1B92D] text-sm font-semibold hover:underline">
             Book a Call
           </a>
         </div>

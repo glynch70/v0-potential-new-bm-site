@@ -91,18 +91,18 @@ export default function FloatingSectionNav() {
               className={`flex-1 flex flex-col items-center justify-center gap-1 min-h-[48px] rounded-xl transition-all duration-300
                 ${
                   isActive
-                    ? "text-[#D9A05B] bg-white/5"
+                    ? "text-[#F1B92D] bg-white/5"
                     : "text-white hover:text-white"
                 }
                 active:scale-95`}
             >
-              <span className={`text-[11px] font-bold uppercase tracking-wider ${isActive ? 'opacity-100' : 'opacity-70'}`}>
+              <span className={`text-[13px] md:text-sm font-bold uppercase tracking-wider ${isActive ? 'opacity-100' : 'opacity-70'}`}>
                 {section.label}
               </span>
               {isActive && (
                 <motion.div 
                   layoutId="activeTab"
-                  className="w-1.5 h-1.5 rounded-full bg-[#D9A05B]"
+                  className="w-1.5 h-1.5 rounded-full bg-[#F1B92D]"
                   transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                 />
               )}

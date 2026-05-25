@@ -36,16 +36,16 @@ export default function RealEstateArticlePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       <Navbar />
-      <main className="min-h-screen bg-neutral-950 text-white font-sans selection:bg-brand-yellow selection:text-neutral-950">
+      <main className="min-h-screen bg-neutral-950 text-white font-sans selection:bg-gold selection:text-neutral-950">
         
         {/* HERO SECTION */}
         <section className="relative pt-20 pb-12 md:pt-32 md:pb-20 px-6 overflow-hidden flex flex-col items-center justify-center text-center">
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(245,166,35,0.04)_0%,transparent_70%)] pointer-events-none" />
           <div className="max-w-4xl mx-auto relative z-10">
-            <p className="text-brand-yellow font-black uppercase tracking-[0.3em] mb-4 text-[10px] md:text-sm animate-pulse italic">Real Estate Mastery. No Fluff.</p>
+            <p className="text-gold font-black uppercase tracking-[0.3em] mb-4 text-[13px] md:text-sm md:text-sm animate-pulse italic">Real Estate Mastery. No Fluff.</p>
             <h1 className="mb-8 text-white">
                Do Estate Agents <br />
-              <span className="text-brand-yellow">Need Video?</span>
+              <span className="text-gold">Need Video?</span>
             </h1>
             <p className="text-white max-w-2xl mx-auto font-medium italic leading-relaxed text-sm">
                Why cinematic video is the difference between winning a listing and being ignored by sellers in Edinburgh.
@@ -70,7 +70,7 @@ export default function RealEstateArticlePage() {
                     { t: "Better Reach.", d: "Algorithms love video. A property reel can reach 10x more people than a static photo ever will. More eyes = more leads." }
                  ].map((item, i) => (
                     <div key={i} className="p-8 rounded-[1.5rem] bg-neutral-900 border border-white/5 group">
-                       <h3 className="text-lg font-black text-brand-yellow uppercase mb-3 italic font-bebas tracking-widest leading-tight">{item.t}</h3>
+                       <h3 className="text-lg font-black text-gold uppercase mb-3 italic font-bebas tracking-widest leading-tight">{item.t}</h3>
                        <p className="text-white text-xs leading-relaxed italic">"{item.d}"</p>
                     </div>
                  ))}
@@ -78,11 +78,11 @@ export default function RealEstateArticlePage() {
 
               <h3 className="text-2xl md:text-4xl font-black uppercase italic font-bebas tracking-tight text-white mt-16 mb-6 text-center">Real Results in Edinburgh.</h3>
               
-              <div className="p-10 rounded-[2.5rem] bg-neutral-900 border border-brand-yellow/10 shadow-[0_0_50px_rgba(245,166,35,0.05)] text-center mb-16">
+              <div className="p-10 rounded-[2.5rem] bg-neutral-900 border border-gold/10 shadow-[0_0_50px_rgba(245,166,35,0.05)] text-center mb-16">
                  <p className="text-xl text-white font-bold italic leading-relaxed">
                     "Bear Media made us look like the only logical choice in our area. Sellers now call us because they've 'seen our videos everywhere'."
                  </p>
-                 <p className="text-brand-yellow font-black uppercase italic font-bebas tracking-widest text-[10px] mt-6">— Local Edinburgh Agent</p>
+                 <p className="text-gold font-black uppercase italic font-bebas tracking-widest text-[13px] md:text-sm mt-6">— Local Edinburgh Agent</p>
               </div>
 
               <p className="text-white text-sm leading-relaxed mb-12 italic text-center">
@@ -92,7 +92,7 @@ export default function RealEstateArticlePage() {
         </section>
 
         {/* FINAL CTA */}
-        <section className="py-20 px-6 bg-brand-yellow text-neutral-950 text-center relative overflow-hidden">
+        <section className="py-20 px-6 bg-gold text-neutral-950 text-center relative overflow-hidden">
            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,0,0,0.05)_0%,transparent_70%)] pointer-events-none" />
            <div className="max-w-3xl mx-auto relative z-10">
               <h2 className="mb-8 text-neutral-950 leading-tight">
@@ -100,7 +100,7 @@ export default function RealEstateArticlePage() {
               </h2>
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-3 px-10 py-5 bg-neutral-950 text-white font-black uppercase tracking-widest text-[10px] rounded-xl hover:scale-105 transition-all shadow-2xl group"
+                className="inline-flex items-center gap-3 px-10 py-5 bg-neutral-950 text-white font-black uppercase tracking-widest text-[13px] md:text-sm rounded-xl hover:scale-105 transition-all shadow-2xl group"
               >
                 Book Your Discovery Call
               </Link>

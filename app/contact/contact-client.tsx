@@ -1,12 +1,13 @@
 "use client"
 
 import type React from "react"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import Link from "next/link"
 import { ArrowLeft, Star, TrendingUp, Users } from "lucide-react"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import YouTubeEmbed from '@/components/YouTubeEmbed'
+import { Turnstile, type TurnstileInstance } from "@marsidev/react-turnstile"
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -20,6 +21,11 @@ export default function ContactPage() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle")
   const [errorMessage, setErrorMessage] = useState("")
+
+  const [turnstileToken, setTurnstileToken] = useState<string | null>(null)
+  const [turnstileStatus, setTurnstileStatus] = useState<"idle" | "loading" | "error" | "expired" | "success">("idle")
+  const turnstileRef = useRef<TurnstileInstance>(null)
+
 
   useEffect(() => {
     const script = document.createElement("script")
@@ -52,7 +58,10 @@ export default function ContactPage() {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          ...formData,
+          token: turnstileToken,
+        }),
       })
 
       const data = await res.json()
@@ -66,13 +75,22 @@ export default function ContactPage() {
           message: "",
           company: "",
         })
+        setTurnstileToken(null)
+        setTurnstileStatus("idle")
       } else {
         setSubmitStatus("error")
         setErrorMessage(data.message || "Something went wrong.")
+        // Reset Turnstile on error to allow user to retry verification
+        turnstileRef.current?.reset()
+        setTurnstileToken(null)
+        setTurnstileStatus("idle")
       }
     } catch {
       setSubmitStatus("error")
       setErrorMessage("Something went wrong. Please email info@bear-media.com directly.")
+      turnstileRef.current?.reset()
+      setTurnstileToken(null)
+      setTurnstileStatus("idle")
     } finally {
       setIsSubmitting(false)
     }
@@ -88,7 +106,7 @@ export default function ContactPage() {
   }
 
   return (
-    <div className="min-h-screen bg-neutral-950 text-white font-sans selection:bg-brand-yellow selection:text-neutral-950">
+    <div className="min-h-screen bg-neutral-950 text-white font-sans selection:bg-gold selection:text-neutral-950">
       {/* Header */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-neutral-950/95 backdrop-blur-md border-b border-white/10 shadow-sm">
         <div className="max-w-5xl mx-auto px-6 py-5 flex justify-between items-center">
@@ -98,17 +116,17 @@ export default function ContactPage() {
           </Link>
           <div className="flex flex-col text-right">
             <span className="text-white font-black text-lg leading-tight uppercase italic font-bebas tracking-wider">Bear Media</span>
-            <span className="text-brand-yellow/60 text-[9px] font-black uppercase tracking-[0.2em]">Visibility & Leads</span>
+            <span className="text-gold/60 text-[12px] md:text-[13px] font-black uppercase tracking-[0.2em]">Visibility & Leads</span>
           </div>
         </div>
       </header>
 
       {/* 1. Header */}
       <section className="pt-32 pb-8 px-6 text-center">
-        <p className="text-brand-yellow font-black uppercase tracking-[0.3em] mb-4 text-[10px] md:text-sm animate-pulse italic">Stop being the best kept secret.</p>
+        <p className="text-gold font-black uppercase tracking-[0.3em] mb-4 text-[13px] md:text-sm md:text-sm animate-pulse italic">Stop being the best kept secret.</p>
         <h1 className="mb-6 md:mb-8">
           Let's Fix Your Visibility & <br />
-          <span className="text-brand-yellow">Generate Enquiries.</span>
+          <span className="text-gold">Generate Enquiries.</span>
         </h1>
         
         {/* PERSONAL VIDEO MESSAGE */}
@@ -128,7 +146,7 @@ export default function ContactPage() {
            ].map((stat, i) => (
              <div key={i} className="flex flex-col items-center">
                 <span className="text-xl font-black text-white font-bebas italic leading-none mb-1">{stat.value}</span>
-                <span className="text-[8px] font-bold text-white uppercase tracking-widest">{stat.label}</span>
+                <span className="text-[13px] md:text-sm md:text-[12px] font-bold text-white uppercase tracking-widest">{stat.label}</span>
              </div>
            ))}
         </div>
@@ -139,7 +157,7 @@ export default function ContactPage() {
 
       {/* Content Grid */}
       <section className="pb-20 px-6">
-        <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-10">
+        <div className="w-full px-6 md:px-12 lg:px-24 grid lg:grid-cols-2 gap-10">
           
           {/* 2. Primary Action: Embedded Calendar */}
           <div className="glass-card overflow-hidden min-h-[600px] border-white/10 bg-neutral-900/30">
@@ -159,12 +177,23 @@ export default function ContactPage() {
               </p>
               
               {submitStatus === "success" ? (
-                <div className="glass-card p-10 text-center border-brand-yellow/30 bg-brand-yellow/5">
-                  <h3 className="text-xl font-black mb-2 text-brand-yellow uppercase italic font-bebas tracking-widest">Message sent</h3>
+                <div className="glass-card p-10 text-center border-gold/30 bg-gold/5">
+                  <h3 className="text-xl font-black mb-2 text-gold uppercase italic font-bebas tracking-widest">Message sent</h3>
                   <p className="text-white text-sm italic">I’ll reply within 24 hours.</p>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-3">
+                   {/* Honeypot field - hidden from users, filled by bots */}
+                   <input
+                     type="text"
+                     name="company"
+                     value={formData.company}
+                     onChange={handleChange}
+                     style={{ display: "none" }}
+                     tabIndex={-1}
+                     autoComplete="off"
+                   />
+
                    <input
                     type="text"
                     name="name"
@@ -172,7 +201,7 @@ export default function ContactPage() {
                     placeholder="Your name"
                     value={formData.name}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-white text-sm focus:border-brand-yellow outline-none transition-colors"
+                    className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-white text-sm focus:border-gold outline-none transition-colors"
                   />
                   <input
                     type="email"
@@ -181,7 +210,7 @@ export default function ContactPage() {
                     placeholder="you@example.com"
                     value={formData.email}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-white text-sm focus:border-brand-yellow outline-none transition-colors"
+                    className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-white text-sm focus:border-gold outline-none transition-colors"
                   />
                   <textarea
                     name="message"
@@ -190,12 +219,47 @@ export default function ContactPage() {
                     placeholder="Tell me about your business..."
                     value={formData.message}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-white text-sm leading-relaxed focus:border-brand-yellow outline-none transition-colors"
+                    className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-white text-sm leading-relaxed focus:border-gold outline-none transition-colors"
                   />
+
+                  {/* Cloudflare Turnstile Widget */}
+                  <div className="py-2 flex justify-center min-h-[65px]">
+                    <Turnstile
+                      ref={turnstileRef}
+                      siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || ""}
+                      onSuccess={(token) => {
+                        setTurnstileToken(token)
+                        setTurnstileStatus("success")
+                      }}
+                      onExpire={() => {
+                        setTurnstileToken(null)
+                        setTurnstileStatus("expired")
+                      }}
+                      onError={() => {
+                        setTurnstileToken(null)
+                        setTurnstileStatus("error")
+                      }}
+                      options={{
+                        theme: "dark",
+                      }}
+                    />
+                  </div>
+
+                  {turnstileStatus === "error" && (
+                    <p className="text-red-500 text-xs text-center font-medium">
+                      Failed to verify security. Please reload the page.
+                    </p>
+                  )}
+                  {turnstileStatus === "expired" && (
+                    <p className="text-yellow-500 text-xs text-center font-medium">
+                      Security token expired. Please verify again.
+                    </p>
+                  )}
+
                   <button
                     type="submit"
-                    disabled={isSubmitting}
-                    className="w-full bg-brand-yellow text-neutral-950 py-4 rounded-xl font-black uppercase tracking-widest text-[10px] hover:scale-[1.02] active:scale-[0.98] transition-all disabled:opacity-50 shadow-xl"
+                    disabled={isSubmitting || !turnstileToken}
+                    className="w-full bg-gold text-neutral-950 py-4 rounded-xl font-black uppercase tracking-widest text-[13px] md:text-sm hover:scale-[1.02] active:scale-[0.98] transition-all disabled:opacity-50 shadow-xl cursor-pointer disabled:cursor-not-allowed"
                   >
                     {isSubmitting ? "Sending..." : "Send Enquiry"}
                   </button>
@@ -206,14 +270,14 @@ export default function ContactPage() {
             {/* 4. Direct Contact Details & Map */}
             <div className="mt-auto pt-8 border-t border-white/5 space-y-10">
                <div>
-                  <h3 className="text-[10px] font-black uppercase tracking-widest text-white mb-4 italic">Direct Contact</h3>
+                  <h3 className="text-[13px] md:text-sm font-black uppercase tracking-widest text-white mb-4 italic">Direct Contact</h3>
                   <div className="grid grid-cols-2 gap-6">
                      <div>
-                        <p className="text-[8px] text-white uppercase tracking-[0.2em] mb-1 font-bold">Email</p>
-                        <a href="mailto:info@bear-media.com" className="text-sm text-white hover:text-brand-yellow transition-colors italic font-medium">info@bear-media.com</a>
+                        <p className="text-[13px] md:text-sm md:text-[12px] text-white uppercase tracking-[0.2em] mb-1 font-bold">Email</p>
+                        <a href="mailto:info@bear-media.com" className="text-sm text-white hover:text-gold transition-colors italic font-medium">info@bear-media.com</a>
                      </div>
                      <div>
-                        <p className="text-[8px] text-white uppercase tracking-[0.2em] mb-1 font-bold">Location</p>
+                        <p className="text-[13px] md:text-sm md:text-[12px] text-white uppercase tracking-[0.2em] mb-1 font-bold">Location</p>
                         <p className="text-sm text-white italic font-medium">Broxburn, West Lothian</p>
                      </div>
                   </div>
@@ -233,7 +297,7 @@ export default function ContactPage() {
                </div>
 
                <div className="text-center">
-                  <p className="text-[10px] text-white/40 uppercase tracking-widest font-black italic">
+                  <p className="text-[13px] md:text-sm text-white/80 uppercase tracking-widest font-black italic">
                     Serving West Lothian, Livingston, Edinburgh & Surroundings
                   </p>
                </div>

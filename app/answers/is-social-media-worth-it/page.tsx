@@ -27,18 +27,18 @@ export default function AnswerPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       <Navbar />
-      <main className="min-h-screen bg-neutral-950 text-white font-sans selection:bg-brand-yellow selection:text-neutral-950">
+      <main className="min-h-screen bg-neutral-950 text-white font-sans selection:bg-gold selection:text-neutral-950">
         {/* 1. HERO SECTION */}
         <section className="relative pt-20 pb-12 md:pt-32 md:pb-20 px-6 overflow-hidden flex flex-col items-center justify-center text-center">
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(245,166,35,0.04)_0%,transparent_70%)] pointer-events-none" />
           <div className="max-w-4xl mx-auto relative z-10">
-            <p className="text-brand-yellow font-black uppercase tracking-[0.3em] mb-4 text-[10px] md:text-sm animate-pulse italic">Real Talk. No Fluff.</p>
+            <p className="text-gold font-black uppercase tracking-[0.3em] mb-4 text-[13px] md:text-sm md:text-sm animate-pulse italic">Real Talk. No Fluff.</p>
             <h1 className="mb-8 text-white">
-              Is Social Media <span className="text-brand-yellow">Worth It?</span>
+              Is Social Media <span className="text-gold">Worth It?</span>
             </h1>
-            <div className="glass-card p-10 border-brand-yellow/10 text-left bg-neutral-900/50">
-              <h2 className="text-xl font-black mb-4 text-brand-yellow italic uppercase font-bebas tracking-widest">The Short Answer:</h2>
-              <p className="text-sm md:text-base text-white leading-relaxed italic">
+            <div className="glass-card p-10 border-gold/10 text-left bg-neutral-900/50">
+              <h2 className="text-xl font-black mb-4 text-gold italic uppercase font-bebas tracking-widest">The Short Answer:</h2>
+              <p className="text-base md:text-lg text-white leading-relaxed italic">
                 Yes—if it's built on strategy, not just "posting." For small businesses in Scotland, consistent high-quality content is the most cost-effective way to build trust, stay top-of-mind, and generate leads without a massive ad spend.
               </p>
             </div>
@@ -49,7 +49,7 @@ export default function AnswerPage() {
         <section className="py-12 md:py-20 px-6 border-y border-white/5 bg-neutral-900/30">
           <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center text-left">
             <div>
-               <h2 className="text-3xl md:text-5xl font-black mb-6 text-white uppercase italic font-bebas tracking-tight">The ROI of <span className="text-brand-yellow">Consistency.</span></h2>
+               <h2 className="text-3xl md:text-5xl font-black mb-6 text-white uppercase italic font-bebas tracking-tight">The ROI of <span className="text-gold">Consistency.</span></h2>
                <p className="text-white text-sm mb-8 leading-relaxed italic">
                  Most businesses fail at social media because they treat it like a hobby. When treated like a system, content provides three core returns:
                </p>
@@ -59,11 +59,11 @@ export default function AnswerPage() {
                     { id: "02", title: "Organic Lead Gen", desc: "High-value video can reach thousands of local people without paying for clicks." },
                     { id: "03", title: "Time Recovery", desc: "Educational content answers FAQs before they're asked, saving you hours." }
                   ].map((item, i) => (
-                    <div key={i} className="flex gap-4 p-6 glass-card border-white/5 group hover:border-brand-yellow/20 transition-all">
-                       <div className="w-10 h-10 bg-brand-yellow/10 text-brand-yellow flex items-center justify-center rounded-lg font-black italic font-bebas text-lg shrink-0">{item.id}</div>
+                    <div key={i} className="flex gap-4 p-6 glass-card border-white/5 group hover:border-gold/20 transition-all">
+                       <div className="w-10 h-10 bg-gold/10 text-gold flex items-center justify-center rounded-lg font-black italic font-bebas text-lg shrink-0">{item.id}</div>
                        <div>
                           <h4 className="font-black text-white mb-1 uppercase italic font-bebas tracking-widest text-xs">{item.title}</h4>
-                          <p className="text-white text-[11px] italic">"{item.desc}"</p>
+                          <p className="text-white text-[13px] md:text-sm italic">"{item.desc}"</p>
                        </div>
                     </div>
                   ))}
@@ -85,26 +85,26 @@ export default function AnswerPage() {
         <section className="py-12 md:py-20 px-6 text-center">
            <div className="max-w-4xl mx-auto">
               <h2 className="mb-8 text-white">
-                Real Evidence in <span className="text-brand-yellow">Scotland.</span>
+                Real Evidence in <span className="text-gold">Scotland.</span>
               </h2>
               <p className="text-white text-sm mb-12 italic leading-relaxed">
                 We've seen local trades and property agencies transform their enquiry rate simply by showing the face behind the business and the quality of their work through vertical video.
               </p>
               <div className="grid md:grid-cols-2 gap-6">
-                 <div className="p-10 glass-card border-brand-yellow/10">
-                    <p className="text-brand-yellow font-black text-6xl mb-2 font-bebas italic leading-none">400%</p>
-                    <p className="text-white text-[10px] uppercase tracking-widest font-black italic">Increase in local enquiries</p>
+                 <div className="p-10 glass-card border-gold/10">
+                    <p className="text-gold font-black text-6xl mb-2 font-bebas italic leading-none">400%</p>
+                    <p className="text-white text-[13px] md:text-sm uppercase tracking-widest font-black italic">Increase in local enquiries</p>
                  </div>
-                 <div className="p-10 glass-card border-brand-yellow/10">
-                    <p className="text-brand-yellow font-black text-6xl mb-2 font-bebas italic leading-none">10+ Hrs</p>
-                    <p className="text-white text-[10px] uppercase tracking-widest font-black italic">Saved per week on FAQs</p>
+                 <div className="p-10 glass-card border-gold/10">
+                    <p className="text-gold font-black text-6xl mb-2 font-bebas italic leading-none">10+ Hrs</p>
+                    <p className="text-white text-[13px] md:text-sm uppercase tracking-widest font-black italic">Saved per week on FAQs</p>
                  </div>
               </div>
            </div>
         </section>
 
         {/* 4. FINAL CTA */}
-        <section className="py-20 px-6 text-center relative overflow-hidden bg-brand-yellow text-neutral-950">
+        <section className="py-20 px-6 text-center relative overflow-hidden bg-gold text-neutral-950">
            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,0,0,0.05)_0%,transparent_70%)] pointer-events-none" />
            <div className="max-w-3xl mx-auto relative z-10">
               <h2 className="mb-8 text-neutral-950">
@@ -112,11 +112,11 @@ export default function AnswerPage() {
               </h2>
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-3 px-10 py-5 bg-neutral-950 text-white font-black uppercase tracking-widest text-[10px] rounded-xl hover:scale-105 transition-all shadow-2xl group"
+                className="inline-flex items-center gap-3 px-10 py-5 bg-neutral-950 text-white font-black uppercase tracking-widest text-[13px] md:text-sm rounded-xl hover:scale-105 transition-all shadow-2xl group"
               >
                 Book Your Discovery Call
               </Link>
-              <p className="mt-8 text-neutral-950/50 text-[9px] font-black uppercase tracking-widest italic">
+              <p className="mt-8 text-neutral-950/50 text-[12px] md:text-[13px] font-black uppercase tracking-widest italic">
                 No pressure. No jargon. Just results.
               </p>
            </div>

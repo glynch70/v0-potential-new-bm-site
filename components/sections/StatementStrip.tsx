@@ -6,7 +6,7 @@ export default function StatementStrip() {
   const text = "NO ACCOUNT MANAGERS JUST RESULTS • NO OFFICE NONSENSE • "
   
   return (
-    <section className="bg-brand-yellow py-8 md:py-10 overflow-hidden my-12 relative shadow-2xl">
+    <section className="bg-gold py-8 md:py-10 overflow-hidden my-12 relative shadow-2xl">
       <div className="flex whitespace-nowrap">
         <motion.div 
           animate={{ x: [0, "-50%"] }}

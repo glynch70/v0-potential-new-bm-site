@@ -36,16 +36,16 @@ export default function EnquiriesArticlePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       <Navbar />
-      <main className="min-h-screen bg-neutral-950 text-white font-sans selection:bg-brand-yellow selection:text-neutral-950">
+      <main className="min-h-screen bg-neutral-950 text-white font-sans selection:bg-gold selection:text-neutral-950">
         
         {/* HERO SECTION */}
         <section className="relative pt-20 pb-12 md:pt-32 md:pb-20 px-6 overflow-hidden flex flex-col items-center justify-center text-center">
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(245,166,35,0.04)_0%,transparent_70%)] pointer-events-none" />
           <div className="max-w-4xl mx-auto relative z-10">
-            <p className="text-brand-yellow font-black uppercase tracking-[0.3em] mb-4 text-[10px] md:text-sm animate-pulse italic">Hard Truths. Real Solutions.</p>
+            <p className="text-gold font-black uppercase tracking-[0.3em] mb-4 text-[13px] md:text-sm md:text-sm animate-pulse italic">Hard Truths. Real Solutions.</p>
             <h1 className="mb-8 text-white">
                Why You Aren't <br />
-              <span className="text-brand-yellow">Getting Enquiries.</span>
+              <span className="text-gold">Getting Enquiries.</span>
             </h1>
             <p className="text-white max-w-2xl mx-auto font-medium italic leading-relaxed text-sm">
                Most business websites in Scotland are just expensive digital brochures. Here is how to turn yours into a lead-gen machine.
@@ -82,7 +82,7 @@ export default function EnquiriesArticlePage() {
                  ].map((item, i) => (
                     <div key={i} className="p-8 rounded-[1.5rem] bg-neutral-900 border border-white/5 relative overflow-hidden group">
                        <div className="absolute top-4 right-4 text-6xl font-black text-white/[0.03] italic font-bebas">{item.n}</div>
-                       <h3 className="text-lg font-black text-brand-yellow uppercase mb-3 italic font-bebas tracking-widest">{item.t}</h3>
+                       <h3 className="text-lg font-black text-gold uppercase mb-3 italic font-bebas tracking-widest">{item.t}</h3>
                        <p className="text-white text-xs leading-relaxed italic">"{item.d}"</p>
                     </div>
                  ))}
@@ -94,17 +94,17 @@ export default function EnquiriesArticlePage() {
                  <div className="p-8 glass-card border-white/5 bg-neutral-900/50">
                     <h4 className="text-white font-black uppercase italic font-bebas text-lg mb-4">The Amateur Way</h4>
                     <ul className="space-y-4">
-                       <li className="flex gap-3 text-white text-[10px] uppercase font-bold italic tracking-widest"><XCircle size={14} className="text-red-500/30 shrink-0" /> Generic stock photos</li>
-                       <li className="flex gap-3 text-white text-[10px] uppercase font-bold italic tracking-widest"><XCircle size={14} className="text-red-500/30 shrink-0" /> "Welcome" messaging</li>
-                       <li className="flex gap-3 text-white text-[10px] uppercase font-bold italic tracking-widest"><XCircle size={14} className="text-red-500/30 shrink-0" /> Hidden contact forms</li>
+                       <li className="flex gap-3 text-white text-[13px] md:text-sm uppercase font-bold italic tracking-widest"><XCircle size={14} className="text-red-500/30 shrink-0" /> Generic stock photos</li>
+                       <li className="flex gap-3 text-white text-[13px] md:text-sm uppercase font-bold italic tracking-widest"><XCircle size={14} className="text-red-500/30 shrink-0" /> "Welcome" messaging</li>
+                       <li className="flex gap-3 text-white text-[13px] md:text-sm uppercase font-bold italic tracking-widest"><XCircle size={14} className="text-red-500/30 shrink-0" /> Hidden contact forms</li>
                     </ul>
                  </div>
-                 <div className="p-8 glass-card border-brand-yellow/10 bg-brand-yellow/[0.01]">
-                    <h4 className="text-brand-yellow font-black uppercase italic font-bebas text-lg mb-4">The Bear Media Way</h4>
+                 <div className="p-8 glass-card border-gold/10 bg-gold/[0.01]">
+                    <h4 className="text-gold font-black uppercase italic font-bebas text-lg mb-4">The Bear Media Way</h4>
                     <ul className="space-y-4">
-                       <li className="flex gap-3 text-white text-[10px] uppercase font-black italic tracking-widest"><CheckCircle2 size={14} className="text-brand-yellow shrink-0" /> Cinematic on-site proof</li>
-                       <li className="flex gap-3 text-white text-[10px] uppercase font-black italic tracking-widest"><CheckCircle2 size={14} className="text-brand-yellow shrink-0" /> Outcome-focused copy</li>
-                       <li className="flex gap-3 text-white text-[10px] uppercase font-black italic tracking-widest"><CheckCircle2 size={14} className="text-brand-yellow shrink-0" /> Lead-gen architecture</li>
+                       <li className="flex gap-3 text-white text-[13px] md:text-sm uppercase font-black italic tracking-widest"><CheckCircle2 size={14} className="text-gold shrink-0" /> Cinematic on-site proof</li>
+                       <li className="flex gap-3 text-white text-[13px] md:text-sm uppercase font-black italic tracking-widest"><CheckCircle2 size={14} className="text-gold shrink-0" /> Outcome-focused copy</li>
+                       <li className="flex gap-3 text-white text-[13px] md:text-sm uppercase font-black italic tracking-widest"><CheckCircle2 size={14} className="text-gold shrink-0" /> Lead-gen architecture</li>
                     </ul>
                  </div>
               </div>
@@ -112,7 +112,7 @@ export default function EnquiriesArticlePage() {
         </section>
 
         {/* FINAL CTA */}
-        <section className="py-20 px-6 bg-brand-yellow text-neutral-950 text-center relative overflow-hidden">
+        <section className="py-20 px-6 bg-gold text-neutral-950 text-center relative overflow-hidden">
            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,0,0,0.05)_0%,transparent_70%)] pointer-events-none" />
            <div className="max-w-3xl mx-auto relative z-10">
               <h2 className="mb-8 text-neutral-950 leading-tight">
@@ -120,7 +120,7 @@ export default function EnquiriesArticlePage() {
               </h2>
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-3 px-10 py-5 bg-neutral-950 text-white font-black uppercase tracking-widest text-[10px] rounded-xl hover:scale-105 transition-all shadow-2xl group"
+                className="inline-flex items-center gap-3 px-10 py-5 bg-neutral-950 text-white font-black uppercase tracking-widest text-[13px] md:text-sm rounded-xl hover:scale-105 transition-all shadow-2xl group"
               >
                 Book Your Discovery Call
               </Link>

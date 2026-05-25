@@ -25,7 +25,7 @@ export const PartnerLogosSection = ({ heading = "Networks & Partners" }) => {
   return (
     <section className="py-24 md:py-32 px-6 bg-dark">
       <div className="max-w-[1240px] mx-auto text-center mb-16">
-        <p className="text-brand-yellow font-bold uppercase tracking-[0.4em] text-xs mb-8 italic">
+        <p className="text-gold font-bold uppercase tracking-[0.4em] text-xs mb-8 italic">
           COMMUNITY
         </p>
         <h2 className="text-4xl md:text-5xl font-black text-white italic tracking-tighter uppercase mb-4">
@@ -46,8 +46,8 @@ export const PartnerLogosSection = ({ heading = "Networks & Partners" }) => {
                 className="flex basis-1/2 justify-center pl-0 sm:basis-1/3 md:basis-1/4 lg:basis-1/5"
               >
                 <div className="mx-4 flex shrink-0 items-center justify-center py-4">
-                  <div className="flex h-24 w-64 items-center justify-center rounded-2xl glass-card border-brand-yellow/10 px-6 text-center transition-all hover:bg-brand-yellow/10 group cursor-pointer hover:border-brand-yellow/30">
-                    <span className="text-sm font-black text-white group-hover:text-brand-yellow transition-colors leading-tight uppercase tracking-widest italic">
+                  <div className="flex h-24 w-64 items-center justify-center rounded-2xl glass-card border-gold/10 px-6 text-center transition-all hover:bg-gold/10 group cursor-pointer hover:border-gold/30">
+                    <span className="text-sm font-black text-white group-hover:text-gold transition-colors leading-tight uppercase tracking-widest italic">
                       {logo.description}
                     </span>
                   </div>

@@ -12,7 +12,7 @@ export default function WebDesignEdinburghContent() {
   return (
     <>
       <Navbar />
-      <main className="min-h-screen bg-neutral-950 text-white font-sans selection:bg-brand-yellow selection:text-neutral-950">
+      <main className="min-h-screen bg-neutral-950 text-white font-sans selection:bg-gold selection:text-neutral-950">
         
         {/* 1. HERO SECTION */}
         <section className="relative pt-24 pb-16 md:pt-48 md:pb-40 px-6 overflow-hidden flex flex-col items-center justify-center text-center">
@@ -21,7 +21,7 @@ export default function WebDesignEdinburghContent() {
             <motion.p 
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              className="text-brand-yellow font-black uppercase tracking-[0.3em] mb-4 text-[10px] md:text-sm animate-pulse italic"
+              className="text-gold font-black uppercase tracking-[0.3em] mb-4 text-[13px] md:text-sm md:text-sm animate-pulse italic"
             >
                High-performance websites for the Capital.
             </motion.p>
@@ -32,7 +32,7 @@ export default function WebDesignEdinburghContent() {
               className="text-4xl md:text-8xl font-black mb-6 md:mb-8 leading-[0.9] tracking-tighter italic uppercase font-bebas"
             >
               Web Design <br />
-              <span className="text-brand-yellow">Edinburgh</span> <br />
+              <span className="text-gold">Edinburgh</span> <br />
               That Wins High-Value Clients
             </motion.h1>
             <motion.p 
@@ -50,7 +50,7 @@ export default function WebDesignEdinburghContent() {
             >
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-3 px-10 py-5 bg-brand-yellow text-neutral-950 font-black uppercase tracking-widest text-[10px] rounded-xl hover:scale-105 transition-all shadow-xl"
+                className="inline-flex items-center gap-3 px-10 py-5 bg-gold text-neutral-950 font-black uppercase tracking-widest text-[13px] md:text-sm rounded-xl hover:scale-105 transition-all shadow-xl"
               >
                 Book a Discovery Call
                 <ArrowRight size={16} />
@@ -74,7 +74,7 @@ export default function WebDesignEdinburghContent() {
         {/* 3. PROBLEM SECTION */}
         <section className="py-32 px-6 max-w-5xl mx-auto text-center md:text-left">
            <h2 className="text-3xl md:text-5xl font-black mb-16 uppercase italic font-bebas tracking-tight text-white leading-none">
-              The Edinburgh <br /><span className="text-brand-yellow">Attention Gap.</span>
+              The Edinburgh <br /><span className="text-gold">Attention Gap.</span>
            </h2>
            <div className="grid md:grid-cols-2 gap-12 items-center">
               <div className="space-y-6">
@@ -88,7 +88,7 @@ export default function WebDesignEdinburghContent() {
                       "Static layouts that fail to capture Edinburgh buyers",
                       "Poor performance that hurts your local ranking"
                     ].map((item, i) => (
-                      <div key={i} className="flex items-center gap-3 text-white/60">
+                      <div key={i} className="flex items-center gap-3 text-white/90">
                          <CheckCircle2 size={16} className="text-red-500/50" />
                          <span className="text-xs uppercase font-bold tracking-widest">{item}</span>
                       </div>
@@ -96,12 +96,12 @@ export default function WebDesignEdinburghContent() {
                  </div>
               </div>
               <div className="p-10 rounded-[2rem] bg-neutral-900 border border-white/5 relative overflow-hidden group">
-                 <div className="absolute top-0 right-0 w-32 h-32 bg-brand-yellow/5 blur-3xl rounded-full" />
-                 <h4 className="text-xl font-black uppercase italic font-bebas tracking-widest text-brand-yellow mb-4">The Solution</h4>
+                 <div className="absolute top-0 right-0 w-32 h-32 bg-gold/5 blur-3xl rounded-full" />
+                 <h4 className="text-xl font-black uppercase italic font-bebas tracking-widest text-gold mb-4">The Solution</h4>
                  <p className="text-white text-xs italic leading-relaxed mb-6">
                     We bridge the gap between your quality of work and your online presence. Our websites are built specifically for the Edinburgh market—clean, fast, and high-trust.
                  </p>
-                 <Link href="/web-design" className="text-white font-black uppercase italic font-bebas tracking-widest text-[10px] hover:text-brand-yellow transition-colors flex items-center gap-2 group">
+                 <Link href="/web-design" className="text-white font-black uppercase italic font-bebas tracking-widest text-[13px] md:text-sm hover:text-gold transition-colors flex items-center gap-2 group">
                     Our Web Portfolio <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
                  </Link>
               </div>
@@ -112,15 +112,15 @@ export default function WebDesignEdinburghContent() {
         <section className="py-32 px-6 bg-neutral-900/50 border-y border-white/5">
            <div className="max-w-7xl mx-auto text-center">
               <h2 className="text-3xl md:text-5xl font-black mb-16 uppercase italic font-bebas tracking-tight text-white leading-none">
-                 Our <span className="text-brand-yellow">Digital Hubs.</span>
+                 Our <span className="text-gold">Digital Hubs.</span>
               </h2>
               <div className="grid md:grid-cols-3 gap-8 text-left">
                  {[
-                   { icon: <Zap className="text-brand-yellow" size={32} />, title: "Premium Design", desc: "Sleek, modern interfaces that justify your premium pricing in the Capital." },
-                   { icon: <Target className="text-brand-yellow" size={32} />, title: "City-Wide SEO", desc: "Strategically optimised to win searches in Morningside, Leith, and the New Town." },
-                   { icon: <MousePointer2 className="text-brand-yellow" size={32} />, title: "Enquiry Engine", desc: "Every element is tested to ensure it drives discovery calls and booked valuations." }
+                   { icon: <Zap className="text-gold" size={32} />, title: "Premium Design", desc: "Sleek, modern interfaces that justify your premium pricing in the Capital." },
+                   { icon: <Target className="text-gold" size={32} />, title: "City-Wide SEO", desc: "Strategically optimised to win searches in Morningside, Leith, and the New Town." },
+                   { icon: <MousePointer2 className="text-gold" size={32} />, title: "Enquiry Engine", desc: "Every element is tested to ensure it drives discovery calls and booked valuations." }
                  ].map((item, i) => (
-                    <div key={i} className="p-10 rounded-[2rem] bg-neutral-950 border border-white/5 hover:border-brand-yellow/20 transition-all group">
+                    <div key={i} className="p-10 rounded-[2rem] bg-neutral-950 border border-white/5 hover:border-gold/20 transition-all group">
                        <div className="mb-8 group-hover:scale-110 transition-transform">{item.icon}</div>
                        <h3 className="text-xl font-black mb-4 uppercase italic font-bebas tracking-widest text-white">{item.title}</h3>
                        <p className="text-white/80 text-xs italic leading-relaxed">{item.desc}</p>
@@ -134,7 +134,7 @@ export default function WebDesignEdinburghContent() {
         <section className="py-32 px-6 max-w-7xl mx-auto">
            <div className="text-center mb-16">
               <h2 className="text-3xl md:text-5xl font-black uppercase italic font-bebas tracking-tight text-white leading-none">
-                 Our Simple <span className="text-brand-yellow">4-Step Process.</span>
+                 Our Simple <span className="text-gold">4-Step Process.</span>
               </h2>
            </div>
            <div className="grid md:grid-cols-4 gap-8">
@@ -145,8 +145,8 @@ export default function WebDesignEdinburghContent() {
                 { step: "04", title: "Enquiries", desc: "Your new site starts working to fill your calendar with leads." }
               ].map((item, i) => (
                  <div key={i} className="relative p-8 rounded-[2rem] bg-neutral-900 border border-white/5 overflow-hidden group">
-                    <div className="text-6xl font-black text-white italic font-bebas mb-6 group-hover:text-brand-yellow transition-colors">{item.step}</div>
-                    <h3 className="text-lg font-black mb-3 uppercase italic font-bebas tracking-widest text-brand-yellow">{item.title}</h3>
+                    <div className="text-6xl font-black text-white italic font-bebas mb-6 group-hover:text-gold transition-colors">{item.step}</div>
+                    <h3 className="text-lg font-black mb-3 uppercase italic font-bebas tracking-widest text-gold">{item.title}</h3>
                     <p className="text-white/80 text-xs italic leading-relaxed">{item.desc}</p>
                  </div>
               ))}
@@ -154,7 +154,7 @@ export default function WebDesignEdinburghContent() {
         </section>
 
         {/* 6. LOCAL SECTION */}
-        <section className="py-32 px-6 bg-brand-yellow overflow-hidden relative">
+        <section className="py-32 px-6 bg-gold overflow-hidden relative">
            <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10" />
            <div className="max-w-7xl mx-auto relative z-10 flex flex-col md:flex-row items-center justify-between gap-12">
               <div className="max-w-2xl">
@@ -166,7 +166,7 @@ export default function WebDesignEdinburghContent() {
                  </p>
                  <div className="flex flex-wrap gap-4">
                     {["Leith", "Morningside", "Corstorphine", "City Centre", "West Lothian"].map((city, i) => (
-                      <div key={i} className="flex items-center gap-2 bg-neutral-950/10 px-4 py-2 rounded-full border border-neutral-950/20 text-neutral-950 text-[10px] font-black uppercase tracking-widest">
+                      <div key={i} className="flex items-center gap-2 bg-neutral-950/10 px-4 py-2 rounded-full border border-neutral-950/20 text-neutral-950 text-[13px] md:text-sm font-black uppercase tracking-widest">
                          <MapPin size={12} /> {city}
                       </div>
                     ))}
@@ -182,14 +182,14 @@ export default function WebDesignEdinburghContent() {
         <section className="py-32 px-6 text-center">
            <div className="max-w-3xl mx-auto">
               <h2 className="text-3xl md:text-6xl font-black mb-8 uppercase italic font-bebas tracking-tight text-white leading-none">
-                 Want more enquiries from <br /> your <span className="text-brand-yellow text-underline">Edinburgh website?</span>
+                 Want more enquiries from <br /> your <span className="text-gold text-underline">Edinburgh website?</span>
               </h2>
-              <p className="text-white/60 mb-12 italic font-medium uppercase tracking-widest text-xs">
+              <p className="text-white/90 mb-12 italic font-medium uppercase tracking-widest text-xs">
                  High trust. High growth. No fluff.
               </p>
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-4 px-12 py-6 bg-brand-yellow text-neutral-950 font-black uppercase tracking-[0.2em] text-sm rounded-2xl hover:scale-105 transition-all duration-300 shadow-[0_0_60px_rgba(245,166,35,0.2)]"
+                className="inline-flex items-center gap-4 px-12 py-6 bg-gold text-neutral-950 font-black uppercase tracking-[0.2em] text-sm rounded-2xl hover:scale-105 transition-all duration-300 shadow-[0_0_60px_rgba(245,166,35,0.2)]"
               >
                 👉 Book a Discovery Call
                 <ArrowRight size={16} />

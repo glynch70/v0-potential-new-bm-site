@@ -26,7 +26,7 @@ const btsItems: iCardItem[] = [
 		title: "Event Coverage",
 		description: "Capturing the energy and stories of businesses across Scotland on stage and location.",
 		src: "/bts/bts_event.jpg",
-		color: "#D9A05B", // Dark Gold
+		color: "#F1B92D", // Dark Gold
 		textColor: "#FFFFFF",
 		tag: "On-Location",
 		link: "/#work"
@@ -50,7 +50,7 @@ export default function BTSSection() {
 					initial={{ opacity: 0, y: 10 }}
 					whileInView={{ opacity: 1, y: 0 }}
 					viewport={{ once: true }}
-					className="text-brand-yellow font-black uppercase tracking-[0.4em] text-xs mb-8 italic"
+					className="text-gold font-black uppercase tracking-[0.4em] text-xs mb-8 italic"
 				>
 					THE BEAR MEDIA STORY
 				</motion.p>
@@ -62,7 +62,7 @@ export default function BTSSection() {
 					transition={{ duration: 0.8 }}
 					className="text-5xl md:text-9xl font-black text-white italic tracking-tighter uppercase mb-12 leading-none"
 				>
-					Behind<br />The <span className="text-brand-yellow">Scenes</span>
+					Behind<br />The <span className="text-gold">Scenes</span>
 				</motion.h2>
 				
 				<motion.p 

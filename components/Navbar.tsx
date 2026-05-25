@@ -12,7 +12,7 @@ const menuItems = [
     label: "Services",
     href: "/services",
     gradient: "radial-gradient(circle, rgba(245,166,35,0.15) 0%, rgba(245,166,35,0.06) 50%, rgba(245,166,35,0) 100%)",
-    iconColor: "text-brand-yellow",
+    iconColor: "text-gold",
   },
   {
     icon: Play,
@@ -81,10 +81,10 @@ export default function Navbar() {
         <div className="max-w-6xl mx-auto px-6 py-3 flex justify-between items-center relative z-[110]">
           <Link href="/" onClick={() => setIsOpen(false)} className="flex items-center gap-3 group">
               <div className="flex flex-col">
-                <span className="text-white font-bold text-lg leading-tight group-hover:text-[#D9A05B] transition-colors font-inter-tight">
+                <span className="text-white font-bold text-lg leading-tight group-hover:text-[#F1B92D] transition-colors font-inter-tight">
                   Bear Media
                 </span>
-                <span className="text-[#E8E0D5]/70 text-[10px] font-medium uppercase tracking-[0.2em] font-inter-tight">
+                <span className="text-[#E8E0D5]/70 text-[13px] md:text-sm font-medium uppercase tracking-[0.2em] font-inter-tight">
                   Websites & Social Media
                 </span>
               </div>
@@ -100,7 +100,7 @@ export default function Navbar() {
             />
             <Link 
               href="/contact"
-              className="px-6 py-2.5 rounded-sm bg-[#D9A05B] text-[#0f0e0c] font-black uppercase tracking-widest text-[10px] hover:scale-105 transition-all shadow-lg active:scale-95 font-inter-tight"
+              className="px-6 py-2.5 rounded-sm bg-[#F1B92D] text-[#0f0e0c] font-black uppercase tracking-widest text-[13px] md:text-sm hover:scale-105 transition-all shadow-lg active:scale-95 font-inter-tight"
             >
               Book a Discovery Call
             </Link>
@@ -128,8 +128,8 @@ export default function Navbar() {
             className="fixed inset-0 bg-[#0f0e0c] z-[100] flex flex-col pt-24 pb-12 px-6 overflow-y-auto md:hidden"
           >
             {/* Background Accents */}
-            <div className="absolute top-[-10%] right-[-10%] w-[60%] h-[60%] bg-brand-yellow/10 blur-[120px] rounded-full pointer-events-none" />
-            <div className="absolute bottom-[-10%] left-[-10%] w-[60%] h-[60%] bg-brand-yellow/5 blur-[120px] rounded-full pointer-events-none" />
+            <div className="absolute top-[-10%] right-[-10%] w-[60%] h-[60%] bg-gold/10 blur-[120px] rounded-full pointer-events-none" />
+            <div className="absolute bottom-[-10%] left-[-10%] w-[60%] h-[60%] bg-gold/5 blur-[120px] rounded-full pointer-events-none" />
 
             <div className="flex flex-col gap-2 mt-8 relative z-10 w-full max-w-sm mx-auto flex-grow">
               <motion.div
@@ -142,10 +142,10 @@ export default function Navbar() {
                   onClick={() => setIsOpen(false)}
                   className="flex items-center justify-between group py-5 border-b-2 border-white/10"
                 >
-                  <span className="text-3xl font-black text-white uppercase italic tracking-tighter group-hover:text-brand-yellow transition-colors">
+                  <span className="text-3xl font-black text-white uppercase italic tracking-tighter group-hover:text-gold transition-colors">
                     Home
                   </span>
-                  <Home className="text-brand-yellow group-hover:scale-110 transition-transform" size={28} />
+                  <Home className="text-gold group-hover:scale-110 transition-transform" size={28} />
                 </Link>
               </motion.div>
 
@@ -161,10 +161,10 @@ export default function Navbar() {
                     onClick={() => setIsOpen(false)}
                     className="flex items-center justify-between group py-5 border-b border-white/10"
                   >
-                    <span className="text-3xl font-black text-white uppercase italic tracking-tighter group-hover:text-brand-yellow transition-colors">
+                    <span className="text-3xl font-black text-white uppercase italic tracking-tighter group-hover:text-gold transition-colors">
                       {link.label}
                     </span>
-                    <link.icon className="text-brand-yellow group-hover:scale-110 transition-transform" size={28} />
+                    <link.icon className="text-gold group-hover:scale-110 transition-transform" size={28} />
                   </Link>
                 </motion.div>
               ))}
@@ -178,7 +178,7 @@ export default function Navbar() {
                 <Link 
                   href="/contact"
                   onClick={() => setIsOpen(false)}
-                  className="flex items-center justify-center w-full bg-[#D9A05B] text-[#0f0e0c] px-8 py-5 rounded-sm font-black uppercase tracking-widest text-sm hover:scale-105 transition-all text-center min-h-[44px] font-inter-tight"
+                  className="flex items-center justify-center w-full bg-[#F1B92D] text-[#0f0e0c] px-8 py-5 rounded-sm font-black uppercase tracking-widest text-sm hover:scale-105 transition-all text-center min-h-[44px] font-inter-tight"
                 >
                   Book a Discovery Call
                 </Link>

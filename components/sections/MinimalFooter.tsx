@@ -140,14 +140,14 @@ export const MinimalFooter = () => {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="flex flex-col md:flex-row items-center justify-between gap-4"
         >
-          <p className="text-sm md:text-base text-gray-500 font-mono">
+          <p className="text-base md:text-lg text-gray-500 font-mono">
             © {new Date().getFullYear()} Bear Media. All rights reserved.
           </p>
           <div className="flex gap-6 text-base">
             <a href="/privacy-policy" className="text-gray-500 hover:text-zinc-300 min-h-[44px] flex items-center">Privacy</a>
             <a href="/terms-conditions" className="text-gray-500 hover:text-zinc-300 min-h-[44px] flex items-center">Terms</a>
           </div>
-          <p className="text-sm md:text-base text-gray-500 font-mono">
+          <p className="text-base md:text-lg text-gray-500 font-mono">
             Built by Bear Media Strategy
           </p>
         </motion.div>

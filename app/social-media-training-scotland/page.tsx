@@ -14,12 +14,12 @@ export default function SocialMediaTrainingScotland() {
   return (
     <>
       <Navbar />
-      <main className="min-h-screen bg-neutral-950 text-white font-sans selection:bg-brand-yellow selection:text-neutral-950">
+      <main className="min-h-screen bg-neutral-950 text-white font-sans selection:bg-gold selection:text-neutral-950">
         
         {/* AEO SUMMARY BLOCK */}
         <div className="pt-24 pb-8 bg-neutral-950 border-b border-white/5">
            <div className="max-w-4xl mx-auto px-6 text-center">
-              <p className="text-white/80 text-sm md:text-base font-medium leading-relaxed italic">
+              <p className="text-white/80 text-base md:text-lg font-medium leading-relaxed italic">
                  Bear Media provides practical, hands-on social media training for in-house teams and business owners across Edinburgh, Glasgow and Scotland, teaching them how to create content that actually generates enquiries.
               </p>
            </div>
@@ -30,16 +30,16 @@ export default function SocialMediaTrainingScotland() {
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(245,166,35,0.03)_0%,transparent_70%)] pointer-events-none" />
           <div className="max-w-5xl mx-auto relative z-10 text-center">
             <h1 className="mb-6 text-4xl md:text-6xl lg:text-7xl font-black italic uppercase font-bebas leading-[0.9] tracking-tight">
-              Social Media Training <br className="hidden md:block"/> <span className="text-brand-yellow">For Businesses</span>
+              Social Media Training <br className="hidden md:block"/> <span className="text-gold">For Businesses</span>
             </h1>
             <p className="text-white/80 max-w-2xl mx-auto mb-10 text-lg md:text-xl font-medium italic">
               Stop guessing what to post. We train your in-house team on the exact strategies we use to generate millions of views and consistent leads for our agency clients.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-               <Link href="/contact" className="px-10 py-5 bg-brand-yellow text-neutral-950 font-black uppercase tracking-widest text-[11px] rounded-xl hover:scale-105 transition-all">
+               <Link href="/contact" className="px-10 py-5 bg-gold text-neutral-950 font-black uppercase tracking-widest text-[13px] md:text-sm rounded-xl hover:scale-105 transition-all">
                  Enquire About Training
                </Link>
-               <Link href="/ai-chatgpt-training" className="px-10 py-5 bg-white/5 border border-white/10 text-white font-black uppercase tracking-widest text-[11px] rounded-xl hover:bg-white/10 transition-all">
+               <Link href="/ai-chatgpt-training" className="px-10 py-5 bg-white/5 border border-white/10 text-white font-black uppercase tracking-widest text-[13px] md:text-sm rounded-xl hover:bg-white/10 transition-all">
                  View AI Training
                </Link>
             </div>
@@ -59,21 +59,21 @@ export default function SocialMediaTrainingScotland() {
                     "You're intimidated by filming and editing video content.",
                     "You don't know how to track if social media is actually working."
                   ].map((problem, i) => (
-                    <li key={i} className="flex gap-3 text-white/70 italic text-lg">
-                      <span className="text-brand-yellow font-black mt-1">✕</span> {problem}
+                    <li key={i} className="flex gap-3 text-white/90 italic text-lg">
+                      <span className="text-gold font-black mt-1">✕</span> {problem}
                     </li>
                   ))}
                 </ul>
              </div>
              <div className="bg-neutral-950 border border-white/10 p-10 rounded-[2rem]">
-                <h2 className="text-3xl font-black italic uppercase font-bebas text-brand-yellow mb-6">Who This Is For</h2>
+                <h2 className="text-3xl font-black italic uppercase font-bebas text-gold mb-6">Who This Is For</h2>
                 <p className="text-white/80 italic text-lg mb-6 leading-relaxed">
                    Our training is designed for businesses that want to keep content creation in-house, but need expert guidance to make it profitable:
                 </p>
                 <ul className="space-y-3">
                   {["In-House Marketing Teams & Assistants", "Business Owners running their own socials", "Sales Teams looking to build Personal Brands", "B2B Companies on LinkedIn", "Businesses located across Central Scotland"].map((audience, i) => (
                     <li key={i} className="flex items-center gap-3">
-                      <CheckCircle2 size={16} className="text-brand-yellow" />
+                      <CheckCircle2 size={16} className="text-gold" />
                       <span className="text-white font-bold text-sm tracking-wide">{audience}</span>
                     </li>
                   ))}
@@ -87,7 +87,7 @@ export default function SocialMediaTrainingScotland() {
            <div className="max-w-5xl mx-auto">
               <div className="text-center mb-16">
                  <h2 className="text-4xl font-black uppercase italic font-bebas tracking-tight text-white mb-4">What You Will Learn</h2>
-                 <p className="text-white/60 italic">Practical skills you can implement the very next day.</p>
+                 <p className="text-white/90 italic">Practical skills you can implement the very next day.</p>
               </div>
               <div className="grid md:grid-cols-3 gap-8">
                  {[
@@ -98,9 +98,9 @@ export default function SocialMediaTrainingScotland() {
                    { title: "Copywriting", desc: "How to write captions and hooks that stop the scroll and drive people to take action." },
                    { title: "Lead Generation", desc: "How to transition from 'getting views' to 'getting booked calls and enquiries'." }
                  ].map((service, i) => (
-                    <div key={i} className="bg-neutral-900/50 border border-white/5 p-8 rounded-3xl hover:border-brand-yellow/30 transition-colors">
+                    <div key={i} className="bg-neutral-900/50 border border-white/5 p-8 rounded-3xl hover:border-gold/30 transition-colors">
                        <h3 className="text-xl font-bold text-white mb-3">{service.title}</h3>
-                       <p className="text-white/60 text-sm italic leading-relaxed">{service.desc}</p>
+                       <p className="text-white/90 text-sm italic leading-relaxed">{service.desc}</p>
                     </div>
                  ))}
               </div>
@@ -119,18 +119,18 @@ export default function SocialMediaTrainingScotland() {
              ].map((faq, i) => (
                <div key={i} className="bg-neutral-900 border border-white/5 p-6 rounded-2xl">
                  <h3 className="font-bold text-white mb-2 text-lg">{faq.q}</h3>
-                 <p className="text-white/60 italic text-sm leading-relaxed">{faq.a}</p>
+                 <p className="text-white/90 italic text-sm leading-relaxed">{faq.a}</p>
                </div>
              ))}
            </div>
         </section>
 
         {/* CTA */}
-        <section className="py-24 px-6 text-center bg-brand-yellow text-neutral-950">
+        <section className="py-24 px-6 text-center bg-gold text-neutral-950">
            <div className="max-w-3xl mx-auto">
               <h2 className="text-4xl md:text-6xl font-black italic uppercase font-bebas mb-6">Empower your team</h2>
               <p className="font-bold italic mb-10">Stop wasting time on content that doesn't convert. Let's get your team trained.</p>
-              <Link href="/contact" className="px-10 py-5 bg-neutral-950 text-white font-black uppercase tracking-widest text-[11px] rounded-xl hover:scale-105 transition-all shadow-xl inline-block">
+              <Link href="/contact" className="px-10 py-5 bg-neutral-950 text-white font-black uppercase tracking-widest text-[13px] md:text-sm rounded-xl hover:scale-105 transition-all shadow-xl inline-block">
                 Book a Training Discovery Call
               </Link>
            </div>

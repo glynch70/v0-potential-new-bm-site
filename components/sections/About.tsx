@@ -31,10 +31,10 @@ export default function About() {
   return (
     <section id="about" className="relative max-w-7xl mx-auto px-6 py-24 grid md:grid-cols-2 gap-16 items-center overflow-visible">
       {/* Background Accent */}
-      <div className="absolute top-0 left-0 w-[400px] h-[400px] bg-brand-yellow/5 blur-[120px] rounded-full pointer-events-none" />
+      <div className="absolute top-0 left-0 w-[400px] h-[400px] bg-gold/5 blur-[120px] rounded-full pointer-events-none" />
 
       <div className="relative group order-2 md:order-1">
-        <div className="absolute -inset-1 bg-brand-yellow rounded-3xl blur opacity-10 group-hover:opacity-20 transition duration-500"></div>
+        <div className="absolute -inset-1 bg-gold rounded-3xl blur opacity-10 group-hover:opacity-20 transition duration-500"></div>
         <div className="relative aspect-[4/5] rounded-[2.5rem] bg-neutral-900 border border-white/5 overflow-hidden shadow-2xl">
           <Image 
             src="/team/garry_lynch_hero.jpg" 
@@ -44,16 +44,16 @@ export default function About() {
           />
           <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-transparent to-transparent" />
           <div className="absolute bottom-10 left-10">
-            <p className="text-brand-yellow font-black uppercase tracking-widest text-[10px] mb-2">FOUNDER</p>
+            <p className="text-gold font-black uppercase tracking-widest text-[13px] md:text-sm mb-2">FOUNDER</p>
             <h3 className="text-4xl font-black uppercase font-bebas italic tracking-wider text-white">Garry Lynch</h3>
           </div>
         </div>
       </div>
       
       <div className="relative z-10 order-1 md:order-2">
-        <p className="text-brand-yellow font-bold uppercase tracking-[0.3em] text-xs mb-6">THE VISIONARY</p>
+        <p className="text-gold font-bold uppercase tracking-[0.3em] text-xs mb-6">THE VISIONARY</p>
         <h2 className="text-5xl md:text-7xl font-black tracking-tighter uppercase font-bebas italic mb-8">
-          Results Over <span className="text-brand-yellow">Rhetoric.</span>
+          Results Over <span className="text-gold">Rhetoric.</span>
         </h2>
         
         <div className="space-y-6 text-lg text-white leading-relaxed font-medium mb-10">
@@ -79,7 +79,7 @@ export default function About() {
             'Content built to convert'
           ].map((item) => (
             <div key={item} className="flex items-center gap-3">
-              <div className="w-2 h-2 rounded-full bg-brand-yellow shadow-[0_0_10px_rgba(221,163,30,0.5)]" />
+              <div className="w-2 h-2 rounded-full bg-gold shadow-[0_0_10px_rgba(221,163,30,0.5)]" />
               <span className="text-white font-black text-xs uppercase tracking-widest">{item}</span>
             </div>
           ))}
@@ -87,7 +87,7 @@ export default function About() {
 
         <a 
           href="/contact"
-          className="inline-block px-12 py-5 rounded-2xl bg-brand-yellow text-black font-black uppercase tracking-widest text-sm shadow-[0_0_30px_rgba(221,163,30,0.2)] hover:scale-105 transition-all"
+          className="inline-block px-12 py-5 rounded-2xl bg-gold text-black font-black uppercase tracking-widest text-sm shadow-[0_0_30px_rgba(221,163,30,0.2)] hover:scale-105 transition-all"
         >
           Let's Grow Your Business
         </a>

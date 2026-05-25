@@ -39,7 +39,7 @@ export default function IndustryPathfinders() {
             viewport={{ once: true }}
             className="text-4xl md:text-6xl font-black uppercase italic font-bebas tracking-tight"
           >
-            WHO WE <span className="text-brand-yellow">HELP</span>
+            WHO WE <span className="text-gold">HELP</span>
           </motion.h2>
         </div>
 
@@ -51,16 +51,16 @@ export default function IndustryPathfinders() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className={`group relative p-10 rounded-[2.5rem] bg-neutral-900 border border-white/5 overflow-hidden hover:border-brand-yellow/30 transition-all duration-500`}
+              className={`group relative p-10 rounded-[2.5rem] bg-neutral-900 border border-white/5 overflow-hidden hover:border-gold/30 transition-all duration-500`}
             >
               <div className={`absolute inset-0 bg-gradient-to-br ${industry.color} to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
               
               <div className="relative z-10">
-                <div className="w-16 h-16 rounded-2xl bg-brand-yellow/10 text-brand-yellow flex items-center justify-center mb-8 group-hover:bg-brand-yellow group-hover:text-neutral-950 transition-all duration-300">
+                <div className="w-16 h-16 rounded-2xl bg-gold/10 text-gold flex items-center justify-center mb-8 group-hover:bg-gold group-hover:text-neutral-950 transition-all duration-300">
                   {industry.icon}
                 </div>
                 
-                <h3 className="text-3xl font-black text-white uppercase italic font-bebas mb-4 tracking-wide group-hover:text-brand-yellow transition-colors">
+                <h3 className="text-3xl font-black text-white uppercase italic font-bebas mb-4 tracking-wide group-hover:text-gold transition-colors">
                   {industry.title}
                 </h3>
                 
@@ -70,7 +70,7 @@ export default function IndustryPathfinders() {
                 
                 <Link
                   href={industry.link}
-                  className="inline-flex items-center gap-3 text-brand-yellow font-bold uppercase tracking-widest text-sm group/btn"
+                  className="inline-flex items-center gap-3 text-gold font-bold uppercase tracking-widest text-sm group/btn"
                 >
                   Explore Solutions
                   <ArrowRight size={18} className="group-hover/btn:translate-x-2 transition-transform" />

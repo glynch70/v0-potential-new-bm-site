@@ -32,7 +32,7 @@ export default function Process() {
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-brand-yellow font-bold uppercase tracking-[0.4em] text-xs mb-8 italic"
+          className="text-gold font-bold uppercase tracking-[0.4em] text-xs mb-8 italic"
         >
           THE PROCESS
         </motion.p>
@@ -78,7 +78,7 @@ function ProcessFlipCard({ step, index }: { step: any; index: number }) {
       >
         {/* Front Face */}
         <div className="absolute inset-0 w-full h-full [backface-visibility:hidden] bg-white/5 border border-white/10 rounded-2xl p-10 flex flex-col items-center justify-center text-center">
-          <div className="w-16 h-16 rounded-full bg-brand-yellow text-dark flex items-center justify-center text-2xl font-black mb-8 shadow-xl shadow-brand-yellow/20">
+          <div className="w-16 h-16 rounded-full bg-gold text-dark flex items-center justify-center text-2xl font-black mb-8 shadow-xl shadow-brand-gold/20">
             {step.id}
           </div>
           <h3 className="text-2xl font-black text-white mb-4 uppercase font-bebas italic tracking-wide">{step.title}</h3>
@@ -86,11 +86,11 @@ function ProcessFlipCard({ step, index }: { step: any; index: number }) {
         </div>
 
         {/* Back Face */}
-        <div className="absolute inset-0 w-full h-full [backface-visibility:hidden] [transform:rotateY(180deg)] bg-white/10 glass-card flex flex-col items-center justify-center p-10 border-brand-yellow/30 shadow-2xl backdrop-blur-xl">
-          <h3 className="text-2xl font-black text-brand-yellow uppercase font-bebas italic mb-6">Deep Dive</h3>
+        <div className="absolute inset-0 w-full h-full [backface-visibility:hidden] [transform:rotateY(180deg)] bg-white/10 glass-card flex flex-col items-center justify-center p-10 border-gold/30 shadow-2xl backdrop-blur-xl">
+          <h3 className="text-2xl font-black text-gold uppercase font-bebas italic mb-6">Deep Dive</h3>
           <p className="text-white font-bold text-lg leading-relaxed italic">{step.backText}</p>
           
-          <div className="mt-8 text-white text-[10px] font-black uppercase tracking-[0.2em]">
+          <div className="mt-8 text-white text-[13px] md:text-sm font-black uppercase tracking-[0.2em]">
             Tap to flip back.
           </div>
         </div>

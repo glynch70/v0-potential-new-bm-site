@@ -96,7 +96,7 @@ export const ArsenalSection = () => {
                   </h3>
 
                   {/* Description */}
-                  <p className="text-gray-300 mb-6 leading-relaxed text-sm md:text-base">
+                  <p className="text-gray-300 mb-6 leading-relaxed text-base md:text-lg">
                     {service.description}
                   </p>
 
@@ -137,13 +137,13 @@ export const ArsenalSection = () => {
           transition={{ delay: 0.4, duration: 0.8 }}
           className="text-center mt-16 md:mt-20"
         >
-          <p className="text-gray-400 text-sm md:text-base mb-6">
+          <p className="text-gray-400 text-base md:text-lg mb-6">
             Ready to deploy your content strategy?
           </p>
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="px-8 md:px-10 py-3 md:py-4 bg-yellow-400 text-black font-black uppercase tracking-wider text-sm md:text-base rounded hover:bg-yellow-300 transition-colors"
+            className="px-8 md:px-10 py-3 md:py-4 bg-yellow-400 text-black font-black uppercase tracking-wider text-base md:text-lg rounded hover:bg-yellow-300 transition-colors"
           >
             Start Your Arsenal Today
           </motion.button>

@@ -38,14 +38,14 @@ export default function YouTubeEmbed({ videoId, title, description, result, labe
             
             {label && (
               <div className="absolute top-4 left-4 z-10 pointer-events-none">
-                <span className="px-3 py-1 bg-brand-yellow text-neutral-950 font-black uppercase tracking-widest text-[10px] rounded-full shadow-lg">
+                <span className="px-3 py-1 bg-gold text-neutral-950 font-black uppercase tracking-widest text-[13px] md:text-sm rounded-full shadow-lg">
                   {label}
                 </span>
               </div>
             )}
 
             <div className="absolute inset-0 hidden md:flex items-center justify-center pointer-events-none">
-              <div className="w-12 h-12 md:w-14 md:h-14 rounded-full bg-brand-yellow text-neutral-950 flex items-center justify-center shadow-[0_0_30px_rgba(245,166,35,0.3)] group-hover:scale-110 transition-transform duration-500">
+              <div className="w-12 h-12 md:w-14 md:h-14 rounded-full bg-gold text-neutral-950 flex items-center justify-center shadow-[0_0_30px_rgba(245,166,35,0.3)] group-hover:scale-110 transition-transform duration-500">
                 <Play size={24} className="fill-current ml-1" />
               </div>
             </div>
@@ -68,7 +68,7 @@ export default function YouTubeEmbed({ videoId, title, description, result, labe
         <div className="px-2">
           {description && <p className="text-white text-sm italic mb-2 leading-relaxed">{description}</p>}
           {result && (
-            <p className="text-brand-yellow font-black uppercase italic font-bebas tracking-widest text-lg">
+            <p className="text-gold font-black uppercase italic font-bebas tracking-widest text-lg">
               Result: {result}
             </p>
           )}

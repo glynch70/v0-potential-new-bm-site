@@ -36,16 +36,16 @@ export default function PricingArticlePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       <Navbar />
-      <main className="min-h-screen bg-neutral-950 text-white font-sans selection:bg-brand-yellow selection:text-neutral-950">
+      <main className="min-h-screen bg-neutral-950 text-white font-sans selection:bg-gold selection:text-neutral-950">
         
         {/* HERO SECTION */}
         <section className="relative pt-20 pb-12 md:pt-32 md:pb-20 px-6 overflow-hidden flex flex-col items-center justify-center text-center">
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(245,166,35,0.04)_0%,transparent_70%)] pointer-events-none" />
           <div className="max-w-4xl mx-auto relative z-10">
-            <p className="text-brand-yellow font-black uppercase tracking-[0.3em] mb-4 text-[10px] md:text-sm animate-pulse italic">Transparency First. No Fluff.</p>
+            <p className="text-gold font-black uppercase tracking-[0.3em] mb-4 text-[13px] md:text-sm md:text-sm animate-pulse italic">Transparency First. No Fluff.</p>
             <h1 className="mb-8 text-white">
                How Much Does <br />
-              <span className="text-brand-yellow">Content Cost?</span>
+              <span className="text-gold">Content Cost?</span>
             </h1>
             <p className="text-white max-w-2xl mx-auto font-medium italic text-sm">
                An honest look at pricing for content creation and social media management in Scotland.
@@ -69,9 +69,9 @@ export default function PricingArticlePage() {
                     { t: "The Dominant", p: "£2,500+", d: ["Daily High-End Content", "Full Strategy & Ads", "Total Account Handling"] }
                  ].map((pkg, i) => (
                     <div key={i} className="p-8 rounded-[1.5rem] bg-neutral-900 border border-white/5 flex flex-col">
-                       <h4 className="text-brand-yellow font-black uppercase italic font-bebas text-lg mb-2">{pkg.t}</h4>
+                       <h4 className="text-gold font-black uppercase italic font-bebas text-lg mb-2">{pkg.t}</h4>
                        <p className="text-xl font-black text-white mb-4 italic font-bebas tracking-widest">{pkg.p}</p>
-                       <ul className="text-[10px] text-white space-y-2 italic font-bold uppercase tracking-widest">
+                       <ul className="text-[13px] md:text-sm text-white space-y-2 italic font-bold uppercase tracking-widest">
                           {pkg.d.map((item, j) => <li key={j}>• {item}</li>)}
                        </ul>
                     </div>
@@ -86,10 +86,10 @@ export default function PricingArticlePage() {
                     { t: "Strategy & Directing", d: "Are you just paying for someone to hold a camera, or someone to tell you what to say?" }
                  ].map((item, i) => (
                     <div key={i} className="flex gap-4 p-6 glass-card border-white/5">
-                       <CheckCircle2 className="text-brand-yellow shrink-0 mt-1" size={16} />
+                       <CheckCircle2 className="text-gold shrink-0 mt-1" size={16} />
                        <div>
                           <p className="font-black text-white mb-1 uppercase italic font-bebas tracking-widest text-xs">{item.t}</p>
-                          <p className="text-white text-[11px] italic">"{item.d}"</p>
+                          <p className="text-white text-[13px] md:text-sm italic">"{item.d}"</p>
                        </div>
                     </div>
                  ))}
@@ -99,13 +99,13 @@ export default function PricingArticlePage() {
               <div className="grid md:grid-cols-2 gap-6 mb-16">
                  <div className="p-8 glass-card border-white/5 bg-neutral-900/50">
                     <h4 className="text-white font-black uppercase italic font-bebas text-lg mb-4">The DIY Route</h4>
-                    <p className="text-white text-[10px] uppercase font-bold italic tracking-widest leading-relaxed">
+                    <p className="text-white text-[13px] md:text-sm uppercase font-bold italic tracking-widest leading-relaxed">
                        "It's free, but inconsistent. It makes you look like a hobbyist, not a leader."
                     </p>
                  </div>
-                 <div className="p-8 glass-card border-brand-yellow/10 bg-brand-yellow/[0.01]">
-                    <h4 className="text-brand-yellow font-black uppercase italic font-bebas text-lg mb-4">The Bear Media Route</h4>
-                    <p className="text-white text-[10px] uppercase font-black italic tracking-widest leading-relaxed">
+                 <div className="p-8 glass-card border-gold/10 bg-gold/[0.01]">
+                    <h4 className="text-gold font-black uppercase italic font-bebas text-lg mb-4">The Bear Media Route</h4>
+                    <p className="text-white text-[13px] md:text-sm uppercase font-black italic tracking-widest leading-relaxed">
                        "Cinematic quality that builds instant trust. Strategy that focuses purely on getting your phone to ring."
                     </p>
                  </div>
@@ -114,7 +114,7 @@ export default function PricingArticlePage() {
         </section>
 
         {/* FINAL CTA */}
-        <section className="py-20 px-6 bg-brand-yellow text-neutral-950 text-center relative overflow-hidden">
+        <section className="py-20 px-6 bg-gold text-neutral-950 text-center relative overflow-hidden">
            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,0,0,0.05)_0%,transparent_70%)] pointer-events-none" />
            <div className="max-w-3xl mx-auto relative z-10">
               <h2 className="mb-8 text-neutral-950 leading-tight">
@@ -122,7 +122,7 @@ export default function PricingArticlePage() {
               </h2>
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-3 px-10 py-5 bg-neutral-950 text-white font-black uppercase tracking-widest text-[10px] rounded-xl hover:scale-105 transition-all shadow-2xl group"
+                className="inline-flex items-center gap-3 px-10 py-5 bg-neutral-950 text-white font-black uppercase tracking-widest text-[13px] md:text-sm rounded-xl hover:scale-105 transition-all shadow-2xl group"
               >
                 Book Your Discovery Call
               </Link>

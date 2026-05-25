@@ -15,29 +15,29 @@ export default function MuirhouseHousingCaseStudy() {
   return (
     <>
       <Navbar />
-      <main className="min-h-screen bg-neutral-950 text-white font-sans selection:bg-brand-yellow selection:text-neutral-950 pt-24 md:pt-32">
+      <main className="min-h-screen bg-neutral-950 text-white font-sans selection:bg-gold selection:text-neutral-950 pt-24 md:pt-32">
         <article className="max-w-5xl mx-auto px-6 pb-24">
           
           <header className="mb-12">
-            <Link href="/case-studies" className="inline-flex items-center gap-2 text-white/50 hover:text-brand-yellow transition-colors text-sm font-bold uppercase tracking-widest mb-8">
+            <Link href="/case-studies" className="inline-flex items-center gap-2 text-white/85 hover:text-gold transition-colors text-sm font-bold uppercase tracking-widest mb-8">
               <ArrowLeft size={16} /> Back to Proof Pages
             </Link>
             
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
               <div>
-                <span className="inline-block px-3 py-1 bg-brand-yellow/10 border border-brand-yellow/20 text-brand-yellow font-black uppercase tracking-widest text-[10px] rounded-full mb-4 mr-3">
+                <span className="inline-block px-3 py-1 bg-gold/10 border border-gold/20 text-gold font-black uppercase tracking-widest text-[13px] md:text-sm rounded-full mb-4 mr-3">
                   Housing Association
                 </span>
-                <span className="inline-block px-3 py-1 bg-white/10 border border-white/20 text-white font-black uppercase tracking-widest text-[10px] rounded-full mb-4">
+                <span className="inline-block px-3 py-1 bg-white/10 border border-white/20 text-white font-black uppercase tracking-widest text-[13px] md:text-sm rounded-full mb-4">
                   Edinburgh
                 </span>
                 <h1 className="text-4xl md:text-7xl font-black italic uppercase font-bebas leading-[0.9] text-white">
-                  Muirhouse <span className="text-brand-yellow">Housing</span>
+                  Muirhouse <span className="text-gold">Housing</span>
                 </h1>
               </div>
               <div className="flex flex-col gap-2 bg-neutral-900 border border-white/10 p-4 rounded-xl">
-                 <p className="text-white/50 text-[10px] font-black uppercase tracking-widest">Key Result</p>
-                 <p className="text-brand-yellow text-3xl font-black font-bebas">Community Engagement</p>
+                 <p className="text-white/85 text-[13px] md:text-sm font-black uppercase tracking-widest">Key Result</p>
+                 <p className="text-gold text-3xl font-black font-bebas">Community Engagement</p>
               </div>
             </div>
           </header>
@@ -58,14 +58,14 @@ export default function MuirhouseHousingCaseStudy() {
               
               <section>
                 <h2 className="text-2xl md:text-3xl font-black italic uppercase font-bebas text-white mb-4">The Problem</h2>
-                <p className="text-white/70 italic leading-relaxed text-lg">
+                <p className="text-white/90 italic leading-relaxed text-lg">
                   Muirhouse Housing Association needed to effectively communicate important updates, initiatives, and community stories to their residents. Traditional text-based newsletters were suffering from low engagement, and they needed a more modern, accessible way to connect with their local community in Edinburgh.
                 </p>
               </section>
 
               <section>
                 <h2 className="text-2xl md:text-3xl font-black italic uppercase font-bebas text-white mb-4">The Process</h2>
-                <p className="text-white/70 italic leading-relaxed text-lg mb-4">
+                <p className="text-white/90 italic leading-relaxed text-lg mb-4">
                   We developed a community-focused video content strategy that put the people and the local area front and center.
                 </p>
                 <ul className="list-disc pl-5 space-y-2 text-white/80 italic text-lg mb-4">
@@ -75,8 +75,8 @@ export default function MuirhouseHousingCaseStudy() {
                 </ul>
               </section>
               
-              <section className="bg-brand-yellow/10 border border-brand-yellow/20 rounded-3xl p-8">
-                <h2 className="text-2xl md:text-3xl font-black italic uppercase font-bebas text-brand-yellow mb-6">The Results</h2>
+              <section className="bg-gold/10 border border-gold/20 rounded-3xl p-8">
+                <h2 className="text-2xl md:text-3xl font-black italic uppercase font-bebas text-gold mb-6">The Results</h2>
                 <p className="text-white/80 italic leading-relaxed text-lg font-medium">
                   The transition to video significantly increased resident engagement. The housing association is now able to deliver critical information more effectively, and the professional visual storytelling has strengthened their relationship with the Muirhouse community.
                 </p>
@@ -86,17 +86,17 @@ export default function MuirhouseHousingCaseStudy() {
 
             <div className="space-y-8">
                <div className="bg-neutral-900/50 rounded-3xl p-8 border border-white/5 h-fit">
-                 <h3 className="text-xl font-black italic uppercase font-bebas text-brand-yellow mb-6">Services Delivered</h3>
+                 <h3 className="text-xl font-black italic uppercase font-bebas text-gold mb-6">Services Delivered</h3>
                  <ul className="space-y-4">
                    {["Video Production", "Community Content", "Corporate Communications"].map((service, i) => (
                      <li key={i} className="flex items-center gap-3">
-                       <CheckCircle2 size={16} className="text-brand-yellow" />
+                       <CheckCircle2 size={16} className="text-gold" />
                        <span className="text-white/80 font-bold text-sm tracking-wide">{service}</span>
                      </li>
                    ))}
                  </ul>
                  <div className="mt-8 pt-8 border-t border-white/5">
-                    <Link href="/video-production-edinburgh" className="text-white hover:text-brand-yellow transition-colors text-xs font-bold uppercase tracking-widest flex items-center gap-2">
+                    <Link href="/video-production-edinburgh" className="text-white hover:text-gold transition-colors text-xs font-bold uppercase tracking-widest flex items-center gap-2">
                        View Video Services <ArrowRight size={14} />
                     </Link>
                  </div>
@@ -104,8 +104,8 @@ export default function MuirhouseHousingCaseStudy() {
                
                <div className="bg-neutral-900/50 rounded-3xl p-8 border border-white/5 h-fit">
                  <h3 className="text-xl font-black italic uppercase font-bebas text-white mb-6">Ready for similar results?</h3>
-                 <p className="text-white/60 text-sm italic mb-6">We help organisations across Scotland communicate effectively.</p>
-                 <Link href="/contact" className="w-full flex items-center justify-center gap-2 py-4 bg-brand-yellow text-neutral-950 font-black uppercase tracking-widest text-[11px] rounded-xl hover:scale-105 transition-transform">
+                 <p className="text-white/90 text-sm italic mb-6">We help organisations across Scotland communicate effectively.</p>
+                 <Link href="/contact" className="w-full flex items-center justify-center gap-2 py-4 bg-gold text-neutral-950 font-black uppercase tracking-widest text-[13px] md:text-sm rounded-xl hover:scale-105 transition-transform">
                     Book a Discovery Call
                  </Link>
                </div>

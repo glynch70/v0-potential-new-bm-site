@@ -7,15 +7,15 @@ export default function HeroSection() {
   return (
     <section className="relative max-w-6xl mx-auto px-6 py-24 md:py-32 grid md:grid-cols-2 gap-12 items-center overflow-visible">
       {/* Background Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-brand-yellow/10 blur-[120px] rounded-full pointer-events-none -z-10" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-gold/10 blur-[120px] rounded-full pointer-events-none -z-10" />
       
       <div className="relative z-10">
-        <p className="uppercase tracking-[0.4em] text-xs text-brand-yellow mb-6 font-black">
+        <p className="uppercase tracking-[0.4em] text-xs text-gold mb-6 font-black">
           Broxburn • Edinburgh • Fife
         </p>
         <h1 className="text-5xl md:text-8xl font-black leading-[0.9] tracking-tighter uppercase italic">
           Helping local <br />
-          <span className="text-brand-yellow">businesses</span> <br />
+          <span className="text-gold">businesses</span> <br />
           get seen online.
         </h1>
         <p className="mt-8 text-xl text-white max-w-xl font-medium leading-relaxed">
@@ -26,7 +26,7 @@ export default function HeroSection() {
             href="https://calendly.com/bearmedia/discovery-call"
             target="_blank"
             rel="noopener noreferrer"
-            className="px-8 py-4 rounded-2xl bg-brand-yellow text-black font-black uppercase tracking-widest text-sm shadow-[0_0_30px_rgba(221,163,30,0.3)] transition-all hover:scale-105 hover:shadow-[0_0_50px_rgba(221,163,30,0.5)]"
+            className="px-8 py-4 rounded-2xl bg-gold text-black font-black uppercase tracking-widest text-sm shadow-[0_0_30px_rgba(221,163,30,0.3)] transition-all hover:scale-105 hover:shadow-[0_0_50px_rgba(221,163,30,0.5)]"
           >
             Book Free Call
           </a>
@@ -41,7 +41,7 @@ export default function HeroSection() {
       
       <div className="relative group">
         {/* Border Glow */}
-        <div className="absolute -inset-1 bg-gradient-to-r from-brand-yellow to-brand-yellow-dark rounded-[2.2rem] blur opacity-20 group-hover:opacity-40 transition duration-1000 group-hover:duration-200"></div>
+        <div className="absolute -inset-1 bg-gradient-to-r from-brand-gold to-brand-gold-dark rounded-[2.2rem] blur opacity-20 group-hover:opacity-40 transition duration-1000 group-hover:duration-200"></div>
         
         <div className="relative rounded-[2rem] bg-neutral-900 border border-white/10 p-3 shadow-2xl overflow-hidden">
           <div className="aspect-video rounded-3xl bg-neutral-950 flex items-center justify-center relative overflow-hidden">
@@ -55,7 +55,7 @@ export default function HeroSection() {
               <source src="/media/NEW BM DRONE HERO.mp4" type="video/mp4" />
             </video>
             <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/40 to-transparent" />
-            <div className="absolute bottom-6 left-6 z-10 bg-black/40 backdrop-blur-md px-4 py-2 rounded-xl border border-white/10 text-white font-bold uppercase tracking-widest text-[10px]">
+            <div className="absolute bottom-6 left-6 z-10 bg-black/40 backdrop-blur-md px-4 py-2 rounded-xl border border-white/10 text-white font-bold uppercase tracking-widest text-[13px] md:text-sm">
               Drone Showreel
             </div>
           </div>

@@ -47,7 +47,7 @@ export function StickyFooter({ className, ...props }: StickyFooterProps) {
 							<AnimatedContainer className="w-full max-w-sm min-w-2xs space-y-6">
 								<div className="flex items-center gap-2">
 									<span className="text-3xl font-black italic tracking-tighter text-white uppercase">Bear</span>
-									<span className="text-3xl font-black italic tracking-tighter text-brand-yellow uppercase">Media</span>
+									<span className="text-3xl font-black italic tracking-tighter text-gold uppercase">Media</span>
 								</div>
 								<p className="text-white mt-8 text-lg italic font-medium leading-relaxed">
 									Websites and social media content that help Scottish businesses get seen, trusted, and contacted.
@@ -61,7 +61,7 @@ export function StickyFooter({ className, ...props }: StickyFooterProps) {
 											rel="noopener noreferrer"
 											aria-label={link.title}
 										>
-											<Button size="icon" variant="outline" className="size-10 border-white/10 hover:bg-brand-yellow hover:text-dark hover:border-brand-yellow transition-all rounded-full">
+											<Button size="icon" variant="outline" className="size-10 border-white/10 hover:bg-gold hover:text-dark hover:border-gold transition-all rounded-full">
 												<link.icon className="size-5" />
 											</Button>
 										</a>
@@ -76,15 +76,15 @@ export function StickyFooter({ className, ...props }: StickyFooterProps) {
 										className="min-w-[150px]"
 									>
 										<div className="mb-10 md:mb-0">
-											<h3 className="text-xs font-black uppercase tracking-[0.3em] text-brand-yellow mb-6 italic">{group.label}</h3>
+											<h3 className="text-xs font-black uppercase tracking-[0.3em] text-gold mb-6 italic">{group.label}</h3>
 											<ul className="text-white space-y-4 text-sm font-bold italic">
 												{group.links.map((link) => (
 													<li key={link.title}>
 														<a
 															href={link.href}
-															className="hover:text-brand-yellow inline-flex items-center transition-all duration-300"
+															className="hover:text-gold inline-flex items-center transition-all duration-300"
 														>
-															{link.icon && <link.icon className="me-2 size-4 text-brand-yellow" />}
+															{link.icon && <link.icon className="me-2 size-4 text-gold" />}
 															{link.title}
 														</a>
 													</li>

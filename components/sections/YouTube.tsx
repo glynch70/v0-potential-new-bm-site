@@ -10,7 +10,7 @@ export default function YouTube() {
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-[#D4AF37] font-bold uppercase tracking-[0.4em] text-xs mb-8 italic"
+          className="text-[#F1B92D] font-bold uppercase tracking-[0.4em] text-xs mb-8 italic"
         >
           DOCUMENTED RESULTS
         </motion.p>
@@ -23,7 +23,7 @@ export default function YouTube() {
           className="text-5xl md:text-8xl leading-[0.9] mb-12 font-black text-white uppercase italic tracking-tighter"
         >
           Real growth.<br />
-          <span className="text-[#D4AF37]">Caught on camera.</span>
+          <span className="text-[#F1B92D]">Caught on camera.</span>
         </motion.h2>
 
         <motion.p 
@@ -46,7 +46,7 @@ export default function YouTube() {
             href="https://www.youtube.com/@bearmedia70" 
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block bg-[#D4AF37] text-black text-xs font-black py-6 px-14 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(212,175,55,0.3)] uppercase italic tracking-[0.2em]"
+            className="inline-block bg-[#F1B92D] text-black text-xs font-black py-6 px-14 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(212,175,55,0.3)] uppercase italic tracking-[0.2em]"
           >
             See the Results
           </a>

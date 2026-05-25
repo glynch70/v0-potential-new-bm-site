@@ -46,7 +46,7 @@ export default function ExpandableFooter() {
                     </div>
                     <div>
                       <span className="text-2xl font-bold">Bear</span>
-                      <span className="text-2xl font-bold text-[#D9A05B]">Media</span>
+                      <span className="text-2xl font-bold text-[#F1B92D]">Media</span>
                     </div>
                   </div>
                   <p className="text-white text-sm mb-2">Broxburn, West Lothian, EH52 6PH</p>
@@ -64,7 +64,7 @@ export default function ExpandableFooter() {
                       <li>
                         <a
                           href="#about"
-                          className="text-white hover:text-[#D9A05B] hover:translate-x-1 inline-block transition-all duration-250 ease-[cubic-bezier(0.16,1,0.3,1)]"
+                          className="text-white hover:text-[#F1B92D] hover:translate-x-1 inline-block transition-all duration-250 ease-[cubic-bezier(0.16,1,0.3,1)]"
                         >
                           About
                         </a>
@@ -72,7 +72,7 @@ export default function ExpandableFooter() {
                       <li>
                         <a
                           href="#services"
-                          className="text-white hover:text-[#D9A05B] hover:translate-x-1 inline-block transition-all duration-250 ease-[cubic-bezier(0.16,1,0.3,1)]"
+                          className="text-white hover:text-[#F1B92D] hover:translate-x-1 inline-block transition-all duration-250 ease-[cubic-bezier(0.16,1,0.3,1)]"
                         >
                           Services
                         </a>
@@ -80,7 +80,7 @@ export default function ExpandableFooter() {
                       <li>
                         <a
                           href="#work"
-                          className="text-white hover:text-[#D9A05B] hover:translate-x-1 inline-block transition-all duration-250 ease-[cubic-bezier(0.16,1,0.3,1)]"
+                          className="text-white hover:text-[#F1B92D] hover:translate-x-1 inline-block transition-all duration-250 ease-[cubic-bezier(0.16,1,0.3,1)]"
                         >
                           Portfolio
                         </a>
@@ -88,7 +88,7 @@ export default function ExpandableFooter() {
                       <li>
                         <a
                           href="#reviews"
-                          className="text-white hover:text-[#D9A05B] hover:translate-x-1 inline-block transition-all duration-250 ease-[cubic-bezier(0.16,1,0.3,1)]"
+                          className="text-white hover:text-[#F1B92D] hover:translate-x-1 inline-block transition-all duration-250 ease-[cubic-bezier(0.16,1,0.3,1)]"
                         >
                           Testimonials
                         </a>
@@ -96,7 +96,7 @@ export default function ExpandableFooter() {
                       <li>
                         <a
                           href="/contact"
-                          className="text-white hover:text-[#D9A05B] hover:translate-x-1 inline-block transition-all duration-250 ease-[cubic-bezier(0.16,1,0.3,1)]"
+                          className="text-white hover:text-[#F1B92D] hover:translate-x-1 inline-block transition-all duration-250 ease-[cubic-bezier(0.16,1,0.3,1)]"
                         >
                           Contact
                         </a>
@@ -133,14 +133,14 @@ export default function ExpandableFooter() {
                   <div className="space-y-3 text-sm">
                     <a
                       href="mailto:info@bear-media.com"
-                      className="flex items-center gap-3 text-white hover:text-[#D9A05B] transition-all duration-250 ease-[cubic-bezier(0.16,1,0.3,1)]"
+                      className="flex items-center gap-3 text-white hover:text-[#F1B92D] transition-all duration-250 ease-[cubic-bezier(0.16,1,0.3,1)]"
                     >
                       <Mail className="w-4 h-4" />
                       <span>info@bear-media.com</span>
                     </a>
                     <a
                       href="tel:+447879011860"
-                      className="flex items-center gap-3 text-white hover:text-[#D9A05B] transition-all duration-250 ease-[cubic-bezier(0.16,1,0.3,1)]"
+                      className="flex items-center gap-3 text-white hover:text-[#F1B92D] transition-all duration-250 ease-[cubic-bezier(0.16,1,0.3,1)]"
                     >
                       <Phone className="w-4 h-4" />
                       <span>+44 7879 011860</span>
@@ -211,7 +211,7 @@ export default function ExpandableFooter() {
                       href="https://www.tiktok.com/@bearmedia70"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-10 h-10 rounded-full bg-white/5 hover:bg-[#D9A05B] hover:scale-110 flex items-center justify-center transition-all duration-250 ease-[cubic-bezier(0.16,1,0.3,1)]"
+                      className="w-10 h-10 rounded-full bg-white/5 hover:bg-[#F1B92D] hover:scale-110 flex items-center justify-center transition-all duration-250 ease-[cubic-bezier(0.16,1,0.3,1)]"
                       aria-label="TikTok"
                     >
                       <span className="text-sm">TT</span>
@@ -220,7 +220,7 @@ export default function ExpandableFooter() {
                       href="https://www.instagram.com/bearmedia70/"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-10 h-10 rounded-full bg-white/5 hover:bg-[#D9A05B] hover:scale-110 flex items-center justify-center transition-all duration-250 ease-[cubic-bezier(0.16,1,0.3,1)]"
+                      className="w-10 h-10 rounded-full bg-white/5 hover:bg-[#F1B92D] hover:scale-110 flex items-center justify-center transition-all duration-250 ease-[cubic-bezier(0.16,1,0.3,1)]"
                       aria-label="Instagram"
                     >
                       <span className="text-sm">IG</span>
@@ -229,7 +229,7 @@ export default function ExpandableFooter() {
                       href="https://www.linkedin.com/company/bear-media"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-10 h-10 rounded-full bg-white/5 hover:bg-[#D9A05B] hover:scale-110 flex items-center justify-center transition-all duration-250 ease-[cubic-bezier(0.16,1,0.3,1)]"
+                      className="w-10 h-10 rounded-full bg-white/5 hover:bg-[#F1B92D] hover:scale-110 flex items-center justify-center transition-all duration-250 ease-[cubic-bezier(0.16,1,0.3,1)]"
                       aria-label="LinkedIn"
                     >
                       <span className="text-sm">LI</span>
@@ -238,7 +238,7 @@ export default function ExpandableFooter() {
                       href="https://www.youtube.com/@bearmedia70"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-10 h-10 rounded-full bg-white/5 hover:bg-[#D9A05B] hover:scale-110 flex items-center justify-center transition-all duration-250 ease-[cubic-bezier(0.16,1,0.3,1)]"
+                      className="w-10 h-10 rounded-full bg-white/5 hover:bg-[#F1B92D] hover:scale-110 flex items-center justify-center transition-all duration-250 ease-[cubic-bezier(0.16,1,0.3,1)]"
                       aria-label="YouTube"
                     >
                       <span className="text-sm">YT</span>
@@ -247,7 +247,7 @@ export default function ExpandableFooter() {
                       href="https://www.facebook.com/bearmedia70"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-10 h-10 rounded-full bg-white/5 hover:bg-[#D9A05B] hover:scale-110 flex items-center justify-center transition-all duration-250 ease-[cubic-bezier(0.16,1,0.3,1)]"
+                      className="w-10 h-10 rounded-full bg-white/5 hover:bg-[#F1B92D] hover:scale-110 flex items-center justify-center transition-all duration-250 ease-[cubic-bezier(0.16,1,0.3,1)]"
                       aria-label="Facebook"
                     >
                       <span className="text-sm">FB</span>
@@ -276,11 +276,11 @@ export default function ExpandableFooter() {
             animate={{ rotate: isExpanded ? 180 : 0 }}
             transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
           >
-            <ChevronUp className="w-5 h-5 text-[#D9A05B]" />
+            <ChevronUp className="w-5 h-5 text-[#F1B92D]" />
           </motion.div>
           <div className="flex items-center gap-2">
             <span className="font-semibold">Bear</span>
-            <span className="font-semibold text-[#D9A05B]">Media</span>
+            <span className="font-semibold text-[#F1B92D]">Media</span>
           </div>
           <span className="text-sm text-white">•</span>
           <span className="text-sm text-white">Websites & Social Media Content</span>

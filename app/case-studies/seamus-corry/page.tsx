@@ -16,29 +16,29 @@ export default function SeamusCorryCaseStudy() {
   return (
     <>
       <Navbar />
-      <main className="min-h-screen bg-neutral-950 text-white font-sans selection:bg-brand-yellow selection:text-neutral-950 pt-24 md:pt-32">
+      <main className="min-h-screen bg-neutral-950 text-white font-sans selection:bg-gold selection:text-neutral-950 pt-24 md:pt-32">
         <article className="max-w-5xl mx-auto px-6 pb-24">
           
           <header className="mb-12">
-            <Link href="/case-studies" className="inline-flex items-center gap-2 text-white/50 hover:text-brand-yellow transition-colors text-sm font-bold uppercase tracking-widest mb-8">
+            <Link href="/case-studies" className="inline-flex items-center gap-2 text-white/85 hover:text-gold transition-colors text-sm font-bold uppercase tracking-widest mb-8">
               <ArrowLeft size={16} /> Back to Proof Pages
             </Link>
             
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
               <div>
-                <span className="inline-block px-3 py-1 bg-brand-yellow/10 border border-brand-yellow/20 text-brand-yellow font-black uppercase tracking-widest text-[10px] rounded-full mb-4 mr-3">
+                <span className="inline-block px-3 py-1 bg-gold/10 border border-gold/20 text-gold font-black uppercase tracking-widest text-[13px] md:text-sm rounded-full mb-4 mr-3">
                   Personal Brand / Coaching
                 </span>
-                <span className="inline-block px-3 py-1 bg-white/10 border border-white/20 text-white font-black uppercase tracking-widest text-[10px] rounded-full mb-4">
+                <span className="inline-block px-3 py-1 bg-white/10 border border-white/20 text-white font-black uppercase tracking-widest text-[13px] md:text-sm rounded-full mb-4">
                   Edinburgh
                 </span>
                 <h1 className="text-4xl md:text-7xl font-black italic uppercase font-bebas leading-[0.9] text-white">
-                  Seamus <span className="text-brand-yellow">Corry</span>
+                  Seamus <span className="text-gold">Corry</span>
                 </h1>
               </div>
               <div className="flex flex-col gap-2 bg-neutral-900 border border-white/10 p-4 rounded-xl">
-                 <p className="text-white/50 text-[10px] font-black uppercase tracking-widest">Key Result</p>
-                 <p className="text-brand-yellow text-3xl font-black font-bebas">117+ Videos Published</p>
+                 <p className="text-white/85 text-[13px] md:text-sm font-black uppercase tracking-widest">Key Result</p>
+                 <p className="text-gold text-3xl font-black font-bebas">117+ Videos Published</p>
               </div>
             </div>
           </header>
@@ -58,14 +58,14 @@ export default function SeamusCorryCaseStudy() {
               
               <section>
                 <h2 className="text-2xl md:text-3xl font-black italic uppercase font-bebas text-white mb-4">The Problem</h2>
-                <p className="text-white/70 italic leading-relaxed text-lg">
+                <p className="text-white/90 italic leading-relaxed text-lg">
                   Seamus Corry had the industry knowledge and a powerful personal message, but he needed a consistent, professional way to distribute that message at scale. Without a dedicated content system, it was difficult to build long-term authority and stay top-of-mind with his audience across Scotland.
                 </p>
               </section>
 
               <section>
                 <h2 className="text-2xl md:text-3xl font-black italic uppercase font-bebas text-white mb-4">The Process</h2>
-                <p className="text-white/70 italic leading-relaxed text-lg mb-4">
+                <p className="text-white/90 italic leading-relaxed text-lg mb-4">
                   We designed a high-volume, high-quality content strategy specifically tailored for personal branding. 
                 </p>
                 <ul className="list-disc pl-5 space-y-2 text-white/80 italic text-lg mb-4">
@@ -75,19 +75,19 @@ export default function SeamusCorryCaseStudy() {
                 </ul>
               </section>
               
-              <section className="bg-brand-yellow/10 border border-brand-yellow/20 rounded-3xl p-8">
-                <h2 className="text-2xl md:text-3xl font-black italic uppercase font-bebas text-brand-yellow mb-6">The Results</h2>
+              <section className="bg-gold/10 border border-gold/20 rounded-3xl p-8">
+                <h2 className="text-2xl md:text-3xl font-black italic uppercase font-bebas text-gold mb-6">The Results</h2>
                 <div className="grid grid-cols-3 gap-4 mb-6">
                    <div>
-                      <p className="text-white/50 font-bold uppercase text-[10px] tracking-widest mb-1">Videos</p>
+                      <p className="text-white/85 font-bold uppercase text-[13px] md:text-sm tracking-widest mb-1">Videos</p>
                       <p className="text-4xl font-black font-bebas text-white">117+</p>
                    </div>
                    <div>
-                      <p className="text-white/50 font-bold uppercase text-[10px] tracking-widest mb-1">Views</p>
+                      <p className="text-white/85 font-bold uppercase text-[13px] md:text-sm tracking-widest mb-1">Views</p>
                       <p className="text-4xl font-black font-bebas text-white">11,000+</p>
                    </div>
                    <div>
-                      <p className="text-white/50 font-bold uppercase text-[10px] tracking-widest mb-1">Shares</p>
+                      <p className="text-white/85 font-bold uppercase text-[13px] md:text-sm tracking-widest mb-1">Shares</p>
                       <p className="text-4xl font-black font-bebas text-white">350+</p>
                    </div>
                 </div>
@@ -97,7 +97,7 @@ export default function SeamusCorryCaseStudy() {
               </section>
 
               <section className="bg-neutral-900 border border-white/5 rounded-3xl p-8 italic relative overflow-hidden">
-                 <div className="absolute top-0 right-0 w-32 h-32 bg-brand-yellow/5 rounded-bl-full pointer-events-none" />
+                 <div className="absolute top-0 right-0 w-32 h-32 bg-gold/5 rounded-bl-full pointer-events-none" />
                  <p className="text-white/90 text-xl font-medium leading-relaxed mb-6">
                    "The consistency is what sets Bear Media apart. I turn up, we film, and they handle the rest. It's completely removed the stress of trying to run my own social media."
                  </p>
@@ -105,7 +105,7 @@ export default function SeamusCorryCaseStudy() {
                     <div className="w-12 h-12 rounded-full bg-neutral-800 border border-white/10 flex items-center justify-center font-black font-bebas text-xl">SC</div>
                     <div>
                        <p className="font-bold text-white uppercase text-sm tracking-widest">Seamus Corry</p>
-                       <p className="text-brand-yellow text-xs">Founder</p>
+                       <p className="text-gold text-xs">Founder</p>
                     </div>
                  </div>
               </section>
@@ -114,17 +114,17 @@ export default function SeamusCorryCaseStudy() {
 
             <div className="space-y-8">
                <div className="bg-neutral-900/50 rounded-3xl p-8 border border-white/5 h-fit">
-                 <h3 className="text-xl font-black italic uppercase font-bebas text-brand-yellow mb-6">Services Delivered</h3>
+                 <h3 className="text-xl font-black italic uppercase font-bebas text-gold mb-6">Services Delivered</h3>
                  <ul className="space-y-4">
                    {["Personal Branding", "Content Strategy", "Video Production", "Social Media Management"].map((service, i) => (
                      <li key={i} className="flex items-center gap-3">
-                       <CheckCircle2 size={16} className="text-brand-yellow" />
+                       <CheckCircle2 size={16} className="text-gold" />
                        <span className="text-white/80 font-bold text-sm tracking-wide">{service}</span>
                      </li>
                    ))}
                  </ul>
                  <div className="mt-8 pt-8 border-t border-white/5">
-                    <Link href="/social-media-for-construction" className="text-white hover:text-brand-yellow transition-colors text-xs font-bold uppercase tracking-widest flex items-center gap-2">
+                    <Link href="/social-media-for-construction" className="text-white hover:text-gold transition-colors text-xs font-bold uppercase tracking-widest flex items-center gap-2">
                        View Content Services <ArrowRight size={14} />
                     </Link>
                  </div>
@@ -132,8 +132,8 @@ export default function SeamusCorryCaseStudy() {
                
                <div className="bg-neutral-900/50 rounded-3xl p-8 border border-white/5 h-fit">
                  <h3 className="text-xl font-black italic uppercase font-bebas text-white mb-6">Ready for similar results?</h3>
-                 <p className="text-white/60 text-sm italic mb-6">We help professionals across Scotland dominate their local area.</p>
-                 <Link href="/contact" className="w-full flex items-center justify-center gap-2 py-4 bg-brand-yellow text-neutral-950 font-black uppercase tracking-widest text-[11px] rounded-xl hover:scale-105 transition-transform">
+                 <p className="text-white/90 text-sm italic mb-6">We help professionals across Scotland dominate their local area.</p>
+                 <Link href="/contact" className="w-full flex items-center justify-center gap-2 py-4 bg-gold text-neutral-950 font-black uppercase tracking-widest text-[13px] md:text-sm rounded-xl hover:scale-105 transition-transform">
                     Book a Discovery Call
                  </Link>
                </div>

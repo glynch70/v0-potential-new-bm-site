@@ -331,7 +331,7 @@ export default function InteractiveBentoGallery({
               <h3 className="relative text-xs font-bold uppercase tracking-tight text-white md:text-sm">
                 {item.title}
               </h3>
-              <p className="relative mt-0.5 text-[10px] text-white md:text-xs">{item.desc}</p>
+              <p className="relative mt-0.5 text-[13px] md:text-sm text-white md:text-xs">{item.desc}</p>
             </motion.div>
           </motion.div>
         ))}

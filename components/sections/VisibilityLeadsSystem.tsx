@@ -33,7 +33,7 @@ export default function VisibilityLeadsSystem() {
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-brand-yellow font-bold uppercase tracking-[0.3em] text-xs mb-6"
+            className="text-gold font-bold uppercase tracking-[0.3em] text-xs mb-6"
           >
             The Solution
           </motion.p>
@@ -44,7 +44,7 @@ export default function VisibilityLeadsSystem() {
             className="text-4xl md:text-6xl font-black uppercase leading-tight mb-8 font-bebas italic"
           >
             THE <span className="text-white">VISIBILITY & LEADS</span> <br />
-            <span className="text-brand-yellow">SYSTEM</span>
+            <span className="text-gold">SYSTEM</span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -64,21 +64,21 @@ export default function VisibilityLeadsSystem() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="p-10 bg-neutral-900 rounded-[2.5rem] border border-white/5 hover:border-brand-yellow/20 transition-all duration-500 group h-full relative"
+                className="p-10 bg-neutral-900 rounded-[2.5rem] border border-white/5 hover:border-gold/20 transition-all duration-500 group h-full relative"
               >
-                <div className="absolute -top-6 left-1/2 -translate-x-1/2 w-16 h-16 bg-brand-yellow rounded-2xl flex items-center justify-center text-neutral-950 shadow-2xl group-hover:scale-110 transition-transform duration-300">
+                <div className="absolute -top-6 left-1/2 -translate-x-1/2 w-16 h-16 bg-gold rounded-2xl flex items-center justify-center text-neutral-950 shadow-2xl group-hover:scale-110 transition-transform duration-300">
                   {step.icon}
                 </div>
                 
                 <div className="mt-8 text-center">
-                  <p className="text-brand-yellow font-black uppercase tracking-widest text-[10px] mb-2">{step.subtitle}</p>
+                  <p className="text-gold font-black uppercase tracking-widest text-[13px] md:text-sm mb-2">{step.subtitle}</p>
                   <h3 className="text-2xl font-black text-white uppercase mb-6 font-bebas italic tracking-wide">{step.title}</h3>
                   <p className="text-white text-sm leading-relaxed mb-8">{step.description}</p>
                 </div>
               </motion.div>
 
               {index < steps.length - 1 && (
-                <div className="hidden md:block absolute top-1/2 -right-4 translate-y-[-50%] z-10 text-brand-yellow/20">
+                <div className="hidden md:block absolute top-1/2 -right-4 translate-y-[-50%] z-10 text-gold/20">
                   <ArrowRight size={32} />
                 </div>
               )}
@@ -94,11 +94,11 @@ export default function VisibilityLeadsSystem() {
         >
           <div className="max-w-xl text-center md:text-left">
              <h3 className="text-2xl md:text-3xl font-black text-white uppercase font-bebas italic mb-4">Ready to stop being ignored?</h3>
-             <p className="text-white text-sm md:text-base">Let's build your Visibility & Leads System and start growing your business properly.</p>
+             <p className="text-white text-base md:text-lg">Let's build your Visibility & Leads System and start growing your business properly.</p>
           </div>
           <a
             href="/contact"
-            className="w-full md:w-auto px-12 py-5 bg-brand-yellow text-neutral-950 font-black uppercase tracking-widest text-sm rounded-2xl hover:scale-105 transition-all duration-300 whitespace-nowrap text-center"
+            className="w-full md:w-auto px-12 py-5 bg-gold text-neutral-950 font-black uppercase tracking-widest text-sm rounded-2xl hover:scale-105 transition-all duration-300 whitespace-nowrap text-center"
           >
             Book Your Discovery Call
           </a>

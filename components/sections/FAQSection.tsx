@@ -34,7 +34,7 @@ export default function FAQSection() {
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-brand-yellow font-bold uppercase tracking-[0.3em] text-xs mb-4 italic"
+            className="text-gold font-bold uppercase tracking-[0.3em] text-xs mb-4 italic"
           >
             Got Questions?
           </motion.p>
@@ -64,7 +64,7 @@ export default function FAQSection() {
                 <span className="font-bold text-white uppercase font-bebas italic text-xl tracking-wide">{faq.q}</span>
                 <ChevronDown
                   size={20}
-                  className={`text-brand-yellow transition-transform duration-300 ${openIndex === i ? "rotate-180" : ""}`}
+                  className={`text-gold transition-transform duration-300 ${openIndex === i ? "rotate-180" : ""}`}
                 />
               </button>
               <AnimatePresence>

@@ -44,16 +44,16 @@ export default function EnquiriesArticle() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       <Navbar />
-      <main className="min-h-screen bg-neutral-950 text-white font-sans selection:bg-brand-yellow selection:text-neutral-950">
+      <main className="min-h-screen bg-neutral-950 text-white font-sans selection:bg-gold selection:text-neutral-950">
         
         {/* HERO */}
         <section className="relative pt-24 pb-16 md:pt-48 md:pb-32 px-6 overflow-hidden">
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(245,166,35,0.06)_0%,transparent_70%)] pointer-events-none" />
           <div className="max-w-4xl mx-auto relative z-10">
-            <Link href="/insights" className="text-brand-yellow font-black uppercase tracking-widest text-[10px] mb-8 inline-block hover:underline italic">← Back to Insights</Link>
+            <Link href="/insights" className="text-gold font-black uppercase tracking-widest text-[13px] md:text-sm mb-8 inline-block hover:underline italic">← Back to Insights</Link>
             <h1 className="text-4xl md:text-7xl font-black mb-8 leading-[0.9] tracking-tighter italic uppercase font-bebas">
               Why Your Business <br />
-              <span className="text-brand-yellow">Isn’t Getting Enquiries</span> <br />
+              <span className="text-gold">Isn’t Getting Enquiries</span> <br />
               Online
             </h1>
             <p className="text-lg md:text-xl text-white font-medium leading-relaxed italic max-w-2xl">
@@ -78,7 +78,7 @@ export default function EnquiriesArticle() {
                     <p className="text-white leading-relaxed mb-4">
                        Your website uses stock photos. Your social media hasn't been updated in 3 months. When a customer finds you, they don't see proof—they see a business that might not even be operating. 
                     </p>
-                    <p className="text-brand-yellow font-black uppercase italic font-bebas tracking-widest text-sm">The Fix: On-site video proof and consistent posting.</p>
+                    <p className="text-gold font-black uppercase italic font-bebas tracking-widest text-sm">The Fix: On-site video proof and consistent posting.</p>
                  </div>
 
                  <div className="p-10 rounded-[2.5rem] bg-neutral-900 border border-white/5">
@@ -88,7 +88,7 @@ export default function EnquiriesArticle() {
                     <p className="text-white leading-relaxed mb-4">
                        If a user has to search for your phone number or fill out a 20-field form just to talk to you, they won't do it. Most websites are digital brochures, not lead-generation machines.
                     </p>
-                    <p className="text-brand-yellow font-black uppercase italic font-bebas tracking-widest text-sm">The Fix: Frictionless "Book a Call" triggers and lead-gen architecture.</p>
+                    <p className="text-gold font-black uppercase italic font-bebas tracking-widest text-sm">The Fix: Frictionless "Book a Call" triggers and lead-gen architecture.</p>
                  </div>
 
                  <div className="p-10 rounded-[2.5rem] bg-neutral-900 border border-white/5">
@@ -98,7 +98,7 @@ export default function EnquiriesArticle() {
                     <p className="text-white leading-relaxed mb-4">
                        Waiting for people to find you on Google page 4 isn't a strategy. You need to be where they are: scrolling on their phones. 
                     </p>
-                    <p className="text-brand-yellow font-black uppercase italic font-bebas tracking-widest text-sm">The Fix: Targeted local social content and SEO-optimized landing pages.</p>
+                    <p className="text-gold font-black uppercase italic font-bebas tracking-widest text-sm">The Fix: Targeted local social content and SEO-optimized landing pages.</p>
                  </div>
               </div>
 
@@ -107,7 +107,7 @@ export default function EnquiriesArticle() {
                  The formula is simple but hard to execute. You need high-quality content that stops the scroll, builds instant authority by showing the real work, and then points them to a website built to close the deal.
               </p>
 
-              <div className="p-12 rounded-[2.5rem] bg-brand-yellow text-neutral-950 mb-16">
+              <div className="p-12 rounded-[2.5rem] bg-gold text-neutral-950 mb-16">
                  <h3 className="text-2xl font-black uppercase italic font-bebas tracking-tight mb-4">Let's Fix Your System</h3>
                  <p className="font-medium mb-8">
                     We specialize in taking businesses from invisible to top-of-mind across the Central Belt. We don't do fluff—we do enquiries.

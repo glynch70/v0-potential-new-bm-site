@@ -21,8 +21,8 @@ export default function SalesHero() {
       </div>
 
       {/* Background Glows */}
-      <div className="absolute top-1/4 -left-20 w-96 h-96 bg-brand-yellow/10 blur-[120px] rounded-full pointer-events-none" />
-      <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-brand-yellow/5 blur-[100px] rounded-full pointer-events-none" />
+      <div className="absolute top-1/4 -left-20 w-96 h-96 bg-gold/10 blur-[120px] rounded-full pointer-events-none" />
+      <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-gold/5 blur-[100px] rounded-full pointer-events-none" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 py-20 w-full">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -35,7 +35,7 @@ export default function SalesHero() {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.5 }}
-              className="text-brand-yellow font-bold uppercase tracking-[0.3em] text-xs mb-6"
+              className="text-gold font-bold uppercase tracking-[0.3em] text-xs mb-6"
             >
               Visibility & Leads System
             </motion.p>
@@ -47,7 +47,7 @@ export default function SalesHero() {
               style={{ letterSpacing: '-0.04em' }}
             >
               Doing great work but <br />
-              <span className="text-brand-yellow underline decoration-brand-yellow/30 underline-offset-8">nobody knows you exist?</span>
+              <span className="text-gold underline decoration-brand-gold/30 underline-offset-8">nobody knows you exist?</span>
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -65,7 +65,7 @@ export default function SalesHero() {
             >
               <a
                 href="/contact"
-                className="px-10 py-5 bg-brand-yellow text-neutral-950 font-black uppercase tracking-widest text-sm rounded-xl hover:scale-105 transition-all duration-300"
+                className="px-10 py-5 bg-gold text-neutral-950 font-black uppercase tracking-widest text-sm rounded-xl hover:scale-105 transition-all duration-300"
               >
                 Book a Discovery Call
               </a>
@@ -87,7 +87,7 @@ export default function SalesHero() {
           >
             {/* Visual Mockup */}
             <div className="relative rounded-3xl overflow-hidden border border-white/10 shadow-2xl bg-neutral-900 aspect-[4/3] md:aspect-video">
-               <div className="absolute inset-0 bg-gradient-to-tr from-brand-yellow/10 to-transparent z-10 pointer-events-none" />
+               <div className="absolute inset-0 bg-gradient-to-tr from-brand-gold/10 to-transparent z-10 pointer-events-none" />
                <video
                 autoPlay
                 muted
@@ -102,20 +102,20 @@ export default function SalesHero() {
                     <span className="text-white font-bold text-sm leading-tight" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif' }}>
                       Bear Media
                     </span>
-                    <span className="text-white text-[9px] font-medium uppercase tracking-[0.1em]" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif' }}>
+                    <span className="text-white text-[12px] md:text-[13px] font-medium uppercase tracking-[0.1em]" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif' }}>
                       Websites & Social Media
                     </span>
                   </div>
                   <div className="ml-auto">
-                    <div className="text-white text-[10px] uppercase tracking-widest">Visibility System</div>
+                    <div className="text-white text-[13px] md:text-sm uppercase tracking-widest">Visibility System</div>
                   </div>
                 </div>
               </div>
             </div>
             
             {/* Floating Elements for Premium Feel */}
-            <div className="absolute -top-10 -right-10 w-32 h-32 bg-brand-yellow/20 blur-3xl rounded-full" />
-            <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-brand-yellow/10 blur-3xl rounded-full" />
+            <div className="absolute -top-10 -right-10 w-32 h-32 bg-gold/20 blur-3xl rounded-full" />
+            <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-gold/10 blur-3xl rounded-full" />
           </motion.div>
         </div>
       </div>
@@ -127,8 +127,8 @@ export default function SalesHero() {
         transition={{ delay: 1.2, duration: 1 }}
         className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
       >
-        <div className="w-px h-12 bg-gradient-to-b from-brand-yellow/50 to-transparent" />
-        <span className="text-[10px] uppercase tracking-[0.5em] text-white rotate-180 [writing-mode:vertical-lr]">Scroll</span>
+        <div className="w-px h-12 bg-gradient-to-b from-brand-gold/50 to-transparent" />
+        <span className="text-[13px] md:text-sm uppercase tracking-[0.5em] text-white rotate-180 [writing-mode:vertical-lr]">Scroll</span>
       </motion.div>
     </section>
   );

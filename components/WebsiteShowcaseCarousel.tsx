@@ -69,14 +69,14 @@ export default function WebsiteShowcaseCarousel() {
       <div className="flex justify-end gap-3 mb-6 relative z-20 pr-4">
         <button 
           onClick={() => scroll('left')}
-          className="w-10 h-10 rounded-full border border-current/10 flex items-center justify-center hover:bg-[#D2A214] hover:text-[#0f0e0c] hover:border-[#D2A214] transition-colors"
+          className="w-10 h-10 rounded-full border border-current/10 flex items-center justify-center hover:bg-[#F1B92D] hover:text-[#0f0e0c] hover:border-[#F1B92D] transition-colors"
           aria-label="Previous Project"
         >
           <ArrowLeft size={16} />
         </button>
         <button 
           onClick={() => scroll('right')}
-          className="w-10 h-10 rounded-full border border-current/10 flex items-center justify-center hover:bg-[#D2A214] hover:text-[#0f0e0c] hover:border-[#D2A214] transition-colors"
+          className="w-10 h-10 rounded-full border border-current/10 flex items-center justify-center hover:bg-[#F1B92D] hover:text-[#0f0e0c] hover:border-[#F1B92D] transition-colors"
           aria-label="Next Project"
         >
           <ArrowRight size={16} />
@@ -99,7 +99,7 @@ export default function WebsiteShowcaseCarousel() {
               <span className="w-2.5 h-2.5 rounded-full bg-red-400/80" />
               <span className="w-2.5 h-2.5 rounded-full bg-yellow-400/80" />
               <span className="w-2.5 h-2.5 rounded-full bg-green-400/80" />
-              <span className="text-[9px] text-[#1A1917]/30 ml-4 font-mono select-none">bearmedia.co.uk/showroom</span>
+              <span className="text-[12px] md:text-[13px] text-[#8A640F]/85 ml-4 font-mono select-none">bearmedia.co.uk/showroom</span>
             </div>
 
             {/* Visual Frame */}
@@ -117,13 +117,13 @@ export default function WebsiteShowcaseCarousel() {
             {/* Content Bottom */}
             <div className="p-6 bg-white border-t border-[#1A1917]/5 flex items-center justify-between">
               <div>
-                <span className="inline-block px-2.5 py-0.5 bg-[#D2A214]/10 border border-[#D2A214]/20 text-[#D2A214] font-bold uppercase tracking-widest text-[8px] rounded-sm mb-1.5">
+                <span className="inline-block px-2.5 py-0.5 bg-[#F1B92D]/10 border border-[#F1B92D]/20 text-[#F1B92D] font-bold uppercase tracking-widest text-[13px] md:text-sm md:text-[12px] rounded-sm mb-1.5">
                   {project.status}
                 </span>
                 <h4 className="text-xl font-bebas text-[#1A1917] tracking-wider uppercase leading-none">
                   {project.title}
                 </h4>
-                <p className="text-[10px] text-[#1A1917]/45 font-light uppercase tracking-wider mt-1">
+                <p className="text-[13px] md:text-sm text-[#1A1917]/45 font-light uppercase tracking-wider mt-1">
                   {project.category}
                 </p>
               </div>
@@ -132,7 +132,7 @@ export default function WebsiteShowcaseCarousel() {
                 href={project.link}
                 target={project.link.startsWith('http') ? "_blank" : "_self"}
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-5 py-3 bg-[#D2A214] text-[#0f0e0c] font-bold uppercase tracking-widest text-[8px] rounded-sm hover:scale-102 transition-transform shadow-sm"
+                className="inline-flex items-center gap-2 px-5 py-3 bg-[#F1B92D] text-[#0f0e0c] font-bold uppercase tracking-widest text-[13px] md:text-sm md:text-[12px] rounded-sm hover:scale-102 transition-transform shadow-sm"
               >
                 View Project <ExternalLink size={10} />
               </a>

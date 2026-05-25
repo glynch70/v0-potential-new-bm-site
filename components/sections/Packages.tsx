@@ -27,7 +27,7 @@ export default function Packages() {
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-brand-yellow font-bold uppercase tracking-[0.4em] text-xs mb-8"
+          className="text-gold font-bold uppercase tracking-[0.4em] text-xs mb-8"
         >
           PACKAGES
         </motion.p>
@@ -71,19 +71,19 @@ export default function Packages() {
               placeholder="Your email address" 
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="flex-grow bg-white/5 border border-white/10 px-8 py-5 text-white font-bold text-lg rounded-full focus:border-brand-yellow outline-none transition-all placeholder:text-white"
+              className="flex-grow bg-white/5 border border-white/10 px-8 py-5 text-white font-bold text-lg rounded-full focus:border-gold outline-none transition-all placeholder:text-white"
             />
             <button 
               type="submit"
               disabled={status === 'loading'}
-              className="px-10 py-5 bg-brand-yellow text-dark font-bold text-xl uppercase tracking-widest rounded-full flex items-center justify-center gap-3 whitespace-nowrap disabled:opacity-50 hover:scale-105 hover:shadow-2xl transition-all"
+              className="px-10 py-5 bg-gold text-dark font-bold text-xl uppercase tracking-widest rounded-full flex items-center justify-center gap-3 whitespace-nowrap disabled:opacity-50 hover:scale-105 hover:shadow-2xl transition-all"
             >
               Request <Send size={24} />
             </button>
           </form>
           
           {status === 'success' && (
-            <p className="mt-8 text-brand-yellow font-bold uppercase tracking-widest text-xs">
+            <p className="mt-8 text-gold font-bold uppercase tracking-widest text-xs">
               Thanks — I'll be in touch within 24 hours 🐻
             </p>
           )}

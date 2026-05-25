@@ -1,31 +1,58 @@
 "use client";
 
-import { FormEvent, ReactElement, cloneElement } from "react";
+import { FormEvent, ReactElement, cloneElement, useState, useRef } from "react";
 import { motion } from "framer-motion";
 
 import { Button } from "@/components/ui/button";
 import { HERO_VIDEO_SOURCES } from "@/lib/media";
+import { Turnstile, type TurnstileInstance } from "@marsidev/react-turnstile";
 
 export default function ContactSection() {
+  const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
+  const [turnstileStatus, setTurnstileStatus] = useState<"idle" | "loading" | "error" | "expired" | "success">("idle");
+  const turnstileRef = useRef<TurnstileInstance>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    setIsSubmitting(true);
     const form = event.currentTarget;
     const formData = new FormData(form);
 
-    const res = await fetch("/api/contact", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        name: formData.get("name"),
-        email: formData.get("email"),
-        projectType: formData.get("projectType"),
-        message: formData.get("message"),
-      }),
-    });
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: formData.get("name"),
+          email: formData.get("email"),
+          projectType: formData.get("projectType"),
+          message: formData.get("message"),
+          company: formData.get("company"), // honeypot
+          token: turnstileToken,
+        }),
+      });
 
-    const data = await res.json();
-    alert(data.message);
-    form.reset();
+      const data = await res.json();
+      alert(data.message);
+
+      if (res.ok) {
+        form.reset();
+        setTurnstileToken(null);
+        setTurnstileStatus("idle");
+      } else {
+        turnstileRef.current?.reset();
+        setTurnstileToken(null);
+        setTurnstileStatus("idle");
+      }
+    } catch {
+      alert("Something went wrong. Please email info@bear-media.com directly.");
+      turnstileRef.current?.reset();
+      setTurnstileToken(null);
+      setTurnstileStatus("idle");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -60,6 +87,15 @@ export default function ContactSection() {
           </p>
 
           <form onSubmit={handleSubmit} className="space-y-8">
+            {/* Honeypot field - hidden from users, filled by bots */}
+            <input
+              type="text"
+              name="company"
+              style={{ display: "none" }}
+              tabIndex={-1}
+              autoComplete="off"
+            />
+
             <FormControl id="name" label="Name">
               <input type="text" name="name" required placeholder="Your name" />
             </FormControl>
@@ -91,11 +127,46 @@ export default function ContactSection() {
               />
             </FormControl>
 
+            {/* Cloudflare Turnstile Widget */}
+            <div className="py-2 flex justify-center min-h-[65px]">
+              <Turnstile
+                ref={turnstileRef}
+                siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || ""}
+                onSuccess={(token) => {
+                  setTurnstileToken(token);
+                  setTurnstileStatus("success");
+                }}
+                onExpire={() => {
+                  setTurnstileToken(null);
+                  setTurnstileStatus("expired");
+                }}
+                onError={() => {
+                  setTurnstileToken(null);
+                  setTurnstileStatus("error");
+                }}
+                options={{
+                  theme: "dark",
+                }}
+              />
+            </div>
+
+            {turnstileStatus === "error" && (
+              <p className="text-red-500 text-xs text-center font-medium">
+                Failed to verify security. Please reload the page.
+              </p>
+            )}
+            {turnstileStatus === "expired" && (
+              <p className="text-yellow-500 text-xs text-center font-medium">
+                Security token expired. Please verify again.
+              </p>
+            )}
+
             <Button
               type="submit"
-              className="w-full h-16 rounded-2xl bg-primary text-black text-sm font-bold uppercase tracking-widest shadow-xl transition-all hover:bg-white hover:-translate-y-1 block"
+              disabled={isSubmitting || !turnstileToken}
+              className="w-full h-16 rounded-2xl bg-primary text-black text-sm font-bold uppercase tracking-widest shadow-xl transition-all hover:bg-white hover:-translate-y-1 block disabled:opacity-50 disabled:hover:bg-primary disabled:hover:translate-y-0 cursor-pointer disabled:cursor-not-allowed"
             >
-              Send Request &uarr;
+              {isSubmitting ? "Sending..." : "Send Request ↑"}
             </Button>
           </form>
         </div>
@@ -120,7 +191,7 @@ function FormControl({
         {cloneElement(children, {
           id,
           className:
-            "w-full rounded-xl border border-border bg-background px-4 py-4 text-base text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-[#D9A05B]",
+            "w-full rounded-xl border border-border bg-background px-4 py-4 text-base text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-[#F1B92D]",
         })}
       </div>
     </label>

@@ -36,7 +36,7 @@ export const PhilosophySection = () => {
           />
         </div>
 
-        <p className="text-primary/40 text-[10px] uppercase tracking-[0.5em] font-bold">
+        <p className="text-primary/40 text-[13px] md:text-sm uppercase tracking-[0.5em] font-bold">
           The Bear Media Philosophy &copy;
         </p>
       </motion.div>

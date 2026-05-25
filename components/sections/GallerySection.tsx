@@ -73,7 +73,7 @@ export const GallerySection = () => {
                     <h3 className="text-xl md:text-2xl font-bold text-white uppercase tracking-tight mb-2">
                       {item.label}
                     </h3>
-                    <p className="text-primary text-[10px] font-bold uppercase tracking-[0.2em]">
+                    <p className="text-primary text-[13px] md:text-sm font-bold uppercase tracking-[0.2em]">
                       View Case Study &rarr;
                     </p>
                   </div>

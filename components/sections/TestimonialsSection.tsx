@@ -33,7 +33,7 @@ export default function TestimonialsSection() {
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-brand-yellow font-bold uppercase tracking-[0.3em] text-xs mb-4 italic"
+            className="text-gold font-bold uppercase tracking-[0.3em] text-xs mb-4 italic"
           >
             Client Success
           </motion.p>
@@ -55,17 +55,17 @@ export default function TestimonialsSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="bg-neutral-950 border-l-4 border-brand-yellow rounded-3xl p-10 shadow-2xl relative"
+              className="bg-neutral-950 border-l-4 border-gold rounded-3xl p-10 shadow-2xl relative"
             >
               <div className="flex gap-1 mb-6">
                 {Array.from({ length: t.stars }).map((_, i) => (
-                  <Star key={i} size={14} className="text-brand-yellow fill-brand-yellow" />
+                  <Star key={i} size={14} className="text-gold fill-brand-gold" />
                 ))}
               </div>
               <p className="text-white text-lg leading-relaxed mb-8 italic">"{t.quote}"</p>
               <div>
                 <p className="font-black text-white uppercase font-bebas italic tracking-wide">{t.name}</p>
-                <p className="text-white text-[10px] uppercase tracking-widest">{t.company}</p>
+                <p className="text-white text-[13px] md:text-sm uppercase tracking-widest">{t.company}</p>
               </div>
             </motion.div>
           ))}
@@ -77,7 +77,7 @@ export default function TestimonialsSection() {
           viewport={{ once: true }}
           className="mt-12 text-center"
         >
-           <p className="text-white text-[10px] uppercase tracking-widest font-bold">25 reviews · 5.0 ★ on Google</p>
+           <p className="text-white text-[13px] md:text-sm uppercase tracking-widest font-bold">25 reviews · 5.0 ★ on Google</p>
         </motion.div>
       </div>
     </section>

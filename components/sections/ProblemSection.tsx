@@ -5,17 +5,17 @@ import { XCircle, TrendingDown, EyeOff, Globe } from 'lucide-react';
 
 const painPoints = [
   {
-    icon: <XCircle className="text-brand-yellow" size={32} />,
+    icon: <XCircle className="text-gold" size={32} />,
     title: "No time to create content",
     description: "Someone needs to plan it, shoot it, edit it, and post it. That's a part-time job that never gets done properly when you're busy running a business."
   },
   {
-    icon: <TrendingDown className="text-brand-yellow" size={32} />,
+    icon: <TrendingDown className="text-gold" size={32} />,
     title: "Inconsistency kills visibility",
     description: "A burst of posts followed by weeks of silence tells your audience you're not serious. Consistency is the only way to stay top-of-mind."
   },
   {
-    icon: <Globe className="text-brand-yellow" size={32} />,
+    icon: <Globe className="text-gold" size={32} />,
     title: "Hiring in-house is expensive",
     description: "A full-time content creator runs £30k+ per year before equipment and management time. We provide high-quality content without the agency price tag."
   }
@@ -42,7 +42,7 @@ export default function ProblemSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <p className="text-brand-yellow font-bold uppercase tracking-[0.3em] text-xs mb-6 italic">
+            <p className="text-gold font-bold uppercase tracking-[0.3em] text-xs mb-6 italic">
               The Reality
             </p>
             <h2 className="text-4xl md:text-6xl font-black uppercase leading-[1.1] mb-8 font-bebas italic max-w-3xl mx-auto">
@@ -62,7 +62,7 @@ export default function ProblemSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="p-10 bg-neutral-950/80 backdrop-blur-md rounded-[2.5rem] border border-white/5 hover:border-brand-yellow/30 transition-all duration-300 group"
+                className="p-10 bg-neutral-950/80 backdrop-blur-md rounded-[2.5rem] border border-white/5 hover:border-gold/30 transition-all duration-300 group"
               >
                 <div className="mb-8 p-5 bg-neutral-900 w-fit rounded-2xl group-hover:scale-110 transition-transform duration-300">
                   {point.icon}

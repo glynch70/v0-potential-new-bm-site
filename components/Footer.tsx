@@ -59,11 +59,15 @@ const footerLinkGroups: FooterLinkGroup[] = [
 		links: [
 			{ title: 'West Lothian', href: '/west-lothian-content-creation' },
 			{ title: 'Edinburgh', href: '/edinburgh-content-creation' },
+			{ title: 'Fife Content Creation', href: '/fife-content-creation' },
 			{ title: 'Web Design W. Lothian', href: '/web-design-west-lothian' },
 			{ title: 'Social Media W. Lothian', href: '/social-media-west-lothian' },
 			{ title: 'Videography W. Lothian', href: '/videography-west-lothian' },
 			{ title: 'Web Design Edinburgh', href: '/web-design-edinburgh' },
 			{ title: 'Social Media Edinburgh', href: '/social-media-edinburgh' },
+			{ title: 'Video Production Edinburgh', href: '/video-production-edinburgh' },
+			{ title: 'Video Production Fife', href: '/video-production-fife' },
+			{ title: 'Drone Video Scotland', href: '/drone' },
 		],
 	},
 	{
@@ -88,7 +92,7 @@ export default function Footer() {
 							<span className="text-white font-bold text-lg leading-tight font-inter-tight">
 								Bear Media
 							</span>
-							<span className="text-[#E8E0D5]/70 text-[10px] font-medium uppercase tracking-[0.2em] font-inter-tight">
+							<span className="text-[#E8E0D5]/70 text-[13px] md:text-sm font-medium uppercase tracking-[0.2em] font-inter-tight">
 								Websites & Social Media
 							</span>
 						</div>
@@ -156,11 +160,11 @@ export default function Footer() {
 					/>
 					<div className="absolute top-6 left-6 z-10 bg-black/60 backdrop-blur-md px-5 py-3 rounded-2xl border border-white/10 pointer-events-none">
 						<div className="flex items-center gap-3">
-							<div className="w-8 h-8 rounded-full bg-[#D9A05B] flex items-center justify-center text-[#0f0e0c]">
+							<div className="w-8 h-8 rounded-full bg-[#F1B92D] flex items-center justify-center text-[#0f0e0c]">
 								<MapPin size={16} />
 							</div>
 							<div>
-								<p className="text-[10px] font-bold uppercase tracking-widest text-white">Our Location</p>
+								<p className="text-[13px] md:text-sm font-bold uppercase tracking-widest text-white">Our Location</p>
 								<p className="text-sm font-bold text-white">Broxburn, West Lothian</p>
 							</div>
 						</div>
@@ -170,10 +174,10 @@ export default function Footer() {
 
 				{/* Bottom Bar */}
 				<div className="mt-24 pt-12 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6">
-					<p className="text-[10px] font-bold uppercase tracking-widest text-white">
+					<p className="text-[13px] md:text-sm font-bold uppercase tracking-widest text-white">
 						© 2026 Bear Media. ALL RIGHTS RESERVED.
 					</p>
-					<div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-white">
+					<div className="flex items-center gap-2 text-[13px] md:text-sm font-bold uppercase tracking-widest text-white">
 						<MapPin className="w-3 h-3 text-white" />
 						BASED IN BROXBURN — SERVING SCOTLAND
 					</div>

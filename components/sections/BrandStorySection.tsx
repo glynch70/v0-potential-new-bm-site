@@ -42,7 +42,7 @@ export const BrandStorySection = () => {
                 <item.icon className="w-8 h-8 text-amber-500" />
               </div>
               
-              <p className="text-amber-500 text-sm md:text-base font-bold uppercase tracking-[0.3em] mb-2">
+              <p className="text-amber-500 text-base md:text-lg font-bold uppercase tracking-[0.3em] mb-2">
                 {item.accent}
               </p>
               

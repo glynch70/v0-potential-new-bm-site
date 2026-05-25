@@ -4,18 +4,18 @@ import { motion } from 'framer-motion'
 
 export default function StatementSection() {
   return (
-    <section className="relative w-full bg-dark min-h-screen flex items-center justify-center overflow-hidden border-t border-b border-brand-yellow/10">
+    <section className="relative w-full bg-dark min-h-screen flex items-center justify-center overflow-hidden border-t border-b border-gold/10">
       
       {/* 📣 Ticker Tape Background */}
       <div className="absolute inset-0 flex items-center overflow-hidden pointer-events-none">
         <div className="w-full flex animate-marquee whitespace-nowrap opacity-20">
-          <span className="text-6xl md:text-9xl font-black tracking-tighter text-brand-yellow mx-8 uppercase italic">
+          <span className="text-6xl md:text-9xl font-black tracking-tighter text-gold mx-8 uppercase italic">
             NO ACCOUNT MANAGERS JUST RESULTS • NO OFFICE NONSENSE • 
           </span>
-          <span className="text-6xl md:text-9xl font-black tracking-tighter text-brand-yellow mx-8 uppercase italic">
+          <span className="text-6xl md:text-9xl font-black tracking-tighter text-gold mx-8 uppercase italic">
             NO ACCOUNT MANAGERS JUST RESULTS • NO OFFICE NONSENSE • 
           </span>
-          <span className="text-6xl md:text-9xl font-black tracking-tighter text-brand-yellow mx-8 uppercase italic">
+          <span className="text-6xl md:text-9xl font-black tracking-tighter text-gold mx-8 uppercase italic">
             NO ACCOUNT MANAGERS JUST RESULTS • NO OFFICE NONSENSE • 
           </span>
         </div>
@@ -31,7 +31,7 @@ export default function StatementSection() {
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-brand-yellow font-bold uppercase tracking-[0.4em] text-sm mb-8 italic"
+          className="text-gold font-bold uppercase tracking-[0.4em] text-sm mb-8 italic"
         >
           THE BEAR MEDIA WAY
         </motion.p>
@@ -53,13 +53,13 @@ export default function StatementSection() {
         <div className="flex gap-6 justify-center flex-wrap">
           <a 
             href="/contact" 
-            className="px-10 py-5 bg-brand-yellow text-dark font-black rounded-full hover:scale-105 hover:shadow-2xl transition-all uppercase italic tracking-widest text-lg"
+            className="px-10 py-5 bg-gold text-dark font-black rounded-full hover:scale-105 hover:shadow-2xl transition-all uppercase italic tracking-widest text-lg"
           >
             Book a call
           </a>
           <a 
             href="#work" 
-            className="px-10 py-5 border-2 border-brand-yellow text-brand-yellow font-black rounded-full hover:bg-brand-yellow hover:text-dark transition-all uppercase italic tracking-widest text-lg"
+            className="px-10 py-5 border-2 border-gold text-gold font-black rounded-full hover:bg-gold hover:text-dark transition-all uppercase italic tracking-widest text-lg"
           >
             Portfolio
           </a>

@@ -103,7 +103,7 @@ export default function VideoGrid() {
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-brand-yellow font-bold uppercase tracking-[0.3em] text-xs mb-4 italic"
+            className="text-gold font-bold uppercase tracking-[0.3em] text-xs mb-4 italic"
           >
             This is the level your content should be at.
           </motion.p>
@@ -135,16 +135,16 @@ export default function VideoGrid() {
                 <div className="absolute inset-0 bg-neutral-950/40 group-hover:bg-neutral-950/90 transition-all duration-300" />
                 
                 <div className="absolute inset-0 p-8 flex flex-col justify-end opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                   <div className="w-12 h-12 bg-brand-yellow rounded-full flex items-center justify-center mb-6 shadow-2xl scale-75 group-hover:scale-100 transition-transform duration-300">
+                   <div className="w-12 h-12 bg-gold rounded-full flex items-center justify-center mb-6 shadow-2xl scale-75 group-hover:scale-100 transition-transform duration-300">
                       <Play size={20} className="text-neutral-950 fill-neutral-950 ml-1" />
                    </div>
                    <h3 className="text-2xl font-black text-white uppercase font-bebas italic mb-2 tracking-wide">{video.type}</h3>
-                   <p className="text-brand-yellow font-bold text-xs uppercase tracking-widest mb-1">{video.action}</p>
+                   <p className="text-gold font-bold text-xs uppercase tracking-widest mb-1">{video.action}</p>
                    <p className="text-white text-xs uppercase tracking-widest">{video.outcome}</p>
                 </div>
 
                 {/* Subtle Glow Hover Effect */}
-                <div className="absolute -inset-1 bg-brand-yellow opacity-0 group-hover:opacity-10 blur-2xl transition-opacity duration-500 rounded-3xl" />
+                <div className="absolute -inset-1 bg-gold opacity-0 group-hover:opacity-10 blur-2xl transition-opacity duration-500 rounded-3xl" />
               </div>
             </TiltCard>
           ))}
@@ -161,7 +161,7 @@ export default function VideoGrid() {
           </p>
           <a
             href="/contact"
-            className="px-12 py-5 bg-brand-yellow text-neutral-950 font-black uppercase tracking-widest text-sm rounded-2xl hover:scale-105 transition-all shadow-2xl"
+            className="px-12 py-5 bg-gold text-neutral-950 font-black uppercase tracking-widest text-sm rounded-2xl hover:scale-105 transition-all shadow-2xl"
           >
             Get More Leads
           </a>
@@ -198,7 +198,7 @@ export default function VideoGrid() {
                    ></iframe>
                    <button 
                     onClick={() => setSelectedVideo(null)}
-                    className="absolute top-6 right-6 w-10 h-10 bg-black/50 backdrop-blur-md rounded-full flex items-center justify-center text-white hover:bg-brand-yellow hover:text-neutral-950 transition-colors z-10"
+                    className="absolute top-6 right-6 w-10 h-10 bg-black/50 backdrop-blur-md rounded-full flex items-center justify-center text-white hover:bg-gold hover:text-neutral-950 transition-colors z-10"
                    >
                      <X size={20} />
                    </button>
@@ -208,19 +208,19 @@ export default function VideoGrid() {
                       <h3 className="text-3xl md:text-4xl font-black text-white uppercase font-bebas italic mb-4 md:mb-6 tracking-tight">{selectedVideo.title}</h3>
                       <div className="space-y-4 md:space-y-6">
                         <div>
-                          <p className="text-brand-yellow font-black uppercase tracking-widest text-[10px] mb-2">The Problem</p>
+                          <p className="text-gold font-black uppercase tracking-widest text-[13px] md:text-sm mb-2">The Problem</p>
                           <p className="text-white text-sm leading-relaxed">{selectedVideo.caseStudy.problem}</p>
                         </div>
                         <div>
-                          <p className="text-brand-yellow font-black uppercase tracking-widest text-[10px] mb-2">What Was Done</p>
+                          <p className="text-gold font-black uppercase tracking-widest text-[13px] md:text-sm mb-2">What Was Done</p>
                           <p className="text-white text-sm leading-relaxed">{selectedVideo.caseStudy.done}</p>
                         </div>
                       </div>
                    </div>
                    <div className="bg-neutral-950 p-6 md:p-8 rounded-3xl border border-white/5 flex flex-col justify-center">
                       <div className="flex items-center gap-3 mb-3 md:mb-4">
-                         <CheckCircle2 className="text-brand-yellow" size={20} />
-                         <p className="text-brand-yellow font-black uppercase tracking-widest text-[10px]">The Result</p>
+                         <CheckCircle2 className="text-gold" size={20} />
+                         <p className="text-gold font-black uppercase tracking-widest text-[13px] md:text-sm">The Result</p>
                       </div>
                       <p className="text-xl md:text-2xl font-black text-white uppercase font-bebas italic tracking-wide">{selectedVideo.caseStudy.result}</p>
                    </div>

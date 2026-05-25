@@ -90,7 +90,7 @@ export default function Testimonials() {
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-brand-yellow font-bold uppercase tracking-[0.4em] text-xs mb-8 italic"
+          className="text-gold font-bold uppercase tracking-[0.4em] text-xs mb-8 italic"
         >
           WHAT CLIENTS SAY
         </motion.p>
@@ -124,7 +124,7 @@ export default function Testimonials() {
                 key={index}
                 onClick={() => scrollTo(index)}
                 className={`h-1.5 rounded-full transition-all duration-300 ${
-                  index === selectedIndex ? 'bg-brand-yellow w-8' : 'bg-white/20 w-3'
+                  index === selectedIndex ? 'bg-gold w-8' : 'bg-white/20 w-3'
                 }`}
                 aria-label={`Go to slide ${index + 1}`}
               />
@@ -143,7 +143,7 @@ export default function Testimonials() {
             href="https://g.page/r/bear-media" 
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-4 bg-brand-yellow text-dark px-10 py-6 rounded-full font-bold uppercase tracking-widest text-sm transition-all hover:scale-105 hover:shadow-2xl"
+            className="flex items-center gap-4 bg-gold text-dark px-10 py-6 rounded-full font-bold uppercase tracking-widest text-sm transition-all hover:scale-105 hover:shadow-2xl"
           >
             <span>25 reviews · <span className="text-dark font-black">5.0 ★</span> on Google</span>
           </a>
@@ -175,22 +175,22 @@ function TestimonialFlipCard({ testimonial, index }: { testimonial: any; index: 
         className="relative w-full h-full text-center transition-all duration-500 [transform-style:preserve-3d]"
       >
         {/* Front Face: The Quote */}
-        <div className="absolute inset-0 w-full h-full [backface-visibility:hidden] glass-card flex flex-col items-center justify-center p-6 md:p-10 border-brand-yellow/10">
+        <div className="absolute inset-0 w-full h-full [backface-visibility:hidden] glass-card flex flex-col items-center justify-center p-6 md:p-10 border-gold/10">
           <div className="relative w-full">
-            <span className="text-[8rem] md:text-[12rem] text-brand-yellow absolute -top-16 md:-top-24 -left-4 md:-left-10 select-none opacity-10 font-black leading-none uppercase">
+            <span className="text-[8rem] md:text-[12rem] text-gold absolute -top-16 md:-top-24 -left-4 md:-left-10 select-none opacity-10 font-black leading-none uppercase">
               “
             </span>
             <p className="text-white text-sm md:text-lg leading-relaxed relative z-10 italic font-medium">
               "{testimonial.quote}"
             </p>
           </div>
-          <div className="mt-8 md:mt-auto pt-4 md:pt-6 text-brand-yellow/40 text-[10px] font-black uppercase tracking-[0.3em] group-hover:text-brand-yellow transition-colors">
+          <div className="mt-8 md:mt-auto pt-4 md:pt-6 text-gold/40 text-[13px] md:text-sm font-black uppercase tracking-[0.3em] group-hover:text-gold transition-colors">
             Tap to see who said it.
           </div>
         </div>
 
         {/* Back Face: The Profile */}
-        <div className="absolute inset-0 w-full h-full [backface-visibility:hidden] [transform:rotateY(180deg)] bg-brand-yellow rounded-2xl flex flex-col items-center justify-center p-6 md:p-10 border-none shadow-2xl">
+        <div className="absolute inset-0 w-full h-full [backface-visibility:hidden] [transform:rotateY(180deg)] bg-gold rounded-2xl flex flex-col items-center justify-center p-6 md:p-10 border-none shadow-2xl">
           <div className="relative w-24 h-24 md:w-32 md:h-32 rounded-full overflow-hidden border-4 border-dark/20 bg-dark/10 mb-4 md:mb-6 shadow-xl">
             <Image 
               src={testimonial.image} 
@@ -214,7 +214,7 @@ function TestimonialFlipCard({ testimonial, index }: { testimonial: any; index: 
               testimonial.name
             )}
           </h3>
-          <p className="text-dark/60 text-[10px] md:text-sm font-black uppercase tracking-widest mb-4 text-center">
+          <p className="text-dark/60 text-[13px] md:text-sm md:text-sm font-black uppercase tracking-widest mb-4 text-center">
             {testimonial.website ? (
               <a 
                 href={testimonial.website} 
@@ -238,7 +238,7 @@ function TestimonialFlipCard({ testimonial, index }: { testimonial: any; index: 
             ))}
           </div>
           
-          <div className="md:mt-4 text-dark/40 text-[10px] font-black uppercase tracking-[0.2em]">
+          <div className="md:mt-4 text-dark/40 text-[13px] md:text-sm font-black uppercase tracking-[0.2em]">
             Tap to see quote.
           </div>
         </div>

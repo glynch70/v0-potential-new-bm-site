@@ -23,15 +23,15 @@ export default function Contact() {
   return (
     <section id="contact" className="relative max-w-6xl mx-auto px-6 pb-24 space-y-12 overflow-visible">
       {/* Background Accent */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-brand-yellow/5 blur-[150px] rounded-full pointer-events-none" />
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-gold/5 blur-[150px] rounded-full pointer-events-none" />
 
       {/* High-Contrast CTA Card */}
       <div className="relative group">
-        <div className="absolute -inset-1 bg-brand-yellow rounded-[2.5rem] blur opacity-20 group-hover:opacity-40 transition duration-500"></div>
+        <div className="absolute -inset-1 bg-gold rounded-[2.5rem] blur opacity-20 group-hover:opacity-40 transition duration-500"></div>
         <div className="relative rounded-[2.5rem] p-12 md:p-20 bg-white text-black text-center shadow-2xl overflow-hidden">
-          <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-brand-yellow/10 to-transparent pointer-events-none" />
+          <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-brand-gold/10 to-transparent pointer-events-none" />
           
-          <h2 className="text-5xl md:text-7xl font-black tracking-tighter uppercase italic mb-6">Need better <span className="text-brand-yellow drop-shadow-sm">content</span>?</h2>
+          <h2 className="text-5xl md:text-7xl font-black tracking-tighter uppercase italic mb-6">Need better <span className="text-gold drop-shadow-sm">content</span>?</h2>
           <p className="mt-4 text-black/70 text-xl md:text-2xl max-w-2xl mx-auto font-medium">
             Book a free chat and we’ll map out what moves the needle fastest.
           </p>
@@ -61,21 +61,21 @@ export default function Contact() {
         {/* Info Card */}
         <div className="rounded-[2rem] p-10 md:p-14 bg-neutral-900/50 border border-white/5 flex flex-col justify-between group">
           <div>
-            <h3 className="text-3xl font-black uppercase italic mb-6">Get In <span className="text-brand-yellow">Touch</span></h3>
+            <h3 className="text-3xl font-black uppercase italic mb-6">Get In <span className="text-gold">Touch</span></h3>
             <p className="text-white leading-relaxed text-lg">
               Tell me about your business, your goals and where content is currently falling short.
             </p>
           </div>
           
           <div className="mt-16 space-y-6">
-            <a href="mailto:hello@bear-media.com" className="flex items-center gap-4 text-white hover:text-brand-yellow transition-colors font-bold text-lg">
-              <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center group-hover:bg-brand-yellow group-hover:text-black transition-colors">
+            <a href="mailto:hello@bear-media.com" className="flex items-center gap-4 text-white hover:text-gold transition-colors font-bold text-lg">
+              <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center group-hover:bg-gold group-hover:text-black transition-colors">
                 <Mail size={20} />
               </div>
               hello@bear-media.com
             </a>
-            <a href="tel:07879011860" className="flex items-center gap-4 text-white hover:text-brand-yellow transition-colors font-bold text-lg">
-              <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center group-hover:bg-brand-yellow group-hover:text-black transition-colors">
+            <a href="tel:07879011860" className="flex items-center gap-4 text-white hover:text-gold transition-colors font-bold text-lg">
+              <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center group-hover:bg-gold group-hover:text-black transition-colors">
                 <Phone size={20} />
               </div>
               07879 011860
@@ -85,25 +85,25 @@ export default function Contact() {
 
         {/* Enquiry Form Card */}
         <div className="rounded-[2rem] p-10 md:p-14 bg-neutral-900/50 border border-white/5 relative overflow-hidden">
-          <h3 className="text-3xl font-black uppercase italic mb-8 text-white">Quick <span className="text-brand-yellow">Enquiry</span></h3>
+          <h3 className="text-3xl font-black uppercase italic mb-8 text-white">Quick <span className="text-gold">Enquiry</span></h3>
           <form onSubmit={handleSubmit} className="space-y-4">
             <input 
               required
-              className="w-full rounded-2xl bg-neutral-950 border border-white/5 px-6 py-5 outline-none focus:border-brand-yellow transition-colors font-medium" 
+              className="w-full rounded-2xl bg-neutral-950 border border-white/5 px-6 py-5 outline-none focus:border-gold transition-colors font-medium" 
               placeholder="Your Name" 
               value={form.name}
               onChange={(e) => setForm({ ...form, name: e.target.value })}
             />
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <input 
-                className="w-full rounded-2xl bg-neutral-950 border border-white/5 px-6 py-5 outline-none focus:border-brand-yellow transition-colors font-medium" 
+                className="w-full rounded-2xl bg-neutral-950 border border-white/5 px-6 py-5 outline-none focus:border-gold transition-colors font-medium" 
                 placeholder="Business" 
                 value={form.businessName}
                 onChange={(e) => setForm({ ...form, businessName: e.target.value })}
               />
               <input 
                 required
-                className="w-full rounded-2xl bg-neutral-950 border border-white/5 px-6 py-5 outline-none focus:border-brand-yellow transition-colors font-medium" 
+                className="w-full rounded-2xl bg-neutral-950 border border-white/5 px-6 py-5 outline-none focus:border-gold transition-colors font-medium" 
                 placeholder="Email/Phone" 
                 value={form.contact}
                 onChange={(e) => setForm({ ...form, contact: e.target.value })}
@@ -111,7 +111,7 @@ export default function Contact() {
             </div>
             <textarea 
               required
-              className="w-full rounded-2xl bg-neutral-950 border border-white/5 px-6 py-5 min-h-32 outline-none focus:border-brand-yellow transition-colors resize-none font-medium" 
+              className="w-full rounded-2xl bg-neutral-950 border border-white/5 px-6 py-5 min-h-32 outline-none focus:border-gold transition-colors resize-none font-medium" 
               placeholder="How can I help?" 
               value={form.project}
               onChange={(e) => setForm({ ...form, project: e.target.value })}
@@ -119,7 +119,7 @@ export default function Contact() {
             <button 
               type="submit"
               disabled={status === 'loading'}
-              className="w-full px-8 py-5 rounded-2xl bg-brand-yellow text-black font-black uppercase tracking-widest text-sm shadow-xl transition-all hover:scale-[1.02] disabled:opacity-50"
+              className="w-full px-8 py-5 rounded-2xl bg-gold text-black font-black uppercase tracking-widest text-sm shadow-xl transition-all hover:scale-[1.02] disabled:opacity-50"
             >
               {status === 'loading' ? 'Sending...' : 'Send Enquiry'}
             </button>
@@ -129,7 +129,7 @@ export default function Contact() {
                 <motion.p 
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="text-center text-brand-yellow font-bold uppercase tracking-widest text-[10px] mt-4"
+                  className="text-center text-gold font-bold uppercase tracking-widest text-[13px] md:text-sm mt-4"
                 >
                   Message sent! I'll be in touch soon.
                 </motion.p>

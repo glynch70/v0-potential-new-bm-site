@@ -22,7 +22,7 @@ export function ServiceCard3D({
   description,
   features,
   colorClass = '',
-  accentColor = '#D9A05B',
+  accentColor = '#F1B92D',
 }: ServiceCard3DProps) {
   const { elementRef: cardRef, style: magneticStyle } = useMagneticCursor({
     strength: 0.2,

@@ -13,7 +13,7 @@ const VideoCard = ({ videoId, title, caption }: { videoId: string, title: string
           <YouTubeEmbed videoId={videoId} title={title} />
        </div>
        <div className="px-2">
-         <p className="text-brand-yellow font-black uppercase italic font-bebas tracking-widest text-xs mb-1">{title}</p>
+         <p className="text-gold font-black uppercase italic font-bebas tracking-widest text-xs mb-1">{title}</p>
          <p className="text-white font-bold text-lg leading-tight uppercase font-bebas italic">{caption}</p>
        </div>
     </div>
@@ -34,7 +34,7 @@ export default function HorizontalVideoScroll() {
       <div className="max-w-7xl mx-auto mb-16">
         <h2 className="text-4xl md:text-6xl font-black uppercase italic font-bebas tracking-tight text-white leading-none mb-4">
           See the work. <br />
-          <span className="text-brand-yellow">See the results.</span>
+          <span className="text-gold">See the results.</span>
         </h2>
         <p className="text-white italic text-lg font-medium">Real content created for real local businesses.</p>
       </div>

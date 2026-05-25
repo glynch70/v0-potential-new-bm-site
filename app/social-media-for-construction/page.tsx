@@ -15,12 +15,12 @@ export default function SocialMediaForConstruction() {
   return (
     <>
       <Navbar />
-      <main className="min-h-screen bg-neutral-950 text-white font-sans selection:bg-brand-yellow selection:text-neutral-950">
+      <main className="min-h-screen bg-neutral-950 text-white font-sans selection:bg-gold selection:text-neutral-950">
         
         {/* AEO SUMMARY BLOCK */}
         <div className="pt-24 pb-8 bg-neutral-950 border-b border-white/5">
            <div className="max-w-4xl mx-auto px-6 text-center">
-              <p className="text-white/80 text-sm md:text-base font-medium leading-relaxed italic">
+              <p className="text-white/80 text-base md:text-lg font-medium leading-relaxed italic">
                  Bear Media provides done-for-you social media management and on-site video content creation specifically for construction companies across Edinburgh, West Lothian and Scotland, turning project visibility into high-value enquiries.
               </p>
            </div>
@@ -31,16 +31,16 @@ export default function SocialMediaForConstruction() {
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(245,166,35,0.03)_0%,transparent_70%)] pointer-events-none" />
           <div className="max-w-5xl mx-auto relative z-10 text-center">
             <h1 className="mb-6 text-4xl md:text-6xl lg:text-7xl font-black italic uppercase font-bebas leading-[0.9] tracking-tight">
-              Social Media Content For <span className="text-brand-yellow">Construction</span>
+              Social Media Content For <span className="text-gold">Construction</span>
             </h1>
             <p className="text-white/80 max-w-2xl mx-auto mb-10 text-lg md:text-xl font-medium italic">
               Stop posting blurry photos. We build and manage high-performance content systems that make your construction firm the most trusted choice in your local area.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-               <Link href="/contact" className="px-10 py-5 bg-brand-yellow text-neutral-950 font-black uppercase tracking-widest text-[11px] rounded-xl hover:scale-105 transition-all">
+               <Link href="/contact" className="px-10 py-5 bg-gold text-neutral-950 font-black uppercase tracking-widest text-[13px] md:text-sm rounded-xl hover:scale-105 transition-all">
                  Book a Discovery Call
                </Link>
-               <Link href="/case-studies/cg-developments" className="px-10 py-5 bg-white/5 border border-white/10 text-white font-black uppercase tracking-widest text-[11px] rounded-xl hover:bg-white/10 transition-all">
+               <Link href="/case-studies/cg-developments" className="px-10 py-5 bg-white/5 border border-white/10 text-white font-black uppercase tracking-widest text-[13px] md:text-sm rounded-xl hover:bg-white/10 transition-all">
                  See Our Results
                </Link>
             </div>
@@ -60,21 +60,21 @@ export default function SocialMediaForConstruction() {
                     "You're getting likes from other builders, but no real customer enquiries.",
                     "You have no consistent strategy, so trust isn't being built."
                   ].map((problem, i) => (
-                    <li key={i} className="flex gap-3 text-white/70 italic text-lg">
-                      <span className="text-brand-yellow font-black mt-1">✕</span> {problem}
+                    <li key={i} className="flex gap-3 text-white/90 italic text-lg">
+                      <span className="text-gold font-black mt-1">✕</span> {problem}
                     </li>
                   ))}
                 </ul>
              </div>
              <div className="bg-neutral-950 border border-white/10 p-10 rounded-[2rem]">
-                <h2 className="text-3xl font-black italic uppercase font-bebas text-brand-yellow mb-6">Who This Is For</h2>
+                <h2 className="text-3xl font-black italic uppercase font-bebas text-gold mb-6">Who This Is For</h2>
                 <p className="text-white/80 italic text-lg mb-6 leading-relaxed">
                    We partner exclusively with serious construction businesses that want to dominate their local market:
                 </p>
                 <ul className="space-y-3">
                   {["Home Extension & Renovation Specialists", "New Build Developers", "Commercial Construction Firms", "High-End Joinery & Fit-Out Contractors", "Firms operating in Central Scotland"].map((audience, i) => (
                     <li key={i} className="flex items-center gap-3">
-                      <CheckCircle2 size={16} className="text-brand-yellow" />
+                      <CheckCircle2 size={16} className="text-gold" />
                       <span className="text-white font-bold text-sm tracking-wide">{audience}</span>
                     </li>
                   ))}
@@ -88,7 +88,7 @@ export default function SocialMediaForConstruction() {
            <div className="max-w-5xl mx-auto">
               <div className="text-center mb-16">
                  <h2 className="text-4xl font-black uppercase italic font-bebas tracking-tight text-white mb-4">A Done-For-You System</h2>
-                 <p className="text-white/60 italic">You build the houses. We build the brand.</p>
+                 <p className="text-white/90 italic">You build the houses. We build the brand.</p>
               </div>
               <div className="grid md:grid-cols-3 gap-8">
                  {[
@@ -99,9 +99,9 @@ export default function SocialMediaForConstruction() {
                    { title: "Team Profiling", desc: "We help your team get comfortable on camera to build immense local trust." },
                    { title: "Enquiry Focus", desc: "Everything we post is engineered to drive high-value leads to your inbox or website." }
                  ].map((service, i) => (
-                    <div key={i} className="bg-neutral-900/50 border border-white/5 p-8 rounded-3xl hover:border-brand-yellow/30 transition-colors">
+                    <div key={i} className="bg-neutral-900/50 border border-white/5 p-8 rounded-3xl hover:border-gold/30 transition-colors">
                        <h3 className="text-xl font-bold text-white mb-3">{service.title}</h3>
-                       <p className="text-white/60 text-sm italic leading-relaxed">{service.desc}</p>
+                       <p className="text-white/90 text-sm italic leading-relaxed">{service.desc}</p>
                     </div>
                  ))}
               </div>
@@ -109,10 +109,10 @@ export default function SocialMediaForConstruction() {
         </section>
 
         {/* PROOF / RESULTS */}
-        <section className="py-24 px-6 bg-brand-yellow/10 border-y border-brand-yellow/20">
+        <section className="py-24 px-6 bg-gold/10 border-y border-gold/20">
            <div className="max-w-5xl mx-auto">
               <div className="text-center mb-12">
-                <h2 className="text-3xl font-black uppercase italic font-bebas tracking-tight text-brand-yellow mb-6">Real Results for Real Trades</h2>
+                <h2 className="text-3xl font-black uppercase italic font-bebas tracking-tight text-gold mb-6">Real Results for Real Trades</h2>
                 <p className="text-white/80 italic text-lg mb-8 max-w-2xl mx-auto">
                    We helped C&G Developments generate <strong className="text-white">129,000+ views</strong> and <strong className="text-white">9,900+ engagements</strong> in just 90 days.
                 </p>
@@ -123,10 +123,10 @@ export default function SocialMediaForConstruction() {
                  </div>
                  <div className="bg-neutral-950 p-8 rounded-3xl border border-white/10">
                     <h3 className="text-xl font-black uppercase italic font-bebas text-white mb-4">"The phone hasn't stopped ringing"</h3>
-                    <p className="text-white/70 italic leading-relaxed mb-6">
+                    <p className="text-white/90 italic leading-relaxed mb-6">
                       "Bear Media completely changed how we look online. The videos are top class and the phone hasn't stopped ringing since we started putting them out. Best investment we've made."
                     </p>
-                    <Link href="/case-studies/cg-developments" className="inline-flex items-center gap-2 text-brand-yellow font-black uppercase tracking-widest text-[11px] hover:translate-x-1 transition-transform">
+                    <Link href="/case-studies/cg-developments" className="inline-flex items-center gap-2 text-gold font-black uppercase tracking-widest text-[13px] md:text-sm hover:translate-x-1 transition-transform">
                        Read Full Case Study <ArrowRight size={14} />
                     </Link>
                  </div>
@@ -146,18 +146,18 @@ export default function SocialMediaForConstruction() {
              ].map((faq, i) => (
                <div key={i} className="bg-neutral-900 border border-white/5 p-6 rounded-2xl">
                  <h3 className="font-bold text-white mb-2 text-lg">{faq.q}</h3>
-                 <p className="text-white/60 italic text-sm leading-relaxed">{faq.a}</p>
+                 <p className="text-white/90 italic text-sm leading-relaxed">{faq.a}</p>
                </div>
              ))}
            </div>
         </section>
 
         {/* CTA */}
-        <section className="py-24 px-6 text-center bg-brand-yellow text-neutral-950">
+        <section className="py-24 px-6 text-center bg-gold text-neutral-950">
            <div className="max-w-3xl mx-auto">
               <h2 className="text-4xl md:text-6xl font-black italic uppercase font-bebas mb-6">Ready to dominate your local market?</h2>
               <p className="font-bold italic mb-10">Let's build a content strategy that actually generates high-value construction enquiries.</p>
-              <Link href="/contact" className="px-10 py-5 bg-neutral-950 text-white font-black uppercase tracking-widest text-[11px] rounded-xl hover:scale-105 transition-all shadow-xl inline-block">
+              <Link href="/contact" className="px-10 py-5 bg-neutral-950 text-white font-black uppercase tracking-widest text-[13px] md:text-sm rounded-xl hover:scale-105 transition-all shadow-xl inline-block">
                 Book a Discovery Call
               </Link>
            </div>
