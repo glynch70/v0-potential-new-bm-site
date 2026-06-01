@@ -11,36 +11,8 @@ import VideoProof from '@/components/VideoProof';
 import Script from 'next/script';
 
 export default function WebsiteDesignServicePage() {
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "What makes a good lead generation website?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "A good lead-gen site focuses on clear messaging, visual proof (like video), and frictionless conversion paths that make it easy for local customers to enquire."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How long does it take to build a website?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Most of our website projects are launched within 4 to 6 weeks, including content capture, design, and local SEO optimization."
-        }
-      }
-    ]
-  };
-
   return (
     <>
-      <Script
-        id="faq-schema-web"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
       <Navbar />
       <main className="min-h-screen bg-neutral-950 text-white font-sans selection:bg-gold selection:text-neutral-950">
         

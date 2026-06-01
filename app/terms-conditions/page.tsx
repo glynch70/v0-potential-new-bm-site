@@ -1,17 +1,59 @@
+import Script from 'next/script';
 import { Metadata } from 'next';
 import { LegalPageLayout } from '@/components/LegalPageLayout';
 
 export const metadata: Metadata = {
   title: 'Terms & Conditions | Bear Media',
-  description: 'Review the terms and conditions for Bear Media\'s web design, development, and social media services. Outlining our commitment to local Scottish businesses.',
+  description: 'Terms and conditions for Bear Media website design, video production, and social media services for businesses in Scotland.',
   alternates: {
     canonical: 'https://bear-media.com/terms-conditions',
   },
+  openGraph: {
+    url: 'https://bear-media.com/terms-conditions',
+    title: 'Terms & Conditions | Bear Media',
+    description: 'Terms and conditions for Bear Media website design, video production, and social media services for businesses in Scotland.',
+    type: 'website',
+    siteName: 'Bear Media',
+    locale: 'en_GB',
+    images: [
+      {
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Bear Media — Web Design & Video Scotland',
+      },
+    ],
+  }
+};
+
+
+const breadcrumbSchema_terms_conditions = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://bear-media.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Terms & Conditions",
+      "item": "https://bear-media.com/terms-conditions"
+    }
+  ]
 };
 
 export default function TermsConditionsPage() {
   return (
     <LegalPageLayout title="Terms & Conditions" lastUpdated="February 2026">
+      <Script
+        id="breadcrumb-schema-terms-conditions"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema_terms_conditions) }}
+      />
       <p>
         These terms and conditions outline the rules and regulations for the use of Bear Media's
         website and services. By accessing this website and engaging our services, you accept these

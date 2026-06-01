@@ -9,7 +9,7 @@ const clients = [
     id: 1,
     name: 'Almond Vet Care',
     category: 'Veterinary Practice',
-    image: '/work/almond_vet_care.jpg',
+    image: '/BEST FINAL CLIENT WORK/website-4-almond-vet-v2.jpg',
     headline: "Perthshire's Newest Independent Vet Practice",
     description: 'Professional veterinary practice serving the local community with expert care',
     link: 'https://almondvetcare.co.uk/'
@@ -18,7 +18,7 @@ const clients = [
     id: 2,
     name: 'K Lewis Joinery',
     category: 'Bespoke Joinery',
-    image: '/work/klewis.jpg',
+    image: '/BEST FINAL CLIENT WORK/klewis.jpg',
     headline: 'Bespoke Joinery Specialists',
     description: 'High-quality bespoke joinery services for homes and businesses across Scotland.',
     link: 'https://www.klewisjoineryltd.co.uk/'
@@ -27,7 +27,7 @@ const clients = [
     id: 4,
     name: 'Robertsons Transport',
     category: 'Transport & Logistics',
-    image: '/work/robertsons.jpg',
+    image: '/BEST FINAL CLIENT WORK/robertsons.jpg',
     headline: 'Transport Solutions You Can Trust',
     description: 'Professional logistics and delivery across the UK from a trusted family business.',
     link: 'https://rt-ltd.uk/'
@@ -36,7 +36,7 @@ const clients = [
     id: 5,
     name: 'Managing What Matters',
     category: 'Leadership Training',
-    image: '/work/mwm.jpg',
+    image: '/BEST FINAL CLIENT WORK/mwm.jpg',
     headline: 'Lead people, not just tasks',
     description: 'Six practical modules to transform how you manage, inspire teams, and deliver results.',
     link: 'https://managingwhatmatters.co.uk'
@@ -45,7 +45,7 @@ const clients = [
     id: 6,
     name: 'Seamus Corry',
     category: 'Mental Health Training',
-    image: '/work/seamus_v5_final.jpg',
+    image: '/BEST FINAL CLIENT WORK/seamus_v5_final.jpg',
     headline: 'Empowering Teams Through Wellbeing',
     description: 'Mental health first aid and wellbeing training for teams across all sectors.',
     link: 'https://seamuscorry.com/',
@@ -55,7 +55,7 @@ const clients = [
     id: 7,
     name: 'Herons\' Pole',
     category: 'Wellness & Nature',
-    image: '/work/herb_soul.jpg',
+    image: '/BEST FINAL CLIENT WORK/herb_soul.jpg',
     headline: 'Healing Through Nature Immersion',
     description: 'Transformative nature-based wellness experiences and herbalism workshops.',
     link: 'https://www.herbandsoul.uk/',

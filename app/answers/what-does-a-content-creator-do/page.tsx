@@ -1,7 +1,63 @@
+import { Metadata } from 'next';
 import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Script from 'next/script';
+
+export const metadata: Metadata = {
+  title: 'What Does a Content Creator Do? | Bear Media',
+  description: 'Discover what a professional content creator does and how they act as a growth partner for your business.',
+  alternates: {
+    canonical: 'https://bear-media.com/answers/what-does-a-content-creator-do',
+  },
+  openGraph: {
+    url: 'https://bear-media.com/answers/what-does-a-content-creator-do',
+    title: 'What Does a Content Creator Do? | Bear Media',
+    description: 'Discover what a professional content creator does and how they act as a growth partner for your business.',
+    type: 'website',
+    siteName: 'Bear Media',
+    locale: 'en_GB',
+    images: [
+      {
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Bear Media — Web Design & Video Scotland',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'What Does a Content Creator Do? | Bear Media',
+    images: ['/og-image.jpg'],
+  },
+};
+
+
+const breadcrumbSchema_answers_what_does_a_content_creator_do = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://bear-media.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Insights",
+      "item": "https://bear-media.com/answers"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "What Does a Content Creator Do?",
+      "item": "https://bear-media.com/answers/what-does-a-content-creator-do"
+    }
+  ]
+};
 
 export default function AnswerPage() {
   const faqSchema = {
@@ -21,6 +77,11 @@ export default function AnswerPage() {
 
   return (
     <>
+      <Script
+        id="breadcrumb-schema-answers-what-does-a-content-creator-do"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema_answers_what_does_a_content_creator_do) }}
+      />
       <Script
         id="faq-schema-creator"
         type="application/ld+json"

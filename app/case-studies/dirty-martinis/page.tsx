@@ -1,3 +1,4 @@
+import Script from 'next/script';
 import React from 'react';
 import { Metadata } from 'next';
 import Navbar from '@/components/Navbar';
@@ -8,12 +9,62 @@ import { ArrowLeft, CheckCircle2, ArrowRight } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Dirty Martinis Case Study | Bear Media',
-  description: 'How we captured the energy and atmosphere of Dirty Martinis events through high-end event videography.',
+  description: 'How Bear Media created scroll-stopping social reels and brand content for Dirty Martinis in Edinburgh — driving visibility and footfall.',
+  alternates: {
+    canonical: 'https://bear-media.com/case-studies/dirty-martinis',
+  },
+  openGraph: {
+    url: 'https://bear-media.com/case-studies/dirty-martinis',
+    title: 'Dirty Martinis Case Study | Bear Media',
+    description: 'How Bear Media created scroll-stopping social reels and brand content for Dirty Martinis in Edinburgh — driving visibility and footfall.',
+    type: 'website',
+    siteName: 'Bear Media',
+    locale: 'en_GB',
+    images: [
+      {
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Bear Media — Web Design & Video Scotland',
+      },
+    ],
+  }
+};
+
+
+const breadcrumbSchema_case_studies_dirty_martinis = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://bear-media.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Proof",
+      "item": "https://bear-media.com/case-studies"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Dirty Martinis Case Study",
+      "item": "https://bear-media.com/case-studies/dirty-martinis"
+    }
+  ]
 };
 
 export default function DirtyMartinisCaseStudy() {
   return (
     <>
+      <Script
+        id="breadcrumb-schema-case-studies-dirty-martinis"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema_case_studies_dirty_martinis) }}
+      />
       <Navbar />
       <main className="min-h-screen bg-neutral-950 text-white font-sans selection:bg-gold selection:text-neutral-950 pt-24 md:pt-32">
         <article className="max-w-5xl mx-auto px-6 pb-24">
@@ -45,7 +96,7 @@ export default function DirtyMartinisCaseStudy() {
           <section className="aspect-video relative rounded-[2rem] overflow-hidden border border-white/5 shadow-2xl mb-16 bg-neutral-900">
              {/* Using existing placeholder until real asset is added */}
             <Image 
-              src="/work/mwm.jpg" 
+              src="/BEST FINAL CLIENT WORK/mwm.jpg" 
               alt="Dirty Martinis Event" 
               fill 
               className="object-cover opacity-80 hover:scale-105 transition-transform duration-700" 

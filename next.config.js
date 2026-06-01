@@ -1,6 +1,7 @@
 const withBundleAnalyzer = require("@next/bundle-analyzer")({
   enabled: process.env.ANALYZE === "true",
 });
+const { legacyRedirects } = require("./lib/redirects.cjs");
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -40,6 +41,7 @@ const nextConfig = {
         destination: 'https://bear-media.com/:path*',
         permanent: true,
       },
+      ...legacyRedirects,
     ]
   },
   async headers() {

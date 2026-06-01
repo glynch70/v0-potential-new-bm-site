@@ -6,11 +6,61 @@ import { ArrowRight, XCircle, CheckCircle2, TrendingUp, Users, MousePointer2 } f
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Why Your Business Isn’t Getting Enquiries Online | Bear Media',
-  description: 'Discover the 3 most common reasons local Scottish businesses fail to generate leads online and how to fix your visibility.',
+  title: 'Why Your Business Is Not Getting Enquiries | Bear Media',
+  description: 'Learn why your website or social media isn\'t generating leads in Scotland — and the practical fixes Bear Media uses for local businesses.',
+  alternates: {
+    canonical: 'https://bear-media.com/insights/why-business-not-getting-enquiries',
+  },
+  openGraph: {
+    url: 'https://bear-media.com/insights/why-business-not-getting-enquiries',
+    title: 'Why Your Business Is Not Getting Enquiries | Bear Media',
+    description: 'Learn why your website or social media isn\'t generating leads in Scotland — and the practical fixes Bear Media uses for local businesses.',
+    type: 'website',
+    siteName: 'Bear Media',
+    locale: 'en_GB',
+    images: [
+      {
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Bear Media — Web Design & Video Scotland',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Why Your Business Is Not Getting Enquiries | Bear Media',
+    images: ['/og-image.jpg'],
+  },
 };
 
 import Script from 'next/script';
+
+
+const breadcrumbSchema_insights_why_business_not_getting_enquiries = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://bear-media.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Insights",
+      "item": "https://bear-media.com/insights"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Why Your Business Is Not Getting Enquiries",
+      "item": "https://bear-media.com/insights/why-business-not-getting-enquiries"
+    }
+  ]
+};
 
 export default function EnquiriesArticle() {
   const faqSchema = {
@@ -38,6 +88,11 @@ export default function EnquiriesArticle() {
 
   return (
     <>
+      <Script
+        id="breadcrumb-schema-insights-why-business-not-getting-enquiries"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema_insights_why_business_not_getting_enquiries) }}
+      />
       <Script
         id="faq-schema-insight"
         type="application/ld+json"

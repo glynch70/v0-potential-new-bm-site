@@ -202,6 +202,73 @@ export default function InsightsPage() {
           </div>
         </section>
 
+        {/* 3.1 EDUCATIONAL Q&A HUB (DARK CINEMATIC) */}
+        <section className="py-40 px-6 bg-[#0a0908] relative z-10 border-b border-white/5">
+          <div className="absolute inset-y-0 left-[10%] w-[1px] bg-white/[0.02] pointer-events-none z-0" />
+          <div className="absolute inset-y-0 right-[10%] w-[1px] bg-white/[0.02] pointer-events-none z-0" />
+
+          <div className="max-w-6xl mx-auto relative z-10">
+            <p className="text-[#F1B92D] font-bold uppercase tracking-[0.3em] text-[12px] md:text-[13px] mb-8 text-center md:text-left">Knowledge Hub</p>
+            <h3 className="font-bebas text-white text-5xl md:text-7xl mb-24 tracking-wider uppercase text-center md:text-left">
+              FREQUENTLY ANSWERED <span className="text-white/20">QUESTIONS.</span>
+            </h3>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {[
+                {
+                  q: "Is social media worth it for local businesses?",
+                  a: "Yes—if it's strategic. We break down the real ROI of consistency, trust, and organic video lead generation for SMEs in Scotland.",
+                  link: "/answers/is-social-media-worth-it"
+                },
+                {
+                  q: "How much does social media content actually cost?",
+                  a: "Get a clear, transparent breakdown of production retainers, day rates, and pricing structures for content creation in Scotland.",
+                  link: "/answers/how-much-does-social-media-content-cost-scotland"
+                },
+                {
+                  q: "What does a professional content creator actually do?",
+                  a: "Learn how a creator acts as a growth partner, building digital assets that sell your services while you run your business.",
+                  link: "/answers/what-does-a-content-creator-do"
+                },
+                {
+                  q: "Why is your business not getting enquiries online?",
+                  a: "We dissect the three critical mistakes local service operations make with their websites and how to solve them.",
+                  link: "/answers/why-your-business-isnt-getting-enquiries"
+                },
+                {
+                  q: "Do estate agents need video tours and content?",
+                  a: "Discover how independent estate agents are out-competing national corporate chains with cinematic drone walkthroughs.",
+                  link: "/answers/do-estate-agents-need-video"
+                }
+              ].map((item, idx) => (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 1.5, delay: idx * 0.1, ease: cinematicEase }}
+                  className="bg-[#171513]/20 border border-white/5 p-8 rounded-sm hover:border-[#F1B92D]/25 transition-all duration-300 flex flex-col justify-between"
+                >
+                  <div>
+                    <h4 className="text-xl font-bold text-white mb-4 italic uppercase font-bebas tracking-wide">
+                      {item.q}
+                    </h4>
+                    <p className="text-sm text-[#E8E0D5]/60 font-light leading-relaxed mb-6">
+                      {item.a}
+                    </p>
+                  </div>
+                  <Link 
+                    href={item.link}
+                    className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#F1B92D] hover:text-white transition-colors"
+                  >
+                    Read Our Response <ArrowRight size={12} />
+                  </Link>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* 4. CALL TO ACTION (DARK CINEMATIC) */}
         <section className="py-48 px-6 bg-[#0a0908] text-[#E8E0D5] relative z-10 border-t border-white/5 text-center flex items-center justify-center overflow-hidden">
           <div className="absolute inset-y-0 left-[10%] w-[1px] bg-white/[0.02] pointer-events-none z-0" />

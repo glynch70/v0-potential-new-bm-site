@@ -1,9 +1,65 @@
+import { Metadata } from 'next';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import VideoProof from '@/components/VideoProof';
 import Link from 'next/link';
 import { TrendingUp, Users, Star, MapPin } from 'lucide-react';
 import Script from 'next/script';
+
+export const metadata: Metadata = {
+  title: 'Web Design & Lead Gen for Trades | Bear Media',
+  description: 'High-performance web design, portfolio videography, and social media systems designed specifically for trades and construction firms.',
+  alternates: {
+    canonical: 'https://bear-media.com/industries/trades',
+  },
+  openGraph: {
+    url: 'https://bear-media.com/industries/trades',
+    title: 'Web Design & Lead Gen for Trades | Bear Media',
+    description: 'High-performance web design, portfolio videography, and social media systems designed specifically for trades and construction firms.',
+    type: 'website',
+    siteName: 'Bear Media',
+    locale: 'en_GB',
+    images: [
+      {
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Bear Media — Web Design & Video Scotland',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Web Design & Lead Gen for Trades | Bear Media',
+    images: ['/og-image.jpg'],
+  },
+};
+
+
+const breadcrumbSchema_industries_trades = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://bear-media.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Industries",
+      "item": "https://bear-media.com/industries"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Web Design & Lead Gen for Trades",
+      "item": "https://bear-media.com/industries/trades"
+    }
+  ]
+};
 
 export default function TradesIndustryPage() {
   const faqSchema = {
@@ -31,6 +87,11 @@ export default function TradesIndustryPage() {
 
   return (
     <>
+      <Script
+        id="breadcrumb-schema-industries-trades"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema_industries_trades) }}
+      />
       <Script
         id="faq-schema"
         type="application/ld+json"

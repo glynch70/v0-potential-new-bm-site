@@ -1,3 +1,4 @@
+import Script from 'next/script';
 import React from 'react';
 import { Metadata } from 'next';
 import Navbar from '@/components/Navbar';
@@ -7,29 +8,57 @@ import Link from 'next/link';
 import VideoProof from '@/components/VideoProof';
 
 export const metadata: Metadata = {
-  title: 'Content Creation & Videography West Lothian | Bear Media',
-  description: 'Professional on-site content creation, videography and social media management for construction companies, trades businesses and local SMEs in West Lothian, Broxburn, Livingston, and Bathgate.',
+  title: 'Content Creation West Lothian | Videography | Bear Media',
+  description: 'Professional content creation, videography and social media for trades and SMEs in West Lothian, Broxburn, Livingston, and Bathgate.',
+  alternates: {
+    canonical: 'https://bear-media.com/west-lothian-content-creation',
+  },
   openGraph: {
-    title: 'Content Creation & Videography West Lothian | Bear Media',
-    description: 'Professional on-site content creation, videography and social media management for construction companies, trades businesses and local SMEs in West Lothian, Broxburn, Livingston, and Bathgate.',
     url: 'https://bear-media.com/west-lothian-content-creation',
+    title: 'Content Creation West Lothian | Videography | Bear Media',
+    description: 'Professional content creation, videography and social media for trades and SMEs in West Lothian, Broxburn, Livingston, and Bathgate.',
+    type: 'website',
     siteName: 'Bear Media',
+    locale: 'en_GB',
     images: [
       {
-        url: 'https://bear-media.com/work/mwm.jpg', // Standard open graph image
+        url: '/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'Bear Media Content Creation in West Lothian',
+        alt: 'Bear Media — Web Design & Video Scotland',
       },
     ],
-    locale: 'en_GB',
-    type: 'website',
-  },
+  }
+};
+
+
+const breadcrumbSchema_west_lothian_content_creation = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://bear-media.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Content Creation West Lothian",
+      "item": "https://bear-media.com/west-lothian-content-creation"
+    }
+  ]
 };
 
 export default function WestLothianContentCreationPage() {
   return (
     <>
+      <Script
+        id="breadcrumb-schema-west-lothian-content-creation"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema_west_lothian_content_creation) }}
+      />
       <Navbar />
       <main className="min-h-screen bg-neutral-950 text-white font-sans pt-24 pb-20 px-6">
         <article className="max-w-4xl mx-auto">

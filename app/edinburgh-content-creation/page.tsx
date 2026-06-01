@@ -1,3 +1,4 @@
+import Script from 'next/script';
 import React from 'react';
 import { Metadata } from 'next';
 import Navbar from '@/components/Navbar';
@@ -7,13 +8,57 @@ import Link from 'next/link';
 import VideoProof from '@/components/VideoProof';
 
 export const metadata: Metadata = {
-  title: 'Content Creation Edinburgh | Professional Videography | Bear Media',
-  description: 'Professional on-site content creation, cinematic videography and lead-gen systems for construction companies, trades businesses and local SMEs across Edinburgh and the Lothians.',
+  title: 'Content Creation Edinburgh | Videography | Bear Media',
+  description: 'Professional content creation, videography and lead-gen systems for trades and local SMEs across Edinburgh and the Lothians.',
+  alternates: {
+    canonical: 'https://bear-media.com/edinburgh-content-creation',
+  },
+  openGraph: {
+    url: 'https://bear-media.com/edinburgh-content-creation',
+    title: 'Content Creation Edinburgh | Videography | Bear Media',
+    description: 'Professional content creation, videography and lead-gen systems for trades and local SMEs across Edinburgh and the Lothians.',
+    type: 'website',
+    siteName: 'Bear Media',
+    locale: 'en_GB',
+    images: [
+      {
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Bear Media — Web Design & Video Scotland',
+      },
+    ],
+  }
+};
+
+
+const breadcrumbSchema_edinburgh_content_creation = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://bear-media.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Content Creation Edinburgh",
+      "item": "https://bear-media.com/edinburgh-content-creation"
+    }
+  ]
 };
 
 export default function EdinburghPage() {
   return (
     <>
+      <Script
+        id="breadcrumb-schema-edinburgh-content-creation"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema_edinburgh_content_creation) }}
+      />
       <Navbar />
       <main className="min-h-screen bg-neutral-950 text-white font-sans selection:bg-gold selection:text-neutral-950">
         

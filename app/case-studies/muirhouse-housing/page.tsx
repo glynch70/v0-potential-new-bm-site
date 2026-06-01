@@ -1,3 +1,4 @@
+import Script from 'next/script';
 import React from 'react';
 import { Metadata } from 'next';
 import Navbar from '@/components/Navbar';
@@ -7,13 +8,63 @@ import Image from 'next/image';
 import { ArrowLeft, CheckCircle2, ArrowRight } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Muirhouse Housing Association Case Study | Bear Media',
-  description: 'How we helped Muirhouse Housing Association connect with their community through professional video production and engaging content.',
+  title: 'Muirhouse Housing Case Study | Bear Media',
+  description: 'Drone and video production for Muirhouse Housing Association — community storytelling and trust-building content across Edinburgh.',
+  alternates: {
+    canonical: 'https://bear-media.com/case-studies/muirhouse-housing',
+  },
+  openGraph: {
+    url: 'https://bear-media.com/case-studies/muirhouse-housing',
+    title: 'Muirhouse Housing Case Study | Bear Media',
+    description: 'Drone and video production for Muirhouse Housing Association — community storytelling and trust-building content across Edinburgh.',
+    type: 'website',
+    siteName: 'Bear Media',
+    locale: 'en_GB',
+    images: [
+      {
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Bear Media — Web Design & Video Scotland',
+      },
+    ],
+  }
+};
+
+
+const breadcrumbSchema_case_studies_muirhouse_housing = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://bear-media.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Proof",
+      "item": "https://bear-media.com/case-studies"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Muirhouse Housing Case Study",
+      "item": "https://bear-media.com/case-studies/muirhouse-housing"
+    }
+  ]
 };
 
 export default function MuirhouseHousingCaseStudy() {
   return (
     <>
+      <Script
+        id="breadcrumb-schema-case-studies-muirhouse-housing"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema_case_studies_muirhouse_housing) }}
+      />
       <Navbar />
       <main className="min-h-screen bg-neutral-950 text-white font-sans selection:bg-gold selection:text-neutral-950 pt-24 md:pt-32">
         <article className="max-w-5xl mx-auto px-6 pb-24">
@@ -45,7 +96,7 @@ export default function MuirhouseHousingCaseStudy() {
           <section className="aspect-video relative rounded-[2rem] overflow-hidden border border-white/5 shadow-2xl mb-16 bg-neutral-900">
              {/* Using existing placeholder until real asset is added */}
             <Image 
-              src="/work/content-creation.png" 
+              src="/BEST FINAL CLIENT WORK/content-creation-showcase.png" 
               alt="Muirhouse Housing Community Content" 
               fill 
               className="object-cover opacity-80 hover:scale-105 transition-transform duration-700" 

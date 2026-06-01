@@ -1,3 +1,4 @@
+import Script from 'next/script';
 import React from 'react';
 import { Metadata } from 'next';
 import Navbar from '@/components/Navbar';
@@ -9,12 +10,62 @@ import YouTubeEmbed from '@/components/YouTubeEmbed';
 
 export const metadata: Metadata = {
   title: 'C&G Developments Case Study | Bear Media',
-  description: 'How we helped C&G Developments, a local construction company, generate 129K+ views and consistent enquiries through strategic video content.',
+  description: 'How we helped C&G Developments generate 129K+ views and consistent enquiries through strategic video content.',
+  alternates: {
+    canonical: 'https://bear-media.com/case-studies/cg-developments',
+  },
+  openGraph: {
+    url: 'https://bear-media.com/case-studies/cg-developments',
+    title: 'C&G Developments Case Study | Bear Media',
+    description: 'How we helped C&G Developments generate 129K+ views and consistent enquiries through strategic video content.',
+    type: 'website',
+    siteName: 'Bear Media',
+    locale: 'en_GB',
+    images: [
+      {
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Bear Media — Web Design & Video Scotland',
+      },
+    ],
+  }
+};
+
+
+const breadcrumbSchema_case_studies_cg_developments = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://bear-media.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Proof",
+      "item": "https://bear-media.com/case-studies"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "C&G Developments Case Study",
+      "item": "https://bear-media.com/case-studies/cg-developments"
+    }
+  ]
 };
 
 export default function CGDevelopmentsCaseStudy() {
   return (
     <>
+      <Script
+        id="breadcrumb-schema-case-studies-cg-developments"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema_case_studies_cg_developments) }}
+      />
       <Navbar />
       <main className="min-h-screen bg-neutral-950 text-white font-sans selection:bg-gold selection:text-neutral-950 pt-24 md:pt-32">
         <article className="max-w-5xl mx-auto px-6 pb-24">
@@ -45,7 +96,7 @@ export default function CGDevelopmentsCaseStudy() {
 
           <section className="aspect-video relative rounded-[2rem] overflow-hidden border border-white/5 shadow-2xl mb-16 bg-neutral-900">
             <Image 
-              src="/work/C&G Work In Progress-Cover.jpg" 
+              src="/BEST FINAL CLIENT WORK/C&G Work In Progress-Cover.jpg" 
               alt="C&G Developments Work In Progress" 
               fill 
               className="object-cover opacity-80 hover:scale-105 transition-transform duration-700" 

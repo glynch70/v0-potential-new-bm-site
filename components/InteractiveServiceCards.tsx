@@ -15,7 +15,7 @@ const MAIN_SERVICES = [
     accent: '#D4A830',
     accentBg: 'rgba(212, 168, 48, 0.1)',
     accentBorder: 'rgba(212, 168, 48, 0.3)',
-    image: '/work/websites-desktop.jpg',
+    image: '/BEST FINAL CLIENT WORK/klewis.jpg',
   },
   {
     number: '02',
@@ -37,7 +37,7 @@ const MAIN_SERVICES = [
     accent: '#E879F9',
     accentBg: 'rgba(232, 121, 249, 0.1)',
     accentBorder: 'rgba(232, 121, 249, 0.3)',
-    image: '/work/brand-collage.jpg',
+    image: '/BEST FINAL CLIENT WORK/seamus rebrand.jpg',
   },
 ]
 

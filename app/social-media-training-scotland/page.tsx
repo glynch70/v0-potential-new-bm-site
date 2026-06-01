@@ -1,3 +1,4 @@
+import Script from 'next/script';
 import React from 'react';
 import { Metadata } from 'next';
 import Navbar from '@/components/Navbar';
@@ -6,13 +7,57 @@ import Link from 'next/link';
 import { CheckCircle2, ArrowRight } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Social Media Training For Businesses Scotland | Bear Media',
+  title: 'Social Media Training Scotland | Bear Media',
   description: 'Practical, results-driven social media training for teams and businesses across Edinburgh, Glasgow, and Central Scotland.',
+  alternates: {
+    canonical: 'https://bear-media.com/social-media-training-scotland',
+  },
+  openGraph: {
+    url: 'https://bear-media.com/social-media-training-scotland',
+    title: 'Social Media Training Scotland | Bear Media',
+    description: 'Practical, results-driven social media training for teams and businesses across Edinburgh, Glasgow, and Central Scotland.',
+    type: 'website',
+    siteName: 'Bear Media',
+    locale: 'en_GB',
+    images: [
+      {
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Bear Media — Web Design & Video Scotland',
+      },
+    ],
+  }
+};
+
+
+const breadcrumbSchema_social_media_training_scotland = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://bear-media.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Social Media Training Scotland",
+      "item": "https://bear-media.com/social-media-training-scotland"
+    }
+  ]
 };
 
 export default function SocialMediaTrainingScotland() {
   return (
     <>
+      <Script
+        id="breadcrumb-schema-social-media-training-scotland"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema_social_media_training_scotland) }}
+      />
       <Navbar />
       <main className="min-h-screen bg-neutral-950 text-white font-sans selection:bg-gold selection:text-neutral-950">
         

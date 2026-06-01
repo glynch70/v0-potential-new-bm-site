@@ -1,12 +1,69 @@
+import { Metadata } from 'next';
+import Script from 'next/script';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import VideoProof from '@/components/VideoProof';
 import { TrendingUp, Users, Star, MapPin, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 
+export const metadata: Metadata = {
+  title: 'Bear Media | Web Design, Video & Social Media Scotland',
+  description: 'Bear Media helps local businesses get visible online and turn that visibility into real leads. Get Seen. Get Leads. Grow Your Business.',
+  alternates: {
+    canonical: 'https://bear-media.com/locations/content-creation-scotland',
+  },
+  openGraph: {
+    url: 'https://bear-media.com/locations/content-creation-scotland',
+    title: 'Bear Media | Web Design, Video & Social Media Scotland',
+    description: 'Bear Media helps local businesses get visible online and turn that visibility into real leads. Get Seen. Get Leads. Grow Your Business.',
+    type: 'website',
+    siteName: 'Bear Media',
+    locale: 'en_GB',
+    images: [
+      {
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Bear Media — Web Design & Video Scotland',
+      },
+    ],
+  }
+};
+
+
+const breadcrumbSchema_locations_content_creation_scotland = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://bear-media.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Locations",
+      "item": "https://bear-media.com/locations"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Bear Media",
+      "item": "https://bear-media.com/locations/content-creation-scotland"
+    }
+  ]
+};
+
 export default function LocationPage() {
   return (
     <>
+      <Script
+        id="breadcrumb-schema-locations-content-creation-scotland"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema_locations_content_creation_scotland) }}
+      />
       <Navbar />
       <main className="min-h-screen bg-neutral-950 text-white font-sans selection:bg-gold selection:text-neutral-950">
         {/* 1. Local Hero */}

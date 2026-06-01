@@ -1,17 +1,59 @@
+import Script from 'next/script';
 import { Metadata } from 'next';
 import { LegalPageLayout } from '@/components/LegalPageLayout';
 
 export const metadata: Metadata = {
   title: 'Privacy Policy | Bear Media',
-  description: 'Learn how Bear Media collects, uses, and protects your personal data. Transparent privacy practices for our Scottish web design and digital content services.',
+  description: 'Learn how Bear Media collects, uses, and protects your personal data. Privacy practices for our Scottish web design and digital services.',
   alternates: {
     canonical: 'https://bear-media.com/privacy-policy',
   },
+  openGraph: {
+    url: 'https://bear-media.com/privacy-policy',
+    title: 'Privacy Policy | Bear Media',
+    description: 'Learn how Bear Media collects, uses, and protects your personal data. Privacy practices for our Scottish web design and digital services.',
+    type: 'website',
+    siteName: 'Bear Media',
+    locale: 'en_GB',
+    images: [
+      {
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Bear Media — Web Design & Video Scotland',
+      },
+    ],
+  }
+};
+
+
+const breadcrumbSchema_privacy_policy = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://bear-media.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Privacy Policy",
+      "item": "https://bear-media.com/privacy-policy"
+    }
+  ]
 };
 
 export default function PrivacyPolicyPage() {
   return (
     <LegalPageLayout title="Privacy Policy" lastUpdated="February 2026">
+      <Script
+        id="breadcrumb-schema-privacy-policy"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema_privacy_policy) }}
+      />
       <p>
         Bear Media ("we", "us", "our") is committed to protecting your privacy. This policy explains
         how we collect, use, and safeguard your personal data when you visit our website or use our

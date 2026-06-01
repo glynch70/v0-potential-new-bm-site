@@ -101,7 +101,7 @@ export default function WorkSectionCards() {
       title: 'Business Websites',
       description: 'Clean, fast websites built to convert.',
       category: 'Web',
-      image: '/work/websites-desktop.jpg',
+      image: '/BEST FINAL CLIENT WORK/klewis.jpg',
       color: '#4ECDC4',
       bgColor: 'rgba(78, 205, 196, 0.1)',
       hasVideo: false

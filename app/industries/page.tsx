@@ -1,12 +1,63 @@
+import { Metadata } from 'next';
+import Script from 'next/script';
 import React from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 
+export const metadata: Metadata = {
+  title: 'Industries We Serve | Web Design & Video | Bear Media',
+  description: 'Cinematic content and conversion systems built for your specific industry. We help Central Belt businesses dominate their market.',
+  alternates: {
+    canonical: 'https://bear-media.com/industries',
+  },
+  openGraph: {
+    url: 'https://bear-media.com/industries',
+    title: 'Industries We Serve | Web Design & Video | Bear Media',
+    description: 'Cinematic content and conversion systems built for your specific industry. We help Central Belt businesses dominate their market.',
+    type: 'website',
+    siteName: 'Bear Media',
+    locale: 'en_GB',
+    images: [
+      {
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Bear Media — Web Design & Video Scotland',
+      },
+    ],
+  }
+};
+
+
+const breadcrumbSchema_industries = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://bear-media.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Industries We Serve",
+      "item": "https://bear-media.com/industries"
+    }
+  ]
+};
+
 export default function IndustriesPage() {
   return (
     <>
+      <Script
+        id="breadcrumb-schema-industries"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema_industries) }}
+      />
       <Navbar />
       <main className="min-h-screen bg-neutral-950 text-white font-sans selection:bg-gold selection:text-neutral-950">
         {/* 1. Header */}

@@ -1,7 +1,63 @@
+import { Metadata } from 'next';
 import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Script from 'next/script';
+
+export const metadata: Metadata = {
+  title: 'Is Social Media Worth It for Businesses? | Bear Media',
+  description: 'Is social media marketing worth the time and cost for small businesses? Read our honest ROI breakdown.',
+  alternates: {
+    canonical: 'https://bear-media.com/answers/is-social-media-worth-it',
+  },
+  openGraph: {
+    url: 'https://bear-media.com/answers/is-social-media-worth-it',
+    title: 'Is Social Media Worth It for Businesses? | Bear Media',
+    description: 'Is social media marketing worth the time and cost for small businesses? Read our honest ROI breakdown.',
+    type: 'website',
+    siteName: 'Bear Media',
+    locale: 'en_GB',
+    images: [
+      {
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Bear Media — Web Design & Video Scotland',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Is Social Media Worth It for Businesses? | Bear Media',
+    images: ['/og-image.jpg'],
+  },
+};
+
+
+const breadcrumbSchema_answers_is_social_media_worth_it = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://bear-media.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Insights",
+      "item": "https://bear-media.com/answers"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Is Social Media Worth It for Businesses?",
+      "item": "https://bear-media.com/answers/is-social-media-worth-it"
+    }
+  ]
+};
 
 export default function AnswerPage() {
   const faqSchema = {
@@ -21,6 +77,11 @@ export default function AnswerPage() {
 
   return (
     <>
+      <Script
+        id="breadcrumb-schema-answers-is-social-media-worth-it"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema_answers_is_social_media_worth_it) }}
+      />
       <Script
         id="faq-schema-worth-it"
         type="application/ld+json"

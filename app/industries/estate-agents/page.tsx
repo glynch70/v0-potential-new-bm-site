@@ -1,3 +1,4 @@
+import { Metadata } from 'next';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import VideoProof from '@/components/VideoProof';
@@ -5,6 +6,61 @@ import Link from 'next/link';
 import { TrendingUp, Users, Star, MapPin, CheckCircle2 } from 'lucide-react';
 
 import Script from 'next/script';
+
+export const metadata: Metadata = {
+  title: 'Estate Agent Video Production & Marketing | Bear Media',
+  description: 'Win more local property listings with cinematic drone property tours, agent branding videos, and social media content.',
+  alternates: {
+    canonical: 'https://bear-media.com/industries/estate-agents',
+  },
+  openGraph: {
+    url: 'https://bear-media.com/industries/estate-agents',
+    title: 'Estate Agent Video Production & Marketing | Bear Media',
+    description: 'Win more local property listings with cinematic drone property tours, agent branding videos, and social media content.',
+    type: 'website',
+    siteName: 'Bear Media',
+    locale: 'en_GB',
+    images: [
+      {
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Bear Media — Web Design & Video Scotland',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Estate Agent Video Production & Marketing | Bear Media',
+    images: ['/og-image.jpg'],
+  },
+};
+
+
+const breadcrumbSchema_industries_estate_agents = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://bear-media.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Industries",
+      "item": "https://bear-media.com/industries"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Estate Agent Video Production & Marketing",
+      "item": "https://bear-media.com/industries/estate-agents"
+    }
+  ]
+};
 
 export default function EstateAgentsIndustryPage() {
   const faqSchema = {
@@ -32,6 +88,11 @@ export default function EstateAgentsIndustryPage() {
 
   return (
     <>
+      <Script
+        id="breadcrumb-schema-industries-estate-agents"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema_industries_estate_agents) }}
+      />
       <Script
         id="faq-schema-estate"
         type="application/ld+json"

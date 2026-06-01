@@ -199,7 +199,7 @@ export default function TrainingPage() {
               <div className="glass-card p-10 md:p-16 border-gold/30 text-white text-center flex flex-col items-center">
                  <div className="relative w-32 h-32 rounded-full overflow-hidden border-4 border-white/10 bg-white/5 mb-8 shadow-xl">
                     <Image 
-                      src="/testimonials/Callie.jpg" 
+                      src="/BEST FINAL CLIENT WORK/team-at-work.png" 
                       alt="Callie" 
                       fill 
                       className="object-cover"

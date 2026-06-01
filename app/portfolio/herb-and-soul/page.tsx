@@ -1,3 +1,4 @@
+import Script from 'next/script';
 import React from 'react';
 import { Metadata } from 'next';
 import Navbar from '@/components/Navbar';
@@ -8,12 +9,62 @@ import { ArrowLeft, ExternalLink, CheckCircle2, ArrowRight } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Herb & Soul | Wellness Website Design | Bear Media',
-  description: 'An upcoming wellness website design and brand identity project for Herb & Soul.',
+  description: 'Wellness brand website design and identity in progress for Herb & Soul — calm aesthetics, clear offers, and mobile-first UX.',
+  alternates: {
+    canonical: 'https://bear-media.com/portfolio/herb-and-soul',
+  },
+  openGraph: {
+    url: 'https://bear-media.com/portfolio/herb-and-soul',
+    title: 'Herb & Soul | Wellness Website Design | Bear Media',
+    description: 'Wellness brand website design and identity in progress for Herb & Soul — calm aesthetics, clear offers, and mobile-first UX.',
+    type: 'website',
+    siteName: 'Bear Media',
+    locale: 'en_GB',
+    images: [
+      {
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Bear Media — Web Design & Video Scotland',
+      },
+    ],
+  }
+};
+
+
+const breadcrumbSchema_portfolio_herb_and_soul = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://bear-media.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Portfolio",
+      "item": "https://bear-media.com/portfolio"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Herb & Soul",
+      "item": "https://bear-media.com/portfolio/herb-and-soul"
+    }
+  ]
 };
 
 export default function HerbAndSoulCaseStudy() {
   return (
     <>
+      <Script
+        id="breadcrumb-schema-portfolio-herb-and-soul"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema_portfolio_herb_and_soul) }}
+      />
       <Navbar />
       <main className="min-h-screen bg-neutral-950 text-white font-sans selection:bg-gold selection:text-neutral-950 pt-24 md:pt-32">
         <article className="max-w-5xl mx-auto px-6 pb-24">
@@ -48,7 +99,7 @@ export default function HerbAndSoulCaseStudy() {
 
           <section className="aspect-video relative rounded-[2rem] overflow-hidden border border-white/5 shadow-2xl mb-16 bg-neutral-900 group">
             <Image 
-              src="/work/website-3-herb-soul-v2.jpg" 
+              src="/BEST FINAL CLIENT WORK/website-3-herb-soul-v2.jpg" 
               alt="Herb & Soul Website Mockup" 
               fill 
               className="object-cover opacity-50 filter-none transition-all duration-700" 

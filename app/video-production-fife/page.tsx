@@ -17,6 +17,17 @@ export const metadata: Metadata = {
     url: 'https://bear-media.com/video-production-fife',
     title: 'Video Production & Drone Content Fife | Bear Media',
     description: 'Premium video production and licensed drone videography for businesses across Fife, Dunfermline, and Kirkcaldy.',
+    type: 'website',
+    siteName: 'Bear Media',
+    locale: 'en_GB',
+    images: [
+      {
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Bear Media — Web Design & Video Scotland',
+      },
+    ],
   }
 };
 
@@ -59,9 +70,34 @@ const faqSchema = {
   ]
 };
 
+
+const breadcrumbSchema_video_production_fife = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://bear-media.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Video Production & Drone Content Fife",
+      "item": "https://bear-media.com/video-production-fife"
+    }
+  ]
+};
+
 export default function VideoProductionFife() {
   return (
     <>
+      <Script
+        id="breadcrumb-schema-video-production-fife"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema_video_production_fife) }}
+      />
       <Script
         id="fife-video-faq-schema"
         type="application/ld+json"

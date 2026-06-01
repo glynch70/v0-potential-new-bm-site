@@ -1,3 +1,4 @@
+import Script from 'next/script';
 import React from 'react';
 import { Metadata } from 'next';
 import Navbar from '@/components/Navbar';
@@ -7,13 +8,63 @@ import Image from 'next/image';
 import { ArrowLeft, ExternalLink, CheckCircle2, ArrowRight } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'The Free Spirit | Lifestyle Brand Website | Bear Media',
-  description: 'A creative website design, branding, and content creation project for The Free Spirit, a unique lifestyle brand.',
+  title: 'The Free Spirit | Hospitality Brand Design | Bear Media',
+  description: 'A comprehensive brand design, content creation, and web design project for The Free Spirit hospitality brand.',
+  alternates: {
+    canonical: 'https://bear-media.com/portfolio/the-free-spirit',
+  },
+  openGraph: {
+    url: 'https://bear-media.com/portfolio/the-free-spirit',
+    title: 'The Free Spirit | Hospitality Brand Design | Bear Media',
+    description: 'A comprehensive brand design, content creation, and web design project for The Free Spirit hospitality brand.',
+    type: 'website',
+    siteName: 'Bear Media',
+    locale: 'en_GB',
+    images: [
+      {
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Bear Media — Web Design & Video Scotland',
+      },
+    ],
+  }
+};
+
+
+const breadcrumbSchema_portfolio_the_free_spirit = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://bear-media.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Portfolio",
+      "item": "https://bear-media.com/portfolio"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "The Free Spirit",
+      "item": "https://bear-media.com/portfolio/the-free-spirit"
+    }
+  ]
 };
 
 export default function TheFreeSpiritCaseStudy() {
   return (
     <>
+      <Script
+        id="breadcrumb-schema-portfolio-the-free-spirit"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema_portfolio_the_free_spirit) }}
+      />
       <Navbar />
       <main className="min-h-screen bg-neutral-950 text-white font-sans selection:bg-gold selection:text-neutral-950 pt-24 md:pt-32">
         <article className="max-w-5xl mx-auto px-6 pb-24">
@@ -45,7 +96,7 @@ export default function TheFreeSpiritCaseStudy() {
 
           <section className="aspect-video relative rounded-[2rem] overflow-hidden border border-white/5 shadow-2xl mb-16 bg-neutral-900 group">
             <Image 
-              src="/work/content-creation.png" 
+              src="/BEST FINAL CLIENT WORK/content-creation-showcase.png" 
               alt="The Free Spirit Creative Branding" 
               fill 
               className="object-cover opacity-80 group-hover:scale-105 transition-transform duration-700" 

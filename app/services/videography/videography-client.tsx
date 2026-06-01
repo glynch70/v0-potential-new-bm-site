@@ -11,36 +11,8 @@ import VideoProof from '@/components/VideoProof';
 import Script from 'next/script';
 
 export default function VideographyServicePage() {
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "Why is professional video important for my business?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Professional video builds trust and authority faster than any other medium. It allows potential customers to see the quality of your work and the face behind the business, which is critical for conversion."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How long does a typical filming session take?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Most on-site filming sessions for local businesses in the Central Belt take between 2 to 4 hours. We aim for minimal disruption to your daily operations."
-        }
-      }
-    ]
-  };
-
   return (
     <>
-      <Script
-        id="faq-schema-video"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
       <Navbar />
       <main className="min-h-screen bg-neutral-950 text-white font-sans selection:bg-gold selection:text-neutral-950">
         

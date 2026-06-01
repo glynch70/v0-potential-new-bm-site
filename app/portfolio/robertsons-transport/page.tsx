@@ -1,3 +1,4 @@
+import Script from 'next/script';
 import React from 'react';
 import { Metadata } from 'next';
 import Navbar from '@/components/Navbar';
@@ -7,13 +8,63 @@ import Image from 'next/image';
 import { ArrowLeft, ExternalLink, CheckCircle2, ArrowRight } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Robertsons Transport | Haulage Company UK & Transport Logistics',
-  description: 'A premium logistics website design and haulage branding project for Robertsons Transport, a leading UK haulage company delivering reliable transport solutions.',
+  title: 'Robertsons Transport | Haulage & Logistics | Bear Media',
+  description: 'A premium website design and branding project for Robertsons Transport, a leading UK haulage company.',
+  alternates: {
+    canonical: 'https://bear-media.com/portfolio/robertsons-transport',
+  },
+  openGraph: {
+    url: 'https://bear-media.com/portfolio/robertsons-transport',
+    title: 'Robertsons Transport | Haulage & Logistics | Bear Media',
+    description: 'A premium website design and branding project for Robertsons Transport, a leading UK haulage company.',
+    type: 'website',
+    siteName: 'Bear Media',
+    locale: 'en_GB',
+    images: [
+      {
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Bear Media — Web Design & Video Scotland',
+      },
+    ],
+  }
+};
+
+
+const breadcrumbSchema_portfolio_robertsons_transport = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://bear-media.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Portfolio",
+      "item": "https://bear-media.com/portfolio"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Robertsons Transport",
+      "item": "https://bear-media.com/portfolio/robertsons-transport"
+    }
+  ]
 };
 
 export default function RobertsonsTransportCaseStudy() {
   return (
     <>
+      <Script
+        id="breadcrumb-schema-portfolio-robertsons-transport"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema_portfolio_robertsons_transport) }}
+      />
       <Navbar />
       <main className="min-h-screen bg-neutral-950 text-white font-sans selection:bg-gold selection:text-neutral-950 pt-24 md:pt-32">
         <article className="max-w-5xl mx-auto px-6 pb-24">
@@ -46,7 +97,7 @@ export default function RobertsonsTransportCaseStudy() {
           {/* Industrial Theme Override */}
           <section className="aspect-video relative rounded-[1rem] overflow-hidden border-2 border-white/10 shadow-[0_0_50px_rgba(0,0,0,0.8)] mb-16 bg-neutral-900 group">
             <Image 
-              src="/work/rt-ltd.uk-v2.jpg" 
+              src="/BEST FINAL CLIENT WORK/rt-ltd.uk-v2.jpg" 
               alt="Logistics Website Design Mockup" 
               fill 
               className="object-cover opacity-70 filter-none group-hover:opacity-100 group-hover:scale-105 transition-all duration-700" 

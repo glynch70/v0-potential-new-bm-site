@@ -10,7 +10,7 @@ const testimonials = [
     name: "Gary Young",
     business: "Mindful Enterprise Coach",
     quote: "It's been a great experience working with Garry and Bear Media. Slick process, reliable, good communication and happy with the end results. Top quality service. Highly recommend.",
-    image: "/testimonials/gary.png",
+    image: "/PERSONAL BRAND IMAGES/garry on shoot.jpeg",
     website: "https://www.themindfulenterprise.org/",
     social: "https://www.linkedin.com/in/gary-young-006248257/"
   },
@@ -18,14 +18,14 @@ const testimonials = [
     name: "Leanne Murphy",
     business: "Free Spirit",
     quote: "Bear Media created an amazing social media campaign for my coaching business. Garry took the time to understand my business and created posts that expertly promoted my new programme. 5-star service!",
-    image: "/testimonials/leanne.png",
+    image: "/BEST FINAL CLIENT WORK/robertsons.jpg",
     website: "https://www.thefreespirit.uk/"
   },
   {
     name: "Seamus Corry",
     business: "Local Guide",
     quote: "An amazing service. Garry has been a great support in developing my digital media footprint and nothing has been too much trouble. He sees my needs and creates amazing products. Highly recommend him.",
-    image: "/testimonials/seamus.jpg",
+    image: "/BEST FINAL CLIENT WORK/seamus rebrand.jpg",
     website: "https://seamuscorry.co.uk/",
     social: "https://www.linkedin.com/in/seamuscorry/"
   },
@@ -33,21 +33,21 @@ const testimonials = [
     name: "Kris Lewis",
     business: "25 reviews on Google",
     quote: "I have worked with Garry for a few years now. From being a client myself, he's helped me grow my business online and with social media. From website design to drone videos, Garry delivers it all.",
-    image: "/testimonials/Kris.jpg",
+    image: "/BEST FINAL CLIENT WORK/kris-lewis-mobile.png",
     website: "https://www.google.com/search?q=Bear+Media&stick=H4sIAAAAAAAA_-NgU1I1qDCxsDBPTks0TU4yMTO0NE6xMqiwsEg1SjFJMSozSDVMSU5KWcTK5ZSaWKTgm5qSmQgAx_SXOTYAAAA&hl=en-GB&mat=Cf8wzlm283ANElcBTVDHnkWfK1UTo9cxml4XSfVX2cx-i4DoPuoyRhN5Uwh_wrIJnY-SCetO6PNVGsmfU-3niD0FuZTXjZf8VW6St62zSRaI6DmKmRL5Hpwb1OXzzh9zMM&authuser=0#mpd=~968541884400939263/customers/reviews"
   },
   {
     name: "Steven Johnstone",
     business: "Seating Engineer, JRP Boilers",
     quote: "Garry is always a pleasure to work with and very professional. You can tell he genuinely cares about his clients. I've used Bear Media on several projects and he's always willing to go the extra mile.",
-    image: "/testimonials/stephen.png",
+    image: "/BEST FINAL CLIENT WORK/Almond Vet Care Website.jpg",
     website: "https://www.jrphboilers.co.uk/"
   },
   {
     name: "Steven Summon",
     business: "High-level Consultant, Voice2Lead",
     quote: "Website wizard who delivers at lightning speed. 72-hour website delivery, modern tech stack, and authentic social media content that actually works. He's not just a designer – he's a proper developer who understands your business.",
-    image: "/testimonials/steven.png",
+    image: "/BEST FINAL CLIENT WORK/robertsons.jpg",
     website: "https://summone.co.uk/",
     social: "https://www.linkedin.com/in/summone/"
   },

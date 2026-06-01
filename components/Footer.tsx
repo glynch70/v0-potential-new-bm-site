@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import RelatedLinksFooter from '@/components/RelatedLinksFooter';
 import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
@@ -67,6 +68,8 @@ const footerLinkGroups: FooterLinkGroup[] = [
 			{ title: 'Social Media Edinburgh', href: '/social-media-edinburgh' },
 			{ title: 'Video Production Edinburgh', href: '/video-production-edinburgh' },
 			{ title: 'Video Production Fife', href: '/video-production-fife' },
+			{ title: 'Video Production Scotland', href: '/video-production-scotland' },
+			{ title: 'Drone Video Fife', href: '/drone-video-fife' },
 			{ title: 'Drone Video Scotland', href: '/drone' },
 		],
 	},
@@ -74,8 +77,14 @@ const footerLinkGroups: FooterLinkGroup[] = [
 		label: 'Growth',
 		links: [
 			{ title: 'Insights Blog', href: '/insights' },
+			{ title: 'Answers Hub', href: '/answers/why-your-business-isnt-getting-enquiries' },
 			{ title: 'Pricing Guide', href: '/pricing' },
-			{ title: 'Book a Call', href: '/contact', icon: ArrowUpRight },
+			{ title: 'Book a Call', href: '/book' },
+			{ title: 'AI Training', href: '/ai-chatgpt-training' },
+			{ title: 'Social Media Training', href: '/social-media-training-scotland' },
+			{ title: 'Construction Social', href: '/social-media-for-construction' },
+			{ title: 'Trades Web Design', href: '/web-design-for-trades-scotland' },
+			{ title: 'Scotland Content', href: '/locations/content-creation-scotland' },
 			{ title: '07879 011860', href: 'tel:+447879011860', icon: Phone },
 		],
 	},
@@ -83,6 +92,8 @@ const footerLinkGroups: FooterLinkGroup[] = [
 
 export default function Footer() {
 	return (
+		<>
+		<RelatedLinksFooter />
 		<footer className="relative bg-[#171513] border-t border-white/5 py-24 px-6 md:px-12 overflow-hidden">
 			<div className="max-w-6xl mx-auto relative z-10">
 				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 lg:gap-24">
@@ -184,5 +195,6 @@ export default function Footer() {
 				</div>
 			</div>
 		</footer>
+		</>
 	);
 }

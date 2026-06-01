@@ -12,6 +12,17 @@ export const metadata: Metadata = {
     url: 'https://bear-media.com',
     title: 'Web Design & Social Media West Lothian | Bear Media',
     description: 'Bear Media helps businesses in West Lothian and Edinburgh generate enquiries through web design, video and social media.',
+    type: 'website',
+    siteName: 'Bear Media',
+    locale: 'en_GB',
+    images: [
+      {
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Bear Media — Web Design & Video Scotland',
+      },
+    ],
   }
 };
 

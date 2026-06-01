@@ -1,3 +1,4 @@
+import Script from 'next/script';
 import React from 'react';
 import { Metadata } from 'next';
 import Navbar from '@/components/Navbar';
@@ -8,13 +9,63 @@ import { ArrowLeft, CheckCircle2, ArrowRight } from 'lucide-react';
 import YouTubeEmbed from '@/components/YouTubeEmbed';
 
 export const metadata: Metadata = {
-  title: 'Seamus Corry Case Study | Personal Branding | Bear Media',
-  description: 'How we helped Seamus Corry build long-term authority through a consistent content strategy, generating over 11,000 views and 350+ shares.',
+  title: 'Séamus Corry Coaching Case Study | Bear Media',
+  description: 'Premium rebrand, website design, and cinematic video for coach Séamus Corry — positioning, clarity, and conversion-focused creative.',
+  alternates: {
+    canonical: 'https://bear-media.com/case-studies/seamus-corry',
+  },
+  openGraph: {
+    url: 'https://bear-media.com/case-studies/seamus-corry',
+    title: 'Séamus Corry Coaching Case Study | Bear Media',
+    description: 'Premium rebrand, website design, and cinematic video for coach Séamus Corry — positioning, clarity, and conversion-focused creative.',
+    type: 'website',
+    siteName: 'Bear Media',
+    locale: 'en_GB',
+    images: [
+      {
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Bear Media — Web Design & Video Scotland',
+      },
+    ],
+  }
+};
+
+
+const breadcrumbSchema_case_studies_seamus_corry = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://bear-media.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Proof",
+      "item": "https://bear-media.com/case-studies"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Séamus Corry Coaching Case Study",
+      "item": "https://bear-media.com/case-studies/seamus-corry"
+    }
+  ]
 };
 
 export default function SeamusCorryCaseStudy() {
   return (
     <>
+      <Script
+        id="breadcrumb-schema-case-studies-seamus-corry"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema_case_studies_seamus_corry) }}
+      />
       <Navbar />
       <main className="min-h-screen bg-neutral-950 text-white font-sans selection:bg-gold selection:text-neutral-950 pt-24 md:pt-32">
         <article className="max-w-5xl mx-auto px-6 pb-24">
@@ -45,7 +96,7 @@ export default function SeamusCorryCaseStudy() {
 
           <section className="aspect-video relative rounded-[2rem] overflow-hidden border border-white/5 shadow-2xl mb-16 bg-neutral-900">
             <Image 
-              src="/work/seamus_v5_final.jpg" 
+              src="/BEST FINAL CLIENT WORK/seamus_v5_final.jpg" 
               alt="Seamus Corry Video Content" 
               fill 
               className="object-cover opacity-80 hover:scale-105 transition-transform duration-700" 

@@ -6,11 +6,61 @@ import { CheckCircle2, ArrowRight, TrendingUp, Wallet, ShieldCheck, HelpCircle }
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'How Much Does Social Media Content Cost in Scotland? | Bear Media',
-  description: 'A transparent guide to social media content pricing in Scotland. Learn about costs for video, photography, and management in West Lothian, Edinburgh, and beyond.',
+  title: 'Social Media Content Cost in Scotland | Bear Media',
+  description: 'A transparent guide to social media content pricing in Scotland. Learn about costs for video, photography, and management.',
+  alternates: {
+    canonical: 'https://bear-media.com/answers/how-much-does-social-media-content-cost-scotland',
+  },
+  openGraph: {
+    url: 'https://bear-media.com/answers/how-much-does-social-media-content-cost-scotland',
+    title: 'Social Media Content Cost in Scotland | Bear Media',
+    description: 'A transparent guide to social media content pricing in Scotland. Learn about costs for video, photography, and management.',
+    type: 'website',
+    siteName: 'Bear Media',
+    locale: 'en_GB',
+    images: [
+      {
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Bear Media — Web Design & Video Scotland',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Social Media Content Cost in Scotland | Bear Media',
+    images: ['/og-image.jpg'],
+  },
 };
 
 import Script from 'next/script';
+
+
+const breadcrumbSchema_answers_how_much_does_social_media_content_cost_scotland = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://bear-media.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Insights",
+      "item": "https://bear-media.com/answers"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Social Media Content Cost in Scotland",
+      "item": "https://bear-media.com/answers/how-much-does-social-media-content-cost-scotland"
+    }
+  ]
+};
 
 export default function PricingArticlePage() {
   const faqSchema = {
@@ -30,6 +80,11 @@ export default function PricingArticlePage() {
 
   return (
     <>
+      <Script
+        id="breadcrumb-schema-answers-how-much-does-social-media-content-cost-scotland"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema_answers_how_much_does_social_media_content_cost_scotland) }}
+      />
       <Script
         id="faq-schema-pricing"
         type="application/ld+json"

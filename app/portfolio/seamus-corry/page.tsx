@@ -1,3 +1,4 @@
+import Script from 'next/script';
 import React from 'react'
 import { Metadata } from 'next'
 import Navbar from '@/components/Navbar'
@@ -7,13 +8,63 @@ import Image from 'next/image'
 import { ArrowLeft, ExternalLink, CheckCircle2 } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Séamus Corry Rebrand | Luxury Coaching & Brand Identity | Bear Media',
-  description: 'The finalized editorial brand redesign, high-converting digital showroom and core typography identity for Séamus Corry.',
-}
+  title: 'Séamus Corry Rebrand | Luxury Coaching | Bear Media',
+  description: 'Séamus Corry coaching rebrand and website — editorial design, video assets, and a high-trust platform built by Bear Media Scotland.',
+  alternates: {
+    canonical: 'https://bear-media.com/portfolio/seamus-corry',
+  },
+  openGraph: {
+    url: 'https://bear-media.com/portfolio/seamus-corry',
+    title: 'Séamus Corry Rebrand | Luxury Coaching | Bear Media',
+    description: 'Séamus Corry coaching rebrand and website — editorial design, video assets, and a high-trust platform built by Bear Media Scotland.',
+    type: 'website',
+    siteName: 'Bear Media',
+    locale: 'en_GB',
+    images: [
+      {
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Bear Media — Web Design & Video Scotland',
+      },
+    ],
+  }
+};
+
+
+const breadcrumbSchema_portfolio_seamus_corry = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://bear-media.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Portfolio",
+      "item": "https://bear-media.com/portfolio"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Séamus Corry Rebrand",
+      "item": "https://bear-media.com/portfolio/seamus-corry"
+    }
+  ]
+};
 
 export default function SeamusCorryCaseStudy() {
   return (
     <>
+      <Script
+        id="breadcrumb-schema-portfolio-seamus-corry"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema_portfolio_seamus_corry) }}
+      />
       <Navbar />
       <main className="min-h-screen bg-[#0f0e0c] text-[#E8E0D5] font-inter-tight selection:bg-[#F1B92D] selection:text-[#0f0e0c] pt-24 md:pt-32">
         <article className="max-w-5xl mx-auto px-6 pb-24">

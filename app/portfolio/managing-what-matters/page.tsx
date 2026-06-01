@@ -1,3 +1,4 @@
+import Script from 'next/script';
 import React from 'react';
 import { Metadata } from 'next';
 import Navbar from '@/components/Navbar';
@@ -7,13 +8,63 @@ import Image from 'next/image';
 import { ArrowLeft, ExternalLink, CheckCircle2, ArrowRight } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Managing What Matters | Coaching Website Design | Bear Media',
-  description: 'A professional website design and digital branding project for Managing What Matters, elevating their leadership coaching presence online.',
+  title: 'Managing What Matters | Business Branding | Bear Media',
+  description: 'Corporate branding, web design, and content for Managing What Matters — leadership training with a premium, trustworthy digital presence.',
+  alternates: {
+    canonical: 'https://bear-media.com/portfolio/managing-what-matters',
+  },
+  openGraph: {
+    url: 'https://bear-media.com/portfolio/managing-what-matters',
+    title: 'Managing What Matters | Business Branding | Bear Media',
+    description: 'Corporate branding, web design, and content for Managing What Matters — leadership training with a premium, trustworthy digital presence.',
+    type: 'website',
+    siteName: 'Bear Media',
+    locale: 'en_GB',
+    images: [
+      {
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Bear Media — Web Design & Video Scotland',
+      },
+    ],
+  }
+};
+
+
+const breadcrumbSchema_portfolio_managing_what_matters = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://bear-media.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Portfolio",
+      "item": "https://bear-media.com/portfolio"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Managing What Matters",
+      "item": "https://bear-media.com/portfolio/managing-what-matters"
+    }
+  ]
 };
 
 export default function ManagingWhatMattersCaseStudy() {
   return (
     <>
+      <Script
+        id="breadcrumb-schema-portfolio-managing-what-matters"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema_portfolio_managing_what_matters) }}
+      />
       <Navbar />
       <main className="min-h-screen bg-neutral-950 text-white font-sans selection:bg-gold selection:text-neutral-950 pt-24 md:pt-32">
         <article className="max-w-5xl mx-auto px-6 pb-24">
@@ -45,7 +96,7 @@ export default function ManagingWhatMattersCaseStudy() {
 
           <section className="aspect-video relative rounded-[2rem] overflow-hidden border border-white/5 shadow-2xl mb-16 bg-neutral-900 group">
             <Image 
-              src="/work/website-managing-v2.jpg" 
+              src="/BEST FINAL CLIENT WORK/website-managing-v2.jpg" 
               alt="Managing What Matters Website Design" 
               fill 
               className="object-cover opacity-80 group-hover:scale-105 transition-transform duration-700" 

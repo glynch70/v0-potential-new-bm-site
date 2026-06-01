@@ -1,3 +1,4 @@
+import Script from 'next/script';
 import React from 'react';
 import { Metadata } from 'next';
 import Navbar from '@/components/Navbar';
@@ -7,13 +8,57 @@ import { CheckCircle2, ArrowRight } from 'lucide-react';
 import YouTubeEmbed from '@/components/YouTubeEmbed';
 
 export const metadata: Metadata = {
-  title: 'Social Media Content For Construction Companies | Bear Media',
+  title: 'Social Media for Construction Companies | Bear Media',
   description: 'Professional social media management and video content creation designed specifically for construction companies across Scotland.',
+  alternates: {
+    canonical: 'https://bear-media.com/social-media-for-construction',
+  },
+  openGraph: {
+    url: 'https://bear-media.com/social-media-for-construction',
+    title: 'Social Media for Construction Companies | Bear Media',
+    description: 'Professional social media management and video content creation designed specifically for construction companies across Scotland.',
+    type: 'website',
+    siteName: 'Bear Media',
+    locale: 'en_GB',
+    images: [
+      {
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Bear Media — Web Design & Video Scotland',
+      },
+    ],
+  }
+};
+
+
+const breadcrumbSchema_social_media_for_construction = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://bear-media.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Social Media for Construction Companies",
+      "item": "https://bear-media.com/social-media-for-construction"
+    }
+  ]
 };
 
 export default function SocialMediaForConstruction() {
   return (
     <>
+      <Script
+        id="breadcrumb-schema-social-media-for-construction"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema_social_media_for_construction) }}
+      />
       <Navbar />
       <main className="min-h-screen bg-neutral-950 text-white font-sans selection:bg-gold selection:text-neutral-950">
         

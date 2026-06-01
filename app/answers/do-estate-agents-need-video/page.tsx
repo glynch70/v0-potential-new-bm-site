@@ -6,11 +6,61 @@ import { CheckCircle2, ArrowRight, Video, Camera, TrendingUp } from 'lucide-reac
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Do Estate Agents Need Video Content? | Bear Media Scotland',
-  description: 'How independent estate agents in Edinburgh and West Lothian use cinematic video to win more listings and dominate their local market. Read the full guide.',
+  title: 'Do Estate Agents Need Video? | Bear Media',
+  description: 'Why video tours and social media authority are essential for estate agents in Edinburgh and West Lothian.',
+  alternates: {
+    canonical: 'https://bear-media.com/answers/do-estate-agents-need-video',
+  },
+  openGraph: {
+    url: 'https://bear-media.com/answers/do-estate-agents-need-video',
+    title: 'Do Estate Agents Need Video? | Bear Media',
+    description: 'Why video tours and social media authority are essential for estate agents in Edinburgh and West Lothian.',
+    type: 'website',
+    siteName: 'Bear Media',
+    locale: 'en_GB',
+    images: [
+      {
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Bear Media — Web Design & Video Scotland',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Do Estate Agents Need Video? | Bear Media',
+    images: ['/og-image.jpg'],
+  },
 };
 
 import Script from 'next/script';
+
+
+const breadcrumbSchema_answers_do_estate_agents_need_video = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://bear-media.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Insights",
+      "item": "https://bear-media.com/answers"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Do Estate Agents Need Video?",
+      "item": "https://bear-media.com/answers/do-estate-agents-need-video"
+    }
+  ]
+};
 
 export default function RealEstateArticlePage() {
   const faqSchema = {
@@ -30,6 +80,11 @@ export default function RealEstateArticlePage() {
 
   return (
     <>
+      <Script
+        id="breadcrumb-schema-answers-do-estate-agents-need-video"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema_answers_do_estate_agents_need_video) }}
+      />
       <Script
         id="faq-schema-agent-video"
         type="application/ld+json"

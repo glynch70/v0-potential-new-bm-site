@@ -1,3 +1,4 @@
+import Script from 'next/script';
 import React from 'react';
 import { Metadata } from 'next';
 import Navbar from '@/components/Navbar';
@@ -7,13 +8,57 @@ import Link from 'next/link';
 import VideoProof from '@/components/VideoProof';
 
 export const metadata: Metadata = {
-  title: 'Content Creation & Videography Fife | Bear Media',
-  description: 'Professional on-site content creation, cinematic videography and lead-gen systems for construction companies, trades businesses and local SMEs across Fife, Dunfermline, and Kirkcaldy.',
+  title: 'Content Creation Fife | Videography & Drone | Bear Media',
+  description: 'Professional content creation, videography and lead-gen systems for trades and local SMEs across Fife, Dunfermline, and Kirkcaldy.',
+  alternates: {
+    canonical: 'https://bear-media.com/fife-content-creation',
+  },
+  openGraph: {
+    url: 'https://bear-media.com/fife-content-creation',
+    title: 'Content Creation Fife | Videography & Drone | Bear Media',
+    description: 'Professional content creation, videography and lead-gen systems for trades and local SMEs across Fife, Dunfermline, and Kirkcaldy.',
+    type: 'website',
+    siteName: 'Bear Media',
+    locale: 'en_GB',
+    images: [
+      {
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Bear Media — Web Design & Video Scotland',
+      },
+    ],
+  }
+};
+
+
+const breadcrumbSchema_fife_content_creation = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://bear-media.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Content Creation Fife",
+      "item": "https://bear-media.com/fife-content-creation"
+    }
+  ]
 };
 
 export default function FifePage() {
   return (
     <>
+      <Script
+        id="breadcrumb-schema-fife-content-creation"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema_fife_content_creation) }}
+      />
       <Navbar />
       <main className="min-h-screen bg-neutral-950 text-white font-sans selection:bg-gold selection:text-neutral-950">
         

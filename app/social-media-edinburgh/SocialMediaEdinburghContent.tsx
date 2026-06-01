@@ -178,6 +178,28 @@ export default function SocialMediaEdinburghContent() {
            </div>
         </section>
 
+        {/* 6.5 FAQ SECTION */}
+        <section className="py-32 px-6 max-w-4xl mx-auto">
+           <h2 className="text-3xl md:text-5xl font-black mb-16 text-center uppercase italic font-bebas tracking-tight text-white leading-none">
+              Edinburgh Social Media <span className="text-gold">FAQs.</span>
+           </h2>
+           <div className="space-y-6">
+              {[
+                { q: "Do you provide social media management specifically in Edinburgh?", a: "Yes. We work with businesses across the city, including the New Town, West End, Leith, and surrounding EH postcodes, capturing high-quality video content directly at your location." },
+                { q: "What type of content do you specialize in creating?", a: "We focus on high-trust vertical videos (Instagram Reels, TikToks, and YouTube Shorts) that showcase your real projects, team authority, and client outcomes." },
+                { q: "How much time does content creation require from my team?", a: "Very little. Our 'While You Work' capture system requires just 2 to 3 hours on-site, allowing us to batch-produce weeks of professional visual assets." },
+                { q: "Do you handle copywriting and distribution?", a: "Yes. We manage the entire pipeline: script writing, professional editing, caption writing, local search optimization, and scheduling directly to your feeds." }
+              ].map((faq, i) => (
+                 <div key={i} className="p-8 rounded-[2rem] bg-neutral-900 border border-white/5">
+                    <h4 className="text-xl font-black uppercase italic font-bebas tracking-widest text-gold mb-4">
+                       {faq.q}
+                    </h4>
+                    <p className="text-white leading-relaxed text-sm italic">{faq.a}</p>
+                 </div>
+              ))}
+           </div>
+        </section>
+
         {/* 7. CTA SECTION */}
         <section className="py-32 px-6 text-center">
            <div className="max-w-3xl mx-auto">

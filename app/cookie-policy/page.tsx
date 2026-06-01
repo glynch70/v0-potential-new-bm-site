@@ -1,17 +1,59 @@
+import Script from 'next/script';
 import { Metadata } from 'next';
 import { LegalPageLayout } from '@/components/LegalPageLayout';
 
 export const metadata: Metadata = {
   title: 'Cookie Policy | Bear Media',
-  description: 'Find out how Bear Media uses cookies to improve your website experience and analyze traffic. Detailed information on our privacy and data tracking technology.',
+  description: 'Find out how Bear Media uses cookies to improve your website experience. Detailed information on our privacy and data tracking technology.',
   alternates: {
     canonical: 'https://bear-media.com/cookie-policy',
   },
+  openGraph: {
+    url: 'https://bear-media.com/cookie-policy',
+    title: 'Cookie Policy | Bear Media',
+    description: 'Find out how Bear Media uses cookies to improve your website experience. Detailed information on our privacy and data tracking technology.',
+    type: 'website',
+    siteName: 'Bear Media',
+    locale: 'en_GB',
+    images: [
+      {
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Bear Media — Web Design & Video Scotland',
+      },
+    ],
+  }
+};
+
+
+const breadcrumbSchema_cookie_policy = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://bear-media.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Cookie Policy",
+      "item": "https://bear-media.com/cookie-policy"
+    }
+  ]
 };
 
 export default function CookiePolicyPage() {
   return (
     <LegalPageLayout title="Cookie Policy" lastUpdated="February 2026">
+      <Script
+        id="breadcrumb-schema-cookie-policy"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema_cookie_policy) }}
+      />
       <p>
         This policy explains how Bear Media uses cookies and similar technologies on our website at
         bear-media.com.

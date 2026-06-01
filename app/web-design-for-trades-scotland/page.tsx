@@ -1,3 +1,4 @@
+import Script from 'next/script';
 import React from 'react';
 import { Metadata } from 'next';
 import Navbar from '@/components/Navbar';
@@ -6,13 +7,57 @@ import Link from 'next/link';
 import { CheckCircle2, ArrowRight } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Web Design For Trades Businesses In Scotland | Bear Media',
-  description: 'Conversion-focused web design for construction companies, joiners, and trades businesses across Scotland, Edinburgh, and West Lothian.',
+  title: 'Web Design for Trades Scotland | Bear Media',
+  description: 'Conversion-focused web design for construction companies, joiners, and trades businesses across Scotland.',
+  alternates: {
+    canonical: 'https://bear-media.com/web-design-for-trades-scotland',
+  },
+  openGraph: {
+    url: 'https://bear-media.com/web-design-for-trades-scotland',
+    title: 'Web Design for Trades Scotland | Bear Media',
+    description: 'Conversion-focused web design for construction companies, joiners, and trades businesses across Scotland.',
+    type: 'website',
+    siteName: 'Bear Media',
+    locale: 'en_GB',
+    images: [
+      {
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Bear Media — Web Design & Video Scotland',
+      },
+    ],
+  }
+};
+
+
+const breadcrumbSchema_web_design_for_trades_scotland = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://bear-media.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Web Design for Trades Scotland",
+      "item": "https://bear-media.com/web-design-for-trades-scotland"
+    }
+  ]
 };
 
 export default function WebDesignForTrades() {
   return (
     <>
+      <Script
+        id="breadcrumb-schema-web-design-for-trades-scotland"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema_web_design_for_trades_scotland) }}
+      />
       <Navbar />
       <main className="min-h-screen bg-neutral-950 text-white font-sans selection:bg-gold selection:text-neutral-950">
         

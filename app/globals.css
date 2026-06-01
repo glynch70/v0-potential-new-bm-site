@@ -202,6 +202,52 @@
   /* Cinematic utilities */
   .cinematic-overlay { @apply absolute inset-0 bg-gradient-to-t from-[var(--color-dark)] via-[var(--color-dark)]/40 to-transparent; }
   .cinematic-vignette { @apply absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_40%,rgba(15,14,12,0.8)_100%)]; }
+
+  /* Homepage hero — overrides base h1 tight leading that causes glyph overlap */
+  .hero-headline {
+    font-family: var(--font-display);
+    font-size: clamp(2.75rem, 8.5vw, 6.5rem) !important;
+    line-height: 1.22 !important;
+    letter-spacing: 0.055em !important;
+    font-weight: 400;
+    text-transform: uppercase;
+  }
+
+  @media (min-width: 768px) {
+    .hero-headline {
+      font-size: clamp(4rem, 5vw, 6.5rem) !important;
+      line-height: 1.18 !important;
+      letter-spacing: 0.065em !important;
+    }
+  }
+
+  .hero-subcopy {
+    line-height: 1.65 !important;
+    letter-spacing: 0.02em;
+  }
+
+  .hero-cta-wrap {
+    padding-top: 3rem;
+    margin-top: 0.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .hero-cta-wrap {
+      padding-top: 3.5rem;
+    }
+  }
+
+  .btn-discovery {
+    @apply inline-block px-6 py-2.5 min-h-[44px] rounded-sm bg-[#F1B92D] text-[#0f0e0c] font-black uppercase tracking-widest text-[13px] md:text-sm font-inter-tight shadow-lg transition-all;
+  }
+
+  .btn-discovery:hover {
+    transform: scale(1.05);
+  }
+
+  .btn-discovery:active {
+    transform: scale(0.95);
+  }
 }
 
 @keyframes float {

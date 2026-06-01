@@ -11,36 +11,8 @@ import VideoProof from '@/components/VideoProof';
 import Script from 'next/script';
 
 export default function SocialMediaServicePage() {
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "How does social media content help my business?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Professional social media content builds authority and trust with your local audience. It ensures your business stays top-of-mind and turns passive followers into active enquiries."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Do I have to create the content myself?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "No. Our 'While You Work' system means we handle 100% of the filming, editing, and distribution, so you can focus on running your business."
-        }
-      }
-    ]
-  };
-
   return (
     <>
-      <Script
-        id="faq-schema-social"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
       <Navbar />
       <main className="min-h-screen bg-neutral-950 text-white font-sans selection:bg-gold selection:text-neutral-950">
         

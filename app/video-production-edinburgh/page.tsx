@@ -18,6 +18,17 @@ export const metadata: Metadata = {
     url: 'https://bear-media.com/video-production-edinburgh',
     title: 'Video Production & Drone Content Edinburgh | Bear Media',
     description: 'Premium video production and cinematic drone videography for local businesses and events across Edinburgh and Central Scotland.',
+    type: 'website',
+    siteName: 'Bear Media',
+    locale: 'en_GB',
+    images: [
+      {
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Bear Media — Web Design & Video Scotland',
+      },
+    ],
   }
 };
 
@@ -60,9 +71,34 @@ const faqSchema = {
   ]
 };
 
+
+const breadcrumbSchema_video_production_edinburgh = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://bear-media.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Video Production & Drone Content Edinburgh",
+      "item": "https://bear-media.com/video-production-edinburgh"
+    }
+  ]
+};
+
 export default function VideoProductionEdinburgh() {
   return (
     <>
+      <Script
+        id="breadcrumb-schema-video-production-edinburgh"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema_video_production_edinburgh) }}
+      />
       <Script
         id="edinburgh-video-faq-schema"
         type="application/ld+json"

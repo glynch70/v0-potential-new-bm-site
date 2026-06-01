@@ -4,23 +4,23 @@ import { useState } from 'react'
 import Image from 'next/image'
 
 const websites = [
-  { img: '/work/seamus_v5_final.jpg', name: 'Seamus Corry', desc: 'Coming Soon', url: null },
-  { img: '/work/mwm.jpg', name: 'Managing What Matters', desc: 'Practical leadership & management training', url: 'https://managingwhatmatters.co.uk' },
-  { img: '/work/herb_soul.jpg', name: 'Herb & Soul', desc: 'Coming Soon', url: null },
-  { img: '/work/almond_vet_care.jpg', name: 'Almond Vet Care', desc: 'Professional veterinary practice care', url: 'https://almondvetcare.co.uk/' },
-  { img: '/work/klewis.jpg', name: 'K Lewis Joinery', desc: 'Expert equestrian & bespoke joinery', url: 'https://www.klewisjoineryltd.co.uk/' },
-  { img: '/work/robertsons.jpg', name: 'Robertson Transport', desc: 'UK-wide logistics & transport solutions', url: 'https://rt-ltd.uk/' },
+  { img: '/BEST FINAL CLIENT WORK/seamus_v5_final.jpg', name: 'Seamus Corry', desc: 'Coming Soon', url: null },
+  { img: '/BEST FINAL CLIENT WORK/mwm.jpg', name: 'Managing What Matters', desc: 'Practical leadership & management training', url: 'https://managingwhatmatters.co.uk' },
+  { img: '/BEST FINAL CLIENT WORK/herb_soul.jpg', name: 'Herb & Soul', desc: 'Coming Soon', url: null },
+  { img: '/BEST FINAL CLIENT WORK/website-4-almond-vet-v2.jpg', name: 'Almond Vet Care', desc: 'Professional veterinary practice care', url: 'https://almondvetcare.co.uk/' },
+  { img: '/BEST FINAL CLIENT WORK/klewis.jpg', name: 'K Lewis Joinery', desc: 'Expert equestrian & bespoke joinery', url: 'https://www.klewisjoineryltd.co.uk/' },
+  { img: '/BEST FINAL CLIENT WORK/robertsons.jpg', name: 'Robertson Transport', desc: 'UK-wide logistics & transport solutions', url: 'https://rt-ltd.uk/' },
 ]
 
 const social = [
-  { img: '/work/content-creation.png', name: 'Content Creation', desc: 'Social media posts and graphics for Scottish businesses', url: null },
-  { img: '/work/youtube-management.png', name: 'YouTube Management', desc: 'Channel setup, shorts, thumbnails, and content strategy', url: null },
-  { img: '/work/social-media-management.png', name: 'Social Media Management', desc: 'Monthly content creation and posting for Scottish businesses', url: null },
+  { img: '/BEST FINAL CLIENT WORK/content-creation-showcase.png', name: 'Content Creation', desc: 'Social media posts and graphics for Scottish businesses', url: null },
+  { img: '/BEST FINAL CLIENT WORK/youtube-management.png', name: 'YouTube Management', desc: 'Channel setup, shorts, thumbnails, and content strategy', url: null },
+  { img: '/BEST FINAL CLIENT WORK/social-media-management.png', name: 'Social Media Management', desc: 'Monthly content creation and posting for Scottish businesses', url: null },
 ]
 
 const brand = [
-  { img: '/work/brand-collage.jpg', name: 'Brand Identities', desc: 'Logos and visual identity systems', url: null },
-  { img: '/work/brand-visual-assets.jpg', name: 'Visual Assets', desc: 'Graphics and design that stands out', url: null },
+  { img: '/BEST FINAL CLIENT WORK/seamus rebrand.jpg', name: 'Brand Identities', desc: 'Logos and visual identity systems', url: null },
+  { img: '/BEST FINAL CLIENT WORK/brand-visual-assets.jpg', name: 'Visual Assets', desc: 'Graphics and design that stands out', url: null },
 ]
 
 const tabs = [

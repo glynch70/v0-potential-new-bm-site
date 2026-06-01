@@ -1,3 +1,4 @@
+import Script from 'next/script';
 import React from 'react';
 import { Metadata } from 'next';
 import Navbar from '@/components/Navbar';
@@ -7,12 +8,62 @@ import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'Do Estate Agents Need Video Content? | Bear Media',
-  description: 'Why cinematic video tours and social media authority are the competitive edge for independent estate agents in Edinburgh and West Lothian.',
+  description: 'Why cinematic video tours and social media authority are the competitive edge for independent estate agents.',
+  alternates: {
+    canonical: 'https://bear-media.com/insights/do-estate-agents-need-video-content',
+  },
+  openGraph: {
+    url: 'https://bear-media.com/insights/do-estate-agents-need-video-content',
+    title: 'Do Estate Agents Need Video Content? | Bear Media',
+    description: 'Why cinematic video tours and social media authority are the competitive edge for independent estate agents.',
+    type: 'website',
+    siteName: 'Bear Media',
+    locale: 'en_GB',
+    images: [
+      {
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Bear Media — Web Design & Video Scotland',
+      },
+    ],
+  }
+};
+
+
+const breadcrumbSchema_insights_do_estate_agents_need_video_content = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://bear-media.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Insights",
+      "item": "https://bear-media.com/insights"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Do Estate Agents Need Video Content?",
+      "item": "https://bear-media.com/insights/do-estate-agents-need-video-content"
+    }
+  ]
 };
 
 export default function EstateAgentsArticle() {
   return (
     <>
+      <Script
+        id="breadcrumb-schema-insights-do-estate-agents-need-video-content"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema_insights_do_estate_agents_need_video_content) }}
+      />
       <Navbar />
       <main className="min-h-screen bg-neutral-950 text-white font-sans selection:bg-gold selection:text-neutral-950">
         

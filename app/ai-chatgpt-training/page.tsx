@@ -1,3 +1,4 @@
+import Script from 'next/script';
 import React from 'react';
 import { Metadata } from 'next';
 import Navbar from '@/components/Navbar';
@@ -6,13 +7,57 @@ import Link from 'next/link';
 import { CheckCircle2, ArrowRight, Zap } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'AI & ChatGPT Training For Teams | Bear Media',
-  description: 'Practical AI and ChatGPT training workshops for businesses and teams across Edinburgh, Scotland. Learn how to save hours per week.',
+  title: 'AI & ChatGPT Training for Businesses | Bear Media',
+  description: 'Practical, hands-on training to help your business leverage ChatGPT and AI tools to save time and automate workflows.',
+  alternates: {
+    canonical: 'https://bear-media.com/ai-chatgpt-training',
+  },
+  openGraph: {
+    url: 'https://bear-media.com/ai-chatgpt-training',
+    title: 'AI & ChatGPT Training for Businesses | Bear Media',
+    description: 'Practical, hands-on training to help your business leverage ChatGPT and AI tools to save time and automate workflows.',
+    type: 'website',
+    siteName: 'Bear Media',
+    locale: 'en_GB',
+    images: [
+      {
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Bear Media — Web Design & Video Scotland',
+      },
+    ],
+  }
+};
+
+
+const breadcrumbSchema_ai_chatgpt_training = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://bear-media.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "AI & ChatGPT Training for Businesses",
+      "item": "https://bear-media.com/ai-chatgpt-training"
+    }
+  ]
 };
 
 export default function AIChatGPTTraining() {
   return (
     <>
+      <Script
+        id="breadcrumb-schema-ai-chatgpt-training"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema_ai_chatgpt_training) }}
+      />
       <Navbar />
       <main className="min-h-screen bg-neutral-950 text-white font-sans selection:bg-gold selection:text-neutral-950">
         

@@ -1,3 +1,4 @@
+import Script from 'next/script';
 import React from 'react';
 import { Metadata } from 'next';
 import Navbar from '@/components/Navbar';
@@ -6,13 +7,63 @@ import { ArrowRight, CheckCircle2, TrendingUp, Users, Zap } from 'lucide-react';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'How Much Does Social Media Content Cost in Scotland? | Bear Media',
-  description: 'A transparent guide to social media content pricing in Scotland, West Lothian, and Edinburgh. DIY vs Professional costs explained.',
+  title: 'Social Media Content Cost in Scotland | Bear Media',
+  description: 'A transparent guide to social media content pricing in Scotland. Learn about costs for video, photography, and management.',
+  alternates: {
+    canonical: 'https://bear-media.com/insights/social-media-content-cost-scotland',
+  },
+  openGraph: {
+    url: 'https://bear-media.com/insights/social-media-content-cost-scotland',
+    title: 'Social Media Content Cost in Scotland | Bear Media',
+    description: 'A transparent guide to social media content pricing in Scotland. Learn about costs for video, photography, and management.',
+    type: 'website',
+    siteName: 'Bear Media',
+    locale: 'en_GB',
+    images: [
+      {
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Bear Media — Web Design & Video Scotland',
+      },
+    ],
+  }
+};
+
+
+const breadcrumbSchema_insights_social_media_content_cost_scotland = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://bear-media.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Insights",
+      "item": "https://bear-media.com/insights"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Social Media Content Cost in Scotland",
+      "item": "https://bear-media.com/insights/social-media-content-cost-scotland"
+    }
+  ]
 };
 
 export default function CostArticle() {
   return (
     <>
+      <Script
+        id="breadcrumb-schema-insights-social-media-content-cost-scotland"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema_insights_social_media_content_cost_scotland) }}
+      />
       <Navbar />
       <main className="min-h-screen bg-neutral-950 text-white font-sans selection:bg-gold selection:text-neutral-950">
         

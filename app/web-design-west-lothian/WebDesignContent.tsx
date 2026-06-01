@@ -178,6 +178,28 @@ export default function WebDesignWestLothianContent() {
            </div>
         </section>
 
+        {/* 6.5 FAQ SECTION */}
+        <section className="py-32 px-6 max-w-4xl mx-auto">
+            <h2 className="text-3xl md:text-5xl font-black mb-16 text-center uppercase italic font-bebas tracking-tight text-white leading-none">
+               West Lothian Web Design <span className="text-gold">FAQs.</span>
+            </h2>
+            <div className="space-y-6">
+               {[
+                 { q: "Do you design websites for local businesses in Livingston and Bathgate?", a: "Yes. We work with trades, construction firms, and SMEs throughout West Lothian, including Livingston, Bathgate, Broxburn, and Linlithgow." },
+                 { q: "How much does a custom website build cost?", a: "We provide transparent, fixed-price packages based on your goals and scope. No hidden fees or surprise costs." },
+                 { q: "How long does a website project take from start to finish?", a: "Typically, projects take between 4 to 6 weeks, which includes content collation, design mockups, development, and local SEO configuration." },
+                 { q: "Will my website be mobile-friendly and fast?", a: "Absolutely. All our websites are custom coded to load instantly and scale perfectly across mobile, tablet, and desktop screens." }
+               ].map((faq, i) => (
+                  <div key={i} className="p-8 rounded-[2rem] bg-neutral-900 border border-white/5">
+                     <h4 className="text-xl font-black uppercase italic font-bebas tracking-widest text-gold mb-4">
+                        {faq.q}
+                     </h4>
+                     <p className="text-white leading-relaxed text-sm italic">{faq.a}</p>
+                  </div>
+               ))}
+            </div>
+         </section>
+
         {/* 7. CTA SECTION */}
         <section className="py-32 px-6 text-center">
            <div className="max-w-3xl mx-auto">
