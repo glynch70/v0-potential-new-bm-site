@@ -238,7 +238,8 @@
   }
 
   .btn-discovery {
-    @apply inline-block px-6 py-2.5 min-h-[44px] rounded-sm bg-[#F1B92D] text-[#0f0e0c] font-black uppercase tracking-widest text-[13px] md:text-sm font-inter-tight shadow-lg transition-all;
+    @apply inline-block px-6 py-2.5 min-h-[44px] rounded-sm bg-[#F1B92D] text-[#0f0e0c] font-black uppercase tracking-widest text-[13px] md:text-sm shadow-lg transition-all;
+    font-family: var(--font-body);
   }
 
   .btn-discovery:hover {
