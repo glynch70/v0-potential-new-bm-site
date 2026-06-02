@@ -50,21 +50,21 @@ const websiteShowcase = [
   {
     title: 'Almond Vet Care',
     tag: 'Healthcare website',
-    result: 'Premium credibility and easier navigation for pet owners.',
+    result: 'More phone calls from pet owners.',
     image: ASSETS.portfolio.almondVetHero,
     href: '/portfolio/almond-vet-care',
   },
   {
     title: 'K Lewis Joinery',
     tag: 'Trades website',
-    result: 'Sharper trust signals and quote-focused mobile UX.',
+    result: 'More quote requests.',
     image: ASSETS.portfolio.kLewis,
     href: '/portfolio/k-lewis-joinery',
   },
   {
     title: 'Robertson Transport',
     tag: 'Logistics website',
-    result: 'A more serious digital presence for larger commercial work.',
+    result: 'Tighter credibility for bigger jobs.',
     image: ASSETS.portfolio.robertsons,
     href: '/portfolio/robertsons-transport',
   },
@@ -243,7 +243,7 @@ export default function HomeContent() {
                 variants={sectionReveal}
                 className="mb-5 text-[11px] font-bold uppercase tracking-[0.34em] text-[#F1B92D] md:text-[12px]"
               >
-                Premium creative for ambitious Scottish businesses
+                Premium creative for Scottish businesses
               </motion.p>
               <motion.h1
                 variants={sectionReveal}
@@ -259,8 +259,7 @@ export default function HomeContent() {
                 variants={sectionReveal}
                 className="mt-5 max-w-xl text-base leading-relaxed text-white/72 md:text-xl"
               >
-                Professional video production, websites and social media content that
-                turn attention into enquiries for ambitious Scottish businesses.
+                Video, websites and social content that get you seen and turn lookers into callers.
               </motion.p>
               <motion.div variants={sectionReveal} className="mt-7 flex flex-col gap-3 sm:flex-row">
                 <Link href="/contact" className="btn-discovery justify-center text-center">
@@ -336,7 +335,7 @@ export default function HomeContent() {
               <SectionHeading
                 eyebrow="Cinematic Brand Films"
                 title="Show the quality before you say a word."
-                body="Shorter copy, stronger proof. The work should do the convincing."
+                body="Video that sells the work before a conversation even happens."
               />
             </motion.div>
             <div className="mt-8 grid gap-5 md:mt-10 md:grid-cols-3">
@@ -366,7 +365,7 @@ export default function HomeContent() {
               <SectionHeading
                 eyebrow="Website Design"
                 title="Websites that look sharper and convert faster."
-                body="Built to feel premium on mobile, easy to trust, and clear about what to do next."
+                body="Built to close sales, not just look good."
               />
             </motion.div>
             <div className="mt-8 grid gap-5 lg:grid-cols-3">
@@ -397,8 +396,8 @@ export default function HomeContent() {
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-80px' }} variants={sectionReveal}>
               <SectionHeading
                 eyebrow="Social Media Content"
-                title="Content that earns attention and gives people a reason to enquire."
-                body="Real reels, real projects, real proof. No vague promises and no filler posts."
+                title="Posts that actually get engagement."
+                body="Real work, real results, real strategy. No filler."
               />
             </motion.div>
             <div className="mt-8 grid gap-5 md:grid-cols-3">
@@ -414,7 +413,7 @@ export default function HomeContent() {
                     href={item.href}
                     image={item.image}
                     title={item.title}
-                    detail="Built to stop the scroll, reinforce trust, and keep your brand visible."
+                    detail="Social content that people actually stop to watch."
                     metric={item.metric}
                     aspect="aspect-[4/5]"
                   />
@@ -429,8 +428,7 @@ export default function HomeContent() {
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-80px' }} variants={sectionReveal}>
               <SectionHeading
                 eyebrow="Results / Impact"
-                title="Proof that the work is moving the needle."
-                body="A better first impression should lead to better attention, stronger trust, and more valuable conversations."
+                title="The work that moved the needle."
               />
             </motion.div>
             <div className="mt-8 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
@@ -461,8 +459,7 @@ export default function HomeContent() {
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-80px' }} variants={sectionReveal}>
               <SectionHeading
                 eyebrow="Recent Work"
-                title="A tighter look at recent Bear Media projects."
-                body="Enough variety to show range, tight enough to keep attention."
+                title="Recent projects."
               />
             </motion.div>
             <div className="mt-8 grid gap-5 lg:grid-cols-2">
@@ -492,8 +489,8 @@ export default function HomeContent() {
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-80px' }} variants={sectionReveal}>
               <SectionHeading
                 eyebrow="Client Testimonials"
-                title="Trusted by clients who needed the work to look the part."
-                body="Less theory. More proof from the people who hired Bear Media."
+                title="What clients actually say."
+                body="Less theory. More proof."
               />
             </motion.div>
             <div className="mt-8 grid gap-5 lg:grid-cols-3">
@@ -568,9 +565,10 @@ export default function HomeContent() {
                 Straightforward creative work built around real businesses.
               </h2>
               <p className="mt-5 max-w-xl text-base leading-relaxed text-white/70 md:text-lg">
-                Garry leads the strategy, direction, filming and website work. The goal is
-                simple: make your business look sharper, feel more credible, and turn more
-                of the right attention into enquiries.
+                Garry's been doing this for 20 years. Started in the trades, moved into film and web, and never stopped learning how Scottish businesses actually work. He runs Bear Media on his own — no account managers, no layers. You talk to the person doing the work.
+              </p>
+              <p className="mt-4 max-w-xl text-base leading-relaxed text-white/70 md:text-lg">
+                The goal: your business looks sharper, feels more credible, and brings in better work.
               </p>
               <div className="mt-7">
                 <Link
