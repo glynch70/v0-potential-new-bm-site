@@ -15,7 +15,7 @@ export default function SalesHero() {
           loop
           playsInline
           className="w-full h-full object-cover opacity-30"
-          src="/bm-drone-hero.mp4"
+          src="/media/NEW BM DRONE HERO.mp4"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-neutral-950/80 via-neutral-950/60 to-neutral-950" />
       </div>
@@ -94,7 +94,7 @@ export default function SalesHero() {
                 loop
                 playsInline
                 className="w-full h-full object-cover"
-                src="/bm-drone-hero.mp4"
+                src="/media/NEW BM DRONE HERO.mp4"
               />
               <div className="absolute bottom-6 left-6 right-6 p-6 bg-black/40 backdrop-blur-md rounded-2xl border border-white/10 z-20">
                 <div className="flex items-center gap-4">

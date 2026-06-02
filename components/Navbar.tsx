@@ -16,6 +16,13 @@ const menuItems = [
   },
   {
     icon: Play,
+    label: "Portfolio",
+    href: "/portfolio",
+    gradient: "radial-gradient(circle, rgba(245,166,35,0.12) 0%, rgba(245,166,35,0.04) 50%, rgba(245,166,35,0) 100%)",
+    iconColor: "text-gold",
+  },
+  {
+    icon: Play,
     label: "Case Studies",
     href: "/case-studies",
     gradient: "radial-gradient(circle, rgba(59,130,246,0.15) 0%, rgba(37,99,235,0.06) 50%, rgba(29,78,216,0) 100%)",

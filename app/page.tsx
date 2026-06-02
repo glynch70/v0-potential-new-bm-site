@@ -3,15 +3,15 @@ import { Metadata } from 'next';
 import Script from 'next/script';
 
 export const metadata: Metadata = {
-  title: 'Web Design & Social Media West Lothian | Bear Media',
-  description: 'Bear Media helps businesses in West Lothian and Edinburgh generate enquiries through web design, video and social media.',
+  title: 'Bear Media | Premium Video, Websites & Social Content',
+  description: 'Bear Media creates premium video production, website design and social media content that turns attention into enquiries for ambitious Scottish businesses.',
   alternates: {
     canonical: 'https://bear-media.com',
   },
   openGraph: {
     url: 'https://bear-media.com',
-    title: 'Web Design & Social Media West Lothian | Bear Media',
-    description: 'Bear Media helps businesses in West Lothian and Edinburgh generate enquiries through web design, video and social media.',
+    title: 'Bear Media | Premium Video, Websites & Social Content',
+    description: 'Bear Media creates premium video production, website design and social media content that turns attention into enquiries for ambitious Scottish businesses.',
     type: 'website',
     siteName: 'Bear Media',
     locale: 'en_GB',
@@ -85,37 +85,6 @@ const professionalServiceSchema = {
   ]
 };
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Why isn't my business getting enquiries online?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Most local businesses fail to get enquiries due to three main reasons: a trust gap (lack of real proof), no clear path to conversion (friction in the user journey), and passive visibility (waiting to be found instead of actively reaching customers)."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How can I fix my website's conversion rate?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "To improve conversion, you should implement frictionless 'Book a Call' triggers, use high-quality on-site video proof instead of stock photos, and ensure your website is optimized for mobile users with a clear lead-generation architecture."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What is the best way to build trust with local customers?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Building trust requires showing the real face behind the business and providing authentic proof of your work. High-end cinematic drone tours and consistent social media updates are excellent tools for building authority in your local area."
-      }
-    }
-  ]
-};
-
 export default function HomePage() {
   return (
     <>
@@ -123,11 +92,6 @@ export default function HomePage() {
         id="home-service-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(professionalServiceSchema) }}
-      />
-      <Script
-        id="home-faq-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       <HomeContent />
     </>

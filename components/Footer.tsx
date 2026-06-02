@@ -1,200 +1,176 @@
 'use client';
 
-import React from 'react';
-import RelatedLinksFooter from '@/components/RelatedLinksFooter';
-import { cn } from '@/lib/utils';
-import { motion } from 'framer-motion';
-import Image from 'next/image';
+import React, { useState } from 'react';
+import Link from 'next/link';
 import {
-	Facebook,
-	Instagram,
-	Linkedin,
-	Youtube,
-	Phone,
-	Mail,
-	MapPin,
-	ArrowUpRight,
-	MessageSquare,
-	Info,
+  Facebook,
+  Instagram,
+  Linkedin,
+  Youtube,
+  ChevronDown,
+  Phone,
+  Mail,
 } from 'lucide-react';
 
-interface FooterLink {
-	title: string;
-	href: string;
-	icon?: React.ComponentType<{ className?: string }>;
-}
+type FooterLink = {
+  title: string;
+  href: string;
+};
 
-interface FooterLinkGroup {
-	label: string;
-	links: FooterLink[];
-}
+const socialLinks = [
+  { title: 'Facebook', href: 'https://www.facebook.com/bearmediacontentservices', icon: Facebook },
+  { title: 'Instagram', href: 'https://www.instagram.com/bearmedia70/', icon: Instagram },
+  { title: 'YouTube', href: 'https://www.youtube.com/@bearmedia70', icon: Youtube },
+  { title: 'LinkedIn', href: 'https://www.linkedin.com/in/garrylynch', icon: Linkedin },
+] as const;
 
-const socialLinks: FooterLink[] = [
-	{ title: 'Facebook', href: 'https://www.facebook.com/bearmediacontentservices', icon: Facebook },
-	{ title: 'Instagram', href: 'https://www.instagram.com/bearmedia70/', icon: Instagram },
-	{ title: 'YouTube', href: 'https://www.youtube.com/@bearmedia70', icon: Youtube },
-	{ title: 'LinkedIn', href: 'https://www.linkedin.com/in/garrylynch', icon: Linkedin },
-];
-
-const footerLinkGroups: FooterLinkGroup[] = [
-	{
-		label: 'Solutions',
-		links: [
-			{ title: 'Social Content', href: '/services/social-media-content' },
-			{ title: 'Videography', href: '/services/videography' },
-			{ title: 'Web Design', href: '/services/website-design' },
-			{ title: 'Portfolio', href: '/portfolio' },
-		],
-	},
-	{
-		label: 'Industries',
-		links: [
-			{ title: 'Trades', href: '/industries/trades' },
-			{ title: 'Estate Agents', href: '/industries/estate-agents' },
-			{ title: 'Local SMEs', href: '/industries' },
-			{ title: 'About Bear Media', href: '/about' },
-		],
-	},
-	{
-		label: 'Locations',
-		links: [
-			{ title: 'West Lothian', href: '/west-lothian-content-creation' },
-			{ title: 'Edinburgh', href: '/edinburgh-content-creation' },
-			{ title: 'Fife Content Creation', href: '/fife-content-creation' },
-			{ title: 'Web Design W. Lothian', href: '/web-design-west-lothian' },
-			{ title: 'Social Media W. Lothian', href: '/social-media-west-lothian' },
-			{ title: 'Videography W. Lothian', href: '/videography-west-lothian' },
-			{ title: 'Web Design Edinburgh', href: '/web-design-edinburgh' },
-			{ title: 'Social Media Edinburgh', href: '/social-media-edinburgh' },
-			{ title: 'Video Production Edinburgh', href: '/video-production-edinburgh' },
-			{ title: 'Video Production Fife', href: '/video-production-fife' },
-			{ title: 'Video Production Scotland', href: '/video-production-scotland' },
-			{ title: 'Drone Video Fife', href: '/drone-video-fife' },
-			{ title: 'Drone Video Scotland', href: '/drone' },
-		],
-	},
-	{
-		label: 'Growth',
-		links: [
-			{ title: 'Insights Blog', href: '/insights' },
-			{ title: 'Answers Hub', href: '/answers/why-your-business-isnt-getting-enquiries' },
-			{ title: 'Pricing Guide', href: '/pricing' },
-			{ title: 'Book a Call', href: '/book' },
-			{ title: 'AI Training', href: '/ai-chatgpt-training' },
-			{ title: 'Social Media Training', href: '/social-media-training-scotland' },
-			{ title: 'Construction Social', href: '/social-media-for-construction' },
-			{ title: 'Trades Web Design', href: '/web-design-for-trades-scotland' },
-			{ title: 'Scotland Content', href: '/locations/content-creation-scotland' },
-			{ title: '07879 011860', href: 'tel:+447879011860', icon: Phone },
-		],
-	},
+const footerGroups: { label: string; links: FooterLink[] }[] = [
+  {
+    label: 'Services',
+    links: [
+      { title: 'Video Production', href: '/services/videography' },
+      { title: 'Website Design', href: '/services/website-design' },
+      { title: 'Social Media Content', href: '/services/social-media-content' },
+      { title: 'Book Discovery Call', href: '/contact' },
+    ],
+  },
+  {
+    label: 'Portfolio',
+    links: [
+      { title: 'Portfolio', href: '/portfolio' },
+      { title: 'Case Studies', href: '/case-studies' },
+      { title: 'C&G Developments', href: '/case-studies/cg-developments' },
+      { title: 'Almond Vet Care', href: '/portfolio/almond-vet-care' },
+    ],
+  },
+  {
+    label: 'Locations',
+    links: [
+      { title: 'West Lothian', href: '/west-lothian-content-creation' },
+      { title: 'Edinburgh', href: '/edinburgh-content-creation' },
+      { title: 'Fife', href: '/fife-content-creation' },
+      { title: 'Scotland', href: '/locations/content-creation-scotland' },
+    ],
+  },
 ];
 
 export default function Footer() {
-	return (
-		<>
-		<RelatedLinksFooter />
-		<footer className="relative bg-[#171513] border-t border-white/5 py-24 px-6 md:px-12 overflow-hidden">
-			<div className="max-w-6xl mx-auto relative z-10">
-				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 lg:gap-24">
-					{/* Brand Column */}
-					<div className="space-y-8 col-span-1 lg:col-span-1">
-						<div className="flex flex-col">
-							<span className="text-white font-bold text-lg leading-tight font-inter-tight">
-								Bear Media
-							</span>
-							<span className="text-[#E8E0D5]/70 text-[13px] md:text-sm font-medium uppercase tracking-[0.2em] font-inter-tight">
-								Websites & Social Media
-							</span>
-						</div>
-						
-						<p className="text-white text-sm leading-relaxed max-w-sm">
-							Bear Media helps local businesses get visible online and turn that visibility into real leads. Get Seen. Get Leads. Grow Your Business.
-						</p>
+  const [openGroup, setOpenGroup] = useState<string | null>(footerGroups[0].label);
 
-						<div className="flex gap-4">
-							{socialLinks.map((link) => {
-								const Icon = link.icon;
-								return (
-									<a
-										key={link.title}
-										href={link.href}
-										target="_blank"
-										rel="noopener noreferrer"
-										className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-white hover:text-black transition-all duration-300"
-									>
-										{Icon && <Icon className="w-5 h-5" />}
-									</a>
-								);
-							})}
-						</div>
-					</div>
+  return (
+    <footer className="border-t border-white/6 bg-[#0b0b0b] px-6 py-12 text-[#E8E0D5] md:px-10 md:py-14 xl:px-16">
+      <div className="mx-auto max-w-7xl">
+        <div className="grid gap-10 md:grid-cols-[1.25fr_1fr_1fr_1fr] md:gap-8">
+          <div className="max-w-sm">
+            <p className="text-lg font-bold leading-tight text-white font-inter-tight">Bear Media</p>
+            <p className="mt-2 text-[12px] font-medium uppercase tracking-[0.24em] text-white/52 font-inter-tight">
+              Video, websites and social content
+            </p>
+            <p className="mt-5 text-sm leading-relaxed text-white/66">
+              Premium creative work for Scottish businesses that want to look sharper,
+              feel more credible, and generate better enquiries.
+            </p>
 
-					{/* Links Columns */}
-					{footerLinkGroups.map((group) => (
-						<div key={group.label} className="flex flex-col">
-							<h3 className="text-xs font-bold uppercase tracking-[0.3em] text-white mb-8">{group.label}</h3>
-							<ul className="space-y-4">
-								{group.links.map((link) => {
-									const Icon = link.icon;
-									return (
-										<li key={link.title}>
-											<a
-												href={link.href}
-												className="text-white hover:text-white text-sm transition-colors flex items-center gap-2 group"
-											>
-												{Icon && <Icon className="w-4 h-4 text-white group-hover:text-white transition-colors" />}
-												{link.title}
-											</a>
-										</li>
-									);
-								})}
-							</ul>
-						</div>
-					))}
-				</div>
- 
-				{/* Map Section */}
-				<motion.div 
-					initial={{ opacity: 0, y: 20 }}
-					whileInView={{ opacity: 1, y: 0 }}
-					viewport={{ once: true }}
-					className="mt-24 rounded-3xl overflow-hidden border border-white/10 h-80 relative group"
-				>
-					<iframe 
-						src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d35808.64125868846!2d-3.48347895!3d55.9332214!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4887c10b788647cf%3A0x8848417937a06c8b!2sBroxburn!5e0!3m2!1sen!2suk!4v1714432134567!5m2!1sen!2suk" 
-						className="w-full h-full transition-opacity duration-700"
-						style={{ border: 0 }} 
-						allowFullScreen 
-						loading="lazy" 
-						referrerPolicy="no-referrer-when-downgrade"
-					/>
-					<div className="absolute top-6 left-6 z-10 bg-black/60 backdrop-blur-md px-5 py-3 rounded-2xl border border-white/10 pointer-events-none">
-						<div className="flex items-center gap-3">
-							<div className="w-8 h-8 rounded-full bg-[#F1B92D] flex items-center justify-center text-[#0f0e0c]">
-								<MapPin size={16} />
-							</div>
-							<div>
-								<p className="text-[13px] md:text-sm font-bold uppercase tracking-widest text-white">Our Location</p>
-								<p className="text-sm font-bold text-white">Broxburn, West Lothian</p>
-							</div>
-						</div>
-					</div>
-					<div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-[#171513] via-transparent to-transparent opacity-60" />
-				</motion.div>
+            <div className="mt-6 space-y-3 text-sm">
+              <a
+                href="tel:+447879011860"
+                className="flex items-center gap-3 text-white/82 transition-colors hover:text-[#F1B92D]"
+              >
+                <Phone className="h-4 w-4 text-[#F1B92D]" />
+                07879 011860
+              </a>
+              <a
+                href="mailto:info@bear-media.com"
+                className="flex items-center gap-3 text-white/82 transition-colors hover:text-[#F1B92D]"
+              >
+                <Mail className="h-4 w-4 text-[#F1B92D]" />
+                info@bear-media.com
+              </a>
+            </div>
 
-				{/* Bottom Bar */}
-				<div className="mt-24 pt-12 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6">
-					<p className="text-[13px] md:text-sm font-bold uppercase tracking-widest text-white">
-						© 2026 Bear Media. ALL RIGHTS RESERVED.
-					</p>
-					<div className="flex items-center gap-2 text-[13px] md:text-sm font-bold uppercase tracking-widest text-white">
-						<MapPin className="w-3 h-3 text-white" />
-						BASED IN BROXBURN — SERVING SCOTLAND
-					</div>
-				</div>
-			</div>
-		</footer>
-		</>
-	);
+            <div className="mt-6 flex gap-3">
+              {socialLinks.map((link) => {
+                const Icon = link.icon;
+                return (
+                  <a
+                    key={link.title}
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={link.title}
+                    className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/[0.03] text-white transition-all hover:border-[#F1B92D]/40 hover:bg-[#F1B92D] hover:text-[#0f0e0c]"
+                  >
+                    <Icon className="h-4 w-4" />
+                  </a>
+                );
+              })}
+            </div>
+          </div>
+
+          <div className="hidden md:contents">
+            {footerGroups.map((group) => (
+              <div key={group.label}>
+                <h3 className="text-[12px] font-bold uppercase tracking-[0.28em] text-white">
+                  {group.label}
+                </h3>
+                <ul className="mt-5 space-y-3">
+                  {group.links.map((link) => (
+                    <li key={link.title}>
+                      <Link
+                        href={link.href}
+                        className="text-sm text-white/66 transition-colors hover:text-[#F1B92D]"
+                      >
+                        {link.title}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+
+          <div className="border-t border-white/8 pt-2 md:hidden">
+            {footerGroups.map((group) => {
+              const isOpen = openGroup === group.label;
+              return (
+                <div key={group.label} className="border-b border-white/8">
+                  <button
+                    type="button"
+                    onClick={() => setOpenGroup(isOpen ? null : group.label)}
+                    className="flex w-full items-center justify-between py-4 text-left"
+                  >
+                    <span className="text-[12px] font-bold uppercase tracking-[0.28em] text-white">
+                      {group.label}
+                    </span>
+                    <ChevronDown
+                      className={`h-4 w-4 text-white/64 transition-transform ${isOpen ? 'rotate-180' : ''}`}
+                    />
+                  </button>
+                  {isOpen ? (
+                    <ul className="space-y-3 pb-4">
+                      {group.links.map((link) => (
+                        <li key={link.title}>
+                          <Link
+                            href={link.href}
+                            className="text-sm text-white/66 transition-colors hover:text-[#F1B92D]"
+                          >
+                            {link.title}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  ) : null}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        <div className="mt-10 flex flex-col gap-2 border-t border-white/8 pt-6 text-xs uppercase tracking-[0.22em] text-white/44 md:flex-row md:items-center md:justify-between">
+          <p>© 2026 Bear Media</p>
+          <p>Broxburn, West Lothian</p>
+        </div>
+      </div>
+    </footer>
+  );
 }

@@ -7,7 +7,7 @@ const team = [
   {
     name: "Garry Lynch",
     role: "Founder",
-    photo: "/team/garry_lynch_car.jpg",
+    photo: "/team/garry_car.jpg",
     bio: "I handle the big picture—strategy, drone work, creative direction. Also the guy who breaks things first.",
     strength: "Vision, drone cinematography, client relationships, making impossible deadlines work somehow."
   },
@@ -37,7 +37,7 @@ export default function About() {
         <div className="absolute -inset-1 bg-gold rounded-3xl blur opacity-10 group-hover:opacity-20 transition duration-500"></div>
         <div className="relative aspect-[4/5] rounded-[2.5rem] bg-neutral-900 border border-white/5 overflow-hidden shadow-2xl">
           <Image 
-            src="/team/garry_lynch_hero.jpg" 
+            src="/PERSONAL BRAND IMAGES/garry on shoot.jpeg" 
             alt="Garry Lynch"
             fill 
             className="object-cover transition-transform duration-700 group-hover:scale-105"

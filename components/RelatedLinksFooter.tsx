@@ -10,7 +10,7 @@ const relatedServices: LinkItem[] = [
   { href: '/web-design-edinburgh', label: 'Web Design Edinburgh' },
   { href: '/video-production-fife', label: 'Video Production Fife' },
   { href: '/drone', label: 'Drone Video Scotland' },
-  { href: '/book', label: 'Book a Discovery Call' },
+  { href: '/contact', label: 'Book a Discovery Call' },
 ];
 
 const recentWork: LinkItem[] = [

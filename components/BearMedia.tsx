@@ -110,7 +110,7 @@ export default function BearMedia() {
         {/* Drone video background */}
         <video
           className="absolute inset-0 w-full h-full object-cover"
-          src="/bm-drone-hero.mp4"
+          src="/media/NEW BM DRONE HERO.mp4"
           autoPlay
           loop
           muted

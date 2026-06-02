@@ -31,3 +31,7 @@ public/work/*.mov
 
 # local agent artifacts
 /artifacts
+
+# Scratch/working files
+AGENTS.md
+scratch/
