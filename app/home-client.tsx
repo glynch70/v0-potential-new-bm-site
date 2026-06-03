@@ -156,18 +156,18 @@ function SectionHeading({
   body?: string
 }) {
   return (
-    <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-      <div className="max-w-3xl">
+    <div className="flex flex-col gap-6 md:gap-8 lg:flex-row lg:items-start lg:justify-between">
+      <div className="flex-1">
         <p className="mb-3 flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.32em] text-[#F1B92D] md:text-[12px]">
           <span className="h-px w-8 bg-[#F1B92D]/50" />
           {eyebrow}
         </p>
-        <h2 className="font-bebas text-[2.5rem] uppercase leading-[0.9] tracking-[0.02em] text-white md:text-[4rem]">
+        <h2 className="font-bebas text-[2rem] uppercase leading-[0.95] tracking-[0.02em] text-white sm:text-[2.8rem] md:text-[3.5rem] lg:text-[4rem]">
           {title}
         </h2>
       </div>
       {body ? (
-        <p className="max-w-md text-sm leading-relaxed text-white/64 md:text-base">
+        <p className="text-sm leading-relaxed text-white/64 md:text-base lg:max-w-xs lg:flex-shrink-0">
           {body}
         </p>
       ) : null}
@@ -226,10 +226,10 @@ export default function HomeContent() {
     <>
       <Navbar />
       <main className="min-h-screen overflow-x-hidden bg-[#090909] text-[#E8E0D5] selection:bg-[#F1B92D] selection:text-[#0f0e0c]">
-        <section className="relative overflow-hidden border-b border-white/6 bg-[radial-gradient(circle_at_top_left,rgba(241,185,45,0.12),transparent_34%),linear-gradient(180deg,#111111_0%,#090909_65%)] pt-28 pb-12 md:pt-32 md:pb-16">
+        <section className="relative overflow-hidden border-b border-white/6 bg-[radial-gradient(circle_at_top_left,rgba(241,185,45,0.12),transparent_34%),linear-gradient(180deg,#111111_0%,#090909_65%)] pt-24 pb-12 md:pt-28 md:pb-16 lg:pt-32 lg:pb-20">
           <div className="absolute inset-y-0 left-[8%] hidden w-px bg-white/[0.04] lg:block" />
           <div className="absolute inset-y-0 right-[8%] hidden w-px bg-white/[0.04] lg:block" />
-          <div className="mx-auto grid max-w-7xl gap-8 px-6 md:px-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:gap-12 xl:px-16">
+          <div className="mx-auto grid max-w-7xl gap-8 px-6 md:px-10 lg:grid-cols-2 lg:items-start lg:gap-10 xl:px-16 xl:gap-12">
             <motion.div
               initial="hidden"
               animate="visible"
@@ -247,7 +247,7 @@ export default function HomeContent() {
               </motion.p>
               <motion.h1
                 variants={sectionReveal}
-                className="font-bebas text-[3.8rem] uppercase leading-[0.84] tracking-[0.01em] text-white sm:text-[4.6rem] md:text-[6.5rem]"
+                className="font-bebas text-[3rem] uppercase leading-[0.88] tracking-[0.01em] text-white sm:text-[4rem] md:text-[5.2rem] lg:text-[6rem] xl:text-[7rem]"
               >
                 Stand Out.
                 <br />
@@ -275,7 +275,7 @@ export default function HomeContent() {
               </motion.div>
               <motion.div
                 variants={sectionReveal}
-                className="mt-8 grid gap-3 sm:grid-cols-3"
+                className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3"
               >
                 {servicePills.map((item) => (
                   <div
@@ -304,7 +304,7 @@ export default function HomeContent() {
                     loop
                     playsInline
                     poster={ASSETS.hero.poster}
-                    className="aspect-[4/5] w-full object-cover md:aspect-[16/11]"
+                    className="aspect-[16/9] w-full object-cover"
                   >
                     <source src={ASSETS.hero.videoPrimary} type="video/mp4" />
                     <source src={ASSETS.hero.videoFallback} type="video/mp4" />
@@ -338,7 +338,7 @@ export default function HomeContent() {
                 body="Video that sells the work before a conversation even happens."
               />
             </motion.div>
-            <div className="mt-8 grid gap-5 md:mt-10 md:grid-cols-3">
+            <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 md:mt-10 md:grid-cols-3">
               {filmShowcase.map((item, index) => (
                 <motion.div
                   key={item.title}
@@ -368,7 +368,7 @@ export default function HomeContent() {
                 body="Built to close sales, not just look good."
               />
             </motion.div>
-            <div className="mt-8 grid gap-5 lg:grid-cols-3">
+            <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {websiteShowcase.map((item, index) => (
                 <motion.div
                   key={item.title}
@@ -400,7 +400,7 @@ export default function HomeContent() {
                 body="Real work, real results, real strategy. No filler."
               />
             </motion.div>
-            <div className="mt-8 grid gap-5 md:grid-cols-3">
+            <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3">
               {socialShowcase.map((item, index) => (
                 <motion.div
                   key={item.title}
@@ -431,7 +431,7 @@ export default function HomeContent() {
                 title="The work that moved the needle."
               />
             </motion.div>
-            <div className="mt-8 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+            <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4">
               {impactStats.map((item, index) => (
                 <motion.div
                   key={item.label}
@@ -462,7 +462,7 @@ export default function HomeContent() {
                 title="Recent projects."
               />
             </motion.div>
-            <div className="mt-8 grid gap-5 lg:grid-cols-2">
+            <div className="mt-8 grid grid-cols-1 gap-5 md:grid-cols-2">
               {recentWork.map((item, index) => (
                 <motion.div
                   key={item.title}
@@ -493,7 +493,7 @@ export default function HomeContent() {
                 body="Less theory. More proof."
               />
             </motion.div>
-            <div className="mt-8 grid gap-5 lg:grid-cols-3">
+            <div className="mt-8 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
               {testimonials.map((item, index) => (
                 <motion.div
                   key={`${item.name}-${item.business}`}
@@ -530,8 +530,8 @@ export default function HomeContent() {
           </div>
         </section>
 
-        <section className="border-b border-white/6 py-12 md:py-16">
-          <div className="mx-auto grid max-w-7xl gap-8 px-6 md:px-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center xl:px-16">
+        <section className="border-b border-white/6 py-12 md:py-16 lg:py-20">
+          <div className="mx-auto grid max-w-7xl gap-8 px-6 md:px-10 lg:grid-cols-2 lg:items-start lg:gap-10 xl:px-16 xl:gap-12">
             <motion.div
               initial={{ opacity: 0, y: 22 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -561,7 +561,7 @@ export default function HomeContent() {
                 <span className="h-px w-8 bg-[#F1B92D]/50" />
                 Meet Garry Lynch
               </p>
-              <h2 className="font-bebas text-[2.8rem] uppercase leading-[0.9] tracking-[0.02em] text-white md:text-[4.6rem]">
+              <h2 className="font-bebas text-[2rem] uppercase leading-[0.95] tracking-[0.02em] text-white sm:text-[2.8rem] md:text-[3.5rem] lg:text-[4rem]">
                 Straightforward creative work built around real businesses.
               </h2>
               <p className="mt-5 max-w-xl text-base leading-relaxed text-white/70 md:text-lg">
@@ -583,8 +583,8 @@ export default function HomeContent() {
           </div>
         </section>
 
-        <section className="py-14 md:py-20">
-          <div className="mx-auto max-w-5xl px-6 md:px-10 xl:px-16">
+        <section className="py-14 md:py-20 lg:py-24">
+          <div className="mx-auto max-w-4xl px-6 md:px-10 xl:px-16">
             <motion.div
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -595,7 +595,7 @@ export default function HomeContent() {
               <p className="text-[11px] font-bold uppercase tracking-[0.34em] text-[#F1B92D] md:text-[12px]">
                 Book Discovery Call
               </p>
-              <h2 className="mt-4 font-bebas text-[3rem] uppercase leading-[0.88] text-white md:text-[5rem]">
+              <h2 className="mt-4 font-bebas text-[2.2rem] uppercase leading-[0.92] text-white sm:text-[3rem] md:text-[4rem] lg:text-[4.5rem]">
                 Make the first impression
                 <br />
                 <span className="text-[#F1B92D]">worth paying attention to.</span>
