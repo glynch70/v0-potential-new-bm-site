@@ -156,8 +156,8 @@ function SectionHeading({
   body?: string
 }) {
   return (
-    <div className="flex flex-col gap-6 md:gap-8 lg:flex-row lg:items-start lg:justify-between">
-      <div className="flex-1">
+    <div className="flex flex-col gap-8">
+      <div>
         <p className="mb-3 flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.32em] text-[#F1B92D] md:text-[12px]">
           <span className="h-px w-8 bg-[#F1B92D]/50" />
           {eyebrow}
@@ -167,7 +167,7 @@ function SectionHeading({
         </h2>
       </div>
       {body ? (
-        <p className="text-sm leading-relaxed text-white/64 md:text-base lg:max-w-xs lg:flex-shrink-0">
+        <p className="content-max text-sm leading-relaxed text-white/64 md:text-base">
           {body}
         </p>
       ) : null}
@@ -214,7 +214,7 @@ function ImageCard({
           <p className="font-bebas text-[1.8rem] uppercase leading-none tracking-[0.02em] text-white">
             {title}
           </p>
-          <p className="mt-2 max-w-sm text-sm leading-relaxed text-white/72">{detail}</p>
+          <p className="mt-2 text-sm leading-relaxed text-white/72">{detail}</p>
         </div>
       </div>
     </Link>
@@ -229,7 +229,7 @@ export default function HomeContent() {
         <section className="relative overflow-hidden border-b border-white/6 bg-[radial-gradient(circle_at_top_left,rgba(241,185,45,0.12),transparent_34%),linear-gradient(180deg,#111111_0%,#090909_65%)] pt-24 pb-12 md:pt-28 md:pb-16 lg:pt-32 lg:pb-20">
           <div className="absolute inset-y-0 left-[8%] hidden w-px bg-white/[0.04] lg:block" />
           <div className="absolute inset-y-0 right-[8%] hidden w-px bg-white/[0.04] lg:block" />
-          <div className="mx-auto grid max-w-7xl gap-8 px-6 md:px-10 lg:grid-cols-2 lg:items-start lg:gap-10 xl:px-16 xl:gap-12">
+          <div className="container-full grid gap-8 lg:grid-cols-2 lg:items-start lg:gap-10 xl:gap-12">
             <motion.div
               initial="hidden"
               animate="visible"
@@ -257,7 +257,7 @@ export default function HomeContent() {
               </motion.h1>
               <motion.p
                 variants={sectionReveal}
-                className="mt-5 max-w-xl text-base leading-relaxed text-white/72 md:text-xl"
+                className="mt-5 content-max text-base leading-relaxed text-white/72 md:text-xl"
               >
                 Video, websites and social content that get you seen and turn lookers into callers.
               </motion.p>
@@ -311,11 +311,11 @@ export default function HomeContent() {
                   </video>
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a]/75 via-transparent to-transparent" />
                   <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 p-4 md:p-5">
-                    <div>
+                    <div className="flex-1">
                       <p className="text-[11px] font-bold uppercase tracking-[0.28em] text-[#F1B92D]">
                         Bear Media showcase
                       </p>
-                      <p className="mt-2 max-w-xs text-sm leading-relaxed text-white/78">
+                      <p className="mt-2 text-sm leading-relaxed text-white/78">
                         Cinematic footage framed as proof, not decoration.
                       </p>
                     </div>
@@ -330,7 +330,7 @@ export default function HomeContent() {
         </section>
 
         <section className="border-b border-white/6 py-12 md:py-16">
-          <div className="mx-auto max-w-7xl px-6 md:px-10 xl:px-16">
+          <div className="container-full">
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-80px' }} variants={sectionReveal}>
               <SectionHeading
                 eyebrow="Cinematic Brand Films"
@@ -360,7 +360,7 @@ export default function HomeContent() {
         </section>
 
         <section className="border-b border-white/6 py-12 md:py-16">
-          <div className="mx-auto max-w-7xl px-6 md:px-10 xl:px-16">
+          <div className="container-full">
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-80px' }} variants={sectionReveal}>
               <SectionHeading
                 eyebrow="Website Design"
@@ -392,7 +392,7 @@ export default function HomeContent() {
         </section>
 
         <section className="border-b border-white/6 py-12 md:py-16">
-          <div className="mx-auto max-w-7xl px-6 md:px-10 xl:px-16">
+          <div className="container-full">
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-80px' }} variants={sectionReveal}>
               <SectionHeading
                 eyebrow="Social Media Content"
@@ -424,7 +424,7 @@ export default function HomeContent() {
         </section>
 
         <section className="border-b border-white/6 py-12 md:py-16">
-          <div className="mx-auto max-w-7xl px-6 md:px-10 xl:px-16">
+          <div className="container-full">
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-80px' }} variants={sectionReveal}>
               <SectionHeading
                 eyebrow="Results / Impact"
@@ -455,7 +455,7 @@ export default function HomeContent() {
         </section>
 
         <section className="border-b border-white/6 py-12 md:py-16">
-          <div className="mx-auto max-w-7xl px-6 md:px-10 xl:px-16">
+          <div className="container-full">
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-80px' }} variants={sectionReveal}>
               <SectionHeading
                 eyebrow="Recent Work"
@@ -485,7 +485,7 @@ export default function HomeContent() {
         </section>
 
         <section className="border-b border-white/6 bg-[#0d0d0d] py-12 md:py-16">
-          <div className="mx-auto max-w-7xl px-6 md:px-10 xl:px-16">
+          <div className="container-full">
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-80px' }} variants={sectionReveal}>
               <SectionHeading
                 eyebrow="Client Testimonials"
@@ -531,7 +531,7 @@ export default function HomeContent() {
         </section>
 
         <section className="border-b border-white/6 py-12 md:py-16 lg:py-20">
-          <div className="mx-auto grid max-w-7xl gap-8 px-6 md:px-10 lg:grid-cols-2 lg:items-start lg:gap-10 xl:px-16 xl:gap-12">
+          <div className="container-full grid gap-8 lg:grid-cols-2 lg:items-start lg:gap-10 xl:gap-12">
             <motion.div
               initial={{ opacity: 0, y: 22 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -564,7 +564,7 @@ export default function HomeContent() {
               <h2 className="font-bebas text-[2rem] uppercase leading-[0.95] tracking-[0.02em] text-white sm:text-[2.8rem] md:text-[3.5rem] lg:text-[4rem]">
                 Straightforward creative work built around real businesses.
               </h2>
-              <p className="mt-5 max-w-xl text-base leading-relaxed text-white/70 md:text-lg">
+              <p className="mt-5 content-max text-base leading-relaxed text-white/70 md:text-lg">
                 Garry's been doing this for 20 years. Started in the trades, moved into film and web, and never stopped learning how Scottish businesses actually work. He runs Bear Media on his own — no account managers, no layers. You talk to the person doing the work.
               </p>
               <p className="mt-4 max-w-xl text-base leading-relaxed text-white/70 md:text-lg">
@@ -584,7 +584,7 @@ export default function HomeContent() {
         </section>
 
         <section className="py-14 md:py-20 lg:py-24">
-          <div className="mx-auto max-w-4xl px-6 md:px-10 xl:px-16">
+          <div className="container-full">
             <motion.div
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -600,7 +600,7 @@ export default function HomeContent() {
                 <br />
                 <span className="text-[#F1B92D]">worth paying attention to.</span>
               </h2>
-              <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-white/74 md:text-lg">
+              <p className="content-wide text-sm leading-relaxed text-white/74 md:text-lg">
                 If the business is strong but the presentation is lagging behind, that is the gap Bear Media closes.
               </p>
               <div className="mt-7">

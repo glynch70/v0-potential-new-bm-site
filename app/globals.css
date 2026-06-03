@@ -130,9 +130,27 @@
   .font-bebas {
     font-family: var(--font-bebas-neue), sans-serif;
   }
-  
+
   .font-inter-tight {
     font-family: var(--font-inter-tight), sans-serif;
+  }
+
+  /* UNIFIED CONTAINER SYSTEM
+     ─────────────────────────
+     All sections use .container-full for outer max-width
+     Content inside uses .content-max for text width
+     This prevents arbitrary width constraints */
+
+  .container-full {
+    @apply mx-auto w-full max-w-7xl px-6 sm:px-8 md:px-10 lg:px-12 xl:px-16 2xl:px-0;
+  }
+
+  .content-max {
+    @apply max-w-2xl;
+  }
+
+  .content-wide {
+    @apply max-w-4xl;
   }
 
   /* Gold accent utilities – use exact brand gold */
@@ -149,7 +167,7 @@
   .text-gradient {
     @apply bg-clip-text text-transparent bg-gradient-to-r from-[var(--color-brand-gold)] to-[var(--color-brand-gold-dark)];
   }
-  
+
   .bg-gradient-brand {
     @apply bg-gradient-to-r from-[var(--color-brand-gold)] to-[var(--color-brand-gold-dark)];
   }
@@ -157,7 +175,7 @@
   .glass-card {
     @apply bg-[var(--color-charcoal)]/60 backdrop-blur-xl border border-white/5 shadow-2xl;
   }
-  
+
   /* Spacing helpers */
   .p-lg { @apply p-[var(--spacing-lg)]; }
   .p-xl { @apply p-[var(--spacing-xl)]; }
