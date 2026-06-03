@@ -567,7 +567,7 @@ export default function HomeContent() {
               <p className="mt-5 content-max text-base leading-relaxed text-white/70 md:text-lg">
                 Garry's been doing this for 20 years. Started in the trades, moved into film and web, and never stopped learning how Scottish businesses actually work. He runs Bear Media on his own — no account managers, no layers. You talk to the person doing the work.
               </p>
-              <p className="mt-4 max-w-xl text-base leading-relaxed text-white/70 md:text-lg">
+              <p className="mt-4 content-max text-base leading-relaxed text-white/70 md:text-lg">
                 The goal: your business looks sharper, feels more credible, and brings in better work.
               </p>
               <div className="mt-7">

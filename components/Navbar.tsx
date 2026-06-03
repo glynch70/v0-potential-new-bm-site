@@ -138,7 +138,7 @@ export default function Navbar() {
             <div className="absolute top-[-10%] right-[-10%] w-[60%] h-[60%] bg-gold/10 blur-[120px] rounded-full pointer-events-none" />
             <div className="absolute bottom-[-10%] left-[-10%] w-[60%] h-[60%] bg-gold/5 blur-[120px] rounded-full pointer-events-none" />
 
-            <div className="flex flex-col gap-2 mt-8 relative z-10 w-full max-w-sm mx-auto flex-grow">
+            <div className="flex flex-col gap-2 mt-8 relative z-10 w-full flex-grow">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}

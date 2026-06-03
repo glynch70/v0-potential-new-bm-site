@@ -58,15 +58,15 @@ export default function Footer() {
   const [openGroup, setOpenGroup] = useState<string | null>(footerGroups[0].label);
 
   return (
-    <footer className="border-t border-white/6 bg-[#0b0b0b] px-6 py-12 text-[#E8E0D5] md:px-10 md:py-14 xl:px-16">
-      <div className="mx-auto max-w-7xl">
+    <footer className="border-t border-white/6 bg-[#0b0b0b]">
+      <div className="container-full py-12 md:py-14">
         <div className="grid gap-10 md:grid-cols-[1.25fr_1fr_1fr_1fr] md:gap-8">
-          <div className="max-w-sm">
+          <div>
             <p className="text-lg font-bold leading-tight text-white font-inter-tight">Bear Media</p>
             <p className="mt-2 text-[12px] font-medium uppercase tracking-[0.24em] text-white/52 font-inter-tight">
               Video, websites and social content
             </p>
-            <p className="mt-5 text-sm leading-relaxed text-white/66">
+            <p className="mt-5 content-max text-sm leading-relaxed text-white/66">
               Premium creative work for Scottish businesses that want to look sharper,
               feel more credible, and generate better enquiries.
             </p>
