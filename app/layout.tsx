@@ -4,7 +4,6 @@ import Script from "next/script";
 import { Poppins, Figtree, Bebas_Neue, Inter_Tight } from "next/font/google";
 import { LenisScrollProvider } from "@/components/LenisScrollProvider";
 import { ScrollProgress } from "@/components/ui/ScrollProgress";
-import StickyCTA from "@/components/StickyCTA";
 import "./globals.css";
 
 const poppins = Poppins({
@@ -184,7 +183,6 @@ export default function RootLayout({
         <ScrollProgress />
         <LenisScrollProvider>
           {children}
-          <StickyCTA />
           <Analytics />
         </LenisScrollProvider>
       </body>
