@@ -9,7 +9,7 @@ const PERSONAL = '/PERSONAL BRAND IMAGES';
 
 export const ASSETS = {
   hero: {
-    videoPrimary: '/media/NEW BM DRONE HERO.mp4',
+    videoPrimary: '/media/bear-media-drone-hero.mp4',
     videoFallback: '/media/hero-drone.mp4',
     poster: `${ATMOSPHERIC}/Edinburgh Sunset.jpg`,
   },

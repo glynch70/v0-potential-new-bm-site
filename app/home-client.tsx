@@ -1,618 +1,277 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { motion, useScroll, useTransform } from 'framer-motion'
+import { useRef } from 'react'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import Link from 'next/link'
 import Image from 'next/image'
 import { ASSETS } from '@/lib/assets'
-import { ArrowRight, Check, Play, Quote } from 'lucide-react'
+import { ArrowRight, Play, Quote } from 'lucide-react'
+import VideoLinkCard from '@/components/VideoLinkCard'
 
 const cinematicEase = [0.16, 1, 0.3, 1]
 
 const sectionReveal = {
-  hidden: { opacity: 0, y: 22 },
+  hidden: { opacity: 0, y: 30 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.8, ease: cinematicEase },
+    transition: { duration: 1.2, ease: cinematicEase },
   },
 }
 
-const servicePills = [
-  'Video Production',
-  'Website Design',
-  'Social Media Content',
-]
-
-const filmShowcase = [
-  {
-    title: 'C&G Developments',
-    caption: 'Construction reels and on-site edits that made the work look as good online as it does in person.',
-    image: '/BEST FINAL CLIENT WORK/C&G Rachel Interview(5)-Cover.jpg',
-    href: '/case-studies/cg-developments',
-  },
-  {
-    title: 'Harley Biker Drone Shoot',
-    caption: 'High-drama aerial footage built to stop the scroll instantly.',
-    image: ASSETS.bts.harleyDrone,
-    href: '/video-production-scotland',
-  },
-  {
-    title: 'Edinburgh Brand Film',
-    caption: 'Premium visual storytelling with a stronger sense of place.',
-    image: ASSETS.atmospheric.balmoral,
-    href: '/video-production-edinburgh',
-  },
-] as const
-
-const websiteShowcase = [
-  {
-    title: 'Almond Vet Care',
-    tag: 'Healthcare website',
-    result: 'More phone calls from pet owners.',
-    image: ASSETS.portfolio.almondVetHero,
-    href: '/portfolio/almond-vet-care',
-  },
-  {
-    title: 'K Lewis Joinery',
-    tag: 'Trades website',
-    result: 'More quote requests.',
-    image: ASSETS.portfolio.kLewis,
-    href: '/portfolio/k-lewis-joinery',
-  },
-  {
-    title: 'Robertson Transport',
-    tag: 'Logistics website',
-    result: 'Tighter credibility for bigger jobs.',
-    image: ASSETS.portfolio.robertsons,
-    href: '/portfolio/robertsons-transport',
-  },
-] as const
-
-const socialShowcase = [
-  {
-    title: 'Veterinary Client Showcase',
-    metric: '14.8k views',
-    image: ASSETS.portfolio.contentCreation,
-    href: '/services/social-media-content',
-  },
-  {
-    title: 'Joinery Craftsmanship Promo',
-    metric: '9.2k views',
-    image: ASSETS.portfolio.socialMgmt,
-    href: '/social-media',
-  },
-  {
-    title: 'SME Commercial Campaign',
-    metric: '21.5k views',
-    image: ASSETS.portfolio.youtube,
-    href: '/social-media',
-  },
-] as const
-
-const impactStats = [
-  { value: '129K+', label: 'Views generated', note: 'C&G Developments campaign' },
-  { value: '9,900+', label: 'Engagements', note: 'Within 90 days' },
-  { value: '25', label: 'Google reviews', note: '5.0 star reputation' },
-  { value: '20+', label: 'Years experience', note: 'Hands-on business background' },
-] as const
-
-const recentWork = [
-  {
-    title: 'C&G Developments',
-    category: 'Construction content',
-    image: ASSETS.portfolio.cgDevelopments,
-    href: '/case-studies/cg-developments',
-  },
-  {
-    title: 'Séamus Corry',
-    category: 'Brand and website',
-    image: ASSETS.portfolio.seamusRebrand,
-    href: '/portfolio/seamus-corry',
-  },
-  {
-    title: 'Almond Vet Care',
-    category: 'Website design',
-    image: ASSETS.portfolio.almondVetHero,
-    href: '/portfolio/almond-vet-care',
-  },
-  {
-    title: 'Robertson Transport',
-    category: 'Corporate website',
-    image: ASSETS.portfolio.robertsonsBrand,
-    href: '/portfolio/robertsons-transport',
-  },
-] as const
-
-const testimonials = [
-  {
-    name: 'Steven Summon',
-    business: 'Glens Pharmacies',
-    quote:
-      "Garry understands how local businesses actually work. He didn't just build a website; he helped us clarify our messaging and services.",
-  },
-  {
-    name: 'Director',
-    business: 'C&G Developments',
-    quote:
-      "Bear Media completely changed how we look online. The videos are top class and the phone hasn't stopped ringing since we started putting them out.",
-  },
-  {
-    name: 'Stephen Johnstone',
-    business: 'Almond Vet Care',
-    quote:
-      'The new website is clean, easy for pet owners to navigate, and the whole process was completely painless. Highly recommend Garry.',
-  },
-] as const
-
-function SectionHeading({
-  eyebrow,
-  title,
-  body,
-}: {
-  eyebrow: string
-  title: string
-  body?: string
-}) {
+function SectionHeading({ title }: { title: string }) {
   return (
-    <div className="flex flex-col gap-8">
-      <div>
-        <p className="mb-3 flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.32em] text-[#F1B92D] md:text-[12px]">
-          <span className="h-px w-8 bg-[#F1B92D]/50" />
-          {eyebrow}
-        </p>
-        <h2 className="font-bebas text-[2rem] uppercase leading-[0.95] tracking-[0.02em] text-white sm:text-[2.8rem] md:text-[3.5rem] lg:text-[4rem]">
+    <h2 className="font-bebas text-[3.5rem] uppercase leading-[0.85] tracking-[0.02em] text-white md:text-[5rem] lg:text-[7rem]">
+      {title}
+    </h2>
+  )
+}
+
+function PremiumProjectCard({ image, title, category, className = "" }: { image: string; title: string; category: string; className?: string }) {
+  return (
+    <div className={`group relative overflow-hidden bg-[#0A0A0A] ${className}`}>
+      <div className="absolute inset-0 z-10 bg-black/10 transition-colors duration-700 group-hover:bg-transparent" />
+      <Image
+        src={image}
+        alt={title}
+        fill
+        loading="lazy"
+        className="object-cover transition-transform duration-[1.5s] ease-out group-hover:scale-[1.05] grayscale-[20%] group-hover:grayscale-0"
+      />
+      <div className="absolute inset-0 z-20 flex flex-col justify-end p-8 md:p-12 bg-gradient-to-t from-[#0A0A0A]/90 via-[#0A0A0A]/20 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100">
+        <p className="font-bebas text-[2.5rem] md:text-[4rem] uppercase leading-none tracking-[0.02em] text-white transform translate-y-4 transition-transform duration-500 group-hover:translate-y-0">
           {title}
-        </h2>
-      </div>
-      {body ? (
-        <p className="content-max text-sm leading-relaxed text-white/64 md:text-base">
-          {body}
         </p>
-      ) : null}
+        <p className="mt-4 text-sm md:text-base font-medium tracking-[0.2em] uppercase text-[#D4A830] transform translate-y-4 transition-transform duration-700 delay-100 group-hover:translate-y-0">
+          {category}
+        </p>
+      </div>
     </div>
   )
 }
 
-function ImageCard({
-  href,
-  image,
-  title,
-  detail,
-  metric,
-  aspect = 'aspect-[4/5]',
-}: {
-  href: string
-  image: string
-  title: string
-  detail: string
-  metric?: string
-  aspect?: string
-}) {
-  return (
-    <Link
-      href={href}
-      className="group overflow-hidden rounded-[24px] border border-white/10 bg-white/[0.03] transition-all duration-300 hover:border-[#F1B92D]/40 hover:bg-white/[0.05]"
-    >
-      <div className={`relative ${aspect} overflow-hidden`}>
-        <Image
-          src={image}
-          alt={title}
-          fill
-          loading="lazy"
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#090909] via-[#090909]/20 to-transparent" />
-        {metric ? (
-          <div className="absolute left-4 top-4 rounded-full border border-white/15 bg-black/45 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.24em] text-[#F1B92D] backdrop-blur-md">
-            {metric}
-          </div>
-        ) : null}
-        <div className="absolute inset-x-0 bottom-0 p-5 md:p-6">
-          <p className="font-bebas text-[1.8rem] uppercase leading-none tracking-[0.02em] text-white">
-            {title}
-          </p>
-          <p className="mt-2 text-sm leading-relaxed text-white/72">{detail}</p>
-        </div>
-      </div>
-    </Link>
-  )
-}
-
 export default function HomeContent() {
+  const containerRef = useRef<HTMLDivElement>(null)
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end end"]
+  })
+
   return (
-    <>
+    <div ref={containerRef}>
       <Navbar />
-      <main className="min-h-screen overflow-x-hidden bg-[#090909] text-[#E8E0D5] selection:bg-[#F1B92D] selection:text-[#0f0e0c]">
-        <section className="relative overflow-hidden border-b border-white/6 bg-[radial-gradient(circle_at_top_left,rgba(241,185,45,0.12),transparent_34%),linear-gradient(180deg,#111111_0%,#090909_65%)] pt-24 pb-12 md:pt-28 md:pb-16 lg:pt-32 lg:pb-20">
-          <div className="absolute inset-y-0 left-[8%] hidden w-px bg-white/[0.04] lg:block" />
-          <div className="absolute inset-y-0 right-[8%] hidden w-px bg-white/[0.04] lg:block" />
-          <div className="container-full grid gap-8 lg:grid-cols-2 lg:items-start lg:gap-10 xl:gap-12">
-            <motion.div
-              initial="hidden"
-              animate="visible"
-              variants={{
-                hidden: {},
-                visible: { transition: { staggerChildren: 0.12 } },
-              }}
-              className="order-1"
+      <main className="min-h-screen overflow-x-hidden bg-[#0A0A0A] text-[#F0F0F0] selection:bg-[#D4A830] selection:text-[#0A0A0A]">
+        
+        {/* 1. CINEMATIC HERO */}
+        <section className="relative h-screen w-full flex flex-col justify-end pb-24 md:pb-32 px-6 md:px-12">
+          {/* Unobscured Background Video */}
+          <div className="absolute inset-0 z-0 overflow-hidden">
+            <video
+              autoPlay
+              muted
+              loop
+              playsInline
+              poster={ASSETS.hero.poster}
+              className="h-full w-full object-cover scale-[1.02]"
             >
-              <motion.p
-                variants={sectionReveal}
-                className="mb-5 text-[11px] font-bold uppercase tracking-[0.34em] text-[#F1B92D] md:text-[12px]"
-              >
-                Premium creative for Scottish businesses
-              </motion.p>
-              <motion.h1
-                variants={sectionReveal}
-                className="font-bebas text-[3rem] uppercase leading-[0.88] tracking-[0.01em] text-white sm:text-[4rem] md:text-[5.2rem] lg:text-[6rem] xl:text-[7rem]"
-              >
-                Stand Out.
-                <br />
-                Get Seen.
-                <br />
-                <span className="text-[#F1B92D]">Grow Faster.</span>
-              </motion.h1>
-              <motion.p
-                variants={sectionReveal}
-                className="mt-5 content-max text-base leading-relaxed text-white/72 md:text-xl"
-              >
-                Video, websites and social content that get you seen and turn lookers into callers.
-              </motion.p>
-              <motion.div variants={sectionReveal} className="mt-7 flex flex-col gap-3 sm:flex-row">
-                <Link href="/contact" className="btn-discovery justify-center text-center">
-                  Book Discovery Call
-                </Link>
-                <Link
-                  href="/portfolio"
-                  className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-full border border-white/14 px-6 py-3 text-sm font-bold uppercase tracking-[0.24em] text-white transition-colors hover:border-[#F1B92D]/50 hover:text-[#F1B92D]"
-                >
-                  View Portfolio
-                  <ArrowRight className="h-4 w-4" />
-                </Link>
-              </motion.div>
-              <motion.div
-                variants={sectionReveal}
-                className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3"
-              >
-                {servicePills.map((item) => (
-                  <div
-                    key={item}
-                    className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-4 py-3 text-sm text-white/84 backdrop-blur-sm"
-                  >
-                    <Check className="h-4 w-4 text-[#F1B92D]" />
-                    <span>{item}</span>
-                  </div>
-                ))}
-              </motion.div>
+              <source src={ASSETS.hero.videoPrimary} type="video/mp4" />
+            </video>
+            <div className="absolute inset-0 bg-black/30" />
+            <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-[#0A0A0A] to-transparent" />
+          </div>
+
+          <div className="relative z-10 w-full max-w-[1800px] mx-auto flex flex-col items-center text-center">
+            <motion.h1
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1.5, ease: cinematicEase, delay: 0.2 }}
+              className="font-bebas text-[15vw] lg:text-[12vw] uppercase leading-[0.75] tracking-[-0.02em] text-white"
+            >
+              BEAR MEDIA
+            </motion.h1>
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1, delay: 1 }}
+              className="mt-12 md:mt-16 flex items-center gap-6"
+            >
+              <span className="text-[10px] md:text-xs font-bold uppercase tracking-[0.4em] text-[#D4A830]">
+                Creative Studio
+              </span>
+              <span className="w-12 h-px bg-white/20"></span>
+              <span className="text-[10px] md:text-xs font-bold uppercase tracking-[0.4em] text-white">
+                Scotland
+              </span>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* 2. IMMERSIVE SHOWCASE */}
+        <section id="work" className="pt-24 pb-32">
+          <div className="container-full">
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-100px' }} variants={sectionReveal} className="mb-16 md:mb-24 px-4">
+              <SectionHeading title="Selected Work" />
             </motion.div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.9, ease: cinematicEase, delay: 0.1 }}
-              className="order-2"
-            >
-              <div className="relative overflow-hidden rounded-[28px] border border-white/10 bg-white/[0.05] p-3 shadow-[0_30px_90px_rgba(0,0,0,0.45)] backdrop-blur-xl">
-                <div className="pointer-events-none absolute inset-x-6 top-0 h-24 bg-[radial-gradient(circle_at_top,rgba(241,185,45,0.22),transparent_70%)]" />
-                <div className="relative overflow-hidden rounded-[22px] border border-white/8 bg-[#121212]">
-                  <video
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                    poster={ASSETS.hero.poster}
-                    className="aspect-[16/9] w-full object-cover"
-                  >
-                    <source src={ASSETS.hero.videoPrimary} type="video/mp4" />
-                    <source src={ASSETS.hero.videoFallback} type="video/mp4" />
-                  </video>
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a]/75 via-transparent to-transparent" />
-                  <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 p-4 md:p-5">
-                    <div className="flex-1">
-                      <p className="text-[11px] font-bold uppercase tracking-[0.28em] text-[#F1B92D]">
-                        Bear Media showcase
-                      </p>
-                      <p className="mt-2 text-sm leading-relaxed text-white/78">
-                        Cinematic footage framed as proof, not decoration.
-                      </p>
-                    </div>
-                    <div className="hidden rounded-full border border-white/10 bg-black/45 p-3 text-white backdrop-blur-md md:block">
-                      <Play className="h-5 w-5 fill-current" />
-                    </div>
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12">
+              {/* Massive Feature */}
+              <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-100px' }} variants={sectionReveal} className="md:col-span-12">
+                <PremiumProjectCard 
+                  image="/projects/:cg-developments/C&G Work In Progress-Cover.jpg" 
+                  title="C&G Developments" 
+                  category="Construction Showcase" 
+                  className="h-[60vh] md:h-[85vh]"
+                />
+              </motion.div>
+
+              {/* Video Cards Grid */}
+              <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-100px' }} variants={sectionReveal} className="md:col-span-6 flex flex-col justify-end">
+                 <VideoLinkCard href="https://www.instagram.com/reel/DWY1JhpCtAZ/" image="/projects/:cg-developments/C&G Quality Builds.reel.cover.png" title="Quality Builds" category="Film" aspect="aspect-square" />
+              </motion.div>
+              <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-100px' }} variants={sectionReveal} className="md:col-span-6">
+                <PremiumProjectCard 
+                  image="/projects/:simply-sheds/SIMPLY SHEDS.open sat & sun-Cover.jpg" 
+                  title="Simply Sheds" 
+                  category="Product Promotion" 
+                  className="h-[50vh] md:h-[70vh]"
+                />
+              </motion.div>
+
+              <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-100px' }} variants={sectionReveal} className="md:col-span-8">
+                <PremiumProjectCard 
+                  image="/projects/:procoat/procoat before after.png" 
+                  title="Procoat Coatings" 
+                  category="Social Campaign" 
+                  className="h-[60vh] md:h-[80vh]"
+                />
+              </motion.div>
+              <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-100px' }} variants={sectionReveal} className="md:col-span-4 flex flex-col gap-8">
+                <VideoLinkCard href="https://www.instagram.com/reel/DZm458Wklyo/" image="/projects/:simply-sheds/simply sheds 7x5-Cover.jpg" title="Shed Installation" category="Time-lapse" aspect="aspect-[4/5]" />
+                <PremiumProjectCard 
+                  image="/projects/:seamus-corry/seamus rebrand.jpg" 
+                  title="Seamus Corry" 
+                  category="Branding" 
+                  className="h-[40vh]"
+                />
+              </motion.div>
+            </div>
+          </div>
+        </section>
+
+        {/* 3. EXPERTISE (SERVICES) - MINIMAL */}
+        <section className="py-32 bg-[#111111]">
+          <div className="container-full">
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={sectionReveal} className="flex flex-col md:flex-row justify-between items-start md:items-end mb-20 px-4">
+              <SectionHeading title="Expertise" />
+              <Link href="/contact" className="mt-8 md:mt-0 text-sm font-bold uppercase tracking-[0.2em] text-[#D4A830] hover:text-white transition-colors">
+                Start a Project →
+              </Link>
+            </motion.div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-16 px-4">
+              {[
+                { title: "Photography", img: "/bear-media/BTS : PROCESS IMAGES/bts.30.jpg" },
+                { title: "Video & Film", img: "/bear-media/BTS : PROCESS IMAGES/event photography.jpg" },
+                { title: "Aerial / Drone", img: "/bear-media/BTS : PROCESS IMAGES/Harley Biker Drone Shoot.jpg" },
+                { title: "Web Design", img: "/bear-media/BTS : PROCESS IMAGES/bts_studio.jpg" }
+              ].map((service, i) => (
+                <motion.div key={i} initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1, duration: 1, ease: cinematicEase }} className="group cursor-default">
+                  <div className="relative aspect-[3/4] mb-8 overflow-hidden bg-black/20">
+                    <Image src={service.img} alt={service.title} fill className="object-cover grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105" />
+                  </div>
+                  <h3 className="font-bebas text-4xl uppercase tracking-wide text-white">{service.title}</h3>
+                  <div className="w-full h-px bg-white/10 mt-6 group-hover:bg-[#D4A830] transition-colors duration-500"></div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* 4. PROMINENT PERSONAL BRAND & STATS */}
+        <section className="py-0 relative overflow-hidden bg-[#050505]">
+          <div className="grid grid-cols-1 lg:grid-cols-2 min-h-screen">
+            {/* Massive Image Half */}
+            <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 1.5 }} viewport={{ once: true }} className="relative h-[60vh] lg:h-auto w-full">
+              <Image src="/bear-media/PERSONAL BRAND IMAGES/garry on shoot.jpeg" alt="Garry Lynch" fill className="object-cover" />
+              <div className="absolute inset-0 bg-black/20 lg:hidden" />
+            </motion.div>
+
+            {/* Stats & Content Half */}
+            <div className="flex flex-col justify-center px-8 md:px-16 lg:px-24 py-24">
+              <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={sectionReveal}>
+                <h2 className="font-bebas text-[4rem] md:text-[6rem] uppercase leading-[0.85] text-white">
+                  Garry Lynch.
+                </h2>
+                <p className="mt-8 text-xl md:text-2xl font-light leading-relaxed text-white/70 max-w-xl">
+                  20 years of experience. Built in the trades, refined in the studio. No account managers, just direct, premium creative work that drives real business results.
+                </p>
+                
+                {/* Stats Grid */}
+                <div className="mt-16 grid grid-cols-2 gap-y-12 gap-x-8">
+                  <div>
+                    <p className="font-bebas text-[4rem] md:text-[5rem] text-[#D4A830] leading-none">20+</p>
+                    <p className="mt-2 text-xs font-bold uppercase tracking-[0.2em] text-white/50">Years Experience</p>
+                  </div>
+                  <div>
+                    <p className="font-bebas text-[4rem] md:text-[5rem] text-white leading-none">150+</p>
+                    <p className="mt-2 text-xs font-bold uppercase tracking-[0.2em] text-white/50">Projects Delivered</p>
+                  </div>
+                  <div>
+                    <p className="font-bebas text-[4rem] md:text-[5rem] text-white leading-none">5.0</p>
+                    <p className="mt-2 text-xs font-bold uppercase tracking-[0.2em] text-white/50">Star Reputation</p>
+                  </div>
+                  <div className="flex flex-col justify-end pb-2">
+                     <VideoLinkCard href="https://www.instagram.com/reel/DZnTo4jgHBP/" image="/bear-media/PERSONAL BRAND IMAGES/bts_garry.jpg" title="The Process" category="Film" aspect="aspect-video" />
                   </div>
                 </div>
-              </div>
-            </motion.div>
-          </div>
-        </section>
-
-        <section className="border-b border-white/6 py-12 md:py-16">
-          <div className="container-full">
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-80px' }} variants={sectionReveal}>
-              <SectionHeading
-                eyebrow="Cinematic Brand Films"
-                title="Show the quality before you say a word."
-                body="Video that sells the work before a conversation even happens."
-              />
-            </motion.div>
-            <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 md:mt-10 md:grid-cols-3">
-              {filmShowcase.map((item, index) => (
-                <motion.div
-                  key={item.title}
-                  initial={{ opacity: 0, y: 22 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: '-80px' }}
-                  transition={{ duration: 0.75, delay: index * 0.08, ease: cinematicEase }}
-                >
-                  <ImageCard
-                    href={item.href}
-                    image={item.image}
-                    title={item.title}
-                    detail={item.caption}
-                  />
-                </motion.div>
-              ))}
+              </motion.div>
             </div>
           </div>
         </section>
 
-        <section className="border-b border-white/6 py-12 md:py-16">
-          <div className="container-full">
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-80px' }} variants={sectionReveal}>
-              <SectionHeading
-                eyebrow="Website Design"
-                title="Websites that look sharper and convert faster."
-                body="Built to close sales, not just look good."
-              />
-            </motion.div>
-            <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-              {websiteShowcase.map((item, index) => (
-                <motion.div
-                  key={item.title}
-                  initial={{ opacity: 0, y: 22 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: '-80px' }}
-                  transition={{ duration: 0.75, delay: index * 0.08, ease: cinematicEase }}
-                >
-                  <ImageCard
-                    href={item.href}
-                    image={item.image}
-                    title={item.title}
-                    detail={item.result}
-                    metric={item.tag}
-                    aspect="aspect-[16/12]"
-                  />
-                </motion.div>
-              ))}
-            </div>
+        {/* 5. MINIMAL TESTIMONIALS */}
+        <section className="py-32">
+          <div className="container-full px-4">
+             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={sectionReveal} className="flex justify-center mb-16">
+               <Quote className="h-16 w-16 text-[#D4A830] opacity-30" />
+             </motion.div>
+             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+               {[
+                 { name: "Kris Lewis", quote: "Garry understands how local businesses actually work. He didn't just build a website; he helped us clarify our messaging." },
+                 { name: "C&G Developments", quote: "Bear Media completely changed how we look online. The videos are top class and the phone hasn't stopped ringing." },
+                 { name: "Almond Vet Care", quote: "The new website is clean, easy for pet owners to navigate, and the whole process was completely painless." }
+               ].map((item, i) => (
+                 <motion.div key={i} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.15, duration: 1 }} className="text-center md:text-left">
+                   <p className="text-xl md:text-2xl font-light leading-snug text-white/80">"{item.quote}"</p>
+                   <p className="mt-8 font-bebas text-2xl tracking-widest text-[#D4A830]">{item.name}</p>
+                 </motion.div>
+               ))}
+             </div>
           </div>
         </section>
 
-        <section className="border-b border-white/6 py-12 md:py-16">
-          <div className="container-full">
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-80px' }} variants={sectionReveal}>
-              <SectionHeading
-                eyebrow="Social Media Content"
-                title="Posts that actually get engagement."
-                body="Real work, real results, real strategy. No filler."
-              />
-            </motion.div>
-            <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3">
-              {socialShowcase.map((item, index) => (
-                <motion.div
-                  key={item.title}
-                  initial={{ opacity: 0, y: 22 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: '-80px' }}
-                  transition={{ duration: 0.75, delay: index * 0.08, ease: cinematicEase }}
-                >
-                  <ImageCard
-                    href={item.href}
-                    image={item.image}
-                    title={item.title}
-                    detail="Social content that people actually stop to watch."
-                    metric={item.metric}
-                    aspect="aspect-[4/5]"
-                  />
-                </motion.div>
-              ))}
-            </div>
+        {/* 6. IMMERSIVE CTA */}
+        <section className="relative h-[80vh] flex items-center justify-center overflow-hidden">
+          <div className="absolute inset-0 z-0">
+             <Image src="/projects/:cg-developments/C&G Work In Progress-Cover.jpg" alt="Background" fill className="object-cover grayscale opacity-30" />
+             <div className="absolute inset-0 bg-[#D4A830]/90 mix-blend-multiply" />
           </div>
-        </section>
-
-        <section className="border-b border-white/6 py-12 md:py-16">
-          <div className="container-full">
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-80px' }} variants={sectionReveal}>
-              <SectionHeading
-                eyebrow="Results / Impact"
-                title="The work that moved the needle."
-              />
-            </motion.div>
-            <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4">
-              {impactStats.map((item, index) => (
-                <motion.div
-                  key={item.label}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: '-80px' }}
-                  transition={{ duration: 0.7, delay: index * 0.06, ease: cinematicEase }}
-                  className="rounded-[24px] border border-white/10 bg-white/[0.03] p-5 md:p-6"
-                >
-                  <p className="font-bebas text-[3rem] leading-none text-white md:text-[3.6rem]">
-                    {item.value}
-                  </p>
-                  <p className="mt-3 text-[11px] font-bold uppercase tracking-[0.28em] text-[#F1B92D] md:text-[12px]">
-                    {item.label}
-                  </p>
-                  <p className="mt-3 text-sm leading-relaxed text-white/62">{item.note}</p>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="border-b border-white/6 py-12 md:py-16">
-          <div className="container-full">
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-80px' }} variants={sectionReveal}>
-              <SectionHeading
-                eyebrow="Recent Work"
-                title="Recent projects."
-              />
-            </motion.div>
-            <div className="mt-8 grid grid-cols-1 gap-5 md:grid-cols-2">
-              {recentWork.map((item, index) => (
-                <motion.div
-                  key={item.title}
-                  initial={{ opacity: 0, y: 22 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: '-80px' }}
-                  transition={{ duration: 0.75, delay: index * 0.08, ease: cinematicEase }}
-                >
-                  <ImageCard
-                    href={item.href}
-                    image={item.image}
-                    title={item.title}
-                    detail={item.category}
-                    aspect="aspect-[16/10]"
-                  />
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="border-b border-white/6 bg-[#0d0d0d] py-12 md:py-16">
-          <div className="container-full">
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-80px' }} variants={sectionReveal}>
-              <SectionHeading
-                eyebrow="Client Testimonials"
-                title="What clients actually say."
-                body="Less theory. More proof."
-              />
-            </motion.div>
-            <div className="mt-8 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
-              {testimonials.map((item, index) => (
-                <motion.div
-                  key={`${item.name}-${item.business}`}
-                  initial={{ opacity: 0, y: 22 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: '-80px' }}
-                  transition={{ duration: 0.75, delay: index * 0.08, ease: cinematicEase }}
-                  className="rounded-[24px] border border-white/10 bg-white/[0.03] p-6 md:p-7"
-                >
-                  <Quote className="h-8 w-8 text-[#F1B92D]" />
-                  <p className="mt-5 text-base leading-relaxed text-white/80 md:text-lg">
-                    {item.quote}
-                  </p>
-                  <div className="mt-6 border-t border-white/8 pt-5">
-                    <p className="text-sm font-bold uppercase tracking-[0.24em] text-white">
-                      {item.name}
-                    </p>
-                    <p className="mt-2 text-sm text-white/58">{item.business}</p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-            <div className="mt-8">
-              <Link
-                href="https://share.google/yqaE2C6tZJ82f6lWw"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-[0.26em] text-[#F1B92D] transition-colors hover:text-white"
-              >
-                See all Google reviews
-                <ArrowRight className="h-4 w-4" />
+          <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 1.2, ease: cinematicEase }} className="relative z-10 text-center px-4">
+            <h2 className="font-bebas text-[10vw] md:text-[8vw] uppercase leading-none text-white tracking-[-0.02em]">
+              LET'S BUILD IT.
+            </h2>
+            <div className="mt-12">
+              <Link href="/contact" className="inline-flex min-h-[80px] items-center justify-center bg-white px-12 py-6 text-xl font-bebas uppercase tracking-widest text-black transition-transform hover:scale-105 duration-500">
+                Book A Discovery Call
               </Link>
             </div>
-          </div>
+          </motion.div>
         </section>
 
-        <section className="border-b border-white/6 py-12 md:py-16 lg:py-20">
-          <div className="container-full grid gap-8 lg:grid-cols-2 lg:items-start lg:gap-10 xl:gap-12">
-            <motion.div
-              initial={{ opacity: 0, y: 22 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-80px' }}
-              transition={{ duration: 0.8, ease: cinematicEase }}
-              className="relative overflow-hidden rounded-[28px] border border-white/10 bg-white/[0.03]"
-            >
-              <div className="relative aspect-[4/5]">
-                <Image
-                  src={ASSETS.personal.garryShoot}
-                  alt="Garry Lynch"
-                  fill
-                  loading="lazy"
-                  sizes="(max-width: 1024px) 100vw, 40vw"
-                  className="object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#090909] via-transparent to-transparent" />
-              </div>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, y: 22 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-80px' }}
-              transition={{ duration: 0.85, delay: 0.08, ease: cinematicEase }}
-            >
-              <p className="mb-3 flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.32em] text-[#F1B92D] md:text-[12px]">
-                <span className="h-px w-8 bg-[#F1B92D]/50" />
-                Meet Garry Lynch
-              </p>
-              <h2 className="font-bebas text-[2rem] uppercase leading-[0.95] tracking-[0.02em] text-white sm:text-[2.8rem] md:text-[3.5rem] lg:text-[4rem]">
-                Straightforward creative work built around real businesses.
-              </h2>
-              <p className="mt-5 content-max text-base leading-relaxed text-white/70 md:text-lg">
-                Garry's been doing this for 20 years. Started in the trades, moved into film and web, and never stopped learning how Scottish businesses actually work. He runs Bear Media on his own — no account managers, no layers. You talk to the person doing the work.
-              </p>
-              <p className="mt-4 content-max text-base leading-relaxed text-white/70 md:text-lg">
-                The goal: your business looks sharper, feels more credible, and brings in better work.
-              </p>
-              <div className="mt-7">
-                <Link
-                  href="/about"
-                  className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-[0.24em] text-[#F1B92D] transition-colors hover:text-white"
-                >
-                  Read more about Garry
-                  <ArrowRight className="h-4 w-4" />
-                </Link>
-              </div>
-            </motion.div>
-          </div>
-        </section>
-
-        <section className="py-14 md:py-20 lg:py-24">
-          <div className="container-full">
-            <motion.div
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-80px' }}
-              transition={{ duration: 0.85, ease: cinematicEase }}
-              className="overflow-hidden rounded-[32px] border border-[#F1B92D]/20 bg-[linear-gradient(135deg,rgba(241,185,45,0.18),rgba(241,185,45,0.06)),#121212] px-6 py-8 text-center shadow-[0_25px_80px_rgba(0,0,0,0.35)] md:px-10 md:py-12"
-            >
-              <p className="text-[11px] font-bold uppercase tracking-[0.34em] text-[#F1B92D] md:text-[12px]">
-                Book Discovery Call
-              </p>
-              <h2 className="mt-4 font-bebas text-[2.2rem] uppercase leading-[0.92] text-white sm:text-[3rem] md:text-[4rem] lg:text-[4.5rem]">
-                Make the first impression
-                <br />
-                <span className="text-[#F1B92D]">worth paying attention to.</span>
-              </h2>
-              <p className="content-wide text-sm leading-relaxed text-white/74 md:text-lg">
-                If the business is strong but the presentation is lagging behind, that is the gap Bear Media closes.
-              </p>
-              <div className="mt-7">
-                <Link href="/contact" className="btn-discovery inline-flex justify-center">
-                  Book Discovery Call
-                </Link>
-              </div>
-            </motion.div>
-          </div>
-        </section>
       </main>
       <Footer />
-    </>
+    </div>
   )
 }
