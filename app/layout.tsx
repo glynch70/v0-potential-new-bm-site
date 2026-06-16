@@ -2,9 +2,6 @@ import { Analytics } from "@vercel/analytics/react";
 import type { Metadata, Viewport } from "next";
 import Script from "next/script";
 import { Poppins, Figtree, Bebas_Neue, Inter_Tight } from "next/font/google";
-import { LenisScrollProvider } from "@/components/LenisScrollProvider";
-import { ScrollProgress } from "@/components/ui/ScrollProgress";
-import StickyCTA from "@/components/StickyCTA";
 import "./globals.css";
 
 const poppins = Poppins({
@@ -181,12 +178,8 @@ export default function RootLayout({
         </Script>
       </head>
       <body className="antialiased selection:bg-gold selection:text-neutral-950" suppressHydrationWarning>
-        <ScrollProgress />
-        <LenisScrollProvider>
-          {children}
-          <StickyCTA />
-          <Analytics />
-        </LenisScrollProvider>
+        {children}
+        <Analytics />
       </body>
     </html>
   );
